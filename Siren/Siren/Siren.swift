@@ -19,7 +19,7 @@ import UIKit
 
 // MARK: Enumerations
 /**
-    Localization constants
+    Localization
 */
 public enum SirenLanguage: String
 {
@@ -43,6 +43,9 @@ public enum SirenLanguage: String
     case Turkish = "tr"
 }
 
+/**
+    Type of alert to present
+*/
 public enum SirenAlertType
 {
     case Force        // Forces user to update your app
@@ -54,6 +57,34 @@ public enum SirenAlertType
 // MARK: Main Class
 public class Siren : NSObject
 {
+    // MARK: Constants
+    // Class Constants
+    let SirenShouldSkipVersionDefault = "Siren Should Skip Version"
+    let SirenSkippedVersionDefault = "Siren User Decided To Skip Version Update"
+    let SirenStoredVersionCheckDate = "Harpy Stored Date From Last Version Check"
+    let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String?
+    let bundlePath = NSBundle.mainBundle().pathForResource("Harpy", ofType: "Bundle")
+    
+    // Class Variables
+    var debugEnabled = false
+    
+    weak var delegate: SirenDelegate?
+    
+    var appID: String?
+    var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
+    var countryCode: String?
+    var forceLanguageLocalization: SirenLanguage?
+    
+    var alertType = SirenAlertType.Option
+    var majorUpdateAlertType = SirenAlertType.Option
+    var minorUpdateAlertType = SirenAlertType.Option
+    var patchUpdateAlertType = SirenAlertType.Option
+    
+    var presentingViewController: UIViewController?
+    var alertControllerTintColor: UIColor?
+    
+    
+    // MARK: Initialization
     public class var sharedInstance: Siren {
         struct Singleton {
             static let instance = Siren()
@@ -61,56 +92,42 @@ public class Siren : NSObject
         
         return Singleton.instance
     }
-    
-    // From Aaron's branch
-    weak var delegate : HarpyDelegate?
-    var presentingViewController : UIViewController?
-    
-    var appID : String?
-    var appName : String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
-    
-    var countryCode : String?
-    var forceLanguageLocalization : SirenLanguage?
-    
-    var debugEnabled = false
-    
-    var alertType = SirenAlertType.Option
-    var majorUpdateAlertType = SirenAlertType.Option
-    var minorUpdateAlertType = SirenAlertType.Option
-    var patchUpdateAlertType = SirenAlertType.Option
-    
-    var alertControllerTintColor : UIColor?
-    
-    let HARPY_DEFAULT_SHOULD_SKIP_VERSION = "Harpy Should Skip Version Boolean"
-    let HARPY_DEFAULT_SKIPPED_VERSION = "Harpy User Decided To Skip Version Update Boolean"
-    let HARPY_DEFAULT_STORED_VERSION_CHECK_DATE = "Harpy Stored Date From Last Version Check"
-    
-    let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String?
-    let bundlePath = NSBundle.mainBundle().pathForResource("Harpy", ofType: "Bundle")
-    
-    class func iTunesURLString(id : String, country : String?) -> String {
-        var url = "http://itunes.apple.com/lookup?id=\(id)"
+
+    // MARK: Check Version
+    func checkVersion() {
         
-        if let country = country {
-            url += "&country=\(country)"
-        }
-        
-        return url
-    }
-    
-    func sirenBundle -> NSBundle? {
-        var bundle : NSBundle
-        var path : String?
-        
-        if let language = forceLanguageLocalization {
-            path = NSBundle(path: bundlePath!)?.pathForResource(language, ofType: "lproj")
+        if (appID != nil || presentingViewController != nil) {
+            println("[Harpy]: Please make sure that you have set 'appID' and 'presentatingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
         } else {
-            
+            var itunesURL = iTunesURLFromString()
         }
     }
     
-    func harpyLocalizedString(key : String) -> String {
+    // MARK: Helpers
+    func iTunesURLFromString() -> NSURL {
         
+        var route = "http://itunes.apple.com/lookup?id=\(appID)"
+        
+        if let countryCode = self.countryCode {
+            route += "&country=\(countryCode)"
+        }
+        
+        return NSURL(string: route)!
     }
+    
+//    func sirenBundle -> NSBundle? {
+//        var bundle : NSBundle
+//        var path : String?
+//        
+//        if let language = forceLanguageLocalization {
+//            path = NSBundle(path: bundlePath!)?.pathForResource(language, ofType: "lproj")
+//        } else {
+//            
+//        }
+//    }
+//    
+//    func harpyLocalizedString(key : String) -> String {
+//        
+//    }
     
 }

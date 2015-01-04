@@ -113,7 +113,7 @@ public class Siren : NSObject
         let itunesURL = iTunesURLFromString()
         let request = NSMutableURLRequest(URL: itunesURL)
         request.HTTPMethod = "POST"
-        let session = NSURLSession()
+        let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if (data.length > 0) {
@@ -135,9 +135,7 @@ public class Siren : NSObject
                     if ((versionsInAppStore?.count) != nil) {
                         self.currentAppStoreVersion = versionsInAppStore!.firstObject as? String
                     }
-                    
                 })
-                
             }
         })
         task.resume()
@@ -157,25 +155,6 @@ public class Siren : NSObject
     func checkIfAppStoreVersionIsNewestVersion() {
         
     }
-    
-    
-    // MARK: Bundle
-    
-//    func sirenBundle -> NSBundle? {
-//        var bundle : NSBundle
-//        var path : String?
-//        
-//        if let language = forceLanguageLocalization {
-//            path = NSBundle(path: bundlePath!)?.pathForResource(language, ofType: "lproj")
-//        } else {
-//            
-//        }
-//    }
-//    
-//    func harpyLocalizedString(key : String) -> String {
-//        
-//    }
-    
 }
 
 private extension NSBundle {

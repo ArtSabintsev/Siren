@@ -144,7 +144,7 @@ public class Siren : NSObject
                     // Extract all versions that have been uploaded to the AppStore
                     let versionsInAppStore: NSArray? = self.appData?.objectForKey("results")?.objectForKey("version") as? NSArray
                     if ((versionsInAppStore?.count) != nil) {
-                        self.currentAppStoreVersion = versionsInAppStore?.objectAtIndex(0) as? String
+                        self.currentAppStoreVersion = versionsInAppStore!.firstObject as? String
                     }
                     
                 })

@@ -14,7 +14,7 @@
 		8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918F1A58B465001C121E /* LaunchScreen.xib */; };
 		8EC3919D1A58B466001C121E /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3919C1A58B466001C121E /* SirenTests.swift */; };
 		8EC391A71A58B4AA001C121E /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391A61A58B4AA001C121E /* Siren.swift */; };
-		8EC391AA1A58CE41001C121E /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EC391A91A58CE41001C121E /* Harpy.bundle */; };
+		8EC391AA1A58CE41001C121E /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EC391A91A58CE41001C121E /* Siren.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		8EC3919B1A58B466001C121E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC3919C1A58B466001C121E /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EC391A61A58B4AA001C121E /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
-		8EC391A91A58CE41001C121E /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		8EC391A91A58CE41001C121E /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			children = (
 				8EC391851A58B465001C121E /* Info.plist */,
 				8EC3918D1A58B465001C121E /* Images.xcassets */,
-				8EC391A91A58CE41001C121E /* Harpy.bundle */,
+				8EC391A91A58CE41001C121E /* Siren.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC391AA1A58CE41001C121E /* Harpy.bundle in Resources */,
+				8EC391AA1A58CE41001C121E /* Siren.bundle in Resources */,
 				8EC3918C1A58B465001C121E /* Main.storyboard in Resources */,
 				8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */,
 				8EC3918E1A58B465001C121E /* Images.xcassets in Resources */,

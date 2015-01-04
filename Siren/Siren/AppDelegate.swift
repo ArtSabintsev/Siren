@@ -13,9 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let siren = Siren.sharedInstance
+        siren.appID = "376771144" // iTunes Connect (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
+        siren.presentingViewController = window?.rootViewController
+        siren.checkVersion()
+        siren.debugEnabled = true;
+        
         return true
     }
 

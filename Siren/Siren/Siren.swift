@@ -58,14 +58,14 @@ public enum SirenAlertType
 public class Siren : NSObject
 {
     // MARK: Constants
-    // Class Constants
-    let SirenShouldSkipVersionDefault = "Siren Should Skip Version"
-    let SirenSkippedVersionDefault = "Siren User Decided To Skip Version Update"
-    let SirenStoredVersionCheckDate = "Harpy Stored Date From Last Version Check"
+    // Class Constants (Public)
+    let SirenDefaultShouldSkipVersion = "Siren Should Skip Version"
+    let SirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
+    let SirenDefaultStoredVersionCheckDate = "Harpy Stored Date From Last Version Check"
     let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String?
     let bundlePath = NSBundle.mainBundle().pathForResource("Harpy", ofType: "Bundle")
     
-    // Class Variables
+    // Class Variables (Public)
     var debugEnabled = false
     
     weak var delegate: SirenDelegate?
@@ -83,6 +83,10 @@ public class Siren : NSObject
     var presentingViewController: UIViewController?
     var alertControllerTintColor: UIColor?
     
+    // Class Variables (Private)
+    private var appData: NSDictionary?
+    private var lastVersionCheckPerformedOnDate: NSDate?
+    private var currentAppStoreVersion: String?
     
     // MARK: Initialization
     public class var sharedInstance: Siren {
@@ -95,18 +99,18 @@ public class Siren : NSObject
 
     // MARK: Check Version
     func checkVersion() {
-        
-        if (appID != nil || presentingViewController != nil) {
-            println("[Harpy]: Please make sure that you have set 'appID' and 'presentatingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
+
+        if (appID == nil || presentingViewController == nil) {
+            println("[Harpy]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
         } else {
-            var itunesURL = iTunesURLFromString()
+            performVersionCheck()
         }
     }
     
     // MARK: Helpers
     func iTunesURLFromString() -> NSURL {
         
-        var route = "http://itunes.apple.com/lookup?id=\(appID)"
+        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
         
         if let countryCode = self.countryCode {
             route += "&country=\(countryCode)"
@@ -114,6 +118,47 @@ public class Siren : NSObject
         
         return NSURL(string: route)!
     }
+    
+    func performVersionCheck() {
+        
+        let itunesURL = iTunesURLFromString()
+        let request = NSMutableURLRequest(URL: itunesURL)
+        request.HTTPMethod = "POST"
+        let session = NSURLSession()
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            if (data.length > 0) {
+                self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? NSDictionary
+                
+                if (self.debugEnabled) {
+                    println("[Harpy] JSON Results: \(self.appData)");
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    // Store version comparison date
+                    self.lastVersionCheckPerformedOnDate = NSDate()
+                    NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.SirenDefaultStoredVersionCheckDate)
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                    // Extract all versions that have been uploaded to the AppStore
+                    let versionsInAppStore: NSArray? = self.appData?.objectForKey("results")?.objectForKey("version") as? NSArray
+                    if ((versionsInAppStore?.count) != nil) {
+                        self.currentAppStoreVersion = versionsInAppStore?.objectAtIndex(0) as? String
+                    }
+                    
+                })
+                
+            }
+        })
+    }
+    
+    func checkIfAppStoreVersionIsNewestVersion() {
+        
+    }
+    
+    
+    // MARK: Bundle
     
 //    func sirenBundle -> NSBundle? {
 //        var bundle : NSBundle
@@ -129,5 +174,35 @@ public class Siren : NSObject
 //    func harpyLocalizedString(key : String) -> String {
 //        
 //    }
+    
+}
+
+extension NSBundle {
+    
+    func sirenBundlePath() -> String {
+        return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!
+    }
+
+    func forcedBundlePath() -> String? {
+        let path = sirenBundlePath()
+        let name = Siren.sharedInstance.forceLanguageLocalization?.rawValue
+        return NSBundle(path: path)?.pathForResource(name, ofType: "lproj")
+    }
+    
+    func currentVersion() -> String? {
+        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+    }
+    
+    func localizedString(stringKey: NSString) -> NSString? {
+        let path = sirenBundlePath()
+        let table = "SirenLocalizable"
+        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
+    }
+    
+    func forcedLocalizedString(stringKey: NSString) -> NSString? {
+        let path = forcedBundlePath()
+        let table = "SirenLocalizable"
+        return NSBundle(path: path!)?.localizedStringForKey(stringKey, value: stringKey, table: table)
+    }
     
 }

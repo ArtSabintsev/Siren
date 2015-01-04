@@ -197,8 +197,7 @@ public class Siren : NSObject
     func checkIfAppStoreVersionIsNewestVersion() {
         
         // Check if current installed version is the newest public version or newer (e.g., dev version)
-        let currentInstalledVersion = NSBundle.mainBundle().currentVersion()
-        if let currentInstalledVersion = currentInstalledVersion {
+        if let currentInstalledVersion = NSBundle.mainBundle().currentVersion() {
             if (currentInstalledVersion.compare(self.currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
 //            [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
 //            [self alertTypeForVersion:currentAppStoreVersion];

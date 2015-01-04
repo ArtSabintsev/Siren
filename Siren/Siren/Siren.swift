@@ -84,7 +84,7 @@ public class Siren : NSObject
     var alertControllerTintColor: UIColor?
     
     // Class Variables (Private)
-    private var appData: NSDictionary?
+    private var appData: [String : AnyObject]?
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var currentAppStoreVersion: String?
     
@@ -128,7 +128,7 @@ public class Siren : NSObject
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if (data.length > 0) {
-                self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? NSDictionary
+                self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
                 if (self.debugEnabled) {
                     println("[Siren] JSON Results: \(self.appData)");
@@ -142,11 +142,13 @@ public class Siren : NSObject
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
                     // Extract all versions that have been uploaded to the AppStore
-                    let versionsInAppStore: NSArray? = self.appData?.objectForKey("results")?.objectForKey("version") as? NSArray
-                    if ((versionsInAppStore?.count) != nil) {
-                        self.currentAppStoreVersion = versionsInAppStore!.firstObject as? String
-                    }
                     
+                    if let data = self.appData {
+                        let versionsInAppStore = data["results"]?[0]["version"] as? [String]
+                        if ((versionsInAppStore?.count) != nil) {
+                            self.currentAppStoreVersion = versionsInAppStore!.first
+                        }
+                    }
                 })
                 
             }

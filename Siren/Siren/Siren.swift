@@ -90,9 +90,9 @@ public class Siren : NSObject
     var forceLanguageLocalization: SirenLanguage?
     
     var alertType = SirenAlertType.Option
-    var majorUpdateAlertType = SirenAlertType.Option
-    var minorUpdateAlertType = SirenAlertType.Option
-    var patchUpdateAlertType = SirenAlertType.Option
+    lazy var majorUpdateAlertType = SirenAlertType.Option
+    lazy var minorUpdateAlertType = SirenAlertType.Option
+    lazy var patchUpdateAlertType = SirenAlertType.Option
     
     var presentingViewController: UIViewController?
     var alertControllerTintColor: UIColor?
@@ -162,7 +162,7 @@ public class Siren : NSObject
                     if let data = self.appData {
                         self.currentAppStoreVersion = data["results"]?[0]["version"] as? String
                         if let currentAppStoreVersion = self.currentAppStoreVersion {
-                            println("HERE: \(currentAppStoreVersion)")
+                            self.checkIfAppStoreVersionIsNewestVersion()
                         }
                     }
                 })
@@ -196,17 +196,26 @@ public class Siren : NSObject
     
     func checkIfAppStoreVersionIsNewestVersion() {
         
+        // Check if current installed version is the newest public version or newer (e.g., dev version)
+        let currentInstalledVersion = NSBundle.mainBundle().currentVersion()
+        if let currentInstalledVersion = currentInstalledVersion {
+            if (currentInstalledVersion.compare(self.currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+//            [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
+//            [self alertTypeForVersion:currentAppStoreVersion];
+//            [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+            }
+        }
     }
 }
 
-private extension NSBundle {
+extension NSBundle {
     
     func currentVersion() -> String? {
-        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+        return self.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
 
     func sirenBundlePath() -> String {
-        return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!
+        return self.pathForResource("Siren", ofType: ".bundle") as String!
     }
 
     func localizedString(stringKey: NSString) -> NSString? {

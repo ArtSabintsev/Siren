@@ -177,7 +177,7 @@ public class Siren : NSObject
     
 }
 
-extension NSBundle {
+private extension NSBundle {
     
     func sirenBundlePath() -> String {
         return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!

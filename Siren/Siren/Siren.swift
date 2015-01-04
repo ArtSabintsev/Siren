@@ -61,9 +61,9 @@ public class Siren : NSObject
     // Class Constants (Public)
     let SirenDefaultShouldSkipVersion = "Siren Should Skip Version"
     let SirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
-    let SirenDefaultStoredVersionCheckDate = "Harpy Stored Date From Last Version Check"
+    let SirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
     let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String?
-    let bundlePath = NSBundle.mainBundle().pathForResource("Harpy", ofType: "Bundle")
+    let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
     
     // Class Variables (Public)
     var debugEnabled = false
@@ -101,7 +101,7 @@ public class Siren : NSObject
     func checkVersion() {
 
         if (appID == nil || presentingViewController == nil) {
-            println("[Harpy]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
+            println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
         } else {
             performVersionCheck()
         }
@@ -120,7 +120,7 @@ public class Siren : NSObject
                 self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? NSDictionary
                 
                 if (self.debugEnabled) {
-                    println("[Harpy] JSON Results: \(self.appData)");
+                    println("[Siren] JSON Results: \(self.appData)");
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -133,7 +133,7 @@ public class Siren : NSObject
                     // Extract all versions that have been uploaded to the AppStore
                     let versionsInAppStore: NSArray? = self.appData?.objectForKey("results")?.objectForKey("version") as? NSArray
                     if ((versionsInAppStore?.count) != nil) {
-                        self.currentAppStoreVersion = versionsInAppStore?.objectAtIndex(0) as? String
+                        self.currentAppStoreVersion = versionsInAppStore!.firstObject as? String
                     }
                     
                 })
@@ -178,7 +178,7 @@ public class Siren : NSObject
     
 }
 
-extension NSBundle {
+private extension NSBundle {
     
     func sirenBundlePath() -> String {
         return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!

@@ -160,9 +160,9 @@ public class Siren : NSObject
                     
                     // Extract all versions that have been uploaded to the AppStore
                     if let data = self.appData {
-                        let versionsInAppStore = data["results"]?[0]["version"] as? [String]
-                        if ((versionsInAppStore?.count) != nil) {
-                            self.currentAppStoreVersion = versionsInAppStore!.first
+                        self.currentAppStoreVersion = data["results"]?[0]["version"] as? String
+                        if let currentAppStoreVersion = self.currentAppStoreVersion {
+                            println("HERE: \(currentAppStoreVersion)")
                         }
                     }
                 })

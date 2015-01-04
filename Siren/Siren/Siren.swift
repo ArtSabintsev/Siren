@@ -108,17 +108,6 @@ public class Siren : NSObject
     }
     
     // MARK: Helpers
-    func iTunesURLFromString() -> NSURL {
-        
-        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
-        
-        if let countryCode = self.countryCode {
-            route += "&country=\(countryCode)"
-        }
-        
-        return NSURL(string: route)!
-    }
-    
     func performVersionCheck() {
         
         let itunesURL = iTunesURLFromString()
@@ -151,6 +140,18 @@ public class Siren : NSObject
                 
             }
         })
+        task.resume()
+    }
+    
+    func iTunesURLFromString() -> NSURL {
+        
+        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
+        
+        if let countryCode = self.countryCode {
+            route += "&country=\(countryCode)"
+        }
+        
+        return NSURL(string: route)!
     }
     
     func checkIfAppStoreVersionIsNewestVersion() {

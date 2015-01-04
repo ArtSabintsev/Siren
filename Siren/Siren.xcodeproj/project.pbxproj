@@ -14,6 +14,7 @@
 		8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918F1A58B465001C121E /* LaunchScreen.xib */; };
 		8EC3919D1A58B466001C121E /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3919C1A58B466001C121E /* SirenTests.swift */; };
 		8EC391A71A58B4AA001C121E /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391A61A58B4AA001C121E /* Siren.swift */; };
+		933133D51A58C5E500BA61D8 /* Harpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933133D41A58C5E500BA61D8 /* Harpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8EC3919B1A58B466001C121E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC3919C1A58B466001C121E /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EC391A61A58B4AA001C121E /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
+		933133D41A58C5E500BA61D8 /* Harpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Harpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		8EC391831A58B465001C121E /* Siren */ = {
 			isa = PBXGroup;
 			children = (
+				933133D41A58C5E500BA61D8 /* Harpy.swift */,
 				8EC391861A58B465001C121E /* AppDelegate.swift */,
 				8EC391A61A58B4AA001C121E /* Siren.swift */,
 				8EC391881A58B465001C121E /* ViewController.swift */,
@@ -217,6 +220,7 @@
 			files = (
 				8EC391891A58B465001C121E /* ViewController.swift in Sources */,
 				8EC391A71A58B4AA001C121E /* Siren.swift in Sources */,
+				933133D51A58C5E500BA61D8 /* Harpy.swift in Sources */,
 				8EC391871A58B465001C121E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,7 @@
 				8EC391A21A58B466001C121E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8EC391A31A58B466001C121E /* Build configuration list for PBXNativeTarget "SirenTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				8EC391A51A58B466001C121E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

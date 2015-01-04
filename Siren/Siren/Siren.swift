@@ -167,7 +167,7 @@ public class Siren : NSObject
                     }
                 })
             } else if self.debugEnabled {
-                println("Error retrieving App Store data: \(error)")
+                println("[Siren] Error Retrieving App Store Data: \(error)")
             }
         })
         task.resume()
@@ -182,7 +182,7 @@ public class Siren : NSObject
         }
         
         if debugEnabled {
-            println("[Siren] storeURL: \(storeURLString)");
+            println("[Siren] iTunes Lookup URL: \(storeURLString)");
         }
         
         return NSURL(string: storeURLString)!

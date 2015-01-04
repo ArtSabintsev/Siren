@@ -18,8 +18,31 @@ import UIKit
 }
 
 // MARK: Enumerations
+
 /**
-    Localization
+    Type of alert to present
+*/
+public enum SirenAlertType
+{
+    case Force        // Forces user to update your app
+    case Option       // (DEFAULT) Presents user with option to update app now or at next launch
+    case Skip         // Presents User with option to update the app now, at next launch, or to skip this version all together
+    case None         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
+}
+
+/**
+    How often alert should be presented
+*/
+
+public enum SirenVersionCheckType : Int
+{
+    case Immediately = 0
+    case Daily = 1
+    case Weekly = 7
+}
+
+/**
+    Internationalization
 */
 public enum SirenLanguage: String
 {
@@ -41,24 +64,6 @@ public enum SirenLanguage: String
     case Sweidsh = "sv"
     case Spanish = "es"
     case Turkish = "tr"
-}
-
-/**
-    Type of alert to present
-*/
-public enum SirenAlertType
-{
-    case Force        // Forces user to update your app
-    case Option       // (DEFAULT) Presents user with option to update app now or at next launch
-    case Skip         // Presents User with option to update the app now, at next launch, or to skip this version all together
-    case None         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
-}
-
-public enum SirenVersionCheckType : Int
-{
-    case Immediately = 0
-    case UnlessPriorCheckWasWithinOneDay = 1
-    case UnlessPriorCheckWasWithinOneWeek = 7
 }
 
 // MARK: Main Class
@@ -126,7 +131,6 @@ public class Siren : NSObject
                     performVersionCheck()
                 }
             }
-            
         }
     }
     
@@ -139,10 +143,10 @@ public class Siren : NSObject
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
-            if (data.length > 0) {
+            if data.length > 0 {
                 self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
-                if (self.debugEnabled) {
+                if self.debugEnabled {
                     println("[Siren] JSON Results: \(self.appData)");
                 }
                 
@@ -162,7 +166,7 @@ public class Siren : NSObject
                     }
                 })
             } else if self.debugEnabled {
-                println("Error getting App Store data: \(error)")
+                println("Error retrieving App Store data: \(error)")
             }
         })
         task.resume()
@@ -170,23 +174,27 @@ public class Siren : NSObject
     
     func iTunesURLFromString() -> NSURL {
         
-        var route = "https://itunes.apple.com/lookup?id=\(appID!)"
+        var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
         
         if let countryCode = self.countryCode {
-            route += "&country=\(countryCode)"
+            storeURLString += "&country=\(countryCode)"
         }
         
-        return NSURL(string: route)!
-    }
-    
-    func checkIfAppStoreVersionIsNewestVersion() {
+        if debugEnabled {
+            println("[Siren] storeURL: \(storeURLString)");
+        }
         
+        return NSURL(string: storeURLString)!
     }
     
     func daysSinceLastVersionCheckDate() -> Int {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components(.CalendarUnitDay, fromDate: lastVersionCheckPerformedOnDate!, toDate: NSDate(), options: nil)
         return components.day
+    }
+    
+    func checkIfAppStoreVersionIsNewestVersion() {
+        
     }
 }
 

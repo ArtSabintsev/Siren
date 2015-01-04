@@ -17,14 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let siren = Siren.sharedInstance
-        siren.appID = "376771144" // iTunes Connect (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
+        siren.appID = "376771144" // iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         siren.presentingViewController = window?.rootViewController
         siren.debugEnabled = true;
-        
-//        siren.checkVersion()
-//        siren.checkVersion(.Immediately)
-//        siren.checkVersion(.UnlessPriorCheckWasWithinOneDay)
-        siren.checkVersion(.UnlessPriorCheckWasWithinOneWeek)
+        siren.checkVersion(.Immediately)
         
         return true
     }

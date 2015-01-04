@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: Constants
 /**
     Localization constants
 */
@@ -34,7 +35,19 @@ public enum SirenLanguage: String
     case Turkish = "tr"
 }
 
+// MARK: Main Class
 public class Siren : NSObject
 {
+    public class var sharedInstance: Siren {
+        struct Singleton {
+            static let instance = Siren()
+        }
+        
+        return Singleton.instance
+    }
+    
+    public override func init() {
+        
+    }
     
 }

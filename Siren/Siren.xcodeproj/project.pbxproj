@@ -14,7 +14,7 @@
 		8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918F1A58B465001C121E /* LaunchScreen.xib */; };
 		8EC3919D1A58B466001C121E /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3919C1A58B466001C121E /* SirenTests.swift */; };
 		8EC391A71A58B4AA001C121E /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391A61A58B4AA001C121E /* Siren.swift */; };
-		933133D51A58C5E500BA61D8 /* Harpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933133D41A58C5E500BA61D8 /* Harpy.swift */; };
+		8EC391AA1A58CE41001C121E /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EC391A91A58CE41001C121E /* Harpy.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		8EC3919B1A58B466001C121E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC3919C1A58B466001C121E /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EC391A61A58B4AA001C121E /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
-		933133D41A58C5E500BA61D8 /* Harpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Harpy.swift; sourceTree = "<group>"; };
+		8EC391A91A58CE41001C121E /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +81,10 @@
 		8EC391831A58B465001C121E /* Siren */ = {
 			isa = PBXGroup;
 			children = (
-				933133D41A58C5E500BA61D8 /* Harpy.swift */,
-				8EC391861A58B465001C121E /* AppDelegate.swift */,
 				8EC391A61A58B4AA001C121E /* Siren.swift */,
-				8EC391881A58B465001C121E /* ViewController.swift */,
-				8EC3918A1A58B465001C121E /* Main.storyboard */,
-				8EC3918D1A58B465001C121E /* Images.xcassets */,
-				8EC3918F1A58B465001C121E /* LaunchScreen.xib */,
+				8EC391AB1A58CE49001C121E /* Models */,
+				8EC391AC1A58CE50001C121E /* View Controllers */,
+				8EC391AD1A58CE80001C121E /* Xibs */,
 				8EC391841A58B465001C121E /* Supporting Files */,
 			);
 			path = Siren;
@@ -97,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				8EC391851A58B465001C121E /* Info.plist */,
+				8EC3918D1A58B465001C121E /* Images.xcassets */,
+				8EC391A91A58CE41001C121E /* Harpy.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -116,6 +115,31 @@
 				8EC3919B1A58B466001C121E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8EC391AB1A58CE49001C121E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EC391861A58B465001C121E /* AppDelegate.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8EC391AC1A58CE50001C121E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EC391881A58B465001C121E /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8EC391AD1A58CE80001C121E /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3918A1A58B465001C121E /* Main.storyboard */,
+				8EC3918F1A58B465001C121E /* LaunchScreen.xib */,
+			);
+			name = Xibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC391AA1A58CE41001C121E /* Harpy.bundle in Resources */,
 				8EC3918C1A58B465001C121E /* Main.storyboard in Resources */,
 				8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */,
 				8EC3918E1A58B465001C121E /* Images.xcassets in Resources */,
@@ -220,7 +245,6 @@
 			files = (
 				8EC391891A58B465001C121E /* ViewController.swift in Sources */,
 				8EC391A71A58B4AA001C121E /* Siren.swift in Sources */,
-				933133D51A58C5E500BA61D8 /* Harpy.swift in Sources */,
 				8EC391871A58B465001C121E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

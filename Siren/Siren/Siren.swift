@@ -147,7 +147,7 @@ public class Siren : NSObject
                 self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
                 if self.debugEnabled {
-                    println("[Siren] JSON Results: \(self.appData)");
+                    println("[Siren] JSON Results: \(self.appData!)");
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in

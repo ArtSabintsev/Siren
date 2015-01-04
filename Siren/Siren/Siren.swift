@@ -71,10 +71,12 @@ public class Siren : NSObject
 {
     // MARK: Constants
     // Class Constants (Public)
-    let SirenDefaultShouldSkipVersion = "Siren Should Skip Version"
-    let SirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
-    let SirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
-    let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String?
+
+    let sirenDefaultShouldSkipVersion: NSString = "Siren Should Skip Version"
+    let sirenDefaultSkippedVersion: NSString  = "Siren User Decided To Skip Version Update"
+    let sirenDefaultStoredVersionCheckDate: NSString = "Siren Stored Date From Last Version Check"
+    
+    let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
     
     // Class Variables (Public)
@@ -108,23 +110,22 @@ public class Siren : NSObject
         
         return Singleton.instance
     }
-
-    // MARK: Check Version
-    func checkVersion() {
-        checkVersion(.Immediately)
+    
+    override init() {
+        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate;
     }
     
-    func checkVersion(checkType : SirenVersionCheckType) {
+    // MARK: Check Version
+    func checkVersion(checkType: SirenVersionCheckType) {
 
         if (appID == nil || presentingViewController == nil) {
             println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
         } else {
-            
             if checkType == .Immediately {
                 performVersionCheck()
             } else {
                 if let lastCheckDate = lastVersionCheckPerformedOnDate {
-                    if daysSinceLastVersionCheckDate() > checkType.rawValue {
+                    if daysSinceLastVersionCheckDate() >= checkType.rawValue {
                         performVersionCheck()
                     }
                 } else {
@@ -153,8 +154,8 @@ public class Siren : NSObject
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     // Store version comparison date
-                    self.lastVersionCheckPerformedOnDate = NSDate()
-                    NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.SirenDefaultStoredVersionCheckDate)
+                    self.lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate
+                    NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.sirenDefaultStoredVersionCheckDate)
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
                     // Extract all versions that have been uploaded to the AppStore
@@ -225,5 +226,5 @@ private extension NSBundle {
         let table = "SirenLocalizable"
         return NSBundle(path: path!)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
-    
+
 }

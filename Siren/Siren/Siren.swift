@@ -180,24 +180,24 @@ public class Siren : NSObject
 
 private extension NSBundle {
     
+    func currentVersion() -> String? {
+        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+    }
+
     func sirenBundlePath() -> String {
         return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!
+    }
+
+    func localizedString(stringKey: NSString) -> NSString? {
+        let path = sirenBundlePath()
+        let table = "SirenLocalizable"
+        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
 
     func forcedBundlePath() -> String? {
         let path = sirenBundlePath()
         let name = Siren.sharedInstance.forceLanguageLocalization?.rawValue
         return NSBundle(path: path)?.pathForResource(name, ofType: "lproj")
-    }
-    
-    func currentVersion() -> String? {
-        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
-    }
-    
-    func localizedString(stringKey: NSString) -> NSString? {
-        let path = sirenBundlePath()
-        let table = "SirenLocalizable"
-        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
     
     func forcedLocalizedString(stringKey: NSString) -> NSString? {

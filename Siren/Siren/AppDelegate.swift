@@ -20,7 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.appID = "376771144" // iTunes Connect (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         siren.presentingViewController = window?.rootViewController
         siren.debugEnabled = true;
-        siren.checkVersion()
+        
+//        siren.checkVersion()
+//        siren.checkVersion(.Immediately)
+//        siren.checkVersion(.UnlessPriorCheckWasWithinOneDay)
+        siren.checkVersion(.UnlessPriorCheckWasWithinOneWeek)
         
         return true
     }

@@ -54,6 +54,13 @@ public enum SirenAlertType
     case None         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
 }
 
+public enum SirenVersionCheckType : Int
+{
+    case Immediately = 0
+    case UnlessPriorCheckWasWithinOneDay = 1
+    case UnlessPriorCheckWasWithinOneWeek = 7
+}
+
 // MARK: Main Class
 public class Siren : NSObject
 {
@@ -99,11 +106,27 @@ public class Siren : NSObject
 
     // MARK: Check Version
     func checkVersion() {
+        checkVersion(.Immediately)
+    }
+    
+    func checkVersion(checkType : SirenVersionCheckType) {
 
         if (appID == nil || presentingViewController == nil) {
             println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
         } else {
-            performVersionCheck()
+            
+            if checkType == .Immediately {
+                performVersionCheck()
+            } else {
+                if let lastCheckDate = lastVersionCheckPerformedOnDate {
+                    if daysSinceLastVersionCheckDate() > checkType.rawValue {
+                        performVersionCheck()
+                    }
+                } else {
+                    performVersionCheck()
+                }
+            }
+            
         }
     }
     
@@ -112,7 +135,7 @@ public class Siren : NSObject
         
         let itunesURL = iTunesURLFromString()
         let request = NSMutableURLRequest(URL: itunesURL)
-        request.HTTPMethod = "POST"
+        request.HTTPMethod = "GET"
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
@@ -138,6 +161,8 @@ public class Siren : NSObject
                         }
                     }
                 })
+            } else if self.debugEnabled {
+                println("Error getting App Store data: \(error)")
             }
         })
         task.resume()
@@ -145,7 +170,7 @@ public class Siren : NSObject
     
     func iTunesURLFromString() -> NSURL {
         
-        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
+        var route = "https://itunes.apple.com/lookup?id=\(appID!)"
         
         if let countryCode = self.countryCode {
             route += "&country=\(countryCode)"
@@ -156,6 +181,12 @@ public class Siren : NSObject
     
     func checkIfAppStoreVersionIsNewestVersion() {
         
+    }
+    
+    func daysSinceLastVersionCheckDate() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.CalendarUnitDay, fromDate: lastVersionCheckPerformedOnDate!, toDate: NSDate(), options: nil)
+        return components.day
     }
 }
 

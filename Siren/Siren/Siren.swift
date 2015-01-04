@@ -108,23 +108,12 @@ public class Siren : NSObject
     }
     
     // MARK: Helpers
-    func iTunesURLFromString() -> NSURL {
-        
-        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
-        
-        if let countryCode = self.countryCode {
-            route += "&country=\(countryCode)"
-        }
-        
-        return NSURL(string: route)!
-    }
-    
     func performVersionCheck() {
         
         let itunesURL = iTunesURLFromString()
         let request = NSMutableURLRequest(URL: itunesURL)
         request.HTTPMethod = "POST"
-        let session = NSURLSession()
+        let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if (data.length > 0) {
@@ -142,7 +131,6 @@ public class Siren : NSObject
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
                     // Extract all versions that have been uploaded to the AppStore
-                    
                     if let data = self.appData {
                         let versionsInAppStore = data["results"]?[0]["version"] as? [String]
                         if ((versionsInAppStore?.count) != nil) {
@@ -150,55 +138,47 @@ public class Siren : NSObject
                         }
                     }
                 })
-                
             }
         })
+        task.resume()
+    }
+    
+    func iTunesURLFromString() -> NSURL {
+        
+        var route = "http://itunes.apple.com/lookup?id=\(appID!)"
+        
+        if let countryCode = self.countryCode {
+            route += "&country=\(countryCode)"
+        }
+        
+        return NSURL(string: route)!
     }
     
     func checkIfAppStoreVersionIsNewestVersion() {
         
     }
-    
-    
-    // MARK: Bundle
-    
-//    func sirenBundle -> NSBundle? {
-//        var bundle : NSBundle
-//        var path : String?
-//        
-//        if let language = forceLanguageLocalization {
-//            path = NSBundle(path: bundlePath!)?.pathForResource(language, ofType: "lproj")
-//        } else {
-//            
-//        }
-//    }
-//    
-//    func harpyLocalizedString(key : String) -> String {
-//        
-//    }
-    
 }
 
 private extension NSBundle {
     
+    func currentVersion() -> String? {
+        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+    }
+
     func sirenBundlePath() -> String {
         return NSBundle().pathForResource("Siren", ofType: ".bundle") as String!
+    }
+
+    func localizedString(stringKey: NSString) -> NSString? {
+        let path = sirenBundlePath()
+        let table = "SirenLocalizable"
+        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
 
     func forcedBundlePath() -> String? {
         let path = sirenBundlePath()
         let name = Siren.sharedInstance.forceLanguageLocalization?.rawValue
         return NSBundle(path: path)?.pathForResource(name, ofType: "lproj")
-    }
-    
-    func currentVersion() -> String? {
-        return NSBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
-    }
-    
-    func localizedString(stringKey: NSString) -> NSString? {
-        let path = sirenBundlePath()
-        let table = "SirenLocalizable"
-        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
     
     func forcedLocalizedString(stringKey: NSString) -> NSString? {

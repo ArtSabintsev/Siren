@@ -1,4 +1,4 @@
-//
+4//
 //  AppDelegate.swift
 //  Siren
 //
@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let siren = Siren.sharedInstance
         siren.appID = "376771144" // iTunes Connect (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         siren.presentingViewController = window?.rootViewController
-        siren.checkVersion()
         siren.debugEnabled = true;
+        siren.checkVersion()
         
         return true
     }

@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.appID = "376771144" // iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         siren.presentingViewController = window?.rootViewController
         siren.debugEnabled = true;
-        siren.forceLanguageLocalization = .Spanish
         siren.checkVersion(.Immediately)
         
         return true

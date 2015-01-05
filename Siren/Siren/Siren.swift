@@ -112,7 +112,7 @@ public class Siren: NSObject
     func checkVersion(checkType: SirenVersionCheckType) {
 
         if (appID == nil || presentingViewController == nil) {
-            println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion, checkVersionDaily, or checkVersionWeekly")
+            println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion.")
         } else {
             if checkType == .Immediately {
                 performVersionCheck()
@@ -159,7 +159,7 @@ public class Siren: NSObject
                     }
                 })
             } else if self.debugEnabled {
-                println("[Siren] Error Retrieving App Store Data: \(error)")
+                println("[Siren] Error Retrieving App Store Data: \(error!)")
             }
         })
         task.resume()
@@ -243,19 +243,16 @@ public class Siren: NSObject
     
         switch self.alertType {
             case .Force:
-                println("Force")
                 alertController.addAction(updateAlertAction());
             case .Option:
-                println("Option")
                 alertController.addAction(nextTimeAlertAction());
                 alertController.addAction(updateAlertAction());
             case .Skip:
-                println("Skip")
                 alertController.addAction(nextTimeAlertAction());
                 alertController.addAction(updateAlertAction());
                 alertController.addAction(skipAlertAction());
             case .None:
-                println("None")
+                return
         }
         
         presentingViewController?.presentViewController(alertController, animated: true, completion: nil)

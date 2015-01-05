@@ -198,10 +198,6 @@ public class Siren: NSObject
         }
     }
     
-    var useAlertController : Bool {
-        return objc_getClass("UIAlertController") != nil
-    }
-    
     // MARK: Alert
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         
@@ -213,28 +209,62 @@ public class Siren: NSObject
     }
     
     func showAlert() {
-        // Show the alert
-        if useAlertController {
-//            let updateAvailableMessage = SirenLocalizedAlert().localizedString(SirenLocalizedAlertString.updateAvailableMessage, forcedLocalization: self.forceLanguageLocalization)
-            
-//            let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
-            
-//            if let alertControllerTintColor = alertControllerTintColor {
-//                alertController.view.tintColor = alertControllerTintColor
-//            }
-            
-            switch self.alertType {
-                case .Force:
-                    println("Force")
-                case .Option:
-                    println("Option")
-                case .Skip:
-                    println("Skip")
-                case .None:
-                    println("None")
-            }
-            
+        
+        let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = NSBundle().localizedString("A new version of %@ is available. Please update to version %@ now.", forceLanguageLocalization: forceLanguageLocalization)
+        
+        let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
+        if let alertControllerTintColor = alertControllerTintColor {
+            alertController.view.tintColor = alertControllerTintColor
         }
+    
+        switch self.alertType {
+            case .Force:
+                println("Force")
+            case .Option:
+                println("Option")
+                alertController.addAction(nextTimeAlertAction());
+                alertController.addAction(updateAlertAction());
+            case .Skip:
+                println("Skip")
+            case .None:
+                println("None")
+        }
+        
+        presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func updateAlertAction() -> UIAlertAction {
+        let title = NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
+        let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
+            if let delegate = self.delegate {
+                delegate.sirenUserDidLaunchAppStore!()
+            }
+        }
+        
+        return action
+    }
+    
+    func nextTimeAlertAction() -> UIAlertAction {
+        let title = NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
+        let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
+            if let delegate = self.delegate {
+                delegate.sirenUserDidCancel!()
+            }
+        }
+        
+        return action
+    }
+    
+    func skipAlertAction() -> UIAlertAction {
+        let title = NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+        let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
+            if let delegate = self.delegate {
+                delegate.sirenUserDidSkipVersion!()
+            }
+        }
+        
+        return action
     }
     
 //    var alertType : SirenAlertType {
@@ -258,44 +288,6 @@ public class Siren: NSObject
 //        return alertType
 //    }
 }
-
-// MARK: SirenLocalizedAlert
-
-/**
-Localization of Alert Strings
-*/
-private class SirenLocalizedAlertController: UIAlertController
-{
-    // TODO: Change these to 'class let' and remove Singleton when class level variables are supported
-    let updateAvailableMessage = "Update Available"
-    let newVersionMessage = "A new version of %@ is available. Please update to version %@ now."
-    let updateButtonText = "Update"
-    let nextTimeButtonText = "Next time"
-    let skipButtonText = "Skip this version"
-    let forceLanguageLocalization: SirenLanguageType?
-    
-     class var sharedInstance: SirenLocalizedAlertController {
-        struct Singleton {
-            static let instance = SirenLocalizedAlertController()
-        }
-        
-        return Singleton.instance
-    }
-    
-    override init() {
-        self.forceLanguageLocalization = Siren.sharedInstance.forceLanguageLocalization
-        super.init()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    class func xlocalizedString(stringKey: String, forcedLocalization: SirenLanguageType?) -> String? {
-        return NSBundle.mainBundle().localizedString(stringKey, forceLanguageLocalization: forcedLocalization)
-    }
-}
-
 
 // MARK: Extensions
 extension NSBundle {

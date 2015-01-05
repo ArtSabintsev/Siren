@@ -241,7 +241,8 @@ public class Siren: NSObject
     func updateAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.delegate?.sirenUserDidLaunchAppStore()?
+            self.delegate?.sirenUserDidLaunchAppStore?()
+            return
         }
         
         return action
@@ -250,7 +251,8 @@ public class Siren: NSObject
     func nextTimeAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.delegate?.sirenUserDidCancel()
+            self.delegate?.sirenUserDidCancel?()
+            return
         }
         
         return action
@@ -259,7 +261,8 @@ public class Siren: NSObject
     func skipAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.delegate?.sirenUserDidSkipVersion()
+            self.delegate?.sirenUserDidSkipVersion?()
+            return
         }
         
         return action

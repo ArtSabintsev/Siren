@@ -192,9 +192,29 @@ public class Siren: NSObject
         // Check if current installed version is the newest public version or newer (e.g., dev version)
         if let currentInstalledVersion = currentVersion {
             if (currentInstalledVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+                alertType = fetchAlertType()
                 showAlertIfCurrentAppStoreVersionNotSkipped()
             }
         }
+    }
+    
+    func fetchAlertType() -> SirenAlertType {
+        
+        // Set alert type for current version. Strings that don't represent numbers are treated as 0.
+        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+        let newVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+
+        if oldVersion.count == 3 && newVersion.count == 3 {
+            if newVersion[0] > oldVersion[0] { // A.b.c
+                alertType = majorUpdateAlertType
+            } else if newVersion[1] > oldVersion[1] { // a.B.c
+                alertType = minorUpdateAlertType
+            } else if newVersion[2] > oldVersion[2] { // a.b.C
+                alertType = patchUpdateAlertType
+            }
+        }
+        
+        return alertType
     }
     
     // MARK: Alert
@@ -277,9 +297,9 @@ public class Siren: NSObject
         UIApplication.sharedApplication().openURL(iTunesURL!);
     }
     
-//    var alertType : SirenAlertType {
+//    var alertType: SirenAlertType {
 //        
-//        var alertType = SirenAlertType.Option
+//        alertType = SirenAlertType.Option
 //
 //        // Set alert type for current version. Strings that don't represent numbers are treated as 0.
 //        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}

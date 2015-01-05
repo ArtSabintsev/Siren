@@ -223,12 +223,16 @@ public class Siren: NSObject
         switch self.alertType {
             case .Force:
                 println("Force")
+                alertController.addAction(updateAlertAction());
             case .Option:
                 println("Option")
                 alertController.addAction(nextTimeAlertAction());
                 alertController.addAction(updateAlertAction());
             case .Skip:
                 println("Skip")
+                alertController.addAction(nextTimeAlertAction());
+                alertController.addAction(updateAlertAction());
+                alertController.addAction(skipAlertAction());
             case .None:
                 println("None")
         }
@@ -239,9 +243,8 @@ public class Siren: NSObject
     func updateAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            if let delegate = self.delegate {
-                delegate.sirenUserDidLaunchAppStore!()
-            }
+            self.delegate?.sirenUserDidLaunchAppStore?()
+            return
         }
         
         return action
@@ -250,9 +253,8 @@ public class Siren: NSObject
     func nextTimeAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            if let delegate = self.delegate {
-                delegate.sirenUserDidCancel!()
-            }
+            self.delegate?.sirenUserDidCancel?()
+            return
         }
         
         return action
@@ -261,9 +263,8 @@ public class Siren: NSObject
     func skipAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
-            if let delegate = self.delegate {
-                delegate.sirenUserDidSkipVersion!()
-            }
+            self.delegate?.sirenUserDidSkipVersion?()
+            return
         }
         
         return action

@@ -298,27 +298,6 @@ public class Siren: NSObject
         let iTunesURL = NSURL(string: iTunesString);
         UIApplication.sharedApplication().openURL(iTunesURL!);
     }
-    
-//    var alertType: SirenAlertType {
-//        
-//        alertType = SirenAlertType.Option
-//
-//        // Set alert type for current version. Strings that don't represent numbers are treated as 0.
-//        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-//        let newVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-//        
-//        if oldVersion.count == 3 && newVersion.count == 3 {
-//            if newVersion[0] > oldVersion[0] {
-//                alertType = majorUpdateAlertType
-//            } else if newVersion[1] > oldVersion[1] {
-//                alertType = minorUpdateAlertType
-//            } else if newVersion[2] > oldVersion[2] {
-//                alertType = patchUpdateAlertType
-//            }
-//        }
-//        
-//        return alertType
-//    }
 }
 
 // MARK: Extensions

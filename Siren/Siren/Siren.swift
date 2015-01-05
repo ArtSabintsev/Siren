@@ -242,6 +242,7 @@ public class Siren: NSObject
     func updateAlertAction() -> UIAlertAction {
         let title = NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
         let action = UIAlertAction(title: title!, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore?()
             return
         }
@@ -267,6 +268,13 @@ public class Siren: NSObject
         }
         
         return action
+    }
+    
+    // MARK: Actions
+    func launchAppStore() {
+        let iTunesString =  "https://itunes.apple.com/app/id\(appID)";
+        let iTunesURL = NSURL(string: iTunesString);
+        UIApplication.sharedApplication().openURL(iTunesURL!);
     }
     
 //    var alertType : SirenAlertType {

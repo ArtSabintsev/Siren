@@ -221,12 +221,16 @@ public class Siren: NSObject
         switch self.alertType {
             case .Force:
                 println("Force")
+                alertController.addAction(updateAlertAction());
             case .Option:
                 println("Option")
                 alertController.addAction(nextTimeAlertAction());
                 alertController.addAction(updateAlertAction());
             case .Skip:
                 println("Skip")
+                alertController.addAction(nextTimeAlertAction());
+                alertController.addAction(updateAlertAction());
+                alertController.addAction(skipAlertAction());
             case .None:
                 println("None")
         }

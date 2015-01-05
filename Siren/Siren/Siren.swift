@@ -26,7 +26,7 @@ public enum SirenAlertType
     case Force        // Forces user to update your app
     case Option       // (DEFAULT) Presents user with option to update app now or at next launch
     case Skip         // Presents User with option to update the app now, at next launch, or to skip this version all together
-    case None         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
+    case None         // Don't show the alert type (useful for skipping Patch, Minor, or Major updates)
 }
 
 /**

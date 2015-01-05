@@ -192,7 +192,7 @@ public class Siren: NSObject
         
         // Check if current installed version is the newest public version or newer (e.g., dev version)
         if let currentInstalledVersion = currentVersion {
-            if (self.currentAppStoreVersion!.compare(currentInstalledVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+            if (currentInstalledVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
                 showAlertIfCurrentAppStoreVersionNotSkipped()
             }
         }
@@ -205,6 +205,8 @@ public class Siren: NSObject
             if currentAppStoreVersion! != previouslySkippedVersion {
                 showAlert()
             }
+        } else {
+            showAlert()
         }
     }
     
@@ -297,7 +299,7 @@ extension NSBundle {
     }
 
     func sirenBundlePath() -> String {
-        return self.pathForResource("Siren", ofType: ".bundle") as String!
+        return self.pathForResource("Siren", ofType: "bundle") as String!
     }
 
     func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {

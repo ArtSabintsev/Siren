@@ -18,7 +18,6 @@ import UIKit
 }
 
 // MARK: Enumerations
-
 /**
     Type of alert to present
 */
@@ -44,7 +43,7 @@ public enum SirenVersionCheckType : Int
 /**
     Internationalization
 */
-public enum SirenLanguage: String
+public enum SirenLanguageType: String
 {
     case Basque = "eu"
     case ChineseSimplified = "zh-Hans"
@@ -66,58 +65,25 @@ public enum SirenLanguage: String
     case Turkish = "tr"
 }
 
-// MARK: Main Class
-public class Siren : NSObject
+// MARK: Siren
+public class Siren: NSObject
 {
     // MARK: Constants
     // Class Constants (Public)
-
     let sirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
     let sirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
-    
     let currentVersion = NSBundle.mainBundle().currentVersion()
     let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
     
     // Class Variables (Public)
     var debugEnabled = false
-    
     weak var delegate: SirenDelegate?
-    
     var appID: String?
     var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
     var countryCode: String?
-    var forceLanguageLocalization: SirenLanguage?
+    var forceLanguageLocalization: SirenLanguageType?
     
-    var updateAvailableMessage : String { localizedString("Update Available", forcedLocalization: forceLanguageLocalization != nil)! }
-    var newVersionMessage : String { NSString(format: localizedString("A new version of %@ is available. Please update to version %@ now.", forcedLocalization: forceLanguageLocalization != nil)!, appName, currentAppStoreVersion!) }
-    var updateButtonText : String { localizedString("Update", forcedLocalization: forceLanguageLocalization != nil)! }
-        var nextTimeButtonText : String { localizedString("Next time", forcedLocalization: forceLanguageLocalization != nil)! }
-    var skipButtonText : String { localizedString("Skip this version", forcedLocalization: forceLanguageLocalization != nil)! }
-
-    var alertType : SirenAlertType {
-        // Set alert type for current version. Strings that don't represent numbers are treated as 0.
-        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-        let newVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-        
-        var alertType = SirenAlertType.Option
-        
-        if oldVersion.count == 3 && newVersion.count == 3 {
-            if newVersion[0] > oldVersion[0] {
-                alertType = majorUpdateAlertType
-            } else if newVersion[1] > oldVersion[1] {
-                alertType = minorUpdateAlertType
-            } else if newVersion[2] > oldVersion[2] {
-                alertType = patchUpdateAlertType
-            }
-        }
-        
-        return alertType
-    }
-    
-    var useAlertController : Bool {
-        return objc_getClass("UIAlertController") != nil
-    }
-    
+    lazy var alertType = SirenAlertType.Option
     lazy var majorUpdateAlertType = SirenAlertType.Option
     lazy var minorUpdateAlertType = SirenAlertType.Option
     lazy var patchUpdateAlertType = SirenAlertType.Option
@@ -163,11 +129,6 @@ public class Siren : NSObject
         }
     }
     
-    // MARK: Helpers
-    func localizedString(stringKey: NSString, forcedLocalization: Bool) -> NSString? {
-        return NSBundle.mainBundle().localizedString(stringKey, forcedLocalization: forcedLocalization)
-    }
-
     func performVersionCheck() {
         
         let itunesURL = iTunesURLFromString()
@@ -205,6 +166,7 @@ public class Siren : NSObject
         task.resume()
     }
     
+    // MARK: Helpers
     func iTunesURLFromString() -> NSURL {
         
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
@@ -230,47 +192,112 @@ public class Siren : NSObject
         
         // Check if current installed version is the newest public version or newer (e.g., dev version)
         if let currentInstalledVersion = currentVersion {
-            if (currentInstalledVersion.compare(self.currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+            if (self.currentAppStoreVersion!.compare(currentInstalledVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
                 showAlertIfCurrentAppStoreVersionNotSkipped()
             }
         }
     }
     
+    var useAlertController : Bool {
+        return objc_getClass("UIAlertController") != nil
+    }
+    
+    // MARK: Alert
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         
         if let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultSkippedVersion) as? String {
-            if currentAppStoreVersion! == previouslySkippedVersion {
-                return
+            if currentAppStoreVersion! != previouslySkippedVersion {
+                showAlert()
             }
         }
-        
-        showAlert()
     }
     
     func showAlert() {
         // Show the alert
         if useAlertController {
-            let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
+//            let updateAvailableMessage = SirenLocalizedAlert().localizedString(SirenLocalizedAlertString.updateAvailableMessage, forcedLocalization: self.forceLanguageLocalization)
             
-            if let alertControllerTintColor = alertControllerTintColor {
-                alertController.view.tintColor = alertControllerTintColor
+//            let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
+            
+//            if let alertControllerTintColor = alertControllerTintColor {
+//                alertController.view.tintColor = alertControllerTintColor
+//            }
+            
+            switch self.alertType {
+                case .Force:
+                    println("Force")
+                case .Option:
+                    println("Option")
+                case .Skip:
+                    println("Skip")
+                case .None:
+                    println("None")
             }
             
-            switch alertType {
-                case Force:
-                
-                
-                
-                case Option:
-                case Skip:
-                case None:
-            }
         }
     }
     
-    
+//    var alertType : SirenAlertType {
+//        
+//        var alertType = SirenAlertType.Option
+//
+//        // Set alert type for current version. Strings that don't represent numbers are treated as 0.
+//        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+//        let newVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+//        
+//        if oldVersion.count == 3 && newVersion.count == 3 {
+//            if newVersion[0] > oldVersion[0] {
+//                alertType = majorUpdateAlertType
+//            } else if newVersion[1] > oldVersion[1] {
+//                alertType = minorUpdateAlertType
+//            } else if newVersion[2] > oldVersion[2] {
+//                alertType = patchUpdateAlertType
+//            }
+//        }
+//        
+//        return alertType
+//    }
 }
 
+// MARK: SirenLocalizedAlert
+
+/**
+Localization of Alert Strings
+*/
+private class SirenLocalizedAlertController: UIAlertController
+{
+    // TODO: Change these to 'class let' and remove Singleton when class level variables are supported
+    let updateAvailableMessage = "Update Available"
+    let newVersionMessage = "A new version of %@ is available. Please update to version %@ now."
+    let updateButtonText = "Update"
+    let nextTimeButtonText = "Next time"
+    let skipButtonText = "Skip this version"
+    let forceLanguageLocalization: SirenLanguageType?
+    
+     class var sharedInstance: SirenLocalizedAlertController {
+        struct Singleton {
+            static let instance = SirenLocalizedAlertController()
+        }
+        
+        return Singleton.instance
+    }
+    
+    override init() {
+        self.forceLanguageLocalization = Siren.sharedInstance.forceLanguageLocalization
+        super.init()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    class func xlocalizedString(stringKey: String, forcedLocalization: SirenLanguageType?) -> String? {
+        return NSBundle.mainBundle().localizedString(stringKey, forceLanguageLocalization: forcedLocalization)
+    }
+}
+
+
+// MARK: Extensions
 extension NSBundle {
     
     func currentVersion() -> String? {
@@ -281,15 +308,21 @@ extension NSBundle {
         return self.pathForResource("Siren", ofType: ".bundle") as String!
     }
 
-    func forcedBundlePath() -> String {
+    func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
         let path = sirenBundlePath()
-        let name = Siren.sharedInstance.forceLanguageLocalization?.rawValue
+        let name = forceLanguageLocalization.rawValue
         return NSBundle(path: path)!.pathForResource(name, ofType: "lproj")!
     }
 
-    func localizedString(stringKey: NSString, forcedLocalization: Bool) -> NSString? {
-        let path = forcedLocalization ? forcedBundlePath() : sirenBundlePath()
+    private func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String? {
+        var path: String
         let table = "SirenLocalizable"
+        if let forceLanguageLocalization = forceLanguageLocalization {
+            path = sirenForcedBundlePath(forceLanguageLocalization)
+        } else {
+            path = sirenBundlePath()
+        }
+        
         return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
     

@@ -65,7 +65,7 @@ public enum SirenLanguageType: String
 }
 
 // MARK: Siren
-public class Siren: NSObject
+public class Siren
 {
     // MARK: Constants
     // Class Constants (Public)
@@ -104,7 +104,7 @@ public class Siren: NSObject
         return Singleton.instance
     }
     
-    override init() {
+    init() {
         lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate;
     }
     

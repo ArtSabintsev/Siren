@@ -32,7 +32,6 @@ public enum SirenAlertType
 /**
     How often alert should be presented
 */
-
 public enum SirenVersionCheckType : Int
 {
     case Immediately = 0
@@ -213,7 +212,7 @@ public class Siren: NSObject
     func showAlert() {
         
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
-        let newVersionMessage = NSBundle().localizedString("A new version of %@ is available. Please update to version %@ now.", forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = NSBundle().localizedString("A new version of \(self.appName) is available. Please update to version \(self.currentAppStoreVersion!) now.", forceLanguageLocalization: forceLanguageLocalization)
         
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
         if let alertControllerTintColor = alertControllerTintColor {
@@ -293,7 +292,7 @@ public class Siren: NSObject
 }
 
 // MARK: Extensions
-extension NSBundle {
+private extension NSBundle {
     
     func currentVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
@@ -309,7 +308,7 @@ extension NSBundle {
         return NSBundle(path: path)!.pathForResource(name, ofType: "lproj")!
     }
 
-    private func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String? {
+    func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String? {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
@@ -320,5 +319,4 @@ extension NSBundle {
         
         return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
-    
 }

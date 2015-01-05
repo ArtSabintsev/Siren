@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E0700051A5AFFD700116A43 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E0700041A5AFFD700116A43 /* Siren.bundle */; };
+		8E0CD8ED1A5B059300313644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918A1A58B465001C121E /* Main.storyboard */; };
+		8E0CD8EE1A5B059300313644 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918F1A58B465001C121E /* LaunchScreen.xib */; };
 		8EC391871A58B465001C121E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391861A58B465001C121E /* AppDelegate.swift */; };
 		8EC391891A58B465001C121E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391881A58B465001C121E /* ViewController.swift */; };
 		8EC3918E1A58B465001C121E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918D1A58B465001C121E /* Images.xcassets */; };
@@ -222,6 +224,8 @@
 			files = (
 				8EC3918E1A58B465001C121E /* Images.xcassets in Resources */,
 				8E0700051A5AFFD700116A43 /* Siren.bundle in Resources */,
+				8E0CD8ED1A5B059300313644 /* Main.storyboard in Resources */,
+				8E0CD8EE1A5B059300313644 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

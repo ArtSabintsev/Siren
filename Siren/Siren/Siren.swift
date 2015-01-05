@@ -295,11 +295,11 @@ public class Siren: NSObject
 extension NSBundle {
     
     func currentVersion() -> String? {
-        return self.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
 
     func sirenBundlePath() -> String {
-        return self.pathForResource("Siren", ofType: "bundle") as String!
+        return NSBundle.mainBundle().pathForResource("Siren", ofType: "bundle") as String!
     }
 
     func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {

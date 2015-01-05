@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0700051A5AFFD700116A43 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E0700041A5AFFD700116A43 /* Siren.bundle */; };
 		8EC391871A58B465001C121E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391861A58B465001C121E /* AppDelegate.swift */; };
 		8EC391891A58B465001C121E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391881A58B465001C121E /* ViewController.swift */; };
-		8EC3918C1A58B465001C121E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918A1A58B465001C121E /* Main.storyboard */; };
 		8EC3918E1A58B465001C121E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918D1A58B465001C121E /* Images.xcassets */; };
-		8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3918F1A58B465001C121E /* LaunchScreen.xib */; };
 		8EC3919D1A58B466001C121E /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3919C1A58B466001C121E /* SirenTests.swift */; };
 		8EC391A71A58B4AA001C121E /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC391A61A58B4AA001C121E /* Siren.swift */; };
-		8EC391AA1A58CE41001C121E /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EC391A91A58CE41001C121E /* Siren.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E0700041A5AFFD700116A43 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* Siren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC391851A58B465001C121E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC391861A58B465001C121E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +38,6 @@
 		8EC3919B1A58B466001C121E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC3919C1A58B466001C121E /* SirenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EC391A61A58B4AA001C121E /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
-		8EC391A91A58CE41001C121E /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +91,9 @@
 		8EC391841A58B465001C121E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8E0700041A5AFFD700116A43 /* Siren.bundle */,
 				8EC391851A58B465001C121E /* Info.plist */,
 				8EC3918D1A58B465001C121E /* Images.xcassets */,
-				8EC391A91A58CE41001C121E /* Siren.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -222,10 +220,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC391AA1A58CE41001C121E /* Siren.bundle in Resources */,
-				8EC3918C1A58B465001C121E /* Main.storyboard in Resources */,
-				8EC391911A58B465001C121E /* LaunchScreen.xib in Resources */,
 				8EC3918E1A58B465001C121E /* Images.xcassets in Resources */,
+				8E0700051A5AFFD700116A43 /* Siren.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

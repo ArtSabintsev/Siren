@@ -232,7 +232,9 @@ public class Siren: NSObject
     func showAlert() {
         
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
-        let newVersionMessage = NSBundle().localizedString("A new version of \(self.appName) is available. Please update to version \(self.currentAppStoreVersion!) now.", forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
+        var newVersionMessage = NSBundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+        newVersionMessage = String(format: newVersionMessage!, appName, currentAppStoreVersion!)
         
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
         if let alertControllerTintColor = alertControllerTintColor {

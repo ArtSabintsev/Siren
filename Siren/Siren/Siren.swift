@@ -105,7 +105,7 @@ public class Siren
     }
     
     init() {
-        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate;
+        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultStoredVersionCheckDate) as? NSDate;
     }
     
     // MARK: Check Version
@@ -170,7 +170,7 @@ public class Siren
         
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
         
-        if let countryCode = self.countryCode {
+        if let countryCode = countryCode {
             storeURLString += "&country=\(countryCode)"
         }
         
@@ -241,7 +241,7 @@ public class Siren
             alertController.view.tintColor = alertControllerTintColor
         }
     
-        switch self.alertType {
+        switch alertType {
             case .Force:
                 alertController.addAction(updateAlertAction());
             case .Option:

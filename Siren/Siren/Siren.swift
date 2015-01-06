@@ -65,7 +65,7 @@ public enum SirenLanguageType: String
 }
 
 // MARK: Siren
-public class Siren
+public class Siren: NSObject
 {
     // MARK: Constants
     // Class Constants (Public)
@@ -104,7 +104,7 @@ public class Siren
         return Singleton.instance
     }
     
-    init() {
+    override init() {
         lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultStoredVersionCheckDate) as? NSDate;
     }
     
@@ -324,5 +324,24 @@ private extension NSBundle {
         }
         
         return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
+    }
+}
+
+extension Siren: UIAlertViewDelegate
+{
+    public func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    
+        switch alertType {
+            
+        case .Force:
+            println("Force")
+        case .Option:
+            println("Option")
+        case .Skip:
+            println("Skip")
+        case .None:
+            println("None")
+        }
+        
     }
 }

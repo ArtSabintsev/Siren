@@ -111,8 +111,10 @@ public class Siren: NSObject
     // MARK: Check Version
     func checkVersion(checkType: SirenVersionCheckType) {
 
-        if (appID == nil || presentingViewController == nil) {
-            println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion.")
+        if (appID == nil) {
+            println("[Siren]: Please make sure that you have set 'appID' before calling checkVersion.")
+        } else if (useAlertController && presentingViewController == nil) {
+            println("[Siren]: Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
             
             setupAlertTypes()

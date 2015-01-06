@@ -64,6 +64,8 @@ public enum SirenLanguageType: String
     case Turkish = "tr"
 }
 
+let SirenDidDetectNewAppStoreVersionNotification = "SirenDidDetectNewAppStoreVersionNotification"
+
 // MARK: Siren
 public class Siren: NSObject
 {
@@ -111,8 +113,10 @@ public class Siren: NSObject
     // MARK: Check Version
     func checkVersion(checkType: SirenVersionCheckType) {
 
-        if (appID == nil || presentingViewController == nil) {
-            println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion.")
+        if (appID == nil) {
+            println("[Siren]: Please make sure that you have set 'appID' before calling checkVersion.")
+        } else if (useAlertController && presentingViewController == nil) {
+            println("[Siren]: Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
             
             setupAlertTypes()
@@ -197,14 +201,26 @@ public class Siren: NSObject
         return components.day
     }
     
-    func checkIfAppStoreVersionIsNewestVersion() {
-        
+    public func appStoreUpdateAvailable() -> Bool {
         // Check if current installed version is the newest public version or newer (e.g., dev version)
-        if let currentInstalledVersion = currentVersion {
-            if (currentInstalledVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
-                alertType = fetchAlertType()
-                showAlertIfCurrentAppStoreVersionNotSkipped()
+        
+        switch (currentVersion, currentAppStoreVersion) {
+        case let (.Some(currentVersion), .Some(currentAppStoreVersion)):
+            if (currentVersion.compare(currentAppStoreVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+                return true
+            } else {
+                return false
             }
+            
+        default:
+            return false
+        }
+    }
+    
+    func checkIfAppStoreVersionIsNewestVersion() {
+        if appStoreUpdateAvailable() {
+            alertType = fetchAlertType()
+            showAlertIfCurrentAppStoreVersionNotSkipped()
         }
     }
     
@@ -236,23 +252,26 @@ public class Siren: NSObject
         
         if let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultSkippedVersion) as? String {
             if currentAppStoreVersion! != previouslySkippedVersion {
-                showAlert()
+                showAlertAndPostNotification()
             }
         } else {
-            showAlert()
+            showAlertAndPostNotification()
         }
     }
     
-    func showAlert() {
-        
+    func showAlertAndPostNotification() {
+
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
         var newVersionMessage = NSBundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
         newVersionMessage = String(format: newVersionMessage!, appName, currentAppStoreVersion!)
-        
+
+        NSNotificationCenter.defaultCenter().postNotificationName(SirenDidDetectNewAppStoreVersionNotification, object: newVersionMessage)
+
         if (useAlertController) { // iOS 8
             
             let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
+            
             if let alertControllerTintColor = alertControllerTintColor {
                 alertController.view.tintColor = alertControllerTintColor
             }

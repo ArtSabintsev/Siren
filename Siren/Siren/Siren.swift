@@ -82,10 +82,10 @@ public class Siren: NSObject
     var countryCode: String?
     var forceLanguageLocalization: SirenLanguageType?
     
-    lazy var alertType = SirenAlertType.Option
-    lazy var majorUpdateAlertType = SirenAlertType.Option
-    lazy var minorUpdateAlertType = SirenAlertType.Option
-    lazy var patchUpdateAlertType = SirenAlertType.Option
+    var alertType = SirenAlertType.Option
+    var majorUpdateAlertType: SirenAlertType?
+    var minorUpdateAlertType: SirenAlertType?
+    var patchUpdateAlertType: SirenAlertType?
     
     var presentingViewController: UIViewController?
     var alertControllerTintColor: UIColor?
@@ -114,6 +114,9 @@ public class Siren: NSObject
         if (appID == nil || presentingViewController == nil) {
             println("[Siren]: Please make sure that you have set 'appID' and 'presentingViewController' before calling checkVersion.")
         } else {
+            
+            setupAlertTypes()
+            
             if checkType == .Immediately {
                 performVersionCheck()
             } else {
@@ -166,6 +169,13 @@ public class Siren: NSObject
     }
     
     // MARK: Helpers
+    
+    func setupAlertTypes() {
+        majorUpdateAlertType = alertType
+        minorUpdateAlertType = alertType
+        patchUpdateAlertType = alertType
+    }
+    
     func iTunesURLFromString() -> NSURL {
         
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
@@ -206,15 +216,19 @@ public class Siren: NSObject
 
         if oldVersion.count == 3 && newVersion.count == 3 {
             if newVersion[0] > oldVersion[0] { // A.b.c
-                alertType = majorUpdateAlertType
+                alertType = majorUpdateAlertType!
             } else if newVersion[1] > oldVersion[1] { // a.B.c
-                alertType = minorUpdateAlertType
+                alertType = minorUpdateAlertType!
             } else if newVersion[2] > oldVersion[2] { // a.b.C
-                alertType = patchUpdateAlertType
+                alertType = patchUpdateAlertType!
             }
         }
         
         return alertType
+    }
+    
+    var useAlertController: Bool {
+      return objc_getClass("UIAlertController") != nil
     }
     
     // MARK: Alert
@@ -236,26 +250,53 @@ public class Siren: NSObject
         var newVersionMessage = NSBundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
         newVersionMessage = String(format: newVersionMessage!, appName, currentAppStoreVersion!)
         
-        let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
-        if let alertControllerTintColor = alertControllerTintColor {
-            alertController.view.tintColor = alertControllerTintColor
-        }
-    
-        switch alertType {
+        if (useAlertController) { // iOS 8
+            
+            let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
+            if let alertControllerTintColor = alertControllerTintColor {
+                alertController.view.tintColor = alertControllerTintColor
+            }
+            
+            switch alertType {
+                case .Force:
+                    alertController.addAction(updateAlertAction());
+                case .Option:
+                    alertController.addAction(nextTimeAlertAction());
+                    alertController.addAction(updateAlertAction());
+                case .Skip:
+                    alertController.addAction(nextTimeAlertAction());
+                    alertController.addAction(updateAlertAction());
+                    alertController.addAction(skipAlertAction());
+                case .None:
+                    return
+            }
+            
+            presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+        
+        } else { // iOS 7
+            
+            var alertView: UIAlertView?
+            let updateButtonText = NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
+            let nextTimeButtonText = NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
+            let skipButtonText = NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+            switch alertType {
             case .Force:
-                alertController.addAction(updateAlertAction());
+                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: updateButtonText!)
             case .Option:
-                alertController.addAction(nextTimeAlertAction());
-                alertController.addAction(updateAlertAction());
+                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: nextTimeButtonText!)
+                alertView!.addButtonWithTitle(updateButtonText!)
             case .Skip:
-                alertController.addAction(nextTimeAlertAction());
-                alertController.addAction(updateAlertAction());
-                alertController.addAction(skipAlertAction());
+                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: updateButtonText!)
+                alertView!.addButtonWithTitle(skipButtonText!)
+                alertView!.addButtonWithTitle(nextTimeButtonText!)
             case .None:
                 return
+            }
+            
+            if let alertView = alertView {
+                alertView.show()
+            }
         }
-        
-        presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func updateAlertAction() -> UIAlertAction {
@@ -298,6 +339,39 @@ public class Siren: NSObject
 }
 
 // MARK: Extensions
+extension Siren: UIAlertViewDelegate
+{
+    public func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch alertType {
+            
+        case .Force:
+            launchAppStore()
+        case .Option:
+            if buttonIndex == 1 { // Launch App Store.app
+                launchAppStore()
+                self.delegate?.sirenUserDidLaunchAppStore?()
+            } else { // Ask user on next launch
+                self.delegate?.sirenUserDidCancel?()
+            }
+        case .Skip:
+            if buttonIndex == 0 { // Launch App Store.app
+                launchAppStore()
+                self.delegate?.sirenUserDidLaunchAppStore?()
+            } else if buttonIndex == 1 {
+                NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion!, forKey: sirenDefaultSkippedVersion)
+                NSUserDefaults.standardUserDefaults().synchronize()
+                self.delegate?.sirenUserDidSkipVersion?()
+            } else if buttonIndex == 2 { // Ask user on next launch
+                self.delegate?.sirenUserDidCancel?()
+            }
+        case .None:
+            println("None")
+        }
+        
+    }
+}
+
 private extension NSBundle {
     
     func currentVersion() -> String? {
@@ -324,24 +398,5 @@ private extension NSBundle {
         }
         
         return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
-    }
-}
-
-extension Siren: UIAlertViewDelegate
-{
-    public func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-    
-        switch alertType {
-            
-        case .Force:
-            println("Force")
-        case .Option:
-            println("Option")
-        case .Skip:
-            println("Skip")
-        case .None:
-            println("None")
-        }
-        
     }
 }

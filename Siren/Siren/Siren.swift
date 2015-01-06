@@ -286,8 +286,8 @@ public class Siren: NSObject
                 alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: nextTimeButtonText!)
                 alertView!.addButtonWithTitle(updateButtonText!)
             case .Skip:
-                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: updateButtonText!)
-                alertView!.addButtonWithTitle(skipButtonText!)
+                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: skipButtonText!)
+                alertView!.addButtonWithTitle(updateButtonText!)
                 alertView!.addButtonWithTitle(nextTimeButtonText!)
             case .None:
                 return
@@ -356,19 +356,18 @@ extension Siren: UIAlertViewDelegate
             }
         case .Skip:
             if buttonIndex == 0 { // Launch App Store.app
-                launchAppStore()
-                self.delegate?.sirenUserDidLaunchAppStore?()
-            } else if buttonIndex == 1 {
                 NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion!, forKey: sirenDefaultSkippedVersion)
                 NSUserDefaults.standardUserDefaults().synchronize()
                 self.delegate?.sirenUserDidSkipVersion?()
+            } else if buttonIndex == 1 {
+                launchAppStore()
+                self.delegate?.sirenUserDidLaunchAppStore?()
             } else if buttonIndex == 2 { // Ask user on next launch
                 self.delegate?.sirenUserDidCancel?()
             }
         case .None:
             println("None")
         }
-        
     }
 }
 

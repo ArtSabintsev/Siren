@@ -4,19 +4,19 @@
 
 ---
 ### About
-**Siren** is checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically and you can inform the user another way.
+**Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through a custom UI if you so chose.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
-- Siren is a Swift port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
+- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
 ### Changelog
-#### 1.0.0
-- Initial launch
+#### 0.1.0
+- Initial development launch
 
 ### Features
 - CocoaPods Support
-- Support for `UIAlertController` (iOS 8+) and `UIAlertView` (older versions of iOS)
+- Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - Three types of alerts to present to the user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
@@ -51,7 +51,7 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 >
 > **Note:** If you don't want to show *any* alert views, see *Prompting for Updates Without Alert Views* below.
 
-### Prompting for Updates Without Alert Views
+### Prompting for Updates without using Alerts
 
 To use less obtrusive update indicators, like a badge, banner, or small icon, disable alert presentation. To accomplish this, set `shouldShowAlert` to `false` when you call `checkVersion(checkType: SirenVersionCheckType, shouldShowAlert: Bool)`. Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 

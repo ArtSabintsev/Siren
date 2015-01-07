@@ -101,7 +101,6 @@ public class Siren: NSObject
     var alertControllerTintColor: UIColor?
     
     // Private
-    private var appData: [String : AnyObject]?
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var currentAppStoreVersion: String?
     
@@ -153,11 +152,8 @@ public class Siren: NSObject
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             if data.length > 0 {
-                self.appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
-                if self.debugEnabled {
-                    println("[Siren] JSON Results: \(self.appData!)");
-                }
+                let appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
@@ -167,23 +163,18 @@ public class Siren: NSObject
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
                     // Extract current version on the AppStore
-                    if let data = self.appData {
-                        self.currentAppStoreVersion = data["results"]?[0]["version"] as? String
-                        if let currentAppStoreVersion = self.currentAppStoreVersion {
-                            if self.isAppStoreVersionNewer() {
-                                if (self.shouldShowAlert) {
-                                    self.showAlertIfCurrentAppStoreVersionNotSkipped()
-                                } else {
-                                    self.delegate?.sirenDidPerformCheckWithoutAlert?(self.localizedNewVersionMessage())
-                                }
-                            }
-                        }
+                    if self.debugEnabled {
+                        println("[Siren] JSON results: \(appData)");
                     }
+                    
+                    // Process Results
+                    self.processVersionCheckResults(appData!)
+                    
                 })
                 
             } else {
                 if self.debugEnabled {
-                    println("[Siren] Error Retrieving App Store Data: \(error.localizedDescription)")
+                    println("[Siren] Error retrieving App Store data: \(error.localizedDescription)")
                 }
             }
             
@@ -191,6 +182,26 @@ public class Siren: NSObject
         
         task.resume()
     }
+    
+    func processVersionCheckResults(results: [String : AnyObject]) {
+        
+        self.currentAppStoreVersion = results["results"]?[0]["version"] as? String
+        if let currentAppStoreVersion = self.currentAppStoreVersion {
+            if self.isAppStoreVersionNewer() {
+                if (self.shouldShowAlert) {
+                    self.showAlertIfCurrentAppStoreVersionNotSkipped()
+                } else {
+                    self.delegate?.sirenDidPerformCheckWithoutAlert?(self.localizedNewVersionMessage())
+                }
+            }
+        } else {
+            if self.debugEnabled {
+                println("[Siren] Error retrieving App Store verson number")
+            }
+        }
+    
+    }
+    
 }
 
 // MARK: Alert

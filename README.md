@@ -4,7 +4,7 @@
 
 ---
 ### About
-**Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through a custom UI if you so chose.
+**Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through alternative means.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.

@@ -115,18 +115,21 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	    
        Change shouldShowAlert to false if you're displaying your own UI when Siren detects a new version.
 	*/
-    siren.checkVersion(.Immediately, shouldShowAlert: true)
+    siren.checkVersion(.Immediately)
 }
 
-func applicationDidBecomeActive(application: UIApplication) {
+func applicationDidBecomeActive(application: UIApplication) 
+{
 	/*
-	    Perform daily (.Daily) or weekly (.Weekly) check for new version of your app. 
+	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app. 
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
-    Siren.sharedInstance.checkVersion(.Daily, shouldShowAlert: true)
+    	 
+    Siren.sharedInstance.checkVersion(.Daily)
 }
 
-func applicationWillEnterForeground(application: UIApplication) {
+func applicationWillEnterForeground(application: UIApplication) 
+{
    /*
 	    Useful if user returns to your app from the background after being sent to the
 	    App Store, but doesn't update their app before coming back to your app.
@@ -134,7 +137,7 @@ func applicationWillEnterForeground(application: UIApplication) {
        ONLY USE WITH SirenAlertType.Force
    */
 
-    Siren.sharedInstance.checkVersion(.Immediately, shouldShowAlert: true)
+    Siren.sharedInstance.checkVersion(.Immediately)
 }
 ```
 
@@ -155,13 +158,11 @@ Five delegate methods allow you to handle or track the user's behavior:
 
 ```	swift
 @objc protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog()        // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore()      // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion()         // User did click on button that skips version update
-    optional func sirenUserDidCancel()              // User did click on button that cancels update dialog
-    
-    // Siren performed version check and did not display alert
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String)
+    optional func sirenDidShowUpdateDialog()                            // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
+    optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```
 

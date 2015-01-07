@@ -11,39 +11,73 @@ import UIKit
 
 // MARK: SirenDelegate Protocol
 @objc protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog()        // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore()      // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion()         // User did click on button that skips version update
-    optional func sirenUserDidCancel()              // User did click on button that cancels update dialog
-    
-    // Siren performed version check and did not display alert
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String)
+    optional func sirenDidShowUpdateDialog()                            // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
+    optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 
 // MARK: Enumerations
 /**
-    Type of alert to present
+    Determines the type of alert to present after a successful version check has been performed.
+    
+    The are four options:
+        - Force: Forces user to update your app (1 button alert)
+        - Option: (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
+        - Skip: Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
+        - None: Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method
+
 */
 public enum SirenAlertType
 {
-    case Force        // Forces user to update your app
-    case Option       // (DEFAULT) Presents user with option to update app now or at next launch
-    case Skip         // Presents User with option to update the app now, at next launch, or to skip this version all together
-    case None         // Don't show the alert type (useful for skipping Patch, Minor, or Major updates)
+    case Force        // Forces user to update your app (1 button alert)
+    case Option       // (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
+    case Skip         // Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
+    case None         // Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method
 }
 
 /**
-    How often alert should be presented
+    Determines the frequency in which the the version check is performed
+    
+    - .Immediatlety: Version check performed every time the app is launched
+    - .Daily: Version check performedonce a day
+    - .Weekly: Version check performed once a week
+
 */
 public enum SirenVersionCheckType : Int
 {
-    case Immediately = 0
-    case Daily = 1
-    case Weekly = 7
+    case Immediately = 0    // Version check performed every time the app is launched
+    case Daily = 1          // Version check performedonce a day
+    case Weekly = 7         // Version check performed once a week
 }
 
 /**
-    Internationalization
+    Determines the available languages in which the update message and alert button titles should appear.
+    
+    By default, the operating system's default lanuage setting is used. However, you can force a specific language
+    by setting the forceLanguageLocalization property before calling checkVersion()
+    
+    Supported languages:
+        - Basque
+        - ChineseSimplified
+        - ChineseTraditional
+        - Danish
+        - Dutch
+        - English
+        - French
+        - Hebrew
+        - German
+        - Italian
+        - Japanese
+        - Korean
+        - Portuguese
+        - Russian
+        - Slovenian
+        - Swedish
+        - Spanish
+        - Turkish
+
 */
 public enum SirenLanguageType: String
 {
@@ -68,35 +102,128 @@ public enum SirenLanguageType: String
 }
 
 // MARK: Siren
+/**
+    The Siren Class.
+    
+    A singleton that is initialized using the sharedInstance() method.
+*/
 public class Siren: NSObject
 {
     // MARK: Constants
-    let sirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
+    
+    // NSUserDefault key that stores the timestamp of the last version check
     let sirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
+    
+    // NSUserDefault key that stores the version that a user decided to skip
+    let sirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
+    
+    // Current installed version of your app
     let currentVersion = NSBundle.mainBundle().currentVersion()
+    
+    // NSBundle path for localization
     let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
     
     // MARK: Variables
-    // Delegate
+    /**
+        The SirenDelegate variable, which should be set if you'd like to be notified:
+    
+            - When a user selects a specific button in the alert
+                - sirenDidShowUpdateDialog()
+                - sirenUserDidLaunchAppStore()
+                - sirenUserDidSkipVersion()     
+                - sirenUserDidCancel()
+            - When a successful version check has occured, and would like to present a localized message in a custom UI
+                - sirenDidDetectNewVersionWithoutAlert(message: String)
+    
+    */
     weak var delegate: SirenDelegate?
     
-    // Debug Flag
+
+    /**
+        The debug flag, which is disabled by default.
+    
+        When enabled, a stream of println() statements are logged to your console whena  version check is performed.
+    */
     var debugEnabled = false
     
     // Alert Vars
+    /**
+        Determines the type of Alert that should be shown.
+    
+        See the SirenALertType enum for full details.
+    */
     var alertType = SirenAlertType.Option
+    
+    /**
+    Determines the type of Alert that should be shown for major version updates: A.b.c
+    
+    If it's not set, it defaults to the value set for the general alertType property.
+    
+    See the SirenAlertType enum for full details.
+    */
     var majorUpdateAlertType: SirenAlertType?
+    
+    /**
+    Determines the type of Alert that should be shown for minor version updates: a.B.c
+    
+    If it's not set, it defaults to the value set for the general alertType property.
+    
+    See the SirenAlertType enum for full details.
+    */
     var minorUpdateAlertType: SirenAlertType?
+    
+    /**
+    Determines the type of Alert that should be shown for minor patch updates: a.b.C
+    
+    If it's not set, it defaults to the value set for the general alertType property.
+    
+    See the SirenAlertType enum for full details.
+    */
     var patchUpdateAlertType: SirenAlertType?
     
     // Required Vars
+    /**
+        The App Store / iTunes Connect ID for your app.
+    */
     var appID: String?
+    
+    /**
+        The view controller on which will present the instance of UIAlertController.
+        
+        It is recommended that you set this value to window?.rootViewController before calling checkVersion()
+    
+        This property must be set before calling
+    */
     var presentingViewController: UIViewController?
     
     // Optional Vars
+    /**
+        The name of your app. 
+    
+        By default, it's set to the name of the app that's stored in your plist.
+    */
     var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
+    
+    /**
+        The region or country of the App Store within which your app is available.
+        
+        By default, all version checks are performed against the US App Atore. 
+        If your app is not available in the US App Store, you should set it to the identifier 
+        of at least one App Store within which it is available.
+
+    */
     var countryCode: String?
+    
+    /**
+        Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
+    
+        See the SirenLanguageType enum for more details.
+    */
     var forceLanguageLocalization: SirenLanguageType?
+    
+    /**
+        Overrides the tint color for UIAlertController.
+    */
     var alertControllerTintColor: UIColor?
     
     // Private
@@ -117,6 +244,14 @@ public class Siren: NSObject
     }
     
     // MARK: Check Version
+    /**
+        Checks the currently installed version of your app against the AppStore.
+        The default check is against the US App Store, but if your app is not listed in the US,
+        you should set the `countryCode` property before calling this method.
+    
+        :param: checkType The frequency in days in which you want a check to be performed
+            - .Immediatley
+    */
     func checkVersion(checkType: SirenVersionCheckType) {
         
         if (appID == nil) {
@@ -136,7 +271,6 @@ public class Siren: NSObject
                     performVersionCheck()
                 }
             }
-            
         }
     }
     

@@ -80,8 +80,6 @@ extension AppDelegate: SirenDelegate
 
 Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
-> **Note:** This delegate method will not be called when setting an alert type to `SirenAlertType.None`.
-
 ### Installation Instructions
 
 #### CocoaPods Installation

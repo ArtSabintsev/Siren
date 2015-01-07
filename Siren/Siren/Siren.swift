@@ -193,80 +193,10 @@ public class Siren: NSObject
         
         task.resume()
     }
-    
-    func iTunesURLFromString() -> NSURL {
-        
-        var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
-        
-        if let countryCode = countryCode {
-            storeURLString += "&country=\(countryCode)"
-        }
-        
-        if debugEnabled {
-            println("[Siren] iTunes Lookup URL: \(storeURLString)");
-        }
-        
-        return NSURL(string: storeURLString)!
-    }
-    
-    func daysSinceLastVersionCheckDate() -> Int {
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitDay, fromDate: lastVersionCheckPerformedOnDate!, toDate: NSDate(), options: nil)
-        return components.day
-    }
-    
-    func isAppStoreVersionNewer() -> Bool {
-        
-        var newVersionExists = false
-        
-        if let currentVersion = self.currentVersion {
-            if (currentVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
-                newVersionExists = true
-            }
-        }
-        
-        return newVersionExists
-    }
-    
-    /**
-        TODO: Potentially turn this into a custom setter/getter with property observers
-        https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-ID262
-    */
-    func setAlertType() -> SirenAlertType {
-        
-        if majorUpdateAlertType == nil {
-            majorUpdateAlertType = alertType
-        }
-        
-        if minorUpdateAlertType == nil {
-            minorUpdateAlertType = alertType
-        }
-        
-        if patchUpdateAlertType == nil {
-            patchUpdateAlertType = alertType
-        }
-        
-        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-        let newVersion = split(currentAppStoreVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+}
 
-        if oldVersion.count == 3 && newVersion.count == 3 {
-            if newVersion[0] > oldVersion[0] { // A.b.c
-                alertType = majorUpdateAlertType!
-            } else if newVersion[1] > oldVersion[1] { // a.B.c
-                alertType = minorUpdateAlertType!
-            } else if newVersion[2] > oldVersion[2] { // a.b.C
-                alertType = patchUpdateAlertType!
-            }
-        }
-        
-        return alertType
-    }
-    
-    var useAlertController: Bool { // iOS 8 check
-      return objc_getClass("UIAlertController") != nil
-    }
-    
-    // MARK: Alert
+// MARK: Alert
+private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         
         self.alertType = self.setAlertType()
@@ -281,10 +211,10 @@ public class Siren: NSObject
     }
     
     func showAlert() {
-
+        
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
         var newVersionMessage = localizedNewVersionMessage();
-
+        
         if (useAlertController) { // iOS 8
             
             let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
@@ -294,21 +224,21 @@ public class Siren: NSObject
             }
             
             switch alertType {
-                case .Force:
-                    alertController.addAction(updateAlertAction());
-                case .Option:
-                    alertController.addAction(nextTimeAlertAction());
-                    alertController.addAction(updateAlertAction());
-                case .Skip:
-                    alertController.addAction(nextTimeAlertAction());
-                    alertController.addAction(updateAlertAction());
-                    alertController.addAction(skipAlertAction());
-                case .None:
-                    return
+            case .Force:
+                alertController.addAction(updateAlertAction());
+            case .Option:
+                alertController.addAction(nextTimeAlertAction());
+                alertController.addAction(updateAlertAction());
+            case .Skip:
+                alertController.addAction(nextTimeAlertAction());
+                alertController.addAction(updateAlertAction());
+                alertController.addAction(skipAlertAction());
+            case .None:
+                return
             }
             
             presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
-        
+            
         } else { // iOS 7
             
             var alertView: UIAlertView?
@@ -365,8 +295,86 @@ public class Siren: NSObject
         
         return action
     }
+
+}
+
+// MARK: Helpers
+private extension Siren {
     
-    // MARK: Actions
+    func iTunesURLFromString() -> NSURL {
+        
+        var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
+        
+        if let countryCode = countryCode {
+            storeURLString += "&country=\(countryCode)"
+        }
+        
+        if debugEnabled {
+            println("[Siren] iTunes Lookup URL: \(storeURLString)");
+        }
+        
+        return NSURL(string: storeURLString)!
+    }
+    
+    func daysSinceLastVersionCheckDate() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components(.CalendarUnitDay, fromDate: lastVersionCheckPerformedOnDate!, toDate: NSDate(), options: nil)
+        return components.day
+    }
+    
+    func isAppStoreVersionNewer() -> Bool {
+        
+        var newVersionExists = false
+        
+        if let currentVersion = self.currentVersion {
+            if (currentVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+                newVersionExists = true
+            }
+        }
+        
+        return newVersionExists
+    }
+    
+    /*
+        TODO: Potentially turn this into a custom setter/getter with property observers
+        https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-ID262
+    */
+    func setAlertType() -> SirenAlertType {
+        
+        if majorUpdateAlertType == nil {
+            majorUpdateAlertType = alertType
+        }
+        
+        if minorUpdateAlertType == nil {
+            minorUpdateAlertType = alertType
+        }
+        
+        if patchUpdateAlertType == nil {
+            patchUpdateAlertType = alertType
+        }
+        
+        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+        let newVersion = split(currentAppStoreVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+        
+        if oldVersion.count == 3 && newVersion.count == 3 {
+            if newVersion[0] > oldVersion[0] { // A.b.c
+                alertType = majorUpdateAlertType!
+            } else if newVersion[1] > oldVersion[1] { // a.B.c
+                alertType = minorUpdateAlertType!
+            } else if newVersion[2] > oldVersion[2] { // a.b.C
+                alertType = patchUpdateAlertType!
+            }
+        }
+        
+        return alertType
+    }
+    
+    // iOS 8 Compatibility Check
+    var useAlertController: Bool { // iOS 8 check
+        return objc_getClass("UIAlertController") != nil
+    }
+    
+    // Actions
     func launchAppStore() {
         let iTunesString =  "https://itunes.apple.com/app/id\(appID)";
         let iTunesURL = NSURL(string: iTunesString);
@@ -374,9 +382,9 @@ public class Siren: NSObject
     }
 }
 
-// MARK: Localized Strings
+// MARK: String Localization
 private extension Siren {
-    
+
     func localizedNewVersionMessage() -> String {
         
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
@@ -399,7 +407,7 @@ private extension Siren {
     }
 }
 
-// MARK: NSBundle
+// MARK: NSBundle Extension
 private extension NSBundle {
     
     func currentVersion() -> String? {

@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Sabintsev iOS Projects. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // MARK: SirenDelegate Protocol
@@ -22,7 +21,7 @@ import UIKit
 /**
     Determines the type of alert to present after a successful version check has been performed.
     
-    The are four options:
+    There are four options:
         - Force: Forces user to update your app (1 button alert)
         - Option: (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
         - Skip: Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
@@ -40,7 +39,7 @@ public enum SirenAlertType
 /**
     Determines the frequency in which the the version check is performed
     
-    - .Immediatlety: Version check performed every time the app is launched
+    - .Immediately: Version check performed every time the app is launched
     - .Daily: Version check performedonce a day
     - .Weekly: Version check performed once a week
 
@@ -48,7 +47,7 @@ public enum SirenAlertType
 public enum SirenVersionCheckType : Int
 {
     case Immediately = 0    // Version check performed every time the app is launched
-    case Daily = 1          // Version check performedonce a day
+    case Daily = 1          // Version check performed once a day
     case Weekly = 7         // Version check performed once a week
 }
 
@@ -127,12 +126,12 @@ public class Siren: NSObject
     /**
         The SirenDelegate variable, which should be set if you'd like to be notified:
     
-            - When a user selects a specific button in the alert
+            - When a user views or interacts with the alert
                 - sirenDidShowUpdateDialog()
                 - sirenUserDidLaunchAppStore()
                 - sirenUserDidSkipVersion()     
                 - sirenUserDidCancel()
-            - When a successful version check has occured, and would like to present a localized message in a custom UI
+            - When a new version has been detected, and you would like to present a localized message in a custom UI
                 - sirenDidDetectNewVersionWithoutAlert(message: String)
     
     */
@@ -142,40 +141,40 @@ public class Siren: NSObject
     /**
         The debug flag, which is disabled by default.
     
-        When enabled, a stream of println() statements are logged to your console whena  version check is performed.
+        When enabled, a stream of println() statements are logged to your console when a version check is performed.
     */
     var debugEnabled = false
     
     // Alert Vars
     /**
-        Determines the type of Alert that should be shown.
+        Determines the type of alert that should be shown.
     
-        See the SirenALertType enum for full details.
+        See the SirenAlertType enum for full details.
     */
     var alertType = SirenAlertType.Option
     
     /**
-    Determines the type of Alert that should be shown for major version updates: A.b.c
+    Determines the type of alert that should be shown for major version updates: A.b.c
     
-    If it's not set, it defaults to the value set for the general alertType property.
+    When this property is nil, the value set for the general alertType property is used.
     
     See the SirenAlertType enum for full details.
     */
     var majorUpdateAlertType: SirenAlertType?
     
     /**
-    Determines the type of Alert that should be shown for minor version updates: a.B.c
+    Determines the type of alert that should be shown for minor version updates: a.B.c
     
-    If it's not set, it defaults to the value set for the general alertType property.
+    When this property is nil, the value set for the general alertType property is used.
     
     See the SirenAlertType enum for full details.
     */
     var minorUpdateAlertType: SirenAlertType?
     
     /**
-    Determines the type of Alert that should be shown for minor patch updates: a.b.C
+    Determines the type of alert that should be shown for minor patch updates: a.b.C
     
-    If it's not set, it defaults to the value set for the general alertType property.
+    When this property is nil, the value set for the general alertType property is used.
     
     See the SirenAlertType enum for full details.
     */
@@ -188,11 +187,11 @@ public class Siren: NSObject
     var appID: String?
     
     /**
-        The view controller on which will present the instance of UIAlertController.
+        The view controller that will present the instance of UIAlertController.
         
-        It is recommended that you set this value to window?.rootViewController before calling checkVersion()
+        It is recommended that you set this value to window?.rootViewController.
     
-        This property must be set before calling
+        This property must be set before calling checkVersion().
     */
     var presentingViewController: UIViewController?
     
@@ -205,12 +204,11 @@ public class Siren: NSObject
     var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
     
     /**
-        The region or country of the App Store within which your app is available.
+        The region or country of an App Store in which your app is available.
         
-        By default, all version checks are performed against the US App Atore. 
+        By default, all version checks are performed against the US App Store.
         If your app is not available in the US App Store, you should set it to the identifier 
         of at least one App Store within which it is available.
-
     */
     var countryCode: String?
     
@@ -245,12 +243,12 @@ public class Siren: NSObject
     
     // MARK: Check Version
     /**
-        Checks the currently installed version of your app against the AppStore.
+        Checks the currently installed version of your app against the App Store.
         The default check is against the US App Store, but if your app is not listed in the US,
         you should set the `countryCode` property before calling this method.
     
         :param: checkType The frequency in days in which you want a check to be performed
-            - .Immediatley
+            - .Immediately
     */
     func checkVersion(checkType: SirenVersionCheckType) {
         
@@ -274,7 +272,7 @@ public class Siren: NSObject
         }
     }
     
-    func performVersionCheck() {
+    private func performVersionCheck() {
         
         // Create Request
         let itunesURL = iTunesURLFromString()
@@ -316,7 +314,7 @@ public class Siren: NSObject
         task.resume()
     }
     
-    func processVersionCheckResults(results: [String : AnyObject]) {
+    private func processVersionCheckResults(results: [String : AnyObject]) {
         
         self.currentAppStoreVersion = results["results"]?[0]["version"] as? String
         if let currentAppStoreVersion = self.currentAppStoreVersion {
@@ -373,7 +371,9 @@ private extension Siren {
                 delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
             }
             
-            presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+            if alertType != .None {
+                presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+            }
             
         } else { // iOS 7
             

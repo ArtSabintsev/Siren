@@ -53,7 +53,27 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 
 ### Prompting for Updates without using Alerts
 
-To use less obtrusive update indicators, like a badge, banner, or small icon, disable alert presentation. To accomplish this, set `shouldShowAlert` to `false` when you call `checkVersion(checkType: SirenVersionCheckType, shouldShowAlert: Bool)`. Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
+Some developers may choose to show the update dialog using a custom interface, alert, or notification. To use less obtrusive update indicators, you can disable alert presentation by doing the following:
+
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
+{
+	...
+	siren.delegate = self
+	siren.alertType = .None
+	...
+}
+
+extension AppDelegate: SirenDelegate
+{
+	// Returns a localized message to this delegate method upon performing a successful version check
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {
+        println("\(message)")
+    }
+}
+```
+
+Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
 > **Note:** This delegate method will not be called when setting an alert type to `SirenAlertType.None`.
 

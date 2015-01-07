@@ -1,9 +1,11 @@
 ### Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/)  and [Aaron Brager](http://twitter.com/GetAaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/) and [Aaron Brager](http://twitter.com/GetAaron)
 
+### Swift Project Contributors
+Open up a Pull Request to get your name on here.
 
 ### Harpy Project Contributors
-This addon is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to its current state, v3.2.1 at the time this document was written.
+This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to its current state, v3.2.1 at the time this document was written.
 
 A huge **Thank You** to the following developers:
 
@@ -25,3 +27,6 @@ A huge **Thank You** to the following developers:
 - [Rui Peres](https://github.com/RuiAAPeres)
 - [Thomas Hempel](https://github.com/thomashempel)
 - [TrentW](https://github.com/trentw)
+
+### Special Thanks
+Finally, a massive thank you to [Aaron Brager](http://twitter.com/GetAaron) for the dev-work and issue-moderation he's done on Harpy since 2012. A Swift port could not have happened without him.

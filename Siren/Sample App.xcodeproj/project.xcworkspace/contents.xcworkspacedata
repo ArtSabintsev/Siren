@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Siren.xcodeproj">
+      location = "self:Sample App.xcodeproj">
    </FileRef>
 </Workspace>

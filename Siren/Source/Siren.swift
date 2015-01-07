@@ -74,8 +74,8 @@ public enum SirenVersionCheckType : Int
         - Portuguese
         - Russian
         - Slovenian
-        - Swedish
         - Spanish
+        - Swedish
         - Turkish
 
 */
@@ -96,8 +96,8 @@ public enum SirenLanguageType: String
     case Portuguese = "pt"
     case Russian = "ru"
     case Slovenian = "sl"
-    case Swedish = "sv"
     case Spanish = "es"
+    case Swedish = "sv"
     case Turkish = "tr"
 }
 

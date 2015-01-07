@@ -67,8 +67,6 @@ public enum SirenLanguageType: String
     case Turkish = "tr"
 }
 
-let SirenDidDetectNewAppStoreVersionNotification = "SirenDidDetectNewAppStoreVersionNotification"
-
 // MARK: Siren
 public class Siren: NSObject
 {

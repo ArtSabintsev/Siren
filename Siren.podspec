@@ -16,8 +16,8 @@ Siren is actively maintained by Arthur Sabintsev and Aaron Brager.
   s.authors      = { "Arthur Sabintsev" => "arthur@sabintsev.com", "Aaron Brager" => "getaaron@gmail.com" }
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/ArtSabintsev/Siren.git", :tag => "0.1.0" }
-  s.source_files = 'Siren/Siren/*.swift'
-  s.resources    = 'Siren/Source/Siren.bundle'
+  s.source_files = 'Siren/Siren/Siren.swift'
+  s.resources    = 'Siren/Siren/Siren.bundle'
   s.requires_arc = true
 
 end

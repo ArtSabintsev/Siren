@@ -17,7 +17,7 @@ import UIKit
     optional func sirenUserDidCancel()              // User did click on button that cancels update dialog
     
     // Siren performed version check and did not display alert
-    optional func sirenDidPerformCheckWithoutAlert(message: String)
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String)
 }
 
 // MARK: Enumerations
@@ -90,7 +90,6 @@ public class Siren: NSObject
     var patchUpdateAlertType: SirenAlertType?
     
     // Required Vars
-    var shouldShowAlert = true
     var appID: String?
     var presentingViewController: UIViewController?
     
@@ -118,9 +117,7 @@ public class Siren: NSObject
     }
     
     // MARK: Check Version
-    func checkVersion(checkType: SirenVersionCheckType, shouldShowAlert: Bool) {
-        
-        self.shouldShowAlert = shouldShowAlert
+    func checkVersion(checkType: SirenVersionCheckType) {
         
         if (appID == nil) {
             println("[Siren]: Please make sure that you have set 'appID' before calling checkVersion.")
@@ -190,11 +187,7 @@ public class Siren: NSObject
         self.currentAppStoreVersion = results["results"]?[0]["version"] as? String
         if let currentAppStoreVersion = self.currentAppStoreVersion {
             if self.isAppStoreVersionNewer() {
-                if (self.shouldShowAlert) {
-                    self.showAlertIfCurrentAppStoreVersionNotSkipped()
-                } else {
-                    self.delegate?.sirenDidPerformCheckWithoutAlert?(self.localizedNewVersionMessage())
-                }
+                self.showAlertIfCurrentAppStoreVersionNotSkipped()
             }
         } else {
             if self.debugEnabled {
@@ -243,7 +236,7 @@ private extension Siren {
                 alertController.addAction(updateAlertAction());
                 alertController.addAction(skipAlertAction());
             case .None:
-                return
+                delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
             }
             
             presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
@@ -265,7 +258,7 @@ private extension Siren {
                 alertView!.addButtonWithTitle(updateButtonTitle)
                 alertView!.addButtonWithTitle(nextTimeButtonTitle)
             case .None:
-                return
+                delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
             }
             
             if let alertView = alertView {

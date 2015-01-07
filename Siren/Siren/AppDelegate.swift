@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.debugEnabled = true;
         siren.alertType = .Option
         siren.delegate = self
-        siren.checkVersion(.Immediately, shouldShowAlert: false)
+        siren.checkVersion(.Immediately)
 
         
         return true
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: SirenDelegate
 {
-    func sirenDidPerformCheckWithoutAlert(message: String) {
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {
         println("\(message)")
     }
 }

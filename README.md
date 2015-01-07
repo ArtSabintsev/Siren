@@ -1,37 +1,61 @@
 # Siren
+
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
 ---
 ### About
-**Siren** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView (iOS 6, 7) or UIAlertController (iOS 8) is presented to the user informing them of the newer version, and giving them the option to update the application. 
+**Siren** is checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically and you can inform the user another way.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 - Siren is a Swift port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
-- Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://github.com/GetAaron).
+- Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
 ### Changelog
 #### 1.0.0
 - Initial launch
 
 ### Features
-- Cocoapods Support
-- Support for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
-- Three types of alerts to present to the end-user (see **Screenshots** section)
+- CocoaPods Support
+- Support for `UIAlertController` (iOS 8+) and `UIAlertView` (older versions of iOS)
+- Three types of alerts to present to the user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
 	- Optional ability to override an iOS device's default language to force the localization of your choice 
 	- Refer to the **Force Localization** section
 
-### Screenshots
+### Screenshots & Alert Types
 
-- The **left picture** forces the user to update the app.
-- The **center picture** gives the user the option to update the app.
-- The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `HarpyAlertType` typede that is found in `Harpy.h`.
+Siren can force an update, let the user optionally update, and allow the user to skip an update.
+
+To control this behavior, assign a `SirenAlertType` to `alertType` (or one of the specific alert type properties).
  
-![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
-![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
-![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
+> #### `siren.alertType = .Force`
+>
+> Forces the user to update.
+>
+> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
+> ----
+> #### `siren.alertType = .Option`
+> The default behavior. 
+> 
+> ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
+> ----
+> #### `siren.alertType = .Skip`
+> Allows the user to opt out of future reminders for this version.
+>
+> ![Skip Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
+> ----
+> #### `SirenAlertType.None`
+>
+> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates.
+>
+> **Note:** If you don't want to show *any* alert views, see *Prompting for Updates Without Alert Views* below.
+
+### Prompting for Updates Without Alert Views
+
+To use less obtrusive update indicators, like a badge, banner, or small icon, disable alert presentation. To accomplish this, set `shouldShowAlert` to `false` when you call `checkVersion(checkType: SirenVersionCheckType, shouldShowAlert: Bool)`. Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
+
+> **Note:** This delegate method will not be called when setting an alert type to `SirenAlertType.None`.
 
 ### Installation Instructions
 
@@ -45,7 +69,10 @@ pod 'Siren'
 Copy the `Siren.swift` file into your project.
 
 ### Setup Instructions	
-~~~ Swift
+
+Here's some commented sample code. Adapt this to meet your app's needs.
+
+```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
 {
 	/* Siren code should go below window?.makeKeyAndVisible() */
@@ -53,100 +80,82 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	// Siren is a singleton
 	let siren = Siren.SharedInstance()
 	
-	// Required: Your apps iTunes App Store ID
+	// Required: Your app's iTunes App Store ID
 	siren.appID = <#Your_App_ID#>
 	
-	// Required: The UIWindow's rootViewController
+	// Required on iOS 8: The controller to present the alert from (usually the UIWindow's rootViewController)
 	siren.presentingViewController = window?.rootViewController
 	
-	/* 
-		Optional:
-		Defaults to .Option
-	*/ 
+	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>
 	
 	/*
+	    Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
+	    checks.
+	    
+       Change shouldShowAlert to false if you're displaying your own UI when Siren detects a new version.
 	*/
-	siren.checkVersion(<#
+    siren.checkVersion(.Immediately, shouldShowAlert: true)
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-	 
+func applicationDidBecomeActive(application: UIApplication) {
 	/*
-	 Perform daily check for new version of your app
-	 Useful if user returns to you app from background after extended period of time
- 	 Place in applicationDidBecomeActive:
- 	 
- 	 Also, performs version check on first launch.
- 	*/
-	[[Harpy sharedInstance] checkVersionDaily];
-
-	/*
-	 Perform weekly check for new version of your app
-	 Useful if you user returns to your app from background after extended period of time
-	 Place in applicationDidBecomeActive:
-	 
-	 Also, performs version check on first launch.
-	 */
-	[[Harpy sharedInstance] checkVersionWeekly];
-    
+	    Perform daily (.Daily) or weekly (.Weekly) check for new version of your app. 
+	    Useful if user returns to your app from the background after extended period of time.
+    	 Place in applicationDidBecomeActive(_:).	*/
+    Siren.sharedInstance.checkVersion(.Daily, shouldShowAlert: true)
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-	/*
-	 Perform check for new version of your app
-	 Useful if user returns to you app from background after being sent tot he App Store, 
-	 but doesn't update their app before coming back to your app.
- 	 
- 	 ONLY USE THIS IF YOU ARE USING *HarpyAlertTypeForce* 
- 	 
- 	 Also, performs version check on first launch.
- 	*/
-	[[Harpy sharedInstance] checkVersion];    
-}
+func applicationWillEnterForeground(application: UIApplication) {
+   /*
+	    Useful if user returns to your app from the background after being sent to the
+	    App Store, but doesn't update their app before coming back to your app.
+	    
+       ONLY USE WITH SirenAlertType.Force
+   */
 
-~~~
+    Siren.sharedInstance.checkVersion(.Immediately, shouldShowAlert: true)
+}
+```
 
 And you're all set!
 
 ### Differentiated Alerts for Patch, Minor, and Major Updates
 If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
-~~~ swift-c
-	/* By default, Siren is configured to use SirentAlertType.Option for all version updates */
+```swift
+	/* Siren defaults to SirenAlertType.Option for all updates */
 	siren.sharedInstance().patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
 	siren.sharedInstance().minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
 	siren.sharedInstance().majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
-~~~
+```
 
 ### Optional Delegate and Delegate Methods
-If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
+Five delegate methods allow you to handle or track the user's behavior:
 
-```	obj-c
-	// User presented with update dialog
-	- (void)harpyDidShowUpdateDialog;
-	
-	// User did click on button that launched App Store.app
-	- (void)harpyUserDidLaunchAppStore;
-	
-	// User did click on button that skips version update
-	- (void)harpyUserDidSkipVersion;
-	
-	// User did click on button that cancels update dialog
-	- (void)harpyUserDidCancel;
+```	swift
+@objc protocol SirenDelegate {
+    optional func sirenDidShowUpdateDialog()        // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore()      // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion()         // User did click on button that skips version update
+    optional func sirenUserDidCancel()              // User did click on button that cancels update dialog
+    
+    // Siren performed version check and did not display alert
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String)
+}
 ```
 
 ### Force Localization
-There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41)). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the system's default lanuage for the Harpy alert dialogs.
+You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
-``` obj-c 
-[[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
+You can enable it like this:
+
+```swift
+Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
 
-### Important Note on App Store Submissions
-The App Store reviewer will **not** see the alert. 
+### App Store Submissions
+The App Store reviewer will **not** see the alert. (The version in the App Store will always be older than the version being reviewed.)
 
 ### Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://github.com/GetAaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

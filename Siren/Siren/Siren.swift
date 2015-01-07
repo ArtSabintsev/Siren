@@ -145,14 +145,17 @@ public class Siren: NSObject
     
     func performVersionCheck() {
         
+        // Create Request
         let itunesURL = iTunesURLFromString()
         let request = NSMutableURLRequest(URL: itunesURL)
         request.HTTPMethod = "GET"
+        
+        // Perform Request
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            
             if data.length > 0 {
                 
+                // Convert JSON data to Swift Dictionary of type [String : AnyObject]
                 let appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -177,7 +180,6 @@ public class Siren: NSObject
                     println("[Siren] Error retrieving App Store data: \(error.localizedDescription)")
                 }
             }
-            
         })
         
         task.resume()
@@ -199,9 +201,7 @@ public class Siren: NSObject
                 println("[Siren] Error retrieving App Store verson number")
             }
         }
-    
     }
-    
 }
 
 // MARK: Alert

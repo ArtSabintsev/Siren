@@ -372,7 +372,9 @@ private extension Siren {
                 delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
             }
             
-            presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+            if alertType != .None {
+                presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+            }
             
         } else { // iOS 7
             

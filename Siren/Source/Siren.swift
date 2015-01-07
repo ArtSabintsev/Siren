@@ -245,10 +245,9 @@ public class Siren: NSObject
     /**
         Checks the currently installed version of your app against the App Store.
         The default check is against the US App Store, but if your app is not listed in the US,
-        you should set the `countryCode` property before calling this method.
+        you should set the `countryCode` property before calling this method. Please refer to the countryCode property for more information.
     
-        :param: checkType The frequency in days in which you want a check to be performed
-            - .Immediately
+        :param: checkType The frequency in days in which you want a check to be performed. Please refer to the SirenVersionCheckType enum for more details.
     */
     func checkVersion(checkType: SirenVersionCheckType) {
         

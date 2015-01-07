@@ -121,15 +121,18 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     siren.checkVersion(.Immediately)
 }
 
-func applicationDidBecomeActive(application: UIApplication) {
+func applicationDidBecomeActive(application: UIApplication) 
+{
 	/*
-	    Perform daily (.Daily) or weekly (.Weekly) check for new version of your app. 
+	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app. 
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
+    	 
     Siren.sharedInstance.checkVersion(.Daily)
 }
 
-func applicationWillEnterForeground(application: UIApplication) {
+func applicationWillEnterForeground(application: UIApplication) 
+{
    /*
 	    Useful if user returns to your app from the background after being sent to the
 	    App Store, but doesn't update their app before coming back to your app.
@@ -176,7 +179,7 @@ Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLangua
 ```
 
 ### App Store Submissions
-The App Store reviewer will **not** see the alert. (The version in the App Store will always be older than the version being reviewed.)
+The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

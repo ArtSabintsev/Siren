@@ -274,7 +274,7 @@ public class Siren: NSObject
         }
     }
     
-    func performVersionCheck() {
+    private func performVersionCheck() {
         
         // Create Request
         let itunesURL = iTunesURLFromString()
@@ -316,7 +316,7 @@ public class Siren: NSObject
         task.resume()
     }
     
-    func processVersionCheckResults(results: [String : AnyObject]) {
+    private func processVersionCheckResults(results: [String : AnyObject]) {
         
         self.currentAppStoreVersion = results["results"]?[0]["version"] as? String
         if let currentAppStoreVersion = self.currentAppStoreVersion {

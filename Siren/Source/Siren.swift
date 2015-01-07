@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Sabintsev iOS Projects. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // MARK: SirenDelegate Protocol

@@ -21,7 +21,7 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x]  Localized for 18 languages
+- [x] Localized for 18 languages
 
 
 ### Localization 
@@ -56,7 +56,7 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 >
 > This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates, or for presenting your own UI.
 
-### Prompting for Updates Without Alerts
+### Prompting for Updates without Alerts
 
 Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
 

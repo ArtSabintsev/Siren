@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.debugEnabled = true;
         
         // Optional
-        siren.alertType = .Option
+        siren.alertType = .None
         
         // Optional
 //        siren.forceLanguageLocalization = .Spanish // Optional: Sets all messages to appear in spanish

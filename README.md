@@ -4,7 +4,9 @@
 
 ---
 ### About
-**Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an instance of `UIAlertView` (iOS 7) or `UIAlertController` (iOS 8) can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through a custom UI if you so chose.
+**Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
+
+If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through a custom UI if you so chose.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
@@ -15,13 +17,18 @@
 - Initial development launch
 
 ### Features
-- CocoaPods Support
-- Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
-- Three types of alerts to present to the user (see **Screenshots** section)
-- Optional delegate and delegate methods (see **Optional Delegate** section)
-- Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
-	- Optional ability to override an iOS device's default language to force the localization of your choice 
-	- Refer to the **Force Localization** section
+- [x] CocoaPods Support
+- [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
+- [x] Three types of alerts (see **Screenshots & Alert Types**)
+- [x] Optional delegate methods (see **Optional Delegate** section)
+- [x]  Localized for 18 languages
+
+
+### Localization 
+Siren supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+
+- Optionally override iOS's default language to force the localization of your choice 
+- Refer to the **Force Localization** section
 
 ### Screenshots & Alert Types
 
@@ -45,17 +52,13 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 >
 > ![Skip Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
 > ----
-> #### `SirenAlertType.None`
+> #### `siren.alertType = .None`
 >
-> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates.
->
-> **Note:** If you don't want to show *any* alert views, see *Prompting for Updates Without Alert Views* below.
+> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates, or for presenting your own UI.
 
-### Prompting for Updates without using Alerts
+### Prompting for Updates Without Alerts
 
-To use less obtrusive update indicators, like a badge, banner, or small icon, disable alert presentation. To accomplish this, set `shouldShowAlert` to `false` when you call `checkVersion(checkType: SirenVersionCheckType, shouldShowAlert: Bool)`. Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
-
-> **Note:** This delegate method will not be called when setting an alert type to `SirenAlertType.None`.
+To use less obtrusive update indicators, like a badge, banner, or small icon, disable alert presentation. To accomplish this, set `alertType` to `.None`. Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
 ### Installation Instructions
 
@@ -92,10 +95,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	/*
 	    Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
 	    checks.
-	    
-       Change shouldShowAlert to false if you're displaying your own UI when Siren detects a new version.
 	*/
-    siren.checkVersion(.Immediately, shouldShowAlert: true)
+    siren.checkVersion(.Immediately)
 }
 
 func applicationDidBecomeActive(application: UIApplication) {
@@ -103,7 +104,7 @@ func applicationDidBecomeActive(application: UIApplication) {
 	    Perform daily (.Daily) or weekly (.Weekly) check for new version of your app. 
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
-    Siren.sharedInstance.checkVersion(.Daily, shouldShowAlert: true)
+    Siren.sharedInstance.checkVersion(.Daily)
 }
 
 func applicationWillEnterForeground(application: UIApplication) {
@@ -114,7 +115,7 @@ func applicationWillEnterForeground(application: UIApplication) {
        ONLY USE WITH SirenAlertType.Force
    */
 
-    Siren.sharedInstance.checkVersion(.Immediately, shouldShowAlert: true)
+    Siren.sharedInstance.checkVersion(.Immediately)
 }
 ```
 
@@ -135,13 +136,11 @@ Five delegate methods allow you to handle or track the user's behavior:
 
 ```	swift
 @objc protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog()        // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore()      // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion()         // User did click on button that skips version update
-    optional func sirenUserDidCancel()              // User did click on button that cancels update dialog
-    
-    // Siren performed version check and did not display alert
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String)
+    optional func sirenDidShowUpdateDialog() // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore() // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion() // User did click on button that skips version update
+    optional func sirenUserDidCancel()  // User did click on button that cancels update dialog
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```
 

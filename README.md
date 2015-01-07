@@ -176,7 +176,7 @@ Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLangua
 ```
 
 ### App Store Submissions
-The App Store reviewer will **not** see the alert. (The version in the App Store will always be older than the version being reviewed.)
+The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

@@ -95,12 +95,6 @@ func applicationWillEnterForeground(application: UIApplication)
 
 And you're all set!
 
-### Localization 
-Siren supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
-
-- Optionally override iOS's default language to force the localization of your choice 
-- Refer to the **Force Localization** section
-
 ### Screenshots & Alert Types
 
 Siren can force an update, let the user optionally update, and allow the user to skip an update.
@@ -175,7 +169,9 @@ Five delegate methods allow you to handle or track the user's behavior:
 ```
 
 ### Force Localization
-You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
+Siren supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+
+There may be a situation where uou may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
 You can enable it like this:
 

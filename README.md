@@ -89,13 +89,14 @@ pod 'Siren'
 
 - Requires [CocoaPods 0.36 prerelease](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) or later
 - Only for apps with a minimum deployment target of iOS 8.0 or later
+
     > CocoaPods does not support pods written in Swift on iOS 7. For more information, please see [this issue](https://github.com/CocoaPods/swift/issues/22).
   
 If your app needs to support iOS 7, use **Manual Installation**.
 
 #### Manual Installation
 
-1.[Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
+1. [Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
 2. Copy the `Siren` folder into your project.
 
 ### Setup Instructions	

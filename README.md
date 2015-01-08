@@ -82,16 +82,21 @@ Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` dele
 
 ### Installation Instructions
 
-#### CocoaPods Installation (
+#### CocoaPods Installation
 ```ruby
 pod 'Siren'
 ```
 
-This will only work for apps that have a minimum deployment target of iOS 8. Currently, CocoaPods 0.36 *pre-release* does not support pods built in Swift on iOS 7. For more information, please refer to [this post](https://github.com/CocoaPods/swift/issues/22#issuecomment-69108855).
+- Requires [CocoaPods 0.36 prerelease](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) or later
+- Only for apps with a minimum deployment target of iOS 8.0 or later
+    > CocoaPods does not support pods written in Swift on iOS 7. For more information, please see [this issue](https://github.com/CocoaPods/swift/issues/22).
+  
+If your app needs to support iOS 7, use **Manual Installation**.
 
 #### Manual Installation
 
-Copy the Siren folder into your project.
+1.[Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
+2. Copy the `Siren` folder into your project.
 
 ### Setup Instructions	
 

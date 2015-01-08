@@ -19,66 +19,9 @@ If a new version is available, an alert can be presented to the user informing t
 ### Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
+- [x] Localized for 18 languages (See **Localization** Section)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x] Localized for 18 languages
-
-
-### Localization 
-Siren supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
-
-- Optionally override iOS's default language to force the localization of your choice 
-- Refer to the **Force Localization** section
-
-### Screenshots & Alert Types
-
-Siren can force an update, let the user optionally update, and allow the user to skip an update.
-
-To control this behavior, assign a `SirenAlertType` to `alertType` (or one of the specific alert type properties).
- 
-> #### `siren.alertType = .Force`
->
-> Forces the user to update.
->
-> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
-> ----
-> #### `siren.alertType = .Option`
-> The default behavior. 
-> 
-> ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
-> ----
-> #### `siren.alertType = .Skip`
-> Allows the user to opt out of future reminders for this version.
->
-> ![Skip Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
-> ----
-> #### `siren.alertType = .None`
->
-> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates, or for presenting your own UI.
-
-### Prompting for Updates without Alerts
-
-Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
-
-```swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
-{
-	...
-	siren.delegate = self
-	siren.alertType = .None
-	...
-}
-
-extension AppDelegate: SirenDelegate
-{
-	// Returns a localized message to this delegate method upon performing a successful version check
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {
-        println("\(message)")
-    }
-}
-```
-
-Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
 ### Installation Instructions
 
@@ -151,6 +94,62 @@ func applicationWillEnterForeground(application: UIApplication)
 ```
 
 And you're all set!
+
+### Localization 
+Siren supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+
+- Optionally override iOS's default language to force the localization of your choice 
+- Refer to the **Force Localization** section
+
+### Screenshots & Alert Types
+
+Siren can force an update, let the user optionally update, and allow the user to skip an update.
+
+To control this behavior, assign a `SirenAlertType` to `alertType` (or one of the specific alert type properties).
+ 
+> #### `siren.alertType = .Force`
+>
+> Forces the user to update.
+>
+> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
+> ----
+> #### `siren.alertType = .Option`
+> The default behavior. 
+> 
+> ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
+> ----
+> #### `siren.alertType = .Skip`
+> Allows the user to opt out of future reminders for this version.
+>
+> ![Skip Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
+> ----
+> #### `siren.alertType = .None`
+>
+> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates, or for presenting your own UI.
+
+### Prompting for Updates without Alerts
+
+Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
+
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
+{
+	...
+	siren.delegate = self
+	siren.alertType = .None
+	...
+}
+
+extension AppDelegate: SirenDelegate
+{
+	// Returns a localized message to this delegate method upon performing a successful version check
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {
+        println("\(message)")
+    }
+}
+```
+
+Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
 ### Differentiated Alerts for Patch, Minor, and Major Updates
 If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:

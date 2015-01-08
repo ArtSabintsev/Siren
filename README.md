@@ -6,15 +6,15 @@
 ### About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
-If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, so that you can inform the user through a custom UI if you so chose.
+If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
 ### Changelog
-#### 0.1.0
-- Initial development launch
+#### 0.1.1
+- Changed CocoaPods deployment target to iOS 8 due to [this post](https://github.com/CocoaPods/swift/issues/22#issuecomment-69108855).
 
 ### Features
 - [x] CocoaPods Support
@@ -82,10 +82,12 @@ Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` dele
 
 ### Installation Instructions
 
-#### CocoaPods Installation
-```
+#### CocoaPods Installation (
+```ruby
 pod 'Siren'
 ```
+
+This will only work for apps that have a minimum deployment target of iOS 8. Currently, CocoaPods 0.36 *pre-release* does not support pods built in Swift on iOS 7. For more information, please refer to [this post](https://github.com/CocoaPods/swift/issues/22#issuecomment-69108855).
 
 #### Manual Installation
 

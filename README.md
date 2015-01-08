@@ -91,7 +91,7 @@ This will only work for apps that have a minimum deployment target of iOS 8. Cur
 
 #### Manual Installation
 
-Copy the `Siren.swift` file into your project.
+Copy the Siren folder into your project.
 
 ### Setup Instructions	
 

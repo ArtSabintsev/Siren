@@ -29,4 +29,4 @@ A huge **Thank You** to the following developers:
 - [TrentW](https://github.com/trentw)
 
 ### Special Thanks
-Finally, a massive thank you to [Aaron Brager](http://twitter.com/GetAaron) for the dev-work and issue-moderation he's done on Harpy since 2012. A Swift port could not have happened without him.
+Finally, a massive **Thank You** to [Aaron Brager](http://twitter.com/GetAaron) for the dev-work and issue-moderation he's done on Harpy since 2012. A Swift port could not have happened without him.

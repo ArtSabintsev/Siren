@@ -293,12 +293,11 @@ public class Siren: NSObject
                     NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.sirenDefaultStoredVersionCheckDate)
                     NSUserDefaults.standardUserDefaults().synchronize()
                     
-                    // Extract current version on the AppStore
                     if self.debugEnabled {
                         println("[Siren] JSON results: \(appData)");
                     }
                     
-                    // Process Results
+                    // Process Results (e.g., extract current version on the AppStore)
                     self.processVersionCheckResults(appData!)
                     
                 })
@@ -315,14 +314,17 @@ public class Siren: NSObject
     
     private func processVersionCheckResults(results: [String : AnyObject]) {
         
-        self.currentAppStoreVersion = results["results"]?[0]?["version"]? as? String
-        if let currentAppStoreVersion = self.currentAppStoreVersion {
-            if self.isAppStoreVersionNewer() {
-                self.showAlertIfCurrentAppStoreVersionNotSkipped()
-            }
-        } else {
-            if self.debugEnabled {
-                println("[Siren] Error retrieving App Store verson number")
+        let resultCount = results["resultCount"]? as? Int
+        if resultCount > 0 {
+            self.currentAppStoreVersion = results["results"]?[0]?["version"]? as? String
+            if let currentAppStoreVersion = self.currentAppStoreVersion {
+                if self.isAppStoreVersionNewer() {
+                    self.showAlertIfCurrentAppStoreVersionNotSkipped()
+                }
+            } else {
+                if self.debugEnabled {
+                    println("[Siren] Error retrieving App Store verson number")
+                }
             }
         }
     }

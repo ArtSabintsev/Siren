@@ -11,7 +11,6 @@
 		8E1005E81A5DD02300509B14 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E01A5DD02300509B14 /* LaunchScreen.xib */; };
 		8E1005E91A5DD02300509B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E21A5DD02300509B14 /* Main.storyboard */; };
 		8E1005EA1A5DD02300509B14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E41A5DD02300509B14 /* Images.xcassets */; };
-		8E1005EB1A5DD02300509B14 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E51A5DD02300509B14 /* Info.plist */; };
 		8E1005EC1A5DD02300509B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005E61A5DD02300509B14 /* ViewController.swift */; };
 		8E1005F01A5DD04500509B14 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005EE1A5DD04500509B14 /* Siren.bundle */; };
 		8E1005F11A5DD04500509B14 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005EF1A5DD04500509B14 /* Siren.swift */; };
@@ -137,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E1005EB1A5DD02300509B14 /* Info.plist in Resources */,
 				8E1005F01A5DD04500509B14 /* Siren.bundle in Resources */,
 				8E1005EA1A5DD02300509B14 /* Images.xcassets in Resources */,
 				8E1005E81A5DD02300509B14 /* LaunchScreen.xib in Resources */,

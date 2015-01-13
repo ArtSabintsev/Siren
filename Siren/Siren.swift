@@ -315,7 +315,7 @@ public class Siren: NSObject
     
     private func processVersionCheckResults(results: [String : AnyObject]) {
         
-        self.currentAppStoreVersion = results["results"]?[0]["version"] as? String
+        self.currentAppStoreVersion = results["results"]?[0]?["version"]? as? String
         if let currentAppStoreVersion = self.currentAppStoreVersion {
             if self.isAppStoreVersionNewer() {
                 self.showAlertIfCurrentAppStoreVersionNotSkipped()

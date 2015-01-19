@@ -316,7 +316,13 @@ public class Siren: NSObject
         
         let resultCount = results["resultCount"]? as? Int
         if resultCount > 0 {
-            self.currentAppStoreVersion = results["results"]?[0]?["version"]? as? String
+            if let resultsObject: AnyObject = results["results"]{
+                if let resultObject = resultsObject[0] as? [String : AnyObject]{
+                    if let version = resultObject["version"] as? String{
+                        self.currentAppStoreVersion = version
+                    }
+                }
+            }
             if let currentAppStoreVersion = self.currentAppStoreVersion {
                 if self.isAppStoreVersionNewer() {
                     self.showAlertIfCurrentAppStoreVersionNotSkipped()

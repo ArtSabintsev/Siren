@@ -251,9 +251,9 @@ public class Siren: NSObject
     func checkVersion(checkType: SirenVersionCheckType) {
         
         if (appID == nil) {
-            println("[Siren]: Please make sure that you have set 'appID' before calling checkVersion.")
+            println("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
         } else if (useAlertController && presentingViewController == nil) { // iOS 8 only
-            println("[Siren]: Please make sure that you have set 'presentingViewController' before calling checkVersion.")
+            println("[Siren] Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
             
             if checkType == .Immediately {

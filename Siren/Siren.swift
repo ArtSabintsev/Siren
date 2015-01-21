@@ -108,8 +108,8 @@ public enum SirenLanguageType: String
 */
 public class Siren: NSObject
 {
-    // MARK: Constants
-    
+
+    // MARK: Constants    
     // NSUserDefault key that stores the timestamp of the last version check
     let sirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
     
@@ -136,7 +136,6 @@ public class Siren: NSObject
     
     */
     weak var delegate: SirenDelegate?
-    
 
     /**
         The debug flag, which is disabled by default.
@@ -281,30 +280,35 @@ public class Siren: NSObject
         // Perform Request
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
             if data.length > 0 {
                 
                 // Convert JSON data to Swift Dictionary of type [String : AnyObject]
-                let appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String : AnyObject]
+                let appData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String: AnyObject]
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if let appData = appData {
                     
-                    // Store version comparison date
-                    self.lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate
-                    NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.sirenDefaultStoredVersionCheckDate)
-                    NSUserDefaults.standardUserDefaults().synchronize()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
+                        // Print iTunesLookup results from appData
+                        if self.debugEnabled {
+                            println("[Siren] JSON results: \(appData)");
+                        }
+                        
+                        // Process Results (e.g., extract current version on the AppStore)
+                        self.processVersionCheckResults(appData)
+                        
+                    })
                     
+                } else { // appData == nil
                     if self.debugEnabled {
-                        println("[Siren] JSON results: \(appData)");
+                        println("[Siren] Error retrieving App Store data as data was nil: \(error.localizedDescription)")
                     }
-                    
-                    // Process Results (e.g., extract current version on the AppStore)
-                    self.processVersionCheckResults(appData!)
-                    
-                })
+                }
                 
-            } else {
+            } else { // data.length == 0
                 if self.debugEnabled {
-                    println("[Siren] Error retrieving App Store data: \(error.localizedDescription)")
+                    println("[Siren] Error retrieving App Store data as no data was returned: \(error.localizedDescription)")
                 }
             }
         })
@@ -312,19 +316,36 @@ public class Siren: NSObject
         task.resume()
     }
     
-    private func processVersionCheckResults(results: [String : AnyObject]) {
+    private func processVersionCheckResults(lookupResults: [String: AnyObject]) {
         
-        let resultCount = results["resultCount"]? as? Int
-        if resultCount > 0 {
-            self.currentAppStoreVersion = results["results"]?[0]?["version"]? as? String
-            if let currentAppStoreVersion = self.currentAppStoreVersion {
-                if self.isAppStoreVersionNewer() {
-                    self.showAlertIfCurrentAppStoreVersionNotSkipped()
+        // Store version comparison date
+        self.storeVersionCheckDate()
+
+        let results = lookupResults["results"] as? [[String: AnyObject]]
+        if let results = results {
+            if results.isEmpty == false { // Conditional that avoids crash when app not in App Store or appID mistyped
+                self.currentAppStoreVersion = results[0]["version"] as? String
+                if let currentAppStoreVersion = self.currentAppStoreVersion {
+                    if self.isAppStoreVersionNewer() {
+                        self.showAlertIfCurrentAppStoreVersionNotSkipped()
+                    } else {
+                        if self.debugEnabled {
+                            println("[Siren] App Store version of app is not newer")
+                        }
+                    }
+                } else { // lookupResults["results"][0] does not contain "version" key
+                    if self.debugEnabled {
+                        println("[Siren] Error retrieving App Store verson number as results[0] does not contain a 'version' key")
+                    }
                 }
-            } else {
+            } else { // lookupResults does not contain any data as the returned array is empty
                 if self.debugEnabled {
-                    println("[Siren] Error retrieving App Store verson number")
+                    println("[Siren] Error retrieving App Store verson number as results returns an empty array")
                 }
+            }
+        } else { // lookupResults does not contain any data
+            if self.debugEnabled {
+                println("[Siren] Error retrieving App Store verson number as there was no data returned")
             }
         }
     }
@@ -432,7 +453,6 @@ private extension Siren {
         
         return action
     }
-
 }
 
 // MARK: Helpers
@@ -470,6 +490,12 @@ private extension Siren {
         }
         
         return newVersionExists
+    }
+    
+    func storeVersionCheckDate() {
+        self.lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate
+        NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.sirenDefaultStoredVersionCheckDate)
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
     
     /*
@@ -602,7 +628,9 @@ extension Siren: UIAlertViewDelegate
                 self.delegate?.sirenUserDidCancel?()
             }
         case .None:
-            println("None")
+            if debugEnabled {
+                 println("[Siren] No alert presented due to alertType == .None")
+            }
         }
     }
 }

@@ -13,8 +13,9 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
 ### Changelog
-#### 0.1.2
-- Fixes issue [#1](https://github.com/ArtSabintsev/Siren/issues/1)
+#### 0.2.0
+- Refactored for safety and readability
+- Added more log statements if `debugEnabled == true`
 
 ### Features
 - [x] CocoaPods Support

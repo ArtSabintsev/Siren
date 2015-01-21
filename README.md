@@ -179,6 +179,8 @@ You can enable it like this:
 ```swift
 Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
+### How to test Siren
+Temporarily change the version string in Xcode to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 ### App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.

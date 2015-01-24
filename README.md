@@ -13,13 +13,9 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
 ### Changelog
-#### 0.2.1
-- Minor change to copy in log statements that appear when `debugEnabled == true`
-
-
-#### 0.2.0
-- Refactored for safety and readability
-- Added more log statements if `debugEnabled == true`
+#### 0.2.2
+- Fixed [Issue #6](https://github.com/ArtSabintsev/Siren/issues/6): Setting `checkType` to `.Daily` or `.Weekly` now works properly.
+- Other minor internal changes.
 
 ### Features
 - [x] CocoaPods Support

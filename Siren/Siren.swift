@@ -117,7 +117,7 @@ public class Siren: NSObject
     let sirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
     
     // Current installed version of your app
-    let currentVersion = NSBundle.mainBundle().currentVersion()
+    let currentInstalledVersion = NSBundle.mainBundle().currentInstalledVersion()
     
     // NSBundle path for localization
     let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
@@ -255,7 +255,6 @@ public class Siren: NSObject
         } else if (useAlertController && presentingViewController == nil) { // iOS 8 only
             println("[Siren] Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
-            
             if checkType == .Immediately {
                 performVersionCheck()
             } else {
@@ -475,7 +474,7 @@ private extension Siren {
     
     func daysSinceLastVersionCheckDate() -> Int {
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.CalendarUnitDay, fromDate: lastVersionCheckPerformedOnDate!, toDate: NSDate(), options: nil)
+        let components = calendar.components(.CalendarUnitDay, fromDate: NSDate(), toDate: lastVersionCheckPerformedOnDate!, options: nil)
         return components.day
     }
     
@@ -483,8 +482,8 @@ private extension Siren {
         
         var newVersionExists = false
         
-        if let currentVersion = self.currentVersion {
-            if (currentVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+        if let currentInstalledVersion = self.currentInstalledVersion {
+            if (currentInstalledVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
                 newVersionExists = true
             }
         }
@@ -493,9 +492,11 @@ private extension Siren {
     }
     
     func storeVersionCheckDate() {
-        self.lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(self.sirenDefaultStoredVersionCheckDate) as? NSDate
-        NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate, forKey: self.sirenDefaultStoredVersionCheckDate)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        lastVersionCheckPerformedOnDate = NSDate()
+        if let lastVersionCheckPerformedOnDate = self.lastVersionCheckPerformedOnDate {
+            NSUserDefaults.standardUserDefaults().setObject(self.lastVersionCheckPerformedOnDate!, forKey: self.sirenDefaultStoredVersionCheckDate)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
     }
     
     /*
@@ -516,7 +517,7 @@ private extension Siren {
             patchUpdateAlertType = alertType
         }
         
-        let oldVersion = split(currentVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+        let oldVersion = split(currentInstalledVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
         let newVersion = split(currentAppStoreVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
         
         if oldVersion.count == 3 && newVersion.count == 3 {
@@ -573,7 +574,7 @@ private extension Siren {
 // MARK: NSBundle Extension
 private extension NSBundle {
     
-    func currentVersion() -> String? {
+    func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
 

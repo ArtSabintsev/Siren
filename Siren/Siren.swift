@@ -540,9 +540,11 @@ private extension Siren {
     
     // Actions
     func launchAppStore() {
-        let iTunesString =  "https://itunes.apple.com/app/id\(appID)";
-        let iTunesURL = NSURL(string: iTunesString);
-        UIApplication.sharedApplication().openURL(iTunesURL!);
+        if let iTunesAppID = appID {
+            let iTunesString =  "https://itunes.apple.com/app/id\(iTunesAppID)";
+            let iTunesURL = NSURL(string: iTunesString);
+            UIApplication.sharedApplication().openURL(iTunesURL!);
+        }
     }
 }
 

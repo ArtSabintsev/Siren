@@ -15,6 +15,7 @@ If a new version is available, an alert can be presented to the user informing t
 ### Changelog
 #### 0.2.3
 - Fixed [Issue #7](https://github.com/ArtSabintsev/Siren/pull/7): a crash when loading the App Store
+	- Thanks to [Dmitry Bespalov](https://github.com/diamondsky) in https://github.com/ArtSabintsev/Siren/pull/7  
 #### 0.2.2
 - Fixed [Issue #6](https://github.com/ArtSabintsev/Siren/issues/6): Setting `checkType` to `.Daily` or `.Weekly` now works properly.
 - Other minor internal changes.

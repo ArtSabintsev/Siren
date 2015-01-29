@@ -1,8 +1,8 @@
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) and [Aaron Brager](http://twitter.com/GetAaron)
 
-### Swift Project Contributors
-Open up a Pull Request to get your name on here.
+### Siren Project Contributors
+- [Dmitry Bespalov](https://github.com/diamondsky) for https://github.com/ArtSabintsev/Siren/pull/7
 
 ### Harpy Project Contributors
 This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to its current state, v3.2.1 at the time this document was written.

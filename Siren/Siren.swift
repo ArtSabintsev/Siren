@@ -142,7 +142,7 @@ public class Siren: NSObject
     
         When enabled, a stream of println() statements are logged to your console when a version check is performed.
     */
-    var debugEnabled = false
+    lazy var debugEnabled = false
     
     // Alert Vars
     /**
@@ -155,29 +155,29 @@ public class Siren: NSObject
     /**
     Determines the type of alert that should be shown for major version updates: A.b.c
     
-    When this property is nil, the value set for the general alertType property is used.
+    Defaults to SirenAlertType.Option.
     
     See the SirenAlertType enum for full details.
     */
-    var majorUpdateAlertType: SirenAlertType?
+    var majorUpdateAlertType = SirenAlertType.Option
     
     /**
     Determines the type of alert that should be shown for minor version updates: a.B.c
     
-    When this property is nil, the value set for the general alertType property is used.
+    Defaults to SirenAlertType.Option.
     
     See the SirenAlertType enum for full details.
     */
-    var minorUpdateAlertType: SirenAlertType?
+    var minorUpdateAlertType  = SirenAlertType.Option
     
     /**
     Determines the type of alert that should be shown for minor patch updates: a.b.C
     
-    When this property is nil, the value set for the general alertType property is used.
+    Defaults to SirenAlertType.Option.
     
     See the SirenAlertType enum for full details.
     */
-    var patchUpdateAlertType: SirenAlertType?
+    var patchUpdateAlertType = SirenAlertType.Option
     
     // Required Vars
     /**
@@ -200,7 +200,7 @@ public class Siren: NSObject
     
         By default, it's set to the name of the app that's stored in your plist.
     */
-    var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
+    lazy var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
     
     /**
         The region or country of an App Store in which your app is available.
@@ -499,34 +499,18 @@ private extension Siren {
         }
     }
     
-    /*
-        TODO: Potentially turn this into a custom setter/getter with property observers
-        https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-ID262
-    */
     func setAlertType() -> SirenAlertType {
-        
-        if majorUpdateAlertType == nil {
-            majorUpdateAlertType = alertType
-        }
-        
-        if minorUpdateAlertType == nil {
-            minorUpdateAlertType = alertType
-        }
-        
-        if patchUpdateAlertType == nil {
-            patchUpdateAlertType = alertType
-        }
         
         let oldVersion = split(currentInstalledVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
         let newVersion = split(currentAppStoreVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
         
         if oldVersion.count == 3 && newVersion.count == 3 {
             if newVersion[0] > oldVersion[0] { // A.b.c
-                alertType = majorUpdateAlertType!
+                alertType = majorUpdateAlertType
             } else if newVersion[1] > oldVersion[1] { // a.B.c
-                alertType = minorUpdateAlertType!
+                alertType = minorUpdateAlertType
             } else if newVersion[2] > oldVersion[2] { // a.b.C
-                alertType = patchUpdateAlertType!
+                alertType = patchUpdateAlertType
             }
         }
         

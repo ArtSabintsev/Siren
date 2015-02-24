@@ -12,9 +12,8 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.3.0)
-- `appName` and `debugEnabled` properties are now laziliy instantiated
-- `patchUpdateAlertType`, `minorUpdateAlertType`, and `majorUpdateAlertType` are no longer optionals and are now instantiated to `.Option` when Siren is initialized.
+### Changelog (v0.3.1)
+- Split method calls in `setAlertType` have been simplified (thanks to [Daniel Bauke](https://github.com/bonkey))
 
 ### Features
 - [x] CocoaPods Support

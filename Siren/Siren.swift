@@ -501,8 +501,8 @@ private extension Siren {
     
     func setAlertType() -> SirenAlertType {
         
-        let oldVersion = split(currentInstalledVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
-        let newVersion = split(currentAppStoreVersion!, {$0 == "."}, maxSplit: Int.max, allowEmptySlices: false).map {$0.toInt() ?? 0}
+        let oldVersion = split(currentInstalledVersion!) {$0 == "."}.map {$0.toInt() ?? 0}
+        let newVersion = split(currentAppStoreVersion!) {$0 == "."}.map {$0.toInt() ?? 0}
         
         if oldVersion.count == 3 && newVersion.count == 3 {
             if newVersion[0] > oldVersion[0] { // A.b.c

@@ -51,7 +51,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	/* Siren code should go below window?.makeKeyAndVisible() */
 	
 	// Siren is a singleton
-	let siren = Siren.SharedInstance()
+	let siren = Siren.SharedInstance
 	
 	// Required: Your app's iTunes App Store ID
 	siren.appID = <#Your_App_ID#>

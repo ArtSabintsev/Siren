@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Siren"
-  s.version      = "0.3.1"
+  s.version      = "0.3.2"
   s.summary      = "Notify users when a new version of your iOS app is available, and prompt them with the App Store link.."
 
   s.description  = <<-DESC
@@ -15,7 +15,7 @@ Siren is actively maintained by Arthur Sabintsev and Aaron Brager.
   s.license      = "MIT"
   s.authors      = { "Arthur Sabintsev" => "arthur@sabintsev.com", "Aaron Brager" => "getaaron@gmail.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/ArtSabintsev/Siren.git", :tag => "0.3.1" }
+  s.source       = { :git => "https://github.com/ArtSabintsev/Siren.git", :tag => "0.3.2" }
   s.source_files = 'Siren/Siren.swift'
   s.resources    = 'Siren/Siren.bundle'
   s.requires_arc = true

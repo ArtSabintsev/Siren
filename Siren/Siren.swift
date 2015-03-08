@@ -56,26 +56,6 @@ public enum SirenVersionCheckType : Int
     
     By default, the operating system's default lanuage setting is used. However, you can force a specific language
     by setting the forceLanguageLocalization property before calling checkVersion()
-    
-    Supported languages:
-        - Basque
-        - ChineseSimplified
-        - ChineseTraditional
-        - Danish
-        - Dutch
-        - English
-        - French
-        - Hebrew
-        - German
-        - Italian
-        - Japanese
-        - Korean
-        - Portuguese
-        - Russian
-        - Slovenian
-        - Spanish
-        - Swedish
-        - Turkish
 
 */
 public enum SirenLanguageType: String
@@ -93,7 +73,8 @@ public enum SirenLanguageType: String
     case Japanese = "ja"
     case Korean = "ko"
     case Polish = "pl"
-    case Portuguese = "pt"
+    case PortugueseBrazil = "pt"
+    case PortuguesePortugal = "pt-PT"
     case Russian = "ru"
     case Slovenian = "sl"
     case Spanish = "es"

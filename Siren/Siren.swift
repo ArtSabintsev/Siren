@@ -333,7 +333,8 @@ public class Siren: NSObject
 }
 
 // MARK: Alert
-private extension Siren {
+private extension Siren
+{
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         
         self.alertType = self.setAlertType()
@@ -437,7 +438,8 @@ private extension Siren {
 }
 
 // MARK: Helpers
-private extension Siren {
+private extension Siren
+{
     
     func iTunesURLFromString() -> NSURL {
         
@@ -513,8 +515,8 @@ private extension Siren {
 }
 
 // MARK: String Localization
-private extension Siren {
-
+private extension Siren
+{
     func localizedNewVersionMessage() -> String {
         
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
@@ -538,8 +540,8 @@ private extension Siren {
 }
 
 // MARK: NSBundle Extension
-private extension NSBundle {
-    
+private extension NSBundle
+{
     func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }

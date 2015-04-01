@@ -12,8 +12,11 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.3.3)
-- Added Brazilian Portuguese localization (thanks to [ipedro](https://github.com/ipedro))
+### Changelog (v0.3.4)
+- Fixes scoping issue with .framework that's generated via CocoaPods installation 
+	- Conversation: [Issue #13](https://github.com/ArtSabintsev/Siren/issues/13)
+	- Pull Request: [PR #15](https://github.com/ArtSabintsev/Siren/pull/15)
+	- Massive thanks to [Michael Graff](http://github.com/skandragon)!
 
 ### Features
 - [x] CocoaPods Support

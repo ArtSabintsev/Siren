@@ -183,7 +183,7 @@ Temporarily change the version string in Xcode (within the `.xcodeproj`) to an o
 
 If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (376771144), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
 
-For your convenience, you may turn on `printn()` debugging statement by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
+For your convenience, you may turn on `printn()` debugging statements by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
 
 ### App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.

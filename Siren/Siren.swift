@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: SirenDelegate Protocol
-@objc protocol SirenDelegate {
+@objc public protocol SirenDelegate {
     optional func sirenDidShowUpdateDialog()                            // User presented with update dialog
     optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
@@ -117,14 +117,14 @@ public class Siren: NSObject
                 - sirenDidDetectNewVersionWithoutAlert(message: String)
     
     */
-    weak var delegate: SirenDelegate?
+    public weak var delegate: SirenDelegate?
 
     /**
         The debug flag, which is disabled by default.
     
         When enabled, a stream of println() statements are logged to your console when a version check is performed.
     */
-    lazy var debugEnabled = false
+    public lazy var debugEnabled = false
     
     // Alert Vars
     /**
@@ -132,7 +132,7 @@ public class Siren: NSObject
     
         See the SirenAlertType enum for full details.
     */
-    var alertType = SirenAlertType.Option
+    public var alertType = SirenAlertType.Option
     
     /**
     Determines the type of alert that should be shown for major version updates: A.b.c
@@ -141,7 +141,7 @@ public class Siren: NSObject
     
     See the SirenAlertType enum for full details.
     */
-    var majorUpdateAlertType = SirenAlertType.Option
+    public var majorUpdateAlertType = SirenAlertType.Option
     
     /**
     Determines the type of alert that should be shown for minor version updates: a.B.c
@@ -150,7 +150,7 @@ public class Siren: NSObject
     
     See the SirenAlertType enum for full details.
     */
-    var minorUpdateAlertType  = SirenAlertType.Option
+    public var minorUpdateAlertType  = SirenAlertType.Option
     
     /**
     Determines the type of alert that should be shown for minor patch updates: a.b.C
@@ -159,13 +159,13 @@ public class Siren: NSObject
     
     See the SirenAlertType enum for full details.
     */
-    var patchUpdateAlertType = SirenAlertType.Option
+    public var patchUpdateAlertType = SirenAlertType.Option
     
     // Required Vars
     /**
         The App Store / iTunes Connect ID for your app.
     */
-    var appID: String?
+    public var appID: String?
     
     /**
         The view controller that will present the instance of UIAlertController.
@@ -174,7 +174,7 @@ public class Siren: NSObject
     
         This property must be set before calling checkVersion().
     */
-    var presentingViewController: UIViewController?
+    public var presentingViewController: UIViewController?
     
     // Optional Vars
     /**
@@ -182,7 +182,7 @@ public class Siren: NSObject
     
         By default, it's set to the name of the app that's stored in your plist.
     */
-    lazy var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
+    public lazy var appName: String = (NSBundle.mainBundle().infoDictionary?[kCFBundleNameKey] as? String) ?? ""
     
     /**
         The region or country of an App Store in which your app is available.
@@ -191,19 +191,19 @@ public class Siren: NSObject
         If your app is not available in the US App Store, you should set it to the identifier 
         of at least one App Store within which it is available.
     */
-    var countryCode: String?
+    public var countryCode: String?
     
     /**
         Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
     
         See the SirenLanguageType enum for more details.
     */
-    var forceLanguageLocalization: SirenLanguageType?
+    public var forceLanguageLocalization: SirenLanguageType?
     
     /**
         Overrides the tint color for UIAlertController.
     */
-    var alertControllerTintColor: UIColor?
+    public var alertControllerTintColor: UIColor?
     
     // Private
     private var lastVersionCheckPerformedOnDate: NSDate?
@@ -230,7 +230,7 @@ public class Siren: NSObject
     
         :param: checkType The frequency in days in which you want a check to be performed. Please refer to the SirenVersionCheckType enum for more details.
     */
-    func checkVersion(checkType: SirenVersionCheckType) {
+    public func checkVersion(checkType: SirenVersionCheckType) {
         
         if (appID == nil) {
             println("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")

@@ -18,7 +18,7 @@ If a new version is available, an alert can be presented to the user informing t
 ### Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
-- [x] Localized for 19 languages (See **Localization** Section)
+- [x] Localized for 20 languages (See **Localization** Section)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 
@@ -29,6 +29,7 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
+- Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
 - Requires [CocoaPods 0.36 prerelease](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) or later
 - Only for apps with a minimum deployment target of iOS 8.0 or later
 
@@ -51,7 +52,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	/* Siren code should go below window?.makeKeyAndVisible() */
 	
 	// Siren is a singleton
-	let siren = Siren.SharedInstance
+	let siren = Siren.sharedInstance
 	
 	// Required: Your app's iTunes App Store ID
 	siren.appID = <#Your_App_ID#>
@@ -177,8 +178,12 @@ You can enable it like this:
 ```swift
 Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
-### How to test Siren
-Temporarily change the version string in Xcode to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+### Testing Siren
+Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+
+If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (376771144), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
+
+For your convenience, you may turn on `printn()` debugging statement by setting `self.enableDebug = true` before calling the `checkVersion()` method.
 
 ### App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.

@@ -72,6 +72,7 @@ public enum SirenLanguageType: String
     case Italian = "it"
     case Japanese = "ja"
     case Korean = "ko"
+    case Lithuanian = "lt"
     case Polish = "pl"
     case PortugueseBrazil = "pt"
     case PortuguesePortugal = "pt-PT"

@@ -12,11 +12,8 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.3.4)
-- Fixes scoping issue with .framework that's generated via CocoaPods installation 
-	- Conversation: [Issue #13](https://github.com/ArtSabintsev/Siren/issues/13)
-	- Pull Request: [PR #15](https://github.com/ArtSabintsev/Siren/pull/15)
-	- Massive thanks to [Michael Graff](http://github.com/skandragon)!
+### Changelog (v0.3.5)
+- Added Lithuanian localization (thanks to [Jaroslav_](https://github.com/jaroslavas))
 
 ### Features
 - [x] CocoaPods Support
@@ -172,7 +169,7 @@ Five delegate methods allow you to handle or track the user's behavior:
 ```
 
 ### Force Localization
-Harpy supports 20 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
+Harpy is localized for Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 

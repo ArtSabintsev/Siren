@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Required
         siren.appID = "376771144" // For this example, we're using the iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         
-        // Required
-        siren.presentingViewController = window?.rootViewController
-        
         // Optional
         siren.delegate = self
         

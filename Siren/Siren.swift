@@ -168,15 +168,6 @@ public class Siren: NSObject
     */
     public var appID: String?
     
-    /**
-        The view controller that will present the instance of UIAlertController.
-        
-        It is recommended that you set this value to window?.rootViewController.
-    
-        This property must be set before calling checkVersion().
-    */
-    public var presentingViewController: UIViewController?
-    
     // Optional Vars
     /**
         The name of your app. 
@@ -235,8 +226,6 @@ public class Siren: NSObject
         
         if (appID == nil) {
             println("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
-        } else if (useAlertController && presentingViewController == nil) { // iOS 8 only
-            println("[Siren] Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
             if checkType == .Immediately {
                 performVersionCheck()
@@ -377,7 +366,19 @@ private extension Siren
             }
             
             if alertType != .None {
-                presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+                /*
+                Show the UIAlertController from the rootViewController of a second UIWindow.
+                That way we don't have to worry about which UIViewController is currently being presented.
+                */
+                if UIApplication.sharedApplication().updaterWindow == nil {
+                    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                    window.rootViewController = UIViewController()
+                    window.windowLevel = UIWindowLevelAlert + 1 // make the window appear above all other view controllers and windows
+                    UIApplication.sharedApplication().updaterWindow = window
+                }
+                
+                UIApplication.sharedApplication().updaterWindow.makeKeyAndVisible()
+                UIApplication.sharedApplication().updaterWindow.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
             }
             
         } else { // iOS 7
@@ -409,6 +410,7 @@ private extension Siren
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideAlertWindow()
             self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore?()
             return
@@ -420,6 +422,7 @@ private extension Siren
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideAlertWindow()
             self.delegate?.sirenUserDidCancel?()
             return
         }
@@ -430,12 +433,34 @@ private extension Siren
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideAlertWindow()
             self.delegate?.sirenUserDidSkipVersion?()
             return
         }
         
         return action
     }
+    
+    func hideAlertWindow() {
+        UIApplication.sharedApplication().updaterWindow.hidden = true
+    }
+}
+
+//MARK: Updater Window
+private var UpdaterWindowAssociationKey: UInt8 = 8
+
+private extension UIApplication {
+    
+    // UIWindows need to be strongly referenced otherwise they will be released before they are displayed
+    var updaterWindow: UIWindow! {
+        get {
+            return objc_getAssociatedObject(self, &UpdaterWindowAssociationKey) as? UIWindow
+        }
+        set {
+            objc_setAssociatedObject(self, &UpdaterWindowAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        }
+    }
+    
 }
 
 // MARK: Helpers

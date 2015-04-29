@@ -200,6 +200,7 @@ public class Siren: NSObject
     // Private
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var currentAppStoreVersion: String?
+    private var updaterWindow: UIWindow!
     
     // MARK: Initialization
     public class var sharedInstance: Siren {
@@ -366,19 +367,7 @@ private extension Siren
             }
             
             if alertType != .None {
-                /*
-                Show the UIAlertController from the rootViewController of a second UIWindow.
-                That way we don't have to worry about which UIViewController is currently being presented.
-                */
-                if UIApplication.sharedApplication().updaterWindow == nil {
-                    let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                    window.rootViewController = UIViewController()
-                    window.windowLevel = UIWindowLevelAlert + 1 // make the window appear above all other view controllers and windows
-                    UIApplication.sharedApplication().updaterWindow = window
-                }
-                
-                UIApplication.sharedApplication().updaterWindow.makeKeyAndVisible()
-                UIApplication.sharedApplication().updaterWindow.rootViewController!.presentViewController(alertController, animated: true, completion: nil)
+                alertController.show()
             }
             
         } else { // iOS 7
@@ -410,7 +399,7 @@ private extension Siren
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.hideAlertWindow()
+            self.hideWindow()
             self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore?()
             return
@@ -422,7 +411,7 @@ private extension Siren
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.hideAlertWindow()
+            self.hideWindow()
             self.delegate?.sirenUserDidCancel?()
             return
         }
@@ -433,7 +422,7 @@ private extension Siren
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
-            self.hideAlertWindow()
+            self.hideWindow()
             self.delegate?.sirenUserDidSkipVersion?()
             return
         }
@@ -441,24 +430,25 @@ private extension Siren
         return action
     }
     
-    func hideAlertWindow() {
-        UIApplication.sharedApplication().updaterWindow.hidden = true
+    func hideWindow() {
+        updaterWindow.hidden = true
+        updaterWindow = nil
     }
 }
 
-//MARK: Updater Window
-private var UpdaterWindowAssociationKey: UInt8 = 8
-
-private extension UIApplication {
+// MARK: UIAlertController + UIWindow
+private extension UIAlertController
+{
     
-    // UIWindows need to be strongly referenced otherwise they will be released before they are displayed
-    var updaterWindow: UIWindow! {
-        get {
-            return objc_getAssociatedObject(self, &UpdaterWindowAssociationKey) as? UIWindow
-        }
-        set {
-            objc_setAssociatedObject(self, &UpdaterWindowAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-        }
+    func show() {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.rootViewController = UIViewController()
+        window.windowLevel = UIWindowLevelAlert + 1 // make the window appear above all other view controllers and windows
+        
+        Siren.sharedInstance.updaterWindow = window
+        
+        window.makeKeyAndVisible()
+        window.rootViewController?.presentViewController(self, animated: true, completion: nil)
     }
     
 }

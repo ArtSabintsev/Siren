@@ -168,15 +168,6 @@ public class Siren: NSObject
     */
     public var appID: String?
     
-    /**
-        The view controller that will present the instance of UIAlertController.
-        
-        It is recommended that you set this value to window?.rootViewController.
-    
-        This property must be set before calling checkVersion().
-    */
-    public var presentingViewController: UIViewController?
-    
     // Optional Vars
     /**
         The name of your app. 
@@ -209,6 +200,7 @@ public class Siren: NSObject
     // Private
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var currentAppStoreVersion: String?
+    private var updaterWindow: UIWindow!
     
     // MARK: Initialization
     public class var sharedInstance: Siren {
@@ -235,8 +227,6 @@ public class Siren: NSObject
         
         if (appID == nil) {
             println("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
-        } else if (useAlertController && presentingViewController == nil) { // iOS 8 only
-            println("[Siren] Please make sure that you have set 'presentingViewController' before calling checkVersion.")
         } else {
             if checkType == .Immediately {
                 performVersionCheck()
@@ -377,7 +367,7 @@ private extension Siren
             }
             
             if alertType != .None {
-                presentingViewController?.presentViewController(alertController, animated: true, completion: nil)
+                alertController.show()
             }
             
         } else { // iOS 7
@@ -409,6 +399,7 @@ private extension Siren
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideWindow()
             self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore?()
             return
@@ -420,6 +411,7 @@ private extension Siren
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideWindow()
             self.delegate?.sirenUserDidCancel?()
             return
         }
@@ -430,12 +422,35 @@ private extension Siren
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction!) -> Void in
+            self.hideWindow()
             self.delegate?.sirenUserDidSkipVersion?()
             return
         }
         
         return action
     }
+    
+    func hideWindow() {
+        updaterWindow.hidden = true
+        updaterWindow = nil
+    }
+}
+
+// MARK: UIAlertController + UIWindow
+private extension UIAlertController
+{
+    
+    func show() {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.rootViewController = UIViewController()
+        window.windowLevel = UIWindowLevelAlert + 1 // make the window appear above all other view controllers and windows
+        
+        Siren.sharedInstance.updaterWindow = window
+        
+        window.makeKeyAndVisible()
+        window.rootViewController?.presentViewController(self, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: Helpers

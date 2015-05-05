@@ -429,34 +429,11 @@ private extension Siren
         
         return action
     }
-    
-    func hideWindow() {
-        updaterWindow.hidden = true
-        updaterWindow = nil
-    }
-}
-
-// MARK: UIAlertController + UIWindow
-private extension UIAlertController
-{
-    
-    func show() {
-        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window.rootViewController = UIViewController()
-        window.windowLevel = UIWindowLevelAlert + 1 // make the window appear above all other view controllers and windows
-        
-        Siren.sharedInstance.updaterWindow = window
-        
-        window.makeKeyAndVisible()
-        window.rootViewController?.presentViewController(self, animated: true, completion: nil)
-    }
-    
 }
 
 // MARK: Helpers
 private extension Siren
 {
-    
     func iTunesURLFromString() -> NSURL {
         
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
@@ -517,6 +494,11 @@ private extension Siren
         return alertType
     }
     
+    func hideWindow() {
+        updaterWindow.hidden = true
+        updaterWindow = nil
+    }
+    
     // iOS 8 Compatibility Check
     var useAlertController: Bool { // iOS 8 check
         return objc_getClass("UIAlertController") != nil
@@ -527,6 +509,21 @@ private extension Siren
         let iTunesString =  "https://itunes.apple.com/app/id\(appID!)";
         let iTunesURL = NSURL(string: iTunesString);
         UIApplication.sharedApplication().openURL(iTunesURL!);
+    }
+}
+
+// MARK: UIAlertController
+private extension UIAlertController
+{
+    func show() {
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window.rootViewController = UIViewController()
+        window.windowLevel = UIWindowLevelAlert + 1
+        
+        Siren.sharedInstance.updaterWindow = window
+        
+        window.makeKeyAndVisible()
+        window.rootViewController!.presentViewController(self, animated: true, completion: nil)
     }
 }
 

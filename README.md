@@ -12,8 +12,11 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.3.5)
-- Added Lithuanian localization (thanks to [Jaroslav_](https://github.com/jaroslavas))
+### Changelog (v0.4.0)
+- Added new mechanism to present a `UIAlertController` that now:
+	- Respects device orientation
+	- Is independent of visibility of `rootViewController` when app starts
+	- Massive thanks to [Dylan Bettermann](https://github.com/dbettermann) for [Pull Request #18](https://github.com/ArtSabintsev/Siren/pull/18) 
 
 ### Features
 - [x] CocoaPods Support
@@ -56,9 +59,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	
 	// Required: Your app's iTunes App Store ID
 	siren.appID = <#Your_App_ID#>
-	
-	// Required on iOS 8: The controller to present the alert from (usually the UIWindow's rootViewController)
-	siren.presentingViewController = window?.rootViewController
 	
 	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>

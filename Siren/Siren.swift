@@ -162,6 +162,15 @@ public class Siren: NSObject
     */
     public var patchUpdateAlertType = SirenAlertType.Option
     
+    /**
+    Determines the type of alert that should be shown for minor revision updates: a.b.c.D
+    
+    Defaults to SirenAlertType.Option.
+    
+    See the SirenAlertType enum for full details.
+    */
+    public var revisionUpdateAlertType = SirenAlertType.Option
+    
     // Required Vars
     /**
         The App Store / iTunes Connect ID for your app.
@@ -481,19 +490,15 @@ private extension Siren
         let oldVersion = split(currentInstalledVersion!) {$0 == "."}.map {$0.toInt() ?? 0}
         let newVersion = split(currentAppStoreVersion!) {$0 == "."}.map {$0.toInt() ?? 0}
         
-        if oldVersion.count == 3 && newVersion.count == 3 {
-            if newVersion[0] > oldVersion[0] { // A.b.c
+        if 2...4 ~= oldVersion.count && oldVersion.count == newVersion.count {
+            if newVersion[0] > oldVersion[0] { // A.b[.c][.d]
                 alertType = majorUpdateAlertType
-            } else if newVersion[1] > oldVersion[1] { // a.B.c
+            } else if newVersion[1] > oldVersion[1] { // a.B[.c][.d]
                 alertType = minorUpdateAlertType
-            } else if newVersion[2] > oldVersion[2] { // a.b.C
+            } else if newVersion.count > 2 && newVersion[2] > oldVersion[2] { // a.b.C[.d]
                 alertType = patchUpdateAlertType
-            }
-        } else if oldVersion.count == 2 && newVersion.count == 2 {
-            if newVersion[0] > oldVersion[0] { // A.b
-                alertType = majorUpdateAlertType
-            } else if newVersion[1] > oldVersion[1] { // a.B
-                alertType = minorUpdateAlertType
+            } else if newVersion.count > 3 && newVersion[3] > oldVersion[3] { // a.b.c.D
+                alertType = revisionUpdateAlertType
             }
         }
         

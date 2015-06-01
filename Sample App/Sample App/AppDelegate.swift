@@ -35,8 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional
         siren.debugEnabled = true;
         
-        // Optional
-        siren.alertType = .Option
+        // Optional - Defaults to .Option
+//        siren.alertType = .Option
+        
+        // Optional - can set differentiated Alerts for Revision, Patch, Minor, and Major Updates
+        siren.majorUpdateAlertType = .Option
+        siren.minorUpdateAlertType = .Option
+        siren.patchUpdateAlertType = .None
+        siren.revisionUpdateAlertType = .None
         
         // Optional
 //        siren.forceLanguageLocalization = .Spanish // Optional: Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Spanish.

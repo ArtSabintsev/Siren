@@ -119,7 +119,7 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 > ----
 > #### `siren.alertType = .None`
 >
-> This option doesn't show an alert view. It's useful for skipping Patch, Minor, or Major updates, or for presenting your own UI.
+> This option doesn't show an alert view. It's useful for skipping Revision, Patch, Minor, or Major updates, or for presenting your own UI.
 
 ### Prompting for Updates without Alerts
 
@@ -145,11 +145,12 @@ extension AppDelegate: SirenDelegate
 
 Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
-### Differentiated Alerts for Patch, Minor, and Major Updates
-If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
+### Differentiated Alerts for Revision, Patch, Minor, and Major Updates
+If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
 ```swift
 	/* Siren defaults to SirenAlertType.Option for all updates */
+	siren.sharedInstance().revisionUpdateAlertType = <#SirenAlertType_Enum_Value#>
 	siren.sharedInstance().patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
 	siren.sharedInstance().minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
 	siren.sharedInstance().majorUpdateAlertType = <#SirenAlertType_Enum_Value#>

@@ -489,6 +489,12 @@ private extension Siren
             } else if newVersion[2] > oldVersion[2] { // a.b.C
                 alertType = patchUpdateAlertType
             }
+        } else if oldVersion.count == 2 && newVersion.count == 2 {
+            if newVersion[0] > oldVersion[0] { // A.b
+                alertType = majorUpdateAlertType
+            } else if newVersion[1] > oldVersion[1] { // a.B
+                alertType = minorUpdateAlertType
+            }
         }
         
         return alertType

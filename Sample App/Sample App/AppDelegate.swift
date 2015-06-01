@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.alertType = .Option
         
         // Optional - can set differentiated Alerts for Revision, Patch, Minor, and Major Updates
-        siren.majorUpdateAlertType = .Force
+        siren.majorUpdateAlertType = .Option
         siren.minorUpdateAlertType = .Option
         siren.patchUpdateAlertType = .None
         siren.revisionUpdateAlertType = .None

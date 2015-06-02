@@ -9,14 +9,15 @@
 If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
+	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
+	- Siren also supports two-number versioning (e.g., 1.0)
+	- Siren also supports four-number versioning (e.g., 1.0.0.0) 
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.4.0)
-- Added new mechanism to present a `UIAlertController` that now:
-	- Respects device orientation
-	- Is independent of visibility of `rootViewController` when app starts
-	- Massive thanks to [Dylan Bettermann](https://github.com/dbettermann) for [Pull Request #18](https://github.com/ArtSabintsev/Siren/pull/18) 
+### Changelog (v0.4.1)
+- Added ability to support two-number and four-number versioning systems.
+	- Massive thanks to [Daniel](https://github.com/liebeskind) and [Aaron](https://github.com/getaaron) for [Pull Request #21](https://github.com/ArtSabintsev/Siren/pull/21) 
 
 ### Features
 - [x] CocoaPods Support

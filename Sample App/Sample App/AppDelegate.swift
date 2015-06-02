@@ -38,14 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Defaults to .Option
 //        siren.alertType = .Option
         
-        // Optional - can set differentiated Alerts for Revision, Patch, Minor, and Major Updates
+        // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates
         siren.majorUpdateAlertType = .Option
         siren.minorUpdateAlertType = .Option
-        siren.patchUpdateAlertType = .None
-        siren.revisionUpdateAlertType = .None
+        siren.patchUpdateAlertType = .Option
+        siren.revisionUpdateAlertType = .Option
         
-        // Optional
-//        siren.forceLanguageLocalization = .Spanish // Optional: Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Spanish.
+        // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Spanish.
+//        siren.forceLanguageLocalization = .Spanish
         
         // Required
         siren.checkVersion(.Immediately)
@@ -71,7 +71,7 @@ extension AppDelegate: SirenDelegate
     }
     
     /**
-        This method is only hit when alertType is initialized to .None
+        This delegate method is only hit when alertType is initialized to .None
     */
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         println("\(message)")

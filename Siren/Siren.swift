@@ -163,7 +163,7 @@ public class Siren: NSObject
     public var patchUpdateAlertType = SirenAlertType.Option
     
     /**
-    Determines the type of alert that should be shown for minor revision updates: a.b.c.D
+    Determines the type of alert that should be shown for revision updates: a.b.c.D
     
     Defaults to SirenAlertType.Option.
     

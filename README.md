@@ -15,9 +15,8 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.4.1)
-- Added ability to support two-number and four-number versioning systems.
-	- Massive thanks to [Daniel](https://github.com/liebeskind) and [Aaron](https://github.com/getaaron) for [Pull Request #21](https://github.com/ArtSabintsev/Siren/pull/21) 
+### Changelog (v0.4.2)
+- Added Arabic localization
 
 ### Features
 - [x] CocoaPods Support

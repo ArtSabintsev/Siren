@@ -60,6 +60,7 @@ public enum SirenVersionCheckType : Int
 */
 public enum SirenLanguageType: String
 {
+    case Arabic = "ar"
     case Basque = "eu"
     case ChineseSimplified = "zh-Hans"
     case ChineseTraditional = "zh-Hant"

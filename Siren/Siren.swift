@@ -572,7 +572,7 @@ private extension NSBundle
     }
 
     func sirenBundlePath() -> String {
-        return NSBundle.mainBundle().pathForResource("Siren", ofType: "bundle") as String!
+        return NSBundle(forClass: Siren.self).pathForResource("Siren", ofType: "bundle") as String!
     }
 
     func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {

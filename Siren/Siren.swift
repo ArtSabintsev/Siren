@@ -81,6 +81,7 @@ public enum SirenLanguageType: String
     case Slovenian = "sl"
     case Spanish = "es"
     case Swedish = "sv"
+    case Thai = "th"
     case Turkish = "tr"
 }
 

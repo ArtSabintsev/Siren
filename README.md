@@ -15,8 +15,9 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.4.2)
-- Added Arabic localization
+### Changelog (v0.4.3)
+- Added Thai localization (thanks to [Parnsind Hantrakool](https://github.com/kong707))
+- Fixed crash involving localization NSBundle being improperly references when Siren is installed via Cocoapods (thanks to [nagaho](https://github.com/nagaho))
 
 ### Features
 - [x] CocoaPods Support
@@ -33,7 +34,6 @@ pod 'Siren'
 ```
 
 - Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
-- Requires [CocoaPods 0.36 prerelease](http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/) or later
 - Only for apps with a minimum deployment target of iOS 8.0 or later
 
     > CocoaPods does not support pods written in Swift on iOS 7. For more information, please see [this issue](https://github.com/CocoaPods/swift/issues/22).
@@ -170,7 +170,7 @@ Five delegate methods allow you to handle or track the user's behavior:
 ```
 
 ### Force Localization
-Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
+Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
@@ -182,7 +182,7 @@ Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLangua
 ### Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
-If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (376771144), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
+If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
 
 For your convenience, you may turn on `printn()` debugging statements by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
 

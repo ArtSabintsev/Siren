@@ -1,0 +1,14 @@
+/* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
+"A new version of %@ is available. Please update to version %@ now." = "Új verziója érhető el a %@ alkalmazásnak. Kérjük frissítsen a %@ verzióra.";
+
+/* Update alert title */
+"Update Available" = "Új frissítés érhető el";
+
+/* Update alert dismiss button title */
+"Next time" = "Később";
+
+/* Update alert skip button title */
+"Skip this version" = "Ennél a verziónál ne figyelmeztessen";
+
+/* Update alert skip button title */
+"Update" = "Frissítés";

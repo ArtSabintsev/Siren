@@ -11,13 +11,12 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
 	- Siren also supports two-number versioning (e.g., 1.0)
-	- Siren also supports four-number versioning (e.g., 1.0.0.0) 
+	- Siren also supports four-number versioning (e.g., 1.0.0.0)
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.4.3)
-- Added Thai localization (thanks to [Parnsind Hantrakool](https://github.com/kong707))
-- Fixed crash involving localization NSBundle being improperly references when Siren is installed via Cocoapods (thanks to [nagaho](https://github.com/nagaho))
+### Changelog (v0.4.4)
+- Added Hungarian localization (thanks to [Tibor Molnár](https://github.com/fatalaa))
 
 ### Features
 - [x] CocoaPods Support
@@ -37,7 +36,7 @@ pod 'Siren'
 - Only for apps with a minimum deployment target of iOS 8.0 or later
 
     > CocoaPods does not support pods written in Swift on iOS 7. For more information, please see [this issue](https://github.com/CocoaPods/swift/issues/22).
-  
+
 If your app needs to support iOS 7, use **Manual Installation**.
 
 #### Manual Installation
@@ -45,24 +44,24 @@ If your app needs to support iOS 7, use **Manual Installation**.
 1. [Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
 2. Copy the `Siren` folder into your project.
 
-### Setup Instructions	
+### Setup Instructions
 
 Here's some commented sample code. Adapt this to meet your app's needs.
 
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
 {
 	/* Siren code should go below window?.makeKeyAndVisible() */
-	
+
 	// Siren is a singleton
 	let siren = Siren.sharedInstance
-	
+
 	// Required: Your app's iTunes App Store ID
 	siren.appID = <#Your_App_ID#>
-	
+
 	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>
-	
+
 	/*
 	    Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
 	    checks.
@@ -70,22 +69,22 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     siren.checkVersion(.Immediately)
 }
 
-func applicationDidBecomeActive(application: UIApplication) 
+func applicationDidBecomeActive(application: UIApplication)
 {
 	/*
-	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app. 
+	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app.
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
-    	 
+
     Siren.sharedInstance.checkVersion(.Daily)
 }
 
-func applicationWillEnterForeground(application: UIApplication) 
+func applicationWillEnterForeground(application: UIApplication)
 {
    /*
 	    Useful if user returns to your app from the background after being sent to the
 	    App Store, but doesn't update their app before coming back to your app.
-	    
+
        ONLY USE WITH SirenAlertType.Force
    */
 
@@ -100,16 +99,16 @@ And you're all set!
 Siren can force an update, let the user optionally update, and allow the user to skip an update.
 
 To control this behavior, assign a `SirenAlertType` to `alertType` (or one of the specific alert type properties).
- 
+
 > #### `siren.alertType = .Force`
 >
 > Forces the user to update.
 >
-> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
+> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update")
 > ----
 > #### `siren.alertType = .Option`
-> The default behavior. 
-> 
+> The default behavior.
+>
 > ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
 > ----
 > #### `siren.alertType = .Skip`
@@ -126,7 +125,7 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
 
 ```swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool 
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
 {
 	...
 	siren.delegate = self
@@ -170,7 +169,7 @@ Five delegate methods allow you to handle or track the user's behavior:
 ```
 
 ### Force Localization
-Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
+Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 

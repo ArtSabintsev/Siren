@@ -1,0 +1,14 @@
+/* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
+"A new version of %@ is available. Please update to version %@ now." = "Pieejama jauna %@ versija.  Lūdzam atjaunot līdz %@ versijai.";
+
+/* Update alert title */
+"Update Available" = "Atjaunojums";
+
+/* Update alert dismiss button title */
+"Next time" = "Nākošreiz";
+
+/* Update alert skip button title */
+"Skip this version" = "Palaist garām šo versiju";
+
+/* Update alert skip button title */
+"Update" = "Atjaunot";

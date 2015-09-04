@@ -511,8 +511,10 @@ private extension Siren
     }
     
     func hideWindow() {
-        updaterWindow.hidden = true
-        updaterWindow = nil
+        if updaterWindow != nil {
+            updaterWindow.hidden = true
+            updaterWindow = nil
+        }
     }
     
     // iOS 8 Compatibility Check

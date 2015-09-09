@@ -44,7 +44,7 @@ public enum SirenAlertType
     - .Weekly: Version check performed once a week
 
 */
-public enum SirenVersionCheckType : Int
+public enum SirenVersionCheckType: Int
 {
     case Immediately = 0    // Version check performed every time the app is launched
     case Daily = 1          // Version check performed once a day
@@ -239,8 +239,9 @@ public class Siren: NSObject
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
         
-        guard let appID = appID else {
+        guard let _ = appID else {
             print("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
+            return
         }
 
         if checkType == .Immediately {

@@ -55,25 +55,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: SirenDelegate
 {
     func sirenDidShowUpdateDialog() {
-        println("sirenDidShowUpdateDialog")
+        print("sirenDidShowUpdateDialog")
     }
     
     func sirenUserDidCancel() {
-        println("sirenUserDidCancel")
+        print("sirenUserDidCancel")
     }
     
     func sirenUserDidSkipVersion() {
-        println("sirenUserDidSkipVersion")
+        print("sirenUserDidSkipVersion")
     }
     
     func sirenUserDidLaunchAppStore() {
-        println("sirenUserDidLaunchAppStore")
+        print("sirenUserDidLaunchAppStore")
     }
     
     /**
         This delegate method is only hit when alertType is initialized to .None
     */
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
-        println("\(message)")
+        print("\(message)")
     }
 }

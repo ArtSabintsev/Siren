@@ -239,22 +239,20 @@ public class Siren: NSObject
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
         
-        if (appID == nil) {
+        guard let appID = appID else {
             print("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
+        }
+
+        if checkType == .Immediately {
+            performVersionCheck()
         } else {
-            if checkType == .Immediately {
+            guard let _ = lastVersionCheckPerformedOnDate else {
                 performVersionCheck()
-            } else {
-                
-                guard let _ = lastVersionCheckPerformedOnDate else {
-                    performVersionCheck()
-                    return
-                }
-                
-                if daysSinceLastVersionCheckDate() >= checkType.rawValue {
-                    performVersionCheck()
-                }
-                
+                return
+            }
+            
+            if daysSinceLastVersionCheckDate() >= checkType.rawValue {
+                performVersionCheck()
             }
         }
     }

@@ -280,7 +280,11 @@ public class Siren: NSObject
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
-            guard let error = error else {
+            if let error = error {
+                if self.debugEnabled {
+                    print("[Siren] Error retrieving App Store data as an error was returned: \(error.localizedDescription)")
+                }
+            } else {
                 guard let data = data else {
                     if self.debugEnabled {
                         print("[Siren] Error retrieving App Store data as no data was returned.")
@@ -316,11 +320,6 @@ public class Siren: NSObject
                         print("[Siren] Error retrieving App Store data as data was nil: \(error.localizedDescription)")
                     }
                 }
-                return
-            }
-
-            if self.debugEnabled {
-                print("[Siren] Error retrieving App Store data as an error was returned: \(error.localizedDescription)")
             }
             
         })

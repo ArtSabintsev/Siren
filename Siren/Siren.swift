@@ -17,6 +17,14 @@ import UIKit
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 
+// MARK: Private Constants
+// NSUserDefault key that stores the timestamp of the last version check
+private let SirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
+
+// NSUserDefault key that stores the version that a user decided to skip
+private let SirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
+
+
 // MARK: Enumerations
 /**
     Determines the type of alert to present after a successful version check has been performed.
@@ -97,13 +105,7 @@ public enum SirenLanguageType: String
 public class Siren: NSObject
 {
 
-    // MARK: Constants    
-    // NSUserDefault key that stores the timestamp of the last version check
-    let sirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
-    
-    // NSUserDefault key that stores the version that a user decided to skip
-    let sirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
-    
+    // MARK: Constants
     // Current installed version of your app
     let currentInstalledVersion = NSBundle.mainBundle().currentInstalledVersion()
     
@@ -234,7 +236,7 @@ public class Siren: NSObject
     }
     
     override init() {
-        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultStoredVersionCheckDate) as? NSDate;
+        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenDefaultStoredVersionCheckDate) as? NSDate;
     }
     
     // MARK: Check Version
@@ -369,7 +371,7 @@ private extension Siren
         
         alertType = setAlertType()
         
-        guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultSkippedVersion) as? String else {
+        guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(SirenDefaultSkippedVersion) as? String else {
             showAlert()
             return
         }
@@ -464,6 +466,10 @@ private extension Siren
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) -> Void in
+            if let currentAppStoreVersion = self.currentAppStoreVersion {
+                NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenDefaultSkippedVersion)
+                NSUserDefaults.standardUserDefaults().synchronize()
+            }
             self.hideWindow()
             self.delegate?.sirenUserDidSkipVersion?()
             return
@@ -513,7 +519,7 @@ private extension Siren
     func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = NSDate()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-            NSUserDefaults.standardUserDefaults().setObject(lastVersionCheckPerformedOnDate, forKey: sirenDefaultStoredVersionCheckDate)
+            NSUserDefaults.standardUserDefaults().setObject(lastVersionCheckPerformedOnDate, forKey: SirenDefaultStoredVersionCheckDate)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -654,7 +660,7 @@ extension Siren: UIAlertViewDelegate
         case .Skip:
             if buttonIndex == 0 { // Launch App Store.app
                 if let currentAppStoreVersion = currentAppStoreVersion {
-                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: sirenDefaultSkippedVersion)
+                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenDefaultSkippedVersion)
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
                 delegate?.sirenUserDidSkipVersion?()

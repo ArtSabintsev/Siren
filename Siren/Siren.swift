@@ -194,7 +194,7 @@ public class Siren: NSObject {
     
         By default, it's set to the name of the app that's stored in your plist.
     */
-    public lazy var appName: String = (NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) ?? "") as! String
+    public lazy var appName: String = (NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) as? String) ?? ""
     
     /**
         The region or country of an App Store in which your app is available.

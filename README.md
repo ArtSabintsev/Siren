@@ -18,8 +18,8 @@ If a new version is available, an alert can be presented to the user informing t
 ### Changelog (v0.5.0)
 - Updated to use Swift 2.0
 - Updated for iOS 9
-- Closes Issues 24/27 (Issue with updaterWindow crashing the app on)
-- Closes Issue 25 (Issue with alertType not propogating setting to majorUpdateAlertType, minorUpdateAlertType, patchUpdateAlertType, revisionUpdateAlertType)
+- Closes issues 24/27 (Issue with updaterWindow crashing the app on)
+- Closes issue 25 (Issue with alertType not propagating setting to `majorUpdateAlertType`, `minorUpdateAlertType`, `patchUpdateAlertType`, `revisionUpdateAlertType`)
 - Closes Issue 26 (Issue with devices running iOS 8+ not storing user's preference to skip current update)
 
 ### Features

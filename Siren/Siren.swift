@@ -28,8 +28,7 @@ import UIKit
         - None: Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method
 
 */
-public enum SirenAlertType
-{
+public enum SirenAlertType {
     case Force        // Forces user to update your app (1 button alert)
     case Option       // (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
     case Skip         // Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
@@ -44,8 +43,7 @@ public enum SirenAlertType
     - .Weekly: Version check performed once a week
 
 */
-public enum SirenVersionCheckType: Int
-{
+public enum SirenVersionCheckType: Int {
     case Immediately = 0    // Version check performed every time the app is launched
     case Daily = 1          // Version check performed once a day
     case Weekly = 7         // Version check performed once a week
@@ -58,8 +56,7 @@ public enum SirenVersionCheckType: Int
     by setting the forceLanguageLocalization property before calling checkVersion()
 
 */
-public enum SirenLanguageType: String
-{
+public enum SirenLanguageType: String {
     case Arabic = "ar"
     case Basque = "eu"
     case ChineseSimplified = "zh-Hans"
@@ -89,10 +86,9 @@ public enum SirenLanguageType: String
 }
 
 /** 
-    Siren-sepcific NSUserDefault Keys
+    Siren-specific NSUserDefault Keys
 */
-private enum SirenUserDefaults: String
-{
+private enum SirenUserDefaults: String {
     case StoredVersionCheckDate     // NSUserDefault key that stores the timestamp of the last version check
     case StoredSkippedVersion       // NSUserDefault key that stores the version that a user decided to skip
 }
@@ -103,8 +99,7 @@ private enum SirenUserDefaults: String
     
     A singleton that is initialized using the sharedInstance() method.
 */
-public class Siren: NSObject
-{
+public class Siren: NSObject {
 
     // MARK: Constants
     // Current installed version of your app
@@ -365,8 +360,7 @@ public class Siren: NSObject
 }
 
 // MARK: Alert
-private extension Siren
-{
+private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         
         alertType = setAlertType()
@@ -480,8 +474,7 @@ private extension Siren
 }
 
 // MARK: Helpers
-private extension Siren
-{
+private extension Siren {
     func iTunesURLFromString() -> NSURL {
         
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
@@ -569,8 +562,7 @@ private extension Siren
 }
 
 // MARK: UIAlertController
-private extension UIAlertController
-{
+private extension UIAlertController {
     func show() {
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window.rootViewController = UIViewController()
@@ -584,8 +576,7 @@ private extension UIAlertController
 }
 
 // MARK: String Localization
-private extension Siren
-{
+private extension Siren {
     func localizedNewVersionMessage() -> String {
         
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
@@ -612,8 +603,7 @@ private extension Siren
 }
 
 // MARK: NSBundle Extension
-private extension NSBundle
-{
+private extension NSBundle {
     func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
@@ -642,8 +632,7 @@ private extension NSBundle
 }
 
 // MARK: UIAlertViewDelegate
-extension Siren: UIAlertViewDelegate
-{
+extension Siren: UIAlertViewDelegate {
     public func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         
         switch alertType {

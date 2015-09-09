@@ -139,6 +139,14 @@ public class Siren: NSObject
         See the SirenAlertType enum for full details.
     */
     public var alertType = SirenAlertType.Option
+        {
+        didSet {
+            majorUpdateAlertType = alertType
+            minorUpdateAlertType = alertType
+            patchUpdateAlertType = alertType
+            revisionUpdateAlertType = alertType
+        }
+    }
     
     /**
     Determines the type of alert that should be shown for major version updates: A.b.c

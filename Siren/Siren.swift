@@ -237,7 +237,7 @@ public class Siren: NSObject
     }
     
     override init() {
-        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredVersionCheckDate.rawValue) as? NSDate;
+        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredVersionCheckDate.rawValue) as? NSDate
     }
     
     // MARK: Check Version
@@ -303,7 +303,7 @@ public class Siren: NSObject
                         
                         // Print iTunesLookup results from appData
                         if self.debugEnabled {
-                            print("[Siren] JSON results: \(appData)");
+                            print("[Siren] JSON results: \(appData)")
                         }
                         
                         // Process Results (e.g., extract current version on the AppStore)
@@ -387,7 +387,7 @@ private extension Siren
     func showAlert() {
         
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
-        let newVersionMessage = localizedNewVersionMessage();
+        let newVersionMessage = localizedNewVersionMessage()
         
         if (useAlertController) { // iOS 8
             
@@ -399,14 +399,14 @@ private extension Siren
             
             switch alertType {
             case .Force:
-                alertController.addAction(updateAlertAction());
+                alertController.addAction(updateAlertAction())
             case .Option:
-                alertController.addAction(nextTimeAlertAction());
-                alertController.addAction(updateAlertAction());
+                alertController.addAction(nextTimeAlertAction())
+                alertController.addAction(updateAlertAction())
             case .Skip:
-                alertController.addAction(nextTimeAlertAction());
-                alertController.addAction(updateAlertAction());
-                alertController.addAction(skipAlertAction());
+                alertController.addAction(nextTimeAlertAction())
+                alertController.addAction(updateAlertAction())
+                alertController.addAction(skipAlertAction())
             case .None:
                 delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
             }
@@ -492,7 +492,7 @@ private extension Siren
         }
         
         if debugEnabled {
-            print("[Siren] iTunes Lookup URL: \(storeURLString)");
+            print("[Siren] iTunes Lookup URL: \(storeURLString)")
         }
         
         return NSURL(string: storeURLString)!
@@ -563,9 +563,9 @@ private extension Siren
     
     // Actions
     func launchAppStore() {
-        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)";
-        let iTunesURL = NSURL(string: iTunesString);
-        UIApplication.sharedApplication().openURL(iTunesURL!);
+        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
+        let iTunesURL = NSURL(string: iTunesString)
+        UIApplication.sharedApplication().openURL(iTunesURL!)
     }
 }
 
@@ -608,7 +608,7 @@ private extension Siren
     }
     
     func localizedSkipButtonTitle() -> String {
-        return NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization);
+        return NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 

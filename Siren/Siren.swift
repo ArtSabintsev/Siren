@@ -255,12 +255,12 @@ public class Siren: NSObject
         if checkType == .Immediately {
             performVersionCheck()
         } else {
-            guard let _ = lastVersionCheckPerformedOnDate else {
+            guard let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate else {
                 performVersionCheck()
                 return
             }
             
-            if daysSinceLastVersionCheckDate() >= checkType.rawValue {
+            if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             }
         }
@@ -369,12 +369,15 @@ private extension Siren
         
         alertType = setAlertType()
         
-        if let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultSkippedVersion) as? String {
-            if currentAppStoreVersion! != previouslySkippedVersion {
+        guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(sirenDefaultSkippedVersion) as? String else {
+            showAlert()
+            return
+        }
+        
+        if let currentAppStoreVersion = currentAppStoreVersion {
+            if currentAppStoreVersion != previouslySkippedVersion {
                 showAlert()
             }
-        } else {
-            showAlert()
         }
     }
     
@@ -488,9 +491,9 @@ private extension Siren
         return NSURL(string: storeURLString)!
     }
     
-    func daysSinceLastVersionCheckDate() -> Int {
+    func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.Day, fromDate: NSDate(), toDate: lastVersionCheckPerformedOnDate!, options: [])
+        let components = calendar.components(.Day, fromDate: NSDate(), toDate: lastVersionCheckPerformedOnDate, options: [])
         return components.day
     }
     
@@ -498,8 +501,8 @@ private extension Siren
         
         var newVersionExists = false
         
-        if let currentInstalledVersion = currentInstalledVersion {
-            if (currentInstalledVersion.compare(currentAppStoreVersion!, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+        if let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion {
+            if (currentInstalledVersion.compare(currentAppStoreVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
                 newVersionExists = true
             }
         }
@@ -517,8 +520,12 @@ private extension Siren
     
     func setAlertType() -> SirenAlertType {
         
-        let oldVersion = (currentInstalledVersion!).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
-        let newVersion = (currentAppStoreVersion!).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        guard let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion else {
+            return .Option
+        }
+        
+        let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
         
         if 2...4 ~= oldVersion.count && oldVersion.count == newVersion.count {
             if newVersion[0] > oldVersion[0] { // A.b[.c][.d]
@@ -576,22 +583,25 @@ private extension Siren
     func localizedNewVersionMessage() -> String {
         
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
-        var newVersionMessage = NSBundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
-        newVersionMessage = String(format: newVersionMessage!, appName, currentAppStoreVersion!)
+        let newVersionMessage = NSBundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
         
-        return newVersionMessage!
+        guard let currentAppStoreVersion = currentAppStoreVersion else {
+            return String(format: newVersionMessage, appName, "Unknown")
+        }
+        
+        return String(format: newVersionMessage, appName, currentAppStoreVersion)
     }
     
     func localizedUpdateButtonTitle() -> String {
-        return NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)!
+        return NSBundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
     }
     
     func localizedNextTimeButtonTitle() -> String {
-        return NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)!
+        return NSBundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
     }
     
     func localizedSkipButtonTitle() -> String {
-        return NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)!;
+        return NSBundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization);
     }
 }
 
@@ -612,7 +622,7 @@ private extension NSBundle
         return NSBundle(path: path)!.pathForResource(name, ofType: "lproj")!
     }
 
-    func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String? {
+    func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
@@ -621,7 +631,7 @@ private extension NSBundle
             path = sirenBundlePath()
         }
         
-        return NSBundle(path: path)?.localizedStringForKey(stringKey, value: stringKey, table: table)
+        return NSBundle(path: path)!.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
 }
 
@@ -643,8 +653,10 @@ extension Siren: UIAlertViewDelegate
             }
         case .Skip:
             if buttonIndex == 0 { // Launch App Store.app
-                NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion!, forKey: sirenDefaultSkippedVersion)
-                NSUserDefaults.standardUserDefaults().synchronize()
+                if let currentAppStoreVersion = currentAppStoreVersion {
+                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: sirenDefaultSkippedVersion)
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                }
                 delegate?.sirenUserDidSkipVersion?()
             } else if buttonIndex == 1 {
                 launchAppStore()

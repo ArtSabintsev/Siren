@@ -222,7 +222,7 @@ public class Siren: NSObject
     // Private
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var currentAppStoreVersion: String?
-    private var updaterWindow: UIWindow!
+    private var updaterWindow: UIWindow?
     
     // MARK: Initialization
     public class var sharedInstance: Siren {
@@ -536,8 +536,10 @@ private extension Siren
     }
     
     func hideWindow() {
-        updaterWindow.hidden = true
-        updaterWindow = nil
+        if let updaterWindow = updaterWindow {
+            updaterWindow.hidden = true
+            self.updaterWindow = nil
+        }
     }
     
     // iOS 8 Compatibility Check

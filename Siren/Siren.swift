@@ -17,14 +17,6 @@ import UIKit
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 
-// MARK: Private Constants
-// NSUserDefault key that stores the timestamp of the last version check
-private let SirenDefaultStoredVersionCheckDate = "Siren Stored Date From Last Version Check"
-
-// NSUserDefault key that stores the version that a user decided to skip
-private let SirenDefaultSkippedVersion = "Siren User Decided To Skip Version Update"
-
-
 // MARK: Enumerations
 /**
     Determines the type of alert to present after a successful version check has been performed.
@@ -94,6 +86,15 @@ public enum SirenLanguageType: String
     case Swedish = "sv"
     case Thai = "th"
     case Turkish = "tr"
+}
+
+/** 
+    Siren-sepcific NSUserDefault Keys
+*/
+private enum SirenUserDefaults: String
+{
+    case StoredVersionCheckDate     // NSUserDefault key that stores the timestamp of the last version check
+    case StoredSkippedVersion       // NSUserDefault key that stores the version that a user decided to skip
 }
 
 // MARK: Siren
@@ -236,7 +237,7 @@ public class Siren: NSObject
     }
     
     override init() {
-        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenDefaultStoredVersionCheckDate) as? NSDate;
+        lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredVersionCheckDate.rawValue) as? NSDate;
     }
     
     // MARK: Check Version
@@ -332,7 +333,7 @@ public class Siren: NSObject
         // Store version comparison date
         storeVersionCheckDate()
 
-        guard  let results = lookupResults["results"] as? [[String: AnyObject]] else {
+        guard let results = lookupResults["results"] as? [[String: AnyObject]] else {
             if debugEnabled {
                 print("[Siren] Error retrieving App Store verson number as there was no data returned")
             }
@@ -371,7 +372,7 @@ private extension Siren
         
         alertType = setAlertType()
         
-        guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(SirenDefaultSkippedVersion) as? String else {
+        guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredSkippedVersion.rawValue) as? String else {
             showAlert()
             return
         }
@@ -467,7 +468,7 @@ private extension Siren
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) -> Void in
             if let currentAppStoreVersion = self.currentAppStoreVersion {
-                NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenDefaultSkippedVersion)
+                NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
                 NSUserDefaults.standardUserDefaults().synchronize()
             }
             self.hideWindow()
@@ -519,7 +520,7 @@ private extension Siren
     func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = NSDate()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-            NSUserDefaults.standardUserDefaults().setObject(lastVersionCheckPerformedOnDate, forKey: SirenDefaultStoredVersionCheckDate)
+            NSUserDefaults.standardUserDefaults().setObject(lastVersionCheckPerformedOnDate, forKey: SirenUserDefaults.StoredVersionCheckDate.rawValue)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -660,7 +661,7 @@ extension Siren: UIAlertViewDelegate
         case .Skip:
             if buttonIndex == 0 { // Launch App Store.app
                 if let currentAppStoreVersion = currentAppStoreVersion {
-                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenDefaultSkippedVersion)
+                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
                 delegate?.sirenUserDidSkipVersion?()

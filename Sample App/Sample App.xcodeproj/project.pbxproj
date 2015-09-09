@@ -105,7 +105,9 @@
 		8EC391791A58B465001C121E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sabintsev iOS Projects";
 				TargetAttributes = {
 					8EC391801A58B465001C121E = {
@@ -198,6 +200,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -262,6 +265,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
 			};
 			name = Debug;
@@ -273,6 +277,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
 			};
 			name = Release;

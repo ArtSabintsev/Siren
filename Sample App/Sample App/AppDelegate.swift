@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.debugEnabled = true;
         
         // Optional - Defaults to .Option
-//        siren.alertType = .Option
+//        siren.alertType = .Option // or .Force, .Skip, .None
         
-        // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates
+        // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
         siren.majorUpdateAlertType = .Option
         siren.minorUpdateAlertType = .Option
         siren.patchUpdateAlertType = .Option
@@ -55,25 +55,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: SirenDelegate
 {
     func sirenDidShowUpdateDialog() {
-        println("sirenDidShowUpdateDialog")
+        print("sirenDidShowUpdateDialog")
     }
     
     func sirenUserDidCancel() {
-        println("sirenUserDidCancel")
+        print("sirenUserDidCancel")
     }
     
     func sirenUserDidSkipVersion() {
-        println("sirenUserDidSkipVersion")
+        print("sirenUserDidSkipVersion")
     }
     
     func sirenUserDidLaunchAppStore() {
-        println("sirenUserDidLaunchAppStore")
+        print("sirenUserDidLaunchAppStore")
     }
     
     /**
         This delegate method is only hit when alertType is initialized to .None
     */
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
-        println("\(message)")
+        print("\(message)")
     }
 }

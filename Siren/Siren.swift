@@ -406,6 +406,7 @@ private extension Siren {
             
             if alertType != .None {
                 alertController.show()
+                delegate?.sirenDidShowUpdateDialog?()
             }
             
         } else { // iOS 7
@@ -430,6 +431,7 @@ private extension Siren {
             
             if let alertView = alertView {
                 alertView.show()
+                delegate?.sirenDidShowUpdateDialog?()
             }
         }
     }

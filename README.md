@@ -15,6 +15,9 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
+### Changelog (v0.5.1)
+- Fixed [#31](https://github.com/ArtSabintsev/Siren/issues/31): `sirenDidShowUpdateDialog()` delegate method now being called properly.
+
 ### Changelog (v0.5.0)
 - Updated to use Swift 2.0
 - Updated for iOS 9

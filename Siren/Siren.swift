@@ -381,58 +381,30 @@ private extension Siren {
         
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
+
+        let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
         
-        if (useAlertController) { // iOS 8
-            
-            let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
-            
-            if let alertControllerTintColor = alertControllerTintColor {
-                alertController.view.tintColor = alertControllerTintColor
-            }
-            
-            switch alertType {
-            case .Force:
-                alertController.addAction(updateAlertAction())
-            case .Option:
-                alertController.addAction(nextTimeAlertAction())
-                alertController.addAction(updateAlertAction())
-            case .Skip:
-                alertController.addAction(nextTimeAlertAction())
-                alertController.addAction(updateAlertAction())
-                alertController.addAction(skipAlertAction())
-            case .None:
-                delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
-            }
-            
-            if alertType != .None {
-                alertController.show()
-                delegate?.sirenDidShowUpdateDialog?()
-            }
-            
-        } else { // iOS 7
-            
-            var alertView: UIAlertView?
-            let updateButtonTitle = localizedUpdateButtonTitle()
-            let nextTimeButtonTitle = localizedNextTimeButtonTitle()
-            let skipButtonTitle = localizedSkipButtonTitle()
-            switch alertType {
-            case .Force:
-                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: updateButtonTitle)
-            case .Option:
-                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: nextTimeButtonTitle)
-                alertView!.addButtonWithTitle(updateButtonTitle)
-            case .Skip:
-                alertView = UIAlertView(title: updateAvailableMessage, message: newVersionMessage, delegate: self, cancelButtonTitle: skipButtonTitle)
-                alertView!.addButtonWithTitle(updateButtonTitle)
-                alertView!.addButtonWithTitle(nextTimeButtonTitle)
-            case .None:
-                delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
-            }
-            
-            if let alertView = alertView {
-                alertView.show()
-                delegate?.sirenDidShowUpdateDialog?()
-            }
+        if let alertControllerTintColor = alertControllerTintColor {
+            alertController.view.tintColor = alertControllerTintColor
+        }
+        
+        switch alertType {
+        case .Force:
+            alertController.addAction(updateAlertAction())
+        case .Option:
+            alertController.addAction(nextTimeAlertAction())
+            alertController.addAction(updateAlertAction())
+        case .Skip:
+            alertController.addAction(nextTimeAlertAction())
+            alertController.addAction(updateAlertAction())
+            alertController.addAction(skipAlertAction())
+        case .None:
+            delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
+        }
+        
+        if alertType != .None {
+            alertController.show()
+            delegate?.sirenDidShowUpdateDialog?()
         }
     }
     
@@ -529,11 +501,11 @@ private extension Siren {
         let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
         
         if 2...4 ~= oldVersion.count && oldVersion.count == newVersion.count {
-            if newVersion[0] > oldVersion[0] { // A.b[.c][.d]
+            if newVersion[0] > oldVersion[0] { // A.b.c.d
                 alertType = majorUpdateAlertType
-            } else if newVersion[1] > oldVersion[1] { // a.B[.c][.d]
+            } else if newVersion[1] > oldVersion[1] { // a.B.c.d
                 alertType = minorUpdateAlertType
-            } else if newVersion.count > 2 && newVersion[2] > oldVersion[2] { // a.b.C[.d]
+            } else if newVersion.count > 2 && newVersion[2] > oldVersion[2] { // a.b.C.d
                 alertType = patchUpdateAlertType
             } else if newVersion.count > 3 && newVersion[3] > oldVersion[3] { // a.b.c.D
                 alertType = revisionUpdateAlertType
@@ -548,11 +520,6 @@ private extension Siren {
             updaterWindow.hidden = true
             self.updaterWindow = nil
         }
-    }
-    
-    // iOS 8 Compatibility Check
-    var useAlertController: Bool { // iOS 8 check
-        return objc_getClass("UIAlertController") != nil
     }
     
     // Actions
@@ -630,41 +597,5 @@ private extension NSBundle {
         }
         
         return NSBundle(path: path)!.localizedStringForKey(stringKey, value: stringKey, table: table)
-    }
-}
-
-// MARK: UIAlertViewDelegate
-extension Siren: UIAlertViewDelegate {
-    public func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        
-        switch alertType {
-            
-        case .Force:
-            launchAppStore()
-        case .Option:
-            if buttonIndex == 1 { // Launch App Store.app
-                launchAppStore()
-                delegate?.sirenUserDidLaunchAppStore?()
-            } else { // Ask user on next launch
-                delegate?.sirenUserDidCancel?()
-            }
-        case .Skip:
-            if buttonIndex == 0 { // Launch App Store.app
-                if let currentAppStoreVersion = currentAppStoreVersion {
-                    NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                }
-                delegate?.sirenUserDidSkipVersion?()
-            } else if buttonIndex == 1 {
-                launchAppStore()
-                delegate?.sirenUserDidLaunchAppStore?()
-            } else if buttonIndex == 2 { // Ask user on next launch
-                delegate?.sirenUserDidCancel?()
-            }
-        case .None:
-            if debugEnabled {
-                 print("[Siren] No alert presented due to alertType == .None")
-            }
-        }
     }
 }

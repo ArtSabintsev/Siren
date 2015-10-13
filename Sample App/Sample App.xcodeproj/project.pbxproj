@@ -112,7 +112,6 @@
 				TargetAttributes = {
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 2W8MN6H3YE;
 					};
 				};
 			};
@@ -263,14 +262,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appdirect.Sample-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -278,14 +274,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appdirect.Sample-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

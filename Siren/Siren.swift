@@ -281,65 +281,68 @@ public class Siren: NSObject {
         case .AppStore:
             performVersionCheckAppStore()
             
-        case .Manifest(let manifestUri):
-            performVersionCheckManifest(manifestUri)
+        case .Manifest(let manifestURLString):
+            performVersionCheckManifest(manifestURLString)
         }
     }
     
-    private func performVersionCheckManifest(manifestUri: String) {
+    private func performVersionCheckManifest(manifestURLString: String) {
         
-        let manifestURL = manifestURLFromString(manifestUri)
+        let manifestURL = manifestURLFromString(manifestURLString)
         let request = NSMutableURLRequest(URL: manifestURL)
         request.HTTPMethod = "GET"
         
         // Perform Request
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+        let task = session.dataTaskWithRequest(request) { data, response, error in
             
-            if let error = error {
-                if self.debugEnabled {
-                    print("[Siren] Error retrieving manifest as an error was returned: \(error.localizedDescription)")
-                }
-            } else {
-                guard let data = data else {
+            guard let response = response else {
+                if let error = error {
                     if self.debugEnabled {
-                        print("[Siren] Error retrieving manifest as no data was returned.")
+                        print("[Siren] Error retrieving manifest as an error was returned: \(error.localizedDescription)")
+                    }
+                }
+                return
+            }
+            
+            guard let data = data else {
+                if self.debugEnabled {
+                    print("[Siren] Error retrieving manifest as no data was returned.")
+                }
+                return
+            }
+            
+            // Convert XML data to Swift Dictionary of type [String: AnyObject]
+            
+            do {
+                let plistData = try NSPropertyListSerialization.propertyListWithData(data, options: NSPropertyListReadOptions.Immutable, format: nil)
+                
+                guard let appData = plistData as? [String: AnyObject] else {
+                    if self.debugEnabled {
+                        print("[Siren] Error parsing manifest plist data.")
                     }
                     return
                 }
                 
-                // Convert XML data to Swift Dictionary of type [String: AnyObject]
-                
-                do {
-                    let plistData = try NSPropertyListSerialization.propertyListWithData(data, options: NSPropertyListReadOptions.Immutable, format: nil)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
-                    guard let appData = plistData as? [String: AnyObject] else {
-                        if self.debugEnabled {
-                            print("[Siren] Error parsing manifest plist data.")
-                        }
-                        return
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        
-                        // Print iTunesLookup results from appData
-                        if self.debugEnabled {
-                            print("[Siren] plist results: \(appData)")
-                        }
-                        
-                        // Process Results (e.g., extract current version on the AppStore)
-                        self.processManifestVersionCheckResults(appData)
-                        
-                    })
-                    
-                } catch let error as NSError {
+                    // Print iTunesLookup results from appData
                     if self.debugEnabled {
-                        print("[Siren] Error retrieving manifest data as data was nil: \(error.localizedDescription)")
+                        print("[Siren] plist results: \(appData)")
                     }
+                    
+                    // Process Results (e.g., extract current version on the AppStore)
+                    self.processManifestVersionCheckResults(appData)
+                    
+                })
+                
+            } catch {
+                if self.debugEnabled {
+                    print("[Siren] Error retrieving manifest data as data was nil: \(error)")
                 }
             }
+        }
             
-        })
         
         task.resume()
 
@@ -408,30 +411,14 @@ public class Siren: NSObject {
         // Store version comparison date
         storeVersionCheckDate()
         
-        guard let items = lookupResults["items"] as? Array<AnyObject> else {
+        guard let items = lookupResults["items"] as? [AnyObject],
+            let bundle = items[0] as? [String: AnyObject],
+            let metadata = bundle["metadata"] as? [String: AnyObject],
+            let version = metadata["bundle-version"] as? String
+            
+        else {
             if debugEnabled {
                 print("[Siren] Error retrieving manifest as there was no data returned")
-            }
-            return
-        }
-        
-        guard let bundle = items[0] as? [String: AnyObject] else {
-            if debugEnabled {
-                print("[Siren] Error retrieving manifest bundle data as there was no data returned")
-            }
-            return
-        }
-        
-        guard let metadata = bundle["metadata"] as? [String: AnyObject] else {
-            if debugEnabled {
-                print("[Siren] Error retrieving manifest metadata as there was no data returned")
-            }
-            return
-        }
-        
-        guard let version = metadata["bundle-version"] as? String else {
-            if debugEnabled {
-                print("[Siren] Error retrieving manifest version as there was no data returned")
             }
             return
         }
@@ -439,13 +426,9 @@ public class Siren: NSObject {
         currentAppStoreVersion = version
         if isAppStoreVersionNewer() {
             showAlertIfCurrentAppStoreVersionNotSkipped()
-        } else {
-            if debugEnabled {
-                print("[Siren] Manifest version of app is not newer")
-            }
+        } else if debugEnabled {
+            print("[Siren] Manifest version of app is not newer")
         }
-        
-
     }
     
     private func processVersionCheckResults(lookupResults: [String: AnyObject]) {

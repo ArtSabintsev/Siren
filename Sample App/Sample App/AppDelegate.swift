@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.appID = "376771144" // For this example, we're using the iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
         
         // Use manifest
-        siren.checkMethod = SirenVersionCheckMethod.Manifest("https://example-url-to-ota/manifest.plist")
+        siren.checkMethod = SirenVersionCheckMethod.Manifest("https://server-and-path-to/manifest.plist")
         
         // Optional
         siren.delegate = self

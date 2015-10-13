@@ -283,7 +283,6 @@ public class Siren: NSObject {
             
         case .Manifest(let manifestUri):
             performVersionCheckManifest(manifestUri)
-            
         }
     }
     
@@ -539,7 +538,7 @@ private extension Siren {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) -> Void in
             self.hideWindow()
-            self.launchAppStore()
+            self.launchUpdate()
             self.delegate?.sirenUserDidLaunchAppStore?()
             return
         }
@@ -663,6 +662,16 @@ private extension Siren {
         let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
         let iTunesURL = NSURL(string: iTunesString)
         UIApplication.sharedApplication().openURL(iTunesURL!)
+    }
+    
+    func launchUpdate() {
+        switch self.checkMethod {
+        case .AppStore:
+            launchAppStore()
+        case .Manifest(let manifestUrl):
+            let updateAddress = NSURL(string: "itms-services://?action=download-manifest&url=itms-services://?action=download-manifest&url=\(manifestUrl)")!
+            UIApplication.sharedApplication().openURL(updateAddress)
+        }
     }
 }
 

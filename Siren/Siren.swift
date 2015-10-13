@@ -50,6 +50,14 @@ public enum SirenVersionCheckType: Int {
 }
 
 /**
+    Determines the method used to perform the version check
+*/
+public enum SirenVersionCheckMethod {
+    case AppStore           // Use the version available in the app store (default)
+    case Manifest(String)   // Use the version described in a manifest plist (for enterprise distribution)
+}
+
+/**
     Determines the available languages in which the update message and alert button titles should appear.
     
     By default, the operating system's default lanuage setting is used. However, you can force a specific language
@@ -182,6 +190,9 @@ public class Siren: NSObject {
     */
     public var revisionUpdateAlertType = SirenAlertType.Option
     
+    
+    public var checkMethod = SirenVersionCheckMethod.AppStore
+    
     // Required Vars
     /**
         The App Store / iTunes Connect ID for your app.
@@ -265,6 +276,77 @@ public class Siren: NSObject {
     }
     
     private func performVersionCheck() {
+        switch checkMethod {
+            
+        case .AppStore:
+            performVersionCheckAppStore()
+            
+        case .Manifest(let manifestUri):
+            performVersionCheckManifest(manifestUri)
+            
+        }
+    }
+    
+    private func performVersionCheckManifest(manifestUri: String) {
+        
+        let manifestURL = manifestURLFromString(manifestUri)
+        let request = NSMutableURLRequest(URL: manifestURL)
+        request.HTTPMethod = "GET"
+        
+        // Perform Request
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+            
+            if let error = error {
+                if self.debugEnabled {
+                    print("[Siren] Error retrieving manifest as an error was returned: \(error.localizedDescription)")
+                }
+            } else {
+                guard let data = data else {
+                    if self.debugEnabled {
+                        print("[Siren] Error retrieving manifest as no data was returned.")
+                    }
+                    return
+                }
+                
+                // Convert XML data to Swift Dictionary of type [String: AnyObject]
+                
+                do {
+                    let plistData = try NSPropertyListSerialization.propertyListWithData(data, options: NSPropertyListReadOptions.Immutable, format: nil)
+                    
+                    guard let appData = plistData as? [String: AnyObject] else {
+                        if self.debugEnabled {
+                            print("[Siren] Error parsing manifest plist data.")
+                        }
+                        return
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
+                        // Print iTunesLookup results from appData
+                        if self.debugEnabled {
+                            print("[Siren] plist results: \(appData)")
+                        }
+                        
+                        // Process Results (e.g., extract current version on the AppStore)
+                        self.processManifestVersionCheckResults(appData)
+                        
+                    })
+                    
+                } catch let error as NSError {
+                    if self.debugEnabled {
+                        print("[Siren] Error retrieving manifest data as data was nil: \(error.localizedDescription)")
+                    }
+                }
+            }
+            
+        })
+        
+        task.resume()
+
+    }
+    
+    private func performVersionCheckAppStore() {
         
         // Create Request
         let itunesURL = iTunesURLFromString()
@@ -320,6 +402,51 @@ public class Siren: NSObject {
         })
         
         task.resume()
+    }
+    
+    private func processManifestVersionCheckResults(lookupResults: [String: AnyObject]) {
+        
+        // Store version comparison date
+        storeVersionCheckDate()
+        
+        guard let items = lookupResults["items"] as? Array<AnyObject> else {
+            if debugEnabled {
+                print("[Siren] Error retrieving manifest as there was no data returned")
+            }
+            return
+        }
+        
+        guard let bundle = items[0] as? [String: AnyObject] else {
+            if debugEnabled {
+                print("[Siren] Error retrieving manifest bundle data as there was no data returned")
+            }
+            return
+        }
+        
+        guard let metadata = bundle["metadata"] as? [String: AnyObject] else {
+            if debugEnabled {
+                print("[Siren] Error retrieving manifest metadata as there was no data returned")
+            }
+            return
+        }
+        
+        guard let version = metadata["bundle-version"] as? String else {
+            if debugEnabled {
+                print("[Siren] Error retrieving manifest version as there was no data returned")
+            }
+            return
+        }
+        
+        currentAppStoreVersion = version
+        if isAppStoreVersionNewer() {
+            showAlertIfCurrentAppStoreVersionNotSkipped()
+        } else {
+            if debugEnabled {
+                print("[Siren] Manifest version of app is not newer")
+            }
+        }
+        
+
     }
     
     private func processVersionCheckResults(lookupResults: [String: AnyObject]) {
@@ -462,6 +589,15 @@ private extension Siren {
         }
         
         return NSURL(string: storeURLString)!
+    }
+    
+    func manifestURLFromString(uri: String) -> NSURL {
+        
+        if debugEnabled {
+            print("[Siren] Manifest Lookup URL: \(uri)")
+        }
+        
+        return NSURL(string: uri)!
     }
     
     func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: NSDate) -> Int {

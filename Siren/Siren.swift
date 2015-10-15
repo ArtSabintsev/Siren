@@ -429,6 +429,7 @@ class ManifestVersionChecker: SirenVersionChecker {
         
         let manifestURL = NSURL(string: versionURLString)!
         let request = NSMutableURLRequest(URL: manifestURL)
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         request.HTTPMethod = "GET"
         
         // Perform Request

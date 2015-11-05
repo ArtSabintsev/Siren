@@ -3,7 +3,7 @@
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
 ---
-### About
+## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
 If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
@@ -15,19 +15,19 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.6.1)
+## Changelog (v0.6.1)
 - Added Malaysian Localization (thanks to [Zaid M. Said](https://github.com/SentulAsia))
 
-### Features
+## Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Localized for 20+ languages (See **Localization** Section)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 
-### Installation Instructions
+## Installation Instructions
 
-#### CocoaPods Installation
+### CocoaPods Installation
 ```ruby
 pod 'Siren'
 ```
@@ -39,12 +39,12 @@ pod 'Siren'
 
 If your app needs to support iOS 7, use **Manual Installation**.
 
-#### Manual Installation
+### Manual Installation
 
 1. [Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
 2. Copy the `Siren` folder into your project.
 
-### Setup Instructions
+## Setup
 
 Here's some commented sample code. Adapt this to meet your app's needs.
 
@@ -94,7 +94,7 @@ func applicationWillEnterForeground(application: UIApplication)
 
 And you're all set!
 
-### Screenshots & Alert Types
+## Screenshots & Alert Types
 
 Siren can force an update, let the user optionally update, and allow the user to skip an update.
 
@@ -144,7 +144,7 @@ extension AppDelegate: SirenDelegate
 
 Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
-### Differentiated Alerts for Revision, Patch, Minor, and Major Updates
+## Differentiated Alerts for Revision, Patch, Minor, and Major Updates
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
 ```swift
@@ -155,7 +155,7 @@ If you would like to set a different type of alert for revision, patch, minor, a
 	siren.sharedInstance().majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
 ```
 
-### Optional Delegate and Delegate Methods
+## Optional Delegate and Delegate Methods
 Five delegate methods allow you to handle or track the user's behavior:
 
 ```	swift
@@ -168,7 +168,7 @@ Five delegate methods allow you to handle or track the user's behavior:
 }
 ```
 
-### Force Localization
+## Force Localization
 Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
@@ -178,15 +178,15 @@ You can enable it like this:
 ```swift
 Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
-### Testing Siren
+## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
 
 For your convenience, you may turn on `printn()` debugging statements by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
 
-### App Store Submissions
+## App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
-### Created and maintained by
+## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

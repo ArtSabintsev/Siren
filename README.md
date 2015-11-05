@@ -15,19 +15,8 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
 
-### Changelog (v0.6.0)
-- Dropped iOS 7 support
-- Cleaned up codebase
-
-### Changelog (v0.5.1)
-- Fixed [#31](https://github.com/ArtSabintsev/Siren/issues/31): `sirenDidShowUpdateDialog()` delegate method now being called properly.
-
-### Changelog (v0.5.0)
-- Updated to use Swift 2.0
-- Updated for iOS 9
-- Closes issues 24/27 (Issue with updaterWindow crashing the app on)
-- Closes issue 25 (Issue with alertType not propagating setting to `majorUpdateAlertType`, `minorUpdateAlertType`, `patchUpdateAlertType`, `revisionUpdateAlertType`)
-- Closes Issue 26 (Issue with devices running iOS 8+ not storing user's preference to skip current update)
+### Changelog (v0.6.1)
+- Added Malaysian Localization (thanks to [Zaid M. Said](https://github.com/SentulAsia))
 
 ### Features
 - [x] CocoaPods Support
@@ -180,7 +169,7 @@ Five delegate methods allow you to handle or track the user's behavior:
 ```
 
 ### Force Localization
-Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
+Harpy is localized for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 

@@ -507,9 +507,9 @@ private extension Siren {
                 alertType = majorUpdateAlertType
             } else if newVersion[1] > oldVersion[1] { // a.B.c.d
                 alertType = minorUpdateAlertType
-            } else if newVersion.count > 2 && newVersion[2] > oldVersion[2] { // a.b.C.d
+            } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
                 alertType = patchUpdateAlertType
-            } else if newVersion.count > 3 && newVersion[3] > oldVersion[3] { // a.b.c.D
+            } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
                 alertType = revisionUpdateAlertType
             }
         }

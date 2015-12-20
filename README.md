@@ -64,6 +64,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	    checks.
 	*/
     siren.checkVersion(.Immediately)
+
+    return true
 }
 
 func applicationDidBecomeActive(application: UIApplication)

@@ -22,6 +22,18 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 
+## Screenshots
+
+- The **left picture** forces the user to update the app.
+- The **center picture** gives the user the option to update the app.
+- The **right picture** gives the user the option to skip the current update.
+- These options are controlled by the `SirenAlertType` enum.
+
+<img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">
+<img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true" height=480">
+<img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true" height=480">
+
+
 ## Installation Instructions
 
 ### CocoaPods Installation
@@ -92,35 +104,6 @@ func applicationWillEnterForeground(application: UIApplication)
 ```
 
 And you're all set!
-
-## Screenshots & Alert Types
-
-Siren can force an update, let the user optionally update, and allow the user to skip an update.
-
-To control this behavior, assign a `SirenAlertType` to `alertType` (or one of the specific alert type properties).
-
-> #### `siren.alertType = .Force`
->
-> Forces the user to update.
->
-> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">
-
-> ----
-> #### `siren.alertType = .Option`
-> The default behavior.
->
-> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true" height=480">
-
-> ----
-> #### `siren.alertType = .Skip`
-> Allows the user to opt out of future reminders for this version.
->
-> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true" height=480">
-
-> ----
-> #### `siren.alertType = .None`
->
-> This option doesn't show an alert view. It's useful for skipping Revision, Patch, Minor, or Major updates, or for presenting your own UI.
 
 ### Prompting for Updates without Alerts
 

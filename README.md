@@ -103,17 +103,20 @@ To control this behavior, assign a `SirenAlertType` to `alertType` (or one of th
 >
 > Forces the user to update.
 >
-> ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update")
+> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">
+
 > ----
 > #### `siren.alertType = .Option`
 > The default behavior.
 >
-> ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
+> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true" height=480">
+
 > ----
 > #### `siren.alertType = .Skip`
 > Allows the user to opt out of future reminders for this version.
 >
-> ![Skip Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
+> <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true" height=480">
+
 > ----
 > #### `siren.alertType = .None`
 >

@@ -41,12 +41,7 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
-- Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
-- Only for apps with a minimum deployment target of iOS 8.0 or later
-
-    > CocoaPods does not support pods written in Swift on iOS 7. For more information, please see [this issue](https://github.com/CocoaPods/swift/issues/22).
-
-If your app needs to support iOS 7, use **Manual Installation**.
+Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
 
 ### Manual Installation
 

@@ -1,4 +1,4 @@
-### Created and maintained by
+### Creators
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) and [Aaron Brager](http://twitter.com/GetAaron)
 
 ### Siren Project Contributors

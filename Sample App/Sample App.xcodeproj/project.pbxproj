@@ -7,38 +7,87 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558455CF1C6690B4004BE492 /* Siren.h in Headers */ = {isa = PBXBuildFile; fileRef = 558455CE1C6690B4004BE492 /* Siren.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		558455D31C6690B4004BE492 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558455CC1C6690B4004BE492 /* Siren.framework */; };
+		558455D41C6690B4004BE492 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 558455CC1C6690B4004BE492 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		558455D91C6690D9004BE492 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005EF1A5DD04500509B14 /* Siren.swift */; };
+		558455DA1C6690DC004BE492 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005EE1A5DD04500509B14 /* Siren.bundle */; };
 		8E1005E71A5DD02300509B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005DF1A5DD02300509B14 /* AppDelegate.swift */; };
 		8E1005E81A5DD02300509B14 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E01A5DD02300509B14 /* LaunchScreen.xib */; };
 		8E1005E91A5DD02300509B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E21A5DD02300509B14 /* Main.storyboard */; };
 		8E1005EA1A5DD02300509B14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005E41A5DD02300509B14 /* Images.xcassets */; };
 		8E1005EC1A5DD02300509B14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005E61A5DD02300509B14 /* ViewController.swift */; };
-		8E1005F01A5DD04500509B14 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E1005EE1A5DD04500509B14 /* Siren.bundle */; };
-		8E1005F11A5DD04500509B14 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1005EF1A5DD04500509B14 /* Siren.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		558455D11C6690B4004BE492 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EC391791A58B465001C121E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 558455CB1C6690B4004BE492;
+			remoteInfo = Siren;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		558455D81C6690B4004BE492 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				558455D41C6690B4004BE492 /* Siren.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		558455CC1C6690B4004BE492 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		558455CE1C6690B4004BE492 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
+		558455D01C6690B4004BE492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1005DF1A5DD02300509B14 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E1005E11A5DD02300509B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8E1005E31A5DD02300509B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E1005E41A5DD02300509B14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E1005E51A5DD02300509B14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1005E61A5DD02300509B14 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8E1005EE1A5DD04500509B14 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
-		8E1005EF1A5DD04500509B14 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
+		8E1005EE1A5DD04500509B14 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Siren/Siren.bundle; sourceTree = "<group>"; };
+		8E1005EF1A5DD04500509B14 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Siren/Siren.swift; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8EC3917E1A58B465001C121E /* Frameworks */ = {
+		558455C81C6690B4004BE492 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8EC3917E1A58B465001C121E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				558455D31C6690B4004BE492 /* Siren.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558455CD1C6690B4004BE492 /* Siren */ = {
+			isa = PBXGroup;
+			children = (
+				8E1005EE1A5DD04500509B14 /* Siren.bundle */,
+				8E1005EF1A5DD04500509B14 /* Siren.swift */,
+				558455CE1C6690B4004BE492 /* Siren.h */,
+				558455D01C6690B4004BE492 /* Info.plist */,
+			);
+			path = Siren;
+			sourceTree = "<group>";
+		};
 		8E1005DE1A5DD02300509B14 /* Sample App */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,8 +105,6 @@
 		8E1005ED1A5DD04500509B14 /* Siren */ = {
 			isa = PBXGroup;
 			children = (
-				8E1005EE1A5DD04500509B14 /* Siren.bundle */,
-				8E1005EF1A5DD04500509B14 /* Siren.swift */,
 			);
 			name = Siren;
 			path = ../../Siren;
@@ -67,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8E1005DE1A5DD02300509B14 /* Sample App */,
+				558455CD1C6690B4004BE492 /* Siren */,
 				8EC391821A58B465001C121E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,13 +123,43 @@
 			isa = PBXGroup;
 			children = (
 				8EC391811A58B465001C121E /* Sample App.app */,
+				558455CC1C6690B4004BE492 /* Siren.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		558455C91C6690B4004BE492 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				558455CF1C6690B4004BE492 /* Siren.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		558455CB1C6690B4004BE492 /* Siren */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 558455D71C6690B4004BE492 /* Build configuration list for PBXNativeTarget "Siren" */;
+			buildPhases = (
+				558455C71C6690B4004BE492 /* Sources */,
+				558455C81C6690B4004BE492 /* Frameworks */,
+				558455C91C6690B4004BE492 /* Headers */,
+				558455CA1C6690B4004BE492 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Siren;
+			productName = Siren;
+			productReference = 558455CC1C6690B4004BE492 /* Siren.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		8EC391801A58B465001C121E /* Sample App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EC391A01A58B466001C121E /* Build configuration list for PBXNativeTarget "Sample App" */;
@@ -89,10 +167,12 @@
 				8EC3917D1A58B465001C121E /* Sources */,
 				8EC3917E1A58B465001C121E /* Frameworks */,
 				8EC3917F1A58B465001C121E /* Resources */,
+				558455D81C6690B4004BE492 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				558455D21C6690B4004BE492 /* PBXTargetDependency */,
 			);
 			name = "Sample App";
 			productName = Siren;
@@ -110,6 +190,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sabintsev iOS Projects";
 				TargetAttributes = {
+					558455CB1C6690B4004BE492 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -129,16 +212,24 @@
 			projectRoot = "";
 			targets = (
 				8EC391801A58B465001C121E /* Sample App */,
+				558455CB1C6690B4004BE492 /* Siren */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		558455CA1C6690B4004BE492 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				558455DA1C6690DC004BE492 /* Siren.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EC3917F1A58B465001C121E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E1005F01A5DD04500509B14 /* Siren.bundle in Resources */,
 				8E1005EA1A5DD02300509B14 /* Images.xcassets in Resources */,
 				8E1005E81A5DD02300509B14 /* LaunchScreen.xib in Resources */,
 				8E1005E91A5DD02300509B14 /* Main.storyboard in Resources */,
@@ -148,17 +239,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		558455C71C6690B4004BE492 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				558455D91C6690D9004BE492 /* Siren.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EC3917D1A58B465001C121E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8E1005EC1A5DD02300509B14 /* ViewController.swift in Sources */,
-				8E1005F11A5DD04500509B14 /* Siren.swift in Sources */,
 				8E1005E71A5DD02300509B14 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		558455D21C6690B4004BE492 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 558455CB1C6690B4004BE492 /* Siren */;
+			targetProxy = 558455D11C6690B4004BE492 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8E1005E01A5DD02300509B14 /* LaunchScreen.xib */ = {
@@ -180,6 +286,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		558455D51C6690B4004BE492 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Siren/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Siren;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		558455D61C6690B4004BE492 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Siren/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Siren;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		8EC3919E1A58B466001C121E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -262,8 +415,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
@@ -274,8 +428,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Sample App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Sample App";
@@ -285,6 +440,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		558455D71C6690B4004BE492 /* Build configuration list for PBXNativeTarget "Siren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				558455D51C6690B4004BE492 /* Debug */,
+				558455D61C6690B4004BE492 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "Sample App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

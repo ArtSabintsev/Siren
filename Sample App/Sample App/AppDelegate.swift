@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Siren
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

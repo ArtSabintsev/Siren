@@ -50,7 +50,7 @@ github "ArtSabintsev/Siren"
 
 ### Swift Package manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0),
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
 ```
 
 Add `import Siren` to any `.Swift` file that references Siren via a Carthage installation.

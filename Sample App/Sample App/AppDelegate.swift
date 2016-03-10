@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.delegate = self
         
         // Optional
-        siren.debugEnabled = true;
+        siren.debugEnabled = true
         
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None

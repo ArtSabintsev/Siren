@@ -10,11 +10,12 @@ import UIKit
 
 // MARK: SirenDelegate Protocol
 @objc public protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog()                            // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
-    optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    optional func sirenDidShowUpdateDialog()                                                    // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore()                                                  // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion()                                                     // User did click on button that skips version update
+    optional func sirenUserDidCancel()                                                          // User did click on button that cancels update dialog
+    optional func sirenDidDetectNewVersionWithoutAlert(message: String)                         // Siren performed version check and did not display alert
+    optional func sirenDidDetectNewVersionWithoutAlert(newAppVersion: String, appName: String)  // Siren performed version check and did not display alert, only send version number and app name for a full custom UI
 }
 
 // MARK: Enumerations
@@ -122,6 +123,9 @@ public class Siren: NSObject {
                 - sirenUserDidCancel()
             - When a new version has been detected, and you would like to present a localized message in a custom UI
                 - sirenDidDetectNewVersionWithoutAlert(message: String)
+            - When a new version has been detected, and you would like to present a custom UI with a different message
+            than the default localized one
+                - sirenDidDetectNewVersionWithoutAlert(newAppVersion: String, appName: String)
     
     */
     public weak var delegate: SirenDelegate?
@@ -403,6 +407,9 @@ private extension Siren {
             alertController.addAction(skipAlertAction())
         case .None:
             delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
+            if let currentAppStoreVersion = self.currentAppStoreVersion {
+                delegate?.sirenDidDetectNewVersionWithoutAlert?(currentAppStoreVersion, appName: appName)
+            }
         }
         
         if alertType != .None {

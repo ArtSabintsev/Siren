@@ -126,14 +126,21 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 extension AppDelegate: SirenDelegate
 {
-	// Returns a localized message to this delegate method upon performing a successful version check
+    // Returns a localized message to this delegate method upon performing a successful version check
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         println("\(message)")
+    }
+
+    // Returns the new store app version and the app name to create a full message or custom UI with those values
+    func sirenDidDetectNewVersionWithoutAlert(newAppVersion: String, appName: String) {
+        print("\(newAppVersion) - \(appName)")
     }
 }
 ```
 
 Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
+
+If the user implements `sirenDidDetectNewVersionWithoutAlert(newAppVersion: String, appName: String)` , Siren will call this delegate method, passing the new app version and the app name. Implement this method to create a custom UI according to your app's needs using `newAppVersion` and `appName`.
 
 ## Differentiated Alerts for Revision, Patch, Minor, and Major Updates
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
@@ -151,11 +158,12 @@ Five delegate methods allow you to handle or track the user's behavior:
 
 ```	swift
 @objc protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog() // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore() // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion() // User did click on button that skips version update
-    optional func sirenUserDidCancel()  // User did click on button that cancels update dialog
+    optional func sirenDidShowUpdateDialog()    // User presented with update dialog
+    optional func sirenUserDidLaunchAppStore()  // User did click on button that launched App Store.app
+    optional func sirenUserDidSkipVersion()     // User did click on button that skips version update
+    optional func sirenUserDidCancel()          // User did click on button that cancels update dialog
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    optional func sirenDidDetectNewVersionWithoutAlert(newAppVersion: String, appName: String)  // Siren performed version check and did not display alert, only send version number and app name for a full custom UI
 }
 ```
 

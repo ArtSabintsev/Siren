@@ -15,6 +15,8 @@ import UIKit
     optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    optional func sirenUpdateCheckError(error: NSError?)                // Error or bad response during update check
+    optional func sirenNoUpdateAvailable()                              // Siren performed version check but no update is available
 }
 
 // MARK: Enumerations
@@ -282,11 +284,13 @@ public class Siren: NSObject {
                 if self.debugEnabled {
                     print("[Siren] Error retrieving App Store data as an error was returned: \(error.localizedDescription)")
                 }
+                self.delegate?.sirenUpdateCheckError?(error)
             } else {
                 guard let data = data else {
                     if self.debugEnabled {
                         print("[Siren] Error retrieving App Store data as no data was returned.")
                     }
+                    self.delegate?.sirenUpdateCheckError?(nil)
                     return
                 }
                 
@@ -298,6 +302,7 @@ public class Siren: NSObject {
                         if self.debugEnabled {
                             print("[Siren] Error parsing App Store JSON data.")
                         }
+                        self.delegate?.sirenUpdateCheckError?(nil)
                         return
                     }
                     
@@ -317,6 +322,7 @@ public class Siren: NSObject {
                     if self.debugEnabled {
                         print("[Siren] Error retrieving App Store data as data was nil: \(error.localizedDescription)")
                     }
+                    self.delegate?.sirenUpdateCheckError?(error)
                 }
             }
             
@@ -334,6 +340,7 @@ public class Siren: NSObject {
             if debugEnabled {
                 print("[Siren] Error retrieving App Store verson number as there was no data returned")
             }
+            delegate?.sirenUpdateCheckError?(nil)
             return
         }
         
@@ -343,6 +350,7 @@ public class Siren: NSObject {
                 if debugEnabled {
                     print("[Siren] Error retrieving App Store verson number as results[0] does not contain a 'version' key")
                 }
+                delegate?.sirenUpdateCheckError?(nil)
                 return
             }
             
@@ -352,12 +360,14 @@ public class Siren: NSObject {
                 if debugEnabled {
                     print("[Siren] App Store version of app is not newer")
                 }
+                delegate?.sirenNoUpdateAvailable?()
             }
            
         } else { // lookupResults does not contain any data as the returned array is empty
             if debugEnabled {
                 print("[Siren] Error retrieving App Store verson number as results returns an empty array")
             }
+            delegate?.sirenUpdateCheckError?(nil)
         }
     }
 }

@@ -221,7 +221,7 @@ public class Siren: NSObject {
     public var alertControllerTintColor: UIColor?
 
     /**
-     The current version of your app that is available to download on the App Store
+     The current version of your app that is available for download on the App Store
      */
     public private(set) var currentAppStoreVersion: String?
 

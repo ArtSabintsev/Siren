@@ -219,10 +219,14 @@ public class Siren: NSObject {
         Overrides the tint color for UIAlertController.
     */
     public var alertControllerTintColor: UIColor?
-    
+
+    /**
+     The current version of your app that is available for download on the App Store
+     */
+    public private(set) var currentAppStoreVersion: String?
+
     // Private
     private var lastVersionCheckPerformedOnDate: NSDate?
-    private var currentAppStoreVersion: String?
     private var updaterWindow: UIWindow?
     
     // MARK: Initialization

@@ -528,7 +528,7 @@ private extension Siren {
 
         components.queryItems = items
 
-        guard let url = components.URL where !url.absoluteString.isEmpty else {
+        guard let url = components.URL where !url.absoluteString.isEmpty else { // https://openradar.appspot.com/25382891
             throw SirenErrorType.MalformedURL
         }
 

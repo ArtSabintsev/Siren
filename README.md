@@ -147,7 +147,7 @@ If you would like to set a different type of alert for revision, patch, minor, a
 ```
 
 ## Optional Delegate and Delegate Methods
-Five delegate methods allow you to handle or track the user's behavior:
+Six delegate methods allow you to handle or track the user's behavior:
 
 ```	swift
 @objc protocol SirenDelegate {
@@ -155,6 +155,7 @@ Five delegate methods allow you to handle or track the user's behavior:
     optional func sirenUserDidLaunchAppStore() // User did click on button that launched App Store.app
     optional func sirenUserDidSkipVersion() // User did click on button that skips version update
     optional func sirenUserDidCancel()  // User did click on button that cancels update dialog
+		optional func sirenDidFailVersionCheck(error: NSError) // Siren failed to perform version check (may return system-level error)
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```

@@ -447,6 +447,7 @@
 				558455D61C6690B4004BE492 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "Sample App" */ = {
 			isa = XCConfigurationList;

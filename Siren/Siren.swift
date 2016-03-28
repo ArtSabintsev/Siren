@@ -95,11 +95,19 @@ public enum SirenLanguageType: String {
  Siren-specific Error Codes
  */
 private enum SirenErrorCode: Int {
-    case NoUpdateAvailable = 1000
+    case MalformedURL = 1000
+    case NoUpdateAvailable
     case AppStoreDataRetrievalFailure
     case AppStoreJSONParsingFailure
     case AppStoreVersionNumberFailure
     case AppStoreVersionArrayFailure
+}
+
+/**
+ Siren-specific Error Throwable Errors
+ */
+private enum SirenErrorType: ErrorType {
+    case MalformedURL
 }
 
 /** 
@@ -298,51 +306,56 @@ public final class Siren: NSObject {
     private func performVersionCheck() {
         
         // Create Request
-        let itunesURL = iTunesURLFromString()
-        let request = NSMutableURLRequest(URL: itunesURL)
-        request.HTTPMethod = "GET"
-        
-        // Perform Request
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request, completionHandler: { [unowned self] (data, response, error) in
-            
-            if let error = error {
-                self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
-            } else {
+        do {
+            let url = try iTunesURLFromString()
+            let request = NSURLRequest(URL: url)
 
-                guard let data = data else {
-                    self.postError(.AppStoreDataRetrievalFailure, underlyingError: nil)
-                    return
-                }
-                
-                // Convert JSON data to Swift Dictionary of type [String: AnyObject]
-                do {
+            // Perform Request
+            let session = NSURLSession.sharedSession()
+            let task = session.dataTaskWithRequest(request, completionHandler: { [unowned self] (data, response, error) in
 
-                    let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
-                    
-                    guard let appData = jsonData as? [String: AnyObject] else {
-                        self.postError(.AppStoreJSONParsingFailure, underlyingError: nil)
+                if let error = error {
+                    self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
+                } else {
+
+                    guard let data = data else {
+                        self.postError(.AppStoreDataRetrievalFailure, underlyingError: nil)
                         return
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        
-                        // Print iTunesLookup results from appData
-                        self.printMessage("JSON results: \(appData)")
-                        
-                        // Process Results (e.g., extract current version that is available on the AppStore)
-                        self.processVersionCheckResults(appData)
-                        
+
+                    // Convert JSON data to Swift Dictionary of type [String: AnyObject]
+                    do {
+
+                        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
+
+                        guard let appData = jsonData as? [String: AnyObject] else {
+                            self.postError(.AppStoreJSONParsingFailure, underlyingError: nil)
+                            return
+                        }
+
+                        dispatch_async(dispatch_get_main_queue()) {
+
+                            // Print iTunesLookup results from appData
+                            self.printMessage("JSON results: \(appData)")
+
+                            // Process Results (e.g., extract current version that is available on the AppStore)
+                            self.processVersionCheckResults(appData)
+
+                        }
+
+                    } catch let error as NSError {
+                        self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
                     }
-                    
-                } catch let error as NSError {
-                    self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
                 }
-            }
+                
+                })
             
-        })
-        
-        task.resume()
+            task.resume()
+
+        } catch _ {
+            postError(.MalformedURL, underlyingError: nil)
+        }
+
     }
     
     private func processVersionCheckResults(lookupResults: [String: AnyObject]) {
@@ -499,17 +512,27 @@ private extension Siren {
 
 private extension Siren {
 
-    func iTunesURLFromString() -> NSURL {
+    func iTunesURLFromString() throws -> NSURL {
 
-        var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
+        let components = NSURLComponents()
+        components.scheme = "https"
+        components.host = "itunes.apple.com"
+        components.path = "/lookup"
+
+        var items: [NSURLQueryItem] = [NSURLQueryItem(name: "id", value: appID)]
 
         if let countryCode = countryCode {
-            storeURLString += "&country=\(countryCode)"
+            let item = NSURLQueryItem(name: "country", value: countryCode)
+            items.append(item)
         }
 
-        printMessage("iTunes Lookup URL: \(storeURLString)")
+        components.queryItems = items
 
-        return NSURL(string: storeURLString)!
+        guard let url = components.URL where !url.absoluteString.isEmpty else {
+            throw SirenErrorType.MalformedURL
+        }
+
+        return url
     }
 
     func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: NSDate) -> Int {
@@ -641,6 +664,8 @@ private extension Siren {
         let description: String
 
         switch code {
+        case .MalformedURL:
+            description = "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
         case .NoUpdateAvailable:
             description = "No new update available."
         case .AppStoreDataRetrievalFailure:

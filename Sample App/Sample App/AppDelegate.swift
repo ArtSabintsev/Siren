@@ -81,8 +81,8 @@ extension AppDelegate: SirenDelegate
         print(#function)
     }
 
-    func sirenDidFailVersionCheck(error: NSError?) {
-        print(#function)
+    func sirenDidFailVersionCheck(error: NSError) {
+        print(#function, error)
     }
     
     /**

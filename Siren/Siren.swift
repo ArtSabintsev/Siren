@@ -16,7 +16,7 @@ import UIKit
     optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    optional func sirenDidFailVersionCheck(error: NSError?)             // Siren failed to perform version check (may return system-level error)
+    optional func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
     optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 
@@ -91,6 +91,17 @@ public enum SirenLanguageType: String {
     case Turkish = "tr"
 }
 
+/**
+ Siren-specific Error Codes
+ */
+private enum SirenErrorCode: Int {
+    case NoUpdateAvailable = 1000
+    case AppStoreDataRetrievalFailure
+    case AppStoreJSONParsingFailure
+    case AppStoreVersionNumberFailure
+    case AppStoreVersionArrayFailure
+}
+
 /** 
     Siren-specific NSUserDefault Keys
 */
@@ -109,11 +120,21 @@ private enum SirenUserDefaults: String {
 */
 public final class Siren: NSObject {
 
-    // Current installed version of your app
+    /**
+        Current installed version of your app
+     */
     let currentInstalledVersion = NSBundle.mainBundle().currentInstalledVersion()
-    
-    // NSBundle path for localization
+
+    /**
+        NSBundle path for localization
+     */
     let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
+
+    /**
+        The error domain for all errors created by Siren
+     */
+    public let SirenErrorDomain = "Siren Error Domain"
+
 
     /**
         The SirenDelegate variable, which should be set if you'd like to be notified:
@@ -135,8 +156,7 @@ public final class Siren: NSObject {
         When enabled, a stream of println() statements are logged to your console when a version check is performed.
     */
     public lazy var debugEnabled = false
-    
-    // Alert Vars
+
     /**
         Determines the type of alert that should be shown.
     
@@ -255,7 +275,7 @@ public final class Siren: NSObject {
     public func checkVersion(checkType: SirenVersionCheckType) {
 
         guard let _ = appID else {
-            print("[Siren] Please make sure that you have set 'appID' before calling checkVersion.")
+            printMessage("Please make sure that you have set 'appID' before calling checkVersion.")
             return
         }
 
@@ -270,7 +290,7 @@ public final class Siren: NSObject {
             if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
-                delegate?.sirenDidFailVersionCheck?(nil)
+                postError(.NoUpdateAvailable, underlyingError: nil)
             }
         }
     }
@@ -287,22 +307,11 @@ public final class Siren: NSObject {
         let task = session.dataTaskWithRequest(request, completionHandler: { [unowned self] (data, response, error) in
             
             if let error = error {
-
-                self.delegate?.sirenDidFailVersionCheck?(error)
-
-                if self.debugEnabled {
-                    print("[Siren] Error retrieving App Store data as an error was returned: \(error.localizedDescription)")
-                }
-
+                self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
             } else {
 
                 guard let data = data else {
-                    self.delegate?.sirenDidFailVersionCheck?(nil)
-
-                    if self.debugEnabled {
-                        print("[Siren] Error retrieving App Store data as no data was returned.")
-                    }
-
+                    self.postError(.AppStoreDataRetrievalFailure, underlyingError: nil)
                     return
                 }
                 
@@ -312,35 +321,22 @@ public final class Siren: NSObject {
                     let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
                     
                     guard let appData = jsonData as? [String: AnyObject] else {
-                        self.delegate?.sirenDidFailVersionCheck?(nil)
-
-                        if self.debugEnabled {
-                            print("[Siren] Error parsing App Store JSON data.")
-                        }
-
+                        self.postError(.AppStoreJSONParsingFailure, underlyingError: nil)
                         return
                     }
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         
                         // Print iTunesLookup results from appData
-                        if self.debugEnabled {
-                            print("[Siren] JSON results: \(appData)")
-                        }
+                        self.printMessage("JSON results: \(appData)")
                         
-                        // Process Results (e.g., extract current version on the AppStore)
+                        // Process Results (e.g., extract current version that is available on the AppStore)
                         self.processVersionCheckResults(appData)
                         
                     }
                     
                 } catch let error as NSError {
-
-                    self.delegate?.sirenDidFailVersionCheck?(error)
-
-                    if self.debugEnabled {
-                        print("[Siren] Error retrieving App Store data as data was nil: \(error.localizedDescription)")
-                    }
-
+                    self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
                 }
             }
             
@@ -355,50 +351,27 @@ public final class Siren: NSObject {
         storeVersionCheckDate()
 
         guard let results = lookupResults["results"] as? [[String: AnyObject]] else {
-
-            self.delegate?.sirenDidFailVersionCheck?(nil)
-
-            if debugEnabled {
-                print("[Siren] Error retrieving App Store verson number as there was no data returned")
-            }
-
+            self.postError(.AppStoreVersionNumberFailure, underlyingError: nil)
             return
         }
         
         if results.isEmpty == false { // Conditional that avoids crash when app not in App Store or appID mistyped
             currentAppStoreVersion = results[0]["version"] as? String
             guard let _ = currentAppStoreVersion else {
-
-                delegate?.sirenDidFailVersionCheck?(nil)
-
-                if debugEnabled {
-                    print("[Siren] Error retrieving App Store verson number as results[0] does not contain a 'version' key")
-                }
+                self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
                 return
             }
             
             if isAppStoreVersionNewer() {
-
                 showAlertIfCurrentAppStoreVersionNotSkipped()
-
             } else {
-
-                delegate?.sirenDidFailVersionCheck?(nil)
-
-                if debugEnabled {
-                    print("[Siren] App Store version of app is not newer")
-                }
-
+                postError(.NoUpdateAvailable, underlyingError: nil)
             }
            
         } else { // lookupResults does not contain any data as the returned array is empty
-
-            delegate?.sirenDidFailVersionCheck?(nil)
-
-            if debugEnabled {
-                print("[Siren] Error retrieving App Store verson number as results returns an empty array")
-            }
+            postError(.AppStoreDataRetrievalFailure, underlyingError: nil)
         }
+
     }
 }
 
@@ -525,6 +498,7 @@ private extension Siren {
 // MARK: - Misc. Helpers
 
 private extension Siren {
+
     func iTunesURLFromString() -> NSURL {
 
         var storeURLString = "https://itunes.apple.com/lookup?id=\(appID!)"
@@ -533,9 +507,7 @@ private extension Siren {
             storeURLString += "&country=\(countryCode)"
         }
 
-        if debugEnabled {
-            print("[Siren] iTunes Lookup URL: \(storeURLString)")
-        }
+        printMessage("iTunes Lookup URL: \(storeURLString)")
 
         return NSURL(string: storeURLString)!
     }
@@ -598,12 +570,18 @@ private extension Siren {
         }
     }
 
-    // Actions
     func launchAppStore() {
         let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
         let iTunesURL = NSURL(string: iTunesString)
         UIApplication.sharedApplication().openURL(iTunesURL!)
     }
+
+    func printMessage(message: String) {
+        if debugEnabled {
+            print("[Siren] \(message)")
+        }
+    }
+
 }
 
 
@@ -651,4 +629,41 @@ private extension NSBundle {
         
         return NSBundle(path: path)!.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
+}
+
+
+// MARK: - Error Handling
+
+private extension Siren {
+
+    func postError(code: SirenErrorCode, underlyingError: NSError?) {
+
+        let description: String
+
+        switch code {
+        case .NoUpdateAvailable:
+            description = "No new update available."
+        case .AppStoreDataRetrievalFailure:
+            description = "Error retrieving App Store data as an error was returned."
+        case .AppStoreJSONParsingFailure:
+            description = "Error parsing App Store JSON data."
+        case .AppStoreVersionNumberFailure:
+            description = "Error retrieving App Store verson number as there was no data returned."
+        case .AppStoreVersionArrayFailure:
+            description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+        }
+
+        var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]
+        
+        if let underlyingError = underlyingError {
+            userInfo[NSUnderlyingErrorKey] = underlyingError
+        }
+
+        let error = NSError(domain: SirenErrorDomain, code: code.rawValue, userInfo: userInfo)
+
+        delegate?.sirenDidFailVersionCheck?(error)
+
+        printMessage(error.localizedDescription)
+    }
+
 }

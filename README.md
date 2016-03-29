@@ -12,8 +12,12 @@ If a new version is available, an alert can be presented to the user informing t
 	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
 	- Siren also supports two-number versioning (e.g., 1.0)
 	- Siren also supports four-number versioning (e.g., 1.0.0.0)
-- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
-- Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron).
+- Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
+
+## Ports
+- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality. 
+- Siren and Harpy are maintained by the same developers and have full parity with one another.
+- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the the Google Play store on the Android platform. 
 
 ## Features
 - [x] CocoaPods Support

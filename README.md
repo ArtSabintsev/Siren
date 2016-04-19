@@ -21,9 +21,9 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Features
 - [x] CocoaPods Support
-- [x] Localized for 20+ languages (See **Localization** Section)
-- [x] Three types of alerts (see **Screenshots & Alert Types**)
-- [x] Optional delegate methods (see **Optional Delegate** section)
+- [x] Localized for 20+ languages (See **Localization**)
+- [x] Three types of alerts (see **Screenshots**)
+- [x] Optional delegate methods (see **Optional Delegate**)
 
 ## Screenshots
 

@@ -96,6 +96,7 @@ public enum SirenLanguageType: String {
  */
 private enum SirenErrorCode: Int {
     case MalformedURL = 1000
+    case RecentlyCheckedAlready
     case NoUpdateAvailable
     case AppStoreDataRetrievalFailure
     case AppStoreJSONParsingFailure
@@ -298,7 +299,7 @@ public final class Siren: NSObject {
             if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
-                postError(.NoUpdateAvailable, underlyingError: nil)
+                postError(.RecentlyCheckedAlready, underlyingError: nil)
             }
         }
     }
@@ -666,6 +667,8 @@ private extension Siren {
         switch code {
         case .MalformedURL:
             description = "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
+        case .RecentlyCheckedAlready:
+            description = "Not checking the version, because it already checked recently."
         case .NoUpdateAvailable:
             description = "No new update available."
         case .AppStoreDataRetrievalFailure:
@@ -673,9 +676,9 @@ private extension Siren {
         case .AppStoreJSONParsingFailure:
             description = "Error parsing App Store JSON data."
         case .AppStoreVersionNumberFailure:
-            description = "Error retrieving App Store verson number as there was no data returned."
+            description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:
-            description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+            description = "Error retrieving App Store version number as results[0] does not contain a 'version' key."
         }
 
         var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]

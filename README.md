@@ -75,8 +75,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	// Siren is a singleton
 	let siren = Siren.sharedInstance
 
-	// Required: Your app's iTunes App Store ID
+	// Required: Either your app's iTunes App Store ID or the app's bundle identifier
 	siren.appID = <#Your_App_ID#>
+	// Or:
+	siren.bundleID = <#Your_Bundle_ID#>
 
 	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>

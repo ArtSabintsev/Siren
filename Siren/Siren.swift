@@ -11,13 +11,24 @@ import UIKit
 
 // MARK: - SirenDelegate Protocol
 
-@objc public protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog()                            // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion()                             // User did click on button that skips version update
-    optional func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    optional func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+public protocol SirenDelegate: class {
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
+    func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
+    func sirenUserDidSkipVersion()                             // User did click on button that skips version update
+    func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
+    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
+    func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+}
+
+
+// Empty implementation in an extension on SirenDelegate to allow for optional implemenation of its methods
+extension SirenDelegate {
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
+    func sirenUserDidLaunchAppStore() {}
+    func sirenUserDidSkipVersion() {}
+    func sirenUserDidCancel() {}
+    func sirenDidFailVersionCheck(error: NSError) {}
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
 }
 
 
@@ -151,7 +162,7 @@ public final class Siren: NSObject {
         The SirenDelegate variable, which should be set if you'd like to be notified:
     
             - When a user views or interacts with the alert
-                - sirenDidShowUpdateDialog()
+                - sirenDidShowUpdateDialog(alertType: SirenAlertType)
                 - sirenUserDidLaunchAppStore()
                 - sirenUserDidSkipVersion()     
                 - sirenUserDidCancel()
@@ -453,12 +464,12 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .None:
-            delegate?.sirenDidDetectNewVersionWithoutAlert?(newVersionMessage)
+            delegate?.sirenDidDetectNewVersionWithoutAlert(newVersionMessage)
         }
         
         if alertType != .None {
             alertController.show()
-            delegate?.sirenDidShowUpdateDialog?()
+            delegate?.sirenDidShowUpdateDialog(alertType)
         }
     }
     
@@ -467,7 +478,7 @@ private extension Siren {
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) in
             self.hideWindow()
             self.launchAppStore()
-            self.delegate?.sirenUserDidLaunchAppStore?()
+            self.delegate?.sirenUserDidLaunchAppStore()
             return
         }
         
@@ -478,7 +489,7 @@ private extension Siren {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) in
             self.hideWindow()
-            self.delegate?.sirenUserDidCancel?()
+            self.delegate?.sirenUserDidCancel()
             return
         }
         
@@ -493,7 +504,7 @@ private extension Siren {
                 NSUserDefaults.standardUserDefaults().synchronize()
             }
             self.hideWindow()
-            self.delegate?.sirenUserDidSkipVersion?()
+            self.delegate?.sirenUserDidSkipVersion()
             return
         }
         
@@ -721,7 +732,7 @@ private extension Siren {
 
         let error = NSError(domain: SirenErrorDomain, code: code.rawValue, userInfo: userInfo)
 
-        delegate?.sirenDidFailVersionCheck?(error)
+        delegate?.sirenDidFailVersionCheck(error)
 
         printMessage(error.localizedDescription)
     }

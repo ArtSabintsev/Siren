@@ -22,7 +22,7 @@ public protocol SirenDelegate: class {
 
 
 // Empty implementation in an extension on SirenDelegate to allow for optional implemenation of its methods
-extension SirenDelegate {
+public extension SirenDelegate {
     func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
     func sirenUserDidLaunchAppStore() {}
     func sirenUserDidSkipVersion() {}

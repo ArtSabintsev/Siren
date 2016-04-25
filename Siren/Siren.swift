@@ -216,12 +216,6 @@ public final class Siren: NSObject {
     */
     public lazy var revisionUpdateAlertType = SirenAlertType.Option
     
-    // Required Vars
-    /**
-        The App Store / iTunes Connect ID for your app.
-    */
-    public var appID: String?
-    
     // Optional Vars
     /**
         The name of your app. 
@@ -281,11 +275,6 @@ public final class Siren: NSObject {
         - parameter checkType: The frequency in days in which you want a check to be performed. Please refer to the SirenVersionCheckType enum for more details.
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
-
-        guard let _ = appID else {
-            printMessage("Please make sure that you have set 'appID' before calling checkVersion.")
-            return
-        }
 
         if checkType == .Immediately {
             performVersionCheck()
@@ -368,7 +357,7 @@ public final class Siren: NSObject {
             return
         }
         
-        if results.isEmpty == false { // Conditional that avoids crash when app not in App Store or appID mistyped
+        if results.isEmpty == false { // Conditional that avoids crash when app not in App Store
             currentAppStoreVersion = results[0]["version"] as? String
             guard let _ = currentAppStoreVersion else {
                 self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
@@ -519,7 +508,7 @@ private extension Siren {
         components.host = "itunes.apple.com"
         components.path = "/lookup"
 
-        var items: [NSURLQueryItem] = [NSURLQueryItem(name: "id", value: appID)]
+        var items: [NSURLQueryItem] = [NSURLQueryItem(name: "bundleId", value: NSBundle.bundleID())]
 
         if let countryCode = countryCode {
             let item = NSURLQueryItem(name: "country", value: countryCode)
@@ -594,9 +583,9 @@ private extension Siren {
     }
 
     func launchAppStore() {
-        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
-        let iTunesURL = NSURL(string: iTunesString)
-        UIApplication.sharedApplication().openURL(iTunesURL!)
+//        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
+//        let iTunesURL = NSURL(string: iTunesString)
+//        UIApplication.sharedApplication().openURL(iTunesURL!)
     }
 
     func printMessage(message: String) {
@@ -627,6 +616,11 @@ private extension UIAlertController {
 // MARK: - NSBundle Extension
 
 private extension NSBundle {
+
+    class func bundleID() -> String? {
+        return NSBundle.mainBundle().bundleIdentifier
+    }
+
     func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }

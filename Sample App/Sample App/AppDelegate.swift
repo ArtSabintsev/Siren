@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let siren = Siren.sharedInstance
         
         // Required
-        siren.appID = "376771144" // For this example, we're using the iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
-        
+//        siren.appID = "376771144" // For this example, we're using the iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
+
         // Optional
         siren.delegate = self
         

@@ -276,6 +276,11 @@ public final class Siren: NSObject {
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
 
+        guard let _ = NSBundle.bundleID() else {
+            printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
+            return
+        }
+
         if checkType == .Immediately {
             performVersionCheck()
         } else {

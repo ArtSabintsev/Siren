@@ -101,6 +101,7 @@ private enum SirenErrorCode: Int {
     case AppStoreJSONParsingFailure
     case AppStoreVersionNumberFailure
     case AppStoreVersionArrayFailure
+    case AppStoreAppIDFailure
 }
 
 /**
@@ -251,6 +252,7 @@ public final class Siren: NSObject {
     public private(set) var currentAppStoreVersion: String?
 
     // Private
+    private var appID: Int?
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var updaterWindow: UIWindow?
 
@@ -346,8 +348,8 @@ public final class Siren: NSObject {
             
             task.resume()
 
-        } catch _ {
-            postError(.MalformedURL, underlyingError: nil)
+        } catch let error as NSError {
+            postError(.MalformedURL, underlyingError: error)
         }
 
     }
@@ -363,6 +365,14 @@ public final class Siren: NSObject {
         }
         
         if results.isEmpty == false { // Conditional that avoids crash when app not in App Store
+
+            guard let appID = results[0]["trackId"] as? Int else {
+                self.postError(.AppStoreAppIDFailure, underlyingError: nil)
+                return
+            }
+
+            self.appID = appID
+
             currentAppStoreVersion = results[0]["version"] as? String
             guard let _ = currentAppStoreVersion else {
                 self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
@@ -588,9 +598,13 @@ private extension Siren {
     }
 
     func launchAppStore() {
-//        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
-//        let iTunesURL = NSURL(string: iTunesString)
-//        UIApplication.sharedApplication().openURL(iTunesURL!)
+        guard let appID = appID else {
+            return
+        }
+
+        let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
+        let iTunesURL = NSURL(string: iTunesString)
+        UIApplication.sharedApplication().openURL(iTunesURL!)
     }
 
     func printMessage(message: String) {
@@ -674,6 +688,8 @@ private extension Siren {
             description = "Error retrieving App Store verson number as there was no data returned."
         case .AppStoreVersionArrayFailure:
             description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+        case .AppStoreAppIDFailure:
+            description = "Error retrieving trackId as results[0] does not contain a 'trackId' key."
         }
 
         var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]

@@ -26,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupSiren() {
         
         let siren = Siren.sharedInstance
-        
-        // Required
-//        siren.appID = "376771144" // For this example, we're using the iTunes Connect App (https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8)
 
         // Optional
         siren.delegate = self
@@ -38,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None
-        
+
         // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
         siren.majorUpdateAlertType = .Option
         siren.minorUpdateAlertType = .Option

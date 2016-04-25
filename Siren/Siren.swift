@@ -12,7 +12,7 @@ import UIKit
 // MARK: - SirenDelegate Protocol
 
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog()                            // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
     func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
@@ -439,7 +439,7 @@ private extension Siren {
         
         if alertType != .None {
             alertController.show()
-            delegate?.sirenDidShowUpdateDialog()
+            delegate?.sirenDidShowUpdateDialog(alertType)
         }
     }
     
@@ -711,7 +711,7 @@ private extension Siren {
 
 extension SirenDelegate {
 
-    func sirenDidShowUpdateDialog() {}
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
     func sirenUserDidLaunchAppStore() {}
     func sirenUserDidSkipVersion() {}
     func sirenUserDidCancel() {}

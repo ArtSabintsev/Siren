@@ -74,7 +74,7 @@ Add `import Siren` to any `.Swift` file that references Siren via a Carthage ins
 
 ## Setup
 
-Here's some commented sample code. Adapt this to meet your app's needs.
+Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
 
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool

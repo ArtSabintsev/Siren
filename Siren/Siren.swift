@@ -96,11 +96,13 @@ public enum SirenLanguageType: String {
  */
 private enum SirenErrorCode: Int {
     case MalformedURL = 1000
+    case RecentlyCheckedAlready
     case NoUpdateAvailable
     case AppStoreDataRetrievalFailure
     case AppStoreJSONParsingFailure
     case AppStoreVersionNumberFailure
     case AppStoreVersionArrayFailure
+    case AppStoreAppIdFailure
 }
 
 /**
@@ -108,6 +110,7 @@ private enum SirenErrorCode: Int {
  */
 private enum SirenErrorType: ErrorType {
     case MalformedURL
+    case MissingBundleIdOrAppId
 }
 
 /** 
@@ -219,8 +222,19 @@ public final class Siren: NSObject {
     // Required Vars
     /**
         The App Store / iTunes Connect ID for your app.
+
+        Either this appID or a bundleID is required.
     */
     public var appID: String?
+    
+    /**
+        The bundle identifier of your app.
+
+        This can be used as substitute of the appID.
+
+        Either this bundleID or an appID is required.
+    */
+    public var bundleID: String?
     
     // Optional Vars
     /**
@@ -282,8 +296,8 @@ public final class Siren: NSObject {
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
 
-        guard let _ = appID else {
-            printMessage("Please make sure that you have set 'appID' before calling checkVersion.")
+        if appID == nil && bundleID == nil {
+            printMessage("Please make sure that you have set either 'appID' or 'bundleID' before calling checkVersion.")
             return
         }
 
@@ -298,7 +312,7 @@ public final class Siren: NSObject {
             if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
-                postError(.NoUpdateAvailable, underlyingError: nil)
+                postError(.RecentlyCheckedAlready, underlyingError: nil)
             }
         }
     }
@@ -352,8 +366,8 @@ public final class Siren: NSObject {
             
             task.resume()
 
-        } catch _ {
-            postError(.MalformedURL, underlyingError: nil)
+        } catch let error as NSError {
+            postError(.MalformedURL, underlyingError: error)
         }
 
     }
@@ -373,6 +387,15 @@ public final class Siren: NSObject {
             guard let _ = currentAppStoreVersion else {
                 self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
                 return
+            }
+            
+            // If the appID was not yet set, we need to get it from the App Store info
+            if appID == nil {
+                guard let appStoreAppID = results[0]["trackId"] as? Int else {
+                    self.postError(.AppStoreAppIdFailure, underlyingError: nil)
+                    return
+                }
+                appID = String(appStoreAppID)
             }
             
             if isAppStoreVersionNewer() {
@@ -518,8 +541,16 @@ private extension Siren {
         components.scheme = "https"
         components.host = "itunes.apple.com"
         components.path = "/lookup"
-
-        var items: [NSURLQueryItem] = [NSURLQueryItem(name: "id", value: appID)]
+        
+        var items: [NSURLQueryItem] = []
+        if let appID = appID {
+            items.append(NSURLQueryItem(name: "id", value: appID))
+        } else {
+            guard let bundleID = bundleID else {
+                throw SirenErrorType.MissingBundleIdOrAppId
+            }
+            items.append(NSURLQueryItem(name: "bundleId", value: bundleID))
+        }
 
         if let countryCode = countryCode {
             let item = NSURLQueryItem(name: "country", value: countryCode)
@@ -666,6 +697,8 @@ private extension Siren {
         switch code {
         case .MalformedURL:
             description = "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
+        case .RecentlyCheckedAlready:
+            description = "Not checking the version, because it already checked recently."
         case .NoUpdateAvailable:
             description = "No new update available."
         case .AppStoreDataRetrievalFailure:
@@ -673,9 +706,11 @@ private extension Siren {
         case .AppStoreJSONParsingFailure:
             description = "Error parsing App Store JSON data."
         case .AppStoreVersionNumberFailure:
-            description = "Error retrieving App Store verson number as there was no data returned."
+            description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:
-            description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+            description = "Error retrieving App Store version number as results[0] does not contain a 'version' key."
+        case .AppStoreAppIdFailure:
+            description = "Error retrieving App ID from the App Store App as results[0] does not contain a 'trackId' key."
         }
 
         var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]

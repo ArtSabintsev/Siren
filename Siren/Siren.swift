@@ -96,6 +96,7 @@ public enum SirenLanguageType: String {
  */
 private enum SirenErrorCode: Int {
     case MalformedURL = 1000
+    case RecentlyCheckedAlready
     case NoUpdateAvailable
     case AppStoreDataRetrievalFailure
     case AppStoreJSONParsingFailure
@@ -109,6 +110,7 @@ private enum SirenErrorCode: Int {
  */
 private enum SirenErrorType: ErrorType {
     case MalformedURL
+    case MissingBundleIdOrAppId
 }
 
 /** 
@@ -149,7 +151,7 @@ public final class Siren: NSObject {
         The SirenDelegate variable, which should be set if you'd like to be notified:
     
             - When a user views or interacts with the alert
-                - sirenDidShowUpdateDialog()
+                - sirenDidShowUpdateDialog(alertType: SirenAlertType)
                 - sirenUserDidLaunchAppStore()
                 - sirenUserDidSkipVersion()     
                 - sirenUserDidCancel()
@@ -216,7 +218,7 @@ public final class Siren: NSObject {
     See the SirenAlertType enum for full details.
     */
     public lazy var revisionUpdateAlertType = SirenAlertType.Option
-    
+
     // Optional Vars
     /**
         The name of your app. 
@@ -294,7 +296,7 @@ public final class Siren: NSObject {
             if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
-                postError(.NoUpdateAvailable, underlyingError: nil)
+                postError(.RecentlyCheckedAlready, underlyingError: nil)
             }
         }
     }
@@ -678,6 +680,8 @@ private extension Siren {
         switch code {
         case .MalformedURL:
             description = "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
+        case .RecentlyCheckedAlready:
+            description = "Not checking the version, because it already checked recently."
         case .NoUpdateAvailable:
             description = "No new update available."
         case .AppStoreDataRetrievalFailure:
@@ -685,7 +689,7 @@ private extension Siren {
         case .AppStoreJSONParsingFailure:
             description = "Error parsing App Store JSON data."
         case .AppStoreVersionNumberFailure:
-            description = "Error retrieving App Store verson number as there was no data returned."
+            description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:
             description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
         case .AppStoreAppIDFailure:

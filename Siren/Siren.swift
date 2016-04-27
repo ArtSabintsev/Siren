@@ -707,9 +707,10 @@ private extension Siren {
 
 }
 
+
 // MARK: - SirenDelegate 
 
-extension SirenDelegate {
+public extension SirenDelegate {
 
     func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
     func sirenUserDidLaunchAppStore() {}

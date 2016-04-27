@@ -3,6 +3,7 @@
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
 ---
+
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
@@ -14,10 +15,18 @@ If a new version is available, an alert can be presented to the user informing t
 	- Siren also supports four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
+## Important Notice (as of v0.8.0)
+
+### TL;DR
+Siren uses your app's bundle identifier to perform a version check. The `appID` param is now used by Siren under the hood. It'll throw an error if you try to set it as it's privately scoped.
+
+### Long Version
+As of v0.8.0, Siren is now able to check if your users are using the current version of your app using the app's bundle identifier, which is accessible through the `NSBundle` API. Instead of removing/deprecating `appID`, it is still storing your app's iTunes Connect `appID`, but it is now determined the `appID` dynamically from the results of the iTunes Lookup API call. Once it's determined, the `appID` is stored within Siren and used to launch the App Store page of your app when needed.
+
 ## Ports
-- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality. 
-- Siren and Harpy are maintained by the same developers and have full parity with one another.
-- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the the Google Play store on the Android platform. 
+- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
+- Siren and Harpy are maintained by the same developers. Siren is more feature-laden than Harpy as of v0.7.0.
+- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the the Google Play store on the Android platform.
 
 ## Features
 - [x] CocoaPods Support
@@ -74,11 +83,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 	// Siren is a singleton
 	let siren = Siren.sharedInstance
-
-	// Required: Either your app's iTunes App Store ID or the app's bundle identifier
-	siren.appID = <#Your_App_ID#>
-	// Or:
-	siren.bundleID = <#Your_Bundle_ID#>
 
 	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>
@@ -153,16 +157,16 @@ If you would like to set a different type of alert for revision, patch, minor, a
 ```
 
 ## Optional Delegate and Delegate Methods
-Six delegate methods allow you to handle or track the user's behavior:
+Six delegate methods allow you to handle or track the user's behavior. Each method has a default, empty implementation, effectively making each of these methods optional.
 
 ```	swift
-@objc protocol SirenDelegate {
-    optional func sirenDidShowUpdateDialog() // User presented with update dialog
-    optional func sirenUserDidLaunchAppStore() // User did click on button that launched App Store.app
-    optional func sirenUserDidSkipVersion() // User did click on button that skips version update
-    optional func sirenUserDidCancel()  // User did click on button that cancels update dialog
-		optional func sirenDidFailVersionCheck(error: NSError) // Siren failed to perform version check (may return system-level error)
-    optional func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+public protocol SirenDelegate: class {
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
+    func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
+    func sirenUserDidSkipVersion()                             // User did click on button that skips version update
+    func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
+    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
+    func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```
 

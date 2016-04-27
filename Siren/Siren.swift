@@ -21,17 +21,6 @@ public protocol SirenDelegate: class {
 }
 
 
-// Empty implementation in an extension on SirenDelegate to allow for optional implemenation of its methods
-public extension SirenDelegate {
-    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
-    func sirenUserDidLaunchAppStore() {}
-    func sirenUserDidSkipVersion() {}
-    func sirenUserDidCancel() {}
-    func sirenDidFailVersionCheck(error: NSError) {}
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
-}
-
-
 /**
     Determines the type of alert to present after a successful version check has been performed.
     
@@ -113,7 +102,7 @@ private enum SirenErrorCode: Int {
     case AppStoreJSONParsingFailure
     case AppStoreVersionNumberFailure
     case AppStoreVersionArrayFailure
-    case AppStoreAppIdFailure
+    case AppStoreAppIDFailure
 }
 
 /**
@@ -229,24 +218,7 @@ public final class Siren: NSObject {
     See the SirenAlertType enum for full details.
     */
     public lazy var revisionUpdateAlertType = SirenAlertType.Option
-    
-    // Required Vars
-    /**
-        The App Store / iTunes Connect ID for your app.
 
-        Either this appID or a bundleID is required.
-    */
-    public var appID: String?
-    
-    /**
-        The bundle identifier of your app.
-
-        This can be used as substitute of the appID.
-
-        Either this bundleID or an appID is required.
-    */
-    public var bundleID: String?
-    
     // Optional Vars
     /**
         The name of your app. 
@@ -282,6 +254,7 @@ public final class Siren: NSObject {
     public private(set) var currentAppStoreVersion: String?
 
     // Private
+    private var appID: Int?
     private var lastVersionCheckPerformedOnDate: NSDate?
     private var updaterWindow: UIWindow?
 
@@ -307,8 +280,8 @@ public final class Siren: NSObject {
     */
     public func checkVersion(checkType: SirenVersionCheckType) {
 
-        if appID == nil && bundleID == nil {
-            printMessage("Please make sure that you have set either 'appID' or 'bundleID' before calling checkVersion.")
+        guard let _ = NSBundle.bundleID() else {
+            printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
 
@@ -393,20 +366,19 @@ public final class Siren: NSObject {
             return
         }
         
-        if results.isEmpty == false { // Conditional that avoids crash when app not in App Store or appID mistyped
+        if results.isEmpty == false { // Conditional that avoids crash when app not in App Store
+
+            guard let appID = results[0]["trackId"] as? Int else {
+                self.postError(.AppStoreAppIDFailure, underlyingError: nil)
+                return
+            }
+
+            self.appID = appID
+
             currentAppStoreVersion = results[0]["version"] as? String
             guard let _ = currentAppStoreVersion else {
                 self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
                 return
-            }
-            
-            // If the appID was not yet set, we need to get it from the App Store info
-            if appID == nil {
-                guard let appStoreAppID = results[0]["trackId"] as? Int else {
-                    self.postError(.AppStoreAppIdFailure, underlyingError: nil)
-                    return
-                }
-                appID = String(appStoreAppID)
             }
             
             if isAppStoreVersionNewer() {
@@ -552,16 +524,8 @@ private extension Siren {
         components.scheme = "https"
         components.host = "itunes.apple.com"
         components.path = "/lookup"
-        
-        var items: [NSURLQueryItem] = []
-        if let appID = appID {
-            items.append(NSURLQueryItem(name: "id", value: appID))
-        } else {
-            guard let bundleID = bundleID else {
-                throw SirenErrorType.MissingBundleIdOrAppId
-            }
-            items.append(NSURLQueryItem(name: "bundleId", value: bundleID))
-        }
+
+        var items: [NSURLQueryItem] = [NSURLQueryItem(name: "bundleId", value: NSBundle.bundleID())]
 
         if let countryCode = countryCode {
             let item = NSURLQueryItem(name: "country", value: countryCode)
@@ -636,7 +600,11 @@ private extension Siren {
     }
 
     func launchAppStore() {
-        let iTunesString =  "https://itunes.apple.com/app/id\(appID!)"
+        guard let appID = appID else {
+            return
+        }
+
+        let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
         let iTunesURL = NSURL(string: iTunesString)
         UIApplication.sharedApplication().openURL(iTunesURL!)
     }
@@ -648,7 +616,6 @@ private extension Siren {
     }
 
 }
-
 
 // MARK: - UIAlertController Extensions
 
@@ -669,6 +636,11 @@ private extension UIAlertController {
 // MARK: - NSBundle Extension
 
 private extension NSBundle {
+
+    class func bundleID() -> String? {
+        return NSBundle.mainBundle().bundleIdentifier
+    }
+
     func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
@@ -719,9 +691,9 @@ private extension Siren {
         case .AppStoreVersionNumberFailure:
             description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:
-            description = "Error retrieving App Store version number as results[0] does not contain a 'version' key."
-        case .AppStoreAppIdFailure:
-            description = "Error retrieving App ID from the App Store App as results[0] does not contain a 'trackId' key."
+            description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+        case .AppStoreAppIDFailure:
+            description = "Error retrieving trackId as results[0] does not contain a 'trackId' key."
         }
 
         var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]
@@ -736,5 +708,19 @@ private extension Siren {
 
         printMessage(error.localizedDescription)
     }
+
+}
+
+
+// MARK: - SirenDelegate 
+
+public extension SirenDelegate {
+
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
+    func sirenUserDidLaunchAppStore() {}
+    func sirenUserDidSkipVersion() {}
+    func sirenUserDidCancel() {}
+    func sirenDidFailVersionCheck(error: NSError) {}
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
 
 }

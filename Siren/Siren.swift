@@ -1,4 +1,4 @@
-//
+=//
 //  Siren.swift
 //  Siren
 //
@@ -577,16 +577,14 @@ private extension Siren {
         let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
         let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
 
-        if 2...4 ~= oldVersion.count && oldVersion.count == newVersion.count {
-            if newVersion[0] > oldVersion[0] { // A.b.c.d
-                alertType = majorUpdateAlertType
-            } else if newVersion[1] > oldVersion[1] { // a.B.c.d
-                alertType = minorUpdateAlertType
-            } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
-                alertType = patchUpdateAlertType
-            } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
-                alertType = revisionUpdateAlertType
-            }
+        if newVersion[0] > oldVersion[0] { // A.b.c.d
+            alertType = majorUpdateAlertType
+        } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
+            alertType = minorUpdateAlertType
+        } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
+            alertType = patchUpdateAlertType
+        } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
+            alertType = revisionUpdateAlertType
         }
 
         return alertType

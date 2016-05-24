@@ -1,4 +1,4 @@
-=//
+//
 //  Siren.swift
 //  Siren
 //
@@ -259,13 +259,7 @@ public final class Siren: NSObject {
     private var updaterWindow: UIWindow?
 
     // Initialization
-    public class var sharedInstance: Siren {
-        struct Singleton {
-            static let instance = Siren()
-        }
-        
-        return Singleton.instance
-    }
+    public static let sharedInstance = Siren()
     
     override init() {
         lastVersionCheckPerformedOnDate = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredVersionCheckDate.rawValue) as? NSDate

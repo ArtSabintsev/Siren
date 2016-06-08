@@ -481,7 +481,7 @@ private extension Siren {
 
 // MARK: - Localization Helpers
 
-private extension Siren {
+extension Siren {
     func localizedNewVersionMessage() -> String {
 
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
@@ -627,21 +627,21 @@ private extension UIAlertController {
 
 // MARK: - NSBundle Extension
 
-private extension NSBundle {
+extension NSBundle {
 
-    class func bundleID() -> String? {
+    private class func bundleID() -> String? {
         return NSBundle.mainBundle().bundleIdentifier
     }
 
-    func currentInstalledVersion() -> String? {
+    private func currentInstalledVersion() -> String? {
         return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
     }
 
-    func sirenBundlePath() -> String {
+    private func sirenBundlePath() -> String {
         return NSBundle(forClass: Siren.self).pathForResource("Siren", ofType: "bundle") as String!
     }
 
-    func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
+    private func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
         return NSBundle(path: path)!.pathForResource(name, ofType: "lproj")!

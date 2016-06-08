@@ -28,6 +28,23 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "تجديد")
     }
 
+    func testBasqueLocalization() {
+        let language: SirenLanguageType = .Basque
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available"
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Eguneratzea erabilgarri")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Hurrengo batean")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Bertsio honetatik jauzi egin")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Eguneratu")
+    }
+
     func testArmenianLocalization() {
         let language: SirenLanguageType = .Armenian
         Siren.sharedInstance.forceLanguageLocalization = language

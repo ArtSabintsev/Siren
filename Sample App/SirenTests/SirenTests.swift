@@ -28,6 +28,23 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "تجديد")
     }
 
+    func testArmenianLocalization() {
+        let language: SirenLanguageType = .Armenian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Թարմացումը հասանելի Է")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Հաջորդ անգամ")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Բաց թողնել այս տարբերակը")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Թարմացնել")
+    }
+
     func testBasqueLocalization() {
         let language: SirenLanguageType = .Basque
         Siren.sharedInstance.forceLanguageLocalization = language
@@ -79,23 +96,6 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "更新")
     }
 
-    func testArmenianLocalization() {
-        let language: SirenLanguageType = .Armenian
-        Siren.sharedInstance.forceLanguageLocalization = language
-
-        // Update Available
-        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Թարմացումը հասանելի Է")
-
-        // Next time
-        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Հաջորդ անգամ")
-
-        // Skip this version
-        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Բաց թողնել այս տարբերակը")
-
-        // Update
-        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Թարմացնել")
-    }
-
     func testDanishLocalization() {
         let language: SirenLanguageType = .Danish
         Siren.sharedInstance.forceLanguageLocalization = language
@@ -111,6 +111,40 @@ class SirenTests: XCTestCase {
 
         // Update
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Opdater")
+    }
+
+    func testDutchLocalization() {
+        let language: SirenLanguageType = .Dutch
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Update Beschikbaar")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Volgende keer")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Sla deze versie over")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Updaten")
+    }
+
+    func testEstonianLocalization() {
+        let language: SirenLanguageType = .Estonian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Uuendus saadaval")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Järgmisel korral")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Jäta see version vahele")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Uuenda")
     }
 
     func testGermanLocalization() {

@@ -198,5 +198,22 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "עדכן")
     }
 
+    func testHungarianLocalization() {
+        let language: SirenLanguageType = .Hungarian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Új frissítés érhető el")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Később")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Ennél a verziónál ne figyelmeztessen")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Frissítés")
+    }
 
 }

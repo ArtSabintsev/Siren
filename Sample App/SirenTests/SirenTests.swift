@@ -147,6 +147,23 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Uuenda")
     }
 
+    func testFrenchLocalization() {
+        let language: SirenLanguageType = .French
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Mise à jour disponible")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "La prochaine fois")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Sauter cette version")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Mettre à jour")
+    }
+
     func testGermanLocalization() {
         let language: SirenLanguageType = .German
         Siren.sharedInstance.forceLanguageLocalization = language
@@ -163,5 +180,23 @@ class SirenTests: XCTestCase {
         // Update
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Update")
     }
+
+    func testHebrewLocalization() {
+        let language: SirenLanguageType = .Hebrew
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "עדכון זמין")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "בפעם הבאה")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "דלג על גרסה זו")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "עדכן")
+    }
+
 
 }

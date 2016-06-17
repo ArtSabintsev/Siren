@@ -252,4 +252,58 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "更新")
     }
 
+    func testKoreanLocalization() {
+        let language: SirenLanguageType = .Korean
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "업데이트 가능")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "다음에")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "이 버전 건너뜀")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "업데이트")
+    }
+
+    func testLatvianLocalization() {
+        let language: SirenLanguageType = .Latvian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Atjaunojums")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Nākošreiz")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Palaist garām šo versiju")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Atjaunot")
+    }
+
+    func testLithuanianLocalization() {
+        let language: SirenLanguageType = .Lithuanian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Atnaujinimas")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Kitą kartą")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Praleisti šią versiją")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Atnaujinti")
+    }
+
 }

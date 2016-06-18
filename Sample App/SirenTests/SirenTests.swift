@@ -203,7 +203,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Új frissítés érhető el")
 
         // Next time
@@ -221,7 +220,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Aggiornamento disponibile")
 
         // Next time
@@ -239,7 +237,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "更新が利用可能")
 
         // Next time
@@ -257,7 +254,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "업데이트 가능")
 
         // Next time
@@ -275,7 +271,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Atjaunojums")
 
         // Next time
@@ -293,7 +288,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Atnaujinimas")
 
         // Next time
@@ -311,7 +305,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Versi Terkini")
 
         // Next time
@@ -329,7 +322,6 @@ class SirenTests: XCTestCase {
         Siren.sharedInstance.forceLanguageLocalization = language
 
         // Update Available
-        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
         XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Aktualizacja dostępna")
 
         // Next time
@@ -340,6 +332,40 @@ class SirenTests: XCTestCase {
 
         // Update
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Zaktualizuj")
+    }
+
+    func testPortugueseBrazilLocalization() {
+        let language: SirenLanguageType = .PortugueseBrazil
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Nova atualização disponível")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Próxima vez")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Ignorar esta versão")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Atualizar")
+    }
+
+    func testPortuguesePortugalLocalization() {
+        let language: SirenLanguageType = .PortuguesePortugal
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Nova actualização disponível")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Próxima vez")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Ignorar esta versão")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Actualizar")
     }
 
 }

@@ -362,14 +362,14 @@ public final class Siren: NSObject {
         
         if results.isEmpty == false { // Conditional that avoids crash when app not in App Store
 
-            guard let appID = results[0]["trackId"] as? Int else {
+            guard let appID = results.first?["trackId"] as? Int else {
                 self.postError(.AppStoreAppIDFailure, underlyingError: nil)
                 return
             }
 
             self.appID = appID
 
-            currentAppStoreVersion = results[0]["version"] as? String
+            currentAppStoreVersion = results.first?["version"] as? String
             guard let _ = currentAppStoreVersion else {
                 self.postError(.AppStoreVersionArrayFailure, underlyingError: nil)
                 return
@@ -545,7 +545,7 @@ private extension Siren {
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
 
         guard let results = appData["results"] as? [[String: AnyObject]],
-            requiredOSVersion = results[0]["minimumOsVersion"] as? String else {
+            requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
                 postError(.AppStoreOSVersionNumberFailure, underlyingError: nil)
             return false
         }
@@ -592,7 +592,7 @@ private extension Siren {
         let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
         let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
 
-        if newVersion[0] > oldVersion[0] { // A.b.c.d
+        if newVersion.first > oldVersion.first { // A.b.c.d
             alertType = majorUpdateAlertType
         } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
             alertType = minorUpdateAlertType
@@ -708,9 +708,9 @@ private extension Siren {
         case .AppStoreVersionNumberFailure:
             description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:
-            description = "Error retrieving App Store verson number as results[0] does not contain a 'version' key."
+            description = "Error retrieving App Store verson number as results.first does not contain a 'version' key."
         case .AppStoreAppIDFailure:
-            description = "Error retrieving trackId as results[0] does not contain a 'trackId' key."
+            description = "Error retrieving trackId as results.first does not contain a 'trackId' key."
         }
 
         var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]

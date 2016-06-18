@@ -335,7 +335,7 @@ public final class Siren: NSObject {
                         self.postError(.AppStoreDataRetrievalFailure, underlyingError: error)
                     }
                 }
-                
+
                 })
             
             task.resume()
@@ -388,8 +388,8 @@ public final class Siren: NSObject {
 // MARK: - Alert Helpers
 
 private extension Siren {
+
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
-        
         alertType = setAlertType()
         
         guard let previouslySkippedVersion = NSUserDefaults.standardUserDefaults().objectForKey(SirenUserDefaults.StoredSkippedVersion.rawValue) as? String else {
@@ -397,24 +397,22 @@ private extension Siren {
             return
         }
         
-        if let currentAppStoreVersion = currentAppStoreVersion {
-            if currentAppStoreVersion != previouslySkippedVersion {
+        if let currentAppStoreVersion = currentAppStoreVersion
+            where currentAppStoreVersion != previouslySkippedVersion {
                 showAlert()
-            }
         }
     }
     
     func showAlert() {
-        
         let updateAvailableMessage = NSBundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .Alert)
-        
+
         if let alertControllerTintColor = alertControllerTintColor {
             alertController.view.tintColor = alertControllerTintColor
         }
-        
+
         switch alertType {
         case .Force:
             alertController.addAction(updateAlertAction())
@@ -461,10 +459,12 @@ private extension Siren {
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .Default) { (alert: UIAlertAction) in
+
             if let currentAppStoreVersion = self.currentAppStoreVersion {
                 NSUserDefaults.standardUserDefaults().setObject(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
                 NSUserDefaults.standardUserDefaults().synchronize()
             }
+
             self.hideWindow()
             self.delegate?.sirenUserDidSkipVersion()
             return
@@ -478,6 +478,7 @@ private extension Siren {
 // MARK: - Localization Helpers
 
 extension Siren {
+
     func localizedNewVersionMessage() -> String {
 
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
@@ -541,10 +542,10 @@ private extension Siren {
 
         var newVersionExists = false
 
-        if let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion {
-            if (currentInstalledVersion.compare(currentAppStoreVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
-                newVersionExists = true
-            }
+        if let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion
+            where (currentInstalledVersion.compare(currentAppStoreVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+
+            newVersionExists = true
         }
 
         return newVersionExists
@@ -608,6 +609,7 @@ private extension Siren {
 // MARK: - UIAlertController Extensions
 
 private extension UIAlertController {
+
     func show() {
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window.rootViewController = UIViewController()
@@ -618,6 +620,7 @@ private extension UIAlertController {
         window.makeKeyAndVisible()
         window.rootViewController!.presentViewController(self, animated: true, completion: nil)
     }
+
 }
 
 
@@ -650,6 +653,7 @@ private extension NSBundle {
         
         return NSBundle(path: path)!.localizedStringForKey(stringKey, value: stringKey, table: table)
     }
+
 }
 
 

@@ -306,4 +306,40 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Atnaujinti")
     }
 
+    func testMalayLocalization() {
+        let language: SirenLanguageType = .Malay
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Versi Terkini")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Lain kali")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Langkau versi ini")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Muat turun")
+    }
+
+    func testPolishLocalization() {
+        let language: SirenLanguageType = .Polish
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        print(NSBundle().localizedString("Update Available", forceLanguageLocalization: language))
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Aktualizacja dostępna")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Następnym razem")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Pomiń wersję")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Zaktualizuj")
+    }
+
 }

@@ -23,7 +23,7 @@ If a new version is available, an alert can be presented to the user informing t
 ## Features
 - [x] CocoaPods Support
 - [x] Localized for 20+ languages (See **Localization**)
-- [x] Checks if app update is compatible with device version of iOS
+- [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
 - [x] Optional delegate methods (see **Optional Delegate**)
 
@@ -173,6 +173,9 @@ You can enable it like this:
 ```swift
 Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
+## Device Compatibility
+If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
+
 ## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 

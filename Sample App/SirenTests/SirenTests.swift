@@ -368,4 +368,38 @@ class SirenTests: XCTestCase {
         XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Actualizar")
     }
 
+    func testRussianLocalization() {
+        let language: SirenLanguageType = .Russian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Доступно обновление")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "В следующий раз")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Пропустить эту версию")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Обновить")
+    }
+
+    func testSlovenianLocalization() {
+        let language: SirenLanguageType = .Slovenian
+        Siren.sharedInstance.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().localizedString("Update Available", forceLanguageLocalization: language), "Posodobitev aplikacije")
+
+        // Next time
+        XCTAssertEqual(Siren.sharedInstance.localizedNextTimeButtonTitle(), "Naslednjič")
+
+        // Skip this version
+        XCTAssertEqual(Siren.sharedInstance.localizedSkipButtonTitle(), "Ne želim")
+
+        // Update
+        XCTAssertEqual(Siren.sharedInstance.localizedUpdateButtonTitle(), "Namesti")
+    }
+
 }

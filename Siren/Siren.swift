@@ -100,6 +100,8 @@ private enum SirenErrorCode: Int {
     case NoUpdateAvailable
     case AppStoreDataRetrievalFailure
     case AppStoreJSONParsingFailure
+    case AppStoreOSVersionNumberFailure
+    case AppStoreOSVersionUnsupported
     case AppStoreVersionNumberFailure
     case AppStoreVersionArrayFailure
     case AppStoreAppIDFailure
@@ -316,7 +318,9 @@ public final class Siren: NSObject {
 
                         let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
 
-                        guard let appData = jsonData as? [String: AnyObject] else {
+                        guard let appData = jsonData as? [String: AnyObject]
+                            where self.isUpdateCompatibleWithDeviceOS(appData) else {
+
                             self.postError(.AppStoreJSONParsingFailure, underlyingError: nil)
                             return
                         }
@@ -538,12 +542,32 @@ private extension Siren {
         return components.day
     }
 
+    func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
+
+        guard let results = appData["results"] as? [[String: AnyObject]],
+            requiredOSVersion = results[0]["minimumOsVersion"] as? String else {
+                postError(.AppStoreOSVersionNumberFailure, underlyingError: nil)
+            return false
+        }
+
+        let systemVersion = UIDevice.currentDevice().systemVersion
+
+        if systemVersion.compare(requiredOSVersion, options: .NumericSearch) == .OrderedDescending ||
+            systemVersion.compare(requiredOSVersion, options: .NumericSearch) == .OrderedSame {
+            return true
+        } else {
+            postError(.AppStoreOSVersionUnsupported, underlyingError: nil)
+            return false
+        }
+
+    }
+
     func isAppStoreVersionNewer() -> Bool {
 
         var newVersionExists = false
 
         if let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion
-            where (currentInstalledVersion.compare(currentAppStoreVersion, options: .NumericSearch) == NSComparisonResult.OrderedAscending) {
+            where (currentInstalledVersion.compare(currentAppStoreVersion, options: .NumericSearch) == .OrderedAscending) {
 
             newVersionExists = true
         }
@@ -677,6 +701,10 @@ private extension Siren {
             description = "Error retrieving App Store data as an error was returned."
         case .AppStoreJSONParsingFailure:
             description = "Error parsing App Store JSON data."
+        case .AppStoreOSVersionNumberFailure:
+            description = "Error retrieving iOS version number as there was no data returned."
+        case .AppStoreOSVersionUnsupported:
+            description = "The version of iOS on the device is lower than that of the one required by the app verison update."
         case .AppStoreVersionNumberFailure:
             description = "Error retrieving App Store version number as there was no data returned."
         case .AppStoreVersionArrayFailure:

@@ -134,18 +134,14 @@ public final class Siren: NSObject {
     /**
         Current installed version of your app
      */
-    let currentInstalledVersion = NSBundle.mainBundle().currentInstalledVersion()
-
-    /**
-        NSBundle path for localization
-     */
-    let bundlePath = NSBundle.mainBundle().pathForResource("Siren", ofType: "Bundle")
+    private var currentInstalledVersion: String? = {
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+    }()
 
     /**
         The error domain for all errors created by Siren
      */
     public let SirenErrorDomain = "Siren Error Domain"
-
 
     /**
         The SirenDelegate variable, which should be set if you'd like to be notified:
@@ -627,21 +623,17 @@ private extension UIAlertController {
 
 // MARK: - NSBundle Extension
 
-extension NSBundle {
+private extension NSBundle {
 
-    private class func bundleID() -> String? {
+    class func bundleID() -> String? {
         return NSBundle.mainBundle().bundleIdentifier
     }
 
-    private func currentInstalledVersion() -> String? {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
-    }
-
-    private func sirenBundlePath() -> String {
+    func sirenBundlePath() -> String {
         return NSBundle(forClass: Siren.self).pathForResource("Siren", ofType: "bundle") as String!
     }
 
-    private func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
+    func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
         return NSBundle(path: path)!.pathForResource(name, ofType: "lproj")!
@@ -714,5 +706,32 @@ public extension SirenDelegate {
     func sirenUserDidCancel() {}
     func sirenDidFailVersionCheck(error: NSError) {}
     func sirenDidDetectNewVersionWithoutAlert(message: String) {}
+
+}
+
+
+// MARK: - Testing Helpers 
+
+extension Siren {
+
+    func testSetCurrentInstalledVersion(version: String) {
+        currentInstalledVersion = version
+    }
+
+    func testSetAppStoreVersion(version: String) {
+        currentAppStoreVersion = version
+    }
+
+    func testIsAppStoreVersionNewer() -> Bool {
+        return isAppStoreVersionNewer()
+    }
+    
+}
+
+extension NSBundle {
+
+    func testLocalizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
+        return NSBundle().localizedString(stringKey, forceLanguageLocalization: forceLanguageLocalization)
+    }
 
 }

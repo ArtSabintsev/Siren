@@ -15,22 +15,15 @@ If a new version is available, an alert can be presented to the user informing t
 	- Siren also supports four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
-## Important Notice (as of v0.8.0)
-
-### TL;DR
-Siren uses your app's bundle identifier to perform a version check. The `appID` param is now used by Siren under the hood. It'll throw an error if you try to set it as it's privately scoped.
-
-### Long Version
-As of v0.8.0, Siren is now able to check if your users are using the current version of your app using the app's bundle identifier, which is accessible through the `NSBundle` API. Instead of removing/deprecating `appID`, it is still storing your app's iTunes Connect `appID`, but it is now determined the `appID` dynamically from the results of the iTunes Lookup API call. Once it's determined, the `appID` is stored within Siren and used to launch the App Store page of your app when needed.
-
 ## Ports
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
-- Siren and Harpy are maintained by the same developers. Siren is more feature-laden than Harpy as of v0.7.0.
+- Siren and Harpy are maintained by the same developers.
 - This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the the Google Play store on the Android platform.
 
 ## Features
 - [x] CocoaPods Support
 - [x] Localized for 20+ languages (See **Localization**)
+- [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
 - [x] Optional delegate methods (see **Optional Delegate**)
 
@@ -180,6 +173,9 @@ You can enable it like this:
 ```swift
 Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
+## Device Compatibility
+If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
+
 ## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 

@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
-![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)
+![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) ![Cocoapods](https://img.shields.io/cocoapods/v/Siren.svg)
 ---
 
 ## About

@@ -545,7 +545,7 @@ private extension Siren {
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
 
         guard let results = appData["results"] as? [[String: AnyObject]],
-            requiredOSVersion = results[0]["minimumOsVersion"] as? String else {
+            requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
                 postError(.AppStoreOSVersionNumberFailure, underlyingError: nil)
             return false
         }

@@ -1,0 +1,14 @@
+/* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
+"A new version of %@ is available. Please update to version %@ now." = "Nova verzia %@ je stigla. Ažuriraj na verziju %@ sada.";
+
+/* Update alert title */
+"Update Available" = "Nova ažuriranje je stigla";
+
+/* Update alert dismiss button title */
+"Next time" = "Sljedeći put";
+
+/* Update alert skip button title */
+"Skip this version" = "Preskoči ovu verziju";
+
+/* Update alert skip button title */
+"Update" = "Ažuriraj";

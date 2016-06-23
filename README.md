@@ -27,6 +27,7 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
 - [x] Optional delegate methods (see **Optional Delegate**)
+- [x] Unit Tests!
 
 ## Screenshots
 

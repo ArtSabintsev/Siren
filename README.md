@@ -19,7 +19,7 @@ If a new version is available, an alert can be presented to the user informing t
 ## Ports
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
 - Siren and Harpy are maintained by the same developers.
-- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the the Google Play store on the Android platform.
+- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the Google Play store on the Android platform.
 
 ## Features
 - [x] CocoaPods Support

@@ -66,6 +66,7 @@ public enum SirenLanguageType: String {
     case Basque = "eu"
     case ChineseSimplified = "zh-Hans"
     case ChineseTraditional = "zh-Hant"
+    case Croatian = "hr"
     case Danish = "da"
     case Dutch = "nl"
     case English = "en"

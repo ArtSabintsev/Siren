@@ -223,6 +223,23 @@ extension SirenTests {
         XCTAssertEqual(siren.localizedUpdateButtonTitle(), "更新")
     }
 
+    func testCroatianLocalization() {
+        let language: SirenLanguageType = .Croatian
+        siren.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Nova ažuriranje je stigla")
+
+        // Next time
+        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Sljedeći put")
+
+        // Skip this version
+        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Preskoči ovu verziju")
+
+        // Update
+        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Ažuriraj")
+    }
+
     func testDanishLocalization() {
         let language: SirenLanguageType = .Danish
         siren.forceLanguageLocalization = language

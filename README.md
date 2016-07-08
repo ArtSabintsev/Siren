@@ -48,11 +48,21 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
-Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
+For Swift 3 Support
+
+```swift
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3'
+```
 
 ### Carthage
 ``` swift
 github "ArtSabintsev/Siren"
+```
+
+For Swift 3 support
+
+``` swift
+github "ArtSabintsev/Siren" "swift3"
 ```
 
 ### Swift Package manager

@@ -23,6 +23,8 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Features
 - [x] CocoaPods Support
+- [x] Carthage Support
+- [x] Swift Package Manager Support
 - [x] Localized for 20+ languages (See **Localization**)
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
@@ -48,11 +50,21 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
-Add `import Siren` to any `.Swift` file that references Siren via a CocoaPods installation.
+For Swift 3 Support
+
+```swift
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3'
+```
 
 ### Carthage
 ``` swift
 github "ArtSabintsev/Siren"
+```
+
+For Swift 3 support
+
+``` swift
+github "ArtSabintsev/Siren" "swift3"
 ```
 
 ### Swift Package manager
@@ -165,7 +177,7 @@ public protocol SirenDelegate: class {
 }
 ```
 
-## Force Localization
+## Localization
 Harpy is localized for Arabic, Armenian, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
@@ -181,9 +193,9 @@ If an app update is available, Siren checks to make sure that the version of iOS
 ## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
-If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
+If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [iTunes Connect Mobile](https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8) app's bundleID: `com.apple.itunesconnect.mobile`.
 
-For your convenience, you may turn on `printn()` debugging statements by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
+For your convenience, you may turn on debugging statements by setting `self.debugEnabled = true` before calling the `checkVersion()` method.
 
 ## App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.

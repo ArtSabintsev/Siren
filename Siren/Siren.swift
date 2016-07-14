@@ -482,7 +482,7 @@ private extension Siren {
 
 // MARK: - Localization Helpers
 
-extension Siren {
+private extension Siren {
 
     func localizedNewVersionMessage() -> String {
 

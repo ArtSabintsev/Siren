@@ -50,7 +50,7 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
-For Swift 3 Support
+For Swift 3 support:
 
 ```swift
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3'
@@ -61,7 +61,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 github "ArtSabintsev/Siren"
 ```
 
-For Swift 3 support
+For Swift 3 support:
 
 ``` swift
 github "ArtSabintsev/Siren" "swift3"

@@ -146,13 +146,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "التجديد متوفر")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "المرة التالية")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "المرة التالية")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "تخطى عن هذه النسخة")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "تخطى عن هذه النسخة")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "تجديد")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "تجديد")
     }
 
     func testArmenianLocalization() {
@@ -163,13 +163,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Թարմացումը հասանելի Է")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Հաջորդ անգամ")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Հաջորդ անգամ")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Բաց թողնել այս տարբերակը")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Բաց թողնել այս տարբերակը")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Թարմացնել")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Թարմացնել")
     }
 
     func testBasqueLocalization() {
@@ -180,13 +180,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Eguneratzea erabilgarri")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Hurrengo batean")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Hurrengo batean")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Bertsio honetatik jauzi egin")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Bertsio honetatik jauzi egin")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Eguneratu")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Eguneratu")
     }
 
     func testChineseSimplifiedLocalization() {
@@ -197,13 +197,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "更新可用")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "下一次")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "下一次")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "跳过此版本")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "跳过此版本")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "更新")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "更新")
     }
 
     func testChineseTraditionalLocalization() {
@@ -214,13 +214,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "有更新可用")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "下次")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "下次")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "跳過此版本")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "跳過此版本")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "更新")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "更新")
     }
 
     func testCroatianLocalization() {
@@ -231,13 +231,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Nova ažuriranje je stigla")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Sljedeći put")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Sljedeći put")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Preskoči ovu verziju")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Preskoči ovu verziju")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Ažuriraj")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Ažuriraj")
     }
 
     func testDanishLocalization() {
@@ -248,13 +248,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Tilgængelig opdatering")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Næste gang")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Næste gang")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Spring denne version over")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Spring denne version over")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Opdater")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Opdater")
     }
 
     func testDutchLocalization() {
@@ -265,13 +265,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Update Beschikbaar")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Volgende keer")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Volgende keer")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Sla deze versie over")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Sla deze versie over")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Updaten")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Updaten")
     }
 
     func testEstonianLocalization() {
@@ -282,13 +282,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Uuendus saadaval")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Järgmisel korral")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Järgmisel korral")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Jäta see version vahele")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Jäta see version vahele")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Uuenda")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Uuenda")
     }
 
     func testFrenchLocalization() {
@@ -299,13 +299,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Mise à jour disponible")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "La prochaine fois")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "La prochaine fois")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Sauter cette version")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Sauter cette version")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Mettre à jour")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Mettre à jour")
     }
 
     func testGermanLocalization() {
@@ -316,13 +316,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Update erhältlich")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Später")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Später")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Diese Version überspringen")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Diese Version überspringen")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Update")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Update")
     }
 
     func testHebrewLocalization() {
@@ -333,13 +333,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "עדכון זמין")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "בפעם הבאה")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "בפעם הבאה")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "דלג על גרסה זו")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "דלג על גרסה זו")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "עדכן")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "עדכן")
     }
 
     func testHungarianLocalization() {
@@ -350,13 +350,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Új frissítés érhető el")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Később")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Később")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Ennél a verziónál ne figyelmeztessen")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Ennél a verziónál ne figyelmeztessen")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Frissítés")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Frissítés")
     }
 
     func testItalianLocalization() {
@@ -367,13 +367,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Aggiornamento disponibile")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "La prossima volta")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "La prossima volta")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Salta questa versione")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Salta questa versione")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Aggiorna")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Aggiorna")
     }
 
     func testJapaneseLocalization() {
@@ -384,13 +384,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "更新が利用可能")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "次回")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "次回")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "このバージョンをスキップ")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "このバージョンをスキップ")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "更新")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "更新")
     }
 
     func testKoreanLocalization() {
@@ -401,13 +401,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "업데이트 가능")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "다음에")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "다음에")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "이 버전 건너뜀")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "이 버전 건너뜀")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "업데이트")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "업데이트")
     }
 
     func testLatvianLocalization() {
@@ -418,13 +418,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Atjaunojums")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Nākošreiz")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Nākošreiz")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Palaist garām šo versiju")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Palaist garām šo versiju")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Atjaunot")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Atjaunot")
     }
 
     func testLithuanianLocalization() {
@@ -435,13 +435,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Atnaujinimas")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Kitą kartą")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Kitą kartą")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Praleisti šią versiją")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Praleisti šią versiją")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Atnaujinti")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Atnaujinti")
     }
 
     func testMalayLocalization() {
@@ -452,13 +452,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Versi Terkini")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Lain kali")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Lain kali")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Langkau versi ini")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Langkau versi ini")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Muat turun")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Muat turun")
     }
 
     func testPolishLocalization() {
@@ -469,13 +469,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Aktualizacja dostępna")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Następnym razem")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Następnym razem")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Pomiń wersję")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Pomiń wersję")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Zaktualizuj")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Zaktualizuj")
     }
 
     func testPortugueseBrazilLocalization() {
@@ -486,13 +486,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Nova atualização disponível")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Próxima vez")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Próxima vez")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Ignorar esta versão")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Ignorar esta versão")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Atualizar")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Atualizar")
     }
 
     func testPortuguesePortugalLocalization() {
@@ -503,13 +503,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Nova actualização disponível")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Próxima vez")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Próxima vez")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Ignorar esta versão")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Ignorar esta versão")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Actualizar")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Actualizar")
     }
 
     func testRussianLocalization() {
@@ -520,13 +520,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Доступно обновление")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "В следующий раз")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "В следующий раз")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Пропустить эту версию")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Пропустить эту версию")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Обновить")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Обновить")
     }
 
     func testSlovenianLocalization() {
@@ -537,13 +537,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Posodobitev aplikacije")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Naslednjič")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Naslednjič")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Ne želim")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Ne želim")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Namesti")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Namesti")
     }
 
     func testSpanishLocalization() {
@@ -554,13 +554,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Actualización disponible")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "La próxima vez")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "La próxima vez")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Saltar esta versión")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Saltar esta versión")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Actualizar")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Actualizar")
     }
 
     func testSwedishLocalization() {
@@ -571,13 +571,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Tillgänglig uppdatering")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Nästa gång")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Nästa gång")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Hoppa över den här versionen")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Hoppa över den här versionen")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Uppdatera")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Uppdatera")
     }
 
     func testThaiLocalization() {
@@ -588,13 +588,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "มีการอัพเดท")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "ไว้คราวหน้า")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "ไว้คราวหน้า")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "ข้ามเวอร์ชั่นนี้")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "ข้ามเวอร์ชั่นนี้")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "อัพเดท")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "อัพเดท")
     }
 
     func testTurkishLocalization() {
@@ -605,13 +605,13 @@ extension SirenTests {
         XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Güncelleme Mevcut")
 
         // Next time
-        XCTAssertEqual(siren.localizedNextTimeButtonTitle(), "Daha sonra")
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Daha sonra")
 
         // Skip this version
-        XCTAssertEqual(siren.localizedSkipButtonTitle(), "Boşver")
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Boşver")
 
         // Update
-        XCTAssertEqual(siren.localizedUpdateButtonTitle(), "Güncelle")
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Güncelle")
     }
 
 }

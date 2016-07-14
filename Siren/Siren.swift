@@ -12,12 +12,12 @@ import UIKit
 // MARK: - SirenDelegate Protocol
 
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(_ alertType: SirenAlertType)   // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
     func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    func sirenDidFailVersionCheck(_ error: NSError)              // Siren failed to perform version check (may return system-level error)
-    func sirenDidDetectNewVersionWithoutAlert(_ message: String) // Siren performed version check and did not display alert
+    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
+    func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 
 
@@ -271,10 +271,10 @@ public final class Siren: NSObject {
     
         - parameter checkType: The frequency in days in which you want a check to be performed. Please refer to the SirenVersionCheckType enum for more details.
     */
-    public func checkVersion(_ checkType: SirenVersionCheckType) {
+    public func checkVersion(checkType: SirenVersionCheckType) {
 
         guard let _ = Bundle.bundleID() else {
-            printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
+            printMessage(message: "Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
 
@@ -286,7 +286,7 @@ public final class Siren: NSObject {
                 return
             }
             
-            if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -320,7 +320,7 @@ public final class Siren: NSObject {
                         let jsonData = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
 
                         guard let appData = jsonData as? [String: AnyObject]
-                            where self.isUpdateCompatibleWithDeviceOS(appData) else {
+                            where self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
 
                             self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
                             return
@@ -329,10 +329,10 @@ public final class Siren: NSObject {
                         DispatchQueue.main.async {
 
                             // Print iTunesLookup results from appData
-                            self.printMessage("JSON results: \(appData)")
+                            self.printMessage(message: "JSON results: \(appData)")
 
                             // Process Results (e.g., extract current version that is available on the AppStore)
-                            self.processVersionCheckResults(appData)
+                            self.processVersionCheckResults(lookupResults: appData)
 
                         }
 
@@ -351,7 +351,7 @@ public final class Siren: NSObject {
 
     }
     
-    private func processVersionCheckResults(_ lookupResults: [String: AnyObject]) {
+    private func processVersionCheckResults(lookupResults: [String: AnyObject]) {
         
         // Store version comparison date
         storeVersionCheckDate()
@@ -409,7 +409,7 @@ private extension Siren {
     }
     
     func showAlert() {
-        let updateAvailableMessage = Bundle().localizedString("Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let updateAvailableMessage = Bundle().localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -429,12 +429,12 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .none:
-            delegate?.sirenDidDetectNewVersionWithoutAlert(newVersionMessage)
+            delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage)
         }
         
         if alertType != .none {
             alertController.show()
-            delegate?.sirenDidShowUpdateDialog(alertType)
+            delegate?.sirenDidShowUpdateDialog(alertType: alertType)
         }
     }
     
@@ -487,7 +487,7 @@ private extension Siren {
     func localizedNewVersionMessage() -> String {
 
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
-        let newVersionMessage = Bundle().localizedString(newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = Bundle().localizedString(stringKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
 
         guard let currentAppStoreVersion = currentAppStoreVersion else {
             return String(format: newVersionMessage, appName, "Unknown")
@@ -497,15 +497,15 @@ private extension Siren {
     }
 
     func localizedUpdateButtonTitle() -> String {
-        return Bundle().localizedString("Update", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(stringKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedNextTimeButtonTitle() -> String {
-        return Bundle().localizedString("Next time", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(stringKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedSkipButtonTitle() -> String {
-        return Bundle().localizedString("Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(stringKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 
@@ -537,13 +537,13 @@ private extension Siren {
         return url
     }
 
-    func daysSinceLastVersionCheckDate(_ lastVersionCheckPerformedOnDate: Date) -> Int {
+    func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.components(.day, from: lastVersionCheckPerformedOnDate, to: Date(), options: [])
         return components.day!
     }
 
-    func isUpdateCompatibleWithDeviceOS(_ appData: [String: AnyObject]) -> Bool {
+    func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
 
         guard let results = appData["results"] as? [[String: AnyObject]],
             requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
@@ -623,7 +623,7 @@ private extension Siren {
         UIApplication.shared().openURL(iTunesURL!)
     }
 
-    func printMessage(_ message: String) {
+    func printMessage(message: String) {
         if debugEnabled {
             print("[Siren] \(message)")
         }
@@ -662,17 +662,17 @@ private extension Bundle {
         return Bundle(for: Siren.self).pathForResource("Siren", ofType: "bundle") as String!
     }
 
-    func sirenForcedBundlePath(_ forceLanguageLocalization: SirenLanguageType) -> String {
+    func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
         return Bundle(path: path)!.pathForResource(name, ofType: "lproj")!
     }
 
-    func localizedString(_ stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
+    func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
-            path = sirenForcedBundlePath(forceLanguageLocalization)
+            path = sirenForcedBundlePath(forceLanguageLocalization: forceLanguageLocalization)
         } else {
             path = sirenBundlePath()
         }
@@ -722,9 +722,9 @@ private extension Siren {
 
         let error = NSError(domain: SirenErrorDomain, code: code.rawValue, userInfo: userInfo)
 
-        delegate?.sirenDidFailVersionCheck(error)
+        delegate?.sirenDidFailVersionCheck(error: error)
 
-        printMessage(error.localizedDescription)
+        printMessage(message: error.localizedDescription)
     }
 
 }
@@ -734,12 +734,12 @@ private extension Siren {
 
 public extension SirenDelegate {
 
-    func sirenDidShowUpdateDialog(_ alertType: SirenAlertType) {}
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
     func sirenUserDidLaunchAppStore() {}
     func sirenUserDidSkipVersion() {}
     func sirenUserDidCancel() {}
-    func sirenDidFailVersionCheck(_ error: NSError) {}
-    func sirenDidDetectNewVersionWithoutAlert(_ message: String) {}
+    func sirenDidFailVersionCheck(error: NSError) {}
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
 
 }
 
@@ -748,11 +748,11 @@ public extension SirenDelegate {
 
 extension Siren {
 
-    func testSetCurrentInstalledVersion(_ version: String) {
+    func testSetCurrentInstalledVersion(version: String) {
         currentInstalledVersion = version
     }
 
-    func testSetAppStoreVersion(_ version: String) {
+    func testSetAppStoreVersion(version: String) {
         currentAppStoreVersion = version
     }
 
@@ -764,8 +764,8 @@ extension Siren {
 
 extension Bundle {
 
-    func testLocalizedString(_ stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
-        return Bundle().localizedString(stringKey, forceLanguageLocalization: forceLanguageLocalization)
+    func testLocalizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
+        return Bundle().localizedString(stringKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
     }
 
 }

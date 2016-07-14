@@ -23,6 +23,8 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Features
 - [x] CocoaPods Support
+- [x] Carthage Support
+- [x] Swift Package Manager Support
 - [x] Localized for 20+ languages (See **Localization**)
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)

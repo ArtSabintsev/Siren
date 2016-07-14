@@ -111,7 +111,6 @@
 		8E1005DE1A5DD02300509B14 /* Sample App */ = {
 			isa = PBXGroup;
 			children = (
-				8E1005ED1A5DD04500509B14 /* Siren */,
 				8E1005DF1A5DD02300509B14 /* AppDelegate.swift */,
 				8E1005E61A5DD02300509B14 /* ViewController.swift */,
 				8E1005E01A5DD02300509B14 /* LaunchScreen.xib */,
@@ -120,14 +119,6 @@
 				8E1005E41A5DD02300509B14 /* Images.xcassets */,
 			);
 			path = "Sample App";
-			sourceTree = "<group>";
-		};
-		8E1005ED1A5DD04500509B14 /* Siren */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Siren;
-			path = ../../Siren;
 			sourceTree = "<group>";
 		};
 		8E3A6C051D07CB6F00A8B7CF /* SirenTests */ = {

@@ -84,8 +84,7 @@ Add `import Siren` to any `.Swift` file that references Siren via a Carthage ins
 Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
 
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
-{
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	/* Siren code should go below window?.makeKeyAndVisible() */
 
 	// Siren is a singleton
@@ -103,8 +102,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     return true
 }
 
-func applicationDidBecomeActive(application: UIApplication)
-{
+func applicationDidBecomeActive(application: UIApplication) {
 	/*
 	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app.
 	    Useful if user returns to your app from the background after extended period of time.
@@ -113,8 +111,7 @@ func applicationDidBecomeActive(application: UIApplication)
     Siren.sharedInstance.checkVersion(.Daily)
 }
 
-func applicationWillEnterForeground(application: UIApplication)
-{
+func applicationWillEnterForeground(application: UIApplication) {
    /*
 	    Useful if user returns to your app from the background after being sent to the
 	    App Store, but doesn't update their app before coming back to your app.
@@ -133,16 +130,14 @@ And you're all set!
 Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
 
 ```swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
-{
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	...
 	siren.delegate = self
 	siren.alertType = .None
 	...
 }
 
-extension AppDelegate: SirenDelegate
-{
+extension AppDelegate: SirenDelegate {
 	// Returns a localized message to this delegate method upon performing a successful version check
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         println("\(message)")

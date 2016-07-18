@@ -319,8 +319,8 @@ public final class Siren: NSObject {
 
                         let jsonData = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
 
-                        guard let appData = jsonData as? [String: AnyObject]
-                            where self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
+                        guard let appData = jsonData as? [String: AnyObject],
+                            self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
 
                             self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
                             return
@@ -402,8 +402,7 @@ private extension Siren {
             return
         }
         
-        if let currentAppStoreVersion = currentAppStoreVersion
-            where currentAppStoreVersion != previouslySkippedVersion {
+        if let currentAppStoreVersion = currentAppStoreVersion, currentAppStoreVersion != previouslySkippedVersion {
                 showAlert()
         }
     }
@@ -530,7 +529,7 @@ private extension Siren {
 
         components.queryItems = items
 
-        guard let url = components.url, urlString = url.absoluteString where !urlString.isEmpty else { // https://openradar.appspot.com/25382891
+        guard let url = components.url, let urlString = url.absoluteString, !urlString.isEmpty else { // https://openradar.appspot.com/25382891
             throw SirenErrorType.malformedURL
         }
 
@@ -546,7 +545,7 @@ private extension Siren {
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
 
         guard let results = appData["results"] as? [[String: AnyObject]],
-            requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
+            let requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
                 postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
             return false
         }
@@ -567,8 +566,9 @@ private extension Siren {
 
         var newVersionExists = false
 
-        if let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion
-            where (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) {
+        if let currentInstalledVersion = currentInstalledVersion,
+            let currentAppStoreVersion = currentAppStoreVersion,
+            (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) {
 
             newVersionExists = true
         }
@@ -586,7 +586,7 @@ private extension Siren {
 
     func setAlertType() -> SirenAlertType {
 
-        guard let currentInstalledVersion = currentInstalledVersion, currentAppStoreVersion = currentAppStoreVersion else {
+        guard let currentInstalledVersion = currentInstalledVersion, let currentAppStoreVersion = currentAppStoreVersion else {
             return .option
         }
 

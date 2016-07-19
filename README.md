@@ -67,7 +67,7 @@ For Swift 3 support:
 github "ArtSabintsev/Siren" "swift3"
 ```
 
-### Swift Package manager
+### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
 ```

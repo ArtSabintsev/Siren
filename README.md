@@ -72,8 +72,6 @@ github "ArtSabintsev/Siren" "swift3"
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
 ```
 
-Add `import Siren` to any `.Swift` file that references Siren via a Carthage installation.
-
 ### Manual
 
 1. [Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).

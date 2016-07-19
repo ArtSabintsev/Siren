@@ -67,12 +67,10 @@ For Swift 3 support:
 github "ArtSabintsev/Siren" "swift3"
 ```
 
-### Swift Package manager
+### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
 ```
-
-Add `import Siren` to any `.Swift` file that references Siren via a Carthage installation.
 
 ### Manual
 
@@ -140,7 +138,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 extension AppDelegate: SirenDelegate {
 	// Returns a localized message to this delegate method upon performing a successful version check
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
-        println("\(message)")
+        print("\(message)")
     }
 }
 ```

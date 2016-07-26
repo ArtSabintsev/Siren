@@ -90,6 +90,7 @@ public enum SirenLanguageType: String {
     case Swedish = "sv"
     case Thai = "th"
     case Turkish = "tr"
+    case Vietnamese = "vi"
 }
 
 /**

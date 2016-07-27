@@ -613,5 +613,22 @@ extension SirenTests {
         // Update
         XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Güncelle")
     }
+    
+    func testVietnameseLocalization() {
+        let language: SirenLanguageType = .Vietnamese
+        siren.forceLanguageLocalization = language
 
+        // Update Available
+        XCTAssertEqual(NSBundle().testLocalizedString("Update Available", forceLanguageLocalization: language), "Cập nhật mới")
+
+        // Next time
+        XCTAssertEqual(NSBundle().testLocalizedString("Next time", forceLanguageLocalization: language), "Lần tới")
+
+        // Skip this version
+        XCTAssertEqual(NSBundle().testLocalizedString("Skip this version", forceLanguageLocalization: language), "Bỏ qua phiên bản này")
+
+        // Update
+        XCTAssertEqual(NSBundle().testLocalizedString("Update", forceLanguageLocalization: language), "Cập nhật")
+    }
+    
 }

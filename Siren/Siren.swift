@@ -621,7 +621,10 @@ private extension Siren {
 
         let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
         let iTunesURL = NSURL(string: iTunesString)
-        UIApplication.sharedApplication().openURL(iTunesURL!)
+
+        dispatch_async(dispatch_get_main_queue()) { 
+            UIApplication.sharedApplication().openURL(iTunesURL!)
+        }
     }
 
     func printMessage(message: String) {

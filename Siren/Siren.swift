@@ -90,6 +90,7 @@ public enum SirenLanguageType: String {
     case Swedish = "sv"
     case Thai = "th"
     case Turkish = "tr"
+    case Vietnamese = "vi"
 }
 
 /**
@@ -620,7 +621,11 @@ private extension Siren {
 
         let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
         let iTunesURL = URL(string: iTunesString)
-        UIApplication.shared().openURL(iTunesURL!)
+
+        DispatchQueue.main.async {
+            UIApplication.shared().openURL(iTunesURL!)
+        }
+
     }
 
     func printMessage(message: String) {

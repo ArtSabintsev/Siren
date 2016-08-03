@@ -112,7 +112,7 @@ private enum SirenErrorCode: Int {
 /**
  Siren-specific Error Throwable Errors
  */
-private enum SirenErrorType: ErrorProtocol {
+private enum SirenError: Error {
     case malformedURL
     case missingBundleIdOrAppId
 }
@@ -139,7 +139,7 @@ public final class Siren: NSObject {
         Current installed version of your app
      */
     private var currentInstalledVersion: String? = {
-        return Bundle.main.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }()
 
     /**
@@ -225,7 +225,7 @@ public final class Siren: NSObject {
     
         By default, it's set to the name of the app that's stored in your plist.
     */
-    public lazy var appName: String = (Bundle.main.objectForInfoDictionaryKey(kCFBundleNameKey as String) as? String) ?? ""
+    public lazy var appName: String = (Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
     
     /**
         The region or country of an App Store in which your app is available.
@@ -530,8 +530,8 @@ private extension Siren {
 
         components.queryItems = items
 
-        guard let url = components.url, let urlString = url.absoluteString, !urlString.isEmpty else { // https://openradar.appspot.com/25382891
-            throw SirenErrorType.malformedURL
+        guard let url = components.url, !url.absoluteString.isEmpty else {
+            throw SirenError.malformedURL
         }
 
         return url
@@ -539,7 +539,7 @@ private extension Siren {
 
     func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: Date) -> Int {
         let calendar = Calendar.current
-        let components = calendar.components(.day, from: lastVersionCheckPerformedOnDate, to: Date(), options: [])
+        let components = calendar.dateComponents([.day], from: lastVersionCheckPerformedOnDate, to: Date())
         return components.day!
     }
 
@@ -551,7 +551,7 @@ private extension Siren {
             return false
         }
 
-        let systemVersion = UIDevice.current().systemVersion
+        let systemVersion = UIDevice.current.systemVersion
 
         if systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
             systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame {
@@ -623,7 +623,7 @@ private extension Siren {
         let iTunesURL = URL(string: iTunesString)
 
         DispatchQueue.main.async {
-            UIApplication.shared().openURL(iTunesURL!)
+            UIApplication.shared.openURL(iTunesURL!)
         }
 
     }
@@ -642,7 +642,7 @@ private extension Siren {
 private extension UIAlertController {
 
     func show() {
-        let window = UIWindow(frame: UIScreen.main().bounds)
+        let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UIViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         
@@ -664,13 +664,13 @@ private extension Bundle {
     }
 
     func sirenBundlePath() -> String {
-        return Bundle(for: Siren.self).pathForResource("Siren", ofType: "bundle") as String!
+        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle") as String!
     }
 
     func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
-        return Bundle(path: path)!.pathForResource(name, ofType: "lproj")!
+        return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
     func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {

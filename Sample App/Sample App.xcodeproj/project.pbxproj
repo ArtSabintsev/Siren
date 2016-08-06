@@ -232,13 +232,16 @@
 				TargetAttributes = {
 					558455CB1C6690B4004BE492 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					8E3A6C031D07CB6F00A8B7CF = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8EC391801A58B465001C121E;
 					};
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -370,6 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.com.siren.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -394,6 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.com.siren.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -412,6 +417,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.washingtonpost.SirenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample App.app/Sample App";
 			};
 			name = Debug;
@@ -429,6 +435,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.washingtonpost.SirenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample App.app/Sample App";
 			};
 			name = Release;
@@ -521,6 +528,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = "Sample App";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -534,6 +542,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = "Sample App";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

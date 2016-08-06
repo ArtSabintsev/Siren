@@ -50,6 +50,12 @@ If a new version is available, an alert can be presented to the user informing t
 pod 'Siren'
 ```
 
+For Swift 2.3 support:
+
+```swift
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
+```
+
 For Swift 3 support:
 
 ```swift
@@ -59,6 +65,12 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 ### Carthage
 ``` swift
 github "ArtSabintsev/Siren"
+```
+
+For Swift 2.3 support:
+
+``` swift
+github "ArtSabintsev/Siren" "swift2.3"
 ```
 
 For Swift 3 support:
@@ -171,7 +183,7 @@ public protocol SirenDelegate: class {
 ```
 
 ## Localization
-Harpy is localized for Arabic, Armenian, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, Turkish, Vietnamese.
+Siren is localized for Arabic, Armenian, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, Turkish, Vietnamese.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 

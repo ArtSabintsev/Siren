@@ -173,8 +173,7 @@ public final class Siren: NSObject {
     
         See the SirenAlertType enum for full details.
     */
-    public var alertType = SirenAlertType.option
-        {
+    public var alertType = SirenAlertType.option {
         didSet {
             majorUpdateAlertType = alertType
             minorUpdateAlertType = alertType
@@ -287,7 +286,7 @@ public final class Siren: NSObject {
                 return
             }
             
-            if daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if daysSince(lastVersionCheckPerformed: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -333,7 +332,7 @@ public final class Siren: NSObject {
                             self.printMessage(message: "JSON results: \(appData)")
 
                             // Process Results (e.g., extract current version that is available on the AppStore)
-                            self.processVersionCheckResults(lookupResults: appData)
+                            self.processVersionCheck(withResults: appData)
 
                         }
 
@@ -352,26 +351,26 @@ public final class Siren: NSObject {
 
     }
     
-    fileprivate func processVersionCheckResults(lookupResults: [String: AnyObject]) {
+    fileprivate func processVersionCheck(withResults results: [String: AnyObject]) {
         
         // Store version comparison date
         storeVersionCheckDate()
 
-        guard let results = lookupResults["results"] as? [[String: AnyObject]] else {
+        guard let allResults = results["results"] as? [[String: AnyObject]] else {
             self.postError(.appStoreVersionNumberFailure, underlyingError: nil)
             return
         }
         
-        if results.isEmpty == false { // Conditional that avoids crash when app not in App Store
+        if allResults.isEmpty == false { // Conditional that avoids crash when app not in App Store
 
-            guard let appID = results.first?["trackId"] as? Int else {
+            guard let appID = allResults.first?["trackId"] as? Int else {
                 self.postError(.appStoreAppIDFailure, underlyingError: nil)
                 return
             }
 
             self.appID = appID
 
-            currentAppStoreVersion = results.first?["version"] as? String
+            currentAppStoreVersion = allResults.first?["version"] as? String
             guard let _ = currentAppStoreVersion else {
                 self.postError(.appStoreVersionArrayFailure, underlyingError: nil)
                 return
@@ -537,9 +536,9 @@ fileprivate extension Siren {
         return url
     }
 
-    func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: Date) -> Int {
+    func daysSince(lastVersionCheckPerformed lastCheckDate: Date) -> Int {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: lastVersionCheckPerformedOnDate, to: Date())
+        let components = calendar.dateComponents([.day], from: lastCheckDate, to: Date())
         return components.day!
     }
 

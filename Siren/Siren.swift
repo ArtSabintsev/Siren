@@ -96,7 +96,7 @@ public enum SirenLanguageType: String {
 /**
  Siren-specific Error Codes
  */
-private enum SirenErrorCode: Int {
+fileprivate enum SirenErrorCode: Int {
     case malformedURL = 1000
     case recentlyCheckedAlready
     case noUpdateAvailable
@@ -112,7 +112,7 @@ private enum SirenErrorCode: Int {
 /**
  Siren-specific Error Throwable Errors
  */
-private enum SirenError: Error {
+fileprivate enum SirenError: Error {
     case malformedURL
     case missingBundleIdOrAppId
 }
@@ -120,7 +120,7 @@ private enum SirenError: Error {
 /** 
     Siren-specific NSUserDefault Keys
 */
-private enum SirenUserDefaults: String {
+fileprivate enum SirenUserDefaults: String {
     case StoredVersionCheckDate     // NSUserDefault key that stores the timestamp of the last version check
     case StoredSkippedVersion       // NSUserDefault key that stores the version that a user decided to skip
 }
@@ -138,7 +138,7 @@ public final class Siren: NSObject {
     /**
         Current installed version of your app
      */
-    private var currentInstalledVersion: String? = {
+    fileprivate var currentInstalledVersion: String? = {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }()
 
@@ -251,12 +251,12 @@ public final class Siren: NSObject {
     /**
      The current version of your app that is available for download on the App Store
      */
-    public private(set) var currentAppStoreVersion: String?
+    public fileprivate(set) var currentAppStoreVersion: String?
 
-    // Private
-    private var appID: Int?
-    private var lastVersionCheckPerformedOnDate: Date?
-    private var updaterWindow: UIWindow?
+    // fileprivate
+    fileprivate var appID: Int?
+    fileprivate var lastVersionCheckPerformedOnDate: Date?
+    fileprivate var updaterWindow: UIWindow?
 
     // Initialization
     public static let sharedInstance = Siren()
@@ -295,7 +295,7 @@ public final class Siren: NSObject {
         }
     }
     
-    private func performVersionCheck() {
+    fileprivate func performVersionCheck() {
         
         // Create Request
         do {
@@ -352,7 +352,7 @@ public final class Siren: NSObject {
 
     }
     
-    private func processVersionCheckResults(lookupResults: [String: AnyObject]) {
+    fileprivate func processVersionCheckResults(lookupResults: [String: AnyObject]) {
         
         // Store version comparison date
         storeVersionCheckDate()
@@ -393,7 +393,7 @@ public final class Siren: NSObject {
 
 // MARK: - Alert Helpers
 
-private extension Siren {
+fileprivate extension Siren {
 
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         alertType = setAlertType()
@@ -482,7 +482,7 @@ private extension Siren {
 
 // MARK: - Localization Helpers
 
-private extension Siren {
+fileprivate extension Siren {
 
     func localizedNewVersionMessage() -> String {
 
@@ -512,7 +512,7 @@ private extension Siren {
 
 // MARK: - Misc. Helpers
 
-private extension Siren {
+fileprivate extension Siren {
 
     func iTunesURLFromString() throws -> URL {
 
@@ -587,14 +587,19 @@ private extension Siren {
 
     func setAlertType() -> SirenAlertType {
 
-        guard let currentInstalledVersion = currentInstalledVersion, let currentAppStoreVersion = currentAppStoreVersion else {
+        guard let currentInstalledVersion = currentInstalledVersion,
+            let currentAppStoreVersion = currentAppStoreVersion else {
             return .option
         }
 
         let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
         let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
 
-        if newVersion.first > oldVersion.first { // A.b.c.d
+        guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
+            return alertType // Default value is .Option
+        }
+
+        if newVersionFirst > oldVersionFirst { // A.b.c.d
             alertType = majorUpdateAlertType
         } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
             alertType = minorUpdateAlertType
@@ -639,7 +644,7 @@ private extension Siren {
 
 // MARK: - UIAlertController Extensions
 
-private extension UIAlertController {
+fileprivate extension UIAlertController {
 
     func show() {
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -657,7 +662,7 @@ private extension UIAlertController {
 
 // MARK: - NSBundle Extension
 
-private extension Bundle {
+fileprivate extension Bundle {
 
     class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier
@@ -690,9 +695,9 @@ private extension Bundle {
 
 // MARK: - Error Handling
 
-private extension Siren {
+fileprivate extension Siren {
 
-    func postError(_ code: SirenErrorCode, underlyingError: NSError?) {
+    func postError(_ code: SirenErrorCode, underlyingError: Error?) {
 
         let description: String
 
@@ -719,7 +724,7 @@ private extension Siren {
             description = "Error retrieving trackId as results.first does not contain a 'trackId' key."
         }
 
-        var userInfo: [String: AnyObject] = [NSLocalizedDescriptionKey: description]
+        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: description]
         
         if let underlyingError = underlyingError {
             userInfo[NSUnderlyingErrorKey] = underlyingError

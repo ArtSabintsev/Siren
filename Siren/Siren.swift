@@ -247,6 +247,17 @@ public final class Siren: NSObject {
         Overrides the tint color for UIAlertController.
     */
     public var alertControllerTintColor: UIColor?
+    
+    /**
+        Custom routine to obtain current available app version (instead of app store)
+    */
+    public var getVersion: (() -> String)? = nil
+    
+    /**
+        Custom update routine
+    */
+    public var performUpdate: (() -> Void)? = nil
+    
 
     /**
      The current version of your app that is available for download on the App Store
@@ -296,6 +307,12 @@ public final class Siren: NSObject {
     }
     
     private func performVersionCheck() {
+        // check if custom version check
+        if let getVersion = getVersion {
+            currentAppStoreVersion = getVersion()
+            compareVersion()
+            return
+        }
         
         // Create Request
         do {
@@ -377,16 +394,21 @@ public final class Siren: NSObject {
                 return
             }
             
-            if isAppStoreVersionNewer() {
-                showAlertIfCurrentAppStoreVersionNotSkipped()
-            } else {
-                postError(.NoUpdateAvailable, underlyingError: nil)
-            }
-           
+            compareVersion()
         } else { // lookupResults does not contain any data as the returned array is empty
             postError(.AppStoreDataRetrievalFailure, underlyingError: nil)
         }
 
+    }
+    
+    private func compareVersion() {
+        
+        if isAppStoreVersionNewer() {
+            showAlertIfCurrentAppStoreVersionNotSkipped()
+        } else {
+            postError(.NoUpdateAvailable, underlyingError: nil)
+        }
+        
     }
 }
 
@@ -615,6 +637,13 @@ private extension Siren {
     }
 
     func launchAppStore() {
+        if let performUpdate = performUpdate {
+            dispatch_async(dispatch_get_main_queue()) {
+                performUpdate()
+            }
+            return
+        }
+        
         guard let appID = appID else {
             return
         }

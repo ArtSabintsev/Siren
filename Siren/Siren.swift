@@ -252,6 +252,12 @@ public final class Siren: NSObject {
         Custom routine to obtain current available app version (instead of app store)
     */
     public var getVersion: (() -> String)? = nil
+    
+    /**
+        Custom update routine
+    */
+    public var performUpdate: (() -> Void)? = nil
+    
 
     /**
      The current version of your app that is available for download on the App Store
@@ -631,6 +637,13 @@ private extension Siren {
     }
 
     func launchAppStore() {
+        if let performUpdate = performUpdate {
+            dispatch_async(dispatch_get_main_queue()) {
+                performUpdate()
+            }
+            return
+        }
+        
         guard let appID = appID else {
             return
         }

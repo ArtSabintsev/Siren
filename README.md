@@ -46,24 +46,23 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Installation Instructions
 
+As of the release of Xcode 8 GM, Swift 2.2 support has been deprecated.
+
 ### CocoaPods
+For Swift 3 support:
 ```ruby
 pod 'Siren'
 ```
 
 For Swift 2.3 support:
 
-```swift
+```ruby
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
 ```
 
-For Swift 3 support:
-
-```swift
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3'
-```
-
 ### Carthage
+For Swift 3:
+
 ``` swift
 github "ArtSabintsev/Siren"
 ```
@@ -74,21 +73,10 @@ For Swift 2.3 support:
 github "ArtSabintsev/Siren" "swift2.3"
 ```
 
-For Swift 3 support:
-
-``` swift
-github "ArtSabintsev/Siren" "swift3"
-```
-
 ### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
 ```
-
-### Manual
-
-1. [Download Siren](//github.com/ArtSabintsev/Siren/archive/master.zip).
-2. Copy the `Siren` folder into your project.
 
 ## Setup
 

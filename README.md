@@ -61,7 +61,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 ```
 
 ### Carthage
-For Swift 3:
+For Swift 3 support:
 
 ``` swift
 github "ArtSabintsev/Siren"
@@ -75,7 +75,7 @@ github "ArtSabintsev/Siren" "swift2.3"
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 0)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 1)
 ```
 
 ## Setup

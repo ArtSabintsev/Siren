@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+
         window?.makeKeyAndVisible()
-        
+
         setupSiren()
 
         return true
@@ -37,26 +37,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.alertType = .Option // or .Force, .Skip, .None
 
         // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
-        siren.majorUpdateAlertType = .Option
-        siren.minorUpdateAlertType = .Option
-        siren.patchUpdateAlertType = .Option
-        siren.revisionUpdateAlertType = .Option
+        siren.majorUpdateAlertType = .option
+        siren.minorUpdateAlertType = .option
+        siren.patchUpdateAlertType = .option
+        siren.revisionUpdateAlertType = .option
         
         // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Spanish.
 //        siren.forceLanguageLocalization = .Russian
 
         // Required
-        siren.checkVersion(.Immediately)
+        siren.checkVersion(checkType: .immediately)
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        Siren.sharedInstance.checkVersion(.Immediately)
+        Siren.sharedInstance.checkVersion(checkType: .immediately)
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Siren.sharedInstance.checkVersion(.Daily)
+        Siren.sharedInstance.checkVersion(checkType: .daily)
     }
 }
 

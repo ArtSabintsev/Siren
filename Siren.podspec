@@ -19,5 +19,5 @@ Siren is actively maintained by Arthur Sabintsev and Aaron Brager.
   s.source_files = 'Siren/Siren.swift'
   s.resources    = 'Siren/Siren.bundle'
   s.requires_arc = true
-
+  
 end

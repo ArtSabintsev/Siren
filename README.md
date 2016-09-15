@@ -46,8 +46,6 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Installation Instructions
 
-As of the release of Xcode 8 GM, Swift 2.2 support has been deprecated.
-
 ### CocoaPods
 For Swift 3 support:
 ```ruby

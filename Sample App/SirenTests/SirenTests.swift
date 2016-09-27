@@ -415,16 +415,16 @@ extension SirenTests {
         siren.forceLanguageLocalization = language
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Atjaunojums")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Atjauninājums pieejams")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Nākošreiz")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Nākamreiz")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Palaist garām šo versiju")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Izlaist šo versiju")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Atjaunot")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Atjaunināt")
     }
 
     func testLithuanianLocalization() {

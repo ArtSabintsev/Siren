@@ -1,14 +1,14 @@
 /* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
-"A new version of %@ is available. Please update to version %@ now." = "Pieejama jauna %@ versija.  Lūdzam atjaunot līdz %@ versijai.";
+"A new version of %@ is available. Please update to version %@ now." = "Pieejama jauna %@ versija.  Lūdzam atjaunot versiju %@.";
 
 /* Update alert title */
-"Update Available" = "Atjaunojums";
+"Update Available" = "Atjauninājums pieejams";
 
 /* Update alert dismiss button title */
-"Next time" = "Nākošreiz";
+"Next time" = "Nākamreiz";
 
 /* Update alert skip button title */
-"Skip this version" = "Palaist garām šo versiju";
+"Skip this version" = "Izlaist šo versiju";
 
 /* Update alert skip button title */
-"Update" = "Atjaunot";
+"Update" = "Atjaunināt";

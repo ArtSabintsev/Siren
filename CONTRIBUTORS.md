@@ -25,6 +25,7 @@
 - [Thi](https://github.com/thii) for [Pull Request #78](https://github.com/ArtSabintsev/Siren/pull/78)
 - [Ilija Puaca](https://github.com/ilijapuaca) for [Pull Request #141 (Harpy)](https://github.com/ArtSabintsev/Harpy/pull/141)
 - [thii](https://github.com/ilijapuaca) for [Pull Request #83](https://github.com/ArtSabintsev/Siren/pull/83)
+- [Kristaps Grinbergs](https://github.com/fassko) for [Pull Request #90](https://github.com/ArtSabintsev/Siren/pull/90)
 
 
 ### Harpy Project Contributors

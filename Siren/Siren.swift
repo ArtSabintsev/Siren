@@ -530,10 +530,8 @@ private extension Siren {
         }
 
         components.queryItems = items
-        let url = components.URL
-        let urlString = url.absoluteString
 
-        if !urlString.isEmpty {
+        if let url = components.URL where !url.absoluteString.isEmpty {
             return url
         } else {
             throw SirenErrorType.MalformedURL

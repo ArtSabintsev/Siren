@@ -483,7 +483,7 @@ extension SirenTests {
         siren.forceLanguageLocalization = language
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Nova atualização disponível")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Atualização disponível")
 
         // Next time
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Próxima vez")

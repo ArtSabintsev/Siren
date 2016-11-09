@@ -647,13 +647,17 @@ fileprivate extension UIAlertController {
 
     func show() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIViewController()
+        window.rootViewController = ViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         
         Siren.sharedInstance.updaterWindow = window
         
         window.makeKeyAndVisible()
         window.rootViewController!.present(self, animated: true, completion: nil)
+    }
+
+    class ViewController: UIViewController {
+        override var preferredStatusBarStyle: UIStatusBarStyle { return UIApplication.shared.statusBarStyle }
     }
 
 }

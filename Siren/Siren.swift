@@ -85,6 +85,8 @@ public enum SirenLanguageType: String {
     case PortugueseBrazil = "pt"
     case PortuguesePortugal = "pt-PT"
     case Russian = "ru"
+    case SerbianCyrillic = "sr-Cyrl"
+    case SerbianLatin = "sr-Latn"
     case Slovenian = "sl"
     case Spanish = "es"
     case Swedish = "sv"

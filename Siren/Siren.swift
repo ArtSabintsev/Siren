@@ -224,8 +224,8 @@ public final class Siren: NSObject {
     
         By default, it's set to the name of the app that's stored in your plist.
     */
-    public lazy var appName: String = (Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
-    
+    public lazy var appName: String = Bundle.main.bestMatchingAppName()
+
     /**
         The region or country of an App Store in which your app is available.
         
@@ -647,13 +647,17 @@ fileprivate extension UIAlertController {
 
     func show() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIViewController()
+        window.rootViewController = ViewController()
         window.windowLevel = UIWindowLevelAlert + 1
         
         Siren.sharedInstance.updaterWindow = window
         
         window.makeKeyAndVisible()
         window.rootViewController!.present(self, animated: true, completion: nil)
+    }
+
+    class ViewController: UIViewController {
+        override var preferredStatusBarStyle: UIStatusBarStyle { return UIApplication.shared.statusBarStyle }
     }
 
 }
@@ -687,6 +691,10 @@ fileprivate extension Bundle {
         }
         
         return Bundle(path: path)!.localizedString(forKey: stringKey, value: stringKey, table: table)
+    }
+
+    func bestMatchingAppName() -> String {
+        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String) ?? (Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
     }
 
 }

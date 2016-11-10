@@ -529,6 +529,40 @@ extension SirenTests {
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Обновить")
     }
 
+    func testSerbianCyrillicLocalization() {
+        let language: SirenLanguageType = .SerbianCyrillic
+        siren.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Ажурирање доступно")
+
+        // Next time
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Следећи пут")
+
+        // Skip this version
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Прескочи ову верзију")
+
+        // Update
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Ажурирај")
+    }
+
+    func testSerbianLatinLocalization() {
+        let language: SirenLanguageType = .SerbianLatin
+        siren.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Ažuriranje dostupno")
+
+        // Next time
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Sledeći put")
+
+        // Skip this version
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Preskoči ovu verziju")
+
+        // Update
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Ažuriraj")
+    }
+
     func testSlovenianLocalization() {
         let language: SirenLanguageType = .Slovenian
         siren.forceLanguageLocalization = language

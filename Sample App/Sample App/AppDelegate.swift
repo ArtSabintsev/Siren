@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.patchUpdateAlertType = .option
         siren.revisionUpdateAlertType = .option
         
-        // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Spanish.
+        // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .Russian
 
         // Required

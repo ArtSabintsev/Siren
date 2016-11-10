@@ -696,7 +696,10 @@ fileprivate extension Bundle {
     }
 
     func bestMatchingAppName() -> String {
-        return (Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String) ?? (Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
+        let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
+
+        return bundleDisplayName ?? bundleName ?? ""
     }
 
 }

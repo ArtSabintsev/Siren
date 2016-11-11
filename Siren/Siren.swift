@@ -74,6 +74,7 @@ public enum SirenLanguageType: String {
     case French = "fr"
     case Hebrew = "he"
     case Hungarian = "hu"
+    case Greek = "el"
     case German = "de"
     case Italian = "it"
     case Japanese = "ja"

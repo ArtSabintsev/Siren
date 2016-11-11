@@ -251,6 +251,11 @@ public final class Siren: NSObject {
     public var alertControllerTintColor: UIColor?
 
     /**
+        When this is set, the alert will only show up if the current version has already been released for X days
+    */
+    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int? = nil
+
+    /**
      The current version of your app that is available for download on the App Store
      */
     public fileprivate(set) var currentAppStoreVersion: String?
@@ -289,7 +294,7 @@ public final class Siren: NSObject {
                 return
             }
             
-            if daysSince(lastVersionCheckPerformed: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if daysSince(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -380,7 +385,19 @@ public final class Siren: NSObject {
             }
             
             if isAppStoreVersionNewer() {
-                showAlertIfCurrentAppStoreVersionNotSkipped()
+                // Check for how long latest update already released
+                if let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays {
+                    if let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String {
+                        if let daysSinceRelease = daysSince(dateString: currentVersionReleaseDate) {
+                            if daysSinceRelease >= alertDays {
+                                showAlertIfCurrentAppStoreVersionNotSkipped()
+                            }
+                        }
+                    }
+                    showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
+                } else {
+                    showAlertIfCurrentAppStoreVersionNotSkipped()
+                }
             } else {
                 delegate?.sirenLatestVersionInstalled()
                 postError(.noUpdateAvailable, underlyingError: nil)
@@ -540,10 +557,17 @@ fileprivate extension Siren {
         return url
     }
 
-    func daysSince(lastVersionCheckPerformed lastCheckDate: Date) -> Int {
+    func daysSince(_ date: Date) -> Int {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: lastCheckDate, to: Date())
+        let components = calendar.dateComponents([.day], from: date, to: Date())
         return components.day!
+    }
+
+    func daysSince(dateString: String) -> Int? {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
+        return daysSince(releaseDate)
     }
 
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {

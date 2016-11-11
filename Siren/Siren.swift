@@ -18,6 +18,7 @@ public protocol SirenDelegate: class {
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
     func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
     func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    func sirenLatestVersionInstalled()                         // Siren performed version check and latest version is installed
 }
 
 
@@ -381,6 +382,7 @@ public final class Siren: NSObject {
             if isAppStoreVersionNewer() {
                 showAlertIfCurrentAppStoreVersionNotSkipped()
             } else {
+                delegate?.sirenLatestVersionInstalled()
                 postError(.noUpdateAvailable, underlyingError: nil)
             }
            
@@ -762,6 +764,7 @@ public extension SirenDelegate {
     func sirenUserDidCancel() {}
     func sirenDidFailVersionCheck(error: NSError) {}
     func sirenDidDetectNewVersionWithoutAlert(message: String) {}
+    func sirenLatestVersionInstalled() {}
 
 }
 

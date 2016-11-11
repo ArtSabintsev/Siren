@@ -26,7 +26,7 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] CocoaPods Support
 - [x] Carthage Support
 - [x] Swift Package Manager Support
-- [x] Localized for 20+ languages (See **Localization**)
+- [x] Localized for 30+ languages (See **Localization**)
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
 - [x] Optional delegate methods (see **Optional Delegate**)
@@ -176,7 +176,7 @@ public protocol SirenDelegate: class {
 ```
 
 ## Localization
-Siren is localized for 
+Siren is localized for
 - Arabic
 - Armenian
 - Basque
@@ -198,6 +198,7 @@ Siren is localized for
 - Polish
 - Portuguese (Brazil and Portugal)
 - Russian
+- Serbian (Cyrillic and Latin)
 - Slovenian
 - Swedish
 - Spanish

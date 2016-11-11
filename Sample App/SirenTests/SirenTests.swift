@@ -325,7 +325,7 @@ extension SirenTests {
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Update")
     }
     
-    func testGermanLocalization() {
+    func testGreekLocalization() {
         let language: SirenLanguageType = .Greek
         siren.forceLanguageLocalization = language
         

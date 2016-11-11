@@ -324,6 +324,23 @@ extension SirenTests {
         // Update
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Update")
     }
+    
+    func testGermanLocalization() {
+        let language: SirenLanguageType = .Greek
+        siren.forceLanguageLocalization = language
+        
+        // Update Available
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Διαθέσιμη Ενημέρωση")
+        
+        // Next time
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Άλλη φορά")
+        
+        // Skip this version
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Αγνόησε αυτήν την έκδοση")
+        
+        // Update
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Αναβάθμιση")
+    }
 
     func testHebrewLocalization() {
         let language: SirenLanguageType = .Hebrew

@@ -294,7 +294,7 @@ public final class Siren: NSObject {
                 return
             }
             
-            if daysSince(lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -557,17 +557,17 @@ fileprivate extension Siren {
         return url
     }
 
-    func daysSince(_ date: Date) -> Int {
+    func days(since date: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: date, to: Date())
         return components.day!
     }
 
-    func daysSince(dateString: String) -> Int? {
+    func days(since dateString: String) -> Int? {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
-        return daysSince(releaseDate)
+        return days(since: releaseDate)
     }
 
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {

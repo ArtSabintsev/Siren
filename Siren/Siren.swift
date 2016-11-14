@@ -18,6 +18,7 @@ public protocol SirenDelegate: class {
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
     func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
     func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    func sirenLatestVersionInstalled()                         // Siren performed version check and latest version is installed
 }
 
 
@@ -251,6 +252,11 @@ public final class Siren: NSObject {
     public var alertControllerTintColor: UIColor?
 
     /**
+        When this is set, the alert will only show up if the current version has already been released for X days
+    */
+    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int? = nil
+
+    /**
      The current version of your app that is available for download on the App Store
      */
     public fileprivate(set) var currentAppStoreVersion: String?
@@ -289,7 +295,7 @@ public final class Siren: NSObject {
                 return
             }
             
-            if daysSince(lastVersionCheckPerformed: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -380,8 +386,19 @@ public final class Siren: NSObject {
             }
             
             if isAppStoreVersionNewer() {
-                showAlertIfCurrentAppStoreVersionNotSkipped()
+                // Check for how long latest update already released
+                if let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays {
+                    guard let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String,
+                        let daysSinceRelease = days(since: currentVersionReleaseDate),
+                        daysSinceRelease >= alertDays else { return }
+
+                    showAlertIfCurrentAppStoreVersionNotSkipped()
+                    showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
+                } else {
+                    showAlertIfCurrentAppStoreVersionNotSkipped()
+                }
             } else {
+                delegate?.sirenLatestVersionInstalled()
                 postError(.noUpdateAvailable, underlyingError: nil)
             }
            
@@ -539,10 +556,22 @@ fileprivate extension Siren {
         return url
     }
 
-    func daysSince(lastVersionCheckPerformed lastCheckDate: Date) -> Int {
+    func days(since date: Date) -> Int {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: lastCheckDate, to: Date())
+        let components = calendar.dateComponents([.day], from: date, to: Date())
         return components.day!
+    }
+
+    static func setupDateFormatter() -> DateFormatter {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return dateformatter
+    }
+
+    func days(since dateString: String) -> Int? {
+        let dateformatter = Siren.setupDateFormatter()
+        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
+        return days(since: releaseDate)
     }
 
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
@@ -763,6 +792,7 @@ public extension SirenDelegate {
     func sirenUserDidCancel() {}
     func sirenDidFailVersionCheck(error: NSError) {}
     func sirenDidDetectNewVersionWithoutAlert(message: String) {}
+    func sirenLatestVersionInstalled() {}
 
 }
 

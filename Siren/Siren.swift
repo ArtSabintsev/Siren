@@ -387,13 +387,11 @@ public final class Siren: NSObject {
             if isAppStoreVersionNewer() {
                 // Check for how long latest update already released
                 if let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays {
-                    if let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String {
-                        if let daysSinceRelease = daysSince(dateString: currentVersionReleaseDate) {
-                            if daysSinceRelease >= alertDays {
-                                showAlertIfCurrentAppStoreVersionNotSkipped()
-                            }
-                        }
-                    }
+                    guard let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String,
+                        let daysSinceRelease = days(since: currentVersionReleaseDate),
+                        daysSinceRelease >= alertDays else { return }
+
+                    showAlertIfCurrentAppStoreVersionNotSkipped()
                     showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
                 } else {
                     showAlertIfCurrentAppStoreVersionNotSkipped()

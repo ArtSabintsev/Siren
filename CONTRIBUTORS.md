@@ -30,7 +30,7 @@
 - [Stefan Kieleithner](https://github.com/steviki) for [Pull Request #97](https://github.com/ArtSabintsev/Siren/pull/97)
 - [Vladislav Jevremović](https://github.com/VladislavJevremovic) for [Pull Request #98](https://github.com/ArtSabintsev/Siren/pull/98)
 - [Stefan Kieleithner](https://github.com/steviki) for [Pull Request #99](https://github.com/ArtSabintsev/Siren/pull/99)
-- [Jonstantinos N.](https://github.com/kwstasna) for [Pull Request #101](https://github.com/ArtSabintsev/Siren/pull/101)
+- [Konstantinos N.](https://github.com/kwstasna) for [Pull Request #101](https://github.com/ArtSabintsev/Siren/pull/101)
 
 
 ### Harpy Project Contributors

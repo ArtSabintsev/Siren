@@ -561,9 +561,14 @@ fileprivate extension Siren {
         return components.day!
     }
 
-    func days(since dateString: String) -> Int? {
+    static func setupDateFormatter() -> DateFormatter {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return dateformatter
+    }
+
+    func days(since dateString: String) -> Int? {
+        let dateformatter = Siren.setupDateFormatter()
         guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
         return days(since: releaseDate)
     }

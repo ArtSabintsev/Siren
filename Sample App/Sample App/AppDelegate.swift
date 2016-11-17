@@ -87,7 +87,11 @@ extension AppDelegate: SirenDelegate
     func sirenDidFailVersionCheck(error: NSError) {
         print(#function, error)
     }
-    
+
+    func sirenLatestVersionInstalled() {
+        print(#function, "Latest version of app is installed")
+    }
+
     /**
         This delegate method is only hit when alertType is initialized to .None
     */

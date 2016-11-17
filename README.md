@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)
+![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)[![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)]()[![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)]()
 ---
 
 ## About

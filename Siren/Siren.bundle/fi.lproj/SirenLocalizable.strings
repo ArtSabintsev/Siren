@@ -1,0 +1,14 @@
+/* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
+"A new version of %@ is available. Please update to version %@ now." = "%@ on päivittynyt. Ole hyvä ja päivitä versioon %@ nyt.";
+
+/* Update alert title */
+"Update Available" = "Päivitys saatavilla";
+
+/* Update alert dismiss button title */
+"Next time" = "Ensi kerralla";
+
+/* Update alert skip button title */
+"Skip this version" = "Jätä tämä versio väliin";
+
+/* Update alert skip button title */
+"Update" = "Päivitys";

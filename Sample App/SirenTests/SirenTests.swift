@@ -291,6 +291,23 @@ extension SirenTests {
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Uuenda")
     }
 
+    func testFinnishLocalization() {
+        let language: SirenLanguageType = .Finnish
+        siren.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Päivitys saatavilla")
+
+        // Next time
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Päivitys saatavilla")
+
+        // Skip this version
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Jätä tämä versio väliin")
+
+        // Update
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Päivitys")
+    }
+
     func testFrenchLocalization() {
         let language: SirenLanguageType = .French
         siren.forceLanguageLocalization = language
@@ -357,6 +374,23 @@ extension SirenTests {
 
         // Update
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Frissítés")
+    }
+
+    func testIndonesianLocalization() {
+        let language: SirenLanguageType = .Indonesian
+        siren.forceLanguageLocalization = language
+
+        // Update Available
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Pembaruan Tersedia")
+
+        // Next time
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Lain kali")
+
+        // Skip this version
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Lewati versi ini")
+
+        // Update
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "Perbarui")
     }
 
     func testItalianLocalization() {

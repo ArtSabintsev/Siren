@@ -45,6 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .Russian
 
+        // Optional - Set this variable if your app is not available in the U.S. App Store. List of codes: https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/AppStoreTerritories.html
+//        siren.countryCode = ""
+
+        // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days. The number 5 is used as an example.
+//        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 5
+
         // Required
         siren.checkVersion(checkType: .immediately)
     }
@@ -81,7 +87,11 @@ extension AppDelegate: SirenDelegate
     func sirenDidFailVersionCheck(error: NSError) {
         print(#function, error)
     }
-    
+
+    func sirenLatestVersionInstalled() {
+        print(#function, "Latest version of app is installed")
+    }
+
     /**
         This delegate method is only hit when alertType is initialized to .None
     */

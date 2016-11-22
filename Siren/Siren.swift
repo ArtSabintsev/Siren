@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 // MARK: - SirenDelegate Protocol
 
 public protocol SirenDelegate: class {
@@ -21,6 +20,17 @@ public protocol SirenDelegate: class {
     func sirenLatestVersionInstalled()                         // Siren performed version check and latest version is installed
 }
 
+// MARK: - SirenDelegate Protocol Extension
+
+public extension SirenDelegate {
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
+    func sirenUserDidLaunchAppStore() {}
+    func sirenUserDidSkipVersion() {}
+    func sirenUserDidCancel() {}
+    func sirenDidFailVersionCheck(error: NSError) {}
+    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
+    func sirenLatestVersionInstalled() {}
+}
 
 /**
     Determines the type of alert to present after a successful version check has been performed.
@@ -75,6 +85,7 @@ public enum SirenLanguageType: String {
     case Finnish = "fi"
     case French = "fr"
     case German = "de"
+    case Greek = "el"
     case Hebrew = "he"
     case Hungarian = "hu"
     case Indonesian = "id"
@@ -303,9 +314,15 @@ public final class Siren: NSObject {
             }
         }
     }
-    
-    fileprivate func performVersionCheck() {
-        
+
+}
+
+// MARK: - Helpers (Networking)
+
+fileprivate extension Siren {
+
+    func performVersionCheck() {
+
         // Create Request
         do {
             let url = try iTunesURLFromString()
@@ -332,8 +349,8 @@ public final class Siren: NSObject {
                         guard let appData = jsonData as? [String: AnyObject],
                             self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
 
-                            self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
-                            return
+                                self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
+                                return
                         }
 
                         DispatchQueue.main.async {
@@ -351,8 +368,8 @@ public final class Siren: NSObject {
                     }
                 }
 
-                })
-            
+            })
+
             task.resume()
 
         } catch let error as NSError {
@@ -360,9 +377,9 @@ public final class Siren: NSObject {
         }
 
     }
-    
-    fileprivate func processVersionCheck(withResults results: [String: AnyObject]) {
-        
+
+    func processVersionCheck(withResults results: [String: AnyObject]) {
+
         // Store version comparison date
         storeVersionCheckDate()
 
@@ -370,48 +387,77 @@ public final class Siren: NSObject {
             self.postError(.appStoreVersionNumberFailure, underlyingError: nil)
             return
         }
-        
-        if allResults.isEmpty == false { // Conditional that avoids crash when app not in App Store
 
-            guard let appID = allResults.first?["trackId"] as? Int else {
-                self.postError(.appStoreAppIDFailure, underlyingError: nil)
-                return
-            }
-
-            self.appID = appID
-
-            currentAppStoreVersion = allResults.first?["version"] as? String
-            guard let _ = currentAppStoreVersion else {
-                self.postError(.appStoreVersionArrayFailure, underlyingError: nil)
-                return
-            }
-            
-            if isAppStoreVersionNewer() {
-                // Check for how long latest update already released
-                if let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays {
-                    guard let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String,
-                        let daysSinceRelease = days(since: currentVersionReleaseDate),
-                        daysSinceRelease >= alertDays else { return }
-
-                    showAlertIfCurrentAppStoreVersionNotSkipped()
-                    showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
-                } else {
-                    showAlertIfCurrentAppStoreVersionNotSkipped()
-                }
-            } else {
-                delegate?.sirenLatestVersionInstalled()
-                postError(.noUpdateAvailable, underlyingError: nil)
-            }
-           
-        } else { // lookupResults does not contain any data as the returned array is empty
+        guard !allResults.isEmpty else {
+            /**
+             Conditional that avoids crash when app not in App Store
+             */
             postError(.appStoreDataRetrievalFailure, underlyingError: nil)
+            return
         }
 
+        guard let appID = allResults.first?["trackId"] as? Int else {
+            postError(.appStoreAppIDFailure, underlyingError: nil)
+            return
+        }
+
+        self.appID = appID
+
+        guard let currentAppStoreVersion = allResults.first?["version"] as? String else {
+            self.postError(.appStoreVersionArrayFailure, underlyingError: nil)
+            return
+        }
+
+        self.currentAppStoreVersion = currentAppStoreVersion
+
+        guard isAppStoreVersionNewer() else {
+            delegate?.sirenLatestVersionInstalled()
+            postError(.noUpdateAvailable, underlyingError: nil)
+            return
+        }
+        
+        guard let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays else {
+            showAlertIfCurrentAppStoreVersionNotSkipped()
+            return
+        }
+        
+        guard let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String,
+            let daysSinceRelease = days(since: currentVersionReleaseDate),
+            daysSinceRelease >= alertDays else {
+                return
+        }
+        
+        showAlertIfCurrentAppStoreVersionNotSkipped()
+        showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
     }
+
+    func iTunesURLFromString() throws -> URL {
+
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "itunes.apple.com"
+        components.path = "/lookup"
+
+        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
+
+        if let countryCode = countryCode {
+            let item = URLQueryItem(name: "country", value: countryCode)
+            items.append(item)
+        }
+
+        components.queryItems = items
+
+        guard let url = components.url, !url.absoluteString.isEmpty else {
+            throw SirenError.malformedURL
+        }
+        
+        return url
+    }
+
 }
 
 
-// MARK: - Alert Helpers
+// MARK: - Helpers (Alert)
 
 fileprivate extension Siren {
 
@@ -424,7 +470,7 @@ fileprivate extension Siren {
         }
         
         if let currentAppStoreVersion = currentAppStoreVersion, currentAppStoreVersion != previouslySkippedVersion {
-                showAlert()
+            showAlert()
         }
     }
     
@@ -497,10 +543,37 @@ fileprivate extension Siren {
         
         return action
     }
+
+    func setAlertType() -> SirenAlertType {
+
+        guard let currentInstalledVersion = currentInstalledVersion,
+            let currentAppStoreVersion = currentAppStoreVersion else {
+                return .option
+        }
+
+        let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+
+        guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
+            return alertType // Default value is .Option
+        }
+
+        if newVersionFirst > oldVersionFirst { // A.b.c.d
+            alertType = majorUpdateAlertType
+        } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
+            alertType = minorUpdateAlertType
+        } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
+            alertType = patchUpdateAlertType
+        } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
+            alertType = revisionUpdateAlertType
+        }
+        
+        return alertType
+    }
 }
 
 
-// MARK: - Localization Helpers
+// MARK: - Helpers (Localization)
 
 fileprivate extension Siren {
 
@@ -530,70 +603,9 @@ fileprivate extension Siren {
 }
 
 
-// MARK: - Misc. Helpers
+// MARK: - Helpers (Version)
 
 fileprivate extension Siren {
-
-    func iTunesURLFromString() throws -> URL {
-
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "itunes.apple.com"
-        components.path = "/lookup"
-
-        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
-
-        if let countryCode = countryCode {
-            let item = URLQueryItem(name: "country", value: countryCode)
-            items.append(item)
-        }
-
-        components.queryItems = items
-
-        guard let url = components.url, !url.absoluteString.isEmpty else {
-            throw SirenError.malformedURL
-        }
-
-        return url
-    }
-
-    func days(since date: Date) -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: date, to: Date())
-        return components.day!
-    }
-
-    static func setupDateFormatter() -> DateFormatter {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        return dateformatter
-    }
-
-    func days(since dateString: String) -> Int? {
-        let dateformatter = Siren.setupDateFormatter()
-        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
-        return days(since: releaseDate)
-    }
-
-    func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
-
-        guard let results = appData["results"] as? [[String: AnyObject]],
-            let requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
-                postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
-            return false
-        }
-
-        let systemVersion = UIDevice.current.systemVersion
-
-        if systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
-            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame {
-            return true
-        } else {
-            postError(.appStoreOSVersionUnsupported, underlyingError: nil)
-            return false
-        }
-
-    }
 
     func isAppStoreVersionNewer() -> Bool {
 
@@ -617,31 +629,53 @@ fileprivate extension Siren {
         }
     }
 
-    func setAlertType() -> SirenAlertType {
+}
 
-        guard let currentInstalledVersion = currentInstalledVersion,
-            let currentAppStoreVersion = currentAppStoreVersion else {
-            return .option
+// MARK: - Helpers (Date)
+
+fileprivate extension Siren {
+
+    static func setupDateFormatter() -> DateFormatter {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return dateformatter
+    }
+
+    func days(since date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: date, to: Date())
+        return components.day!
+    }
+
+    func days(since dateString: String) -> Int? {
+        let dateformatter = Siren.setupDateFormatter()
+        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
+        return days(since: releaseDate)
+    }
+}
+
+// MARK: - Helpers (Misc.)
+
+fileprivate extension Siren {
+
+    func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
+
+        guard let results = appData["results"] as? [[String: AnyObject]],
+            let requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
+                postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
+                return false
         }
 
-        let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
-        let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let systemVersion = UIDevice.current.systemVersion
 
-        guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
-            return alertType // Default value is .Option
+        if systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
+            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame {
+            return true
+        } else {
+            postError(.appStoreOSVersionUnsupported, underlyingError: nil)
+            return false
         }
 
-        if newVersionFirst > oldVersionFirst { // A.b.c.d
-            alertType = majorUpdateAlertType
-        } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
-            alertType = minorUpdateAlertType
-        } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
-            alertType = patchUpdateAlertType
-        } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
-            alertType = revisionUpdateAlertType
-        }
-
-        return alertType
     }
 
     func hideWindow() {
@@ -662,19 +696,18 @@ fileprivate extension Siren {
         DispatchQueue.main.async {
             UIApplication.shared.openURL(iTunesURL!)
         }
-
+        
     }
-
+    
     func printMessage(message: String) {
         if debugEnabled {
             print("[Siren] \(message)")
         }
     }
-
+    
 }
 
-
-// MARK: - UIAlertController Extensions
+// MARK: - UIAlertController Extension
 
 fileprivate extension UIAlertController {
 
@@ -782,23 +815,7 @@ fileprivate extension Siren {
 
 }
 
-
-// MARK: - SirenDelegate 
-
-public extension SirenDelegate {
-
-    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {}
-    func sirenUserDidLaunchAppStore() {}
-    func sirenUserDidSkipVersion() {}
-    func sirenUserDidCancel() {}
-    func sirenDidFailVersionCheck(error: NSError) {}
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {}
-    func sirenLatestVersionInstalled() {}
-
-}
-
-
-// MARK: - Testing Helpers 
+// MARK: - Helpers (Testing Target)
 
 extension Siren {
 

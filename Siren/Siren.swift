@@ -6,7 +6,12 @@
 //  Copyright (c) 2015 Sabintsev iOS Projects. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#endif
+#if os(OSX)
+import AppKit
+#endif
 
 // MARK: - SirenDelegate Protocol
 
@@ -258,11 +263,13 @@ public final class Siren: NSObject {
     */
     public var forceLanguageLocalization: SirenLanguageType?
     
+#if os(iOS)
     /**
         Overrides the tint color for UIAlertController.
     */
     public var alertControllerTintColor: UIColor?
-
+#endif
+    
     /**
         When this is set, the alert will only show up if the current version has already been released for X days
     */
@@ -276,8 +283,11 @@ public final class Siren: NSObject {
     // fileprivate
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?
+    
+#if os(iOS)
     fileprivate var updaterWindow: UIWindow?
-
+#endif
+    
     // Initialization
     public static let sharedInstance = Siren()
     
@@ -473,7 +483,7 @@ fileprivate extension Siren {
             showAlert()
         }
     }
-    
+#if os(iOS)
     func showAlert() {
         let updateAvailableMessage = Bundle().localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
@@ -543,6 +553,68 @@ fileprivate extension Siren {
         
         return action
     }
+#endif
+    
+#if os(OSX)
+    func showAlert() {
+        let updateAvailableMessage = Bundle().localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = localizedNewVersionMessage()
+        
+        let alert: NSAlert = NSAlert()
+        alert.messageText = updateAvailableMessage
+        alert.informativeText = newVersionMessage
+        
+        let updateButtonTitle = localizedUpdateButtonTitle()
+        let nextTimeButtonTitle = localizedNextTimeButtonTitle()
+        let skipButtonTitle = localizedSkipButtonTitle()
+        
+        switch alertType {
+        case .force:
+            alert.addButton(withTitle: updateButtonTitle)
+        case .option:
+            alert.addButton(withTitle: updateButtonTitle)
+            alert.addButton(withTitle: nextTimeButtonTitle)
+        case .skip:
+            alert.addButton(withTitle: updateButtonTitle)
+            alert.addButton(withTitle: nextTimeButtonTitle)
+            alert.addButton(withTitle: skipButtonTitle)
+        case .none:
+            delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage)
+        }
+        if alertType == .none {
+            return
+        }
+        
+        if let window = NSApplication.shared().keyWindow {
+            alert.beginSheetModal(for: window) {
+                (response: NSModalResponse) in
+                self.handleNSAlertResponse(returnCode: response)
+            }
+        } else {
+            let returnCode = alert.runModal()
+            handleNSAlertResponse(returnCode: returnCode)
+        }
+        
+    }
+    
+    func handleNSAlertResponse(returnCode: NSInteger) {
+        switch (returnCode) {
+        case  NSAlertFirstButtonReturn:
+            launchAppStore()
+            delegate?.sirenUserDidLaunchAppStore()
+        case  NSAlertSecondButtonReturn:
+            delegate?.sirenUserDidCancel()
+        case NSAlertThirdButtonReturn:
+            if let currentAppStoreVersion = currentAppStoreVersion {
+                UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
+                UserDefaults.standard.synchronize()
+            }
+            delegate?.sirenUserDidSkipVersion()
+        default:
+            return
+        }
+    }
+#endif
 
     func setAlertType() -> SirenAlertType {
 
@@ -665,9 +737,13 @@ fileprivate extension Siren {
                 postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
                 return false
         }
-
+#if os(iOS)
         let systemVersion = UIDevice.current.systemVersion
-
+#endif
+#if os(OSX)
+        let operatingSystemVersion = ProcessInfo.processInfo.operatingSystemVersion
+        let systemVersion = "\(operatingSystemVersion.majorVersion).\(operatingSystemVersion.minorVersion)"
+#endif
         if systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
             systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame {
             return true
@@ -678,25 +754,34 @@ fileprivate extension Siren {
 
     }
 
+#if os(iOS)
     func hideWindow() {
         if let updaterWindow = updaterWindow {
             updaterWindow.isHidden = true
             self.updaterWindow = nil
         }
     }
-
+#endif
     func launchAppStore() {
         guard let appID = appID else {
             return
         }
-
+#if os(iOS)
         let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
         let iTunesURL = URL(string: iTunesString)
 
         DispatchQueue.main.async {
             UIApplication.shared.openURL(iTunesURL!)
         }
+#endif
         
+#if os(OSX)
+        let iTunesString =  "macappstore://itunes.apple.com/app/id\(appID)"
+        let iTunesURL = URL(string: iTunesString)
+        DispatchQueue.main.async {
+            NSWorkspace.shared().open(iTunesURL!)
+        }
+#endif
     }
     
     func printMessage(message: String) {
@@ -709,6 +794,7 @@ fileprivate extension Siren {
 
 // MARK: - UIAlertController Extension
 
+#if os(iOS)
 fileprivate extension UIAlertController {
 
     func show() {
@@ -727,7 +813,7 @@ fileprivate extension UIAlertController {
     }
 
 }
-
+#endif
 
 // MARK: - NSBundle Extension
 

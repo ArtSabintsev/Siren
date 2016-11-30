@@ -326,8 +326,11 @@ fileprivate extension Siren {
         // Create Request
         do {
             let url = try iTunesURLFromString()
-            let request = URLRequest(url: url)
+            var request = URLRequest(url: url)
 
+            // It prevents the proposed update due to the cache, when there is not connection to network
+            request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+            
             // Perform Request
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in

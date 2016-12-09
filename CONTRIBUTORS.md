@@ -32,6 +32,8 @@
 - [Stefan Kieleithner](https://github.com/steviki) for [Pull Request #99](https://github.com/ArtSabintsev/Siren/pull/99)
 - [Konstantinos N.](https://github.com/kwstasna) for [Pull Request #101](https://github.com/ArtSabintsev/Siren/pull/101)
 - [Christoph Mantler](https://github.com/ChrisixFlash) for [Pull Request #103](https://github.com/ArtSabintsev/Siren/pull/103)
+- [Christoph Mantler](https://github.com/ChrisixFlash) for [Pull Request #106](https://github.com/ArtSabintsev/Siren/pull/106)
+- [Pietro D'Alessandro](https://github.com/xedla) for [Pull Request #107](https://github.com/ArtSabintsev/Siren/pull/107)
 
 ### Harpy Project Contributors
 This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to v3.2.1, the version of Harpy that Siren was based on.

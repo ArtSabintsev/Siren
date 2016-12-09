@@ -95,6 +95,7 @@ public enum SirenLanguageType: String {
     case Latvian = "lv"
     case Lithuanian = "lt"
     case Malay = "ms"
+    case Norwegian = "nb-NO"
     case Polish = "pl"
     case PortugueseBrazil = "pt"
     case PortuguesePortugal = "pt-PT"

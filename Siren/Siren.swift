@@ -323,18 +323,10 @@ public final class Siren: NSObject {
 fileprivate extension Siren {
 
     func performVersionCheck() {
-
-        // Create Request
         do {
             let url = try iTunesURLFromString()
-            var request = URLRequest(url: url)
-
-            // It prevents the proposed update due to the cache, when there is not connection to network
-            request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-            
-            // Perform Request
-            let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in
+            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in
 
                 if let error = error {
                     self.postError(.appStoreDataRetrievalFailure, underlyingError: error)

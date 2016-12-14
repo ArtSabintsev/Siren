@@ -100,7 +100,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	    Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
 	    checks.
 	*/
-    siren.checkVersion(.Immediately)
+    siren.checkVersion(checkType: .immediately)
 
     return true
 }
@@ -111,7 +111,7 @@ func applicationDidBecomeActive(application: UIApplication) {
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
 
-    Siren.sharedInstance.checkVersion(.Daily)
+    Siren.sharedInstance.checkVersion(checkType: .daily)
 }
 
 func applicationWillEnterForeground(application: UIApplication) {
@@ -122,7 +122,7 @@ func applicationWillEnterForeground(application: UIApplication) {
        ONLY USE WITH SirenAlertType.Force
    */
 
-    Siren.sharedInstance.checkVersion(.Immediately)
+    Siren.sharedInstance.checkVersion(checkType: .immediately)
 }
 ```
 

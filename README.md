@@ -1,4 +1,4 @@
-# Siren
+# Siren [简体中文](README.zh_CN.md)
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 

@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupSiren() {
-        
         let siren = Siren.sharedInstance
 
         // Optional

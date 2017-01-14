@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Optional
         siren.debugEnabled = true
+
+        siren.appName = "Test"
         
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None

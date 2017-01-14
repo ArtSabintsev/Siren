@@ -113,7 +113,7 @@ public enum SirenLanguageType: String {
 /**
  Siren-specific Error Codes
  */
-fileprivate enum SirenErrorCode: Int {
+private enum SirenErrorCode: Int {
     case malformedURL = 1000
     case recentlyCheckedAlready
     case noUpdateAvailable
@@ -129,7 +129,7 @@ fileprivate enum SirenErrorCode: Int {
 /**
  Siren-specific Error Throwable Errors
  */
-fileprivate enum SirenError: Error {
+private enum SirenError: Error {
     case malformedURL
     case missingBundleIdOrAppId
 }
@@ -137,7 +137,7 @@ fileprivate enum SirenError: Error {
 /** 
     Siren-specific NSUserDefault Keys
 */
-fileprivate enum SirenUserDefaults: String {
+private enum SirenUserDefaults: String {
     case StoredVersionCheckDate     // NSUserDefault key that stores the timestamp of the last version check
     case StoredSkippedVersion       // NSUserDefault key that stores the version that a user decided to skip
 }
@@ -274,7 +274,6 @@ public final class Siren: NSObject {
      */
     public fileprivate(set) var currentAppStoreVersion: String?
 
-    // fileprivate
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?
     fileprivate var updaterWindow: UIWindow?
@@ -320,7 +319,7 @@ public final class Siren: NSObject {
 
 // MARK: - Helpers (Networking)
 
-fileprivate extension Siren {
+private extension Siren {
 
     func performVersionCheck() {
         do {
@@ -455,7 +454,7 @@ fileprivate extension Siren {
 
 // MARK: - Helpers (Alert)
 
-fileprivate extension Siren {
+private extension Siren {
 
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         alertType = setAlertType()
@@ -571,7 +570,7 @@ fileprivate extension Siren {
 
 // MARK: - Helpers (Localization)
 
-fileprivate extension Siren {
+private extension Siren {
 
     func localizedNewVersionMessage() -> String {
 
@@ -601,7 +600,7 @@ fileprivate extension Siren {
 
 // MARK: - Helpers (Version)
 
-fileprivate extension Siren {
+private extension Siren {
 
     func isAppStoreVersionNewer() -> Bool {
 
@@ -629,7 +628,7 @@ fileprivate extension Siren {
 
 // MARK: - Helpers (Date)
 
-fileprivate extension Siren {
+private extension Siren {
 
     static func setupDateFormatter() -> DateFormatter {
         let dateformatter = DateFormatter()
@@ -652,7 +651,7 @@ fileprivate extension Siren {
 
 // MARK: - Helpers (Misc.)
 
-fileprivate extension Siren {
+private extension Siren {
 
     func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
 
@@ -705,7 +704,7 @@ fileprivate extension Siren {
 
 // MARK: - UIAlertController Extension
 
-fileprivate extension UIAlertController {
+private extension UIAlertController {
 
     func show() {
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -727,7 +726,7 @@ fileprivate extension UIAlertController {
 
 // MARK: - NSBundle Extension
 
-fileprivate extension Bundle {
+private extension Bundle {
 
     class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier

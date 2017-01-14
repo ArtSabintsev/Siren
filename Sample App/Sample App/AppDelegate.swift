@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-
         window?.makeKeyAndVisible()
 
         setupSiren()
@@ -24,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupSiren() {
-        
         let siren = Siren.sharedInstance
 
         // Optional
@@ -32,15 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Optional
         siren.debugEnabled = true
+
+        // Optional
+        siren.appName = "Test App Name"
         
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None
 
         // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
-        siren.majorUpdateAlertType = .option
-        siren.minorUpdateAlertType = .option
-        siren.patchUpdateAlertType = .option
-        siren.revisionUpdateAlertType = .option
+        siren.majorUpdateAlertType = .force
+        siren.minorUpdateAlertType = .force
+        siren.patchUpdateAlertType = .force
+        siren.revisionUpdateAlertType = .force
         
         // Optional - Sets all messages to appear in Spanish. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .Russian
@@ -92,9 +93,7 @@ extension AppDelegate: SirenDelegate
         print(#function, "Latest version of app is installed")
     }
 
-    /**
-        This delegate method is only hit when alertType is initialized to .None
-    */
+    // This delegate method is only hit when alertType is initialized to .none
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         print(#function, "\(message)")
     }

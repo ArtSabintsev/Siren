@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-
         window?.makeKeyAndVisible()
 
         setupSiren()
@@ -33,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional
         siren.debugEnabled = true
 
-        siren.appName = "Test"
+        // Optional
+        siren.appName = "Test App Name"
         
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None
@@ -94,9 +94,7 @@ extension AppDelegate: SirenDelegate
         print(#function, "Latest version of app is installed")
     }
 
-    /**
-        This delegate method is only hit when alertType is initialized to .None
-    */
+    // This delegate method is only hit when alertType is initialized to .none
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         print(#function, "\(message)")
     }

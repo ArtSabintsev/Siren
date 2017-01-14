@@ -258,22 +258,17 @@ private extension Siren {
             let url = try iTunesURLFromString()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in
-
                 if let error = error {
                     self.postError(.appStoreDataRetrievalFailure, underlyingError: error)
                 } else {
-
                     guard let data = data else {
                         self.postError(.appStoreDataRetrievalFailure, underlyingError: nil)
                         return
                     }
 
-                    /// Convert JSON data to Swift Dictionary of type [String: AnyObject]
                     do {
-
                         let jsonData = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-
-                        guard let appData = jsonData as? [String: AnyObject],
+                        guard let appData = jsonData as? [String: Any],
                             self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
 
                                 self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
@@ -281,34 +276,28 @@ private extension Siren {
                         }
 
                         DispatchQueue.main.async {
-
                             // Print iTunesLookup results from appData
                             self.printMessage(message: "JSON results: \(appData)")
 
                             // Process Results (e.g., extract current version that is available on the AppStore)
                             self.processVersionCheck(withResults: appData)
-
                         }
 
                     } catch let error as NSError {
                         self.postError(.appStoreDataRetrievalFailure, underlyingError: error)
                     }
                 }
-
             })
-
-            task.resume()
-
+          task.resume()
         } catch let error as NSError {
             postError(.malformedURL, underlyingError: error)
         }
-
     }
 
-    func processVersionCheck(withResults results: [String: AnyObject]) {
+    func processVersionCheck(withResults results: [String: Any]) {
         storeVersionCheckDate() // Store version comparison date
 
-        guard let allResults = results["results"] as? [[String: AnyObject]] else {
+        guard let allResults = results["results"] as? [[String: Any]] else {
             self.postError(.appStoreVersionNumberFailure, underlyingError: nil)
             return
         }
@@ -376,7 +365,6 @@ private extension Siren {
         return url
     }
 }
-
 
 // MARK: - Helpers (Alert)
 
@@ -573,9 +561,8 @@ private extension Siren {
 // MARK: - Helpers (Misc.)
 
 private extension Siren {
-    func isUpdateCompatibleWithDeviceOS(appData: [String: AnyObject]) -> Bool {
-
-        guard let results = appData["results"] as? [[String: AnyObject]],
+    func isUpdateCompatibleWithDeviceOS(appData: [String: Any]) -> Bool {
+        guard let results = appData["results"] as? [[String: Any]],
             let requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
                 postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
                 return false
@@ -590,7 +577,6 @@ private extension Siren {
             postError(.appStoreOSVersionUnsupported, underlyingError: nil)
             return false
         }
-
     }
 
     func hideWindow() {
@@ -611,7 +597,7 @@ private extension Siren {
         DispatchQueue.main.async {
             UIApplication.shared.openURL(iTunesURL!)
         }
-        
+
     }
     
     func printMessage(message: String) {

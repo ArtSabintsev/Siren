@@ -299,7 +299,7 @@ extension SirenTests {
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "Päivitys saatavilla")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Päivitys saatavilla")
+        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "Ensi kerralla")
 
         // Skip this version
         XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "Jätä tämä versio väliin")

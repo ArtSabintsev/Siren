@@ -212,6 +212,7 @@ public final class Siren: NSObject {
 
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?
+    fileprivate lazy var alertViewIsVisible: Bool = false
     fileprivate var updaterWindow: UIWindow?
 
     public static let sharedInstance = Siren()
@@ -406,18 +407,20 @@ private extension Siren {
             delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage)
         }
         
-        if alertType != .none {
+        if alertType != .none && !alertViewIsVisible{
             alertController.show()
+            alertViewIsVisible = true
             delegate?.sirenDidShowUpdateDialog(alertType: alertType)
         }
     }
     
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { (alert: UIAlertAction) in
+        let action = UIAlertAction(title: title, style: .default) { [unowned self] (alert: UIAlertAction) in
             self.hideWindow()
             self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore()
+            self.alertViewIsVisible = false
             return
         }
         
@@ -426,9 +429,10 @@ private extension Siren {
     
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { (alert: UIAlertAction) in
+        let action = UIAlertAction(title: title, style: .default) { [unowned self] (alert: UIAlertAction) in
             self.hideWindow()
             self.delegate?.sirenUserDidCancel()
+            self.alertViewIsVisible = false
             return
         }
         
@@ -437,7 +441,7 @@ private extension Siren {
     
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { (alert: UIAlertAction) in
+        let action = UIAlertAction(title: title, style: .default) { [unowned self] (alert: UIAlertAction) in
 
             if let currentAppStoreVersion = self.currentAppStoreVersion {
                 UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
@@ -446,6 +450,7 @@ private extension Siren {
 
             self.hideWindow()
             self.delegate?.sirenUserDidSkipVersion()
+            self.alertViewIsVisible = false
             return
         }
         
@@ -453,7 +458,6 @@ private extension Siren {
     }
 
     func setAlertType() -> SirenAlertType {
-
         guard let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion else {
                 return .option
@@ -485,7 +489,6 @@ private extension Siren {
 
 private extension Siren {
     func localizedNewVersionMessage() -> String {
-
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
         let newVersionMessage = Bundle().localizedString(stringKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
 
@@ -514,7 +517,6 @@ private extension Siren {
 
 private extension Siren {
     func isAppStoreVersionNewer() -> Bool {
-
         var newVersionExists = false
 
         if let currentInstalledVersion = currentInstalledVersion,

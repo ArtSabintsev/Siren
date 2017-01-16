@@ -8,7 +8,7 @@
 ## 关于
 **Siren** 用于检测用户当前安装版本是否是 App Store 上的最新可用版本。
 
-当有新版本可用时，Siren 会弹出提示框，用户可根据提示框提供的选项进行更新。或者您也可以根据 Siren 发出的消息来自定义通知用户的方式，比如您可以提供一个自定义的提示框。
+当 app 有更新时，Siren 会弹出提示框，用户可根据提示框提供的选项进行更新。或者您也可以根据 Siren 发出的消息来自定义通知用户的方式，比如您可以提供一个自定义的提示框。
 
 ## Ports
 
@@ -24,9 +24,9 @@
 
 ## 截图
 
-- The **左图** 强制用户更新
-- The **中间** 给用户提供更新选项
-- The **右图** 给用户提供更新和跳过更新选项
+- **左图** 强制用户更新
+- **中间** 给用户提供更新选项
+- **右图** 给用户提供更新和跳过更新选项
 - 这些选项对应着 `SirenAlertType` 枚举类型
 
 <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">

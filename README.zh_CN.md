@@ -116,7 +116,7 @@ func applicationWillEnterForeground(application: UIApplication) {
 
 ### 使用非弹出提示框进行提示
 
-您可以使用条幅或者小图等更友好的方式进行提示。首先，您需要通过下面代码禁用弹出提示框：
+您可以使用顶部条幅等更友好的方式进行提示。首先，您需要通过下面代码禁用弹出提示框：
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -127,13 +127,38 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 
 extension AppDelegate: SirenDelegate {
-	// Returns a localized message to this delegate method upon performing a successful version check
+	// 当检测到有更新可用时向该代理方法传递一个本地化的提示信息
     func sirenDidDetectNewVersionWithoutAlert(message: String) {
         print("\(message)")
     }
 }
 ```
+Siren 会调用 `sirenDidDetectNewVersionWithoutAlert(message: String)` 代理方法，该方法传递了一个本地化的更新提示信息作为参数。您可以使用该参数作为提示信息，也可以使用自定义的提示信息。
 
+## 修订版，补丁，小版本，大版本等不同的提示框类型
+您可以为修订版，补丁，小版本，大版本等设置不同提示框类型，只需要在 `checkVersion()` 方法前调用进行如下设置即可：
+
+```swift
+	/* Siren defaults to SirenAlertType.Option for all updates */
+	siren.sharedInstance().revisionUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.sharedInstance().patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.sharedInstance().minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.sharedInstance().majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
+```
+
+##可选代理和代理方法
+您可以通过下面六个代理方法跟踪用户进行的操作。
+
+```	swift
+public protocol SirenDelegate: class {
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // 弹出更新提示框
+    func sirenUserDidLaunchAppStore()                          // 用户点击去 app store 更新
+    func sirenUserDidSkipVersion()                             // 用户点击跳过此次更新
+    func sirenUserDidCancel()                                  // 用户点击取消更新
+    func sirenDidFailVersionCheck(error: NSError)              // 检查更新失败(可能返回系统级别的错误)
+    func sirenDidDetectNewVersionWithoutAlert(message: String) // 检测到更新但不弹出提示框
+}
+```
 
 ## 本地化
 Siren 为以下国家做了本地化
@@ -170,11 +195,20 @@ Siren 为以下国家做了本地化
 - Turkish
 - Vietnamese
 
-## 兼容性
+您可以通过以下代码忽略 iOS 系统语言设置，为弹出框设置固定语言。
+
+```swift
+Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
+```
+
+## 设备兼容性
+当有更新可用时，Siren 会检测用户的 iOS 版本号是否符合更新需求。比如，用户的系统是 iOS 9，但此次更新只针对 iOS 10，这时是不会出现弹出提示框。
 
 ## 测试
+测试时，需要暂时将 Xcode 里(`.xcodeproj` 文件) 的版本号修改为比当前苹果商店中的可用版本号大。这样编译运行 app 时，您就可以看到弹出提示框。
 
-
+## 提交至 App Store
+因为商店里的可用版本总是比提交审核的版本老，所以苹果商店审核人员在审核时是**不会**弹出提示框的。
 
 ##创建维护人员
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

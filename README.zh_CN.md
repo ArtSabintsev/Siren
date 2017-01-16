@@ -24,10 +24,10 @@
 
 ## 截图
 
-- The **left picture** forces the user to update the app.
-- The **center picture** gives the user the option to update the app.
-- The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `SirenAlertType` enum.
+- The **左图** 强制用户更新
+- The **中间** 给用户提供更新选项
+- The **右图** 给用户提供更新和跳过更新选项
+- 这些选项对应着 `SirenAlertType` 枚举类型
 
 <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">
 <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true" height=480">
@@ -135,7 +135,7 @@ extension AppDelegate: SirenDelegate {
 ```
 Siren 会调用 `sirenDidDetectNewVersionWithoutAlert(message: String)` 代理方法，该方法传递了一个本地化的更新提示信息作为参数。您可以使用该参数作为提示信息，也可以使用自定义的提示信息。
 
-## 修订版，补丁，小版本，大版本等不同的提示框类型
+## 为修订版，补丁，小版本，大版本设置不同的提示框类型
 您可以为修订版，补丁，小版本，大版本等设置不同提示框类型，只需要在 `checkVersion()` 方法前调用进行如下设置即可：
 
 ```swift

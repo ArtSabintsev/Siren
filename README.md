@@ -232,3 +232,6 @@ The App Store reviewer will **not** see the alert. The version in the App Store 
 
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)
+
+## Translated by
+[Daniel Hu](http://www.jianshu.com/u/d8bbc4831623)

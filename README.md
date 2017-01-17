@@ -1,9 +1,13 @@
-# Siren [简体中文](README.zh_CN.md)
+# Siren
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
 ![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)]()  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)]() [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)]()
 ---
+
+## Translations
+
+[简体中文](README.zh_CN.md)
 
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.

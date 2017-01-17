@@ -211,8 +211,15 @@ Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLangua
 ## 测试
 测试时，需要暂时将 Xcode 里(`.xcodeproj` 文件) 的版本号修改为比当前苹果商店中的可用版本号大。这样编译运行 app 时，您就可以看到弹出提示框。
 
+如果您尚未发布过 App，把 bundleID 修改为一个 app store 已经存在的 bundleID。在示例项目中，我们使用了 [iTunes Connect Mobile](https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8) 的 bundleID：`com.apple.itunesconnect.mobile`。
+
+为方便调试，您可以在调用 `checkVersion()` 方法前通过 `self.debugEnabled = true` 来开启调试模式。
+
 ## 提交至 App Store
 因为商店里的可用版本总是比提交审核的版本老，所以苹果商店审核人员在审核时是**不会**弹出提示框的。
 
 ##创建维护人员
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)
+
+## 翻译人员
+[Daniel Hu](http://www.jianshu.com/u/d8bbc4831623)

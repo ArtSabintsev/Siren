@@ -11,13 +11,17 @@
 当 app 有更新时，Siren 会弹出提示框，用户可根据提示框提供的选项进行更新。或者您也可以根据 Siren 发出的消息来自定义通知用户的方式，比如您可以提供一个自定义的提示框。
 
 ## Ports
+- [**Harpy**](http://github.com/ArtSabintsev/Harpy) 是 Objective-C 实现的版本更新检查库，Siren 是 Harpy 的 swift 版本。
+- Siren 和 Harpy 是由相同的开发者维护。
+- 安卓平台 Play Store 上的 [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren) 库使用了和 Siren 相同的原理实现了版本更新检测。
+- 针对 React Native 项目 (iOS/Android) 的 [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren) 库使用了和 Siren 相同的原理实现了版本更新检测。
 
 ## 特点
 - [x] 支持 Cocoapods
 - [x] 支持 Carthage
 - [x] 支持 Swift 包管理器
 - [x] 30+ 语言本地化 (查看**本地化**)
-- [x] 
+- [x] 设备兼容性检测 (查看**设备兼容性**)
 - [x] 三种类型的弹出提示框 (查看**截图**)
 - [x] 可选代理方法 (查看**可选代理**)
 - [x] 单元测试！

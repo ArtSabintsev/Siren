@@ -5,10 +5,6 @@
 ![Travis-CI](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)]()  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)]() [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)]()
 ---
 
-## Translations
-
-[简体中文](README.zh_CN.md)
-
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
@@ -19,6 +15,10 @@ If a new version is available, an alert can be presented to the user informing t
 	- Siren also supports two-number versioning (e.g., 1.0)
 	- Siren also supports four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
+
+## Read Me Translations
+
+[简体中文](README.zh_CN.md) (by [Daniel Hu](http://www.jianshu.com/u/d8bbc4831623))
 
 ## Ports
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
@@ -236,6 +236,3 @@ The App Store reviewer will **not** see the alert. The version in the App Store 
 
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)
-
-## Translated by
-[Daniel Hu](http://www.jianshu.com/u/d8bbc4831623)

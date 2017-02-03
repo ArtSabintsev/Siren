@@ -300,7 +300,7 @@ public final class Siren: NSObject {
         // Create Request
         do {
             let url = try iTunesURLFromString()
-            let request = NSURLRequest(URL: url)
+            let request = NSURLRequest(URL: url, cachePolicy: .ReloadIgnoringCacheData, timeoutInterval: 30)
 
             // Perform Request
             let session = NSURLSession.sharedSession()

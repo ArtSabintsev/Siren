@@ -531,13 +531,11 @@ private extension Siren {
 
         components.queryItems = items
 
-        guard let url = components.URL,
-            urlString = url.absoluteString
-            where !urlString.isEmpty else { // https://openradar.appspot.com/25382891
-                throw SirenErrorType.MalformedURL
+        if let url = components.URL where !url.absoluteString.isEmpty {
+            return url
+        } else {
+            throw SirenErrorType.MalformedURL
         }
-
-        return url
     }
 
     func daysSinceLastVersionCheckDate(lastVersionCheckPerformedOnDate: NSDate) -> Int {

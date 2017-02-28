@@ -1,11 +1,10 @@
 ======
+Before posting an issue, please make sure your issue has not already been resolved or answered elsehwere.
 
-> "Error retrieving iOS version number as there was no data returned"
+Common Issue #1:
+> "Error retrieving iOS version number as there was no data returned."
 
-Check if your app is available in the US App Store, otherwise add the corresponding country code: https://github.com/ArtSabintsev/Siren/blob/master/Siren/Siren.swift#L198
+Check if your app is available in the US App Store, otherwise add the corresponding country code when setting up Siren: https://github.com/ArtSabintsev/Siren/blob/master/Siren/Siren.swift#L198
 
-
-Check past issues before submitting a new report ;)
-
-DELETE THIS TEXT BEFORE SUBMITING A NEW ISSUE.
+Please delete this text before submitting a new issue.
 ======

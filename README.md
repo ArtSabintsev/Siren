@@ -16,7 +16,7 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
 ## README Translations
-- [简体中文](README.zh_CN.md) (by [Daniel Hu](http://www.jianshu.com/u/d8bbc4831623))
+- [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
 
 ## Ports
 - Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.

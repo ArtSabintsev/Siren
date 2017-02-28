@@ -12,8 +12,7 @@ If a new version is available, an alert can be presented to the user informing t
 
 - Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
 	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
-	- Siren also supports two-number versioning (e.g., 1.0)
-	- Siren also supports four-number versioning (e.g., 1.0.0.0)
+	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
 ## README Translations

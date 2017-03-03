@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8EC391801A58B465001C121E"
-               BuildableName = "Sample App.app"
-               BlueprintName = "Sample App"
-               ReferencedContainer = "container:Sample App.xcodeproj">
+               BlueprintIdentifier = "558455CB1C6690B4004BE492"
+               BuildableName = "Siren.framework"
+               BlueprintName = "Siren"
+               ReferencedContainer = "container:SirenExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8E3A6C031D07CB6F00A8B7CF"
-               BuildableName = "SirenTests.xctest"
-               BlueprintName = "SirenTests"
-               ReferencedContainer = "container:Sample App.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8EC391801A58B465001C121E"
-            BuildableName = "Sample App.app"
-            BlueprintName = "Sample App"
-            ReferencedContainer = "container:Sample App.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8EC391801A58B465001C121E"
-            BuildableName = "Sample App.app"
-            BlueprintName = "Sample App"
-            ReferencedContainer = "container:Sample App.xcodeproj">
+            BlueprintIdentifier = "558455CB1C6690B4004BE492"
+            BuildableName = "Siren.framework"
+            BlueprintName = "Siren"
+            ReferencedContainer = "container:SirenExample.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8EC391801A58B465001C121E"
-            BuildableName = "Sample App.app"
-            BlueprintName = "Sample App"
-            ReferencedContainer = "container:Sample App.xcodeproj">
+            BlueprintIdentifier = "558455CB1C6690B4004BE492"
+            BuildableName = "Siren.framework"
+            BlueprintName = "Siren"
+            ReferencedContainer = "container:SirenExample.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

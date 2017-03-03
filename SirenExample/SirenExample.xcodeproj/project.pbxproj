@@ -173,6 +173,7 @@
 				A6F122F8C1AD8028FA78EAE7 /* [CP] Check Pods Manifest.lock */,
 				8EC3917D1A58B465001C121E /* Sources */,
 				8EC3917E1A58B465001C121E /* Frameworks */,
+				8EE3A3F81E6A0E470010BDCE /* SwiftLint */,
 				8EC3917F1A58B465001C121E /* Resources */,
 				558455D81C6690B4004BE492 /* Embed Frameworks */,
 				30C2DF2EEFEA7D3101DB372A /* [CP] Embed Pods Frameworks */,
@@ -310,6 +311,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SirenExample-SirenExampleTests/Pods-SirenExample-SirenExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8EE3A3F81E6A0E470010BDCE /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint lint --config ../.swiftlint.yml\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		A6F122F8C1AD8028FA78EAE7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

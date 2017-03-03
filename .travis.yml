@@ -1,6 +1,6 @@
 language: objective-c
-
 osx_image: xcode8.2
-
+xcode_project: SirenExample.xcworkspace
+xcode_scheme: SirenExample
 notifications:
   email: false

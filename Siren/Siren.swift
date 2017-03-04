@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - SirenDelegate Protocol
 
-/// Delegate that handles all codepaths for Siren upon version check completion. 
+/// Delegate that handles all codepaths for Siren upon version check completion.
 public protocol SirenDelegate: class {
     /// User presented with update dialog
     func sirenDidShowUpdateDialog(alertType: SirenAlertType)
@@ -233,7 +233,11 @@ public final class Siren: NSObject {
     fileprivate lazy var alertViewIsVisible: Bool = false
     fileprivate var updaterWindow: UIWindow?
 
+    /// The App's Singleton
     public static let shared = Siren()
+
+    @available(*, deprecated: 1.2.0, unavailable, renamed: "shared")
+    public static let sharedInstance = Siren()
 
     override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenUserDefaults.StoredVersionCheckDate.rawValue) as? Date

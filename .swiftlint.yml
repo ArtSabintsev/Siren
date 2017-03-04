@@ -1,5 +1,5 @@
 included:
-  - ../Siren/
+  - ../Sources/
 
 disabled_rules:
   - cyclomatic_complexity

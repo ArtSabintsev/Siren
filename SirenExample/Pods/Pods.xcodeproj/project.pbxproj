@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E7BA99DE523639BD20B30B0134572AB /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0014954D53F1D742A31F698F34CA2FA /* Siren.bundle */; };
+		0E7BA99DE523639BD20B30B0134572AB /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A414452F3103A454FA4288A14AC9D2D /* Siren.bundle */; };
 		30588A9130FFD572AB8831B9C60A99C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		3759EF897BA4CACEB7941777E3B7115C /* Siren-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44110C84D89B6618B7D70B38C7E1F770 /* Siren-dummy.m */; };
+		3759EF897BA4CACEB7941777E3B7115C /* Siren-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 61869894C4AD1B142F05C5646A920DF0 /* Siren-dummy.m */; };
 		53319B5B6A45DD5644478F5160676424 /* Pods-SirenExample-SirenExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 811896840A2787CFB46C2310A53A61F8 /* Pods-SirenExample-SirenExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		630DD393A56F48DC0D04F264FC5FC06C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		68363971D3CADD37023DB530882846B5 /* Pods-SirenExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F63F3FA74F496BD1757CC39A6CDE06 /* Pods-SirenExample-dummy.m */; };
 		972C2B7D49424E952ADED9CE497F6A90 /* Pods-SirenExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CC12787058394FD29AE9BCA4E3D1727E /* Pods-SirenExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A89CCD81830867B82A5F24D08274F46 /* Siren-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8E9DBD02CCFA3452DDBD132A0E8AE2 /* Siren-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A89CCD81830867B82A5F24D08274F46 /* Siren-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E2B72C38EA0CBDFF68160CC0DA5E0B08 /* Siren-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D0ADFFB3FA43EC9D7957953C53B9F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		C243378AF1E6AA8C1F4A055F92AEAD90 /* Pods-SirenExample-SirenExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A15F5047D149392B98A1D3FFB32E3A4 /* Pods-SirenExample-SirenExampleTests-dummy.m */; };
-		E9998E36AF890AF72E5742E5D35E37B1 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = D717B436DF14DF1E0DCBD0AF437C09AB /* Siren.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E9998E36AF890AF72E5742E5D35E37B1 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44004A2A51AC368CE028135F770A93C7 /* Siren.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +39,15 @@
 
 /* Begin PBXFileReference section */
 		01F63F3FA74F496BD1757CC39A6CDE06 /* Pods-SirenExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SirenExample-dummy.m"; sourceTree = "<group>"; };
-		05EAEC8DBCD47FC65AA093945738F34C /* Siren-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-prefix.pch"; sourceTree = "<group>"; };
 		06EB936D712088E22B6E97B31B296F82 /* Pods-SirenExample-SirenExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SirenExample-SirenExampleTests.modulemap"; sourceTree = "<group>"; };
 		0D0210F2E3B2C420D60816EA1F4B60A3 /* Pods-SirenExample-SirenExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SirenExample-SirenExampleTests-resources.sh"; sourceTree = "<group>"; };
-		0FC35D96177537EBA534D9CE3C60128E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		227909DC6A327071DCF67332B557A68B /* Pods-SirenExample-SirenExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SirenExample-SirenExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		27655B68B07FF01DC0941A8140A70DDC /* Siren.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Siren.xcconfig; sourceTree = "<group>"; };
 		29FA8FA37537DC30F4FF73E641B53852 /* Pods_SirenExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SirenExample.framework; path = "Pods-SirenExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		44110C84D89B6618B7D70B38C7E1F770 /* Siren-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Siren-dummy.m"; sourceTree = "<group>"; };
+		2A414452F3103A454FA4288A14AC9D2D /* Siren.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
+		44004A2A51AC368CE028135F770A93C7 /* Siren.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
+		53CA6A224C921C84AE4A4CE83B2A0963 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61869894C4AD1B142F05C5646A920DF0 /* Siren-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Siren-dummy.m"; sourceTree = "<group>"; };
 		6940A5DB9FD30F6807D9DB98903784E6 /* Pods-SirenExample-SirenExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SirenExample-SirenExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		72B98520097CCDF5AB37CC050C681C62 /* Pods-SirenExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SirenExample-resources.sh"; sourceTree = "<group>"; };
 		7706AF9C75B4D2D5A1EF17FDAB9FAB97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +55,6 @@
 		811896840A2787CFB46C2310A53A61F8 /* Pods-SirenExample-SirenExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SirenExample-SirenExampleTests-umbrella.h"; sourceTree = "<group>"; };
 		84E88040F3DB6C8058D250199BEB0763 /* Pods-SirenExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SirenExample.modulemap"; sourceTree = "<group>"; };
 		8C2450C82854EDC40DA0834D0E79D9CC /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Siren.framework; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F8E9DBD02CCFA3452DDBD132A0E8AE2 /* Siren-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93B3213D473E21275342FCE16C2C2918 /* Pods-SirenExample-SirenExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SirenExample-SirenExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		96B8ECA9F086963CB8B616B2AC86BF19 /* Pods-SirenExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SirenExample-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -61,14 +62,13 @@
 		9D88CFEB6BB172591B08EBAA9BF1C081 /* Pods-SirenExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SirenExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		A33DC21230D06D0BB102A7F232AC0264 /* Pods-SirenExample-SirenExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SirenExample-SirenExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		AF1F066539B2AAC069B495BE2E1E0763 /* Pods-SirenExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SirenExample.debug.xcconfig"; sourceTree = "<group>"; };
+		B325A3CC69D9ECCC901AF253EA2BFAB0 /* Siren.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Siren.modulemap; sourceTree = "<group>"; };
 		B7F4561C5D552454DF92EB5241EC9A1E /* Pods-SirenExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SirenExample.release.xcconfig"; sourceTree = "<group>"; };
+		C42D0EFD51F7CB62BAA833A725E7E0DE /* Siren-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-prefix.pch"; sourceTree = "<group>"; };
 		C63B0D8D086556F73F63E24D6AB5F1D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CC12787058394FD29AE9BCA4E3D1727E /* Pods-SirenExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SirenExample-umbrella.h"; sourceTree = "<group>"; };
-		D0014954D53F1D742A31F698F34CA2FA /* Siren.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
-		D701BD97BBDB45336E43D2B953E3070C /* Siren.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Siren.xcconfig; sourceTree = "<group>"; };
-		D717B436DF14DF1E0DCBD0AF437C09AB /* Siren.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
-		D7EB1862B7D8C3DAFE334DA8EE8C6945 /* Siren.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Siren.modulemap; sourceTree = "<group>"; };
+		E2B72C38EA0CBDFF68160CC0DA5E0B08 /* Siren-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-umbrella.h"; sourceTree = "<group>"; };
 		E6F743D475CC0841AD243851CE90F30D /* Pods_SirenExample_SirenExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SirenExample_SirenExampleTests.framework; path = "Pods-SirenExample-SirenExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54A454AD472895FB273B44F0F8A4485 /* Pods-SirenExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SirenExample-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,20 +101,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AE78A7160A8E0FB0AA815851735C01C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0FC35D96177537EBA534D9CE3C60128E /* Info.plist */,
-				D7EB1862B7D8C3DAFE334DA8EE8C6945 /* Siren.modulemap */,
-				D701BD97BBDB45336E43D2B953E3070C /* Siren.xcconfig */,
-				44110C84D89B6618B7D70B38C7E1F770 /* Siren-dummy.m */,
-				05EAEC8DBCD47FC65AA093945738F34C /* Siren-prefix.pch */,
-				8F8E9DBD02CCFA3452DDBD132A0E8AE2 /* Siren-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "SirenExample/Pods/Target Support Files/Siren";
-			sourceTree = "<group>";
-		};
 		0D77725886F905A3134CE0F0F05994AC /* Pods-SirenExample-SirenExampleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,15 +119,22 @@
 			path = "Target Support Files/Pods-SirenExample-SirenExampleTests";
 			sourceTree = "<group>";
 		};
-		2729F15752C52BBE3890E34FD0E8D2F3 /* Siren */ = {
+		154C4394F8D041B0878461EE80065F6B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				504E44BB61475170B4D4CCD0C911C74C /* Resources */,
-				CE606984792280F905C98BA85EEEEBF2 /* Siren */,
-				0AE78A7160A8E0FB0AA815851735C01C /* Support Files */,
+				2A414452F3103A454FA4288A14AC9D2D /* Siren.bundle */,
 			);
-			name = Siren;
-			path = ../..;
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		337727F1E748089FA6ED3E091BD9DE8A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				44004A2A51AC368CE028135F770A93C7 /* Siren.swift */,
+			);
+			name = Sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		40D2098AE3353F905BA5E2FB76EEC58C /* Targets Support Files */ = {
@@ -151,14 +144,6 @@
 				0D77725886F905A3134CE0F0F05994AC /* Pods-SirenExample-SirenExampleTests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		504E44BB61475170B4D4CCD0C911C74C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FF15571CFCA5216313FAFB9024B7F768 /* Siren */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -172,7 +157,7 @@
 		768925493F6C39D21B7AC7DB7571D43F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2729F15752C52BBE3890E34FD0E8D2F3 /* Siren */,
+				DB3FEAB0DAE3A5D76FDFB6DC3A56552C /* Siren */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -198,6 +183,20 @@
 			);
 			sourceTree = "<group>";
 		};
+		9F554CACAFE55B9D83C740A3A313472F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				53CA6A224C921C84AE4A4CE83B2A0963 /* Info.plist */,
+				B325A3CC69D9ECCC901AF253EA2BFAB0 /* Siren.modulemap */,
+				27655B68B07FF01DC0941A8140A70DDC /* Siren.xcconfig */,
+				61869894C4AD1B142F05C5646A920DF0 /* Siren-dummy.m */,
+				C42D0EFD51F7CB62BAA833A725E7E0DE /* Siren-prefix.pch */,
+				E2B72C38EA0CBDFF68160CC0DA5E0B08 /* Siren-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "SirenExample/Pods/Target Support Files/Siren";
+			sourceTree = "<group>";
+		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,13 +205,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE606984792280F905C98BA85EEEEBF2 /* Siren */ = {
+		DB3FEAB0DAE3A5D76FDFB6DC3A56552C /* Siren */ = {
 			isa = PBXGroup;
 			children = (
-				D717B436DF14DF1E0DCBD0AF437C09AB /* Siren.swift */,
+				E06B45AE0ECB91A580F18A0DDB85B2A9 /* Resources */,
+				337727F1E748089FA6ED3E091BD9DE8A /* Sources */,
+				9F554CACAFE55B9D83C740A3A313472F /* Support Files */,
 			);
 			name = Siren;
-			path = Siren;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		E06B45AE0ECB91A580F18A0DDB85B2A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				154C4394F8D041B0878461EE80065F6B /* Sources */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E3F5580373AE923EA42F5CE1C043AE87 /* Pods-SirenExample */ = {
@@ -231,15 +240,6 @@
 			);
 			name = "Pods-SirenExample";
 			path = "Target Support Files/Pods-SirenExample";
-			sourceTree = "<group>";
-		};
-		FF15571CFCA5216313FAFB9024B7F768 /* Siren */ = {
-			isa = PBXGroup;
-			children = (
-				D0014954D53F1D742A31F698F34CA2FA /* Siren.bundle */,
-			);
-			name = Siren;
-			path = Siren;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -602,7 +602,7 @@
 		};
 		540F4677321802316973717ADEBCF5FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D701BD97BBDB45336E43D2B953E3070C /* Siren.xcconfig */;
+			baseConfigurationReference = 27655B68B07FF01DC0941A8140A70DDC /* Siren.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -669,7 +669,7 @@
 		};
 		FA836D6905D6CDBEDD835412E0AED44C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D701BD97BBDB45336E43D2B953E3070C /* Siren.xcconfig */;
+			baseConfigurationReference = 27655B68B07FF01DC0941A8140A70DDC /* Siren.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

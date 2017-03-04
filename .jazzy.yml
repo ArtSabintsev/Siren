@@ -2,6 +2,6 @@ module: Siren
 author: Arthur Ariel Sabintsev
 author_url: http://www.sabintsev.com
 github_url: https://github.com/artsabintsev/siren
-copyright: "© 2016-2017 [Arthur Ariel Sabintsev](http://www.sabintsev.com)"
+copyright: "© 2015-2017 [Arthur Ariel Sabintsev](http://www.sabintsev.com)"
 clean: true
 podspec: Siren.podspec

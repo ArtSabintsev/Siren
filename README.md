@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58ba28410648b401002b7291&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58ba28410648b401002b7291/build/latest?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/) [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)](https://cocoapods.org/pods/Siren) [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)](https://cocoapods.org/pods/Siren)
+[![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/) [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)](https://cocoapods.org/pods/Siren) [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)](https://cocoapods.org/pods/Siren)
 ---
 
 ## About
@@ -93,7 +93,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	/* Siren code should go below window?.makeKeyAndVisible() */
 
 	// Siren is a singleton
-	let siren = Siren.sharedInstance
+	let siren = Siren.shared
 
 	// Optional: Defaults to .Option
 	siren.alertType = <#SirenAlertType_Enum_Value#>
@@ -113,7 +113,7 @@ func applicationDidBecomeActive(application: UIApplication) {
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
 
-    Siren.sharedInstance.checkVersion(checkType: .daily)
+    Siren.shared.checkVersion(checkType: .daily)
 }
 
 func applicationWillEnterForeground(application: UIApplication) {
@@ -124,7 +124,7 @@ func applicationWillEnterForeground(application: UIApplication) {
        ONLY USE WITH SirenAlertType.Force
    */
 
-    Siren.sharedInstance.checkVersion(checkType: .immediately)
+    Siren.shared.checkVersion(checkType: .immediately)
 }
 ```
 
@@ -157,10 +157,10 @@ If you would like to set a different type of alert for revision, patch, minor, a
 
 ```swift
 	/* Siren defaults to SirenAlertType.Option for all updates */
-	siren.sharedInstance().revisionUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.sharedInstance().patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.sharedInstance().minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.sharedInstance().majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.shared.revisionUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.shared.patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.shared.minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	siren.shared.majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
 ```
 
 ## Optional Delegate and Delegate Methods
@@ -217,7 +217,7 @@ You may want the update dialog to *always* appear in a certain language, ignorin
 You can enable it like this:
 
 ```swift
-Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
+Siren.shared.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
 ```
 ## Device Compatibility
 If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the *false positive* case regarding app updating.

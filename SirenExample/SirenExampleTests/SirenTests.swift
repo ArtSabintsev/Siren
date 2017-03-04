@@ -11,7 +11,7 @@ import XCTest
 
 class SirenTests: XCTestCase {
 
-    let siren = Siren.sharedInstance
+    let siren = Siren.shared
 
 }
 

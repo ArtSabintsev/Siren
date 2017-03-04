@@ -130,7 +130,7 @@ private enum SirenUserDefaults: String {
 
 // MARK: - Siren
 
-/// The Siren Class. A singleton that is initialized using the sharedInstance() method.
+/// The Siren Class. A singleton that is initialized using the shared() method.
 public final class Siren: NSObject {
 
     ///Current installed version of your app
@@ -215,7 +215,7 @@ public final class Siren: NSObject {
     fileprivate lazy var alertViewIsVisible: Bool = false
     fileprivate var updaterWindow: UIWindow?
 
-    public static let sharedInstance = Siren()
+    public static let shared = Siren()
 
     override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenUserDefaults.StoredVersionCheckDate.rawValue) as? Date
@@ -615,7 +615,7 @@ private extension UIAlertController {
         window.rootViewController = ViewController()
         window.windowLevel = UIWindowLevelAlert + 1
 
-        Siren.sharedInstance.updaterWindow = window
+        Siren.shared.updaterWindow = window
 
         window.makeKeyAndVisible()
         window.rootViewController!.present(self, animated: true, completion: nil)

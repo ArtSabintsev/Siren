@@ -10,14 +10,28 @@ import UIKit
 
 // MARK: - SirenDelegate Protocol
 
+/// Delegate that handles all codepaths for Siren upon version check completion. 
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
-    func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
-    func sirenUserDidSkipVersion()                             // User did click on button that skips version update
-    func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
-    func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
-    func sirenLatestVersionInstalled()                         // Siren performed version check and latest version is installed
+    /// User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: SirenAlertType)
+
+    /// User did click on button that launched App Store.app
+    func sirenUserDidLaunchAppStore()
+
+    /// User did click on button that skips version update
+    func sirenUserDidSkipVersion()
+
+    /// User did click on button that cancels update dialog
+    func sirenUserDidCancel()
+
+    /// Siren failed to perform version check (may return system-level error)
+    func sirenDidFailVersionCheck(error: NSError)
+
+    /// Siren performed version check and did not display alert
+    func sirenDidDetectNewVersionWithoutAlert(message: String)
+
+    /// Siren performed version check and latest version is installed
+    func sirenLatestVersionInstalled()
 }
 
 // MARK: - SirenDelegate Protocol Extension
@@ -33,27 +47,31 @@ public extension SirenDelegate {
 }
 
 /// Determines the type of alert to present after a successful version check has been performed.
-///
-/// - force: Forces user to update your app (1 button alert)
-/// - option: (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
-/// - skip: Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
-/// - none: Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method
 public enum SirenAlertType {
-    case force        // Forces user to update your app (1 button alert)
-    case option       // (DEFAULT) Presents user with option to update app now or at next launch (2 button alert)
-    case skip         // Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert)
-    case none         // Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method
+    /// Forces user to update your app (1 button alert).
+    case force
+
+    /// (DEFAULT) Presents user with option to update app now or at next launch (2 button alert).
+    case option
+
+    /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
+    case skip
+
+    /// Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
+    case none
 }
 
-/// Determines the frequency in which the the version check is performed
+/// Determines the frequency in which the the version check is performed.
 ///
-/// - immediately: Version check performed every time the app is launched.
-/// - daily:  Version check performed once a day.
-/// - weekly: Version check performed once a week.
 public enum SirenVersionCheckType: Int {
-    case immediately = 0    // Version check performed every time the app is launched
-    case daily = 1          // Version check performed once a day
-    case weekly = 7         // Version check performed once a week
+    /// Version check performed every time the app is launched.
+    case immediately = 0
+
+    /// Version check performed once a day.
+    case daily = 1
+
+    /// Version check performed once a week.
+    case weekly = 7
 }
 
 /// Determines the available languages in which the update message and alert button titles should appear.
@@ -120,11 +138,11 @@ private enum SirenError: Error {
 }
 
 /// Siren-specific UserDefaults Keys
-///
-/// - StoredVersionCheckDate: Key that stores the timestamp of the last version check
-/// - StoredSkippedVersion: Key that stores the version that a user decided to skip
 private enum SirenUserDefaults: String {
+    /// Key that stores the timestamp of the last version check in UserDefaults
     case StoredVersionCheckDate
+
+    /// Key that stores the version that a user decided to skip in UserDefaults.
     case StoredSkippedVersion
 }
 

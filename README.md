@@ -55,13 +55,11 @@ pod 'Siren'
 ```
 
 For Swift 2.3 support:
-
 ```ruby
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
 ```
 
 For Swift 2.2 support:
-
 ```ruby
 pod 'Siren', '0.9.5'
 ```
@@ -87,6 +85,8 @@ github "ArtSabintsev/Siren" "swift2.3"
 ## Setup
 
 Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
+
+Full documentation can be found at http://sabintsev.com/Siren.
 
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

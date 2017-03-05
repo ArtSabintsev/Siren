@@ -32,7 +32,8 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots**)
 - [x] Optional delegate methods (see **Optional Delegate**)
-- [x] Unit Tests!
+- [x] Unit Tests
+- [x] Documentation can be found at http://sabintsev.com/Siren
 
 ## Screenshots
 
@@ -85,8 +86,6 @@ github "ArtSabintsev/Siren" "swift2.3"
 ## Setup
 
 Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
-
-Full documentation can be found at http://sabintsev.com/Siren.
 
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

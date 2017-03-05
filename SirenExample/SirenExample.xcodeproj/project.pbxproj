@@ -55,7 +55,6 @@
 		55EC36471E6BB98A00726F13 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC36491E6BB98A00726F13 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55EC365D1E6BB98C00726F13 /* Siren copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Siren copy-Info.plist"; path = "/Users/sabintseva/Documents/oss/siren/SirenExample/Siren copy-Info.plist"; sourceTree = "<absolute>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +127,6 @@
 				8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */,
 				55EC36481E6BB98A00726F13 /* Siren */,
 				8EC391821A58B465001C121E /* Products */,
-				55EC365D1E6BB98C00726F13 /* Siren copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -593,6 +591,7 @@
 				55EC36511E6BB98A00726F13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "SirenExampleTests" */ = {
 			isa = XCConfigurationList;

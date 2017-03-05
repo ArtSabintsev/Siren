@@ -1,6 +1,0 @@
-framework module Pods_SirenExample_SirenExampleTests {
-  umbrella header "Pods-SirenExample-SirenExampleTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

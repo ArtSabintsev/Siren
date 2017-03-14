@@ -19,10 +19,15 @@ If a new version is available, an alert can be presented to the user informing t
 - [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
 
 ## Ports
-- Siren is a Swift language port of [**Harpy**](http://github.com/ArtSabintsev/Harpy), an Objective-C library that achieves the same functionality.
-- Siren and Harpy are maintained by the same developers.
-- This library was the inspiration for [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren), which achieves the same functionality with the Google Play store on the Android platform.
-- This library was the inspiration for [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren), which achieves the same functionality for React Native projects (iOS/Android).
+- **Objective-C (iOS)**
+ - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
+ - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
+- **Java (Android)**
+ - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
+ - The Siren Swift library inspired the Java library.
+- **React Native (iOS)**
+ - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
+ - The Siren Swift library inspired the React Native library.
 
 ## Features
 - [x] CocoaPods Support

@@ -10,6 +10,6 @@ import Foundation
 
 // MARK: - UIViewController Extension for Siren
 
-class SirenViewController: UIViewController {
+internal class SirenViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return UIApplication.shared.statusBarStyle }
 }

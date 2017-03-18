@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Bundle Extension for Siren
 
-public extension Bundle {
+internal extension Bundle {
     class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier
     }

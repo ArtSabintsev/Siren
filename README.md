@@ -251,7 +251,7 @@ For your convenience, you may turn on debugging statements by setting `self.debu
 ## App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
-### Words of Caution
+## Words of Caution
 Occassionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new verison of the app has been release, while no new binary is made available for download via the App Store. It is for this reason, I caution developers to not use the `Force` option unless you are controlling the `Force` option with a remote configuration file (e.g., enabling Siren remotely only after you have guaranteed that the app has propogated to the App Store).
 
 Also, on even rarer situations, the iTunes JSON may fluctuate between multiple versions of your app shortly after pushing out a new version. This is extremely rare, and has only been reported once in the five years of that Siren and Harpy have been around.

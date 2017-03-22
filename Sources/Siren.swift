@@ -263,7 +263,7 @@ public final class Siren: NSObject {
                 return
             }
 
-            if days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if Date.days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready, underlyingError: nil)
@@ -360,7 +360,7 @@ private extension Siren {
         }
 
         guard let currentVersionReleaseDate = allResults.first?["currentVersionReleaseDate"] as? String,
-            let daysSinceRelease = days(since: currentVersionReleaseDate),
+            let daysSinceRelease = Date.days(since: currentVersionReleaseDate),
             daysSinceRelease >= alertDays else {
                 return
         }
@@ -561,28 +561,6 @@ private extension Siren {
     }
 }
 
-// MARK: - Helpers (Date)
-
-private extension Siren {
-    static func setupDateFormatter() -> DateFormatter {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        return dateformatter
-    }
-
-    func days(since date: Date) -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: date, to: Date())
-        return components.day!
-    }
-
-    func days(since dateString: String) -> Int? {
-        let dateformatter = Siren.setupDateFormatter()
-        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
-        return days(since: releaseDate)
-    }
-}
-
 // MARK: - Helpers (Misc.)
 
 private extension Siren {
@@ -612,17 +590,14 @@ private extension Siren {
     }
 
     func launchAppStore() {
-        guard let appID = appID else {
+        guard let appID = appID,
+            let iTunesURL = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
             return
         }
 
-        let iTunesString =  "https://itunes.apple.com/app/id\(appID)"
-        let iTunesURL = URL(string: iTunesString)
-
         DispatchQueue.main.async {
-            UIApplication.shared.openURL(iTunesURL!)
+            UIApplication.shared.openURL(iTunesURL)
         }
-
     }
 
     func printMessage(message: String) {

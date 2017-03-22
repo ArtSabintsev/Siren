@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>  Reference</title>
+    <title>Siren  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,17 +10,18 @@
     
   </head>
   <body>
-    <a title="  Reference"></a>
+    <a title="Siren  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (100% documented)</p>
+        <p><a href="index.html">Siren Docs</a> (54% documented)</p>
+        <p class="header-right"><a href="https://github.com/artsabintsev/siren"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="index.html"> Reference</a>
+        <a href="index.html">Siren Reference</a>
         <img id="carat" src="img/carat.png" />
-          Reference
+        Siren  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -62,13 +63,249 @@
         <section>
           <section class="section">
             
-            <a href='#authors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='authors'>Authors</h3>
+            <a href='#siren' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='siren'>Siren</h1>
+<a href='#notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
+<a href='#a-href-https-dashboard-buddybuild-com-apps-58c4d0d85601d40100c5c51d-build-latest-branch-master-img-src-https-dashboard-buddybuild-com-api-statusimage-appid-58c4d0d85601d40100c5c51d-branch-master-build-latest-alt-buddybuild-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-v-siren-svg-alt-cocoapods-a-a-href-https-github-com-carthage-carthage-img-src-https-img-shields-io-badge-carthage-compatible-4bc51d-svg-style-flat-alt-carthage-compatible-a-a-href-https-swift-org-package-manager-img-src-https-img-shields-io-badge-swiftpm-compatible-brightgreen-svg-alt-swiftpm-compatible-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-dt-siren-svg-alt-cocoapods-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-dm-siren-svg-alt-cocoapods-a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='a-href-https-dashboard-buddybuild-com-apps-58c4d0d85601d40100c5c51d-build-latest-branch-master-img-src-https-dashboard-buddybuild-com-api-statusimage-appid-58c4d0d85601d40100c5c51d-branch-master-build-latest-alt-buddybuild-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-v-siren-svg-alt-cocoapods-a-a-href-https-github-com-carthage-carthage-img-src-https-img-shields-io-badge-carthage-compatible-4bc51d-svg-style-flat-alt-carthage-compatible-a-a-href-https-swift-org-package-manager-img-src-https-img-shields-io-badge-swiftpm-compatible-brightgreen-svg-alt-swiftpm-compatible-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-dt-siren-svg-alt-cocoapods-a-a-href-https-cocoapods-org-pods-siren-img-src-https-img-shields-io-cocoapods-dm-siren-svg-alt-cocoapods-a'><a href="https://dashboard.buddybuild.com/apps/58c4d0d85601d40100c5c51d/build/latest?branch=master"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=58c4d0d85601d40100c5c51d&branch=master&build=latest" alt="BuddyBuild"></a> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg" alt="SwiftPM Compatible"></a> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/dt/Siren.svg" alt="CocoaPods"></a> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/dm/Siren.svg" alt="CocoaPods"></a></h2>
+<a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
+
+<p><strong>Siren</strong> checks a user&rsquo;s currently installed version of your iOS app against the version that is currently available in the App Store.</p>
+
+<p>If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.</p>
+
+<ul>
+<li>Siren is built to work with the <a href="http://semver.org/"><strong>Semantic Versioning</strong></a> system.
+
+<ul>
+<li>Semantic Versioning is a three number versioning system (e.g., 1.0.0)</li>
+<li>Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)</li>
+</ul></li>
+<li>Siren is actively maintained by <a href="http://github.com/ArtSabintsev"><strong>Arthur Sabintsev</strong></a> and <a href="http://twitter.com/getaaron"><strong>Aaron Brager</strong></a></li>
+</ul>
+<a href='#readme-translations' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='readme-translations'>README Translations</h2>
+
+<ul>
+<li><a href="README.zh_CN.md"><strong>简体中文</strong></a> (by <a href="http://www.jianshu.com/u/d8bbc4831623"><strong>Daniel Hu</strong></a>)</li>
+</ul>
+<a href='#ports' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='ports'>Ports</h2>
+
+<ul>
+<li><strong>Objective-C (iOS)</strong>
+
+<ul>
+<li><a href="http://github.com/ArtSabintsev/Harpy"><strong>Harpy</strong></a></li>
+<li>Siren was ported <em>from</em> Harpy, as Siren and Harpy are maintained by the same developer.</li>
+</ul></li>
+<li><strong>Java (Android)</strong>
+
+<ul>
+<li><a href="https://github.com/eggheadgames/Siren"><strong>Egghead Games&rsquo; Siren library</strong></a></li>
+<li>The Siren Swift library inspired the Java library.</li>
+</ul></li>
+<li><strong>React Native (iOS)</strong>
+
+<ul>
+<li><a href="https://github.com/GantMan/react-native-siren"><strong>Gant Laborde&rsquo;s Siren library</strong></a></li>
+<li>The Siren Swift library inspired the React Native library.</li>
+</ul></li>
+</ul>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li>[x] CocoaPods Support</li>
+<li>[x] Carthage Support</li>
+<li>[x] Swift Package Manager Support</li>
+<li>[x] Localized for 30+ languages (See <strong>Localization</strong>)</li>
+<li>[x] Pre-Update Device Compatibility Check (See <strong>Device Compatibility</strong>)</li>
+<li>[x] Three types of alerts (see <strong>Screenshots</strong>)</li>
+<li>[x] Optional delegate methods (see <strong>Optional Delegate</strong>)</li>
+<li>[x] Unit Tests</li>
+<li>[x] Documentation can be found at <a href="http://sabintsev.com/Siren">http://sabintsev.com/Siren</a></li>
+</ul>
+<a href='#screenshots' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='screenshots'>Screenshots</h2>
+
+<ul>
+<li>The <strong>left picture</strong> forces the user to update the app.</li>
+<li>The <strong>center picture</strong> gives the user the option to update the app.</li>
+<li>The <strong>right picture</strong> gives the user the option to skip the current update.</li>
+<li>These options are controlled by the <code>SirenAlertType</code> enum.</li>
+</ul>
+
+<p><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480"></p>
+<a href='#installation-instructions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation-instructions'>Installation Instructions</h2>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+
+<p>For Swift 3 support:
+<code>ruby
+pod &#39;Siren&#39;
+</code></p>
+
+<p>For Swift 2.3 support:
+<code>ruby
+pod &#39;Siren&#39;, :git =&gt; &#39;https://github.com/ArtSabintsev/Siren.git&#39;, :branch =&gt; &#39;swift2.3&#39;
+</code></p>
+
+<p>For Swift 2.2 support:
+<code>ruby
+pod &#39;Siren&#39;, &#39;0.9.5&#39;
+</code></p>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+
+<p>For Swift 3 support:</p>
+<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span>
+</code></pre>
+
+<p>For Swift 2.3 support:</p>
+<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift2.3"</span>
+</code></pre>
+<a href='#swift-package-manager' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='swift-package-manager'>Swift Package Manager</h3>
+<pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre>
+<a href='#setup' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='setup'>Setup</h2>
+
+<p>Here&rsquo;s some commented sample code. Adapt this to meet your app&rsquo;s needs. For a full list of optional settings/preferences, please refer to <a href="https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift">https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift</a> in the Sample Project.</p>
+<pre class="highlight plaintext"><code>func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+    /* Siren code should go below window?.makeKeyAndVisible() */
+
+    // Siren is a singleton
+    let siren = Siren.shared
+
+    // Optional: Defaults to .Option
+    siren.alertType = &lt;#SirenAlertType_Enum_Value#&gt;
+
+    /*
+        Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
+        checks.
+    */
+    siren.checkVersion(checkType: .immediately)
+
+    return true
+}
+
+func applicationDidBecomeActive(application: UIApplication) {
+    /*
+        Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app.
+        Useful if user returns to your app from the background after extended period of time.
+         Place in applicationDidBecomeActive(_:).   */
+
+    Siren.shared.checkVersion(checkType: .daily)
+}
+
+func applicationWillEnterForeground(application: UIApplication) {
+   /*
+        Useful if user returns to your app from the background after being sent to the
+        App Store, but doesn't update their app before coming back to your app.
+
+       ONLY USE WITH SirenAlertType.Force
+   */
+
+    Siren.shared.checkVersion(checkType: .immediately)
+}
+</code></pre>
+
+<p>And you&rsquo;re all set!</p>
+<a href='#prompting-for-updates-without-alerts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='prompting-for-updates-without-alerts'>Prompting for Updates without Alerts</h3>
+
+<p>Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">alertType</span> <span class="o">=</span> <span class="o">.</span><span class="kt">None</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">SirenDelegate</span> <span class="p">{</span>
+    <span class="c1">// Returns a localized message to this delegate method upon performing a successful version check</span>
+    <span class="kd">func</span> <span class="nf">sirenDidDetectNewVersionWithoutAlert</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">message</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Siren will call the <code>sirenDidDetectNewVersionWithoutAlert(message: String)</code> delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using <code>message</code>.</p>
+<a href='#differentiated-alerts-for-revision-patch-minor-and-major-updates' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='differentiated-alerts-for-revision-patch-minor-and-major-updates'>Differentiated Alerts for Revision, Patch, Minor, and Major Updates</h2>
+
+<p>If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following <em>optional</em> lines to your setup <em>before</em> calling the <code>checkVersion()</code> method:</p>
+<pre class="highlight swift"><code>    <span class="cm">/* Siren defaults to SirenAlertType.Option for all updates */</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">revisionUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">SirenAlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">patchUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">SirenAlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">minorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">SirenAlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">majorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">SirenAlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+</code></pre>
+<a href='#optional-delegate-and-delegate-methods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='optional-delegate-and-delegate-methods'>Optional Delegate and Delegate Methods</h2>
+
+<p>Six delegate methods allow you to handle or track the user&rsquo;s behavior. Each method has a default, empty implementation, effectively making each of these methods optional.</p>
+<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SirenDelegate</span><span class="p">:</span> <span class="kd">class</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sirenDidShowUpdateDialog</span><span class="p">(</span><span class="nv">alertType</span><span class="p">:</span> <span class="kt">SirenAlertType</span><span class="p">)</span>   <span class="c1">// User presented with update dialog</span>
+    <span class="kd">func</span> <span class="nf">sirenUserDidLaunchAppStore</span><span class="p">()</span>                          <span class="c1">// User did click on button that launched App Store.app</span>
+    <span class="kd">func</span> <span class="nf">sirenUserDidSkipVersion</span><span class="p">()</span>                             <span class="c1">// User did click on button that skips version update</span>
+    <span class="kd">func</span> <span class="nf">sirenUserDidCancel</span><span class="p">()</span>                                  <span class="c1">// User did click on button that cancels update dialog</span>
+    <span class="kd">func</span> <span class="nf">sirenDidFailVersionCheck</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">NSError</span><span class="p">)</span>              <span class="c1">// Siren failed to perform version check (may return system-level error)</span>
+    <span class="kd">func</span> <span class="nf">sirenDidDetectNewVersionWithoutAlert</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="c1">// Siren performed version check and did not display alert</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#localization' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='localization'>Localization</h2>
+
+<p>Siren is localized for
+- Arabic
+- Armenian
+- Basque
+- Chinese (Simplified and Traditional)
+- Danish
+- Dutch
+- English
+- Estonian
+- Finnish
+- French
+- German
+- Greek
+- Hebrew
+- Hungarian
+- Indonesian
+- Italian
+- Japanese
+- Korean
+- Latvian
+- Lithuanian
+- Malay
+- Norwegian (Bokmål)
+- Polish
+- Portuguese (Brazil and Portugal)
+- Russian
+- Serbian (Cyrillic and Latin)
+- Slovenian
+- Swedish
+- Spanish
+- Thai
+- Turkish
+- Vietnamese</p>
+
+<p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring iOS&rsquo;s language setting (e.g. apps released in a specific country).</p>
+
+<p>You can enable it like so:</p>
+<pre class="highlight swift"><code><span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">forceLanguageLocalization</span> <span class="o">=</span> <span class="kt">SirenLanguageType</span><span class="o">.&lt;</span><span class="err">#</span><span class="kt">SirenLanguageType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+</code></pre>
+<a href='#device-compatibility' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='device-compatibility'>Device Compatibility</h2>
+
+<p>If an app update is available, Siren checks to make sure that the version of iOS on the user&rsquo;s device is compatible with the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the <em>false positive</em> case regarding app updating.</p>
+<a href='#testing-siren' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='testing-siren'>Testing Siren</h2>
+
+<p>Temporarily change the version string in Xcode (within the <code>.xcodeproj</code>) to an older version than the one that&rsquo;s currently available in the App Store. Afterwards, build and run your app, and you should see the alert.</p>
+
+<p>If you currently don&rsquo;t have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the <a href="https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8">iTunes Connect Mobile</a> app&rsquo;s bundleID: <code>com.apple.itunesconnect.mobile</code>.</p>
+
+<p>For your convenience, you may turn on debugging statements by setting <code>self.debugEnabled = true</code> before calling the <code>checkVersion()</code> method.</p>
+<a href='#app-store-submissions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='app-store-submissions'>App Store Submissions</h2>
+
+<p>The App Store reviewer will <strong>not</strong> see the alert. The version in the App Store will always be older than the version being reviewed.</p>
+<a href='#created-and-maintained-by' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='created-and-maintained-by'>Created and maintained by</h2>
+
+<p><a href="http://www.sabintsev.com/">Arthur Ariel Sabintsev</a> &amp; <a href="http://twitter.com/getaaron">Aaron Brager</a></p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-03-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>© 2015-2017 <a class="link" href="http://www.sabintsev.com" target="_blank" rel="external">Arthur Ariel Sabintsev</a></p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.5</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

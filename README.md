@@ -5,6 +5,23 @@
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58c4d0d85601d40100c5c51d&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58c4d0d85601d40100c5c51d/build/latest?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/) [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)](https://cocoapods.org/pods/Siren) [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)](https://cocoapods.org/pods/Siren)
 ---
 
+## Table of Contents
+- [About](https://github.com/ArtSabintsev/Siren#about)
+- [README Translations](https://github.com/ArtSabintsev/Siren#readme-translations)
+- [Ports](https://github.com/ArtSabintsev/Siren#ports)
+- [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
+- [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
+- [Example Code](https://github.com/ArtSabintsev/Siren#example-code)
+- [Granular/Differentiated Version Management](https://github.com/ArtSabintsev/Siren#granular-version-update-management)
+- [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods)
+- [Localization](https://github.com/ArtSabintsev/Siren#localization)
+- [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
+- [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
+- [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
+- [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
+- [Attribution](https://github.com/ArtSabintsev/Siren#created-and-maintained-by)
+---
+
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
@@ -15,6 +32,7 @@ If a new version is available, an alert can be presented to the user informing t
 	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
+---
 ## README Translations
 - [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
 
@@ -41,7 +59,6 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Documentation can be found at http://sabintsev.com/Siren
 
 ## Screenshots
-
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
 - The **right picture** gives the user the option to skip the current update.
@@ -86,7 +103,7 @@ github "ArtSabintsev/Siren" "swift2.3"
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 1)
 ```
 
-## Setup
+## Example Code
 
 Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
 
@@ -154,7 +171,7 @@ extension AppDelegate: SirenDelegate {
 
 Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
 
-## Differentiated Alerts for Revision, Patch, Minor, and Major Updates
+## Granular Version Update Management
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
 ```swift
@@ -233,6 +250,11 @@ For your convenience, you may turn on debugging statements by setting `self.debu
 
 ## App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
+
+### Words of Caution
+Occassionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new verison of the app has been release, while no new binary is made available for download via the App Store. It is for this reason, I caution developers to not use the `Force` option unless you are controlling the `Force` option with a remote configuration file (e.g., enabling Siren remotely only after you have guaranteed that the app has propogated to the App Store).
+
+Also, on even rarer situations, the iTunes JSON may fluctuate between multiple versions of your app shortly after pushing out a new version. This is extremely rare, and has only been reported once in the five years of that Siren and Harpy have been around.
 
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

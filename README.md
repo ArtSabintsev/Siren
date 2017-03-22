@@ -20,14 +20,14 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Ports
 - **Objective-C (iOS)**
- - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
- - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
+   - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
+   - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
 - **Java (Android)**
- - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
- - The Siren Swift library inspired the Java library.
+   - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
+   - The Siren Swift library inspired the Java library.
 - **React Native (iOS)**
- - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
- - The Siren Swift library inspired the React Native library.
+   - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
+   - The Siren Swift library inspired the React Native library.
 
 ## Features
 - [x] CocoaPods Support

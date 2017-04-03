@@ -8,7 +8,7 @@
 ## Table of Contents
 - [About](https://github.com/ArtSabintsev/Siren#about)
 - [README Translations](https://github.com/ArtSabintsev/Siren#readme-translations)
-- [Ports](https://github.com/ArtSabintsev/Siren#ports)
+- [Features](https://github.com/ArtSabintsev/Siren#features)
 - [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
 - [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
 - [Example Code](https://github.com/ArtSabintsev/Siren#example-code)
@@ -19,6 +19,7 @@
 - [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
 - [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
 - [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
+- [Ports](https://github.com/ArtSabintsev/Siren#ports)
 - [Attribution](https://github.com/ArtSabintsev/Siren#created-and-maintained-by)
 ---
 
@@ -35,17 +36,6 @@ If a new version is available, an alert can be presented to the user informing t
 ---
 ## README Translations
 - [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
-
-## Ports
-- **Objective-C (iOS)**
-   - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
-   - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
-- **Java (Android)**
-   - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
-   - The Siren Swift library inspired the Java library.
-- **React Native (iOS)**
-   - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
-   - The Siren Swift library inspired the React Native library.
 
 ## Features
 - [x] CocoaPods Support
@@ -97,7 +87,7 @@ For Swift 2.3 support:
 ``` swift
 github "ArtSabintsev/Siren" "swift2.3"
 ```
-
+\
 ### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 1)
@@ -255,6 +245,17 @@ The App Store reviewer will **not** see the alert. The version in the App Store 
 Occassionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new verison of the app has been release, while no new binary is made available for download via the App Store. It is for this reason, I caution developers to not use the `Force` option unless you are controlling the `Force` option with a remote configuration file (e.g., enabling Siren remotely only after you have guaranteed that the app has propogated to the App Store).
 
 Also, on even rarer situations, the iTunes JSON may fluctuate between multiple versions of your app shortly after pushing out a new version. This is extremely rare, and has only been reported once in the five years of that Siren and Harpy have been around.
+
+## Ports
+- **Objective-C (iOS)**
+   - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
+   - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
+- **Java (Android)**
+   - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
+   - The Siren Swift library inspired the Java library.
+- **React Native (iOS)**
+   - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
+   - The Siren Swift library inspired the React Native library.
 
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)

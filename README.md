@@ -7,7 +7,6 @@
 
 ## Table of Contents
 - [About](https://github.com/ArtSabintsev/Siren#about)
-- [README Translations](https://github.com/ArtSabintsev/Siren#readme-translations)
 - [Features](https://github.com/ArtSabintsev/Siren#features)
 - [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
 - [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
@@ -33,20 +32,19 @@ If a new version is available, an alert can be presented to the user informing t
 	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
 
----
-## README Translations
+### README Translations
 - [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
 
 ## Features
 - [x] CocoaPods Support
 - [x] Carthage Support
 - [x] Swift Package Manager Support
-- [x] Localized for 30+ languages (See **Localization**)
-- [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
-- [x] Three types of alerts (see **Screenshots**)
-- [x] Optional delegate methods (see **Optional Delegate**)
+- [x] Localized for 30+ languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
+- [x] Pre-Update Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
+- [x] Three types of alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
+- [x] Optional delegate methods (see [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods)
 - [x] Unit Tests
-- [x] Documentation can be found at http://sabintsev.com/Siren
+- [x] Documentation can be found at http://sabintsev.com/Siren.
 
 ## Screenshots
 - The **left picture** forces the user to update the app.
@@ -87,7 +85,7 @@ For Swift 2.3 support:
 ``` swift
 github "ArtSabintsev/Siren" "swift2.3"
 ```
-\
+
 ### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 1)
@@ -95,22 +93,26 @@ github "ArtSabintsev/Siren" "swift2.3"
 
 ## Example Code
 
-Here's some commented sample code. Adapt this to meet your app's needs. For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Sample%20App/Sample%20App/AppDelegate.swift in the Sample Project.
+Below is some commented sample code. Adapt this to meet your app's needs.
+
+For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/SirenExample/SirenExample/AppDelegate.swift in the Sample Project.
 
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	/* Siren code should go below window?.makeKeyAndVisible() */
 
-	// Siren is a singleton
-	let siren = Siren.shared
+	  // Siren is a singleton
+	  let siren = Siren.shared
 
-	// Optional: Defaults to .Option
-	siren.alertType = <#SirenAlertType_Enum_Value#>
+	  // Optional - Defaults to .Option
+	  siren.alertType = <#SirenAlertType_Enum_Value#>
 
-	/*
-	    Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version
-	    checks.
-	*/
+	  // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+	  // This value defaults to 1 to avoid a rare condition on Apple's end
+	  // The number 3 is used as an example.
+	  siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+
+	  // Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version checks.
     siren.checkVersion(checkType: .immediately)
 
     return true

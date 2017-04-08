@@ -49,10 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Set this variable if your app is not available in the U.S. App Store. List of codes: https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/AppStoreTerritories.html
 //        siren.countryCode = ""
 
-        // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days. 
-        // This value defaults to 1.
-        // The number 5 is used as an example.
-//        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 5
+        // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+        // This value defaults to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+        // The number 3 is used as an example.
+//        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
         // Required
         siren.checkVersion(checkType: .immediately)

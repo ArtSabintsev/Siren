@@ -128,14 +128,22 @@
 			isa = PBXGroup;
 			children = (
 				8EE6C7411E6A0AA500DBE454 /* AppDelegate.swift */,
+				8E528A331E98AED300B643C4 /* Supporting Files */,
+			);
+			name = SirenExample;
+			path = "Sample App";
+			sourceTree = "<group>";
+		};
+		8E528A331E98AED300B643C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				8EE6C7421E6A0AA500DBE454 /* ViewController.swift */,
 				8EBDF8211E6A0C41006C87B4 /* LaunchScreen.xib */,
 				8EBDF8231E6A0C41006C87B4 /* Main.storyboard */,
 				8EE6C7461E6A0AB800DBE454 /* Images.xcassets */,
 				8EE6C7471E6A0AB800DBE454 /* Info.plist */,
 			);
-			name = SirenExample;
-			path = "Sample App";
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8EC391781A58B465001C121E = {

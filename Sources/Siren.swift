@@ -440,13 +440,13 @@ private extension Siren {
 
         let systemVersion = UIDevice.current.systemVersion
 
-        if systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
-            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame {
-            return true
-        } else {
+        guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
+            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
             postError(.appStoreOSVersionUnsupported, underlyingError: nil)
             return false
         }
+
+        return true
     }
 
     func hideWindow() {

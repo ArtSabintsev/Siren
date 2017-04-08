@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional
         siren.debugEnabled = true
 
-        // Optional
-        siren.appName = "Test App Name"
-        
+        // Optional - Change the name of your app. Useful if you have a long app name and want to display a shortened version in the update dialog (e.g., the UIAlertController).
+//        siren.appName = "Test App Name"
+
         // Optional - Defaults to .Option
 //        siren.alertType = .Option // or .Force, .Skip, .None
 
@@ -49,7 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Set this variable if your app is not available in the U.S. App Store. List of codes: https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/AppStoreTerritories.html
 //        siren.countryCode = ""
 
-        // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days. The number 5 is used as an example.
+        // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days. 
+        // This value defaults to 1.
+        // The number 5 is used as an example.
 //        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 5
 
         // Required

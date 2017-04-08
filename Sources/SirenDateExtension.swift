@@ -19,7 +19,9 @@ internal extension Date {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
-        guard let releaseDate = dateformatter.date(from: dateString) else { return nil }
+        guard let releaseDate = dateformatter.date(from: dateString) else {
+            return nil
+        }
 
         return days(since: releaseDate)
     }

@@ -629,4 +629,3 @@ private extension Siren {
         printMessage(message: error.localizedDescription)
     }
 }
-

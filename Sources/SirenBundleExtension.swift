@@ -19,13 +19,13 @@ internal extension Bundle {
         return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle") as String!
     }
 
-    func sirenForcedBundlePath(forceLanguageLocalization: SirenLanguageType) -> String {
+    func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
         return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
-    func localizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
+    func localizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
@@ -48,7 +48,7 @@ internal extension Bundle {
 // MARK: - Bundle Extension for Testing Siren
 
 extension Bundle {
-    func testLocalizedString(stringKey: String, forceLanguageLocalization: SirenLanguageType?) -> String {
+    func testLocalizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
         return Bundle().localizedString(stringKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

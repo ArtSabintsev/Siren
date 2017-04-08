@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: SirenDelegate
 {
-    func sirenDidShowUpdateDialog(alertType: SirenAlertType) {
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType) {
         print(#function, alertType)
     }
     

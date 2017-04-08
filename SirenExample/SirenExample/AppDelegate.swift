@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.countryCode = ""
 
         // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
-        // This value defaults to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
-        // The number 3 is used as an example.
+        // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+        // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
 //        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
         // Required

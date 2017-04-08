@@ -88,7 +88,7 @@ github "ArtSabintsev/Siren" "swift2.3"
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 1)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 2)
 ```
 
 ## Example Code

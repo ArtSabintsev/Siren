@@ -50,7 +50,7 @@ If a new version is available, an alert can be presented to the user informing t
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
 - The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `SirenAlertType` enum.
+- These options are controlled by the `Siren.AlertType` enum.
 
 <img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480">
 
@@ -105,7 +105,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  let siren = Siren.shared
 
 	  // Optional: Defaults to .Option
-	  siren.alertType = <#SirenAlertType_Enum_Value#>
+	  siren.alertType = <#Siren.AlertType_Enum_Value#>
 
 	  // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
 	  // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
@@ -129,13 +129,13 @@ func applicationDidBecomeActive(application: UIApplication) {
 
 func applicationWillEnterForeground(application: UIApplication) {
    /*
-	    Useful if user returns to your app from the background after being sent to the
-	    App Store, but doesn't update their app before coming back to your app.
+      Useful if user returns to your app from the background after being sent to the
+      App Store, but doesn't update their app before coming back to your app.
 
-       ONLY USE WITH SirenAlertType.Force
+      ONLY USE WITH Siren.AlertType.force
    */
 
-    Siren.shared.checkVersion(checkType: .immediately)
+    Siren.shared.checkVersion(checkType: .force)
 }
 ```
 
@@ -167,11 +167,11 @@ Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` dele
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
 ```swift
-	/* Siren defaults to SirenAlertType.Option for all updates */
-	siren.shared.revisionUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.shared.patchUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.shared.minorUpdateAlertType = <#SirenAlertType_Enum_Value#>
-	siren.shared.majorUpdateAlertType = <#SirenAlertType_Enum_Value#>
+	/* Siren defaults to Siren.AlertType.Option for all updates */
+	siren.shared.revisionUpdateAlertType = <#Siren.AlertType_Enum_Value#>
+	siren.shared.patchUpdateAlertType = <#Siren.AlertType_Enum_Value#>
+	siren.shared.minorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
+	siren.shared.majorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 ```
 
 ## Optional Delegate and Delegate Methods
@@ -179,7 +179,7 @@ Six delegate methods allow you to handle or track the user's behavior. Each meth
 
 ```	swift
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(alertType: SirenAlertType)   // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)   // User presented with update dialog
     func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
@@ -228,7 +228,7 @@ You may want the update dialog to *always* appear in a certain language, ignorin
 You can enable it like so:
 
 ```swift
-Siren.shared.forceLanguageLocalization = SirenLanguageType.<#SirenLanguageType_Enum_Value#>
+Siren.shared.forceLanguageLocalization = Siren.LanguageType.<#Siren.LanguageType_Enum_Value#>
 ```
 ## Device Compatibility
 If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the *false positive* case regarding app updating.

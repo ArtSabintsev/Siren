@@ -15,6 +15,7 @@
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
 		8E43D6231E8223EE00ECFFC8 /* SirenDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */; };
 		8E528A301E989A7A00B643C4 /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */; };
+		8E528A321E989E0A00B643C4 /* SirenTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */; };
 		8E9C238B1E7CDB42000ED3DA /* SirenBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */; };
 		8E9C238D1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */; };
 		8E9C238F1E7CDDE7000ED3DA /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */; };
@@ -65,6 +66,7 @@
 		8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDateExtension.swift; path = ../../Sources/SirenDateExtension.swift; sourceTree = "<group>"; };
 		8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDelegate.swift; path = ../../Sources/SirenDelegate.swift; sourceTree = "<group>"; };
+		8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenTestHelper.swift; path = ../../Sources/SirenTestHelper.swift; sourceTree = "<group>"; };
 		8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenBundleExtension.swift; path = ../../Sources/SirenBundleExtension.swift; sourceTree = "<group>"; };
 		8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenUIAlertControllerExtension.swift; path = ../../Sources/SirenUIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenViewController.swift; path = ../../Sources/SirenViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */,
 				8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */,
 				8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */,
+				8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */,
 				8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */,
 				8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */,
 				55EC36491E6BB98A00726F13 /* Siren.h */,
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E528A321E989E0A00B643C4 /* SirenTestHelper.swift in Sources */,
 				8E9C238F1E7CDDE7000ED3DA /* SirenViewController.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8E43D6231E8223EE00ECFFC8 /* SirenDateExtension.swift in Sources */,

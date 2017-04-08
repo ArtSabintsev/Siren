@@ -13,12 +13,12 @@ import UIKit
 /// The Siren Class. A singleton that is initialized using the shared() method.
 public final class Siren: NSObject {
 
-    ///Current installed version of your app
-    fileprivate var currentInstalledVersion: String? = {
+    /// Current installed version of your app.
+    internal var currentInstalledVersion: String? = {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }()
 
-    /// The error domain for all errors created by Siren
+    /// The error domain for all errors created by Siren.
     public let SirenErrorDomain = "Siren Error Domain"
 
     /// The SirenDelegate variable, which should be set if you'd like to be notified:
@@ -29,7 +29,7 @@ public final class Siren: NSObject {
     /// - sirenUserDidSkipVersion()
     /// - sirenUserDidCancel()
     ///
-    /// When a new version has been detected, and you would like to present a localized message in a custom UI
+    /// When a new version has been detected, and you would like to present a localized message in a custom UI. use this delegate method:
     /// - sirenDidDetectNewVersionWithoutAlert(message: String)
     public weak var delegate: SirenDelegate?
 
@@ -85,10 +85,11 @@ public final class Siren: NSObject {
     public var alertControllerTintColor: UIColor?
 
     /// When this is set, the alert will only show up if the current version has already been released for X days
-    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int?
+    /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
+    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
     /// The current version of your app that is available for download on the App Store
-    public fileprivate(set) var currentAppStoreVersion: String?
+    public internal(set) var currentAppStoreVersion: String?
 
     internal var updaterWindow: UIWindow?
     fileprivate var appID: Int?
@@ -102,7 +103,7 @@ public final class Siren: NSObject {
     public static let sharedInstance = Siren()
 
     override init() {
-        lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenUserDefaults.StoredVersionCheckDate.rawValue) as? Date
+        lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionCheckDate.rawValue) as? Date
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -220,19 +221,18 @@ private extension Siren {
             return
         }
 
-        guard let alertDays = showAlertAfterCurrentVersionHasBeenReleasedForDays else {
-            showAlertIfCurrentAppStoreVersionNotSkipped()
+        guard let currentVersionReleaseDate = info["currentVersionReleaseDate"] as? String,
+            let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
             return
         }
 
-        guard let currentVersionReleaseDate = info["currentVersionReleaseDate"] as? String,
-            let daysSinceRelease = Date.days(since: currentVersionReleaseDate),
-            daysSinceRelease >= alertDays else {
-                return
+        guard daysSinceRelease >= showAlertAfterCurrentVersionHasBeenReleasedForDays else {
+            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed"
+            self.printMessage(message: message)
+            return
         }
 
         showAlertIfCurrentAppStoreVersionNotSkipped()
-        showAlertAfterCurrentVersionHasBeenReleasedForDays = nil
     }
 
     func iTunesURLFromString() throws -> URL {
@@ -264,7 +264,7 @@ private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         alertType = setAlertType()
 
-        guard let previouslySkippedVersion = UserDefaults.standard.object(forKey: SirenUserDefaults.StoredSkippedVersion.rawValue) as? String else {
+        guard let previouslySkippedVersion = UserDefaults.standard.object(forKey: SirenDefaults.StoredSkippedVersion.rawValue) as? String else {
             showAlert()
             return
         }
@@ -335,7 +335,7 @@ private extension Siren {
         let action = UIAlertAction(title: title, style: .default) { [unowned self] _ in
 
             if let currentAppStoreVersion = self.currentAppStoreVersion {
-                UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenUserDefaults.StoredSkippedVersion.rawValue)
+                UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenDefaults.StoredSkippedVersion.rawValue)
                 UserDefaults.standard.synchronize()
             }
 
@@ -404,7 +404,7 @@ private extension Siren {
 
 // MARK: - Helpers (Version)
 
-private extension Siren {
+extension Siren {
     func isAppStoreVersionNewer() -> Bool {
         var newVersionExists = false
 
@@ -418,10 +418,10 @@ private extension Siren {
         return newVersionExists
     }
 
-    func storeVersionCheckDate() {
+    fileprivate func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-            UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenUserDefaults.StoredVersionCheckDate.rawValue)
+            UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)
             UserDefaults.standard.synchronize()
         }
     }
@@ -432,7 +432,8 @@ private extension Siren {
 private extension Siren {
     func isUpdateCompatibleWithDeviceOS(appData: [String: Any]) -> Bool {
         guard let results = appData["results"] as? [[String: Any]],
-            let requiredOSVersion = results.first?["minimumOsVersion"] as? String else {
+            let info = results.first,
+            let requiredOSVersion = info["minimumOsVersion"] as? String else {
                 postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
                 return false
         }
@@ -564,6 +565,7 @@ private extension Siren {
         case appStoreVersionNumberFailure
         case appStoreVersionArrayFailure
         case appStoreAppIDFailure
+        case appStoreReleaseDateFailure
     }
 
     /// Siren-specific Throwable Errors
@@ -573,7 +575,7 @@ private extension Siren {
     }
 
     /// Siren-specific UserDefaults Keys
-    enum SirenUserDefaults: String {
+    enum SirenDefaults: String {
         /// Key that stores the timestamp of the last version check in UserDefaults
         case StoredVersionCheckDate
 
@@ -607,9 +609,11 @@ private extension Siren {
         case .appStoreVersionNumberFailure:
             description = "Error retrieving App Store version number as there was no data returned."
         case .appStoreVersionArrayFailure:
-            description = "Error retrieving App Store verson number as results.first does not contain a 'version' key."
+            description = "Error retrieving App Store verson number as the JSON does not contain a 'version' key."
         case .appStoreAppIDFailure:
-            description = "Error retrieving trackId as results.first does not contain a 'trackId' key."
+            description = "Error retrieving trackId as the JSON does not contain a 'trackId' key."
+        case .appStoreReleaseDateFailure:
+            description = "Error retrieving trackId as the JSON does not contain a 'currentVersionReleaseDate' key."
         }
 
         var userInfo: [String: Any] = [NSLocalizedDescriptionKey: description]
@@ -626,18 +630,3 @@ private extension Siren {
     }
 }
 
-// MARK: - Helpers (Testing Target)
-
-extension Siren {
-    func testSetCurrentInstalledVersion(version: String) {
-        currentInstalledVersion = version
-    }
-
-    func testSetAppStoreVersion(version: String) {
-        currentAppStoreVersion = version
-    }
-
-    func testIsAppStoreVersionNewer() -> Bool {
-        return isAppStoreVersionNewer()
-    }
-}

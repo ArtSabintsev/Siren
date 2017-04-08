@@ -13,6 +13,6 @@ Siren does not and will not support the macOS App Store.
 Common Issue #3:
 > "Support for prompting TestFlight users to update to the newest beta build."
 
-Siren does not support this functionality. There is no publicly accessible TstFlight API akin to that of the public App Store API that Siren can utilize to provide this functionality.
+Siren does not support this functionality. There is no publicly accessible TestFlight API akin to that of the public App Store API that Siren can utilize to provide this functionality.
 
 Please delete this text before submitting a new issue.

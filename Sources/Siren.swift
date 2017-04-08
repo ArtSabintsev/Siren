@@ -38,7 +38,7 @@ public final class Siren: NSObject {
     public lazy var debugEnabled = false
 
     /// Determines the type of alert that should be shown.
-    /// See the SirenAlertType enum for full details.
+    /// See the Siren.AlertType enum for full details.
     public var alertType = AlertType.option {
         didSet {
             majorUpdateAlertType = alertType
@@ -49,23 +49,23 @@ public final class Siren: NSObject {
     }
 
     /// Determines the type of alert that should be shown for major version updates: A.b.c
-    /// Defaults to SirenAlertType.Option.
-    /// See the SirenAlertType enum for full details.
+    /// Defaults to Siren.AlertType.option.
+    /// See the Siren.AlertType enum for full details.
     public lazy var majorUpdateAlertType = AlertType.option
 
     /// Determines the type of alert that should be shown for minor version updates: a.B.c
-    /// Defaults to SirenAlertType.Option.
-    /// See the SirenAlertType enum for full details.
+    /// Defaults to Siren.AlertType.option.
+    /// See the Siren.AlertType enum for full details.
     public lazy var minorUpdateAlertType  = AlertType.option
 
     /// Determines the type of alert that should be shown for minor patch updates: a.b.C
-    /// Defaults to SirenAlertType.Option.
-    /// See the SirenAlertType enum for full details.
+    /// Defaults to Siren.AlertType.option.
+    /// See the Siren.AlertType enum for full details.
     public lazy var patchUpdateAlertType = AlertType.option
 
     /// Determines the type of alert that should be shown for revision updates: a.b.c.D
-    /// Defaults to SirenAlertType.Option.
-    /// See the SirenAlertType enum for full details.
+    /// Defaults to Siren.AlertType.option.
+    /// See the Siren.AlertType enum for full details.
     public lazy var revisionUpdateAlertType = AlertType.option
 
     /// The name of your app.
@@ -78,7 +78,7 @@ public final class Siren: NSObject {
     public var countryCode: String?
 
     /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
-    /// See the SirenLanguageType enum for more details.
+    /// See the Siren.LanguageType enum for more details.
     public var forceLanguageLocalization: Siren.LanguageType?
 
     /// Overrides the tint color for UIAlertController.
@@ -111,8 +111,8 @@ public final class Siren: NSObject {
     /// you should set the `countryCode` property before calling this method. Please refer to the countryCode property for more information.
     ///
     /// - Parameters:
-    ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the SirenVersionCheckType enum for more details.
-    public func checkVersion(checkType: SirenVersionCheckType) {
+    ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
+    public func checkVersion(checkType: VersionCheckType) {
         guard let _ = Bundle.bundleID() else {
             printMessage(message: "Please make sure that you have set a `Bundle Identifier` in your project.")
             return
@@ -495,7 +495,7 @@ public extension Siren {
 
     /// Determines the frequency in which the the version check is performed and the user is prompted to update the app.
     ///
-    enum SirenVersionCheckType: Int {
+    enum VersionCheckType: Int {
         /// Version check performed every time the app is launched.
         case immediately = 0
 

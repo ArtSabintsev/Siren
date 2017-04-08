@@ -290,23 +290,22 @@ private extension Siren {
 
     func processResults(withData data: Data?, response: URLResponse?, error: Error?) {
         if let error = error {
-            self.postError(.appStoreDataRetrievalFailure, underlyingError: error)
+            postError(.appStoreDataRetrievalFailure, underlyingError: error)
         } else {
             guard let data = data else {
-                self.postError(.appStoreDataRetrievalFailure, underlyingError: nil)
+                postError(.appStoreDataRetrievalFailure, underlyingError: nil)
                 return
             }
 
             do {
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
                 guard let appData = jsonData as? [String: Any],
-                    self.isUpdateCompatibleWithDeviceOS(appData: appData) else {
-
-                        self.postError(.appStoreJSONParsingFailure, underlyingError: nil)
+                    isUpdateCompatibleWithDeviceOS(appData: appData) else {
+                        postError(.appStoreJSONParsingFailure, underlyingError: nil)
                         return
                 }
 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [unowned self] in
                     // Print iTunesLookup results from appData
                     self.printMessage(message: "JSON results: \(appData)")
 
@@ -315,7 +314,7 @@ private extension Siren {
                 }
 
             } catch let error as NSError {
-                self.postError(.appStoreDataRetrievalFailure, underlyingError: error)
+                postError(.appStoreDataRetrievalFailure, underlyingError: error)
             }
         }
     }
@@ -324,7 +323,7 @@ private extension Siren {
         storeVersionCheckDate() // Store version comparison date
 
         guard let allResults = results["results"] as? [[String: Any]] else {
-            self.postError(.appStoreVersionNumberFailure, underlyingError: nil)
+            postError(.appStoreVersionNumberFailure, underlyingError: nil)
             return
         }
 
@@ -342,7 +341,7 @@ private extension Siren {
         self.appID = appID
 
         guard let currentAppStoreVersion = allResults.first?["version"] as? String else {
-            self.postError(.appStoreVersionArrayFailure, underlyingError: nil)
+            postError(.appStoreVersionArrayFailure, underlyingError: nil)
             return
         }
 

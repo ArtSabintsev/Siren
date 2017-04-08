@@ -139,7 +139,7 @@ extension SirenTests {
 extension SirenTests {
 
     func testArabicLocalization() {
-        let language: SirenLanguageType = .Arabic
+        let language: Siren.LanguageType = .Arabic
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -156,7 +156,7 @@ extension SirenTests {
     }
 
     func testArmenianLocalization() {
-        let language: SirenLanguageType = .Armenian
+        let language: Siren.LanguageType = .Armenian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -173,7 +173,7 @@ extension SirenTests {
     }
 
     func testBasqueLocalization() {
-        let language: SirenLanguageType = .Basque
+        let language: Siren.LanguageType = .Basque
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -190,7 +190,7 @@ extension SirenTests {
     }
 
     func testChineseSimplifiedLocalization() {
-        let language: SirenLanguageType = .ChineseSimplified
+        let language: Siren.LanguageType = .ChineseSimplified
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -207,7 +207,7 @@ extension SirenTests {
     }
 
     func testChineseTraditionalLocalization() {
-        let language: SirenLanguageType = .ChineseTraditional
+        let language: Siren.LanguageType = .ChineseTraditional
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -224,7 +224,7 @@ extension SirenTests {
     }
 
     func testCroatianLocalization() {
-        let language: SirenLanguageType = .Croatian
+        let language: Siren.LanguageType = .Croatian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -241,7 +241,7 @@ extension SirenTests {
     }
 
     func testDanishLocalization() {
-        let language: SirenLanguageType = .Danish
+        let language: Siren.LanguageType = .Danish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -258,7 +258,7 @@ extension SirenTests {
     }
 
     func testDutchLocalization() {
-        let language: SirenLanguageType = .Dutch
+        let language: Siren.LanguageType = .Dutch
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -275,7 +275,7 @@ extension SirenTests {
     }
 
     func testEstonianLocalization() {
-        let language: SirenLanguageType = .Estonian
+        let language: Siren.LanguageType = .Estonian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -292,7 +292,7 @@ extension SirenTests {
     }
 
     func testFinnishLocalization() {
-        let language: SirenLanguageType = .Finnish
+        let language: Siren.LanguageType = .Finnish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -309,7 +309,7 @@ extension SirenTests {
     }
 
     func testFrenchLocalization() {
-        let language: SirenLanguageType = .French
+        let language: Siren.LanguageType = .French
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -326,7 +326,7 @@ extension SirenTests {
     }
 
     func testGermanLocalization() {
-        let language: SirenLanguageType = .German
+        let language: Siren.LanguageType = .German
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -343,7 +343,7 @@ extension SirenTests {
     }
     
     func testGreekLocalization() {
-        let language: SirenLanguageType = .Greek
+        let language: Siren.LanguageType = .Greek
         siren.forceLanguageLocalization = language
         
         // Update Available
@@ -360,7 +360,7 @@ extension SirenTests {
     }
 
     func testHebrewLocalization() {
-        let language: SirenLanguageType = .Hebrew
+        let language: Siren.LanguageType = .Hebrew
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -377,7 +377,7 @@ extension SirenTests {
     }
 
     func testHungarianLocalization() {
-        let language: SirenLanguageType = .Hungarian
+        let language: Siren.LanguageType = .Hungarian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -394,7 +394,7 @@ extension SirenTests {
     }
 
     func testIndonesianLocalization() {
-        let language: SirenLanguageType = .Indonesian
+        let language: Siren.LanguageType = .Indonesian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -411,7 +411,7 @@ extension SirenTests {
     }
 
     func testItalianLocalization() {
-        let language: SirenLanguageType = .Italian
+        let language: Siren.LanguageType = .Italian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -428,7 +428,7 @@ extension SirenTests {
     }
 
     func testJapaneseLocalization() {
-        let language: SirenLanguageType = .Japanese
+        let language: Siren.LanguageType = .Japanese
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -445,7 +445,7 @@ extension SirenTests {
     }
 
     func testKoreanLocalization() {
-        let language: SirenLanguageType = .Korean
+        let language: Siren.LanguageType = .Korean
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -462,7 +462,7 @@ extension SirenTests {
     }
 
     func testLatvianLocalization() {
-        let language: SirenLanguageType = .Latvian
+        let language: Siren.LanguageType = .Latvian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -479,7 +479,7 @@ extension SirenTests {
     }
 
     func testLithuanianLocalization() {
-        let language: SirenLanguageType = .Lithuanian
+        let language: Siren.LanguageType = .Lithuanian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -496,7 +496,7 @@ extension SirenTests {
     }
 
     func testMalayLocalization() {
-        let language: SirenLanguageType = .Malay
+        let language: Siren.LanguageType = .Malay
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -513,7 +513,7 @@ extension SirenTests {
     }
 
     func testNorwegianLocalization() {
-        let language: SirenLanguageType = .Norwegian
+        let language: Siren.LanguageType = .Norwegian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -530,7 +530,7 @@ extension SirenTests {
     }
 
     func testPolishLocalization() {
-        let language: SirenLanguageType = .Polish
+        let language: Siren.LanguageType = .Polish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -547,7 +547,7 @@ extension SirenTests {
     }
 
     func testPortugueseBrazilLocalization() {
-        let language: SirenLanguageType = .PortugueseBrazil
+        let language: Siren.LanguageType = .PortugueseBrazil
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -564,7 +564,7 @@ extension SirenTests {
     }
 
     func testPortuguesePortugalLocalization() {
-        let language: SirenLanguageType = .PortuguesePortugal
+        let language: Siren.LanguageType = .PortuguesePortugal
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -581,7 +581,7 @@ extension SirenTests {
     }
 
     func testRussianLocalization() {
-        let language: SirenLanguageType = .Russian
+        let language: Siren.LanguageType = .Russian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -598,7 +598,7 @@ extension SirenTests {
     }
 
     func testSerbianCyrillicLocalization() {
-        let language: SirenLanguageType = .SerbianCyrillic
+        let language: Siren.LanguageType = .SerbianCyrillic
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -615,7 +615,7 @@ extension SirenTests {
     }
 
     func testSerbianLatinLocalization() {
-        let language: SirenLanguageType = .SerbianLatin
+        let language: Siren.LanguageType = .SerbianLatin
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -632,7 +632,7 @@ extension SirenTests {
     }
 
     func testSlovenianLocalization() {
-        let language: SirenLanguageType = .Slovenian
+        let language: Siren.LanguageType = .Slovenian
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -649,7 +649,7 @@ extension SirenTests {
     }
 
     func testSpanishLocalization() {
-        let language: SirenLanguageType = .Spanish
+        let language: Siren.LanguageType = .Spanish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -666,7 +666,7 @@ extension SirenTests {
     }
 
     func testSwedishLocalization() {
-        let language: SirenLanguageType = .Swedish
+        let language: Siren.LanguageType = .Swedish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -683,7 +683,7 @@ extension SirenTests {
     }
 
     func testThaiLocalization() {
-        let language: SirenLanguageType = .Thai
+        let language: Siren.LanguageType = .Thai
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -700,7 +700,7 @@ extension SirenTests {
     }
 
     func testTurkishLocalization() {
-        let language: SirenLanguageType = .Turkish
+        let language: Siren.LanguageType = .Turkish
         siren.forceLanguageLocalization = language
 
         // Update Available
@@ -717,7 +717,7 @@ extension SirenTests {
     }
     
     func testVietnameseLocalization() {
-        let language: SirenLanguageType = .Vietnamese
+        let language: Siren.LanguageType = .Vietnamese
         siren.forceLanguageLocalization = language
 
         // Update Available

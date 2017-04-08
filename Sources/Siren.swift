@@ -487,7 +487,8 @@ public extension Siren {
         /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
 
-        /// Doesn't show the alert, but instead returns a localized message for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
+        /// Doesn't show the alert, but instead returns a localized message 
+        /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
         case none
     }
 

@@ -227,7 +227,7 @@ private extension Siren {
         }
 
         guard daysSinceRelease >= showAlertAfterCurrentVersionHasBeenReleasedForDays else {
-            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed"
+            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed."
             self.printMessage(message: message)
             return
         }

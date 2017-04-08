@@ -104,12 +104,12 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  // Siren is a singleton
 	  let siren = Siren.shared
 
-	  // Optional - Defaults to .Option
+	  // Optional: Defaults to .Option
 	  siren.alertType = <#SirenAlertType_Enum_Value#>
 
-	  // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
-	  // This value defaults to 1 to avoid a rare condition on Apple's end
-	  // The number 3 is used as an example.
+	  // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+	  // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+	  // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
 	  siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
 	  // Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version checks.
@@ -246,7 +246,7 @@ The App Store reviewer will **not** see the alert. The version in the App Store 
 ## Words of Caution
 Occassionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new verison of the app has been release, while no new binary is made available for download via the App Store. It is for this reason, I caution developers to not use the `Force` option unless you are controlling the `Force` option with a remote configuration file (e.g., enabling Siren remotely only after you have guaranteed that the app has propogated to the App Store).
 
-Also, on even rarer situations, the iTunes JSON may fluctuate between multiple versions of your app shortly after pushing out a new version. This is extremely rare, and has only been reported once in the five years of that Siren and Harpy have been around.
+Also, in even rarer situations, the iTunes JSON may fluctuate between multiple versions of your app shortly after pushing out a new version. This is extremely rare, and has only been reported once in the five years that Siren and Harpy have been around.
 
 ## Ports
 - **Objective-C (iOS)**

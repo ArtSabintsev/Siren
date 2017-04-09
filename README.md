@@ -1,4 +1,4 @@
-# Siren
+# Siren 🚨
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 

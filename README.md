@@ -104,7 +104,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  // Siren is a singleton
 	  let siren = Siren.shared
 
-	  // Optional: Defaults to .Option
+	  // Optional: Defaults to .option
 	  siren.alertType = <#Siren.AlertType_Enum_Value#>
 
 	  // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
@@ -112,7 +112,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
 	  siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
-	  // Replace .Immediately with .Daily or .Weekly to specify a maximum daily or weekly frequency for version checks.
+	  // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
     siren.checkVersion(checkType: .immediately)
 
     return true
@@ -120,7 +120,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 func applicationDidBecomeActive(application: UIApplication) {
 	/*
-	    Perform daily (.Daily) or weekly (.Weekly) checks for new version of your app.
+	    Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
 	    Useful if user returns to your app from the background after extended period of time.
     	 Place in applicationDidBecomeActive(_:).	*/
 
@@ -132,10 +132,10 @@ func applicationWillEnterForeground(application: UIApplication) {
       Useful if user returns to your app from the background after being sent to the
       App Store, but doesn't update their app before coming back to your app.
 
-      ONLY USE WITH Siren.AlertType.force
+      ONLY USE WITH Siren.AlertType.immediately
    */
 
-    Siren.shared.checkVersion(checkType: .force)
+    Siren.shared.checkVersion(checkType: .immediately)
 }
 ```
 
@@ -149,7 +149,7 @@ Some developers may want to display a less obtrusive custom interface, like a ba
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	...
 	siren.delegate = self
-	siren.alertType = .None
+	siren.alertType = .none
 	...
 }
 
@@ -167,7 +167,7 @@ Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` dele
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
 
 ```swift
-	/* Siren defaults to Siren.AlertType.Option for all updates */
+	/* Siren defaults to Siren.AlertType.option for all updates */
 	siren.shared.revisionUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 	siren.shared.patchUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 	siren.shared.minorUpdateAlertType = <#Siren.AlertType_Enum_Value#>

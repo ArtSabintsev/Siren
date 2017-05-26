@@ -40,9 +40,9 @@ If a new version is available, an alert can be presented to the user informing t
 - [x] Carthage Support
 - [x] Swift Package Manager Support
 - [x] Localized for 30+ languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
-- [x] Pre-Update Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
+- [x] Pre-Update Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
 - [x] Three types of alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
-- [x] Optional delegate methods (see [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods)
+- [x] Optional delegate methods (see [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods))
 - [x] Unit Tests
 - [x] Documentation can be found at http://sabintsev.com/Siren.
 

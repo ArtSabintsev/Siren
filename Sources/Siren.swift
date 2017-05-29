@@ -517,6 +517,7 @@ public extension Siren {
         case ChineseSimplified = "zh-Hans"
         case ChineseTraditional = "zh-Hant"
         case Croatian = "hr"
+        case Czech = "cs"
         case Danish = "da"
         case Dutch = "nl"
         case English = "en"

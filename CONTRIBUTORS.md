@@ -39,6 +39,7 @@
 - [germ4n](https://github.com/glm4) for [Pull Request #122](https://github.com/ArtSabintsev/Siren/pull/122)
 - [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #139](https://github.com/ArtSabintsev/Siren/pull/107)
 - [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #140](https://github.com/ArtSabintsev/Siren/pull/107)
+- [premyslvlcek](https://github.com/premyslvlcek) for [Pull Request #143](https://github.com/ArtSabintsev/Siren/pull/143)
 
 ### Harpy Project Contributors
 This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to v3.2.1, the version of Harpy that Siren was based on.

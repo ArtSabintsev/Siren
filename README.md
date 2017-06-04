@@ -214,6 +214,7 @@ Siren is localized for
 - Lithuanian
 - Malay
 - Norwegian (Bokmål)
+- Persian (Afghanistan, Iran, Persian)
 - Polish
 - Portuguese (Brazil and Portugal)
 - Russian

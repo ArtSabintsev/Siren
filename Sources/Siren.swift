@@ -275,7 +275,7 @@ private extension Siren {
     }
 
     func showAlert() {
-        let updateAvailableMessage = Bundle().localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let updateAvailableMessage = Bundle().localizedString(forKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -380,7 +380,7 @@ private extension Siren {
 private extension Siren {
     func localizedNewVersionMessage() -> String {
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
-        let newVersionMessage = Bundle().localizedString(stringKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = Bundle().localizedString(forKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
 
         guard let currentAppStoreVersion = currentAppStoreVersion else {
             return String(format: newVersionMessage, appName, "Unknown")
@@ -390,15 +390,15 @@ private extension Siren {
     }
 
     func localizedUpdateButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(forKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedNextTimeButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(forKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedSkipButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle().localizedString(forKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 

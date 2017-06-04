@@ -25,7 +25,12 @@ internal extension Bundle {
         return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
+    @available(*, deprecated, renamed: "localizedString(forKey:forceLanguageLocalization:)")
     func localizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+        return localizedString(forKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
+    }
+
+    func localizedString(forKey stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
@@ -48,7 +53,12 @@ internal extension Bundle {
 // MARK: - Bundle Extension for Testing Siren
 
 extension Bundle {
+    @available(*, deprecated, renamed: "testLocalizedString(forKey:forceLanguageLocalization:)")
     func testLocalizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
-        return Bundle().localizedString(stringKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
+        return testLocalizedString(forKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
+    }
+
+    func testLocalizedString(forKey stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+        return Bundle().localizedString(forKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

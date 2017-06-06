@@ -63,27 +63,11 @@ For Swift 3 support:
 pod 'Siren'
 ```
 
-For Swift 2.3 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
-```
-
-For Swift 2.2 support:
-```ruby
-pod 'Siren', '0.9.5'
-```
-
 ### Carthage
 For Swift 3 support:
 
 ``` swift
 github "ArtSabintsev/Siren"
-```
-
-For Swift 2.3 support:
-
-``` swift
-github "ArtSabintsev/Siren" "swift2.3"
 ```
 
 ### Swift Package Manager

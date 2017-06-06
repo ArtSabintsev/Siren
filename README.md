@@ -63,11 +63,20 @@ For Swift 3 support:
 pod 'Siren'
 ```
 
+```ruby
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4'
+```
+
 ### Carthage
 For Swift 3 support:
 
-``` swift
+```swift
 github "ArtSabintsev/Siren"
+```
+
+For Swift 4 support:
+```swift
+github "ArtSabintsev/Siren", "swift4"
 ```
 
 ### Swift Package Manager

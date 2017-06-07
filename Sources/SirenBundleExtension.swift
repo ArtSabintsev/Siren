@@ -25,7 +25,7 @@ internal extension Bundle {
         return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
-    func localizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+    func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
         var path: String
         let table = "SirenLocalizable"
         if let forceLanguageLocalization = forceLanguageLocalization {
@@ -34,7 +34,7 @@ internal extension Bundle {
             path = sirenBundlePath()
         }
 
-        return Bundle(path: path)!.localizedString(forKey: stringKey, value: stringKey, table: table)
+        return Bundle(path: path)!.localizedString(forKey: key, value: key, table: table)
     }
 
     func bestMatchingAppName() -> String {
@@ -48,7 +48,7 @@ internal extension Bundle {
 // MARK: - Bundle Extension for Testing Siren
 
 extension Bundle {
-    func testLocalizedString(stringKey: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
-        return Bundle().localizedString(stringKey: stringKey, forceLanguageLocalization: forceLanguageLocalization)
+    func testLocalizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+        return Bundle().localizedString(forKey: key, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

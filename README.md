@@ -63,6 +63,7 @@ For Swift 3 support:
 pod 'Siren'
 ```
 
+For Swift 4 support:
 ```ruby
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4'
 ```

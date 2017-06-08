@@ -92,9 +92,9 @@ public final class Siren: NSObject {
     public internal(set) var currentAppStoreVersion: String?
 
     internal var updaterWindow: UIWindow?
-    fileprivate var appID: Int?
-    fileprivate var lastVersionCheckPerformedOnDate: Date?
-    fileprivate lazy var alertViewIsVisible: Bool = false
+    private var appID: Int?
+    private var lastVersionCheckPerformedOnDate: Date?
+    private lazy var alertViewIsVisible: Bool = false
 
     /// The App's Singleton
     public static let shared = Siren()
@@ -418,7 +418,7 @@ extension Siren {
         return newVersionExists
     }
 
-    fileprivate func storeVersionCheckDate() {
+    private func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
             UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)

@@ -219,6 +219,7 @@ Siren is localized for
 - Swedish
 - Thai
 - Turkish
+- Urdu
 - Vietnamese
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).

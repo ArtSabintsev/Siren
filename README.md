@@ -69,6 +69,11 @@ For Swift 4 support:
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4'
 ```
 
+For Swift 2.3 support:
+```ruby
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' 
+```
+
 ### Carthage
 For Swift 3 support:
 
@@ -79,6 +84,10 @@ github "ArtSabintsev/Siren"
 For Swift 4 support:
 ```swift
 github "ArtSabintsev/Siren", "swift4"
+```
+
+```ruby
+github "ArtSabintsev/Siren", "swift2.3"
 ```
 
 ### Swift Package Manager

@@ -86,6 +86,8 @@ For Swift 4 support:
 github "ArtSabintsev/Siren", "swift4"
 ```
 
+For Swift 2.3 support:
+
 ```ruby
 github "ArtSabintsev/Siren", "swift2.3"
 ```

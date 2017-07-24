@@ -785,20 +785,20 @@ extension SirenTests {
     }
 
     func testUrduLocalization() {
-        let language: Siren.LanguageType = .Urdu
+        let language: Siren.LanguageType = .urdu
         siren.forceLanguageLocalization = language
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update Available", forceLanguageLocalization: language), "نیا اپڈیٹ")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "نیا اپڈیٹ")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Next time", forceLanguageLocalization: language), "اگلی مرتبہ")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "اگلی مرتبہ")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Skip this version", forceLanguageLocalization: language), "اس ورزن کو چھوڑ دیں")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "اس ورزن کو چھوڑ دیں")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(stringKey: "Update", forceLanguageLocalization: language), "اپڈیٹ کریں")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "اپڈیٹ کریں")
     }
     
     func testVietnameseLocalization() {

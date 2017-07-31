@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.appName = "Test App Name"
 
         // Optional - Defaults to .Option
-//        siren.alertType = .Option // or .Force, .Skip, .None
+//        siren.alertType = .option // or .force, .skip, .none
 
         // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
         siren.majorUpdateAlertType = .option

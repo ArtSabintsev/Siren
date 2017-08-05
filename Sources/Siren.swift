@@ -34,7 +34,7 @@ public final class Siren: NSObject {
     public weak var delegate: SirenDelegate?
 
     /// The debug flag, which is disabled by default.
-    /// When enabled, a stream of println() statements are logged to your console when a version check is performed.
+    /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
     public lazy var debugEnabled = false
 
     /// Determines the type of alert that should be shown.
@@ -114,7 +114,7 @@ public final class Siren: NSObject {
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
     public func checkVersion(checkType: VersionCheckType) {
         guard let _ = Bundle.bundleID() else {
-            printMessage(message: "Please make sure that you have set a `Bundle Identifier` in your project.")
+            printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
 
@@ -170,7 +170,7 @@ private extension Siren {
 
                 DispatchQueue.main.async { [unowned self] in
                     // Print iTunesLookup results from appData
-                    self.printMessage(message: "JSON results: \(appData)")
+                    self.printMessage("JSON results: \(appData)")
 
                     // Process Results (e.g., extract current version that is available on the AppStore)
                     self.processVersionCheck(with: appData)
@@ -228,7 +228,7 @@ private extension Siren {
 
         guard daysSinceRelease >= showAlertAfterCurrentVersionHasBeenReleasedForDays else {
             let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed."
-            self.printMessage(message: message)
+            self.printMessage(message)
             return
         }
 
@@ -467,9 +467,12 @@ private extension Siren {
         }
     }
 
-    func printMessage(message: String) {
+    /// Routes a console-bound message to the `SirenLog` struct, which decorates the log message.
+    ///
+    /// - Parameter message: The message to decorate and log to the console.
+    func printMessage(_ message: String) {
         if debugEnabled {
-            print("[Siren] \(message)")
+            SirenLog(message)
         }
     }
 }
@@ -639,6 +642,6 @@ private extension Siren {
 
         delegate?.sirenDidFailVersionCheck(error: error)
 
-        printMessage(message: error.localizedDescription)
+        printMessage(error.localizedDescription)
     }
 }

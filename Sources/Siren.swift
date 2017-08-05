@@ -133,6 +133,22 @@ public final class Siren: NSObject {
             }
         }
     }
+
+    /// Launches the AppStore in two situations:
+    /// 
+    /// - User clicked the `Update` button in the UIAlertController modal.
+    /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
+    public func launchAppStore() {
+        guard let appID = appID,
+            let iTunesURL = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
+                return
+        }
+
+        DispatchQueue.main.async {
+            UIApplication.shared.openURL(iTunesURL)
+        }
+    }
+
 }
 
 // MARK: - Helpers (Networking)
@@ -453,17 +469,6 @@ private extension Siren {
         if let updaterWindow = updaterWindow {
             updaterWindow.isHidden = true
             self.updaterWindow = nil
-        }
-    }
-
-    func launchAppStore() {
-        guard let appID = appID,
-            let iTunesURL = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
-            return
-        }
-
-        DispatchQueue.main.async {
-            UIApplication.shared.openURL(iTunesURL)
         }
     }
 

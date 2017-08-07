@@ -177,54 +177,33 @@ private extension Siren {
             }
 
             do {
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
-                guard let appData = jsonData as? [String: Any],
-                    isUpdateCompatibleWithDeviceOS(appData: appData) else {
-                        postError(.appStoreJSONParsingFailure, underlyingError: nil)
-                        return
-                }
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode(SirenLookupModel.self, from: data)
 
                 DispatchQueue.main.async { [unowned self] in
-                    // Print iTunesLookup results from appData
-                    self.printMessage("JSON results: \(appData)")
+                    self.printMessage("Decoded JSON results: \(decodedData)")
 
                     // Process Results (e.g., extract current version that is available on the AppStore)
-                    self.processVersionCheck(with: appData)
+                    self.processVersionCheck(with: decodedData)
                 }
 
             } catch let error as NSError {
-                postError(.appStoreDataRetrievalFailure, underlyingError: error)
+                postError(.appStoreJSONParsingFailure, underlyingError: error)
             }
         }
     }
 
-    func processVersionCheck(with payload: [String: Any]) {
+    func processVersionCheck(with model: SirenLookupModel) {
         storeVersionCheckDate() // Store version comparison date
 
-        guard let results = payload[JSONKeys.results] as? [[String: Any]] else {
-            postError(.appStoreVersionNumberFailure, underlyingError: nil)
-            return
-        }
-
-        /// Condition satisfied when app not in App Store
-        guard !results.isEmpty else {
-            postError(.appStoreDataRetrievalFailure, underlyingError: nil)
-            return
-        }
-
-        guard let info = results.first else {
-            postError(.appStoreDataRetrievalFailure, underlyingError: nil)
-            return
-        }
-
-        guard let appID = info[JSONKeys.appID] as? Int else {
+        guard let appID = model.results.first?.appID else {
             postError(.appStoreAppIDFailure, underlyingError: nil)
             return
         }
 
         self.appID = appID
 
-        guard let currentAppStoreVersion = info[JSONKeys.version] as? String else {
+        guard let currentAppStoreVersion = model.results.first?.version else {
             postError(.appStoreVersionArrayFailure, underlyingError: nil)
             return
         }
@@ -237,7 +216,7 @@ private extension Siren {
             return
         }
 
-        guard let currentVersionReleaseDate = info[JSONKeys.currentVersionReleaseDate] as? String,
+        guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
             let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
             return
         }
@@ -446,10 +425,8 @@ extension Siren {
 // MARK: - Helpers (Misc.)
 
 private extension Siren {
-    func isUpdateCompatibleWithDeviceOS(appData: [String: Any]) -> Bool {
-        guard let results = appData[JSONKeys.results] as? [[String: Any]],
-            let info = results.first,
-            let requiredOSVersion = info[JSONKeys.minimumOSVersion] as? String else {
+    func isUpdateCompatibleWithDeviceOS(_ model: SirenLookupModel) -> Bool {
+        guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
                 postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
                 return false
         }
@@ -566,7 +543,6 @@ public extension Siren {
 // MARK: - Enumerated Types (Private)
 
 private extension Siren {
-    /// Siren-specific Error Codes
     enum ErrorCode: Int {
         case malformedURL = 1000
         case recentlyCheckedAlready
@@ -594,14 +570,6 @@ private extension Siren {
 
         /// Key that stores the version that a user decided to skip in UserDefaults.
         case StoredSkippedVersion
-    }
-
-    struct JSONKeys {
-        static let appID = "trackId"
-        static let currentVersionReleaseDate = "currentVersionReleaseDate"
-        static let minimumOSVersion = "minimumOsVersion"
-        static let results = "results"
-        static let version = "version"
     }
 
 }

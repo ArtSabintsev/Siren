@@ -5,6 +5,7 @@ included:
 
 disabled_rules:
   - cyclomatic_complexity
+  - nesting
   - unused_optional_binding
   - variable_name
 

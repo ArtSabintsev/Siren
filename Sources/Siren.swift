@@ -70,7 +70,7 @@ public final class Siren: NSObject {
 
     /// The name of your app.
     /// By default, it's set to the name of the app that's stored in your plist.
-    public lazy var appName: String = Bundle.bestMatchingAppName()
+    public lazy var appName = Bundle.bestMatchingAppName()
 
     /// The region or country of an App Store in which your app is available.
     /// By default, all version checks are performed against the US App Store.
@@ -113,7 +113,7 @@ public final class Siren: NSObject {
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
     public func checkVersion(checkType: VersionCheckType) {
-        guard let _ = Bundle.bundleID() else {
+        guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
@@ -140,12 +140,12 @@ public final class Siren: NSObject {
     /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
     public func launchAppStore() {
         guard let appID = appID,
-            let iTunesURL = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
+            let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
                 return
         }
 
         DispatchQueue.main.async {
-            UIApplication.shared.openURL(iTunesURL)
+            UIApplication.shared.openURL(url)
         }
     }
 

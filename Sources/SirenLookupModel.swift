@@ -20,9 +20,9 @@ struct SirenLookupModel: Decodable {
     struct Results: Decodable {
         private enum CodingKeys: String, CodingKey {
             case appID = "trackId"
-            case currentVersionReleaseDate = "currentVersionReleaseDate"
+            case currentVersionReleaseDate
             case minimumOSVersion = "minimumOsVersion"
-            case version = "version"
+            case version
         }
 
         let appID: Int

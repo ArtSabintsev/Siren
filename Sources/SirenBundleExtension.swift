@@ -15,29 +15,29 @@ extension Bundle {
         return Bundle.main.bundleIdentifier
     }
 
-    func sirenBundlePath() -> String {
+    class func sirenBundlePath() -> String {
         return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle") as String!
     }
 
-    func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
+    class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
+
         return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
-    func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
-        var path: String
+    class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+        var path = sirenBundlePath()
         let table = "SirenLocalizable"
+
         if let forceLanguageLocalization = forceLanguageLocalization {
             path = sirenForcedBundlePath(forceLanguageLocalization: forceLanguageLocalization)
-        } else {
-            path = sirenBundlePath()
         }
 
         return Bundle(path: path)!.localizedString(forKey: key, value: key, table: table)
     }
 
-    func bestMatchingAppName() -> String {
+    class func bestMatchingAppName() -> String {
         let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
 
@@ -49,6 +49,6 @@ extension Bundle {
 
 extension Bundle {
     func testLocalizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
-        return Bundle().localizedString(forKey: key, forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(forKey: key, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

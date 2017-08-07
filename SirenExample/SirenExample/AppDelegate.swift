@@ -54,8 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
 //        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
-        // Required
-        siren.checkVersion(checkType: .immediately)
+        // Optional (Only do this if you don't call checkVersion in didBecomeActive)
+//        siren.checkVersion(checkType: .immediately)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

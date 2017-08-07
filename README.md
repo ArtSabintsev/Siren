@@ -71,7 +71,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 
 For Swift 2.3 support:
 ```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' 
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
 ```
 
 ### Carthage
@@ -119,6 +119,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
 	  // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
+		// DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
     siren.checkVersion(checkType: .immediately)
 
     return true

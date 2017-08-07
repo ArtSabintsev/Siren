@@ -129,7 +129,7 @@ public final class Siren: NSObject {
             if Date.days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
                 performVersionCheck()
             } else {
-                postError(.recentlyCheckedAlready, underlyingError: nil)
+                postError(.recentlyCheckedAlready)
             }
         }
     }
@@ -162,17 +162,17 @@ private extension Siren {
             URLSession.shared.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in
                 self.processResults(withData: data, response: response, error: error)
             }).resume()
-        } catch let error as NSError {
-            postError(.malformedURL, underlyingError: error)
+        } catch _ {
+            postError(.malformedURL)
         }
     }
 
     func processResults(withData data: Data?, response: URLResponse?, error: Error?) {
         if let error = error {
-            postError(.appStoreDataRetrievalFailure, underlyingError: error)
+            postError(.appStoreDataRetrievalFailure(underlyingError: error))
         } else {
             guard let data = data else {
-                postError(.appStoreDataRetrievalFailure, underlyingError: nil)
+                postError(.appStoreDataRetrievalFailure(underlyingError: nil))
                 return
             }
 
@@ -188,7 +188,7 @@ private extension Siren {
                 }
 
             } catch let error as NSError {
-                postError(.appStoreJSONParsingFailure, underlyingError: error)
+                postError(.appStoreJSONParsingFailure(underlyingError: error))
             }
         }
     }
@@ -197,14 +197,14 @@ private extension Siren {
         storeVersionCheckDate() // Store version comparison date
 
         guard let appID = model.results.first?.appID else {
-            postError(.appStoreAppIDFailure, underlyingError: nil)
+            postError(.appStoreAppIDFailure)
             return
         }
 
         self.appID = appID
 
         guard let currentAppStoreVersion = model.results.first?.version else {
-            postError(.appStoreVersionArrayFailure, underlyingError: nil)
+            postError(.appStoreVersionArrayFailure)
             return
         }
 
@@ -212,7 +212,7 @@ private extension Siren {
 
         guard isAppStoreVersionNewer() else {
             delegate?.sirenLatestVersionInstalled()
-            postError(.noUpdateAvailable, underlyingError: nil)
+            postError(.noUpdateAvailable)
             return
         }
 
@@ -246,7 +246,7 @@ private extension Siren {
         components.queryItems = items
 
         guard let url = components.url, !url.absoluteString.isEmpty else {
-            throw SirenError.malformedURL
+            throw SirenError.Known.malformedURL
         }
 
         return url
@@ -427,7 +427,7 @@ extension Siren {
 private extension Siren {
     func isUpdateCompatibleWithDeviceOS(_ model: SirenLookupModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
-                postError(.appStoreOSVersionNumberFailure, underlyingError: nil)
+                postError(.appStoreOSVersionNumberFailure)
                 return false
         }
 
@@ -435,7 +435,7 @@ private extension Siren {
 
         guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
             systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
-            postError(.appStoreOSVersionUnsupported, underlyingError: nil)
+            postError(.appStoreOSVersionUnsupported)
             return false
         }
 
@@ -543,25 +543,6 @@ public extension Siren {
 // MARK: - Enumerated Types (Private)
 
 private extension Siren {
-    enum ErrorCode: Int {
-        case malformedURL = 1000
-        case recentlyCheckedAlready
-        case noUpdateAvailable
-        case appStoreDataRetrievalFailure
-        case appStoreJSONParsingFailure
-        case appStoreOSVersionNumberFailure
-        case appStoreOSVersionUnsupported
-        case appStoreVersionNumberFailure
-        case appStoreVersionArrayFailure
-        case appStoreAppIDFailure
-        case appStoreReleaseDateFailure
-    }
-
-    /// Siren-specific Throwable Errors
-    enum SirenError: Error {
-        case malformedURL
-        case missingBundleIdOrAppId
-    }
 
     /// Siren-specific UserDefaults Keys
     enum SirenDefaults: String {
@@ -577,44 +558,8 @@ private extension Siren {
 // MARK: - Error Handling
 
 private extension Siren {
-    func postError(_ code: ErrorCode, underlyingError: Error?) {
-        let description: String
-
-        switch code {
-        case .malformedURL:
-            description = "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
-        case .recentlyCheckedAlready:
-            description = "Not checking the version, because it already checked recently."
-        case .noUpdateAvailable:
-            description = "No new update available."
-        case .appStoreDataRetrievalFailure:
-            description = "Error retrieving App Store data as an error was returned."
-        case .appStoreJSONParsingFailure:
-            description = "Error parsing App Store JSON data."
-        case .appStoreOSVersionNumberFailure:
-            description = "Error retrieving iOS version number as there was no data returned."
-        case .appStoreOSVersionUnsupported:
-            description = "The version of iOS on the device is lower than that of the one required by the app verison update."
-        case .appStoreVersionNumberFailure:
-            description = "Error retrieving App Store version number as there was no data returned."
-        case .appStoreVersionArrayFailure:
-            description = "Error retrieving App Store verson number as the JSON does not contain a 'version' key."
-        case .appStoreAppIDFailure:
-            description = "Error retrieving trackId as the JSON does not contain a 'trackId' key."
-        case .appStoreReleaseDateFailure:
-            description = "Error retrieving trackId as the JSON does not contain a 'currentVersionReleaseDate' key."
-        }
-
-        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: description]
-
-        if let underlyingError = underlyingError {
-            userInfo[NSUnderlyingErrorKey] = underlyingError
-        }
-
-        let error = NSError(domain: SirenErrorDomain, code: code.rawValue, userInfo: userInfo)
-
+    func postError(_ error: SirenError.Known) {
         delegate?.sirenDidFailVersionCheck(error: error)
-
         printMessage(error.localizedDescription)
     }
 }

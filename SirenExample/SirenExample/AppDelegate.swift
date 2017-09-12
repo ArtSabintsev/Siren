@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func setupSiren() {
+    @objc func setupSiren() {
         let siren = Siren.shared
 
         // Optional
@@ -75,28 +75,28 @@ extension AppDelegate: SirenDelegate
         print(#function, alertType)
     }
     
-    func sirenUserDidCancel() {
+    @objc func sirenUserDidCancel() {
         print(#function)
     }
     
-    func sirenUserDidSkipVersion() {
+    @objc func sirenUserDidSkipVersion() {
         print(#function)
     }
     
-    func sirenUserDidLaunchAppStore() {
+    @objc func sirenUserDidLaunchAppStore() {
         print(#function)
     }
 
-    func sirenDidFailVersionCheck(error: NSError) {
+    @objc func sirenDidFailVersionCheck(error: NSError) {
         print(#function, error)
     }
 
-    func sirenLatestVersionInstalled() {
+    @objc func sirenLatestVersionInstalled() {
         print(#function, "Latest version of app is installed")
     }
 
     // This delegate method is only hit when alertType is initialized to .none
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {
+    @objc func sirenDidDetectNewVersionWithoutAlert(message: String) {
         print(#function, "\(message)")
     }
 }

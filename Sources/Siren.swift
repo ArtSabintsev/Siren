@@ -14,12 +14,12 @@ import UIKit
 public final class Siren: NSObject {
 
     /// Current installed version of your app.
-    internal var currentInstalledVersion: String? = {
+    @objc internal var currentInstalledVersion: String? = {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }()
 
     /// The error domain for all errors created by Siren.
-    public let SirenErrorDomain = "Siren Error Domain"
+    @objc public let SirenErrorDomain = "Siren Error Domain"
 
     /// The SirenDelegate variable, which should be set if you'd like to be notified:
     ///
@@ -35,7 +35,7 @@ public final class Siren: NSObject {
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
-    public lazy var debugEnabled = false
+    @objc public lazy var debugEnabled = false
 
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.
@@ -70,36 +70,36 @@ public final class Siren: NSObject {
 
     /// The name of your app.
     /// By default, it's set to the name of the app that's stored in your plist.
-    public lazy var appName: String = Bundle.main.bestMatchingAppName()
+    @objc public lazy var appName: String = Bundle.main.bestMatchingAppName()
 
     /// The region or country of an App Store in which your app is available.
     /// By default, all version checks are performed against the US App Store.
     /// If your app is not available in the US App Store, set it to the identifier of at least one App Store within which it is available.
-    public var countryCode: String?
+    @objc public var countryCode: String?
 
     /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
     /// See the Siren.LanguageType enum for more details.
     public var forceLanguageLocalization: Siren.LanguageType?
 
     /// Overrides the tint color for UIAlertController.
-    public var alertControllerTintColor: UIColor?
+    @objc public var alertControllerTintColor: UIColor?
 
     /// When this is set, the alert will only show up if the current version has already been released for X days
     /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
-    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
+    @objc public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
     /// The current version of your app that is available for download on the App Store
-    public internal(set) var currentAppStoreVersion: String?
+    @objc public internal(set) var currentAppStoreVersion: String?
 
-    internal var updaterWindow: UIWindow?
+    @objc internal var updaterWindow: UIWindow?
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// The App's Singleton
-    public static let shared = Siren()
+    @objc public static let shared = Siren()
 
-    @available(*, deprecated: 1.2.0, unavailable, renamed: "shared")
+    @objc @available(*, deprecated: 1.2.0, unavailable, renamed: "shared")
     public static let sharedInstance = Siren()
 
     override init() {
@@ -138,7 +138,7 @@ public final class Siren: NSObject {
     /// 
     /// - User clicked the `Update` button in the UIAlertController modal.
     /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
-    public func launchAppStore() {
+    @objc public func launchAppStore() {
         guard let appID = appID,
             let iTunesURL = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
                 return
@@ -291,7 +291,7 @@ private extension Siren {
     }
 
     func showAlert() {
-        let updateAvailableMessage = Bundle().localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let updateAvailableMessage = Bundle.localizedString(stringKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -396,7 +396,7 @@ private extension Siren {
 private extension Siren {
     func localizedNewVersionMessage() -> String {
         let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
-        let newVersionMessage = Bundle().localizedString(stringKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+        let newVersionMessage = Bundle.localizedString(stringKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
 
         guard let currentAppStoreVersion = currentAppStoreVersion else {
             return String(format: newVersionMessage, appName, "Unknown")
@@ -406,22 +406,22 @@ private extension Siren {
     }
 
     func localizedUpdateButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(stringKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedNextTimeButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(stringKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedSkipButtonTitle() -> String {
-        return Bundle().localizedString(stringKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(stringKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 
 // MARK: - Helpers (Version)
 
 extension Siren {
-    func isAppStoreVersionNewer() -> Bool {
+    @objc func isAppStoreVersionNewer() -> Bool {
         var newVersionExists = false
 
         if let currentInstalledVersion = currentInstalledVersion,

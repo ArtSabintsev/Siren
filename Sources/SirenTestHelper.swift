@@ -11,15 +11,15 @@ import Foundation
 // MARK: - Helpers (Testing Target)
 
 extension Siren {
-    func testSetCurrentInstalledVersion(version: String) {
+    @objc func testSetCurrentInstalledVersion(version: String) {
         currentInstalledVersion = version
     }
 
-    func testSetAppStoreVersion(version: String) {
+    @objc func testSetAppStoreVersion(version: String) {
         currentAppStoreVersion = version
     }
 
-    func testIsAppStoreVersionNewer() -> Bool {
+    @objc func testIsAppStoreVersionNewer() -> Bool {
         return isAppStoreVersionNewer()
     }
 }

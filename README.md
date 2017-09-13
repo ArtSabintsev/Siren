@@ -66,14 +66,19 @@ If a new version is available, an alert can be presented to the user informing t
 | 2.3  | swift2.3 | No  
 
 ### CocoaPods
-For Swift 3 support:
+For Swift 4 support:
 ```ruby
 pod 'Siren'
 ```
 
-For Swift 4 support:
+For Swift 3.2 support:
 ```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4'
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2'
+```
+
+For Swift 3.1 support:
+```ruby
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1'
 ```
 
 For Swift 2.3 support:
@@ -82,15 +87,21 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 ```
 
 ### Carthage
-For Swift 3 support:
-
+For Swift 4 support:
 ```swift
 github "ArtSabintsev/Siren"
 ```
 
-For Swift 4 support:
+For Swift 3.2 support:
+
 ```swift
-github "ArtSabintsev/Siren", "swift4"
+github "ArtSabintsev/Siren", "swift3.2"
+```
+
+For Swift 3.1 support:
+
+```swift
+github "ArtSabintsev/Siren", "swift3.1"
 ```
 
 For Swift 2.3 support:
@@ -101,7 +112,7 @@ github "ArtSabintsev/Siren", "swift2.3"
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 2)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 3)
 ```
 
 ## Example Code
@@ -193,11 +204,11 @@ Six delegate methods allow you to handle or track the user's behavior. Each meth
 
 ```	swift
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)   // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)  // User presented with update dialog
     func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
+    func sirenDidFailVersionCheck(error: Error)                // Siren failed to perform version check (may return system-level error)
     func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```

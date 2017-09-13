@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Helpers (Testing Target)
+// MARK: - Test Target Helpers
 
 extension Siren {
     func testSetCurrentInstalledVersion(version: String) {

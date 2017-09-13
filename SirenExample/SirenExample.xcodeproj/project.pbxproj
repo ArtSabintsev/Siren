@@ -20,11 +20,13 @@
 		8E9C238B1E7CDB42000ED3DA /* SirenBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */; };
 		8E9C238D1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */; };
 		8E9C238F1E7CDDE7000ED3DA /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */; };
-		8EBDF8251E6A0C41006C87B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBDF8211E6A0C41006C87B4 /* LaunchScreen.xib */; };
-		8EBDF8261E6A0C41006C87B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EBDF8231E6A0C41006C87B4 /* Main.storyboard */; };
-		8EE6C7431E6A0AA500DBE454 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C7411E6A0AA500DBE454 /* AppDelegate.swift */; };
-		8EE6C7441E6A0AA500DBE454 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C7421E6A0AA500DBE454 /* ViewController.swift */; };
-		8EE6C7481E6A0AB800DBE454 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE6C7461E6A0AB800DBE454 /* Images.xcassets */; };
+		8EACA9701F37F327003134CA /* SirenLookupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96F1F37F327003134CA /* SirenLookupModel.swift */; };
+		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
+		8EACA9721F380294003134CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9691F37F2D3003134CA /* Main.storyboard */; };
+		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
+		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
+		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
+		8EACA9771F38113E003134CA /* SirenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9761F38113D003134CA /* SirenError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,13 +74,15 @@
 		8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenBundleExtension.swift; path = ../../Sources/SirenBundleExtension.swift; sourceTree = "<group>"; };
 		8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenUIAlertControllerExtension.swift; path = ../../Sources/SirenUIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenViewController.swift; path = ../../Sources/SirenViewController.swift; sourceTree = "<group>"; };
-		8EBDF8221E6A0C41006C87B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SirenExample/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
-		8EBDF8241E6A0C41006C87B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SirenExample/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8EACA9681F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8EACA96A1F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8EACA96B1F37F2D3003134CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8EACA96C1F37F2D3003134CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EACA96D1F37F2D3003134CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8EACA96F1F37F327003134CA /* SirenLookupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenLookupModel.swift; path = ../../Sources/SirenLookupModel.swift; sourceTree = "<group>"; };
+		8EACA9761F38113D003134CA /* SirenError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenError.swift; path = ../../Sources/SirenError.swift; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* SirenExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SirenExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EE6C7411E6A0AA500DBE454 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SirenExample/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		8EE6C7421E6A0AA500DBE454 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = SirenExample/ViewController.swift; sourceTree = SOURCE_ROOT; };
-		8EE6C7461E6A0AB800DBE454 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SirenExample/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		8EE6C7471E6A0AB800DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SirenExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +121,9 @@
 				8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */,
 				8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */,
 				8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */,
+				8EACA9761F38113D003134CA /* SirenError.swift */,
 				8E5D15B01F3632D7001C0960 /* SirenLog.swift */,
+				8EACA96F1F37F327003134CA /* SirenLookupModel.swift */,
 				8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */,
 				8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */,
 				8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */,
@@ -127,34 +133,33 @@
 			path = Siren;
 			sourceTree = "<group>";
 		};
-		8E1005DE1A5DD02300509B14 /* SirenExample */ = {
+		8EACA9651F37F2D3003134CA /* SirenExample */ = {
 			isa = PBXGroup;
 			children = (
-				8EE6C7411E6A0AA500DBE454 /* AppDelegate.swift */,
-				8E528A331E98AED300B643C4 /* Supporting Files */,
+				8EACA9661F37F2D3003134CA /* AppDelegate.swift */,
+				8EACA96E1F37F2DD003134CA /* Supporting Files */,
 			);
-			name = SirenExample;
-			path = "Sample App";
+			path = SirenExample;
 			sourceTree = "<group>";
 		};
-		8E528A331E98AED300B643C4 /* Supporting Files */ = {
+		8EACA96E1F37F2DD003134CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8EE6C7421E6A0AA500DBE454 /* ViewController.swift */,
-				8EBDF8211E6A0C41006C87B4 /* LaunchScreen.xib */,
-				8EBDF8231E6A0C41006C87B4 /* Main.storyboard */,
-				8EE6C7461E6A0AB800DBE454 /* Images.xcassets */,
-				8EE6C7471E6A0AB800DBE454 /* Info.plist */,
+				8EACA9671F37F2D3003134CA /* LaunchScreen.xib */,
+				8EACA9691F37F2D3003134CA /* Main.storyboard */,
+				8EACA96B1F37F2D3003134CA /* Images.xcassets */,
+				8EACA96C1F37F2D3003134CA /* Info.plist */,
+				8EACA96D1F37F2D3003134CA /* ViewController.swift */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8EC391781A58B465001C121E = {
 			isa = PBXGroup;
 			children = (
-				8E1005DE1A5DD02300509B14 /* SirenExample */,
-				8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */,
 				55EC36481E6BB98A00726F13 /* Siren */,
+				8EACA9651F37F2D3003134CA /* SirenExample */,
+				8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */,
 				8EC391821A58B465001C121E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -256,24 +261,24 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Sabintsev iOS Projects";
 				TargetAttributes = {
 					55EC36461E6BB98A00726F13 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					8E3A6C031D07CB6F00A8B7CF = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						TestTargetID = 8EC391801A58B465001C121E;
 					};
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = HT94948NDD;
 						DevelopmentTeamName = "Arthur Sabintsev";
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -317,9 +322,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EBDF8261E6A0C41006C87B4 /* Main.storyboard in Resources */,
-				8EBDF8251E6A0C41006C87B4 /* LaunchScreen.xib in Resources */,
-				8EE6C7481E6A0AB800DBE454 /* Images.xcassets in Resources */,
+				8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */,
+				8EACA9721F380294003134CA /* Main.storyboard in Resources */,
+				8EACA9731F380294003134CA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,11 +354,13 @@
 			files = (
 				8E528A321E989E0A00B643C4 /* SirenTestHelper.swift in Sources */,
 				8E9C238F1E7CDDE7000ED3DA /* SirenViewController.swift in Sources */,
+				8EACA9771F38113E003134CA /* SirenError.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8E43D6231E8223EE00ECFFC8 /* SirenDateExtension.swift in Sources */,
 				8E5D15B11F3632D7001C0960 /* SirenLog.swift in Sources */,
 				8E9C238B1E7CDB42000ED3DA /* SirenBundleExtension.swift in Sources */,
 				8E528A301E989A7A00B643C4 /* SirenDelegate.swift in Sources */,
+				8EACA9701F37F327003134CA /* SirenLookupModel.swift in Sources */,
 				8E9C238D1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,8 +377,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE6C7431E6A0AA500DBE454 /* AppDelegate.swift in Sources */,
-				8EE6C7441E6A0AA500DBE454 /* ViewController.swift in Sources */,
+				8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */,
+				8EACA9751F38029B003134CA /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,18 +398,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8EBDF8211E6A0C41006C87B4 /* LaunchScreen.xib */ = {
+		8EACA9671F37F2D3003134CA /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8EBDF8221E6A0C41006C87B4 /* Base */,
+				8EACA9681F37F2D3003134CA /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		8EBDF8231E6A0C41006C87B4 /* Main.storyboard */ = {
+		8EACA9691F37F2D3003134CA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8EBDF8241E6A0C41006C87B4 /* Base */,
+				8EACA96A1F37F2D3003134CA /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -432,7 +439,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -461,7 +469,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -471,6 +480,7 @@
 		8E3A6C0B1D07CB6F00A8B7CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -480,7 +490,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.SirenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SirenExample.app/SirenExample";
 			};
 			name = Debug;
@@ -488,6 +499,7 @@
 		8E3A6C0C1D07CB6F00A8B7CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				COPY_PHASE_STRIP = NO;
@@ -499,7 +511,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.SirenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SirenExample.app/SirenExample";
 			};
 			name = Release;
@@ -512,14 +525,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -558,14 +577,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -593,12 +618,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = SirenExample;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -607,13 +633,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

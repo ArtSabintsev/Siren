@@ -25,7 +25,7 @@ public protocol SirenDelegate: class {
     func sirenUserDidCancel()
 
     /// Siren failed to perform version check (may return system-level error).
-    func sirenDidFailVersionCheck(error: NSError)
+    func sirenDidFailVersionCheck(error: Error)
 
     /// Siren performed version check and did not display alert.
     func sirenDidDetectNewVersionWithoutAlert(message: String)
@@ -54,7 +54,7 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidFailVersionCheck(error: NSError) {
+    func sirenDidFailVersionCheck(error: Error) {
         printMessage()
     }
 

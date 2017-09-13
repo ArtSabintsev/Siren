@@ -58,6 +58,13 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Installation Instructions
 
+| Swift Version |  Branch Name  | Is this Version on Master?
+| ------------- | ------------- | ------------- |
+| 4.0  | swift4   | No
+| 3.2  | swift3.2 | No
+| **3.1**  | **swift3.1** | **Yes**
+| 2.3  | swift2.3 | No
+
 ### CocoaPods
 For Swift 3 support:
 ```ruby

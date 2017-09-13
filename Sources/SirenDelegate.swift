@@ -54,7 +54,7 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidFailVersionCheck(error: NSError) {
+    func sirenDidFailVersionCheck(error: Error) {
         printMessage()
     }
 

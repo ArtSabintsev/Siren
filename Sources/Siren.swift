@@ -96,6 +96,9 @@ public final class Siren: NSObject {
     fileprivate var lastVersionCheckPerformedOnDate: Date?
     fileprivate lazy var alertViewIsVisible: Bool = false
 
+    /// Type of the available update
+    private var updateType: UpdateType = .unknown
+
     /// The App's Singleton
     public static let shared = Siren()
 
@@ -113,6 +116,8 @@ public final class Siren: NSObject {
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
     public func checkVersion(checkType: VersionCheckType) {
+        updateType = .unknown
+
         guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
@@ -290,7 +295,7 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .none:
-            delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage)
+            delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage, updateType: updateType)
         }
 
         if alertType != .none && !alertViewIsVisible {
@@ -358,12 +363,16 @@ private extension Siren {
 
         if newVersionFirst > oldVersionFirst { // A.b.c.d
             alertType = majorUpdateAlertType
+            updateType = .major
         } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
             alertType = minorUpdateAlertType
+            updateType = .minor
         } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
             alertType = patchUpdateAlertType
+            updateType = .patch
         } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
             alertType = revisionUpdateAlertType
+            updateType = .revision
         }
 
         return alertType

@@ -10,7 +10,7 @@ import Foundation
 
 /// MARK - Siren UpdateType
 
-/// UpdateType defines what kind of update is available
+/// `UpdateType` defines what kind of update is available
 /// It is used as parameter if user wants to use
 /// custom alert to inform the user about an update.
 ///
@@ -19,7 +19,7 @@ import Foundation
 /// - patch: Patch release available: a.b.C.d
 /// - revision: Revision release available: a.b.c.D
 /// - unknown: No information available about the update
-public enum UpdateType {
+public enum UpdateType: String {
     case major
     case minor
     case patch
@@ -30,7 +30,7 @@ public enum UpdateType {
 // MARK: - SirenDelegate Protocol
 
 /// Delegate that handles all codepaths for Siren upon version check completion.
-public protocol SirenDelegate: class {
+public protocol SirenDelegate: NSObjectProtocol {
     /// User presented with update dialog.
     func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 

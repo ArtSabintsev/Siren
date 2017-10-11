@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Protocols  Reference</title>
+    <title>Enums  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Protocols  Reference"></a>
+    <a title="Enums  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html"> Docs</a> (100% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Protocols  Reference
+        Enums  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -64,26 +64,19 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Protocols</h1>
-            <p>The following protocols are available globally.</p>
+            <h1>Enums</h1>
+            <p>The following enums are available globally.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/SirenDelegate%20Protocol"></a>
-                <a name="//apple_ref/swift/Section/SirenDelegate Protocol" class="dashAnchor"></a>
-                <a href="#/SirenDelegate%20Protocol">
-                  <h3 class="section-name">SirenDelegate Protocol</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren0A8DelegateP"></a>
-                    <a name="//apple_ref/swift/Protocol/SirenDelegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren0A8DelegateP">SirenDelegate</a>
+                    <a name="/s:5Siren10UpdateTypeO"></a>
+                    <a name="//apple_ref/swift/Enum/UpdateType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO">UpdateType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -91,15 +84,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Delegate that handles all codepaths for Siren upon version check completion.</p>
+                        <p>MARK - Siren UpdateType
+<code>UpdateType</code> defines what kind of update is available
+It is used as parameter if user wants to use
+custom alert to inform the user about an update.</p>
 
-                        <a href="Protocols/SirenDelegate.html" class="slightly-smaller">See more</a>
+<ul>
+<li>major: Major release available: A.b.c.d</li>
+<li>minor: Minor release available: a.B.c.d</li>
+<li>patch: Patch release available: a.b.C.d</li>
+<li>revision: Revision release available: a.b.c.D</li>
+<li>unknown: No information available about the update</li>
+</ul>
+
+                        <a href="Enums/UpdateType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SirenDelegate</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>

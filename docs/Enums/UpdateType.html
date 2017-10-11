@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AlertType Enum Reference</title>
-    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <title>UpdateType Enum Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
-    <script src="../../js/jquery.min.js" defer></script>
-    <script src="../../js/jazzy.js" defer></script>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/AlertType" class="dashAnchor"></a>
-    <a title="AlertType Enum Reference"></a>
+    <a name="//apple_ref/swift/Enum/UpdateType" class="dashAnchor"></a>
+    <a title="UpdateType Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html"> Docs</a> (100% documented)</p>
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../../index.html"> Reference</a>
-        <img id="carat" src="../../img/carat.png" />
-        AlertType Enum Reference
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        UpdateType Enum Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../../Classes.html">Classes</a>
+            <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../../Classes/Siren.html">Siren</a>
+                <a href="../Classes/Siren.html">Siren</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/Siren/AlertType.html">– AlertType</a>
+                <a href="../Classes/Siren/AlertType.html">– AlertType</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
+                <a href="../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/Siren/LanguageType.html">– LanguageType</a>
+                <a href="../Classes/Siren/LanguageType.html">– LanguageType</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../../Enums.html">Enums</a>
+            <a href="../Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../../Enums/UpdateType.html">UpdateType</a>
+                <a href="../Enums/UpdateType.html">UpdateType</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../../Protocols.html">Protocols</a>
+            <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../../Protocols/SirenDelegate.html">SirenDelegate</a>
+                <a href="../Protocols/SirenDelegate.html">SirenDelegate</a>
               </li>
             </ul>
           </li>
@@ -65,14 +65,25 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>AlertType</h1>
+            <h1>UpdateType</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">AlertType</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                 </div>
               </div>
-            <p>Determines the type of alert to present after a successful version check has been performed.</p>
+            <p>MARK - Siren UpdateType
+<code>UpdateType</code> defines what kind of update is available
+It is used as parameter if user wants to use
+custom alert to inform the user about an update.</p>
+
+<ul>
+<li>major: Major release available: A.b.c.d</li>
+<li>minor: Minor release available: a.B.c.d</li>
+<li>patch: Patch release available: a.b.C.d</li>
+<li>revision: Revision release available: a.b.c.D</li>
+<li>unknown: No information available about the update</li>
+</ul>
 
           </section>
           <section class="section task-group-section">
@@ -81,9 +92,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9AlertTypeO5forceA2DmF"></a>
-                    <a name="//apple_ref/swift/Element/force" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9AlertTypeO5forceA2DmF">force</a>
+                    <a name="/s:5Siren10UpdateTypeO5majorA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/major" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO5majorA2CmF">major</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -91,14 +102,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Forces user to update your app (1 button alert).</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">force</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -112,9 +122,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9AlertTypeO6optionA2DmF"></a>
-                    <a name="//apple_ref/swift/Element/option" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9AlertTypeO6optionA2DmF">option</a>
+                    <a name="/s:5Siren10UpdateTypeO5minorA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/minor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO5minorA2CmF">minor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -122,14 +132,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>(DEFAULT) Presents user with option to update app now or at next launch (2 button alert).</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">option</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -143,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9AlertTypeO4skipA2DmF"></a>
-                    <a name="//apple_ref/swift/Element/skip" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9AlertTypeO4skipA2DmF">skip</a>
+                    <a name="/s:5Siren10UpdateTypeO5patchA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/patch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO5patchA2CmF">patch</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -153,14 +162,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">skip</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -174,9 +182,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9AlertTypeO4noneA2DmF"></a>
-                    <a name="//apple_ref/swift/Element/none" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9AlertTypeO4noneA2DmF">none</a>
+                    <a name="/s:5Siren10UpdateTypeO8revisionA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/revision" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO8revisionA2CmF">revision</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -184,15 +192,43 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Doesn&rsquo;t show the alert, but instead returns a localized message 
-for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="k">none</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10UpdateTypeO7unknownA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/unknown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10UpdateTypeO7unknownA2CmF">unknown</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>

@@ -96,7 +96,21 @@ extension AppDelegate: SirenDelegate
     }
 
     // This delegate method is only hit when alertType is initialized to .none
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {
-        print(#function, "\(message)")
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
+        var release: String = ""
+        switch updateType {
+        case .major:
+            release = "major"
+        case .minor:
+            release = "minor"
+        case .patch:
+            release = "patch"
+        case .revision:
+            release = "revision"
+        case .unknown:
+            release = "not set"
+        }
+
+        print(#function, "\(message) Release type: \(release).")
     }
 }

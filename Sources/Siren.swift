@@ -199,8 +199,10 @@ private extension Siren {
     }
 
     func processVersionCheck(with model: SirenLookupModel) {
-        storeVersionCheckDate() // Store version comparison date
-
+        guard isUpdateCompatibleWithDeviceOS(for: model) else {
+            return
+        }
+        
         guard let appID = model.results.first?.appID else {
             postError(.appStoreAppIDFailure)
             return
@@ -275,6 +277,8 @@ private extension Siren {
     }
 
     func showAlert() {
+        storeVersionCheckDate()
+
         let updateAvailableMessage = Bundle.localizedString(forKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
         let newVersionMessage = localizedNewVersionMessage()
 
@@ -422,7 +426,7 @@ extension Siren {
         return newVersionExists
     }
 
-    fileprivate func storeVersionCheckDate() {
+    private func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
             UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)
@@ -434,7 +438,7 @@ extension Siren {
 // MARK: - Helpers (Misc.)
 
 private extension Siren {
-    func isUpdateCompatibleWithDeviceOS(_ model: SirenLookupModel) -> Bool {
+    func isUpdateCompatibleWithDeviceOS(for model: SirenLookupModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
                 postError(.appStoreOSVersionNumberFailure)
                 return false

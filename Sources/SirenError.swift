@@ -10,9 +10,9 @@ import Foundation
 
 // MARK: - Siren Error Handling
 
-struct SirenError: LocalizedError {
+public struct SirenError: LocalizedError {
 
-    enum Known: Error {
+   public enum Known: Error {
         case appStoreAppIDFailure
         case appStoreDataRetrievalFailure(underlyingError: Error?)
         case appStoreJSONParsingFailure(underlyingError: Error)

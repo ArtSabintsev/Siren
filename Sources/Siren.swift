@@ -97,7 +97,7 @@ public final class Siren: NSObject {
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update
-    private var updateType: UpdateType = .unknown
+    fileprivate var updateType: UpdateType = .unknown
 
     /// The App's Singleton
     public static let shared = Siren()
@@ -426,7 +426,7 @@ extension Siren {
         return newVersionExists
     }
 
-    private func storeVersionCheckDate() {
+    fileprivate func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
             UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)

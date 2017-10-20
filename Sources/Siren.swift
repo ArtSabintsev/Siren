@@ -549,6 +549,7 @@ public extension Siren {
         case thai = "th"
         case turkish = "tr"
         case urdu = "ur"
+        case ukrainian = "uk"
         case vietnamese = "vi"
     }
 }

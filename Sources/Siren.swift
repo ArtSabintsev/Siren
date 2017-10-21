@@ -358,8 +358,8 @@ private extension Siren {
                 return .option
         }
 
-        let oldVersion = (currentInstalledVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
-        let newVersion = (currentAppStoreVersion).characters.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let oldVersion = (currentInstalledVersion).split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let newVersion = (currentAppStoreVersion).split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
 
         guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
             return alertType // Default value is .Option

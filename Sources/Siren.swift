@@ -112,6 +112,10 @@ public final class Siren: NSObject {
 
     override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionCheckDate.rawValue) as? Date
+
+        // NOTE: Register default values. If it already has, the default value will be ignored.
+        UserDefaults.standard.register(defaults: [SirenDefaults.StoredReleaseNotesShownFlag.rawValue: false])
+        UserDefaults.standard.synchronize()
     }
 
     /// Checks the currently installed version of your app against the App Store.

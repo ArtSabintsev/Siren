@@ -408,6 +408,17 @@ private extension Siren {
     func localizedSkipButtonTitle() -> String {
         return Bundle.localizedString(forKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
+
+    func localizedReleaseNotesTitle() -> String {
+        let releaseNotesTitleToLocalize = "What's New in %@ \n"
+        let releaseNotesTitle = Bundle.localizedString(forKey: releaseNotesTitleToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+
+        guard let currentInstalledVersion = currentInstalledVersion else {
+            return String(format: releaseNotesTitle, "Unknown")
+        }
+
+        return String(format: releaseNotesTitle, currentInstalledVersion)
+    }
 }
 
 // MARK: - Helpers (Version)

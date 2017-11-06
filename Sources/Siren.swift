@@ -149,7 +149,7 @@ public final class Siren: NSObject {
     }
 
     /// Launches the AppStore in two situations:
-    /// 
+    ///
     /// - User clicked the `Update` button in the UIAlertController modal.
     /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
     public func launchAppStore() {
@@ -211,7 +211,7 @@ private extension Siren {
         guard isUpdateCompatibleWithDeviceOS(for: model) else {
             return
         }
-        
+
         guard let appID = model.results.first?.appID else {
             postError(.appStoreAppIDFailure)
             return
@@ -553,7 +553,7 @@ public extension Siren {
         /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
 
-        /// Doesn't show the alert, but instead returns a localized message 
+        /// Doesn't show the alert, but instead returns a localized message
         /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
         case none
     }

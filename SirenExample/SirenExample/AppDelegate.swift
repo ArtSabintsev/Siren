@@ -56,6 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Optional (Only do this if you don't call checkVersion in didBecomeActive)
 //        siren.checkVersion(checkType: .immediately)
+        
+        // Optional - Set true if you would like to show an alert for release notes.
+        // An alert will be shown once when a user launched the latest version of the app and Siren checked it for the first time.
+        // If you set checkType to .daily or .weekly, an alert might NOT be shown immediately.
+//        siren.showAlertForReleaseNotes = true
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

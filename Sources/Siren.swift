@@ -91,6 +91,11 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
 
+    /// The release notes alert flag, which is false by default.
+    /// When it's true, an alert for release notes is shown once.
+    /// * when a user launched the latest version of the app and Siren checked it for the first time
+    public lazy var showAlertForReleaseNotes = false
+
     internal var updaterWindow: UIWindow?
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?

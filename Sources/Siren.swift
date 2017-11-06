@@ -228,8 +228,14 @@ private extension Siren {
 
         guard isAppStoreVersionNewer() else {
             delegate?.sirenLatestVersionInstalled()
+            showAlert(releaseNotes: model.results.first?.releaseNotes, currentInstalledVersion: currentInstalledVersion)
             postError(.noUpdateAvailable)
             return
+        }
+
+        if let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? Bool, storedReleaseNotesShownFlag {
+            UserDefaults.standard.set(false, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.synchronize()
         }
 
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
@@ -389,6 +395,47 @@ private extension Siren {
         }
 
         return alertType
+    }
+
+    func showAlert(releaseNotes: String?, currentInstalledVersion: String?) {
+        guard showAlertForReleaseNotes,
+            let isReleaseNotesAlreadyShown = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? Bool,
+            !isReleaseNotesAlreadyShown,
+            let releaseNotes = releaseNotes, let currentInstalledVersion = currentInstalledVersion,
+            !releaseNotes.isEmpty, !currentInstalledVersion.isEmpty else { return }
+
+        let releaseNotesTitle = localizedReleaseNotesTitle()
+        let alertController = UIAlertController(title: releaseNotesTitle, message: "", preferredStyle: .alert)
+
+        if let alertControllerTintColor = alertControllerTintColor {
+            alertController.view.tintColor = alertControllerTintColor
+        }
+
+        // NOTE: To align the message text left (https://stackoverflow.com/a/26949674)
+        let releaseNotesMessage = NSMutableAttributedString(
+            string: releaseNotes,
+            attributes: [
+                NSAttributedStringKey.paragraphStyle: NSParagraphStyle(),
+                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.foregroundColor : UIColor.black
+            ]
+        )
+
+        alertController.setValue(releaseNotesMessage, forKey: "attributedMessage")
+
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
+            self.alertViewIsVisible = false
+            return
+        }
+
+        alertController.addAction(okAction)
+
+        if !alertViewIsVisible {
+            alertController.show()
+            alertViewIsVisible = true
+            UserDefaults.standard.set(true, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.synchronize()
+        }
     }
 }
 

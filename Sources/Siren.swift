@@ -576,8 +576,10 @@ private extension Siren {
 
         /// Key that stores the version that a user decided to skip in UserDefaults.
         case StoredSkippedVersion
-    }
 
+        /// Key that stores a flag that an alert for release notes has already been shown with the latest version in UserDefaults.
+        case StoredReleaseNotesShownFlag
+    }
 }
 
 // MARK: - Error Handling

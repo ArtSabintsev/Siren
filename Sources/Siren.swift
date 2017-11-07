@@ -91,6 +91,11 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
 
+    /// The release notes alert flag, which is false by default.
+    /// When it's true, an alert for release notes is shown once.
+    /// * when a user launched the latest version of the app and Siren checked it for the first time
+    public lazy var showAlertForReleaseNotes = false
+
     internal var updaterWindow: UIWindow?
     fileprivate var appID: Int?
     fileprivate var lastVersionCheckPerformedOnDate: Date?
@@ -107,6 +112,13 @@ public final class Siren: NSObject {
 
     override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionCheckDate.rawValue) as? Date
+
+        // NOTE: Register default values. If it already has, the default value will be ignored.
+        if let currentInstalledVersion = self.currentInstalledVersion {
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
+            UserDefaults.standard.register(defaults: [SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue: versionWithReleaseNotesShownFlag])
+            UserDefaults.standard.synchronize()
+        }
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -140,7 +152,7 @@ public final class Siren: NSObject {
     }
 
     /// Launches the AppStore in two situations:
-    /// 
+    ///
     /// - User clicked the `Update` button in the UIAlertController modal.
     /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
     public func launchAppStore() {
@@ -202,7 +214,7 @@ private extension Siren {
         guard isUpdateCompatibleWithDeviceOS(for: model) else {
             return
         }
-        
+
         guard let appID = model.results.first?.appID else {
             postError(.appStoreAppIDFailure)
             return
@@ -219,6 +231,7 @@ private extension Siren {
 
         guard isAppStoreVersionNewer() else {
             delegate?.sirenLatestVersionInstalled()
+            showAlert(releaseNotes: model.results.first?.releaseNotes, currentInstalledVersion: currentInstalledVersion)
             postError(.noUpdateAvailable)
             return
         }
@@ -381,6 +394,58 @@ private extension Siren {
 
         return alertType
     }
+
+    func showAlert(releaseNotes: String?, currentInstalledVersion: String?) {
+
+        if let currentInstalledVersion = getCurrentVersionIfNewerThanStored() {
+            // Update VersionWithReleaseNotesShownFlag
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
+            UserDefaults.standard.set(versionWithReleaseNotesShownFlag,
+                                      forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+        
+        guard showAlertForReleaseNotes,
+            let storedVersionWithReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let isReleaseNotesAlreadyShown = storedVersionWithReleaseNotesShownFlag.first?.value,
+            !isReleaseNotesAlreadyShown,
+            let releaseNotes = releaseNotes, let currentInstalledVersion = currentInstalledVersion,
+            !releaseNotes.isEmpty, !currentInstalledVersion.isEmpty else { return }
+
+        let releaseNotesTitle = localizedReleaseNotesTitle()
+        let alertController = UIAlertController(title: releaseNotesTitle, message: "", preferredStyle: .alert)
+
+        if let alertControllerTintColor = alertControllerTintColor {
+            alertController.view.tintColor = alertControllerTintColor
+        }
+
+        // NOTE: To align the message text left (https://stackoverflow.com/a/26949674)
+        let releaseNotesMessage = NSMutableAttributedString(
+            string: releaseNotes,
+            attributes: [
+                NSAttributedStringKey.paragraphStyle: NSParagraphStyle(),
+                NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body),
+                NSAttributedStringKey.foregroundColor : UIColor.black
+            ]
+        )
+
+        alertController.setValue(releaseNotesMessage, forKey: "attributedMessage")
+
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
+            self.alertViewIsVisible = false
+            return
+        }
+
+        alertController.addAction(okAction)
+
+        if !alertViewIsVisible {
+            alertController.show()
+            alertViewIsVisible = true
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: true]
+            UserDefaults.standard.set(versionWithReleaseNotesShownFlag, forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
 }
 
 // MARK: - Helpers (Localization)
@@ -408,6 +473,17 @@ private extension Siren {
     func localizedSkipButtonTitle() -> String {
         return Bundle.localizedString(forKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
     }
+
+    func localizedReleaseNotesTitle() -> String {
+        let releaseNotesTitleToLocalize = "What's New in %@ \n"
+        let releaseNotesTitle = Bundle.localizedString(forKey: releaseNotesTitleToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+
+        guard let currentInstalledVersion = currentInstalledVersion else {
+            return String(format: releaseNotesTitle, "Unknown")
+        }
+
+        return String(format: releaseNotesTitle, currentInstalledVersion)
+    }
 }
 
 // MARK: - Helpers (Version)
@@ -432,6 +508,17 @@ extension Siren {
             UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)
             UserDefaults.standard.synchronize()
         }
+    }
+
+    fileprivate func getCurrentVersionIfNewerThanStored() -> String? {
+        guard let storedVersionWithReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let storedInstalledVersion = storedVersionWithReleaseNotesShownFlag.first?.key,
+            let currentInstalledVersion = self.currentInstalledVersion,
+            (storedInstalledVersion.compare(currentInstalledVersion, options: .numeric) == .orderedAscending) else {
+                return nil
+            }
+
+        return currentInstalledVersion
     }
 }
 
@@ -486,7 +573,7 @@ public extension Siren {
         /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
 
-        /// Doesn't show the alert, but instead returns a localized message 
+        /// Doesn't show the alert, but instead returns a localized message
         /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
         case none
     }
@@ -565,8 +652,10 @@ private extension Siren {
 
         /// Key that stores the version that a user decided to skip in UserDefaults.
         case StoredSkippedVersion
-    }
 
+        /// Key that stores a flag that an alert for release notes has already been shown with the latest version in UserDefaults.
+        case StoredVersionWithReleaseNotesShownFlag
+    }
 }
 
 // MARK: - Error Handling

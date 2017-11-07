@@ -116,7 +116,7 @@ public final class Siren: NSObject {
         // NOTE: Register default values. If it already has, the default value will be ignored.
         if let currentInstalledVersion = self.currentInstalledVersion {
             let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
-            UserDefaults.standard.register(defaults: [SirenDefaults.StoredReleaseNotesShownFlag.rawValue: versionWithReleaseNotesShownFlag])
+            UserDefaults.standard.register(defaults: [SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue: versionWithReleaseNotesShownFlag])
             UserDefaults.standard.synchronize()
         }
     }
@@ -401,13 +401,13 @@ private extension Siren {
             // Update VersionWithReleaseNotesShownFlag
             let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
             UserDefaults.standard.set(versionWithReleaseNotesShownFlag,
-                                      forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+                                      forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue)
             UserDefaults.standard.synchronize()
         }
         
         guard showAlertForReleaseNotes,
-            let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? [String: Bool],
-            let isReleaseNotesAlreadyShown = storedReleaseNotesShownFlag.first?.value,
+            let storedVersionWithReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let isReleaseNotesAlreadyShown = storedVersionWithReleaseNotesShownFlag.first?.value,
             !isReleaseNotesAlreadyShown,
             let releaseNotes = releaseNotes, let currentInstalledVersion = currentInstalledVersion,
             !releaseNotes.isEmpty, !currentInstalledVersion.isEmpty else { return }
@@ -442,7 +442,7 @@ private extension Siren {
             alertController.show()
             alertViewIsVisible = true
             let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: true]
-            UserDefaults.standard.set(versionWithReleaseNotesShownFlag, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.set(versionWithReleaseNotesShownFlag, forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue)
             UserDefaults.standard.synchronize()
         }
     }
@@ -511,8 +511,8 @@ extension Siren {
     }
 
     fileprivate func getCurrentVersionIfNewerThanStored() -> String? {
-        guard let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? [String: Bool],
-            let storedInstalledVersion = storedReleaseNotesShownFlag.first?.key,
+        guard let storedVersionWithReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionWithReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let storedInstalledVersion = storedVersionWithReleaseNotesShownFlag.first?.key,
             let currentInstalledVersion = self.currentInstalledVersion,
             (storedInstalledVersion.compare(currentInstalledVersion, options: .numeric) == .orderedAscending) else {
                 return nil
@@ -654,7 +654,7 @@ private extension Siren {
         case StoredSkippedVersion
 
         /// Key that stores a flag that an alert for release notes has already been shown with the latest version in UserDefaults.
-        case StoredReleaseNotesShownFlag
+        case StoredVersionWithReleaseNotesShownFlag
     }
 }
 

@@ -114,8 +114,11 @@ public final class Siren: NSObject {
         lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: SirenDefaults.StoredVersionCheckDate.rawValue) as? Date
 
         // NOTE: Register default values. If it already has, the default value will be ignored.
-        UserDefaults.standard.register(defaults: [SirenDefaults.StoredReleaseNotesShownFlag.rawValue: false])
-        UserDefaults.standard.synchronize()
+        if let currentInstalledVersion = self.currentInstalledVersion {
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
+            UserDefaults.standard.register(defaults: [SirenDefaults.StoredReleaseNotesShownFlag.rawValue: versionWithReleaseNotesShownFlag])
+            UserDefaults.standard.synchronize()
+        }
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -231,11 +234,6 @@ private extension Siren {
             showAlert(releaseNotes: model.results.first?.releaseNotes, currentInstalledVersion: currentInstalledVersion)
             postError(.noUpdateAvailable)
             return
-        }
-
-        if let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? Bool, storedReleaseNotesShownFlag {
-            UserDefaults.standard.set(false, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
-            UserDefaults.standard.synchronize()
         }
 
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
@@ -398,8 +396,18 @@ private extension Siren {
     }
 
     func showAlert(releaseNotes: String?, currentInstalledVersion: String?) {
+
+        if let currentInstalledVersion = getCurrentVersionIfNewerThanStored() {
+            // Update VersionWithReleaseNotesShownFlag
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: false]
+            UserDefaults.standard.set(versionWithReleaseNotesShownFlag,
+                                      forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+        
         guard showAlertForReleaseNotes,
-            let isReleaseNotesAlreadyShown = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? Bool,
+            let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let isReleaseNotesAlreadyShown = storedReleaseNotesShownFlag.first?.value,
             !isReleaseNotesAlreadyShown,
             let releaseNotes = releaseNotes, let currentInstalledVersion = currentInstalledVersion,
             !releaseNotes.isEmpty, !currentInstalledVersion.isEmpty else { return }
@@ -433,7 +441,8 @@ private extension Siren {
         if !alertViewIsVisible {
             alertController.show()
             alertViewIsVisible = true
-            UserDefaults.standard.set(true, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
+            let versionWithReleaseNotesShownFlag: [String: Bool] = [currentInstalledVersion: true]
+            UserDefaults.standard.set(versionWithReleaseNotesShownFlag, forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue)
             UserDefaults.standard.synchronize()
         }
     }
@@ -499,6 +508,17 @@ extension Siren {
             UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)
             UserDefaults.standard.synchronize()
         }
+    }
+
+    fileprivate func getCurrentVersionIfNewerThanStored() -> String? {
+        guard let storedReleaseNotesShownFlag = UserDefaults.standard.object(forKey: SirenDefaults.StoredReleaseNotesShownFlag.rawValue) as? [String: Bool],
+            let storedInstalledVersion = storedReleaseNotesShownFlag.first?.key,
+            let currentInstalledVersion = self.currentInstalledVersion,
+            (storedInstalledVersion.compare(currentInstalledVersion, options: .numeric) == .orderedAscending) else {
+                return nil
+            }
+
+        return currentInstalledVersion
     }
 }
 

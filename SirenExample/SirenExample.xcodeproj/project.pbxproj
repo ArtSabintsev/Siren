@@ -621,7 +621,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.starry.youshi;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -636,7 +636,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.starry.youshi;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

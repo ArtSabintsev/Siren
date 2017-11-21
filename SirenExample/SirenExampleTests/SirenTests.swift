@@ -143,7 +143,7 @@ extension SirenTests {
         siren.forceLanguageLocalization = language
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "التجديد متوفر")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "التحديث متوفر")
 
         // Next time
         XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "المرة التالية")
@@ -152,7 +152,7 @@ extension SirenTests {
         XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "تخطى عن هذه النسخة")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "تجديد")
+        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "تحديث")
     }
 
     func testArmenianLocalization() {

@@ -202,7 +202,7 @@ private extension Siren {
         guard isUpdateCompatibleWithDeviceOS(for: model) else {
             return
         }
-        
+
         guard let appID = model.results.first?.appID else {
             postError(.appStoreAppIDFailure)
             return

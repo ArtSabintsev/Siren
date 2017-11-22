@@ -31,24 +31,24 @@
 - [Vladislav Jevremović](https://github.com/VladislavJevremovic) for [Pull Request #98](https://github.com/ArtSabintsev/Siren/pull/98)
 - [Stefan Kieleithner](https://github.com/steviki) for [Pull Request #99](https://github.com/ArtSabintsev/Siren/pull/99)
 - [Konstantinos N.](https://github.com/kwstasna) for [Pull Request #101](https://github.com/ArtSabintsev/Siren/pull/101)
-- [Christoph Mantler](https://github.com/ChrisixFlash) for [Pull Request #103](https://github.com/ArtSabintsev/Siren/pull/103)
-- [Christoph Mantler](https://github.com/ChrisixFlash) for [Pull Request #106](https://github.com/ArtSabintsev/Siren/pull/106)
+- [Christoph Mantler](https://github.com/ChrisixFlash) for [Pull Request #103](https://github.com/ArtSabintsev/Siren/pull/103) and [Pull Request #106](https://github.com/ArtSabintsev/Siren/pull/106)
 - [xedla](https://github.com/xedla) for [Pull Request #107](https://github.com/ArtSabintsev/Siren/pull/107)
 - [Daniel Hu](https://github.com/zongmumask) for [Pull Request #116](https://github.com/ArtSabintsev/Siren/pull/116)
 - [Jakob Krigovsky](https://github.com/sonicdoe) for [Pull Request #118](https://github.com/ArtSabintsev/Siren/pull/118)
 - [germ4n](https://github.com/glm4) for [Pull Request #122](https://github.com/ArtSabintsev/Siren/pull/122)
-- [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #139](https://github.com/ArtSabintsev/Siren/pull/107)
-- [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #140](https://github.com/ArtSabintsev/Siren/pull/107)
+- [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #139](https://github.com/ArtSabintsev/Siren/pull/139) and [Pull Request #140](https://github.com/ArtSabintsev/Siren/pull/140)
 - [premyslvlcek](https://github.com/premyslvlcek) for [Pull Request #143](https://github.com/ArtSabintsev/Siren/pull/143)
 - [Seyed Mojtaba Hosseini Zeidabadi](https://github.com/MojtabaHs) for [Pull Request #144](https://github.com/ArtSabintsev/Siren/pull/143)
-- [Chanchal Raj](https://github.com/RajChanchal) for [Pull Request #171 *Harpy)](https://github.com/ArtSabintsev/harpy/pull/171)
-- [Ryoh Tsukahara](https://github.com/nixnoughtnothing) for [Pull Request #150](https://github.com/ArtSabintsev/Siren/pull/150)
-- [Ryoh Tsukahara](https://github.com/nixnoughtnothing) for [Pull Request #159](https://github.com/ArtSabintsev/Siren/pull/159)
+- [Chanchal Raj](https://github.com/RajChanchal) for [Pull Request #171 (Harpy)](https://github.com/ArtSabintsev/harpy/pull/171)
+- [Ryoh Tsukahara](https://github.com/nixnoughtnothing) for [Pull Request #150](https://github.com/ArtSabintsev/Siren/pull/150) and [Pull Request #159](https://github.com/ArtSabintsev/Siren/pull/159)
 - [Jason Wade](https://github.com/iJasonWade) for [Pull Request #162](https://github.com/ArtSabintsev/Siren/pull/162)
 - [JussiSuojanen](https://github.com/JussiSuojanen) for [Pull Request #171](https://github.com/ArtSabintsev/Siren/pull/171)
 - [Dmytro Cheverda](https://github.com/dimacheverda) for [Pull Request #175](https://github.com/ArtSabintsev/Siren/pull/175)
 - [Vladislav Jevremovic](https://github.com/VladislavJevremovic) for [Pull Request #176](https://github.com/ArtSabintsev/Siren/pull/176)
-- [NSemakov](https://github.com/NSemakov) for [Pull Request #179]
+- [NSemakov](https://github.com/NSemakov) for [Pull Request #179](https://github.com/ArtSabintsev/Siren/pull/179)
+- [Attia Mo](https://github.com/attiamo) for [Pull Request #182](https://github.com/ArtSabintsev/Siren/pull/182)
+- [wbison](https://github.com/wbison) for [Pull Request #185 (Harpy)](https://github.com/ArtSabintsev/Harpy/pull/185)
+
 
 ### Harpy Project Contributors
 This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to v3.2.1, the version of Harpy that Siren was based on.

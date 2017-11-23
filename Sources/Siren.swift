@@ -38,9 +38,9 @@ public final class Siren: NSObject {
     public lazy var debugEnabled = false
   
     /// The shouldNotPropmtUserInThisSession flag, which is disabled by default.
-    /// If VersionCheckType is .immediate, and you are checking version in applicationWillEnterForeground method, then susequent jumps from background to foreground will not trigger annoying alerts to user if user has clicked "NextTime" button in the alert.
+    /// If VersionCheckType is .immediate, and you are checking version in applicationWillEnterForeground method, then subsequent jumps from background to foreground will not trigger annoying alerts to the user if the user has already clicked "NextTime" button in the alert.
     /// This is only applicable for .immediate VersionCheckType and it will be effective until the application is relaunched.
-    public lazy var shouldNotPropmtUserInThisSession = false
+    private lazy var shouldNotPropmtUserInThisSession = false
 
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.

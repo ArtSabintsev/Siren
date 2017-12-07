@@ -30,7 +30,7 @@ public struct SirenAlertMessaging {
     let updateButtonMessage: String
     let updateMessage: String
     let updateTitle: String
-    
+
     /// The public initializer
     ///
     /// - Parameters:

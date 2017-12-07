@@ -74,7 +74,7 @@ public final class Siren: NSObject {
 
     /// Overrides all the Strings to which Siren defaults.
     /// Defaults to the values defined in `SirenAlertMessaging.Keys`
-    public lazy var alertMessaging = SirenAlertMessaging()
+    public var alertMessaging = SirenAlertMessaging()
 
     /// The region or country of an App Store in which your app is available.
     /// By default, all version checks are performed against the US App Store.

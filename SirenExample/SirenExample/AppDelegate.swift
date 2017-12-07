@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.appName = "Test App Name"
 
         // Optional - Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
-//        siren.alertMessaging = SirenAlertMessaging(updateTitle: "New Fancy Title", updateButtonMessage: "Update Now, Plz!?")
+//        siren.alertMessaging = SirenAlertMessaging(updateTitle: "New Fancy Title", updateMessage: "O M G!", updateButtonMessage: "Update Now, Plz!?")
         
         // Optional - Defaults to .Option
 //        siren.alertType = .option // or .force, .skip, .none

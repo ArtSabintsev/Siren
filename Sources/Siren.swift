@@ -73,7 +73,7 @@ public final class Siren: NSObject {
     public lazy var appName = Bundle.bestMatchingAppName()
 
     /// Overrides all the Strings to which Siren defaults.
-    /// Defaults to the values defined in `SirenAlertMessaging.Keys`
+    /// Defaults to the values defined in `SirenAlertMessaging.Constants`
     public var alertMessaging = SirenAlertMessaging()
 
     /// The region or country of an App Store in which your app is available.

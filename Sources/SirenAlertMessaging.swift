@@ -17,7 +17,7 @@ import Foundation
 /// As SirenAlertMessaging is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
 public struct SirenAlertMessaging {
 
-    public struct Keys {
+    public struct Constants {
         public static let nextTime = "Next time"
         public static let skipVersion = "Skip this version"
         public static let updateMessage = "A new version of %@ is available. Please update to version %@ now."
@@ -39,11 +39,11 @@ public struct SirenAlertMessaging {
     ///   - updateButtonMessage: The `title` field of the Update Button `UIAlertAction`.
     ///   - nextTimeButtonMessage: The `title` field of the Next Time Button `UIAlertAction`.
     ///   - skipVersionButtonMessage: The `title` field of the Skip Button `UIAlertAction`.
-    public init(updateTitle title: String = Keys.updateTitle,
-                updateMessage message: String = Keys.updateMessage,
-                updateButtonMessage: String = Keys.updateNow,
-                nextTimeButtonMessage: String = Keys.nextTime,
-                skipVersionButtonMessage: String = Keys.skipVersion) {
+    public init(updateTitle title: String = Constants.updateTitle,
+                updateMessage message: String = Constants.updateMessage,
+                updateButtonMessage: String = Constants.updateNow,
+                nextTimeButtonMessage: String = Constants.nextTime,
+                skipVersionButtonMessage: String = Constants.skipVersion) {
         self.updateTitle = title
         self.nextTimeButtonMessage = nextTimeButtonMessage
         self.updateButtonMessage = updateButtonMessage

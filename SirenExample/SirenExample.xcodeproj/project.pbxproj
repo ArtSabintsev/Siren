@@ -13,6 +13,7 @@
 		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
+		8E2499BF1FD83DDF00F384BA /* SirenAlertMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2499BE1FD83DDF00F384BA /* SirenAlertMessaging.swift */; };
 		8E43D6231E8223EE00ECFFC8 /* SirenDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */; };
 		8E528A301E989A7A00B643C4 /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */; };
 		8E528A321E989E0A00B643C4 /* SirenTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */; };
@@ -66,6 +67,7 @@
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
+		8E2499BE1FD83DDF00F384BA /* SirenAlertMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenAlertMessaging.swift; path = ../../Sources/SirenAlertMessaging.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDateExtension.swift; path = ../../Sources/SirenDateExtension.swift; sourceTree = "<group>"; };
 		8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDelegate.swift; path = ../../Sources/SirenDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +120,10 @@
 			children = (
 				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
 				55EC365F1E6BB99B00726F13 /* Siren.swift */,
-				8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */,
+				8E2499BE1FD83DDF00F384BA /* SirenAlertMessaging.swift */,
 				8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */,
 				8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */,
+				8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */,
 				8EACA9761F38113D003134CA /* SirenError.swift */,
 				8E5D15B01F3632D7001C0960 /* SirenLog.swift */,
 				8EACA96F1F37F327003134CA /* SirenLookupModel.swift */,
@@ -360,6 +363,7 @@
 				8E5D15B11F3632D7001C0960 /* SirenLog.swift in Sources */,
 				8E9C238B1E7CDB42000ED3DA /* SirenBundleExtension.swift in Sources */,
 				8E528A301E989A7A00B643C4 /* SirenDelegate.swift in Sources */,
+				8E2499BF1FD83DDF00F384BA /* SirenAlertMessaging.swift in Sources */,
 				8EACA9701F37F327003134CA /* SirenLookupModel.swift in Sources */,
 				8E9C238D1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift in Sources */,
 			);
@@ -621,7 +625,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.starry.youshi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -636,7 +640,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.starry.youshi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

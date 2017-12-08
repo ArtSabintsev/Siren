@@ -34,6 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Change the name of your app. Useful if you have a long app name and want to display a shortened version in the update dialog (e.g., the UIAlertController).
 //        siren.appName = "Test App Name"
 
+        // Optional - Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
+//        siren.alertMessaging = SirenAlertMessaging(updateTitle: "New Fancy Title",
+//                                                   updateMessage: "New message goes here!",
+//                                                   updateButtonMessage: "Update Now, Plz!?",
+//                                                   nextTimeButtonMessage: "OK, next time it is!",
+//                                                   skipVersionButtonMessage: "Please don't push skip, please don't!")
+        
         // Optional - Defaults to .Option
 //        siren.alertType = .option // or .force, .skip, .none
 

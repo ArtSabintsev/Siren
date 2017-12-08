@@ -72,6 +72,10 @@ public final class Siren: NSObject {
     /// By default, it's set to the name of the app that's stored in your plist.
     public lazy var appName = Bundle.bestMatchingAppName()
 
+    /// Overrides all the Strings to which Siren defaults.
+    /// Defaults to the values defined in `SirenAlertMessaging.Constants`
+    public var alertMessaging = SirenAlertMessaging()
+
     /// The region or country of an App Store in which your app is available.
     /// By default, all version checks are performed against the US App Store.
     /// If your app is not available in the US App Store, set it to the identifier of at least one App Store within which it is available.
@@ -279,7 +283,8 @@ private extension Siren {
     func showAlert() {
         storeVersionCheckDate()
 
-        let updateAvailableMessage = Bundle.localizedString(forKey: "Update Available", forceLanguageLocalization: forceLanguageLocalization)
+        let updateAvailableMessage = Bundle.localizedString(forKey: alertMessaging.updateTitle, forceLanguageLocalization: forceLanguageLocalization)
+
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -387,7 +392,7 @@ private extension Siren {
 
 private extension Siren {
     func localizedNewVersionMessage() -> String {
-        let newVersionMessageToLocalize = "A new version of %@ is available. Please update to version %@ now."
+        let newVersionMessageToLocalize = alertMessaging.updateMessage
         let newVersionMessage = Bundle.localizedString(forKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)
 
         guard let currentAppStoreVersion = currentAppStoreVersion else {
@@ -398,15 +403,15 @@ private extension Siren {
     }
 
     func localizedUpdateButtonTitle() -> String {
-        return Bundle.localizedString(forKey: "Update", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(forKey: alertMessaging.updateButtonMessage, forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedNextTimeButtonTitle() -> String {
-        return Bundle.localizedString(forKey: "Next time", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(forKey: alertMessaging.nextTimeButtonMessage, forceLanguageLocalization: forceLanguageLocalization)
     }
 
     func localizedSkipButtonTitle() -> String {
-        return Bundle.localizedString(forKey: "Skip this version", forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(forKey: alertMessaging.skipVersionButtonMessage, forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 

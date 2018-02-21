@@ -189,7 +189,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 extension AppDelegate: SirenDelegate {
 	// Returns a localized message to this delegate method upon performing a successful version check
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {}
         print("\(message)")
     }
 }

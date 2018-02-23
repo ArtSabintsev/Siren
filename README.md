@@ -213,12 +213,23 @@ Six delegate methods allow you to handle or track the user's behavior. Each meth
 
 ```	swift
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)  // User presented with update dialog
-    func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
-    func sirenUserDidSkipVersion()                             // User did click on button that skips version update
-    func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    func sirenDidFailVersionCheck(error: Error)                // Siren failed to perform version check (may return system-level error)
-    func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
+    // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
+
+    // User did click on button that launched App Store.app
+    func sirenUserDidLaunchAppStore()
+
+    // User did click on button that skips version update
+    func sirenUserDidSkipVersion()
+
+    // User did click on button that cancels update dialog
+    func sirenUserDidCancel()                                 
+    
+    // Siren failed to perform version check (may return system-level error)
+    func sirenDidFailVersionCheck(error: Error)                
+
+    // Siren performed version check and did not display alert
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
 }
 ```
 

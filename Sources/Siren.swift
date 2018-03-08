@@ -188,6 +188,12 @@ private extension Siren {
             do {
                 let decoder = JSONDecoder()
                 let decodedData = try decoder.decode(SirenLookupModel.self, from: data)
+                
+                // Check if results are not empty
+                if decodedData.results.isEmpty {
+                    postError(.appStoreDataRetrievalNoResults)
+                    return
+                }
 
                 DispatchQueue.main.async { [unowned self] in
                     self.printMessage("Decoded JSON results: \(decodedData)")

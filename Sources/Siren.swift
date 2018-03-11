@@ -168,8 +168,8 @@ private extension Siren {
         do {
             let url = try iTunesURLFromString()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request, completionHandler: { [unowned self] (data, response, error) in
-                self.processResults(withData: data, response: response, error: error)
+            URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+                self?.processResults(withData: data, response: response, error: error)
             }).resume()
         } catch _ {
             postError(.malformedURL)
@@ -186,13 +186,10 @@ private extension Siren {
             }
 
             do {
-                let decoder = JSONDecoder()
-                let decodedData = try decoder.decode(SirenLookupModel.self, from: data)
-                
-                // Check if results are not empty
-                if decodedData.results.isEmpty {
-                    postError(.appStoreDataRetrievalNoResults)
-                    return
+                let decodedData = try JSONDecoder().decode(SirenLookupModel.self, from: data)
+
+                guard !decodedData.results.isEmpty else {
+                    return postError(.appStoreDataRetrievalEmptyResults)
                 }
 
                 DispatchQueue.main.async { [unowned self] in
@@ -322,11 +319,15 @@ private extension Siren {
 
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [unowned self] _ in
-            self.hideWindow()
-            self.launchAppStore()
-            self.delegate?.sirenUserDidLaunchAppStore()
-            self.alertViewIsVisible = false
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.hideWindow()
+            strongSelf.launchAppStore()
+            strongSelf.delegate?.sirenUserDidLaunchAppStore()
+            strongSelf.alertViewIsVisible = false
             return
         }
 
@@ -335,10 +336,14 @@ private extension Siren {
 
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [unowned self] _  in
-            self.hideWindow()
-            self.delegate?.sirenUserDidCancel()
-            self.alertViewIsVisible = false
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _  in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.hideWindow()
+            strongSelf.delegate?.sirenUserDidCancel()
+            strongSelf.alertViewIsVisible = false
             return
         }
 
@@ -347,16 +352,19 @@ private extension Siren {
 
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [unowned self] _ in
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
 
-            if let currentAppStoreVersion = self.currentAppStoreVersion {
+            if let currentAppStoreVersion = strongSelf.currentAppStoreVersion {
                 UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenDefaults.StoredSkippedVersion.rawValue)
                 UserDefaults.standard.synchronize()
             }
 
-            self.hideWindow()
-            self.delegate?.sirenUserDidSkipVersion()
-            self.alertViewIsVisible = false
+            strongSelf.hideWindow()
+            strongSelf.delegate?.sirenUserDidSkipVersion()
+            strongSelf.alertViewIsVisible = false
             return
         }
 

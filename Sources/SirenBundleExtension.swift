@@ -16,7 +16,7 @@ extension Bundle {
     }
 
     class func sirenBundlePath() -> String {
-        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle") as String!
+        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle")!
     }
 
     class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {

@@ -62,7 +62,7 @@ If a new version is available, an alert can be presented to the user informing t
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 4.0  | master   | **Yes**
+| 4.1  | master   | **Yes**
 | 3.2  | swift3.2 | No
 | 3.1  | swift3.1 | No
 | 2.3  | swift2.3 | No  

@@ -10,4 +10,4 @@ before_install:
   - brew update
 script:
   - set -o pipefail
-  - xcodebuild -workspace SirenExample/SirenExample.xcworkspace -scheme SirenExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xcodebuild -project SirenExample/SirenExample.xcodeproj -scheme SirenExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c

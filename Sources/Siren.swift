@@ -120,22 +120,33 @@ public final class Siren: NSObject {
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
     public func checkVersion(checkType: VersionCheckType) {
+        checkVersion(with: checkType.rawValue)
+    }
+    
+    /// Checks the currently installed version of your app against the App Store.
+    /// The default check is against the US App Store, but if your app is not listed in the US,
+    /// you should set the `countryCode` property before calling this method. Please refer to the countryCode property for more information.
+    ///
+    /// - Parameters:
+    ///   - numberOfDays: The frequency in days in which you want a check to be performed.
+    public func checkVersion(with numberOfDays: NumberOfDays) {
+        let numberOfDays = abs(numberOfDays)
         updateType = .unknown
-
+        
         guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
-
-        if checkType == .immediately {
+        
+        if numberOfDays == VersionCheckType.immediately.rawValue {
             performVersionCheck()
         } else {
             guard let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate else {
                 performVersionCheck()
                 return
             }
-
-            if Date.days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            
+            if Date.days(since: lastVersionCheckPerformedOnDate) >= numberOfDays {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready)
@@ -509,10 +520,13 @@ public extension Siren {
         /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
         case none
     }
+    
+    /// Determines the frequency in which the the version check is performed and the user is prompted to update the app
+    typealias NumberOfDays = Int
 
     /// Determines the frequency in which the the version check is performed and the user is prompted to update the app.
     ///
-    enum VersionCheckType: Int {
+    enum VersionCheckType: NumberOfDays {
         /// Version check performed every time the app is launched.
         case immediately = 0
 

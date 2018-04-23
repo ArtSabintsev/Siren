@@ -22,6 +22,7 @@ struct SirenLookupModel: Decodable {
             case appID = "trackId"
             case currentVersionReleaseDate
             case minimumOSVersion = "minimumOsVersion"
+            case releaseNotes
             case version
         }
 
@@ -29,5 +30,6 @@ struct SirenLookupModel: Decodable {
         let currentVersionReleaseDate: String
         let minimumOSVersion: String
         let version: String
+        let releaseNotes: String
     }
 }

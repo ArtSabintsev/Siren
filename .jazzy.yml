@@ -2,9 +2,10 @@ module: Siren
 author: Arthur Ariel Sabintsev
 author_url: http://www.sabintsev.com
 github_url: https://github.com/artsabintsev/siren
-copyright: "© 2015-2017 [Arthur Ariel Sabintsev](http://www.sabintsev.com)"
+copyright: "© [Arthur Ariel Sabintsev](http://www.sabintsev.com)"
 theme: apple
 output: docs
 documentation: docs/*.md
 clean: true
 podspec: Siren.podspec
+sdk: iphonesimulator

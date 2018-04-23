@@ -2,7 +2,9 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) ![Swift Support](https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.1-orange.svg)
+![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) 
+
+![Swift Support](https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.1-orange.svg)
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/) [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)](https://cocoapods.org/pods/Siren) [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)](https://cocoapods.org/pods/Siren)
 ---

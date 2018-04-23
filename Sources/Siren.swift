@@ -88,7 +88,7 @@ public final class Siren: NSObject {
     /// Overrides the tint color for UIAlertController.
     public var alertControllerTintColor: UIColor?
 
-    /// When this is set, the alert will only show up if the current version has already been released for X days
+    /// When this is set, the alert will only show up if the current version has already been released for X days.
     /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
     public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
@@ -184,7 +184,6 @@ private extension Siren {
                 postError(.appStoreDataRetrievalFailure(underlyingError: nil))
                 return
             }
-
             do {
                 let decodedData = try JSONDecoder().decode(SirenLookupModel.self, from: data)
 
@@ -198,7 +197,6 @@ private extension Siren {
                     // Process Results (e.g., extract current version that is available on the AppStore)
                     self?.processVersionCheck(with: decodedData)
                 }
-
             } catch let error as NSError {
                 postError(.appStoreJSONParsingFailure(underlyingError: error))
             }

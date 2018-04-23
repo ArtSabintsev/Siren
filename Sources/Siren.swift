@@ -192,11 +192,11 @@ private extension Siren {
                     return postError(.appStoreDataRetrievalEmptyResults)
                 }
 
-                DispatchQueue.main.async { [unowned self] in
-                    self.printMessage("Decoded JSON results: \(decodedData)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.printMessage("Decoded JSON results: \(decodedData)")
 
                     // Process Results (e.g., extract current version that is available on the AppStore)
-                    self.processVersionCheck(with: decodedData)
+                    self?.processVersionCheck(with: decodedData)
                 }
 
             } catch let error as NSError {

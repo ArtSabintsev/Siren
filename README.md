@@ -32,13 +32,13 @@
 
 If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
 
-- Siren is built to work with the [**Semantic Versioning**](http://semver.org/) system.
+- Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
 	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
 	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
-- Siren is actively maintained by [**Arthur Sabintsev**](http://github.com/ArtSabintsev) and [**Aaron Brager**](http://twitter.com/getaaron)
+- Siren is actively maintained by [**Arthur Sabintsev**](https://github.com/ArtSabintsev) and [**Aaron Brager**](https://twitter.com/getaaron)
 
 ### README Translations
-- [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](http://www.jianshu.com/u/d8bbc4831623))
+- [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](https://www.jianshu.com/u/d8bbc4831623))
 
 ## Features
 - [x] CocoaPods Support
@@ -307,7 +307,7 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
 
 ## Ports
 - **Objective-C (iOS)**
-   - [**Harpy**](http://github.com/ArtSabintsev/Harpy)
+   - [**Harpy**](https://github.com/ArtSabintsev/Harpy)
    - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
 - **Java (Android)**
    - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
@@ -317,4 +317,4 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
    - The Siren Swift library inspired the React Native library.
 
 ## Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](https://twitter.com/getaaron)

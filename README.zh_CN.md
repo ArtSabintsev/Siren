@@ -10,15 +10,15 @@
 
 当 app 有更新时，Siren 会弹出提示框，用户可根据提示框提供的选项进行更新。或者您也可以根据 Siren 发出的消息来自定义通知用户的方式，比如您可以提供一个自定义的提示框。
 
-- Siren 可配合 [**Semantic Versioning**](http://semver.org/) 系统使用
+- Siren 可配合 [**Semantic Versioning**](https://semver.org/) 系统使用
 	- Semantic 版本系统由三位数字标识 (比如，1.0.0)
 	- Siren 同时支持两位数字标识 (比如，1.0)
 	- Siren 同时支持四位数字标识 (比如，1.0.0.0)
-- Siren 当前处于活跃维护状态，由[**Arthur Sabintsev**](http://github.com/ArtSabintsev) 和 [**Aaron Brager**](http://twitter.com/getaaron) 进行维护。
+- Siren 当前处于活跃维护状态，由[**Arthur Sabintsev**](https://github.com/ArtSabintsev) 和 [**Aaron Brager**](https://twitter.com/getaaron) 进行维护。
 
 
 ## Ports
-- [**Harpy**](http://github.com/ArtSabintsev/Harpy) 是 Objective-C 实现的版本更新检查库，Siren 是 Harpy 的 swift 版本。
+- [**Harpy**](https://github.com/ArtSabintsev/Harpy) 是 Objective-C 实现的版本更新检查库，Siren 是 Harpy 的 swift 版本。
 - Siren 和 Harpy 是由相同的开发者维护。
 - 安卓平台 Play Store 上的 [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren) 库使用了和 Siren 相同的原理实现了版本更新检测。
 - 针对 React Native 项目 (iOS/Android) 的 [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren) 库使用了和 Siren 相同的原理实现了版本更新检测。
@@ -226,7 +226,7 @@ Siren.sharedInstance.forceLanguageLocalization = SirenLanguageType.<#SirenLangua
 因为商店里的可用版本总是比提交审核的版本老，所以苹果商店审核人员在审核时是**不会**弹出提示框的。
 
 ##创建维护人员
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](http://twitter.com/getaaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](https://twitter.com/getaaron)
 
 ## 翻译人员
-[Daniel Hu](http://www.jianshu.com/u/d8bbc4831623)
+[Daniel Hu](https://www.jianshu.com/u/d8bbc4831623)

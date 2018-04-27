@@ -1,11 +1,11 @@
 ### Creators
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) and [Aaron Brager](http://twitter.com/GetAaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/) and [Aaron Brager](https://twitter.com/GetAaron)
 
 ### Siren Project Contributors
 - [Dmitry Bespalov](https://github.com/diamondsky) for [Pull Request #7](https://github.com/ArtSabintsev/Siren/pull/7)
 - [Daniel Bauke](https://github.com/bonkey) for [Pull Request #8](https://github.com/ArtSabintsev/Siren/pull/8)
 - [ipedro](https://github.com/ipedro) for [Pull Request #76 (Harpy)](https://github.com/ArtSabintsev/Harpy/pull/76)
-- [Michael Graff](http://github.com/skandragon) for [Pull Request #15](https://github.com/ArtSabintsev/Siren/pull/15)
+- [Michael Graff](https://github.com/skandragon) for [Pull Request #15](https://github.com/ArtSabintsev/Siren/pull/15)
 - [Jaroslav_](https://github.com/jaroslavas) for [Pull Request #83 (Harpy)](https://github.com/ArtSabintsev/Harpy/pull/83)
 - [Dylan Bettermann](https://github.com/dbettermann) for [Pull Request #18](https://github.com/ArtSabintsev/Siren/pull/18)
 - [Daniel](https://github.com/Daniel) for [Pull Request #21](https://github.com/ArtSabintsev/Siren/pull/21)
@@ -53,7 +53,7 @@
 
 
 ### Harpy Project Contributors
-This repo is a Swift language port of [Harpy](http://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to v3.2.1, the version of Harpy that Siren was based on.
+This repo is a Swift language port of [Harpy](https://github.com/ArtSabintsev/Harpy). We couldn't have built this port without acknowledging the following developers who were instrumental in getting Harpy to v3.2.1, the version of Harpy that Siren was based on.
 
 A huge **Thank You** to the following developers:
 
@@ -65,7 +65,7 @@ A huge **Thank You** to the following developers:
 - [David Keegan](https://github.com/kgn)
 - [Erick](https://github.com/dexcell0)
 - [Ercillagorka](https://github.com/ercillagorka)
-- [Jamie Ly](http://github,com/jamiely)
+- [Jamie Ly](https://github,com/jamiely)
 - [Jon Andersen](https://github.com/jonandersen)
 - [Josh T. Brown](https://github.com/joshuatbrown)
 - [Mark Rickert](https://github.com/markrickert)
@@ -77,4 +77,4 @@ A huge **Thank You** to the following developers:
 - [TrentW](https://github.com/trentw)
 
 ### Special Thanks
-Finally, a massive **Thank You** to [Aaron Brager](http://twitter.com/GetAaron) for the dev-work and issue-moderation he's done on Harpy since 2012. A Swift port could not have happened without him.
+Finally, a massive **Thank You** to [Aaron Brager](https://twitter.com/GetAaron) for the dev-work and issue-moderation he's done on Harpy since 2012. A Swift port could not have happened without him.

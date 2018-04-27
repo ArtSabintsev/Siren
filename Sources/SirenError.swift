@@ -43,7 +43,7 @@ public struct SirenError: LocalizedError {
             case .appStoreVersionArrayFailure:
                 return "Error retrieving App Store verson number as the JSON does not contain a 'version' key."
             case .malformedURL:
-                return "The iTunes URL is malformed. Please leave an issue on http://github.com/ArtSabintsev/Siren with as many details as possible."
+                return "The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
             case .noUpdateAvailable:
                 return "No new update available."
             case .recentlyCheckedAlready:

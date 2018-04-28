@@ -10,7 +10,7 @@ import Foundation
 
 /// MARK - Siren UpdateType
 
-/// `UpdateType` defines what kind of update is available
+/// `UpdateType` defines what kind of update is available.
 /// It is used as parameter if user wants to use
 /// custom alert to inform the user about an update.
 ///
@@ -18,7 +18,7 @@ import Foundation
 /// - minor: Minor release available: a.B.c.d
 /// - patch: Patch release available: a.b.C.d
 /// - revision: Revision release available: a.b.c.D
-/// - unknown: No information available about the update
+/// - unknown: No information available about the update.
 public enum UpdateType: String {
     case major
     case minor
@@ -34,7 +34,7 @@ public protocol SirenDelegate: NSObjectProtocol {
     /// User presented with update dialog.
     func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
-    /// User did click on button that launched App Store.app.
+    /// User did click on button that launched "App Store.app".
     func sirenUserDidLaunchAppStore()
 
     /// User did click on button that skips version update.
@@ -43,7 +43,11 @@ public protocol SirenDelegate: NSObjectProtocol {
     /// User did click on button that cancels update dialog.
     func sirenUserDidCancel()
 
-    /// Siren failed to perform version check (may return system-level error).
+    /// Siren failed to perform version check.
+    ///
+    /// - Note:
+    ///     Depending on the reason for failure,
+    ///     a system-level error may be returned.
     func sirenDidFailVersionCheck(error: Error)
 
     /// Siren performed version check and did not display alert.

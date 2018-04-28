@@ -29,7 +29,7 @@ struct SirenLookupModel: Decodable {
         let appID: Int
         let currentVersionReleaseDate: String
         let minimumOSVersion: String
-        let releaseNotes: String
+        let releaseNotes: String?
         let version: String
     }
 }

@@ -70,7 +70,7 @@ If a new version is available, an alert can be presented to the user informing t
 | 2.3  | swift2.3 | No  
 
 ### CocoaPods
-For Swift 4 support:
+For Swift 4.1 support:
 ```ruby
 pod 'Siren'
 ```

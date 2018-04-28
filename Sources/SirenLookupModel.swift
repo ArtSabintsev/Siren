@@ -10,14 +10,14 @@ import Foundation
 
 // MARK: - Model representing a selection of results from the iTunes Lookup API
 
-struct SirenLookupModel: Decodable {
+public struct SirenLookupModel: Decodable {
     private enum CodingKeys: String, CodingKey {
         case results
     }
 
-    let results: [Results]
+    public let results: [Results]
 
-    struct Results: Decodable {
+    public struct Results: Decodable {
         private enum CodingKeys: String, CodingKey {
             case appID = "trackId"
             case currentVersionReleaseDate
@@ -26,10 +26,10 @@ struct SirenLookupModel: Decodable {
             case version
         }
 
-        let appID: Int
-        let currentVersionReleaseDate: String
-        let minimumOSVersion: String
-        let releaseNotes: String?
-        let version: String
+        public let appID: Int
+        public let currentVersionReleaseDate: String
+        public let minimumOSVersion: String
+        public let releaseNotes: String?
+        public let version: String
     }
 }

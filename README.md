@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master) 
+![Travis CI Status](https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master)
 
 ![Swift Support](https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.1-orange.svg) ![Documentation](https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg)
 
@@ -214,24 +214,39 @@ If you would like to set a different type of alert for revision, patch, minor, a
 Six delegate methods allow you to handle or track the user's behavior. Each method has a default, empty implementation, effectively making each of these methods optional.
 
 ```	swift
-public protocol SirenDelegate: class {
-    // User presented with update dialog
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
+public protocol SirenDelegate: NSObjectProtocol {
+	/// Siren performed version check and did not display alert.
+	func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
 
-    // User did click on button that launched App Store.app
-    func sirenUserDidLaunchAppStore()
+	/// Siren failed to perform version check.
+	///
+	/// - Note:
+	///     Depending on the reason for failure,
+	///     a system-level error may be returned.
+	func sirenDidFailVersionCheck(error: Error)
 
-    // User did click on button that skips version update
-    func sirenUserDidSkipVersion()
+	/// User presented with update dialog.
+	func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
-    // User did click on button that cancels update dialog
-    func sirenUserDidCancel()                                 
-    
-    // Siren failed to perform version check (may return system-level error)
-    func sirenDidFailVersionCheck(error: Error)                
+	/// Siren performed a version check and latest version is installed.
+	func sirenLatestVersionInstalled()
 
-    // Siren performed version check and did not display alert
-    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
+	/// Provides the decoded JSON information from a successful version check call.
+	///
+	/// - SeeAlso:
+	///     SirenLookupModel.swift
+	///
+	/// - Parameter lookupModel: The `Decodable` model representing the JSON results from the iTunes Lookup API.
+	func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel)
+
+	/// User did click on button that cancels update dialog.
+	func sirenUserDidCancel()
+
+	/// User did click on button that launched "App Store.app".
+	func sirenUserDidLaunchAppStore()
+
+	/// User did click on button that skips version update.
+	func sirenUserDidSkipVersion()
 }
 ```
 

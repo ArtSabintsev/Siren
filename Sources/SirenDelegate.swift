@@ -31,17 +31,8 @@ public enum UpdateType: String {
 
 /// Delegate that handles all codepaths for Siren upon version check completion.
 public protocol SirenDelegate: NSObjectProtocol {
-    /// User presented with update dialog.
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
-
-    /// User did click on button that launched "App Store.app".
-    func sirenUserDidLaunchAppStore()
-
-    /// User did click on button that skips version update.
-    func sirenUserDidSkipVersion()
-
-    /// User did click on button that cancels update dialog.
-    func sirenUserDidCancel()
+    /// Siren performed version check and did not display alert.
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
 
     /// Siren failed to perform version check.
     ///
@@ -50,30 +41,32 @@ public protocol SirenDelegate: NSObjectProtocol {
     ///     a system-level error may be returned.
     func sirenDidFailVersionCheck(error: Error)
 
-    /// Siren performed version check and did not display alert.
-    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
+    /// User presented with update dialog.
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
-    /// Siren performed version check and latest version is installed.
+    /// Siren performed a version check and latest version is installed.
     func sirenLatestVersionInstalled()
+
+    /// Provides the decoded JSON information from a successful version check call.
+    ///
+    /// - Parameter lookupModel: The `Decodable` model representing the JSON results from the iTunes Lookup API.
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel)
+
+    /// User did click on button that cancels update dialog.
+    func sirenUserDidCancel()
+
+    /// User did click on button that launched "App Store.app".
+    func sirenUserDidLaunchAppStore()
+
+    /// User did click on button that skips version update.
+    func sirenUserDidSkipVersion()
 }
 
 // MARK: - SirenDelegate Protocol Extension
 
 public extension SirenDelegate {
 
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType) {
-        printMessage()
-    }
-
-    func sirenUserDidLaunchAppStore() {
-        printMessage()
-    }
-
-    func sirenUserDidSkipVersion() {
-        printMessage()
-    }
-
-    func sirenUserDidCancel() {
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
         printMessage()
     }
 
@@ -81,11 +74,27 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType) {
         printMessage()
     }
 
     func sirenLatestVersionInstalled() {
+        printMessage()
+    }
+
+    func sirenUserDidCancel() {
+        printMessage()
+    }
+
+    func sirenUserDidLaunchAppStore() {
+        printMessage()
+    }
+
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel) {
+        printMessage()
+    }
+
+    func sirenUserDidSkipVersion() {
         printMessage()
     }
 

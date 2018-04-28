@@ -194,6 +194,8 @@ private extension Siren {
                 DispatchQueue.main.async { [weak self] in
                     self?.printMessage("Decoded JSON results: \(decodedData)")
 
+                    self?.delegate?.sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: decodedData)
+
                     // Process Results (e.g., extract current version that is available on the AppStore)
                     self?.processVersionCheck(with: decodedData)
                 }

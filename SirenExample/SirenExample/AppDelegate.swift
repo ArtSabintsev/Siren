@@ -102,6 +102,10 @@ extension AppDelegate: SirenDelegate
         print(#function, "Latest version of app is installed")
     }
 
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel) {
+        print(#function, "\(lookupModel)")
+    }
+
     // This delegate method is only hit when alertType is initialized to .none
     func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
         print(#function, "\(message).\nRelease type: \(updateType.rawValue.capitalized)")

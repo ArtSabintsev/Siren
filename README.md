@@ -214,7 +214,7 @@ If you would like to set a different type of alert for revision, patch, minor, a
 Six delegate methods allow you to handle or track the user's behavior. Each method has a default, empty implementation, effectively making each of these methods optional.
 
 ```	swift
-public protocol SirenDelegate: class {
+public protocol SirenDelegate: NSObjectProtocol {
 	/// Siren performed version check and did not display alert.
 	func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
 

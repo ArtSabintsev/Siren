@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SirenDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/SirenDelegate" class="dashAnchor"></a>
+    <a title="SirenDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SirenDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Siren.html">Siren</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Siren/AlertType.html">– AlertType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Siren/LanguageType.html">– LanguageType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/UpdateType.html">UpdateType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SirenDelegate.html">SirenDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/SirenAlertMessaging.html">SirenAlertMessaging</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SirenAlertMessaging/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SirenError.html">SirenError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SirenError/Known.html">– Known</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SirenDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SirenDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                </div>
+              </div>
+            <p>Delegate that handles all codepaths for Siren upon version check completion.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP24sirenDidShowUpdateDialogyA2AC9AlertTypeO05alertI0_tF"></a>
+                    <a name="//apple_ref/swift/Method/sirenDidShowUpdateDialog(alertType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP24sirenDidShowUpdateDialogyA2AC9AlertTypeO05alertI0_tF">sirenDidShowUpdateDialog(alertType:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>User presented with update dialog.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenDidShowUpdateDialog</span><span class="p">(</span><span class="nv">alertType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren.html">Siren</a></span><span class="o">.</span><span class="kt">AlertType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP26sirenUserDidLaunchAppStoreyyF"></a>
+                    <a name="//apple_ref/swift/Method/sirenUserDidLaunchAppStore()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP26sirenUserDidLaunchAppStoreyyF">sirenUserDidLaunchAppStore()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>User did click on button that launched <q>App Store.app</q>.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenUserDidLaunchAppStore</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP23sirenUserDidSkipVersionyyF"></a>
+                    <a name="//apple_ref/swift/Method/sirenUserDidSkipVersion()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP23sirenUserDidSkipVersionyyF">sirenUserDidSkipVersion()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>User did click on button that skips version update.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenUserDidSkipVersion</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP18sirenUserDidCancelyyF"></a>
+                    <a name="//apple_ref/swift/Method/sirenUserDidCancel()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP18sirenUserDidCancelyyF">sirenUserDidCancel()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>User did click on button that cancels update dialog.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenUserDidCancel</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP24sirenDidFailVersionCheckys5Error_p5error_tF"></a>
+                    <a name="//apple_ref/swift/Method/sirenDidFailVersionCheck(error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP24sirenDidFailVersionCheckys5Error_p5error_tF">sirenDidFailVersionCheck(error:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Siren failed to perform version check.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Depending on the reason for failure,
+a system-level error may be returned.
+
+</div>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenDidFailVersionCheck</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP36sirenDidDetectNewVersionWithoutAlertySS7message_AA10UpdateTypeO06updateL0tF"></a>
+                    <a name="//apple_ref/swift/Method/sirenDidDetectNewVersionWithoutAlert(message:updateType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP36sirenDidDetectNewVersionWithoutAlertySS7message_AA10UpdateTypeO06updateL0tF">sirenDidDetectNewVersionWithoutAlert(message:updateType:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Siren performed version check and did not display alert.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenDidDetectNewVersionWithoutAlert</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">updateType</span><span class="p">:</span> <span class="kt"><a href="../Enums/UpdateType.html">UpdateType</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren0A8DelegateP27sirenLatestVersionInstalledyyF"></a>
+                    <a name="//apple_ref/swift/Method/sirenLatestVersionInstalled()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren0A8DelegateP27sirenLatestVersionInstalledyyF">sirenLatestVersionInstalled()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Siren performed version check and latest version is installed.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sirenLatestVersionInstalled</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-04-27)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

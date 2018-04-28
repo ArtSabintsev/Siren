@@ -1,1 +1,4 @@
 docs/* linguist-vendored
+*.html linguist-language=Swift
+*.css linguist-language=Swift
+*.rb linguist-language=Swift

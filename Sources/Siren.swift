@@ -405,6 +405,11 @@ private extension Siren {
 // MARK: - Helpers (Localization)
 
 private extension Siren {
+    func localizedUpdateTitle() -> String {
+        let updateTitleToLocalize = alertMessaging.updateTitle
+        return Bundle.localizedString(forKey: updateTitleToLocalize, forceLanguageLocalization: forceLanguageLocalization)
+    }
+    
     func localizedNewVersionMessage() -> String {
         let newVersionMessageToLocalize = alertMessaging.updateMessage
         let newVersionMessage = Bundle.localizedString(forKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)

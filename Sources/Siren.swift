@@ -30,7 +30,7 @@ public final class Siren: NSObject {
     /// - sirenUserDidCancel()
     ///
     /// When a new version has been detected, and you would like to present a localized message in a custom UI. use this delegate method:
-    /// - sirenDidDetectNewVersionWithoutAlert(message: String)
+    /// - sirenDidDetectNewVersionWithoutAlert(title: String, message: String)
     public weak var delegate: SirenDelegate?
 
     /// The debug flag, which is disabled by default.
@@ -288,6 +288,7 @@ private extension Siren {
 
         let updateAvailableMessage = Bundle.localizedString(forKey: alertMessaging.updateTitle, forceLanguageLocalization: forceLanguageLocalization)
 
+        let updateTitle = localizedUpdateTitle()
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -307,7 +308,7 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .none:
-            delegate?.sirenDidDetectNewVersionWithoutAlert(message: newVersionMessage, updateType: updateType)
+            delegate?.sirenDidDetectNewVersionWithoutAlert(title: updateTitle, message: newVersionMessage, updateType: updateType)
         }
 
         if alertType != .none && !alertViewIsVisible {

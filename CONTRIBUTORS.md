@@ -50,6 +50,7 @@
 - [wbison](https://github.com/wbison) for [Pull Request #185 (Harpy)](https://github.com/ArtSabintsev/Harpy/pull/185)
 - [Balázs Vincze](https://github.com/vinczebalazs) for [Pull Request #200](https://github.com/ArtSabintsev/siren/pull/200)
 - [Txai Wieser](https://github.com/txaiwieser) for [Pull Request #201](https://github.com/ArtSabintsev/siren/pull/200)
+- [Gabriel Martelo](https://github.com/gabmarfer) for [Pull Request #214](https://github.com/ArtSabintsev/Siren/pull/214)
 
 
 ### Harpy Project Contributors

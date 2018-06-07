@@ -31,7 +31,7 @@ public enum UpdateType: String {
 
 /// Delegate that handles all codepaths for Siren upon version check completion.
 public protocol SirenDelegate: NSObjectProtocol {
-    /// Siren performed version check and did not display alert.
+    /// Siren performed a version check and did not display an alert.
     func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: UpdateType)
 
     /// Siren failed to perform version check.
@@ -41,10 +41,10 @@ public protocol SirenDelegate: NSObjectProtocol {
     ///     a system-level error may be returned.
     func sirenDidFailVersionCheck(error: Error)
 
-    /// User presented with update dialog.
+    /// User presented with an update dialog.
     func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
-    /// Siren performed a version check and latest version is installed.
+    /// Siren performed a version check and the latest version was already installed.
     func sirenLatestVersionInstalled()
 
     /// Provides the decoded JSON information from a successful version check call.

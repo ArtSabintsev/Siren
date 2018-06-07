@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.minorUpdateAlertType = .option
         siren.patchUpdateAlertType = .option
         siren.revisionUpdateAlertType = .option
-        
+
         // Optional - Sets all messages to appear in Russian. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .russian
 
@@ -108,6 +108,6 @@ extension AppDelegate: SirenDelegate
 
     // This delegate method is only hit when alertType is initialized to .none
     func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: UpdateType) {
-        print(#function, "\(message).\nRelease type: \(updateType.rawValue.capitalized)")
+        print(#function, "\n\(title)\n\(message).\nRelease type: \(updateType.rawValue.capitalized)")
     }
 }

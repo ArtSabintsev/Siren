@@ -288,7 +288,6 @@ private extension Siren {
 
         let updateAvailableMessage = Bundle.localizedString(forKey: alertMessaging.updateTitle, forceLanguageLocalization: forceLanguageLocalization)
 
-        let updateTitle = localizedUpdateTitle()
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -308,6 +307,7 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .none:
+            let updateTitle = localizedUpdateTitle()
             delegate?.sirenDidDetectNewVersionWithoutAlert(title: updateTitle, message: newVersionMessage, updateType: updateType)
         }
 
@@ -410,7 +410,7 @@ private extension Siren {
         let updateTitleToLocalize = alertMessaging.updateTitle
         return Bundle.localizedString(forKey: updateTitleToLocalize, forceLanguageLocalization: forceLanguageLocalization)
     }
-    
+
     func localizedNewVersionMessage() -> String {
         let newVersionMessageToLocalize = alertMessaging.updateMessage
         let newVersionMessage = Bundle.localizedString(forKey: newVersionMessageToLocalize, forceLanguageLocalization: forceLanguageLocalization)

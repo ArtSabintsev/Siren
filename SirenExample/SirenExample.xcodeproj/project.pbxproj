@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		55EC364B1E6BB98A00726F13 /* Siren.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EC36491E6BB98A00726F13 /* Siren.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		55EC364E1E6BB98A00726F13 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
-		55EC364F1E6BB98A00726F13 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
@@ -18,6 +16,7 @@
 		8E528A301E989A7A00B643C4 /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */; };
 		8E528A321E989E0A00B643C4 /* SirenTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */; };
 		8E5D15B11F3632D7001C0960 /* SirenLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D15B01F3632D7001C0960 /* SirenLog.swift */; };
+		8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
 		8E9C238B1E7CDB42000ED3DA /* SirenBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238A1E7CDB42000ED3DA /* SirenBundleExtension.swift */; };
 		8E9C238D1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238C1E7CDD31000ED3DA /* SirenUIAlertControllerExtension.swift */; };
 		8E9C238F1E7CDDE7000ED3DA /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C238E1E7CDDE7000ED3DA /* SirenViewController.swift */; };
@@ -31,13 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		55EC364C1E6BB98A00726F13 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8EC391791A58B465001C121E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 55EC36461E6BB98A00726F13;
-			remoteInfo = Siren;
-		};
 		8E3A6C091D07CB6F00A8B7CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8EC391791A58B465001C121E /* Project object */;
@@ -46,20 +38,6 @@
 			remoteInfo = "Sample App";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		558455D81C6690B4004BE492 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				55EC364F1E6BB98A00726F13 /* Siren.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		55EC36471E6BB98A00726F13 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC364E1E6BB98A00726F13 /* Siren.framework in Frameworks */,
+				8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +112,13 @@
 				55EC364A1E6BB98A00726F13 /* Info.plist */,
 			);
 			path = Siren;
+			sourceTree = "<group>";
+		};
+		8E641D2420C8B44B00908555 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8EACA9651F37F2D3003134CA /* SirenExample */ = {
@@ -164,6 +149,7 @@
 				8EACA9651F37F2D3003134CA /* SirenExample */,
 				8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */,
 				8EC391821A58B465001C121E /* Products */,
+				8E641D2420C8B44B00908555 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,12 +230,10 @@
 				8EC3917E1A58B465001C121E /* Frameworks */,
 				8EE3A3F81E6A0E470010BDCE /* SwiftLint */,
 				8EC3917F1A58B465001C121E /* Resources */,
-				558455D81C6690B4004BE492 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				55EC364D1E6BB98A00726F13 /* PBXTargetDependency */,
 			);
 			name = SirenExample;
 			productName = Siren;
@@ -279,7 +263,6 @@
 					};
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = HT94948NDD;
 						DevelopmentTeamName = "Arthur Sabintsev";
 						LastSwiftMigration = 0900;
 					};
@@ -389,11 +372,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		55EC364D1E6BB98A00726F13 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 55EC36461E6BB98A00726F13 /* Siren */;
-			targetProxy = 55EC364C1E6BB98A00726F13 /* PBXContainerItemProxy */;
-		};
 		8E3A6C0A1D07CB6F00A8B7CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8EC391801A58B465001C121E /* SirenExample */;
@@ -438,7 +416,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -469,7 +447,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -624,12 +602,12 @@
 		8EC391A11A58B466001C121E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -639,12 +617,12 @@
 		8EC391A21A58B466001C121E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
 				PRODUCT_NAME = SirenExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

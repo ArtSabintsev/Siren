@@ -123,7 +123,7 @@ github "ArtSabintsev/Siren", "swift2.3"
 
 Below is some commented sample code. Adapt this to meet your app's needs.
 
-For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/SirenExample/SirenExample/AppDelegate.swift in the Sample Project.
+For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift in the Sample Project.
 
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

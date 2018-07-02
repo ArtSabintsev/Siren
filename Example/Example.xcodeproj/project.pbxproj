@@ -45,7 +45,6 @@
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
-		8E04BE7920E9BD3C003237A0 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		8E2499BE1FD83DDF00F384BA /* SirenAlertMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenAlertMessaging.swift; path = ../../Sources/SirenAlertMessaging.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDateExtension.swift; path = ../../Sources/SirenDateExtension.swift; sourceTree = "<group>"; };
@@ -125,7 +124,6 @@
 		8EACA9651F37F2D3003134CA /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				8E04BE7920E9BD3C003237A0 /* Example.entitlements */,
 				8EACA9661F37F2D3003134CA /* AppDelegate.swift */,
 				8EACA96E1F37F2DD003134CA /* Supporting Files */,
 			);

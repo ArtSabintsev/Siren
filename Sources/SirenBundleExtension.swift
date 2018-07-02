@@ -11,22 +11,22 @@ import Foundation
 // MARK: - Bundle Extension for Siren
 
 extension Bundle {
-    class func bundleID() -> String? {
+    final class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier
     }
 
-    class func sirenBundlePath() -> String {
+    final class func sirenBundlePath() -> String {
         return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle")!
     }
 
-    class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
+    final class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
         let path = sirenBundlePath()
         let name = forceLanguageLocalization.rawValue
 
         return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
     }
 
-    class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+    final class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
         var path = sirenBundlePath()
         let table = "SirenLocalizable"
 
@@ -37,7 +37,7 @@ extension Bundle {
         return Bundle(path: path)!.localizedString(forKey: key, value: key, table: table)
     }
 
-    class func bestMatchingAppName() -> String {
+    final class func bestMatchingAppName() -> String {
         let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
         let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
 

@@ -20,6 +20,6 @@ extension UIAlertController {
         Siren.shared.updaterWindow = window
 
         window.makeKeyAndVisible()
-        window.rootViewController!.present(self, animated: true, completion: nil)
+        window.rootViewController?.present(self, animated: true, completion: nil)
     }
 }

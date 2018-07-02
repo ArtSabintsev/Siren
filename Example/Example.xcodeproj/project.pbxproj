@@ -45,8 +45,9 @@
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
+		8E04BE7920E9BD3C003237A0 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		8E2499BE1FD83DDF00F384BA /* SirenAlertMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenAlertMessaging.swift; path = ../../Sources/SirenAlertMessaging.swift; sourceTree = "<group>"; };
-		8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SirenExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E43D6221E8223EE00ECFFC8 /* SirenDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDateExtension.swift; path = ../../Sources/SirenDateExtension.swift; sourceTree = "<group>"; };
 		8E528A2F1E989A7A00B643C4 /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenDelegate.swift; path = ../../Sources/SirenDelegate.swift; sourceTree = "<group>"; };
 		8E528A311E989E0A00B643C4 /* SirenTestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenTestHelper.swift; path = ../../Sources/SirenTestHelper.swift; sourceTree = "<group>"; };
@@ -62,7 +63,7 @@
 		8EACA96D1F37F2D3003134CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EACA96F1F37F327003134CA /* SirenLookupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenLookupModel.swift; path = ../../Sources/SirenLookupModel.swift; sourceTree = "<group>"; };
 		8EACA9761F38113D003134CA /* SirenError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SirenError.swift; path = ../../Sources/SirenError.swift; sourceTree = "<group>"; };
-		8EC391811A58B465001C121E /* SirenExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SirenExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EC391811A58B465001C121E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,13 +122,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8EACA9651F37F2D3003134CA /* SirenExample */ = {
+		8EACA9651F37F2D3003134CA /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8E04BE7920E9BD3C003237A0 /* Example.entitlements */,
 				8EACA9661F37F2D3003134CA /* AppDelegate.swift */,
 				8EACA96E1F37F2DD003134CA /* Supporting Files */,
 			);
-			path = SirenExample;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		8EACA96E1F37F2DD003134CA /* Supporting Files */ = {
@@ -146,8 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				55EC36481E6BB98A00726F13 /* Siren */,
-				8EACA9651F37F2D3003134CA /* SirenExample */,
-				8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */,
+				8EACA9651F37F2D3003134CA /* Example */,
+				8EE6C74A1E6A0AE100DBE454 /* Tests */,
 				8EC391821A58B465001C121E /* Products */,
 				8E641D2420C8B44B00908555 /* Frameworks */,
 			);
@@ -156,20 +158,20 @@
 		8EC391821A58B465001C121E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EC391811A58B465001C121E /* SirenExample.app */,
-				8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */,
+				8EC391811A58B465001C121E /* Example.app */,
+				8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */,
 				55EC36471E6BB98A00726F13 /* Siren.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8EE6C74A1E6A0AE100DBE454 /* SirenExampleTests */ = {
+		8EE6C74A1E6A0AE100DBE454 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8EE6C74B1E6A0AE100DBE454 /* Info.plist */,
 				8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */,
 			);
-			path = SirenExampleTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,9 +206,9 @@
 			productReference = 55EC36471E6BB98A00726F13 /* Siren.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8E3A6C031D07CB6F00A8B7CF /* SirenExampleTests */ = {
+		8E3A6C031D07CB6F00A8B7CF /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "SirenExampleTests" */;
+			buildConfigurationList = 8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
 				8E3A6C001D07CB6F00A8B7CF /* Sources */,
 				8E3A6C011D07CB6F00A8B7CF /* Frameworks */,
@@ -217,14 +219,14 @@
 			dependencies = (
 				8E3A6C0A1D07CB6F00A8B7CF /* PBXTargetDependency */,
 			);
-			name = SirenExampleTests;
+			name = Tests;
 			productName = SirenTests;
-			productReference = 8E3A6C041D07CB6F00A8B7CF /* SirenExampleTests.xctest */;
+			productReference = 8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8EC391801A58B465001C121E /* SirenExample */ = {
+		8EC391801A58B465001C121E /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EC391A01A58B466001C121E /* Build configuration list for PBXNativeTarget "SirenExample" */;
+			buildConfigurationList = 8EC391A01A58B466001C121E /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				8EC3917D1A58B465001C121E /* Sources */,
 				8EC3917E1A58B465001C121E /* Frameworks */,
@@ -235,9 +237,9 @@
 			);
 			dependencies = (
 			);
-			name = SirenExample;
+			name = Example;
 			productName = Siren;
-			productReference = 8EC391811A58B465001C121E /* SirenExample.app */;
+			productReference = 8EC391811A58B465001C121E /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -263,12 +265,24 @@
 					};
 					8EC391801A58B465001C121E = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = UHP8ST8F8D;
 						DevelopmentTeamName = "Arthur Sabintsev";
 						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "SirenExample" */;
+			buildConfigurationList = 8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -281,8 +295,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EC391801A58B465001C121E /* SirenExample */,
-				8E3A6C031D07CB6F00A8B7CF /* SirenExampleTests */,
+				8EC391801A58B465001C121E /* Example */,
+				8E3A6C031D07CB6F00A8B7CF /* Tests */,
 				55EC36461E6BB98A00726F13 /* Siren */,
 			);
 		};
@@ -374,7 +388,7 @@
 /* Begin PBXTargetDependency section */
 		8E3A6C0A1D07CB6F00A8B7CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8EC391801A58B465001C121E /* SirenExample */;
+			target = 8EC391801A58B465001C121E /* Example */;
 			targetProxy = 8E3A6C091D07CB6F00A8B7CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -467,14 +481,14 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SirenExampleTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.SirenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SirenExample.app/SirenExample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
 		};
@@ -487,7 +501,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = SirenExampleTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sabintsev.SirenTests;
@@ -495,7 +509,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SirenExample.app/SirenExample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
 		};
@@ -603,12 +617,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
+				DEVELOPMENT_TEAM = UHP8ST8F8D;
+				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
-				PRODUCT_NAME = SirenExample;
+				PRODUCT_NAME = Example;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -618,12 +632,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/SirenExample/Supporting Files/Info.plist";
+				DEVELOPMENT_TEAM = UHP8ST8F8D;
+				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
-				PRODUCT_NAME = SirenExample;
+				PRODUCT_NAME = Example;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -642,7 +656,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "SirenExampleTests" */ = {
+		8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E3A6C0B1D07CB6F00A8B7CF /* Debug */,
@@ -651,7 +665,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "SirenExample" */ = {
+		8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EC3919E1A58B466001C121E /* Debug */,
@@ -660,7 +674,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EC391A01A58B466001C121E /* Build configuration list for PBXNativeTarget "SirenExample" */ = {
+		8EC391A01A58B466001C121E /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EC391A11A58B466001C121E /* Debug */,

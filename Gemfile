@@ -3,4 +3,4 @@ source "https://rubygems.org"
 
 gem "cocoapods"
 gem "jazzy"
-gem "rubgeyms-bundler"
+gem "rubygems-bundler"

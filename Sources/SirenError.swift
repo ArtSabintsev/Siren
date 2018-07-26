@@ -9,9 +9,20 @@
 import Foundation
 
 // MARK: - Siren Error Handling
-
 public struct SirenError: LocalizedError {
 
+   /// Enumerates all potentials errors that Siren can handle.
+   ///
+   /// - appStoreAppIDFailure: Error retrieving trackId as the JSON does not contain a 'trackId' key.
+   /// - appStoreDataRetrievalFailure: Error retrieving App Store data as an error was returned.
+   /// - appStoreJSONParsingFailure: Error parsing App Store JSON data.
+   /// - appStoreDataRetrievalEmptyResults: Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
+   /// - appStoreOSVersionNumberFailure: Error retrieving iOS version number as there was no data returned.
+   /// - appStoreOSVersionUnsupported: The version of iOS on the device is lower than that of the one required by the app verison update.
+   /// - appStoreVersionArrayFailure: Error retrieving App Store verson number as the JSON does not contain a 'version' key.
+   /// - malformedURL: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
+   /// - noUpdateAvailable: No new update available.
+   /// - recentlyCheckedAlready: Not checking the version, because it was already checked recently.
    public enum Known: Error {
         case appStoreAppIDFailure
         case appStoreDataRetrievalFailure(underlyingError: Error?)
@@ -47,7 +58,7 @@ public struct SirenError: LocalizedError {
             case .noUpdateAvailable:
                 return "No new update available."
             case .recentlyCheckedAlready:
-                return "Not checking the version, because it already checked recently."
+                return "Not checking the version, because it was already checked recently."
             }
         }
     }

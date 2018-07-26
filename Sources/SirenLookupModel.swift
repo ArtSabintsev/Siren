@@ -15,8 +15,10 @@ public struct SirenLookupModel: Decodable {
         case results
     }
 
+    /// The array of results objects from the iTunes Lookup API.
     public let results: [Results]
 
+    /// The Results object from the the iTunes Lookup API.
     public struct Results: Decodable {
         private enum CodingKeys: String, CodingKey {
             case appID = "trackId"
@@ -26,10 +28,19 @@ public struct SirenLookupModel: Decodable {
             case version
         }
 
+        /// The app's App ID.
         public let appID: Int
+
+        /// The release date for the latest verison of the app.
         public let currentVersionReleaseDate: String
+
+        /// The minimum verison of iOS that the current verison of the app requires.
         public let minimumOSVersion: String
+
+        /// The releases notes from the latest version of the app.
         public let releaseNotes: String?
+
+        /// The latest version of the app.
         public let version: String
     }
 }

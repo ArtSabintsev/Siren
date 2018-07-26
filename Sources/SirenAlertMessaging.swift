@@ -17,11 +17,22 @@ import Foundation
 /// As SirenAlertMessaging is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
 public struct SirenAlertMessaging {
 
+    /// The default constants used for the alert messaging.
     public struct Constants {
+
+        /// The button text that conveys the message that the user should be prompted to update next time the app launches.
         public static let nextTime = "Next time"
+
+        /// The text that conveys the message that the the user wants to skip this verison update.
         public static let skipVersion = "Skip this version"
+
+        /// The text that conveys the message that there is an app update available
         public static let updateMessage = "A new version of %@ is available. Please update to version %@ now."
+
+        /// The alert title which defaults to *Update Available*.
         public static let updateTitle = "Update Available"
+
+        /// The button text that conveys the message that the user would like to update the app right away.
         public static let updateNow = "Update"
     }
 

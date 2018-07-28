@@ -12,4 +12,4 @@ before_install:
   - brew update
 script:
   - set -o pipefail
-  - xcodebuild -project Example/Example.xcodeproj -scheme Example -sdk iphonesimulator -configuration Debug build test | xcpretty -c
+  - xcodebuild -project Example/Example.xcodeproj -scheme Example -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4.1' -configuration Debug build test | xcpretty -c

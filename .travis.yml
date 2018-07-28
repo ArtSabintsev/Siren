@@ -12,4 +12,4 @@ before_install:
   - brew update
 script:
   - set -o pipefail
-  - xcodebuild -project Example/Example.xcodeproj -scheme Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+  - xcodebuild -project Example/Example.xcodeproj -scheme Example -sdk iphonesimulator -configuration Debug build test ONLY_ACTIVE_ARCH=NO | xcpretty -c

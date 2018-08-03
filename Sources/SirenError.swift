@@ -16,7 +16,7 @@ public struct SirenError: LocalizedError {
    /// - appStoreAppIDFailure: Error retrieving trackId as the JSON does not contain a 'trackId' key.
    /// - appStoreDataRetrievalFailure: Error retrieving App Store data as an error was returned.
    /// - appStoreJSONParsingFailure: Error parsing App Store JSON data.
-   /// - appStoreDataRetrievalEmptyResults: Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
+   /// - appStoreDataRetrievalEmptyResults: Error retrieving App Store data as the JSON was empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
    /// - appStoreOSVersionNumberFailure: Error retrieving iOS version number as there was no data returned.
    /// - appStoreOSVersionUnsupported: The version of iOS on the device is lower than that of the one required by the app verison update.
    /// - appStoreVersionArrayFailure: Error retrieving App Store verson number as the JSON does not contain a 'version' key.

@@ -160,7 +160,8 @@ func applicationDidBecomeActive(application: UIApplication) {
 	/*
 	    Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
 	    Useful if user returns to your app from the background after extended period of time.
-    	 Place in applicationDidBecomeActive(_:).	*/
+    	    Place in applicationDidBecomeActive(_:).
+	 */
 
     Siren.shared.checkVersion(checkType: .daily)
 }

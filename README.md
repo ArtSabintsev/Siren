@@ -65,55 +65,28 @@ If a new version is available, an alert can be presented to the user informing t
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 4.2  | swift4.2 | **Yes**
-| 4.1  | master   | **Yes**
+| 4.2  | master | **Yes**
+| 4.1  | swift4.1 | No
 | 3.2  | swift3.2 | No
 | 3.1  | swift3.1 | No
 | 2.3  | swift2.3 | No  
 
 ### CocoaPods
-For Swift 4.1 support:
 ```ruby
 pod 'Siren'
-```
-
-For Swift 3.2 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2'
-```
-
-For Swift 3.1 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1'
-```
-
-For Swift 2.3 support:
-```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1' # Swift 3.1
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' # Swift 2.3
 ```
 
 ### Carthage
-For Swift 4.1 support:
 ```swift
-github "ArtSabintsev/Siren"
-```
-
-For Swift 3.2 support:
-
-```swift
-github "ArtSabintsev/Siren", "swift3.2"
-```
-
-For Swift 3.1 support:
-
-```swift
-github "ArtSabintsev/Siren", "swift3.1"
-```
-
-For Swift 2.3 support:
-
-```ruby
-github "ArtSabintsev/Siren", "swift2.3"
+github "ArtSabintsev/Siren" // Swift 4.2
+github "ArtSabintsev/Siren", "swift4.1" // Swift 4.1
+github "ArtSabintsev/Siren", "swift3.2" // Swift 3.2
+github "ArtSabintsev/Siren", "swift3.1" // Swift 3.1
+github "ArtSabintsev/Siren", "swift2.3" // Swift 2.3
 ```
 
 ### Swift Package Manager

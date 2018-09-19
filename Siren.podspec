@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   # Version
-  s.version       = "3.5.0"
+  s.version       = "3.5.1"
   s.swift_version = '4.2'
 
   # Meta

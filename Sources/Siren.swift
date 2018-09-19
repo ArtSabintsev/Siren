@@ -325,14 +325,14 @@ private extension Siren {
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
 
-            strongSelf.hideWindow()
-            strongSelf.launchAppStore()
-            strongSelf.delegate?.sirenUserDidLaunchAppStore()
-            strongSelf.alertViewIsVisible = false
+            self.hideWindow()
+            self.launchAppStore()
+            self.delegate?.sirenUserDidLaunchAppStore()
+            self.alertViewIsVisible = false
             return
         }
 
@@ -342,13 +342,13 @@ private extension Siren {
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _  in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
 
-            strongSelf.hideWindow()
-            strongSelf.delegate?.sirenUserDidCancel()
-            strongSelf.alertViewIsVisible = false
+            self.hideWindow()
+            self.delegate?.sirenUserDidCancel()
+            self.alertViewIsVisible = false
             return
         }
 
@@ -358,18 +358,18 @@ private extension Siren {
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
 
-            if let currentAppStoreVersion = strongSelf.currentAppStoreVersion {
+            if let currentAppStoreVersion = self.currentAppStoreVersion {
                 UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenDefaults.StoredSkippedVersion.rawValue)
                 UserDefaults.standard.synchronize()
             }
 
-            strongSelf.hideWindow()
-            strongSelf.delegate?.sirenUserDidSkipVersion()
-            strongSelf.alertViewIsVisible = false
+            self.hideWindow()
+            self.delegate?.sirenUserDidSkipVersion()
+            self.alertViewIsVisible = false
             return
         }
 
@@ -586,7 +586,6 @@ public extension Siren {
 // MARK: - Enumerated Types (Private)
 
 private extension Siren {
-
     /// Siren-specific UserDefaults Keys
     enum SirenDefaults: String {
         /// Key that stores the timestamp of the last version check in UserDefaults
@@ -595,7 +594,6 @@ private extension Siren {
         /// Key that stores the version that a user decided to skip in UserDefaults.
         case StoredSkippedVersion
     }
-
 }
 
 // MARK: - Error Handling

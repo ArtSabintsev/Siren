@@ -73,7 +73,7 @@ If a new version is available, an alert can be presented to the user informing t
 
 ### CocoaPods
 ```ruby
-pod 'Siren'
+pod 'Siren' # Swift 4.2
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1' # Swift 3.1

@@ -61,5 +61,4 @@ public struct SirenAlertMessaging {
         self.updateMessage = message
         self.skipVersionButtonMessage = skipVersionButtonMessage
     }
-
 }

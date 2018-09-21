@@ -161,13 +161,11 @@ public final class Siren: NSObject {
             }
         }
     }
-
 }
 
 // MARK: - Helpers (Networking)
 
 private extension Siren {
-
     func performVersionCheck() {
         do {
             let url = try iTunesURLFromString()

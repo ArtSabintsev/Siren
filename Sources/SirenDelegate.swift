@@ -42,6 +42,8 @@ public protocol SirenDelegate: NSObjectProtocol {
     func sirenDidFailVersionCheck(error: Error)
 
     /// User presented with an update dialog.
+    ///
+    /// - Parameter alertType: The type of alert that was presented.
     func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
     /// Siren performed a version check and the latest version was already installed.

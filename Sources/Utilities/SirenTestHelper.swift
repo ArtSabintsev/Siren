@@ -18,8 +18,4 @@ extension Siren {
     func testSetAppStoreVersion(version: String) {
         currentAppStoreVersion = version
     }
-
-    func testIsAppStoreVersionNewer() -> Bool {
-        return isAppStoreVersionNewer()
-    }
 }

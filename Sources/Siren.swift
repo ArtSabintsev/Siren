@@ -166,7 +166,7 @@ public final class Siren: NSObject {
     }
 }
 
-// MARK: - Helpers (Networking)
+// MARK: - Networking
 
 private extension Siren {
     func performVersionCheck() {
@@ -271,7 +271,7 @@ private extension Siren {
     }
 }
 
-// MARK: - Helpers (Alert)
+// MARK: - Alert
 
 private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {

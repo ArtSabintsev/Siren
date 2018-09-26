@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Helpers (Version)
+// MARK: - Version
 
 extension Siren {
     func isAppStoreVersionNewer() -> Bool {
@@ -33,7 +33,7 @@ extension Siren {
     }
 }
 
-// MARK: - Helpers (Misc.)
+// MARK: - Miscellaneous
 
 extension Siren {
     func isUpdateCompatibleWithDeviceOS(for model: SirenLookupModel) -> Bool {
@@ -67,5 +67,17 @@ extension Siren {
         if debugEnabled {
             SirenLog(message)
         }
+    }
+}
+
+// MARK: - Test Target
+
+extension Siren {
+    func testSetCurrentInstalledVersion(version: String) {
+        currentInstalledVersion = version
+    }
+
+    func testSetAppStoreVersion(version: String) {
+        currentAppStoreVersion = version
     }
 }

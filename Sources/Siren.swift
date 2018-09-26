@@ -173,7 +173,7 @@ private extension Siren {
             URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
                 self?.processResults(withData: data, response: response, error: error)
             }).resume()
-        } catch _ {
+        } catch {
             postError(.malformedURL)
         }
     }
@@ -194,14 +194,13 @@ private extension Siren {
                 }
 
                 DispatchQueue.main.async { [weak self] in
-                    self?.printMessage("Decoded JSON results: \(decodedData)")
+                    guard let self = self else { return }
 
-                    self?.delegate?.sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: decodedData)
-
-                    // Process Results (e.g., extract current version that is available on the AppStore)
-                    self?.processVersionCheck(with: decodedData)
+                    self.printMessage("Decoded JSON results: \(decodedData)")
+                    self.delegate?.sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: decodedData)
+                    self.processVersionCheck(with: decodedData)
                 }
-            } catch let error as NSError {
+            } catch {
                 postError(.appStoreJSONParsingFailure(underlyingError: error))
             }
         }
@@ -288,9 +287,7 @@ private extension Siren {
     func showAlert() {
         storeVersionCheckDate()
 
-        let updateAvailableMessage = Bundle.localizedString(forKey: alertMessaging.updateTitle.string,
-                                                            forceLanguageLocalization: forceLanguageLocalization)
-
+        let updateAvailableMessage = localizedUpdateAvailableMessage()
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
@@ -324,9 +321,7 @@ private extension Siren {
     func updateAlertAction() -> UIAlertAction {
         let title = localizedUpdateButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
 
             self.hideWindow()
             self.launchAppStore()
@@ -341,9 +336,7 @@ private extension Siren {
     func nextTimeAlertAction() -> UIAlertAction {
         let title = localizedNextTimeButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _  in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
 
             self.hideWindow()
             self.delegate?.sirenUserDidCancel()
@@ -357,9 +350,7 @@ private extension Siren {
     func skipAlertAction() -> UIAlertAction {
         let title = localizedSkipButtonTitle()
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            guard let self = self else {
-                return
-            }
+            guard let self = self else { return }
 
             if let currentAppStoreVersion = self.currentAppStoreVersion {
                 UserDefaults.standard.set(currentAppStoreVersion, forKey: SirenDefaults.StoredSkippedVersion.rawValue)
@@ -403,41 +394,6 @@ private extension Siren {
         }
 
         return alertType
-    }
-}
-
-// MARK: - Helpers (Localization)
-
-private extension Siren {
-    func localizedUpdateTitle() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.updateTitle.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
-    }
-
-    func localizedNewVersionMessage() -> String {
-        let newVersionMessage = Bundle.localizedString(forKey: alertMessaging.updateMessage.string,
-                                                       forceLanguageLocalization: forceLanguageLocalization)
-
-        guard let currentAppStoreVersion = currentAppStoreVersion else {
-            return String(format: newVersionMessage, appName, "Unknown")
-        }
-
-        return String(format: newVersionMessage, appName, currentAppStoreVersion)
-    }
-
-    func localizedUpdateButtonTitle() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.updateButtonMessage.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
-    }
-
-    func localizedNextTimeButtonTitle() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.nextTimeButtonMessage.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
-    }
-
-    func localizedSkipButtonTitle() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.skipVersionButtonMessage.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
     }
 }
 

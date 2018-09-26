@@ -94,11 +94,5 @@ public extension Siren {
 
 extension Siren {
     /// Siren-specific UserDefaults Keys
-    enum SirenDefaults: String {
-        /// Key that stores the timestamp of the last version check in UserDefaults
-        case StoredVersionCheckDate
 
-        /// Key that stores the version that a user decided to skip in UserDefaults.
-        case StoredSkippedVersion
-    }
 }

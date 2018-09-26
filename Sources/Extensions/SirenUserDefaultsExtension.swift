@@ -23,4 +23,8 @@ extension UserDefaults {
         /// Key that stores the version that a user decided to skip in UserDefaults.
         case StoredSkippedVersion
     }
+
+    static var shouldPerformVersionCheckOnSubsequentLaunch: Bool {
+        return standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+    }
 }

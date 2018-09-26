@@ -130,10 +130,11 @@ public final class Siren: NSObject {
             return
         }
 
-        if checkType == .immediately {
-            performVersionCheck()
-        } else if UserDefaults.standard.bool(forKey: UserDefaults.SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue) {
-            UserDefaults.standard.set(false, forKey: UserDefaults.SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+        if checkType == .immediately || UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
+            if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
+                 UserDefaults.standard.set(false, forKey: UserDefaults.SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+            }
+
             performVersionCheck()
         } else {
             guard let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate else {

@@ -95,9 +95,12 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
 
-    internal var updaterWindow: UIWindow?
+    /// The `UIWindow` instance that presents the `SirenAlertViewController`.
+    var updaterWindow: UIWindow?
+
+    var lastVersionCheckPerformedOnDate: Date?
+
     fileprivate var appID: Int?
-    fileprivate var lastVersionCheckPerformedOnDate: Date?
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update
@@ -394,171 +397,5 @@ private extension Siren {
         }
 
         return alertType
-    }
-}
-
-// MARK: - Helpers (Version)
-
-extension Siren {
-    func isAppStoreVersionNewer() -> Bool {
-        var newVersionExists = false
-
-        if let currentInstalledVersion = currentInstalledVersion,
-            let currentAppStoreVersion = currentAppStoreVersion,
-            (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) {
-
-            newVersionExists = true
-        }
-
-        return newVersionExists
-    }
-
-    fileprivate func storeVersionCheckDate() {
-        lastVersionCheckPerformedOnDate = Date()
-        if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-            UserDefaults.standard.set(lastVersionCheckPerformedOnDate, forKey: SirenDefaults.StoredVersionCheckDate.rawValue)
-            UserDefaults.standard.synchronize()
-        }
-    }
-}
-
-// MARK: - Helpers (Misc.)
-
-private extension Siren {
-    func isUpdateCompatibleWithDeviceOS(for model: SirenLookupModel) -> Bool {
-        guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
-                postError(.appStoreOSVersionNumberFailure)
-                return false
-        }
-
-        let systemVersion = UIDevice.current.systemVersion
-
-        guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
-            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
-            postError(.appStoreOSVersionUnsupported)
-            return false
-        }
-
-        return true
-    }
-
-    func hideWindow() {
-        if let updaterWindow = updaterWindow {
-            updaterWindow.isHidden = true
-            self.updaterWindow = nil
-        }
-    }
-
-    /// Routes a console-bound message to the `SirenLog` struct, which decorates the log message.
-    ///
-    /// - Parameter message: The message to decorate and log to the console.
-    func printMessage(_ message: String) {
-        if debugEnabled {
-            SirenLog(message)
-        }
-    }
-}
-
-// MARK: - Enumerated Types (Public)
-
-public extension Siren {
-    /// Determines the type of alert to present after a successful version check has been performed.
-    enum AlertType {
-        /// Forces user to update your app (1 button alert).
-        case force
-
-        /// (DEFAULT) Presents user with option to update app now or at next launch (2 button alert).
-        case option
-
-        /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
-        case skip
-
-        /// Doesn't show the alert, but instead returns a localized message 
-        /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
-        case none
-    }
-
-    /// Determines the frequency in which the the version check is performed and the user is prompted to update the app.
-    ///
-    enum VersionCheckType: Int {
-        /// Version check performed every time the app is launched.
-        case immediately = 0
-
-        /// Version check performed once a day.
-        case daily = 1
-
-        /// Version check performed once a week.
-        case weekly = 7
-    }
-
-    /// Determines the available languages in which the update message and alert button titles should appear.
-    ///
-    /// By default, the operating system's default lanuage setting is used. However, you can force a specific language
-    /// by setting the forceLanguageLocalization property before calling checkVersion()
-    enum LanguageType: String {
-        case arabic = "ar"
-        case armenian = "hy"
-        case basque = "eu"
-        case chineseSimplified = "zh-Hans"
-        case chineseTraditional = "zh-Hant"
-        case croatian = "hr"
-        case czech = "cs"
-        case danish = "da"
-        case dutch = "nl"
-        case english = "en"
-        case estonian = "et"
-        case finnish = "fi"
-        case french = "fr"
-        case german = "de"
-        case greek = "el"
-        case hebrew = "he"
-        case hungarian = "hu"
-        case indonesian = "id"
-        case italian = "it"
-        case japanese = "ja"
-        case korean = "ko"
-        case latvian = "lv"
-        case lithuanian = "lt"
-        case malay = "ms"
-        case norwegian = "nb-NO"
-        case persian = "fa"
-        case persianAfghanistan = "fa-AF"
-        case persianIran = "fa-IR"
-        case polish = "pl"
-        case portugueseBrazil = "pt"
-        case portuguesePortugal = "pt-PT"
-        case russian = "ru"
-        case serbianCyrillic = "sr-Cyrl"
-        case serbianLatin = "sr-Latn"
-        case slovenian = "sl"
-        case spanish = "es"
-        case swedish = "sv"
-        case thai = "th"
-        case turkish = "tr"
-        case urdu = "ur"
-        case ukrainian = "uk"
-        case vietnamese = "vi"
-    }
-}
-
-// MARK: - Enumerated Types (Private)
-
-private extension Siren {
-    /// Siren-specific UserDefaults Keys
-    enum SirenDefaults: String {
-        /// Key that stores the timestamp of the last version check in UserDefaults
-        case StoredVersionCheckDate
-
-        /// Key that stores the version that a user decided to skip in UserDefaults.
-        case StoredSkippedVersion
-    }
-}
-
-// MARK: - Error Handling
-
-private extension Siren {
-    func postError(_ error: SirenError.Known) {
-        delegate?.sirenDidFailVersionCheck(error: error)
-        printMessage(error.localizedDescription)
     }
 }

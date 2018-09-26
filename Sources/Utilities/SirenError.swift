@@ -63,3 +63,12 @@ public struct SirenError: LocalizedError {
         }
     }
 }
+
+// MARK: - Error Handling
+
+extension Siren {
+    func postError(_ error: SirenError.Known) {
+        delegate?.sirenDidFailVersionCheck(error: error)
+        printMessage(error.localizedDescription)
+    }
+}

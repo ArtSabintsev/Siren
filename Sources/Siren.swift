@@ -113,7 +113,7 @@ public final class Siren: NSObject {
     public static let sharedInstance = Siren()
 
     override init() {
-        lastVersionCheckPerformedOnDate = UserDefaults.standard.object(forKey: UserDefaults.SirenKeys.StoredVersionCheckDate.rawValue) as? Date
+        lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -130,11 +130,10 @@ public final class Siren: NSObject {
             return
         }
 
-        if checkType == .immediately || UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
-            if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
-                 UserDefaults.standard.set(false, forKey: UserDefaults.SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
-            }
-
+        if checkType == .immediately {
+            performVersionCheck()
+        } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
+            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
             performVersionCheck()
         } else {
             guard let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate else {
@@ -281,7 +280,7 @@ private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
         alertType = setAlertType()
 
-        guard let previouslySkippedVersion = UserDefaults.standard.object(forKey: UserDefaults.SirenKeys.StoredSkippedVersion.rawValue) as? String else {
+        guard let previouslySkippedVersion = UserDefaults.storedSkippedVersion else {
             showAlert()
             return
         }
@@ -348,7 +347,7 @@ private extension Siren {
             self.hideWindow()
             self.delegate?.sirenUserDidCancel()
             self.alertViewIsVisible = false
-            UserDefaults.standard.set(true, forKey: UserDefaults.SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
             return
         }
 
@@ -361,7 +360,7 @@ private extension Siren {
             guard let self = self else { return }
 
             if let currentAppStoreVersion = self.currentAppStoreVersion {
-                UserDefaults.standard.set(currentAppStoreVersion, forKey: UserDefaults.SirenKeys.StoredSkippedVersion.rawValue)
+                UserDefaults.storedSkippedVersion = currentAppStoreVersion
                 UserDefaults.standard.synchronize()
             }
 

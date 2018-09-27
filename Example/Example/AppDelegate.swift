@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        Siren.shared.checkVersion(checkType: .immediately)
+        Siren.shared.checkVersion(checkType: .daily)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

@@ -8,23 +8,44 @@
 
 import Foundation
 
+/// Siren-specific UserDefaults Keys
+private enum SirenKeys: String {
+    /// Keey that notifies Siren to perform a version check and present
+    /// the Siren alert the next time the user launches the app.
+    case PerformVersionCheckOnSubsequentLaunch
+
+    /// Key that stores the timestamp of the last version check in UserDefaults.
+    case StoredVersionCheckDate
+
+    /// Key that stores the version that a user decided to skip in UserDefaults.
+    case StoredSkippedVersion
+}
+
 // MARK: - UserDefaults Extension for Siren
 
 extension UserDefaults {
-    /// Siren-specific UserDefaults Keys
-    enum SirenKeys: String {
-        /// Keey that notifies Siren to perform a version check and present
-        /// the Siren alert the next time the user launches the app.
-        case PerformVersionCheckOnSubsequentLaunch
-
-        /// Key that stores the timestamp of the last version check in UserDefaults.
-        case StoredVersionCheckDate
-
-        /// Key that stores the version that a user decided to skip in UserDefaults.
-        case StoredSkippedVersion
+    static var shouldPerformVersionCheckOnSubsequentLaunch: Bool {
+        get {
+            print(#function, standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue))
+            return standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+        } set {
+            standard.set(newValue, forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+        }
     }
 
-    static var shouldPerformVersionCheckOnSubsequentLaunch: Bool {
-        return standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
+    static var storedSkippedVersion: String? {
+        get {
+            return standard.string(forKey: SirenKeys.StoredSkippedVersion.rawValue)
+        } set {
+            standard.set(newValue, forKey: SirenKeys.StoredSkippedVersion.rawValue)
+        }
+    }
+
+    static var storedVersionCheckDate: Date? {
+        get {
+            return standard.object(forKey: SirenKeys.StoredVersionCheckDate.rawValue) as? Date
+        } set {
+            standard.set(newValue, forKey: SirenKeys.StoredVersionCheckDate.rawValue)
+        }
     }
 }

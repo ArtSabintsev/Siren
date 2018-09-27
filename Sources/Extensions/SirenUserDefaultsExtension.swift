@@ -10,7 +10,7 @@ import Foundation
 
 /// Siren-specific UserDefaults Keys
 private enum SirenKeys: String {
-    /// Keey that notifies Siren to perform a version check and present
+    /// Key that notifies Siren to perform a version check and present
     /// the Siren alert the next time the user launches the app.
     case PerformVersionCheckOnSubsequentLaunch
 

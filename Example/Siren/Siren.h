@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double SirenVersionNumber;
 FOUNDATION_EXPORT const unsigned char SirenVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Siren/PublicHeader.h>
-
-

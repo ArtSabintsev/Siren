@@ -15,26 +15,27 @@ extension Bundle {
         return Bundle.main.bundleIdentifier
     }
 
-    final class func sirenBundlePath() -> String {
-        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle")!
+    final class func sirenBundlePath() -> String? {
+        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle")
     }
 
-    final class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String {
-        let path = sirenBundlePath()
+    final class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String? {
+        guard let path = sirenBundlePath() else { return nil }
         let name = forceLanguageLocalization.rawValue
 
-        return Bundle(path: path)!.path(forResource: name, ofType: "lproj")!
+        return Bundle(path: path)?.path(forResource: name, ofType: "lproj")
     }
 
-    final class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
-        var path = sirenBundlePath()
+    final class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String? {
+        guard var path = sirenBundlePath() else { return nil }
         let table = "SirenLocalizable"
 
-        if let forceLanguageLocalization = forceLanguageLocalization {
-            path = sirenForcedBundlePath(forceLanguageLocalization: forceLanguageLocalization)
+        if let forceLanguageLocalization = forceLanguageLocalization,
+            let forcedPath = sirenForcedBundlePath(forceLanguageLocalization: forceLanguageLocalization) {
+            path = forcedPath
         }
 
-        return Bundle(path: path)!.localizedString(forKey: key, value: key, table: table)
+        return Bundle(path: path)?.localizedString(forKey: key, value: key, table: table)
     }
 
     final class func bestMatchingAppName() -> String {
@@ -48,7 +49,7 @@ extension Bundle {
 // MARK: - Bundle Extension for Testing Siren
 
 extension Bundle {
-    func testLocalizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String {
+    func testLocalizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String? {
         return Bundle.localizedString(forKey: key, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

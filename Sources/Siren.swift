@@ -293,7 +293,7 @@ private extension Siren {
     func showAlert() {
         storeVersionCheckDate()
 
-        let updateAvailableMessage = localizedUpdateAvailableMessage()
+        let updateAvailableMessage = localizedUpdateTitle()
         let newVersionMessage = localizedNewVersionMessage()
 
         let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)

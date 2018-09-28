@@ -11,19 +11,15 @@ import Foundation
 // MARK: - Helpers (Localization)
 
 extension Siren {
-    func localizedUpdateAvailableMessage() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.updateTitle.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
-    }
-
     func localizedUpdateTitle() -> String {
-        return Bundle.localizedString(forKey: alertMessaging.updateTitle.string,
-                                      forceLanguageLocalization: forceLanguageLocalization)
+        return Bundle.localizedString(forKey: alertMessaging.updateTitle.string, forceLanguageLocalization: forceLanguageLocalization)
+            ?? alertMessaging.updateTitle.string
     }
 
     func localizedNewVersionMessage() -> String {
         let newVersionMessage = Bundle.localizedString(forKey: alertMessaging.updateMessage.string,
                                                        forceLanguageLocalization: forceLanguageLocalization)
+            ?? alertMessaging.updateMessage.string
 
         guard let currentAppStoreVersion = currentAppStoreVersion else {
             return String(format: newVersionMessage, appName, "Unknown")
@@ -32,18 +28,21 @@ extension Siren {
         return String(format: newVersionMessage, appName, currentAppStoreVersion)
     }
 
-    func localizedUpdateButtonTitle() -> String {
+    func localizedUpdateButtonTitle() -> String? {
         return Bundle.localizedString(forKey: alertMessaging.updateButtonMessage.string,
                                       forceLanguageLocalization: forceLanguageLocalization)
+            ?? alertMessaging.updateButtonMessage.string
     }
 
-    func localizedNextTimeButtonTitle() -> String {
+    func localizedNextTimeButtonTitle() -> String? {
         return Bundle.localizedString(forKey: alertMessaging.nextTimeButtonMessage.string,
                                       forceLanguageLocalization: forceLanguageLocalization)
+            ?? alertMessaging.nextTimeButtonMessage.string
     }
 
-    func localizedSkipButtonTitle() -> String {
+    func localizedSkipButtonTitle() -> String? {
         return Bundle.localizedString(forKey: alertMessaging.skipVersionButtonMessage.string,
                                       forceLanguageLocalization: forceLanguageLocalization)
+            ?? alertMessaging.skipVersionButtonMessage.string
     }
 }

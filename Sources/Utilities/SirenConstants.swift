@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Enumerated Types (Public)
+// MARK: - Enumerated Types
 
 public extension Siren {
     /// Determines the type of alert to present after a successful version check has been performed.
@@ -88,11 +88,4 @@ public extension Siren {
         case ukrainian = "uk"
         case vietnamese = "vi"
     }
-}
-
-// MARK: - Enumerated Types (Internal)
-
-extension Siren {
-    /// Siren-specific UserDefaults Keys
-
 }

@@ -45,7 +45,7 @@
 /* Begin PBXFileReference section */
 		55EC36471E6BB98A00726F13 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55EC36491E6BB98A00726F13 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
-		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Siren/Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
 		8E171DCD215B26B4006FBBCC /* SirenError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenError.swift; sourceTree = "<group>"; };
@@ -102,15 +102,14 @@
 		55EC36481E6BB98A00726F13 /* Siren */ = {
 			isa = PBXGroup;
 			children = (
-				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
+				55EC36491E6BB98A00726F13 /* Siren.h */,
 				55EC365F1E6BB99B00726F13 /* Siren.swift */,
+				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
 				8E171DD0215B26B4006FBBCC /* Extensions */,
 				8E171DD5215B26B4006FBBCC /* Models */,
 				8E171DD3215B26B4006FBBCC /* Protocols */,
 				8E171DCC215B26B4006FBBCC /* Utilities */,
 				8E171DD9215B26B4006FBBCC /* View Controllers */,
-				55EC36491E6BB98A00726F13 /* Siren.h */,
-				55EC364A1E6BB98A00726F13 /* Info.plist */,
 			);
 			path = Siren;
 			sourceTree = "<group>";
@@ -192,6 +191,7 @@
 				8EACA96B1F37F2D3003134CA /* Images.xcassets */,
 				8EACA96C1F37F2D3003134CA /* Info.plist */,
 				8EACA96D1F37F2D3003134CA /* ViewController.swift */,
+				55EC364A1E6BB98A00726F13 /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";

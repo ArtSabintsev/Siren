@@ -91,9 +91,9 @@
             <h1 id='siren' class='heading'>Siren 🚨</h1>
 <h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='heading'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
 
-<p><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></p>
+<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a></p>
 
-<p><img src="https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.1-orange.svg" alt="Swift Support"> <img src="https://github.com/ArtSabintsev/Siren/blob/master/Documentation/badge.svg" alt="Documentation"></p>
+<p><img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"></p>
 
 <p><a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
@@ -170,9 +170,14 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>4.1</td>
+<td>4.2</td>
 <td>master</td>
 <td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>swift4.1</td>
+<td>No</td>
 </tr>
 <tr>
 <td>3.2</td>
@@ -191,38 +196,18 @@
 </tr>
 </tbody></table>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
-
-<p>For Swift 4.1 support:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span>
-</code></pre>
-
-<p>For Swift 3.2 support:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.2'</span>
-</code></pre>
-
-<p>For Swift 3.1 support:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.1'</span>
-</code></pre>
-
-<p>For Swift 2.3 support:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift2.3'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span> <span class="c1"># Swift 4.2</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift4.1'</span> <span class="c1"># Swift 4.1</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.2'</span> <span class="c1"># Swift 3.2</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.1'</span> <span class="c1"># Swift 3.1</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift2.3'</span> <span class="c1"># Swift 2.3</span>
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
-
-<p>For Swift 4.1 support:</p>
-<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span>
-</code></pre>
-
-<p>For Swift 3.2 support:</p>
-<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.2"</span>
-</code></pre>
-
-<p>For Swift 3.1 support:</p>
-<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.1"</span>
-</code></pre>
-
-<p>For Swift 2.3 support:</p>
-<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s2">"swift2.3"</span>
+<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="c1">// Swift 4.2</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift4.1"</span> <span class="c1">// Swift 4.1</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.2"</span> <span class="c1">// Swift 3.2</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.1"</span> <span class="c1">// Swift 3.1</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift2.3"</span> <span class="c1">// Swift 2.3</span>
 </code></pre>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 <pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
@@ -235,26 +220,27 @@
 <pre class="highlight plaintext"><code>func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
     /* Siren code should go below window?.makeKeyAndVisible() */
 
-      // Siren is a singleton
-      let siren = Siren.shared
+    // Siren is a singleton
+    let siren = Siren.shared
 
-      // Optional: Defaults to .option
-      siren.alertType = &lt;#Siren.AlertType_Enum_Value#&gt;
+    // Optional: Defaults to .option
+    siren.alertType = &lt;#Siren.AlertType_Enum_Value#&gt;
 
-      // Optional: Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
-      siren.alertMessaging = SirenAlertMessaging(updateTitle: "New Fancy Title",
-                                                 updateMessage: "New message goes here!",
-                                                 updateButtonMessage: "Update Now, Plz!?",
-                                                 nextTimeButtonMessage: "OK, next time it is!",
-                                                 skipVersionButtonMessage: "Please don't push skip, please don't!")
+    // Optional: Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
+    siren.alertMessaging = SirenAlertMessaging(updateTitle: NSAttributedString(string: "New Fancy Title"),
+                                                updateMessage: NSAttributedString(string: "New message goes here!"),
+                                                updateButtonMessage: NSAttributedString(string: "Update Now, Plz!?"),
+                                                nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
+                                                skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
 
-      // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
-      // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
-      // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
-      siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
-      // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
-        // DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
+    // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+    // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+    // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
+    siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+
+    // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
+    // DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
     siren.checkVersion(checkType: .immediately)
 
     return true
@@ -264,7 +250,8 @@ func applicationDidBecomeActive(application: UIApplication) {
     /*
         Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
         Useful if user returns to your app from the background after extended period of time.
-         Place in applicationDidBecomeActive(_:).   */
+            Place in applicationDidBecomeActive(_:).
+     */
 
     Siren.shared.checkVersion(checkType: .daily)
 }
@@ -451,7 +438,7 @@ func applicationWillEnterForeground(application: UIApplication) {
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-07-25)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-09-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -23,16 +23,26 @@ public struct SirenError: LocalizedError {
    /// - malformedURL: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
    /// - noUpdateAvailable: No new update available.
    /// - recentlyCheckedAlready: Not checking the version, because it was already checked recently.
-   public enum Known: Error {
+    public enum Known: Error {
+        /// Error retrieving trackId as the JSON does not contain a 'trackId' key.
         case appStoreAppIDFailure
+        /// Error retrieving App Store data as an error was returned.
         case appStoreDataRetrievalFailure(underlyingError: Error?)
+        /// Error parsing App Store JSON data.
         case appStoreJSONParsingFailure(underlyingError: Error)
+        /// Error retrieving App Store data as JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
         case appStoreDataRetrievalEmptyResults
+        /// Error retrieving iOS version number as there was no data returned.
         case appStoreOSVersionNumberFailure
+        /// The version of iOS on the device is lower than that of the one required by the app verison update.
         case appStoreOSVersionUnsupported
+        /// Error retrieving App Store verson number as the JSON does not contain a 'version' key.
         case appStoreVersionArrayFailure
+        /// The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
         case malformedURL
+        /// No new update available.
         case noUpdateAvailable
+        /// Not checking the version, because it was already checked recently.
         case recentlyCheckedAlready
 
         var localizedDescription: String {

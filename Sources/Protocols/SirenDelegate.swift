@@ -20,10 +20,15 @@ import Foundation
 /// - revision: Revision release available: a.b.c.D
 /// - unknown: No information available about the update.
 public enum UpdateType: String {
+    /// Major release available: A.b.c.d
     case major
+    /// Minor release available: a.B.c.d
     case minor
+    /// Patch release available: a.b.C.d
     case patch
+    /// Revision release available: a.b.c.D
     case revision
+    /// No information available about the update.
     case unknown
 }
 

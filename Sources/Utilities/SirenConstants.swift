@@ -10,18 +10,16 @@ import Foundation
 
 // MARK: - Enumerated Types
 
+// MARK: Siren extension dealing with enumerated types and constants.
 public extension Siren {
     /// Determines the type of alert to present after a successful version check has been performed.
     enum AlertType {
         /// Forces user to update your app (1 button alert).
         case force
-
         /// (DEFAULT) Presents user with option to update app now or at next launch (2 button alert).
         case option
-
         /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
-
         /// Doesn't show the alert, but instead returns a localized message
         /// for use in a custom UI within the sirenDidDetectNewVersionWithoutAlert() delegate method.
         case none
@@ -32,10 +30,8 @@ public extension Siren {
     enum VersionCheckType: Int {
         /// Version check performed every time the app is launched.
         case immediately = 0
-
         /// Version check performed once a day.
         case daily = 1
-
         /// Version check performed once a week.
         case weekly = 7
     }

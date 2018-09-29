@@ -45,6 +45,7 @@ public struct SirenError: LocalizedError {
         /// Not checking the version, because it was already checked recently.
         case recentlyCheckedAlready
 
+        /// The localized description for each error handled by Siren.
         var localizedDescription: String {
             switch self {
             case .appStoreAppIDFailure:

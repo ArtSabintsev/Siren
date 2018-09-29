@@ -109,9 +109,6 @@ public final class Siren: NSObject {
     /// The App's Singleton
     public static let shared = Siren()
 
-    @available(*, deprecated: 1.2.0, unavailable, renamed: "shared")
-    public static let sharedInstance = Siren()
-
     override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
     }

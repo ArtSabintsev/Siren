@@ -1,47 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/SirenLookupModel.swift",
-      "line": 13,
-      "symbol": "SirenLookupModel",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Protocols/SirenDelegate.swift",
-      "line": 23,
-      "symbol": "UpdateType.major",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Protocols/SirenDelegate.swift",
-      "line": 24,
-      "symbol": "UpdateType.minor",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Protocols/SirenDelegate.swift",
-      "line": 25,
-      "symbol": "UpdateType.patch",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Protocols/SirenDelegate.swift",
-      "line": 26,
-      "symbol": "UpdateType.revision",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Protocols/SirenDelegate.swift",
-      "line": 27,
-      "symbol": "UpdateType.unknown",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/Arthur/Documents/oss/siren"
 }

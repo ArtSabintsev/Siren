@@ -63,6 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Optional (Only do this if you don't call checkVersion in didBecomeActive)
 //        siren.checkVersion(checkType: .immediately)
+        
+        
+        //Force Version Udpate
+        siren.majorUpdateAlertType = .skip
+        siren.minorUpdateAlertType = .skip
+        siren.patchUpdateAlertType = .skip
+        siren.revisionUpdateAlertType = .skip
+        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+        siren.minimumAppVersionToForceUserToUpdate = "0.1.0"
+        siren.checkVersion(checkType: .immediately)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

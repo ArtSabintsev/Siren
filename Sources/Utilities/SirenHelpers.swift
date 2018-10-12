@@ -12,16 +12,21 @@ import Foundation
 
 extension Siren {
     func isAppStoreVersionNewer() -> Bool {
-        var newVersionExists = false
-
         if let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion,
             (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) {
-
-            newVersionExists = true
+            return true
         }
-
-        return newVersionExists
+        return false
+    }
+    
+    func isUserSetForcedVersionNewer() -> Bool {
+        if let currentInstalledVersion = currentInstalledVersion,
+            let targetedForcedVersion = minimumAppVersionToForceUserToUpdate,
+            (currentInstalledVersion.compare(targetedForcedVersion, options: .numeric) == .orderedAscending) {
+            return true
+        }
+        return false
     }
 
     func storeVersionCheckDate() {

@@ -92,6 +92,12 @@ public final class Siren: NSObject {
     /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
     public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
+    /// When this is set, it will show a force update alert to user by bypassing alertType, storedSkippedVersion and showAlertAfterCurrentVersionHasBeenReleasedForDays settings
+    /// checkVersion(checkType: .immediately) has to be called after setting it in order to be able to show force alert message immediately
+    /// otherwise old settings will be followed i.e. check daily or weekly if set
+    /// In processVersionCheck() method it will check if the version set by user here is greater than the current installed version in order to show force update alert
+    public var minimumAppVersionToForceUserToUpdate: String?
+    
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
 
@@ -234,6 +240,12 @@ private extension Siren {
             return
         }
 
+        if isUserSetForcedVersionNewer() == true {
+            alertType = .force
+            showAlert()
+            return
+        }
+        
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
             let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
             return

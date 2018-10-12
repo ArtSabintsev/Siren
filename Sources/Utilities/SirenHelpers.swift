@@ -24,6 +24,15 @@ extension Siren {
         return newVersionExists
     }
 
+    func isUserSetForcedVersionNewer() -> Bool {
+        if let currentInstalledVersion = currentInstalledVersion,
+            let targetedForcedVersion = minimumAppVersionToForceUserToUpdate,
+            (currentInstalledVersion.compare(targetedForcedVersion, options: .numeric) == .orderedAscending) {
+            return true
+        }
+        return false
+    }
+    
     func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {

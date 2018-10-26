@@ -101,7 +101,7 @@ public final class Siren: NSObject {
     /// The last Date that a version check was performed.
     var lastVersionCheckPerformedOnDate: Date?
 
-    fileprivate var appID: String?
+    fileprivate var appID: SirenEitherType<String, Int>?
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update

@@ -10,9 +10,11 @@ import Foundation
 
 // MARK: - Log and decorate Siren-specific messages to the console.
 
-struct SirenLog {
-    @discardableResult
-    init(_ message: String) {
-        print("[Siren] \(message)")
+extension Siren {
+    struct Log {
+        @discardableResult
+        init(_ message: String) {
+            print("[Siren] \(message)")
+        }
     }
 }

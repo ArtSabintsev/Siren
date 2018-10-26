@@ -65,7 +65,7 @@ extension Siren {
     /// - Parameter message: The message to decorate and log to the console.
     func printMessage(_ message: String) {
         if debugEnabled {
-            SirenLog(message)
+            Siren.Log(message)
         }
     }
 }

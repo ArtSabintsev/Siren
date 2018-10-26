@@ -105,6 +105,6 @@ public extension SirenDelegate {
     }
 
     private func printMessage(_ function: String = #function) {
-        SirenLog("The default implementation of \(function) is being called. You can ignore this message if you do not care to implement this method in your `SirenDelegate` conforming structure.")
+        Siren.Log("The default implementation of \(function) is being called. You can ignore this message if you do not care to implement this method in your `SirenDelegate` conforming structure.")
     }
 }

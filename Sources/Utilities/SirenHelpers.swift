@@ -27,7 +27,7 @@ extension Siren {
     func storeVersionCheckDate() {
         lastVersionCheckPerformedOnDate = Date()
         if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-             UserDefaults.storedVersionCheckDate = lastVersionCheckPerformedOnDate
+            UserDefaults.storedVersionCheckDate = lastVersionCheckPerformedOnDate
             UserDefaults.standard.synchronize()
         }
     }

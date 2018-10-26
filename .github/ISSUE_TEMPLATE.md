@@ -9,7 +9,6 @@
 
 # Before posting an issue, please make sure your issue has not already been resolved or answered elsewhere.
 
-
 ## Common Issue #1:
 > "Error retrieving iOS version number as there was no data returned."
 

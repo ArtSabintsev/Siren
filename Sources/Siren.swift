@@ -98,9 +98,10 @@ public final class Siren: NSObject {
     /// The `UIWindow` instance that presents the `SirenAlertViewController`.
     var updaterWindow: UIWindow?
 
+    /// The last Date that a version check was performed.
     var lastVersionCheckPerformedOnDate: Date?
 
-    fileprivate var appID: Int?
+    fileprivate var appID: String?
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update

@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
         // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
         // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
-//        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
+        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 0
 
         // Optional (Only do this if you don't call checkVersion in didBecomeActive)
 //        siren.checkVersion(checkType: .immediately)

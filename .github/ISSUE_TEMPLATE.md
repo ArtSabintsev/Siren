@@ -1,4 +1,4 @@
-# If you're experiencing a problem integrating Siren into your app, please provide the following:
+# If you're experiencing a problem integrating Siren into your app, please provide the following information when posting a new issue:
 
 - **Are you using the [latest version](https://github.com/ArtSabintsev/Siren/releases) of Siren?**: 
 - **What is your App's Bundle ID?**: 

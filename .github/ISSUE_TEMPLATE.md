@@ -1,7 +1,17 @@
+# If you're experiencing a problem integrating Siren into your app, please provide the following information when posting a new issue:
+
+- **Are you using the [latest version](https://github.com/ArtSabintsev/Siren/releases) of Siren?**: 
+- **What is your app's Bundle ID?**: 
+- **When was the latest version of your app published to the App Store?**: 
+- **Is your app published in the US App Store? If not, what App Store is it published in?**:
+- **Does Siren work if you plugin your app's BundleID (and CountryCode, if necessary) into the Example App?**:
+
+---
+
 # Before posting an issue, please make sure your issue has not already been resolved or answered elsewhere.
 
 ## Common Issue #1:
-> "Error retrieving iOS version number as there was no data returned."
+>"Error retrieving iOS version number as there was no data returned."
 
 Check if your app is available in the US App Store, otherwise add the corresponding country code when setting up Siren.
 

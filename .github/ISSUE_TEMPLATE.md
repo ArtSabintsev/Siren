@@ -1,9 +1,9 @@
-# If you're experiencing an issue with your app, please provide the following:
+# If you're experiencing integrating Siren into your app, please provide the following:
 
-- **Bundle ID**: 
+- **Are you using the [latest version](https://github.com/ArtSabintsev/Siren/releases) of Siren?**: 
+- **What is your App's Bundle ID?**: 
 - **When was the latest version of your app published to the App Store?**: 
-- **Is your app Published in the US App Store?**: 
-- **If not, please provide the country code for your region's App Store.**: 
+- **Is your app published in the US App Store? If not, what App Store is it published in?**:
 
 ---
 

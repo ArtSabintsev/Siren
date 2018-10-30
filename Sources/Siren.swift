@@ -21,16 +21,8 @@ public final class Siren: NSObject {
     /// The error domain for all errors created by Siren.
     public let SirenErrorDomain = "Siren Error Domain"
 
-    /// The SirenDelegate variable, which should be set if you'd like to be notified:
-    ///
-    /// When a user views or interacts with the alert
-    /// - sirenDidShowUpdateDialog(alertType: AlertType)
-    /// - sirenUserDidLaunchAppStore()
-    /// - sirenUserDidSkipVersion()
-    /// - sirenUserDidCancel()
-    ///
-    /// When a new version has been detected, and you would like to present a localized message in a custom UI. use this delegate method:
-    /// - sirenDidDetectNewVersionWithoutAlert(title: String, message: String)
+    /// The `SirenDelegate` variable, which should be set if you'd like to be notified of any of specific user interactions or API success/failures.
+    /// Also set this variable if you'd like to use custom UI for presesnting the update notification.
     public weak var delegate: SirenDelegate?
 
     /// The debug flag, which is disabled by default.

@@ -202,20 +202,16 @@ private extension Siren {
     }
 
     func processVersionCheck(with model: SirenLookupModel) {
-        guard isUpdateCompatibleWithDeviceOS(for: model) else {
-            return
-        }
+        guard isUpdateCompatibleWithDeviceOS(for: model) else { return }
 
         guard let appID = model.results.first?.appID else {
-            postError(.appStoreAppIDFailure)
-            return
+            return postError(.appStoreAppIDFailure)
         }
 
         self.appID = appID
 
         guard let currentAppStoreVersion = model.results.first?.version else {
-            postError(.appStoreVersionArrayFailure)
-            return
+            return postError(.appStoreVersionArrayFailure)
         }
 
         self.currentAppStoreVersion = currentAppStoreVersion

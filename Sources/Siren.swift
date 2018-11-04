@@ -179,8 +179,7 @@ private extension Siren {
             postError(.appStoreDataRetrievalFailure(underlyingError: error))
         } else {
             guard let data = data else {
-                postError(.appStoreDataRetrievalFailure(underlyingError: nil))
-                return
+                return postError(.appStoreDataRetrievalFailure(underlyingError: nil))
             }
             do {
                 let decodedData = try JSONDecoder().decode(SirenLookupModel.self, from: data)

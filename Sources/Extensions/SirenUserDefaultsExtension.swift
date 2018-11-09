@@ -26,7 +26,6 @@ private enum SirenKeys: String {
 extension UserDefaults {
     static var shouldPerformVersionCheckOnSubsequentLaunch: Bool {
         get {
-            print(#function, standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue))
             return standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
         } set {
             standard.set(newValue, forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)

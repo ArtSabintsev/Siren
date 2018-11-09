@@ -80,10 +80,10 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 ### Carthage
 ```swift
 github "ArtSabintsev/Siren" // Swift 4.2
-github "ArtSabintsev/Siren", "swift4.1" // Swift 4.1
-github "ArtSabintsev/Siren", "swift3.2" // Swift 3.2
-github "ArtSabintsev/Siren", "swift3.1" // Swift 3.1
-github "ArtSabintsev/Siren", "swift2.3" // Swift 2.3
+github "ArtSabintsev/Siren" "swift4.1" // Swift 4.1
+github "ArtSabintsev/Siren" "swift3.2" // Swift 3.2
+github "ArtSabintsev/Siren" "swift3.1" // Swift 3.1
+github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ### Swift Package Manager

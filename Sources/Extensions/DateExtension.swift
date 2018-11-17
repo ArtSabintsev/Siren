@@ -1,6 +1,6 @@
 //
-//  SirenDateExtension.swift
-//  SirenExample
+//  DateExtension.swift
+//  Siren
 //
 //  Created by Arthur Sabintsev on 3/21/17.
 //  Copyright © 2017 Sabintsev iOS Projects. All rights reserved.

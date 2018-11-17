@@ -1,5 +1,5 @@
 //
-//  SirenLocalizationExtension.swift
+//  LocalizationExtension.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 9/25/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Helpers (Localization)
+// MARK: - Localization Helpers for Siren
 
 extension Siren {
     func localizedUpdateTitle() -> String {

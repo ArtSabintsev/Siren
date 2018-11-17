@@ -1,6 +1,6 @@
 //
 //  Log.swift
-//  SirenExample
+//  Siren
 //
 //  Created by Arthur Sabintsev on 8/5/17.
 //  Copyright © 2017 Sabintsev iOS Projects. All rights reserved.

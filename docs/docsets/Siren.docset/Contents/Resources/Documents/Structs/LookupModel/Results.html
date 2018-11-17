@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UpdateType Enumeration Reference</title>
-    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
-    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <title>Results Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
-    <script src="../js/jquery.min.js" defer></script>
-    <script src="../js/jazzy.js" defer></script>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/UpdateType" class="dashAnchor"></a>
-    <a title="UpdateType Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Struct/Results" class="dashAnchor"></a>
+    <a title="Results Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Siren Docs</a> (100% documented)</p>
+        <p><a href="../../index.html">Siren Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">Siren Reference</a>
-        <img id="carat" src="../img/carat.png" />
-        UpdateType Enumeration Reference
+        <a href="../../index.html">Siren Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        Results Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
+            <a href="../../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/Siren.html">Siren</a>
+                <a href="../../Classes/Siren.html">Siren</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Siren/AlertType.html">– AlertType</a>
+                <a href="../../Classes/Siren/AlertType.html">– AlertType</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
+                <a href="../../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Siren/LanguageType.html">– LanguageType</a>
+                <a href="../../Classes/Siren/LanguageType.html">– LanguageType</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enumerations</a>
+            <a href="../../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/UpdateType.html">UpdateType</a>
+                <a href="../../Enums/UpdateType.html">UpdateType</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
+            <a href="../../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/SirenDelegate.html">SirenDelegate</a>
+                <a href="../../Protocols/SirenDelegate.html">SirenDelegate</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Structs.html">Structures</a>
+            <a href="../../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/AlertMessaging.html">AlertMessaging</a>
+                <a href="../../Structs/AlertMessaging.html">AlertMessaging</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/AlertMessaging/Constants.html">– Constants</a>
+                <a href="../../Structs/AlertMessaging/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/CapturedError.html">CapturedError</a>
+                <a href="../../Structs/CapturedError.html">CapturedError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/CapturedError/Known.html">– Known</a>
+                <a href="../../Structs/CapturedError/Known.html">– Known</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/LookupModel.html">LookupModel</a>
+                <a href="../../Structs/LookupModel.html">LookupModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/LookupModel/Results.html">– Results</a>
+                <a href="../../Structs/LookupModel/Results.html">– Results</a>
               </li>
             </ul>
           </li>
@@ -88,25 +88,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>UpdateType</h1>
+            <h1>Results</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UpdateType</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Results</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                 </div>
               </div>
-            <p>MARK - Siren UpdateType
-<code>UpdateType</code> defines what kind of update is available.
-It is used as parameter if user wants to use
-custom alert to inform the user about an update.</p>
-
-<ul>
-<li>major: Major release available: A.b.c.d</li>
-<li>minor: Minor release available: a.B.c.d</li>
-<li>patch: Patch release available: a.b.C.d</li>
-<li>revision: Revision release available: a.b.c.D</li>
-<li>unknown: No information available about the update.</li>
-</ul>
+            <p>The Results object from the the iTunes Lookup API.</p>
 
           </section>
           <section class="section task-group-section">
@@ -115,9 +104,9 @@ custom alert to inform the user about an update.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10UpdateTypeO5majorA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/major" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10UpdateTypeO5majorA2CmF">major</a>
+                    <a name="/s:5Siren11LookupModelV7ResultsV5appIDSivp"></a>
+                    <a name="//apple_ref/swift/Property/appID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren11LookupModelV7ResultsV5appIDSivp">appID</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,14 +114,14 @@ custom alert to inform the user about an update.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Major release available: A.b.c.d</p>
+                        <p>The app&rsquo;s App ID.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">major</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">appID</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -142,9 +131,9 @@ custom alert to inform the user about an update.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10UpdateTypeO5minorA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/minor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10UpdateTypeO5minorA2CmF">minor</a>
+                    <a name="/s:5Siren11LookupModelV7ResultsV25currentVersionReleaseDateSSvp"></a>
+                    <a name="//apple_ref/swift/Property/currentVersionReleaseDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren11LookupModelV7ResultsV25currentVersionReleaseDateSSvp">currentVersionReleaseDate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -152,14 +141,14 @@ custom alert to inform the user about an update.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Minor release available: a.B.c.d</p>
+                        <p>The release date for the latest verison of the app.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">minor</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">currentVersionReleaseDate</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -169,9 +158,9 @@ custom alert to inform the user about an update.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10UpdateTypeO5patchA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/patch" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10UpdateTypeO5patchA2CmF">patch</a>
+                    <a name="/s:5Siren11LookupModelV7ResultsV16minimumOSVersionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/minimumOSVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren11LookupModelV7ResultsV16minimumOSVersionSSvp">minimumOSVersion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -179,14 +168,14 @@ custom alert to inform the user about an update.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Patch release available: a.b.C.d</p>
+                        <p>The minimum verison of iOS that the current verison of the app requires.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">patch</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">minimumOSVersion</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -196,9 +185,9 @@ custom alert to inform the user about an update.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10UpdateTypeO8revisionA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/revision" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10UpdateTypeO8revisionA2CmF">revision</a>
+                    <a name="/s:5Siren11LookupModelV7ResultsV12releaseNotesSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/releaseNotes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren11LookupModelV7ResultsV12releaseNotesSSSgvp">releaseNotes</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -206,14 +195,14 @@ custom alert to inform the user about an update.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Revision release available: a.b.c.D</p>
+                        <p>The releases notes from the latest version of the app.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">revision</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">releaseNotes</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -223,9 +212,9 @@ custom alert to inform the user about an update.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10UpdateTypeO7unknownA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/unknown" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10UpdateTypeO7unknownA2CmF">unknown</a>
+                    <a name="/s:5Siren11LookupModelV7ResultsV7versionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/version" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren11LookupModelV7ResultsV7versionSSvp">version</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -233,14 +222,14 @@ custom alert to inform the user about an update.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>No information available about the update.</p>
+                        <p>The latest version of the app.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unknown</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">version</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>

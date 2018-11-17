@@ -1,5 +1,5 @@
 //
-//  SirenHelpers.swift
+//  Helpers.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 9/25/18.
@@ -12,16 +12,13 @@ import Foundation
 
 extension Siren {
     func isAppStoreVersionNewer() -> Bool {
-        var newVersionExists = false
-
-        if let currentInstalledVersion = currentInstalledVersion,
+        guard let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion,
-            (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) {
-
-            newVersionExists = true
+            (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) else {
+                return false
         }
 
-        return newVersionExists
+        return true
     }
 
     func storeVersionCheckDate() {
@@ -36,7 +33,7 @@ extension Siren {
 // MARK: - Miscellaneous
 
 extension Siren {
-    func isUpdateCompatibleWithDeviceOS(for model: SirenLookupModel) -> Bool {
+    func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
             postError(.appStoreOSVersionNumberFailure)
             return false

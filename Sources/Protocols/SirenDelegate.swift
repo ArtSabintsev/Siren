@@ -57,7 +57,7 @@ public protocol SirenDelegate: NSObjectProtocol {
     /// Provides the decoded JSON information from a successful version check call.
     ///
     /// - Parameter lookupModel: The `Decodable` model representing the JSON results from the iTunes Lookup API.
-    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel)
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: LookupModel)
 
     /// User did click on button that cancels update dialog.
     func sirenUserDidCancel()
@@ -96,7 +96,7 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel) {
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: LookupModel) {
         printMessage()
     }
 

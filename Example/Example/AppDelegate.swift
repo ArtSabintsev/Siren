@@ -10,7 +10,7 @@ import UIKit
 import Siren
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -102,7 +102,7 @@ extension AppDelegate: SirenDelegate
         print(#function, "Latest version of app is installed")
     }
 
-    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel) {
+    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: LookupModel) {
         print(#function, "\(lookupModel)")
     }
 

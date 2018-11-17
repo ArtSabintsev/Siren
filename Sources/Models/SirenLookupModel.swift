@@ -1,5 +1,5 @@
 //
-//  SirenLookupModel.swift
+//  LookupModel.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 8/6/17.
@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Model representing a selection of results from the iTunes Lookup API
 
 /// MARK: Siren extension used to parse and map the iTunes JSON results into a model represented in Swift.
-public struct SirenLookupModel: Decodable {
+public struct LookupModel: Decodable {
     private enum CodingKeys: String, CodingKey {
         case results
     }

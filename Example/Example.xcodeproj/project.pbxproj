@@ -26,10 +26,10 @@
 		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
 		8ED733FC215DBE4900447E3B /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD4215B26B4006FBBCC /* SirenDelegate.swift */; };
-		8ED733FD215DBE4900447E3B /* SirenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE7215B27C2006FBBCC /* SirenConstants.swift */; };
-		8ED733FE215DBE4900447E3B /* SirenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCD215B26B4006FBBCC /* SirenError.swift */; };
-		8ED733FF215DBE4900447E3B /* SirenLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* SirenLog.swift */; };
-		8ED73400215DBE4900447E3B /* SirenHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* SirenHelpers.swift */; };
+		8ED733FD215DBE4900447E3B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE7215B27C2006FBBCC /* Constants.swift */; };
+		8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCD215B26B4006FBBCC /* CapturedError.swift */; };
+		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
+		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +48,8 @@
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Siren/Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
-		8E171DCD215B26B4006FBBCC /* SirenError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenError.swift; sourceTree = "<group>"; };
-		8E171DCE215B26B4006FBBCC /* SirenLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenLog.swift; sourceTree = "<group>"; };
+		8E171DCD215B26B4006FBBCC /* CapturedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturedError.swift; sourceTree = "<group>"; };
+		8E171DCE215B26B4006FBBCC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8E171DD1215B26B4006FBBCC /* SirenBundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenBundleExtension.swift; sourceTree = "<group>"; };
 		8E171DD2215B26B4006FBBCC /* SirenDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenDateExtension.swift; sourceTree = "<group>"; };
 		8E171DD4215B26B4006FBBCC /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +58,8 @@
 		8E171DD8215B26B4006FBBCC /* SirenUIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenUIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E171DDA215B26B4006FBBCC /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		8E171DE5215B2701006FBBCC /* SirenLocalizationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenLocalizationExtension.swift; sourceTree = "<group>"; };
-		8E171DE7215B27C2006FBBCC /* SirenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenConstants.swift; sourceTree = "<group>"; };
-		8E171DEB215B28EC006FBBCC /* SirenHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenHelpers.swift; sourceTree = "<group>"; };
+		8E171DE7215B27C2006FBBCC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8E171DEB215B28EC006FBBCC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8E171DED215B2D09006FBBCC /* SirenUserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SirenUserDefaultsExtension.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,10 +117,10 @@
 		8E171DCC215B26B4006FBBCC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8E171DE7215B27C2006FBBCC /* SirenConstants.swift */,
-				8E171DCD215B26B4006FBBCC /* SirenError.swift */,
-				8E171DCE215B26B4006FBBCC /* SirenLog.swift */,
-				8E171DEB215B28EC006FBBCC /* SirenHelpers.swift */,
+				8E171DCD215B26B4006FBBCC /* CapturedError.swift */,
+				8E171DE7215B27C2006FBBCC /* Constants.swift */,
+				8E171DEB215B28EC006FBBCC /* Helpers.swift */,
+				8E171DCE215B26B4006FBBCC /* Log.swift */,
 			);
 			name = Utilities;
 			path = ../../Sources/Utilities;
@@ -407,16 +407,16 @@
 				8E171DE1215B26B4006FBBCC /* SirenAlertMessaging.swift in Sources */,
 				8E171DEE215B2D09006FBBCC /* SirenUserDefaultsExtension.swift in Sources */,
 				8E171DE2215B26B4006FBBCC /* SirenLookupModel.swift in Sources */,
-				8ED73400215DBE4900447E3B /* SirenHelpers.swift in Sources */,
+				8ED73400215DBE4900447E3B /* Helpers.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8ED733FC215DBE4900447E3B /* SirenDelegate.swift in Sources */,
-				8ED733FF215DBE4900447E3B /* SirenLog.swift in Sources */,
+				8ED733FF215DBE4900447E3B /* Log.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
 				8E171DE6215B2701006FBBCC /* SirenLocalizationExtension.swift in Sources */,
 				8E171DDE215B26B4006FBBCC /* SirenBundleExtension.swift in Sources */,
-				8ED733FD215DBE4900447E3B /* SirenConstants.swift in Sources */,
+				8ED733FD215DBE4900447E3B /* Constants.swift in Sources */,
 				8E171DE3215B26B4006FBBCC /* SirenUIAlertControllerExtension.swift in Sources */,
-				8ED733FE215DBE4900447E3B /* SirenError.swift in Sources */,
+				8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */,
 				8E171DDF215B26B4006FBBCC /* SirenDateExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

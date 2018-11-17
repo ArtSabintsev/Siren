@@ -1,5 +1,5 @@
 //
-//  SirenLog.swift
+//  Log.swift
 //  SirenExample
 //
 //  Created by Arthur Sabintsev on 8/5/17.

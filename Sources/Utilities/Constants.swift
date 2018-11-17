@@ -1,5 +1,5 @@
 //
-//  SirenConstants.swift
+//  Constants.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 9/25/18.
@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-// MARK: - Enumerated Types
 
 // MARK: Siren extension dealing with enumerated types and constants.
 public extension Siren {

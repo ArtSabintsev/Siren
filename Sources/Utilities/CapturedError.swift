@@ -1,5 +1,5 @@
 //
-//  SirenError.swift
+//  CapturedError.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 8/6/17.
@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - Siren Error Handling
 
-/// Data structure used to build Siren specific Errors.
-public struct SirenError: LocalizedError {
+/// Siren extension dealing with Siren-specific errors.
+public struct CapturedError: LocalizedError {
     /// Enumerates all potentials errors that Siren can handle.
     ///
     /// - appStoreAppIDFailure: Error retrieving trackId as the JSON does not contain a 'trackId' key.
@@ -79,7 +79,7 @@ public struct SirenError: LocalizedError {
 // MARK: - Error Handling
 
 extension Siren {
-    func postError(_ error: SirenError.Known) {
+    func postError(_ error: CapturedError.Known) {
         delegate?.sirenDidFailVersionCheck(error: error)
         printMessage(error.localizedDescription)
     }

@@ -66,7 +66,7 @@ public final class Siren: NSObject {
 
     /// Overrides all the Strings to which Siren defaults.
     /// Defaults to the values defined in `SirenAlertMessaging.Constants`
-    public var alertMessaging = SirenAlertMessaging()
+    public var alertMessaging = AlertMessaging()
 
     /// The region or country of an App Store in which your app is available.
     /// By default, all version checks are performed against the US App Store.
@@ -82,7 +82,7 @@ public final class Siren: NSObject {
 
     /// When this is set, the alert will only show up if the current version has already been released for X days.
     /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
-    public var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
+    public lazy var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
@@ -97,7 +97,7 @@ public final class Siren: NSObject {
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update
-    fileprivate var updateType: UpdateType = .unknown
+    fileprivate lazy var updateType: UpdateType = .unknown
 
     /// The App's Singleton
     public static let shared = Siren()
@@ -182,7 +182,7 @@ private extension Siren {
                 return postError(.appStoreDataRetrievalFailure(underlyingError: nil))
             }
             do {
-                let decodedData = try JSONDecoder().decode(SirenLookupModel.self, from: data)
+                let decodedData = try JSONDecoder().decode(LookupModel.self, from: data)
 
                 guard !decodedData.results.isEmpty else {
                     return postError(.appStoreDataRetrievalEmptyResults)
@@ -201,7 +201,7 @@ private extension Siren {
         }
     }
 
-    func processVersionCheck(with model: SirenLookupModel) {
+    func processVersionCheck(with model: LookupModel) {
         guard isUpdateCompatibleWithDeviceOS(for: model) else { return }
 
         guard let appID = model.results.first?.appID else {
@@ -218,8 +218,7 @@ private extension Siren {
 
         guard isAppStoreVersionNewer() else {
             delegate?.sirenLatestVersionInstalled()
-            postError(.noUpdateAvailable)
-            return
+            return postError(.noUpdateAvailable)
         }
 
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
@@ -229,7 +228,7 @@ private extension Siren {
 
         guard daysSinceRelease >= showAlertAfterCurrentVersionHasBeenReleasedForDays else {
             let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed."
-            self.printMessage(message)
+            printMessage(message)
             return
         }
 
@@ -252,7 +251,7 @@ private extension Siren {
         components.queryItems = items
 
         guard let url = components.url, !url.absoluteString.isEmpty else {
-            throw SirenError.Known.malformedURL
+            throw CapturedError.Known.malformedURL
         }
 
         return url

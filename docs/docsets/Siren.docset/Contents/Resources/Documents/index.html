@@ -108,7 +108,7 @@
 <li><a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#testing-siren">Testing Siren</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#app-store-submissions">App Store Review &amp; Submissions</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phrased Releases</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phased Releases</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#words-of-caution">Words of Caution</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#ports">Ports</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#created-and-maintained-by">Attribution</a></li>
@@ -202,10 +202,10 @@
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
 <pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="c1">// Swift 4.2</span>
-<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift4.1"</span> <span class="c1">// Swift 4.1</span>
-<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.2"</span> <span class="c1">// Swift 3.2</span>
-<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift3.1"</span> <span class="c1">// Swift 3.1</span>
-<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span><span class="p">,</span> <span class="s">"swift2.3"</span> <span class="c1">// Swift 2.3</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift4.1"</span> <span class="c1">// Swift 4.1</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift3.2"</span> <span class="c1">// Swift 3.2</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift3.1"</span> <span class="c1">// Swift 3.1</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift2.3"</span> <span class="c1">// Swift 2.3</span>
 </code></pre>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 <pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
@@ -289,11 +289,11 @@ func applicationWillEnterForeground(application: UIApplication) {
 <h2 id='granular-version-update-management' class='heading'>Granular Version Update Management</h2>
 
 <p>If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following <em>optional</em> lines to your setup <em>before</em> calling the <code>checkVersion()</code> method:</p>
-<pre class="highlight swift"><code>    <span class="cm">/* Siren defaults to Siren.AlertType.option for all updates */</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">revisionUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">patchUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">minorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">majorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+<pre class="highlight swift"><code><span class="cm">/* Siren defaults to Siren.AlertType.option for all updates */</span>
+<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">revisionUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">patchUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">minorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">majorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
 </code></pre>
 <h2 id='optional-delegate-and-delegate-methods' class='heading'>Optional Delegate and Delegate Methods</h2>
 
@@ -436,8 +436,8 @@ func applicationWillEnterForeground(application: UIApplication) {
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-10-25)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-11-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

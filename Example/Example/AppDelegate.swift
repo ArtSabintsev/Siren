@@ -35,11 +35,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.appName = "Test App Name"
 
         // Optional - Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
-//        siren.alertMessaging = SirenAlertMessaging(updateTitle: NSAttributedString(string: "New Fancy Title"),
-//                                                   updateMessage: NSAttributedString(string: "New message goes here!"),
-//                                                   updateButtonMessage: NSAttributedString(string: "Update Now, Plz!?"),
-//                                                   nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
-//                                                   skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
+        siren.alertMessaging = AlertMessaging(updateTitle: NSAttributedString(string: "New Fancy Title"),
+                                              updateMessage: NSAttributedString(string: "New custom update message goes here!"),
+                                              updateButtonMessage: NSAttributedString(string: "Update Now, Please!"),
+                                              nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
+                                              skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
 
         // Optional - Defaults to .Option
 //        siren.alertType = .option // or .force, .skip, .none
@@ -53,7 +53,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional - Sets all messages to appear in Russian. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .russian
 
-        // Optional - Set this variable if your app is not available in the U.S. App Store. List of codes: https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/AppStoreTerritories.html
+        // Optional - Set this variable if your app is not available in the U.S. App Store. List of codes:
+        // https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/AppStoreTerritories.html
 //        siren.countryCode = ""
 
         // Optional - Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
@@ -66,12 +67,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         Siren.shared.checkVersion(withFrequency: .immediately)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         Siren.shared.checkVersion(withFrequency: .immediately)
     }
 }

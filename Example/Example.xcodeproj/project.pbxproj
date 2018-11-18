@@ -18,7 +18,7 @@
 		8E171DE2215B26B4006FBBCC /* LookupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD7215B26B4006FBBCC /* LookupModel.swift */; };
 		8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */; };
 		8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DDA215B26B4006FBBCC /* SirenViewController.swift */; };
-		8E171DE6215B2701006FBBCC /* LocalizationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE5215B2701006FBBCC /* LocalizationExtension.swift */; };
+		8E171DE6215B2701006FBBCC /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE5215B2701006FBBCC /* Localization.swift */; };
 		8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */; };
 		8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
 		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
@@ -58,7 +58,7 @@
 		8E171DD7215B26B4006FBBCC /* LookupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupModel.swift; sourceTree = "<group>"; };
 		8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E171DDA215B26B4006FBBCC /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
-		8E171DE5215B2701006FBBCC /* LocalizationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationExtension.swift; sourceTree = "<group>"; };
+		8E171DE5215B2701006FBBCC /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		8E171DE7215B27C2006FBBCC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E171DEB215B28EC006FBBCC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
@@ -132,7 +132,6 @@
 			children = (
 				8E171DD1215B26B4006FBBCC /* BundleExtension.swift */,
 				8E171DD2215B26B4006FBBCC /* DateExtension.swift */,
-				8E171DE5215B2701006FBBCC /* LocalizationExtension.swift */,
 				8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */,
 				8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */,
 			);
@@ -153,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				8E171DD6215B26B4006FBBCC /* AlertMessaging.swift */,
+				8E171DE5215B2701006FBBCC /* Localization.swift */,
 				8E171DD7215B26B4006FBBCC /* LookupModel.swift */,
 			);
 			name = Models;
@@ -414,7 +414,7 @@
 				8ED733FC215DBE4900447E3B /* Delegate.swift in Sources */,
 				8ED733FF215DBE4900447E3B /* Log.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
-				8E171DE6215B2701006FBBCC /* LocalizationExtension.swift in Sources */,
+				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,
 				8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */,
 				8ED733FD215DBE4900447E3B /* Constants.swift in Sources */,
 				8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */,

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Constants
+
 /// Lists all enumerated types that are used to configure the library.
 public struct Constants {
     /// Determines the type of alert to present after a successful version check has been performed.

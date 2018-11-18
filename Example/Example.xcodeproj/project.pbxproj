@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D729C4421A20EDC002F73AB /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC364B1E6BB98A00726F13 /* Siren.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EC36491E6BB98A00726F13 /* Siren.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
@@ -367,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D729C4421A20EDC002F73AB /* Siren.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

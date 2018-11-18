@@ -1,5 +1,5 @@
 //
-//  Delegate.swift
+//  SirenDelegate.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 4/8/17.

@@ -1,5 +1,5 @@
 //
-//  LocalizationExtension.swift
+//  Localization.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 9/25/18.

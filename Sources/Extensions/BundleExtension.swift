@@ -11,45 +11,46 @@ import Foundation
 // MARK: - Bundle Extension for Siren
 
 extension Bundle {
+
+    private struct Constants {
+        static let bundleExtension = "bundle"
+        static let displayName = "CFBundleDisplayName"
+        static let projectExtension = "lproj"
+        static let table = "SirenLocalizable"
+    }
+
     final class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier
     }
 
     final class func sirenBundlePath() -> String? {
-        return Bundle(for: Siren.self).path(forResource: "Siren", ofType: "bundle")
+        return Bundle(for: Siren.self).path(forResource: "\(type(of: Siren.self))", ofType: Constants.bundleExtension)
     }
 
-    final class func sirenForcedBundlePath(forceLanguageLocalization: Siren.LanguageType) -> String? {
+    final class func sirenForcedBundlePath(forceLanguageLocalization: Localization.Language) -> String? {
         guard let path = sirenBundlePath() else { return nil }
         let name = forceLanguageLocalization.rawValue
 
-        return Bundle(path: path)?.path(forResource: name, ofType: "lproj")
+        return Bundle(path: path)?.path(forResource: name, ofType: Constants.projectExtension)
     }
 
-    final class func localizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String? {
-        guard var path = sirenBundlePath() else { return nil }
-        let table = "SirenLocalizable"
+    final class func localizedString(forKey key: String, andForceLanguageLocalization language: Localization.Language?) -> String {
+        guard var path = sirenBundlePath() else {
+            return key
+        }
 
-        if let forceLanguageLocalization = forceLanguageLocalization,
-            let forcedPath = sirenForcedBundlePath(forceLanguageLocalization: forceLanguageLocalization) {
+        if let language = language,
+            let forcedPath = sirenForcedBundlePath(forceLanguageLocalization: language) {
             path = forcedPath
         }
 
-        return Bundle(path: path)?.localizedString(forKey: key, value: key, table: table)
+        return Bundle(path: path)?.localizedString(forKey: key, value: key, table: Constants.table) ?? key
     }
 
     final class func bestMatchingAppName() -> String {
-        let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: Constants.displayName) as? String
         let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
 
         return bundleDisplayName ?? bundleName ?? ""
-    }
-}
-
-// MARK: - Bundle Extension for Testing Siren
-
-extension Bundle {
-    func testLocalizedString(forKey key: String, forceLanguageLocalization: Siren.LanguageType?) -> String? {
-        return Bundle.localizedString(forKey: key, forceLanguageLocalization: forceLanguageLocalization)
     }
 }

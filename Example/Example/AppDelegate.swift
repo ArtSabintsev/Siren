@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Sabintsev iOS Projects. All rights reserved.
 //
 
-import UIKit
 import Siren
+import UIKit
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -67,18 +67,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        Siren.shared.checkVersion(checkType: .immediately)
+        Siren.shared.checkVersion(withFrequency: .immediately)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        Siren.shared.checkVersion(checkType: .immediately)
+        Siren.shared.checkVersion(withFrequency: .immediately)
     }
 }
 
 extension AppDelegate: SirenDelegate
 {
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType) {
+    func sirenDidShowUpdateDialog(alertType: Constants.AlertType) {
         print(#function, alertType)
     }
     
@@ -107,7 +107,7 @@ extension AppDelegate: SirenDelegate
     }
 
     // This delegate method is only hit when alertType is initialized to .none
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: UpdateType) {
+    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType) {
         print(#function, "\n\(title)\n\(message).\nRelease type: \(updateType.rawValue.capitalized)")
     }
 }

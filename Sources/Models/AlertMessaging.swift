@@ -16,24 +16,22 @@ import Foundation
 ///
 /// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
 public struct AlertMessaging {
-
     /// The default constants used for the alert messaging.
     public struct Constants {
-
-        /// The button text that conveys the message that the user should be prompted to update next time the app launches.
-        public static let nextTime = NSAttributedString(string: "Next time")
-
-        /// The text that conveys the message that the the user wants to skip this verison update.
-        public static let skipVersion = NSAttributedString(string: "Skip this version")
-
         /// The text that conveys the message that there is an app update available
-        public static let updateMessage = NSAttributedString(string: "A new version of %@ is available. Please update to version %@ now.")
+        public static let alertMessage = NSAttributedString(string: "A new version of %@ is available. Please update to version %@ now.")
 
         /// The alert title which defaults to *Update Available*.
-        public static let updateTitle = NSAttributedString(string: "Update Available")
+        public static let alertTitle = NSAttributedString(string: "Update Available")
+
+        /// The button text that conveys the message that the user should be prompted to update next time the app launches.
+        public static let nextTimeButtonTitle = NSAttributedString(string: "Next time")
+
+        /// The text that conveys the message that the the user wants to skip this verison update.
+        public static let skipButtonTitle = NSAttributedString(string: "Skip this version")
 
         /// The button text that conveys the message that the user would like to update the app right away.
-        public static let updateNow = NSAttributedString(string: "Update")
+        public static let updateButtonTitle = NSAttributedString(string: "Update")
     }
 
     let nextTimeButtonMessage: NSAttributedString
@@ -50,11 +48,11 @@ public struct AlertMessaging {
     ///   - updateButtonMessage: The `title` field of the Update Button `UIAlertAction`.
     ///   - nextTimeButtonMessage: The `title` field of the Next Time Button `UIAlertAction`.
     ///   - skipVersionButtonMessage: The `title` field of the Skip Button `UIAlertAction`.
-    public init(updateTitle title: NSAttributedString  = Constants.updateTitle,
-                updateMessage message: NSAttributedString  = Constants.updateMessage,
-                updateButtonMessage: NSAttributedString  = Constants.updateNow,
-                nextTimeButtonMessage: NSAttributedString  = Constants.nextTime,
-                skipVersionButtonMessage: NSAttributedString  = Constants.skipVersion) {
+    public init(updateTitle title: NSAttributedString  = Constants.alertTitle,
+                updateMessage message: NSAttributedString  = Constants.alertMessage,
+                updateButtonMessage: NSAttributedString  = Constants.updateButtonTitle,
+                nextTimeButtonMessage: NSAttributedString  = Constants.nextTimeButtonTitle,
+                skipVersionButtonMessage: NSAttributedString  = Constants.skipButtonTitle) {
         self.updateTitle = title
         self.nextTimeButtonMessage = nextTimeButtonMessage
         self.updateButtonMessage = updateButtonMessage

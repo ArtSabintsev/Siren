@@ -31,7 +31,7 @@ public final class Siren: NSObject {
 
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.
-    public var alertType: AlertType = .option {
+    public var alertType: Constants.AlertType = .option {
         didSet {
             majorUpdateAlertType = alertType
             minorUpdateAlertType = alertType
@@ -43,22 +43,22 @@ public final class Siren: NSObject {
     /// Determines the type of alert that should be shown for major version updates: A.b.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var majorUpdateAlertType: AlertType = .option
+    public lazy var majorUpdateAlertType: Constants.AlertType = .option
 
     /// Determines the type of alert that should be shown for minor version updates: a.B.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var minorUpdateAlertType: AlertType = .option
+    public lazy var minorUpdateAlertType: Constants.AlertType = .option
 
     /// Determines the type of alert that should be shown for minor patch updates: a.b.C
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var patchUpdateAlertType: AlertType = .option
+    public lazy var patchUpdateAlertType: Constants.AlertType = .option
 
     /// Determines the type of alert that should be shown for revision updates: a.b.c.D
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var revisionUpdateAlertType: AlertType = .option
+    public lazy var revisionUpdateAlertType: Constants.AlertType = .option
 
     /// The name of your app.
     /// By default, it's set to the name of the app that's stored in your plist.
@@ -75,7 +75,7 @@ public final class Siren: NSObject {
 
     /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
     /// See the Siren.LanguageType enum for more details.
-    public var forceLanguageLocalization: Siren.LanguageType?
+    public var forceLanguageLocalization: Localization.Language?
 
     /// Overrides the tint color for UIAlertController.
     public var alertControllerTintColor: UIColor?
@@ -97,7 +97,7 @@ public final class Siren: NSObject {
     fileprivate lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update
-    fileprivate lazy var updateType: UpdateType = .unknown
+    fileprivate lazy var updateType: Constants.UpdateType = .unknown
 
     /// The App's Singleton
     public static let shared = Siren()
@@ -112,7 +112,7 @@ public final class Siren: NSObject {
     ///
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
-    public func checkVersion(checkType: VersionCheckType) {
+    public func checkVersion(withFrequency frequency: Constants.VersionCheckFrequency) {
         updateType = .unknown
 
         guard Bundle.bundleID() != nil else {
@@ -120,7 +120,7 @@ public final class Siren: NSObject {
             return
         }
 
-        if checkType == .immediately {
+        if frequency == .immediately {
             performVersionCheck()
         } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
@@ -131,7 +131,7 @@ public final class Siren: NSObject {
                 return
             }
 
-            if Date.days(since: lastVersionCheckPerformedOnDate) >= checkType.rawValue {
+            if Date.days(since: lastVersionCheckPerformedOnDate) >= frequency.rawValue {
                 performVersionCheck()
             } else {
                 postError(.recentlyCheckedAlready)
@@ -277,10 +277,16 @@ private extension Siren {
     func showAlert() {
         storeVersionCheckDate()
 
-        let updateAvailableMessage = localizedUpdateTitle()
-        let newVersionMessage = localizedNewVersionMessage()
+        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
+                                        forAppName: appName,
+                                        forCurrentAppStoreVersion: currentAppStoreVersion)
 
-        let alertController = UIAlertController(title: updateAvailableMessage, message: newVersionMessage, preferredStyle: .alert)
+        let alertTitle = localization.alertTitle()
+        let alertMessage = localization.alertMessage()
+
+        let alertController = UIAlertController(title: alertTitle,
+                                                message: alertMessage,
+                                                preferredStyle: .alert)
 
         if let alertControllerTintColor = alertControllerTintColor {
             alertController.view.tintColor = alertControllerTintColor
@@ -297,8 +303,9 @@ private extension Siren {
             alertController.addAction(updateAlertAction())
             alertController.addAction(skipAlertAction())
         case .none:
-            let updateTitle = localizedUpdateTitle()
-            delegate?.sirenDidDetectNewVersionWithoutAlert(title: updateTitle, message: newVersionMessage, updateType: updateType)
+            delegate?.sirenDidDetectNewVersionWithoutAlert(title: alertTitle,
+                                                           message: alertMessage,
+                                                           updateType: updateType)
         }
 
         if alertType != .none && !alertViewIsVisible {
@@ -309,8 +316,10 @@ private extension Siren {
     }
 
     func updateAlertAction() -> UIAlertAction {
-        let title = localizedUpdateButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
+                                        forAppName: appName,
+                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
             self.hideWindow()
@@ -324,8 +333,10 @@ private extension Siren {
     }
 
     func nextTimeAlertAction() -> UIAlertAction {
-        let title = localizedNextTimeButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [weak self] _  in
+        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
+                                        forAppName: appName,
+                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
             guard let self = self else { return }
 
             self.hideWindow()
@@ -339,8 +350,10 @@ private extension Siren {
     }
 
     func skipAlertAction() -> UIAlertAction {
-        let title = localizedSkipButtonTitle()
-        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
+                                        forAppName: appName,
+                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
             if let currentAppStoreVersion = self.currentAppStoreVersion {
@@ -357,7 +370,7 @@ private extension Siren {
         return action
     }
 
-    func setAlertType() -> Siren.AlertType {
+    func setAlertType() -> Constants.AlertType {
         guard let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion else {
                 return .option

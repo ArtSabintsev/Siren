@@ -8,36 +8,12 @@
 
 import Foundation
 
-/// MARK - Siren UpdateType
-
-/// `UpdateType` defines what kind of update is available.
-/// It is used as parameter if user wants to use
-/// custom alert to inform the user about an update.
-///
-/// - major: Major release available: A.b.c.d
-/// - minor: Minor release available: a.B.c.d
-/// - patch: Patch release available: a.b.C.d
-/// - revision: Revision release available: a.b.c.D
-/// - unknown: No information available about the update.
-public enum UpdateType: String {
-    /// Major release available: A.b.c.d
-    case major
-    /// Minor release available: a.B.c.d
-    case minor
-    /// Patch release available: a.b.C.d
-    case patch
-    /// Revision release available: a.b.c.D
-    case revision
-    /// No information available about the update.
-    case unknown
-}
-
 // MARK: - SirenDelegate Protocol
 
 /// Delegate that handles all codepaths for Siren upon version check completion.
 public protocol SirenDelegate: NSObjectProtocol {
     /// Siren performed a version check and did not display an alert.
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: UpdateType)
+    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType)
 
     /// Siren failed to perform version check.
     ///
@@ -49,7 +25,7 @@ public protocol SirenDelegate: NSObjectProtocol {
     /// User presented with an update dialog.
     ///
     /// - Parameter alertType: The type of alert that was presented.
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
+    func sirenDidShowUpdateDialog(alertType: Constants.AlertType)
 
     /// Siren performed a version check and the latest version was already installed.
     func sirenLatestVersionInstalled()
@@ -72,7 +48,7 @@ public protocol SirenDelegate: NSObjectProtocol {
 // MARK: - SirenDelegate Protocol Extension
 
 public extension SirenDelegate {
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: UpdateType) {
+    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType) {
         printMessage()
     }
 
@@ -80,7 +56,7 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType) {
+    func sirenDidShowUpdateDialog(alertType: Constants.AlertType) {
         printMessage()
     }
 

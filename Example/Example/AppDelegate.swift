@@ -45,10 +45,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 //        siren.alertType = .option // or .force, .skip, .none
 
         // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
-        siren.majorUpdateAlertType = .option
-        siren.minorUpdateAlertType = .option
-        siren.patchUpdateAlertType = .option
-        siren.revisionUpdateAlertType = .option
+        siren.majorUpdateConfiguration = .default
+        siren.minorUpdateConfiguration = .default
+        siren.patchUpdateConfiguration = .default
+        siren.revisionUpdateConfiguration = .default
 
         // Optional - Sets all messages to appear in Russian. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .russian
@@ -61,17 +61,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
         // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
         siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 0
-
-        // Optional (Only do this if you don't call checkVersion in didBecomeActive)
-//        siren.checkVersion(checkType: .immediately)
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        Siren.shared.checkVersion(withFrequency: .immediately)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        Siren.shared.checkVersion(withFrequency: .immediately)
+        Siren.shared.checkVersion()
     }
 }
 

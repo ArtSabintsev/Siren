@@ -10,19 +10,19 @@ import Foundation
 
 public struct Configuration {
 
-    static var `default`: Configuration {
+    public static var `default`: Configuration {
         return Configuration(versionCheckFrequency: .daily, forAlertType: .option)
     }
 
-    static var critical: Configuration {
+    public static var critical: Configuration {
         return Configuration(versionCheckFrequency: .immediately, forAlertType: .force)
     }
 
     let alertType: Constants.AlertType
     let frequency: Constants.VersionCheckFrequency
 
-    init(versionCheckFrequency frequency: Constants.VersionCheckFrequency,
-         forAlertType alertType: Constants.AlertType) {
+    public init(versionCheckFrequency frequency: Constants.VersionCheckFrequency,
+                forAlertType alertType: Constants.AlertType) {
         self.frequency = frequency
         self.alertType = alertType
     }

@@ -28,6 +28,10 @@ extension Siren {
             UserDefaults.standard.synchronize()
         }
     }
+
+    func versionParser(for version: String) -> [Int] {
+        return version.lazy.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+    }
 }
 
 // MARK: - Miscellaneous Helpers

@@ -18,9 +18,6 @@ public final class Siren: NSObject {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }()
 
-    /// The error domain for all errors created by Siren.
-    public let SirenErrorDomain = "Siren Error Domain"
-
     /// The `SirenDelegate` variable, which should be set if you'd like to be notified of any of specific user interactions or API success/failures.
     /// Also set this variable if you'd like to use custom UI for presesnting the update notification.
     public weak var delegate: SirenDelegate?
@@ -31,34 +28,34 @@ public final class Siren: NSObject {
 
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.
-    public var alertType: Constants.AlertType = .option {
+    public var configuration: Configuration = .default {
         didSet {
-            majorUpdateAlertType = alertType
-            minorUpdateAlertType = alertType
-            patchUpdateAlertType = alertType
-            revisionUpdateAlertType = alertType
+            majorUpdateConfiguration = configuration
+            minorUpdateConfiguration = configuration
+            patchUpdateConfiguration = configuration
+            revisionUpdateConfiguration = configuration
         }
     }
 
     /// Determines the type of alert that should be shown for major version updates: A.b.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var majorUpdateAlertType: Constants.AlertType = .option
+    public lazy var majorUpdateConfiguration: Configuration = .default
 
     /// Determines the type of alert that should be shown for minor version updates: a.B.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var minorUpdateAlertType: Constants.AlertType = .option
+    public lazy var minorUpdateConfiguration: Configuration = .default
 
     /// Determines the type of alert that should be shown for minor patch updates: a.b.C
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var patchUpdateAlertType: Constants.AlertType = .option
+    public lazy var patchUpdateConfiguration: Configuration = .default
 
     /// Determines the type of alert that should be shown for revision updates: a.b.c.D
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var revisionUpdateAlertType: Constants.AlertType = .option
+    public lazy var revisionUpdateConfiguration: Configuration = .default
 
     /// The name of your app.
     /// By default, it's set to the name of the app that's stored in your plist.
@@ -93,17 +90,21 @@ public final class Siren: NSObject {
     /// The last Date that a version check was performed.
     var lastVersionCheckPerformedOnDate: Date?
 
-    fileprivate var appID: Int?
-    fileprivate lazy var alertViewIsVisible: Bool = false
+    private var appID: Int?
+    private lazy var alertViewIsVisible: Bool = false
 
     /// Type of the available update
-    fileprivate lazy var updateType: Constants.UpdateType = .unknown
+    private lazy var updateType: Constants.UpdateType = .unknown
+
+    /// The error domain for all errors created by Siren.
+    private let SirenErrorDomain = "Siren Error Domain"
 
     /// The App's Singleton
-    public static let shared = Siren()
+    public static let shared = Siren(withConfiguration: .default)
 
-    override init() {
+    init(withConfiguration configuration: Configuration) {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
+        self.configuration = configuration
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -112,8 +113,9 @@ public final class Siren: NSObject {
     ///
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
-    public func checkVersion(withFrequency frequency: Constants.VersionCheckFrequency) {
+    public func checkVersion() {
         updateType = .unknown
+        let frequency = configuration.frequency
 
         guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
@@ -166,9 +168,9 @@ private extension Siren {
         do {
             let url = try iTunesURLFromString()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
+            URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
                 self?.processResults(withData: data, response: response, error: error)
-            }).resume()
+            }.resume()
         } catch {
             postError(.malformedURL)
         }
@@ -262,7 +264,7 @@ private extension Siren {
 
 private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
-        alertType = setAlertType()
+        configuration = loadProperConfiguration()
 
         guard let previouslySkippedVersion = UserDefaults.storedSkippedVersion else {
             showAlert()
@@ -292,7 +294,7 @@ private extension Siren {
             alertController.view.tintColor = alertControllerTintColor
         }
 
-        switch alertType {
+        switch configuration.alertType {
         case .force:
             alertController.addAction(updateAlertAction())
         case .option:
@@ -308,10 +310,10 @@ private extension Siren {
                                                            updateType: updateType)
         }
 
-        if alertType != .none && !alertViewIsVisible {
+        if configuration.alertType != .none && !alertViewIsVisible {
             alertController.show()
             alertViewIsVisible = true
-            delegate?.sirenDidShowUpdateDialog(alertType: alertType)
+            delegate?.sirenDidShowUpdateDialog(alertType: configuration.alertType)
         }
     }
 
@@ -370,33 +372,35 @@ private extension Siren {
         return action
     }
 
-    func setAlertType() -> Constants.AlertType {
+    func loadProperConfiguration() -> Configuration {
+        var configuration: Configuration = .default
+
         guard let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion else {
-                return .option
+                return configuration
         }
 
-        let oldVersion = (currentInstalledVersion).lazy.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
-        let newVersion = (currentAppStoreVersion).lazy.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
+        let oldVersion = versionParser(for: currentInstalledVersion)
+        let newVersion = versionParser(for: currentAppStoreVersion)
 
         guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
-            return alertType // Default value is .Option
+            return configuration
         }
 
         if newVersionFirst > oldVersionFirst { // A.b.c.d
-            alertType = majorUpdateAlertType
+            configuration = majorUpdateConfiguration
             updateType = .major
         } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
-            alertType = minorUpdateAlertType
+            configuration = minorUpdateConfiguration
             updateType = .minor
         } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
-            alertType = patchUpdateAlertType
+            configuration = patchUpdateConfiguration
             updateType = .patch
         } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
-            alertType = revisionUpdateAlertType
+            configuration = revisionUpdateConfiguration
             updateType = .revision
         }
 
-        return alertType
+        return configuration
     }
 }

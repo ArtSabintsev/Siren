@@ -33,6 +33,7 @@
 		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
 		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
 		8EEF4AAF21AA585500C83AAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AAE21AA585500C83AAA /* Settings.swift */; };
+		8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EEF4AAE21AA585500C83AAA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				8E171DE7215B27C2006FBBCC /* Constants.swift */,
 				8E171DEB215B28EC006FBBCC /* Helpers.swift */,
 				8E171DCE215B26B4006FBBCC /* Log.swift */,
+				8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */,
 			);
 			name = Utilities;
 			path = ../../Sources/Utilities;
@@ -417,6 +420,7 @@
 				8E171DE2215B26B4006FBBCC /* LookupModel.swift in Sources */,
 				8ED73400215DBE4900447E3B /* Helpers.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
+				8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */,
 				8ED733FC215DBE4900447E3B /* SirenDelegate.swift in Sources */,
 				8EEF4AAF21AA585500C83AAA /* Settings.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,

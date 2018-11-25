@@ -74,7 +74,7 @@ public final class Siren: NSObject {
     var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenAlertViewController`.
-    var updaterWindow: UIWindow {
+    private var updaterWindow: UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = SirenViewController()
         window.windowLevel = UIWindow.Level.alert + 1
@@ -82,10 +82,7 @@ public final class Siren: NSObject {
     }
 
     /// Type of the available update
-    private lazy var updateType: Constants.UpdateType = .unknown
-
-    /// The error domain for all errors created by Siren.
-    private let SirenErrorDomain = "Siren Error Domain"
+    lazy var updateType: Constants.UpdateType = .unknown
 
     public init(settings: Settings,
                 rules: Rules,
@@ -210,7 +207,8 @@ private extension Siren {
 
         self.currentAppStoreVersion = currentAppStoreVersion
 
-        guard isAppStoreVersionNewer() else {
+        guard VersionParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion,
+                                                   appStoreVersion: currentAppStoreVersion) else {
             delegate?.sirenLatestVersionInstalled()
             return postError(.noUpdateAvailable)
         }
@@ -255,7 +253,8 @@ private extension Siren {
 
 private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
-        rules = loadRulesForTypeOfVersionUpdate()
+        updateType = VersionParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
+        rules = loadRulesForUpdateType()
 
         guard let previouslySkippedVersion = UserDefaults.storedSkippedVersion else {
             showAlert()
@@ -268,7 +267,7 @@ private extension Siren {
     }
 
     func showAlert() {
-        storeVersionCheckDate()
+        UserDefaults.storedVersionCheckDate = Date()
 
         let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
         let alertTitle = localization.alertTitle()
@@ -352,37 +351,5 @@ private extension Siren {
         }
 
         return action
-    }
-
-    func loadRulesForTypeOfVersionUpdate() -> Rules {
-        var configuration: Rules = .default
-
-        guard let currentInstalledVersion = currentInstalledVersion,
-            let currentAppStoreVersion = currentAppStoreVersion else {
-                return configuration
-        }
-
-        let oldVersion = versionParser(for: currentInstalledVersion)
-        let newVersion = versionParser(for: currentAppStoreVersion)
-
-        guard let newVersionFirst = newVersion.first, let oldVersionFirst = oldVersion.first else {
-            return configuration
-        }
-
-        if newVersionFirst > oldVersionFirst { // A.b.c.d
-            configuration = majorUpdateRules
-            updateType = .major
-        } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
-            configuration = minorUpdateRules
-            updateType = .minor
-        } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
-            configuration = patchUpdateRules
-            updateType = .patch
-        } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
-            configuration = revisionUpdateRules
-            updateType = .revision
-        }
-
-        return configuration
     }
 }

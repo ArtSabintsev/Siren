@@ -8,32 +8,6 @@
 
 import Foundation
 
-// MARK: - Version Helpers
-
-extension Siren {
-    func isAppStoreVersionNewer() -> Bool {
-        guard let currentInstalledVersion = currentInstalledVersion,
-            let currentAppStoreVersion = currentAppStoreVersion,
-            (currentInstalledVersion.compare(currentAppStoreVersion, options: .numeric) == .orderedAscending) else {
-                return false
-        }
-
-        return true
-    }
-
-    func storeVersionCheckDate() {
-        lastVersionCheckPerformedOnDate = Date()
-        if let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate {
-            UserDefaults.storedVersionCheckDate = lastVersionCheckPerformedOnDate
-            UserDefaults.standard.synchronize()
-        }
-    }
-
-    func versionParser(for version: String) -> [Int] {
-        return version.lazy.split {$0 == "."}.map { String($0) }.map {Int($0) ?? 0}
-    }
-}
-
 // MARK: - Miscellaneous Helpers
 
 extension Siren {
@@ -52,6 +26,16 @@ extension Siren {
         }
 
         return true
+    }
+
+    func loadRulesForUpdateType() -> Rules {
+        switch updateType {
+        case .major: return majorUpdateRules
+        case .minor: return minorUpdateRules
+        case .patch: return patchUpdateRules
+        case .revision: return revisionUpdateRules
+        case .unknown: return rules
+        }
     }
 
     /// Routes a console-bound message to the `SirenLog` struct, which decorates the log message.

@@ -23,9 +23,9 @@ public struct Settings {
     /// See the Siren.LanguageType enum for more details.
     let forceLanguageLocalization: Localization.Language?
 
-    init(appName: String? = nil,
-         countryCode: String? = nil,
-         forceLanguageLocalization: Localization.Language? = nil) {
+    public init(appName: String? = nil,
+                countryCode: String? = nil,
+                forceLanguageLocalization: Localization.Language? = nil) {
         self.appName = appName ?? Bundle.bestMatchingAppName()
         self.countryCode = countryCode
         self.forceLanguageLocalization = forceLanguageLocalization

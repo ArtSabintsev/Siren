@@ -13,20 +13,11 @@ import UIKit
 /// The Siren Class. A singleton that is initialized using the `shared` constant.
 public final class Siren: NSObject {
 
-    /// Current installed version of your app.
-    internal var currentInstalledVersion: String? = {
-        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-    }()
+    /// MARK: - Public Interface
 
     /// The `SirenDelegate` variable, which should be set if you'd like to be notified of any of specific user interactions or API success/failures.
     /// Also set this variable if you'd like to use custom UI for presesnting the update notification.
     public weak var delegate: SirenDelegate?
-
-    /// The debug flag, which is disabled by default.
-    /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
-    public lazy var debugEnabled = false
-
-    public var settings: Settings = Settings()
 
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.
@@ -59,24 +50,36 @@ public final class Siren: NSObject {
     /// See the Siren.AlertType enum for full details.
     public lazy var revisionUpdateRules: Rules = .default
 
+    private var settings: Settings
+
     /// Overrides all the Strings to which Siren defaults.
     /// Defaults to the values defined in `SirenAlertMessaging.Constants`
-    public var alertConfiguration = AlertConfiguration()
+    private var alertConfiguration: AlertConfiguration
 
-    /// Overrides the tint color for UIAlertController.
-    public var alertControllerTintColor: UIColor?
+    /// The debug flag, which is disabled by default.
+    /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
+    var debugEnabled: Bool
+
+    /// Current installed version of your app.
+    var currentInstalledVersion: String? = Bundle.version()
 
     /// The current version of your app that is available for download on the App Store
-    public internal(set) var currentAppStoreVersion: String?
-
-    /// The `UIWindow` instance that presents the `SirenAlertViewController`.
-    var updaterWindow: UIWindow?
+    var currentAppStoreVersion: String?
 
     /// The last Date that a version check was performed.
     var lastVersionCheckPerformedOnDate: Date?
 
     private var appID: Int?
     private lazy var alertViewIsVisible: Bool = false
+    var alertController: UIAlertController?
+
+    /// The `UIWindow` instance that presents the `SirenAlertViewController`.
+    var updaterWindow: UIWindow {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = SirenViewController()
+        window.windowLevel = UIWindow.Level.alert + 1
+        return window
+    }
 
     /// Type of the available update
     private lazy var updateType: Constants.UpdateType = .unknown
@@ -84,14 +87,15 @@ public final class Siren: NSObject {
     /// The error domain for all errors created by Siren.
     private let SirenErrorDomain = "Siren Error Domain"
 
-    /// The App's Singleton
-    public static let shared = Siren(settings: Settings(), rules: .default, alertConfiguration: AlertConfiguration())
-
-    init(settings: Settings, rules: Rules, alertConfiguration: AlertConfiguration) {
+    public init(settings: Settings,
+                rules: Rules,
+                alertConfiguration: AlertConfiguration,
+                debugEnabled: Bool = false) {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
         self.settings = settings
         self.rules = rules
         self.alertConfiguration = alertConfiguration
+        self.debugEnabled = debugEnabled
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -156,7 +160,8 @@ private extension Siren {
             let url = try iTunesURLFromString()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
             URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-                self?.processResults(withData: data, response: response, error: error)
+                guard let self = self else { return }
+                self.processResults(withData: data, response: response, error: error)
             }.resume()
         } catch {
             postError(.malformedURL)
@@ -217,8 +222,7 @@ private extension Siren {
 
         guard daysSinceRelease >= rules.releaseFordDays else {
             let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(rules.releaseFordDays) days have passed."
-            printMessage(message)
-            return
+             return printMessage(message)
         }
 
         showAlertIfCurrentAppStoreVersionNotSkipped()
@@ -251,7 +255,7 @@ private extension Siren {
 
 private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
-        rules = loadProperConfiguration()
+        rules = loadRulesForTypeOfVersionUpdate()
 
         guard let previouslySkippedVersion = UserDefaults.storedSkippedVersion else {
             showAlert()
@@ -270,24 +274,24 @@ private extension Siren {
         let alertTitle = localization.alertTitle()
         let alertMessage = localization.alertMessage()
 
-        let alertController = UIAlertController(title: alertTitle,
-                                                message: alertMessage,
-                                                preferredStyle: .alert)
+       alertController = UIAlertController(title: alertTitle,
+                                           message: alertMessage,
+                                           preferredStyle: .alert)
 
-        if let alertControllerTintColor = alertControllerTintColor {
-            alertController.view.tintColor = alertControllerTintColor
+        if let alertControllerTintColor = alertConfiguration.tintColor {
+            alertController?.view.tintColor = alertControllerTintColor
         }
 
         switch rules.alertType {
         case .force:
-            alertController.addAction(updateAlertAction())
+            alertController?.addAction(updateAlertAction())
         case .option:
-            alertController.addAction(nextTimeAlertAction())
-            alertController.addAction(updateAlertAction())
+            alertController?.addAction(nextTimeAlertAction())
+            alertController?.addAction(updateAlertAction())
         case .skip:
-            alertController.addAction(nextTimeAlertAction())
-            alertController.addAction(updateAlertAction())
-            alertController.addAction(skipAlertAction())
+            alertController?.addAction(nextTimeAlertAction())
+            alertController?.addAction(updateAlertAction())
+            alertController?.addAction(skipAlertAction())
         case .none:
             delegate?.sirenDidDetectNewVersionWithoutAlert(title: alertTitle,
                                                            message: alertMessage,
@@ -295,7 +299,7 @@ private extension Siren {
         }
 
         if rules.alertType != .none && !alertViewIsVisible {
-            alertController.show()
+            alertController?.show(window: updaterWindow)
             alertViewIsVisible = true
             delegate?.sirenDidShowUpdateDialog(alertType: rules.alertType)
         }
@@ -306,7 +310,7 @@ private extension Siren {
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
-            self.hideWindow()
+            self.alertController?.hide(window: self.updaterWindow)
             self.launchAppStore()
             self.delegate?.sirenUserDidLaunchAppStore()
             self.alertViewIsVisible = false
@@ -321,7 +325,7 @@ private extension Siren {
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
             guard let self = self else { return }
 
-            self.hideWindow()
+            self.alertController?.hide(window: self.updaterWindow)
             self.delegate?.sirenUserDidCancel()
             self.alertViewIsVisible = false
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
@@ -341,7 +345,7 @@ private extension Siren {
                 UserDefaults.standard.synchronize()
             }
 
-            self.hideWindow()
+            self.alertController?.hide(window: self.updaterWindow)
             self.delegate?.sirenUserDidSkipVersion()
             self.alertViewIsVisible = false
             return
@@ -350,7 +354,7 @@ private extension Siren {
         return action
     }
 
-    func loadProperConfiguration() -> Rules {
+    func loadRulesForTypeOfVersionUpdate() -> Rules {
         var configuration: Rules = .default
 
         guard let currentInstalledVersion = currentInstalledVersion,

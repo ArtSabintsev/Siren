@@ -12,14 +12,12 @@ import UIKit
 // MARK: - UIAlertController Extension for Siren
 
 extension UIAlertController {
-    func show() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = SirenViewController()
-        window.windowLevel = UIWindow.Level.alert + 1
-
-        Siren.shared.updaterWindow = window
-
+    func show(window: UIWindow) {
         window.makeKeyAndVisible()
         window.rootViewController?.present(self, animated: true, completion: nil)
+    }
+
+    func hide(window: UIWindow) {
+        window.isHidden = true
     }
 }

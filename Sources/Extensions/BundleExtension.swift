@@ -16,7 +16,12 @@ extension Bundle {
         static let bundleExtension = "bundle"
         static let displayName = "CFBundleDisplayName"
         static let projectExtension = "lproj"
+        static let shortVersionString = "CFBundleShortVersionString"
         static let table = "SirenLocalizable"
+    }
+
+    final class func version() -> String? {
+        return Bundle.main.object(forInfoDictionaryKey: Constants.shortVersionString) as? String
     }
 
     final class func bundleID() -> String? {

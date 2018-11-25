@@ -54,13 +54,6 @@ extension Siren {
         return true
     }
 
-    func hideWindow() {
-        if let updaterWindow = updaterWindow {
-            updaterWindow.isHidden = true
-            self.updaterWindow = nil
-        }
-    }
-
     /// Routes a console-bound message to the `SirenLog` struct, which decorates the log message.
     ///
     /// - Parameter message: The message to decorate and log to the console.

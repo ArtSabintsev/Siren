@@ -26,60 +26,45 @@ public final class Siren: NSObject {
     /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
     public lazy var debugEnabled = false
 
+    public var settings: Settings = Settings()
+
     /// Determines the type of alert that should be shown.
     /// See the Siren.AlertType enum for full details.
-    public var configuration: Configuration = .default {
+    public var rules: Rules = .default {
         didSet {
-            majorUpdateConfiguration = configuration
-            minorUpdateConfiguration = configuration
-            patchUpdateConfiguration = configuration
-            revisionUpdateConfiguration = configuration
+            majorUpdateRules = rules
+            minorUpdateRules = rules
+            patchUpdateRules = rules
+            revisionUpdateRules = rules
         }
     }
 
     /// Determines the type of alert that should be shown for major version updates: A.b.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var majorUpdateConfiguration: Configuration = .default
+    public lazy var majorUpdateRules: Rules = .default
 
     /// Determines the type of alert that should be shown for minor version updates: a.B.c
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var minorUpdateConfiguration: Configuration = .default
+    public lazy var minorUpdateRules: Rules = .default
 
     /// Determines the type of alert that should be shown for minor patch updates: a.b.C
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var patchUpdateConfiguration: Configuration = .default
+    public lazy var patchUpdateRules: Rules = .default
 
     /// Determines the type of alert that should be shown for revision updates: a.b.c.D
     /// Defaults to Siren.AlertType.option.
     /// See the Siren.AlertType enum for full details.
-    public lazy var revisionUpdateConfiguration: Configuration = .default
-
-    /// The name of your app.
-    /// By default, it's set to the name of the app that's stored in your plist.
-    public lazy var appName = Bundle.bestMatchingAppName()
+    public lazy var revisionUpdateRules: Rules = .default
 
     /// Overrides all the Strings to which Siren defaults.
     /// Defaults to the values defined in `SirenAlertMessaging.Constants`
-    public var alertMessaging = AlertMessaging()
-
-    /// The region or country of an App Store in which your app is available.
-    /// By default, all version checks are performed against the US App Store.
-    /// If your app is not available in the US App Store, set it to the identifier of at least one App Store within which it is available.
-    public var countryCode: String?
-
-    /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
-    /// See the Siren.LanguageType enum for more details.
-    public var forceLanguageLocalization: Localization.Language?
+    public var alertConfiguration = AlertConfiguration()
 
     /// Overrides the tint color for UIAlertController.
     public var alertControllerTintColor: UIColor?
-
-    /// When this is set, the alert will only show up if the current version has already been released for X days.
-    /// Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
-    public lazy var showAlertAfterCurrentVersionHasBeenReleasedForDays: Int = 1
 
     /// The current version of your app that is available for download on the App Store
     public internal(set) var currentAppStoreVersion: String?
@@ -100,11 +85,13 @@ public final class Siren: NSObject {
     private let SirenErrorDomain = "Siren Error Domain"
 
     /// The App's Singleton
-    public static let shared = Siren(withConfiguration: .default)
+    public static let shared = Siren(settings: Settings(), rules: .default, alertConfiguration: AlertConfiguration())
 
-    init(withConfiguration configuration: Configuration) {
+    init(settings: Settings, rules: Rules, alertConfiguration: AlertConfiguration) {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
-        self.configuration = configuration
+        self.settings = settings
+        self.rules = rules
+        self.alertConfiguration = alertConfiguration
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -115,7 +102,7 @@ public final class Siren: NSObject {
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
     public func checkVersion() {
         updateType = .unknown
-        let frequency = configuration.frequency
+        let frequency = rules.frequency
 
         guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
@@ -228,8 +215,8 @@ private extension Siren {
             return
         }
 
-        guard daysSinceRelease >= showAlertAfterCurrentVersionHasBeenReleasedForDays else {
-            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(showAlertAfterCurrentVersionHasBeenReleasedForDays) days have passed."
+        guard daysSinceRelease >= rules.releaseFordDays else {
+            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(rules.releaseFordDays) days have passed."
             printMessage(message)
             return
         }
@@ -245,7 +232,7 @@ private extension Siren {
 
         var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
 
-        if let countryCode = countryCode {
+        if let countryCode = settings.countryCode {
             let item = URLQueryItem(name: "country", value: countryCode)
             items.append(item)
         }
@@ -264,7 +251,7 @@ private extension Siren {
 
 private extension Siren {
     func showAlertIfCurrentAppStoreVersionNotSkipped() {
-        configuration = loadProperConfiguration()
+        rules = loadProperConfiguration()
 
         guard let previouslySkippedVersion = UserDefaults.storedSkippedVersion else {
             showAlert()
@@ -279,10 +266,7 @@ private extension Siren {
     func showAlert() {
         storeVersionCheckDate()
 
-        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
-                                        forAppName: appName,
-                                        forCurrentAppStoreVersion: currentAppStoreVersion)
-
+        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
         let alertTitle = localization.alertTitle()
         let alertMessage = localization.alertMessage()
 
@@ -294,7 +278,7 @@ private extension Siren {
             alertController.view.tintColor = alertControllerTintColor
         }
 
-        switch configuration.alertType {
+        switch rules.alertType {
         case .force:
             alertController.addAction(updateAlertAction())
         case .option:
@@ -310,17 +294,15 @@ private extension Siren {
                                                            updateType: updateType)
         }
 
-        if configuration.alertType != .none && !alertViewIsVisible {
+        if rules.alertType != .none && !alertViewIsVisible {
             alertController.show()
             alertViewIsVisible = true
-            delegate?.sirenDidShowUpdateDialog(alertType: configuration.alertType)
+            delegate?.sirenDidShowUpdateDialog(alertType: rules.alertType)
         }
     }
 
     func updateAlertAction() -> UIAlertAction {
-        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
-                                        forAppName: appName,
-                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
@@ -335,9 +317,7 @@ private extension Siren {
     }
 
     func nextTimeAlertAction() -> UIAlertAction {
-        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
-                                        forAppName: appName,
-                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
             guard let self = self else { return }
 
@@ -352,9 +332,7 @@ private extension Siren {
     }
 
     func skipAlertAction() -> UIAlertAction {
-        let localization = Localization(forceLanguageLocalization: forceLanguageLocalization,
-                                        forAppName: appName,
-                                        forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
@@ -372,8 +350,8 @@ private extension Siren {
         return action
     }
 
-    func loadProperConfiguration() -> Configuration {
-        var configuration: Configuration = .default
+    func loadProperConfiguration() -> Rules {
+        var configuration: Rules = .default
 
         guard let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion else {
@@ -388,16 +366,16 @@ private extension Siren {
         }
 
         if newVersionFirst > oldVersionFirst { // A.b.c.d
-            configuration = majorUpdateConfiguration
+            configuration = majorUpdateRules
             updateType = .major
         } else if newVersion.count > 1 && (oldVersion.count <= 1 || newVersion[1] > oldVersion[1]) { // a.B.c.d
-            configuration = minorUpdateConfiguration
+            configuration = minorUpdateRules
             updateType = .minor
         } else if newVersion.count > 2 && (oldVersion.count <= 2 || newVersion[2] > oldVersion[2]) { // a.b.C.d
-            configuration = patchUpdateConfiguration
+            configuration = patchUpdateRules
             updateType = .patch
         } else if newVersion.count > 3 && (oldVersion.count <= 3 || newVersion[3] > oldVersion[3]) { // a.b.c.D
-            configuration = revisionUpdateConfiguration
+            configuration = revisionUpdateRules
             updateType = .revision
         }
 

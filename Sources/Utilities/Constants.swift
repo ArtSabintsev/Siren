@@ -14,20 +14,19 @@ import Foundation
 public struct Constants {
     /// Determines the type of alert to present after a successful version check has been performed.
     public enum AlertType {
-        /// Forces user to update your app (1 button alert).
+        /// Forces the user to update your app (1 button alert).
         case force
-        /// (DEFAULT) Presents user with option to update app now or at next launch (2 button alert).
+        /// Presents the user with option to update app now or at next launch (2 button alert).
         case option
-        /// Presents user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
+        /// Presents the user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
         /// Doesn't show the alert, but instead returns a localized message for use in a
         /// custom UI within the `sirenDidDetectNewVersionWithoutAlert(...)` delegate method.
         case none
     }
 
-    /// `UpdateType` defines what kind of update is available.
-    /// It is used as a parameter if the user wants to use
-    /// a custom alert to inform the user about an update.
+    /// Informs Siren of the type of update that is available so that
+    /// the appropriate ruleset is used to present the update alert.
     ///
     /// - major: Major release available: A.b.c.d
     /// - minor: Minor release available: a.B.c.d

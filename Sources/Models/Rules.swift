@@ -10,14 +10,6 @@ import Foundation
 
 public struct Rules {
 
-    public static var `default`: Rules {
-        return Rules(versionCheckFrequency: .daily, forAlertType: .option)
-    }
-
-    public static var critical: Rules {
-        return Rules(versionCheckFrequency: .immediately, forAlertType: .force)
-    }
-
     let alertType: Constants.AlertType
     let frequency: Constants.VersionCheckFrequency
 
@@ -31,5 +23,13 @@ public struct Rules {
         self.frequency = frequency
         self.alertType = alertType
         self.releaseFordDays = releaseFordDays
+    }
+
+    public static var `default`: Rules {
+        return Rules(versionCheckFrequency: .daily, forAlertType: .option)
+    }
+
+    public static var critical: Rules {
+        return Rules(versionCheckFrequency: .immediately, forAlertType: .force)
     }
 }

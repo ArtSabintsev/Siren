@@ -20,7 +20,7 @@ struct VersionParser {
         return true
     }
 
-    static func parse(installedVersion: String?, appStoreVersion: String?) -> Constants.UpdateType {
+    static func parse(installedVersion: String?, appStoreVersion: String?) -> RulesManager.UpdateType {
         guard let installedVersion = installedVersion,
             let appStoreVersion = appStoreVersion else {
                 return .unknown

@@ -22,13 +22,13 @@
 		8E171DE6215B2701006FBBCC /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE5215B2701006FBBCC /* Localization.swift */; };
 		8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */; };
 		8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
+		8E98C52C21B2F32C00EE061A /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98C52B21B2F32C00EE061A /* RulesManager.swift */; };
+		8E98C53021B3009300EE061A /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98C52F21B3009300EE061A /* SirenDelegate.swift */; };
 		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
 		8EACA9721F380294003134CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9691F37F2D3003134CA /* Main.storyboard */; };
 		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
 		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
-		8ED733FC215DBE4900447E3B /* SirenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD4215B26B4006FBBCC /* SirenDelegate.swift */; };
-		8ED733FD215DBE4900447E3B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE7215B27C2006FBBCC /* Constants.swift */; };
 		8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCD215B26B4006FBBCC /* CapturedError.swift */; };
 		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
 		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
@@ -57,16 +57,16 @@
 		8E171DCE215B26B4006FBBCC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8E171DD1215B26B4006FBBCC /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		8E171DD2215B26B4006FBBCC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		8E171DD4215B26B4006FBBCC /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenDelegate.swift; sourceTree = "<group>"; };
 		8E171DD6215B26B4006FBBCC /* AlertConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfiguration.swift; sourceTree = "<group>"; };
 		8E171DD7215B26B4006FBBCC /* LookupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupModel.swift; sourceTree = "<group>"; };
 		8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E171DDA215B26B4006FBBCC /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		8E171DE5215B2701006FBBCC /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		8E171DE7215B27C2006FBBCC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E171DEB215B28EC006FBBCC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E98C52B21B2F32C00EE061A /* RulesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
+		8E98C52F21B3009300EE061A /* SirenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenDelegate.swift; sourceTree = "<group>"; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EACA9681F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EACA96A1F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,9 +112,10 @@
 				55EC36491E6BB98A00726F13 /* Siren.h */,
 				55EC365F1E6BB99B00726F13 /* Siren.swift */,
 				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
+				8E98C52D21B2F9B100EE061A /* Controllers */,
 				8E171DD0215B26B4006FBBCC /* Extensions */,
 				8E171DD5215B26B4006FBBCC /* Models */,
-				8E171DD3215B26B4006FBBCC /* Protocols */,
+				8E98C52E21B3009300EE061A /* Protocols */,
 				8E171DCC215B26B4006FBBCC /* Utilities */,
 				8E171DD9215B26B4006FBBCC /* View Controllers */,
 			);
@@ -125,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				8E171DCD215B26B4006FBBCC /* CapturedError.swift */,
-				8E171DE7215B27C2006FBBCC /* Constants.swift */,
 				8E171DEB215B28EC006FBBCC /* Helpers.swift */,
 				8E171DCE215B26B4006FBBCC /* Log.swift */,
 				8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */,
@@ -144,15 +144,6 @@
 			);
 			name = Extensions;
 			path = ../../Sources/Extensions;
-			sourceTree = "<group>";
-		};
-		8E171DD3215B26B4006FBBCC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				8E171DD4215B26B4006FBBCC /* SirenDelegate.swift */,
-			);
-			name = Protocols;
-			path = ../../Sources/Protocols;
 			sourceTree = "<group>";
 		};
 		8E171DD5215B26B4006FBBCC /* Models */ = {
@@ -182,6 +173,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E98C52D21B2F9B100EE061A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E98C52B21B2F32C00EE061A /* RulesManager.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8E98C52E21B3009300EE061A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8E98C52F21B3009300EE061A /* SirenDelegate.swift */,
+			);
+			name = Protocols;
+			path = ../../Sources/Protocols;
 			sourceTree = "<group>";
 		};
 		8EACA9651F37F2D3003134CA /* Example */ = {
@@ -420,15 +428,15 @@
 				8E171DE2215B26B4006FBBCC /* LookupModel.swift in Sources */,
 				8ED73400215DBE4900447E3B /* Helpers.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
+				8E98C52C21B2F32C00EE061A /* RulesManager.swift in Sources */,
 				8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */,
-				8ED733FC215DBE4900447E3B /* SirenDelegate.swift in Sources */,
 				8EEF4AAF21AA585500C83AAA /* Settings.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,
+				8E98C53021B3009300EE061A /* SirenDelegate.swift in Sources */,
 				8ED733FF215DBE4900447E3B /* Log.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
 				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,
 				8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */,
-				8ED733FD215DBE4900447E3B /* Constants.swift in Sources */,
 				8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */,
 				8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */,
 				8E171DDF215B26B4006FBBCC /* DateExtension.swift in Sources */,

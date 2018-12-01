@@ -80,7 +80,6 @@ public struct CapturedError: LocalizedError {
 
 extension Siren {
     func postError(_ error: CapturedError.Known) {
-        delegate?.sirenDidFailVersionCheck(error: error)
         printMessage(error.localizedDescription)
     }
 }

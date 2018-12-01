@@ -10,26 +10,48 @@ import Foundation
 
 public struct Rules {
 
-    let alertType: Constants.AlertType
-    let frequency: Constants.VersionCheckFrequency
+    let alertType: AlertType
+    let frequency: VersionCheckFrequency
 
-    /// When this is set, the alert will only show up if the current version has already been released for X days.
-    /// Defaults to 1 day (in the initializer) to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
-    let releaseFordDays: Int
-
-    public init(versionCheckFrequency frequency: Constants.VersionCheckFrequency,
-                forAlertType alertType: Constants.AlertType,
-                showAlertAfterCurrentVersionHasBeenReleasedForDays releaseFordDays: Int = 1) {
+    public init(checkFrequency frequency: VersionCheckFrequency,
+                forAlertType alertType: AlertType) {
         self.frequency = frequency
         self.alertType = alertType
-        self.releaseFordDays = releaseFordDays
     }
 
     public static var `default`: Rules {
-        return Rules(versionCheckFrequency: .daily, forAlertType: .option)
+        return Rules(checkFrequency: .daily, forAlertType: .option)
     }
 
     public static var critical: Rules {
-        return Rules(versionCheckFrequency: .immediately, forAlertType: .force)
+        return Rules(checkFrequency: .immediately, forAlertType: .force)
     }
+}
+
+// MARK: - Rules-related Constants
+
+public extension Rules {
+    /// Determines the type of alert to present after a successful version check has been performed.
+    public enum AlertType {
+        /// Forces the user to update your app (1 button alert).
+        case force
+        /// Presents the user with option to update app now or at next launch (2 button alert).
+        case option
+        /// Presents the user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
+        case skip
+        /// Doesn't show the alert, but instead returns a localized message for use in a
+        /// custom UI within the `sirenDidDetectNewVersionWithoutAlert(...)` delegate method.
+        case none
+    }
+
+    /// Determines the frequency in which the the version check is performed and the user is prompted to update the app.
+    public enum VersionCheckFrequency: Int {
+        /// Version check performed every time the app is launched.
+        case immediately = 0
+        /// Version check performed once a day.
+        case daily = 1
+        /// Version check performed once a week.
+        case weekly = 7
+    }
+
 }

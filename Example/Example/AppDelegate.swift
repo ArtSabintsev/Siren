@@ -33,21 +33,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 //                                                    nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
 //                                                    skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
 
-        let rules = Rules(versionCheckFrequency: .immediately, forAlertType: .force, showAlertAfterCurrentVersionHasBeenReleasedForDays: 1)
+        let settings = Settings()
+        let rules = Rules(checkFrequency: .immediately,
+                          forAlertType: .force)
+        let rulesManager = RulesManager(globalRules: rules,
+                                        showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
+        let alertConfiguration = AlertConfiguration()
 
-        siren = Siren(settings: Settings(),
-                      rules: rules,
-                      alertConfiguration: AlertConfiguration(),
-                    debugEnabled: true)
+        siren = Siren(settings: settings,
+                      rulesManager: rulesManager,
+                      alertConfiguration: alertConfiguration,
+                      debugEnabled: true)
 
-        // Optional
-        siren?.delegate = self
-
-        // Optional - Can set differentiated Alerts for Major, Minor, Patch, and Revision Updates (Must be called AFTER siren.alertType, if you are using siren.alertType)
-        siren?.majorUpdateRules = .default
-        siren?.minorUpdateRules = .default
-        siren?.patchUpdateRules = .default
-        siren?.revisionUpdateRules = .default
 
         // Optional - Sets all messages to appear in Russian. Siren supports many other languages, not just English and Russian.
 //        siren.forceLanguageLocalization = .russian
@@ -63,44 +60,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        siren?.checkVersion()
-    }
-}
-
-
-
-extension AppDelegate: SirenDelegate
-{
-    func sirenDidShowUpdateDialog(alertType: Constants.AlertType) {
-        print(#function, alertType)
-    }
-    
-    func sirenUserDidCancel() {
-        print(#function)
-    }
-    
-    func sirenUserDidSkipVersion() {
-        print(#function)
-    }
-    
-    func sirenUserDidLaunchAppStore() {
-        print(#function)
-    }
-
-    func sirenDidFailVersionCheck(error: Error) {
-        print(#function, error)
-    }
-
-    func sirenLatestVersionInstalled() {
-        print(#function, "Latest version of app is installed")
-    }
-
-    func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: LookupModel) {
-        print(#function, "\(lookupModel)")
-    }
-
-    // This delegate method is only hit when alertType is initialized to .none
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType) {
-        print(#function, "\n\(title)\n\(message).\nRelease type: \(updateType.rawValue.capitalized)")
+        siren?.wail()
     }
 }

@@ -11,6 +11,28 @@ import Foundation
 // MARK: - Miscellaneous Helpers
 
 extension Siren {
+    func makeITunesURL(fromSettings settings: Settings) throws -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "itunes.apple.com"
+        components.path = "/lookup"
+
+        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
+
+        if let countryCode = settings.countryCode {
+            let item = URLQueryItem(name: "country", value: countryCode)
+            items.append(item)
+        }
+
+        components.queryItems = items
+
+        guard let url = components.url, !url.absoluteString.isEmpty else {
+            throw CapturedError.Known.malformedURL
+        }
+
+        return url
+    }
+
     func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
             postError(.appStoreOSVersionNumberFailure)
@@ -26,16 +48,6 @@ extension Siren {
         }
 
         return true
-    }
-
-    func loadRulesForUpdateType() -> Rules {
-        switch updateType {
-        case .major: return majorUpdateRules
-        case .minor: return minorUpdateRules
-        case .patch: return patchUpdateRules
-        case .revision: return revisionUpdateRules
-        case .unknown: return rules
-        }
     }
 
     /// Routes a console-bound message to the `SirenLog` struct, which decorates the log message.

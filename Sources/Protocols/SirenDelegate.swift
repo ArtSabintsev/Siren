@@ -13,7 +13,7 @@ import Foundation
 /// Delegate that handles all codepaths for Siren upon version check completion.
 public protocol SirenDelegate: NSObjectProtocol {
     /// Siren performed a version check and did not display an alert.
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType)
+    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: RulesManager.UpdateType)
 
     /// Siren failed to perform version check.
     ///
@@ -25,7 +25,7 @@ public protocol SirenDelegate: NSObjectProtocol {
     /// User presented with an update dialog.
     ///
     /// - Parameter alertType: The type of alert that was presented.
-    func sirenDidShowUpdateDialog(alertType: Constants.AlertType)
+    func sirenDidShowUpdateDialog(alertType: Rules.AlertType)
 
     /// Siren performed a version check and the latest version was already installed.
     func sirenLatestVersionInstalled()
@@ -48,7 +48,7 @@ public protocol SirenDelegate: NSObjectProtocol {
 // MARK: - SirenDelegate Protocol Extension
 
 public extension SirenDelegate {
-    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: Constants.UpdateType) {
+    func sirenDidDetectNewVersionWithoutAlert(title: String, message: String, updateType: RulesManager.UpdateType) {
         printMessage()
     }
 
@@ -56,7 +56,7 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidShowUpdateDialog(alertType: Constants.AlertType) {
+    func sirenDidShowUpdateDialog(alertType: Rules.AlertType) {
         printMessage()
     }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Siren-specific UserDefaults Keys
+/// Siren-specific `UserDefaults` Keys
 private enum SirenKeys: String {
     /// Key that notifies Siren to perform a version check and present
     /// the Siren alert the next time the user launches the app.

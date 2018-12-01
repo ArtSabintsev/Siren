@@ -11,7 +11,12 @@ import XCTest
 
 final class SirenTests: XCTestCase {
 
-    let siren = Siren.shared
+    var siren: Siren = {
+        let settings = Settings()
+        let rules = Rules(checkFrequency: .immediately, forAlertType: .force)
+        let rulesManager = RulesManager(globalRules: rules, showAlertAfterCurrentVersionHasBeenReleasedForDays: 0)
+        return Siren(settings: settings, rulesManager: rulesManager, alertConfiguration: AlertConfiguration(), debugEnabled: true)
+    }()
 
 }
 
@@ -23,112 +28,144 @@ extension SirenTests {
         siren.testSetCurrentInstalledVersion(version: "1")
 
         siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
     }
 
     func testDoubleDigitVersionUpdate() {
         siren.testSetCurrentInstalledVersion(version: "1.0")
 
         siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
     }
 
     func testTripleDigitVersionUpdate() {
         siren.testSetCurrentInstalledVersion(version: "1.0.0")
 
         siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
     }
 
     func testQuadrupleDigitVersionUpdate() {
         siren.testSetCurrentInstalledVersion(version: "1.0.0")
 
         siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
 
         siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(VersionParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                           appStoreVersion: siren.currentAppStoreVersion))
     }
 }
 

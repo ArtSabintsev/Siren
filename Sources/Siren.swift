@@ -13,17 +13,15 @@ public final class Siren: NSObject {
 
     public typealias CompletionHandler = (Results?, CapturedError.Known?) -> Void
 
-    var settings: Settings = .default
+    public var settings: Settings = .default
 
-    var rulesManager: RulesManager = .default
+    public var rulesManager: RulesManager = .default
 
-    var alertConfiguration: AlertConfiguration = .default
+    public var alertConfiguration: AlertConfiguration = .default
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
-    var debugEnabled: Bool = false
-
-    private var completionHandler: CompletionHandler?
+    public lazy var debugEnabled: Bool = false
 
     /// Current installed version of your app.
     lazy var currentInstalledVersion: String? = Bundle.version()
@@ -31,6 +29,7 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     var currentAppStoreVersion: String?
 
+    private var completionHandler: CompletionHandler?
     private var lookupModel: LookupModel?
     private var updateType: RulesManager.UpdateType = .unknown
     private var didBecomeActiveObserver: NSObjectProtocol?
@@ -76,11 +75,14 @@ public final class Siren: NSObject {
     }
 
     func addObservers() {
-        didBecomeActiveObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification,
-                                                                         object: nil,
-                                                                         queue: nil) { [weak self] _ in
-                                                                            guard let self = self else { return }
-                                                                            self.performVersionCheckRequest()
+        guard didBecomeActiveObserver == nil else { return }
+        didBecomeActiveObserver = NotificationCenter
+            .default
+            .addObserver(forName: UIApplication.didBecomeActiveNotification,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard let self = self else { return }
+                            self.performVersionCheckRequest()
         }
     }
 

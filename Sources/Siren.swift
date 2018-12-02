@@ -188,10 +188,9 @@ private extension Siren {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
-        guard UserDefaults.storedSkippedVersion == nil,
-            let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
+        if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
             let currentAppStoreVersion = currentAppStoreVersion,
-            currentAppStoreVersion != previouslySkippedVersion else {
+            currentAppStoreVersion != previouslySkippedVersion {
                 return
         }
 

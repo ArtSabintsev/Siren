@@ -112,8 +112,8 @@
 				55EC36491E6BB98A00726F13 /* Siren.h */,
 				55EC365F1E6BB99B00726F13 /* Siren.swift */,
 				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
-				8E98C52D21B2F9B100EE061A /* Controllers */,
 				8E171DD0215B26B4006FBBCC /* Extensions */,
+				8E98C53121B375A600EE061A /* Managers */,
 				8E171DD5215B26B4006FBBCC /* Models */,
 				8E98C52E21B3009300EE061A /* Protocols */,
 				8E171DCC215B26B4006FBBCC /* Utilities */,
@@ -149,11 +149,9 @@
 		8E171DD5215B26B4006FBBCC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8E171DD6215B26B4006FBBCC /* AlertConfiguration.swift */,
 				8E171DE5215B2701006FBBCC /* Localization.swift */,
 				8E171DD7215B26B4006FBBCC /* LookupModel.swift */,
 				4D729C4521A213B4002F73AB /* Rules.swift */,
-				8EEF4AAE21AA585500C83AAA /* Settings.swift */,
 			);
 			name = Models;
 			path = ../../Sources/Models;
@@ -175,14 +173,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8E98C52D21B2F9B100EE061A /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				8E98C52B21B2F32C00EE061A /* RulesManager.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
 		8E98C52E21B3009300EE061A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +180,16 @@
 			);
 			name = Protocols;
 			path = ../../Sources/Protocols;
+			sourceTree = "<group>";
+		};
+		8E98C53121B375A600EE061A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8E171DD6215B26B4006FBBCC /* AlertConfiguration.swift */,
+				8E98C52B21B2F32C00EE061A /* RulesManager.swift */,
+				8EEF4AAE21AA585500C83AAA /* Settings.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		8EACA9651F37F2D3003134CA /* Example */ = {

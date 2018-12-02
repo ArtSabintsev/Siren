@@ -34,4 +34,6 @@ public struct Settings {
             self.appName = appName
         }
     }
+
+    public static let `default` = Settings()
 }

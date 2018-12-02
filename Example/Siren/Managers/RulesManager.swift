@@ -49,6 +49,7 @@ public struct RulesManager {
         }
     }
 
+    public static let `default` = RulesManager(globalRules: .default)
 }
 
 // MARK: - RulesManager-related Constants

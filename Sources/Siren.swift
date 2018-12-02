@@ -18,12 +18,10 @@ public final class Siren: NSObject {
 
     private var rulesManager: RulesManager
 
-    /// Overrides all the Strings to which Siren defaults.
-    /// Defaults to the values defined in `SirenAlertMessaging.Constants`
     private var alertConfiguration: AlertConfiguration
 
     /// The debug flag, which is disabled by default.
-    /// When enabled, a stream of print() statements are logged to your console when a version check is performed.
+    /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
     var debugEnabled: Bool
 
     /// Current installed version of your app.
@@ -32,8 +30,8 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     var currentAppStoreVersion: String?
 
-    /// The last Date that a version check was performed.
-    var lastVersionCheckPerformedOnDate: Date?
+    /// The last date that a version check was performed.
+    private var lastVersionCheckPerformedOnDate: Date?
 
     private var appID: Int?
     private lazy var alertViewIsVisible: Bool = false
@@ -47,9 +45,9 @@ public final class Siren: NSObject {
         return window
     }
 
-    public init(settings: Settings = Settings(),
-                rulesManager: RulesManager = RulesManager(globalRules: Rules.default),
-                alertConfiguration: AlertConfiguration = AlertConfiguration(),
+    public init(settings: Settings = .default,
+                rulesManager: RulesManager = .default,
+                alertConfiguration: AlertConfiguration = .default,
                 debugEnabled: Bool = false) {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
         self.settings = settings

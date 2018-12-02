@@ -63,4 +63,6 @@ public struct AlertConfiguration {
         self.updateMessage = message
         self.skipVersionButtonMessage = skipVersionButtonMessage
     }
+
+    public static let `default` = AlertConfiguration()
 }

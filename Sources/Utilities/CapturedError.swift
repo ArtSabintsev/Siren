@@ -33,8 +33,6 @@ public struct CapturedError: LocalizedError {
         case appStoreJSONParsingFailure(underlyingError: Error)
         /// Error retrieving App Store data as JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
         case appStoreDataRetrievalEmptyResults
-        /// Error retrieving iOS version number as there was no data returned.
-        case appStoreOSVersionNumberFailure
         /// The version of iOS on the device is lower than that of the one required by the app verison update.
         case appStoreOSVersionUnsupported
         /// Error retrieving App Store verson number as the JSON does not contain a 'version' key.
@@ -59,8 +57,6 @@ public struct CapturedError: LocalizedError {
                 return "Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error."
             case .appStoreJSONParsingFailure(let error):
                 return "Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
-            case .appStoreOSVersionNumberFailure:
-                return "Error retrieving iOS version number as there was no data returned."
             case .appStoreOSVersionUnsupported:
                 return "The version of iOS on the device is lower than that of the one required by the app verison update."
             case .appStoreVersionArrayFailure:
@@ -73,13 +69,5 @@ public struct CapturedError: LocalizedError {
                 return "Not checking the version, because it was already checked recently."
             }
         }
-    }
-}
-
-// MARK: - Error Handling
-
-extension Siren {
-    func postError(_ error: CapturedError.Known) {
-        printMessage(error.localizedDescription)
     }
 }

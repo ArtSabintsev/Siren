@@ -39,6 +39,10 @@ public struct RulesManager {
         self.releasedForDays = releasedForDays
     }
 
+    /// Returns the appropriate update rules based on the type of version that is returned from the API.
+    ///
+    /// - Parameter type: The type of app update
+    /// - Returns: The appropriate rule based on the type of app update that is returned by the API.
     func loadRulesForUpdateType(_ type: UpdateType) -> Rules {
         switch type {
         case .major: return majorUpdateRules

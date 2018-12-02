@@ -10,9 +10,8 @@ import UIKit
 
 /// The Siren Class. A singleton that is initialized using the `shared` constant.
 public final class Siren: NSObject {
-    /// The `SirenDelegate` variable, which should be set if you'd like to be notified of any of specific user interactions or API success/failures.
-    /// Also set this variable if you'd like to use custom UI for presesnting the update notification.
-    public weak var delegate: SirenDelegate?
+
+    public typealias CompletionHandler = (Results?, CapturedError.Known?) -> Void
 
     private var settings: Settings
 
@@ -24,11 +23,16 @@ public final class Siren: NSObject {
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
     var debugEnabled: Bool
 
+    private var completionHandler: CompletionHandler?
+
     /// Current installed version of your app.
     lazy var currentInstalledVersion: String? = Bundle.version()
 
     /// The current version of your app that is available for download on the App Store
     var currentAppStoreVersion: String?
+
+    private var lookupModel: LookupModel?
+    private var updateType: RulesManager.UpdateType = .unknown
 
     /// The last date that a version check was performed.
     private var lastVersionCheckPerformedOnDate: Date?
@@ -62,11 +66,13 @@ public final class Siren: NSObject {
     ///
     /// - Parameters:
     ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
-    public func wail() {
+    public func wail(completion handler: CompletionHandler?) {
         guard Bundle.bundleID() != nil else {
             printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
             return
         }
+
+        completionHandler = handler
 
         performVersionCheckRequest()
     }
@@ -103,59 +109,64 @@ private extension Siren {
                 self.processVersionCheckResults(withData: data, response: response, error: error)
             }.resume()
         } catch {
-            postError(.malformedURL)
+            completionHandler?(nil, .malformedURL)
         }
     }
 
     func processVersionCheckResults(withData data: Data?, response: URLResponse?, error: Error?) {
         if let error = error {
-            postError(.appStoreDataRetrievalFailure(underlyingError: error))
+            completionHandler?(nil, .appStoreDataRetrievalFailure(underlyingError: error))
         } else {
             guard let data = data else {
-                return postError(.appStoreDataRetrievalFailure(underlyingError: nil))
+               completionHandler?(nil, .appStoreDataRetrievalFailure(underlyingError: nil))
+                return
             }
             do {
-                let decodedData = try JSONDecoder().decode(LookupModel.self, from: data)
+                let lookupModel = try JSONDecoder().decode(LookupModel.self, from: data)
+                self.lookupModel = lookupModel
 
-                guard !decodedData.results.isEmpty else {
-                    return postError(.appStoreDataRetrievalEmptyResults)
+                guard !lookupModel.results.isEmpty else {
+                    completionHandler?(nil, .appStoreDataRetrievalEmptyResults)
+                    return
                 }
 
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-
-                    self.printMessage("Decoded JSON results: \(decodedData)")
-                    self.delegate?.sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: decodedData)
-                    self.processVersionCheck(with: decodedData)
+                    self.processVersionCheck(with: lookupModel)
                 }
             } catch {
-                postError(.appStoreJSONParsingFailure(underlyingError: error))
+                completionHandler?(nil, .appStoreJSONParsingFailure(underlyingError: error))
             }
         }
     }
 
     func processVersionCheck(with model: LookupModel) {
         // Check if the latest version is compatible with current device's version of iOS.
-        guard isUpdateCompatibleWithDeviceOS(for: model) else { return }
+        guard isUpdateCompatibleWithDeviceOS(for: model) else {
+            completionHandler?(nil, .appStoreOSVersionUnsupported)
+            return
+        }
 
-        // Check and store the appID .
+        // Check and store the App ID .
         guard let appID = model.results.first?.appID else {
-            return postError(.appStoreAppIDFailure)
+            completionHandler?(nil, .appStoreAppIDFailure)
+            return
         }
 
         self.appID = appID
 
         // Check and store the current App Store version.
         guard let currentAppStoreVersion = model.results.first?.version else {
-            return postError(.appStoreVersionArrayFailure)
+            completionHandler?(nil, .appStoreVersionArrayFailure)
+            return
         }
 
         self.currentAppStoreVersion = currentAppStoreVersion
 
         // Check if the App Store version is newer than the currently installed version.
         guard VersionParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion) else {
-            delegate?.sirenLatestVersionInstalled()
-            return postError(.noUpdateAvailable)
+            completionHandler?(nil, .noUpdateAvailable)
+            return
         }
 
         // Check the release date of the current version.
@@ -168,7 +179,7 @@ private extension Siren {
         // amount of daysdefined by the app consuming Siren.
         guard daysSinceRelease >= rulesManager.releasedForDays else {
             let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(rulesManager.releasedForDays) days have passed."
-             return printMessage(message)
+            return printMessage(message)
         }
 
         determineIfAlertPresentationRulesAreSatisfied()
@@ -180,7 +191,7 @@ private extension Siren {
 private extension Siren {
     func determineIfAlertPresentationRulesAreSatisfied() {
         // Determine the set of alert presentation rules based on the type of version update.
-        let updateType = VersionParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
+        updateType = VersionParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
         // Did the user:
@@ -206,7 +217,7 @@ private extension Siren {
             if Date.days(since: lastVersionCheckPerformedOnDate) >= rules.frequency.rawValue {
                 showAlert(withRules: rules)
             } else {
-                postError(.recentlyCheckedAlready)
+                completionHandler?(nil, .recentlyCheckedAlready)
             }
         }
     }
@@ -237,15 +248,16 @@ private extension Siren {
             alertController?.addAction(updateAlertAction())
             alertController?.addAction(skipAlertAction())
         case .none:
-            delegate?.sirenDidDetectNewVersionWithoutAlert(title: alertTitle,
-                                                           message: alertMessage,
-                                                           updateType: RulesManager.UpdateType.unknown)
+            let results = Results(alertAction: .unknown,
+                                  localization: localization,
+                                  lookupModel: lookupModel,
+                                  updateType: updateType)
+            completionHandler?(results, nil)
         }
 
         if rules.alertType != .none && !alertViewIsVisible {
             alertController?.show(window: updaterWindow)
             alertViewIsVisible = true
-            delegate?.sirenDidShowUpdateDialog(alertType: rules.alertType)
         }
     }
 
@@ -256,8 +268,14 @@ private extension Siren {
 
             self.alertController?.hide(window: self.updaterWindow)
             self.launchAppStore()
-            self.delegate?.sirenUserDidLaunchAppStore()
             self.alertViewIsVisible = false
+
+            let results = Results(alertAction: .appStore,
+                                  localization: localization,
+                                  lookupModel: self.lookupModel,
+                                  updateType: self.updateType)
+            self.completionHandler?(results, nil)
+
             return
         }
 
@@ -270,9 +288,15 @@ private extension Siren {
             guard let self = self else { return }
 
             self.alertController?.hide(window: self.updaterWindow)
-            self.delegate?.sirenUserDidCancel()
             self.alertViewIsVisible = false
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
+
+            let results = Results(alertAction: .cancel,
+                                  localization: localization,
+                                  lookupModel: self.lookupModel,
+                                  updateType: self.updateType)
+            self.completionHandler?(results, nil)
+
             return
         }
 
@@ -290,8 +314,14 @@ private extension Siren {
             }
 
             self.alertController?.hide(window: self.updaterWindow)
-            self.delegate?.sirenUserDidSkipVersion()
             self.alertViewIsVisible = false
+
+            let results = Results(alertAction: .skip,
+                                  localization: localization,
+                                  lookupModel: self.lookupModel,
+                                  updateType: self.updateType)
+            self.completionHandler?(results, nil)
+
             return
         }
 

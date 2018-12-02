@@ -111,7 +111,7 @@ public struct Localization {
         self.version = version
     }
 
-    func alertMessage() -> String {
+    public func alertMessage() -> String {
         let message = Bundle.localizedString(forKey: AlertConfiguration.Constants.alertMessage.string,
                                              andForceLanguageLocalization: settings.forceLanguageLocalization)
 
@@ -122,22 +122,22 @@ public struct Localization {
         return String(format: message, settings.appName, version)
     }
 
-    func alertTitle() -> String {
+    public func alertTitle() -> String {
         return Bundle.localizedString(forKey: AlertConfiguration.Constants.alertTitle.string,
                                       andForceLanguageLocalization: settings.forceLanguageLocalization)
     }
 
-    func nextTimeButtonTitle() -> String {
+    public func nextTimeButtonTitle() -> String {
         return Bundle.localizedString(forKey: AlertConfiguration.Constants.nextTimeButtonTitle.string,
                                       andForceLanguageLocalization: settings.forceLanguageLocalization)
     }
 
-    func skipButtonTitle() -> String {
+    public func skipButtonTitle() -> String {
         return Bundle.localizedString(forKey: AlertConfiguration.Constants.skipButtonTitle.string,
                                       andForceLanguageLocalization: settings.forceLanguageLocalization)
     }
 
-    func updateButtonTitle() -> String {
+    public func updateButtonTitle() -> String {
         return Bundle.localizedString(forKey: AlertConfiguration.Constants.updateButtonTitle.string,
                                       andForceLanguageLocalization: settings.forceLanguageLocalization)
     }

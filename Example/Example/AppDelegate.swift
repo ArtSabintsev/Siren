@@ -22,7 +22,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        siren?.wail()
+        siren?.wail { (results, error) in
+            if let results = results {
+                print(results)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 
     func setupSiren() {

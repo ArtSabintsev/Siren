@@ -35,7 +35,6 @@ extension Siren {
 
     func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
-            postError(.appStoreOSVersionNumberFailure)
             return false
         }
 
@@ -43,7 +42,6 @@ extension Siren {
 
         guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
             systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
-                postError(.appStoreOSVersionUnsupported)
                 return false
         }
 

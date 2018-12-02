@@ -11,7 +11,7 @@ import Foundation
 public struct Results {
     public var alertAction: AlertAction = .unknown
 
-    public var localization: Localization?
+    public var localization: Localization
 
     public var lookupModel: LookupModel?
 

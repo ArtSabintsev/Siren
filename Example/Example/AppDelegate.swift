@@ -13,25 +13,18 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    var siren: Siren?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
-        setupSiren()
-        return true
-    }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        siren?.wail { (results, error) in
+        let siren = Siren.shared
+        siren.wail { (results, error) in
             if let results = results {
                 print(results)
             } else if let error = error {
                 print(error.localizedDescription)
             }
         }
-    }
 
-    func setupSiren() {
-        siren = Siren(debugEnabled: true)
+        return true
     }
 }

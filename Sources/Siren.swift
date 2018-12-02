@@ -13,15 +13,15 @@ public final class Siren: NSObject {
 
     public typealias CompletionHandler = (Results?, CapturedError.Known?) -> Void
 
-    private var settings: Settings
+    var settings: Settings = .default
 
-    private var rulesManager: RulesManager
+    var rulesManager: RulesManager = .default
 
-    private var alertConfiguration: AlertConfiguration
+    var alertConfiguration: AlertConfiguration = .default
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
-    var debugEnabled: Bool
+    var debugEnabled: Bool = false
 
     private var completionHandler: CompletionHandler?
 
@@ -33,6 +33,7 @@ public final class Siren: NSObject {
 
     private var lookupModel: LookupModel?
     private var updateType: RulesManager.UpdateType = .unknown
+    private var didBecomeActiveObserver: NSObjectProtocol?
 
     /// The last date that a version check was performed.
     private var lastVersionCheckPerformedOnDate: Date?
@@ -49,15 +50,10 @@ public final class Siren: NSObject {
         return window
     }
 
-    public init(settings: Settings = .default,
-                rulesManager: RulesManager = .default,
-                alertConfiguration: AlertConfiguration = .default,
-                debugEnabled: Bool = false) {
+    public static let shared = Siren()
+
+    override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
-        self.settings = settings
-        self.rulesManager = rulesManager
-        self.alertConfiguration = alertConfiguration
-        self.debugEnabled = debugEnabled
     }
 
     /// Checks the currently installed version of your app against the App Store.
@@ -72,9 +68,20 @@ public final class Siren: NSObject {
             return
         }
 
+        updateType = .unknown
         completionHandler = handler
 
+        addObservers()
         performVersionCheckRequest()
+    }
+
+    func addObservers() {
+        didBecomeActiveObserver = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification,
+                                                                         object: nil,
+                                                                         queue: nil) { [weak self] _ in
+                                                                            guard let self = self else { return }
+                                                                            self.performVersionCheckRequest()
+        }
     }
 
     /// Launches the AppStore in two situations:
@@ -275,7 +282,6 @@ private extension Siren {
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
             self.completionHandler?(results, nil)
-
             return
         }
 
@@ -296,7 +302,6 @@ private extension Siren {
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
             self.completionHandler?(results, nil)
-
             return
         }
 
@@ -321,7 +326,6 @@ private extension Siren {
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
             self.completionHandler?(results, nil)
-
             return
         }
 

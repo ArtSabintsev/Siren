@@ -19,7 +19,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let siren = Siren.shared
         siren.wail { (results, error) in
             if let results = results {
-                print(results)
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
             }

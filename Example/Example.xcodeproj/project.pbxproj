@@ -30,8 +30,6 @@
 		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
 		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
-		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
-		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
 		8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF221B4DC0F009112A8 /* KnownError.swift */; };
 		8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF421B4E6B8009112A8 /* APIManager.swift */; };
 		8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */; };
@@ -58,14 +56,12 @@
 		8E01817B21B379DD006DED05 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8E01817D21B379DD006DED05 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
 		8E01818121B37B43006DED05 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
-		8E171DCE215B26B4006FBBCC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8E171DD1215B26B4006FBBCC /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		8E171DD2215B26B4006FBBCC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		8E171DD7215B26B4006FBBCC /* LookupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupModel.swift; sourceTree = "<group>"; };
 		8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		8E171DDA215B26B4006FBBCC /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		8E171DE5215B2701006FBBCC /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		8E171DEB215B28EC006FBBCC /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +133,7 @@
 		8E171DCC215B26B4006FBBCC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8E171DEB215B28EC006FBBCC /* Helpers.swift */,
 				8EE1FAF221B4DC0F009112A8 /* KnownError.swift */,
-				8E171DCE215B26B4006FBBCC /* Log.swift */,
 				8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */,
 			);
 			name = Utilities;
@@ -422,12 +416,10 @@
 				8E01818221B37B43006DED05 /* AlertAction.swift in Sources */,
 				8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */,
 				8E171DE2215B26B4006FBBCC /* LookupModel.swift in Sources */,
-				8ED73400215DBE4900447E3B /* Helpers.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8E01817921B379AF006DED05 /* Results.swift in Sources */,
 				8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,
-				8ED733FF215DBE4900447E3B /* Log.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
 				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,
 				8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */,

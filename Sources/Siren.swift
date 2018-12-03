@@ -45,7 +45,6 @@ public final class Siren: NSObject {
     private lazy var updateType: RulesManager.UpdateType = .unknown
     private lazy var alertViewIsVisible: Bool = false
 
-
     /// The `UIWindow` instance that presents the `SirenViewController`.
     private var updaterWindow: UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -318,5 +317,58 @@ private extension Siren {
         }
 
         return action
+    }
+}
+
+// MARK: - Helpers
+
+extension Siren {
+    func addObservers() {
+        guard didBecomeActiveObserver == nil else { return }
+        didBecomeActiveObserver = NotificationCenter
+            .default
+            .addObserver(forName: UIApplication.didBecomeActiveNotification,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard let self = self else { return }
+                            self.performVersionCheckRequest()
+        }
+    }
+
+    func makeITunesURL(fromAPIManager apiManager: APIManager) throws -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "itunes.apple.com"
+        components.path = "/lookup"
+
+        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
+
+        if let countryCode = apiManager.countryCode {
+            let item = URLQueryItem(name: "country", value: countryCode)
+            items.append(item)
+        }
+
+        components.queryItems = items
+
+        guard let url = components.url, !url.absoluteString.isEmpty else {
+            throw KnownError.malformedURL
+        }
+
+        return url
+    }
+
+    func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
+        guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
+            return false
+        }
+
+        let systemVersion = UIDevice.current.systemVersion
+
+        guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
+            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
+                return false
+        }
+
+        return true
     }
 }

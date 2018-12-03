@@ -11,7 +11,6 @@ import Foundation
 // MARK: - Bundle Extension for Siren
 
 extension Bundle {
-
     private struct Constants {
         static let bundleExtension = "bundle"
         static let displayName = "CFBundleDisplayName"

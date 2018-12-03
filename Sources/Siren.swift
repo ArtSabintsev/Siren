@@ -33,13 +33,22 @@ public final class Siren: NSObject {
     /// The current version of your app that is available for download on the App Store
     internal var currentAppStoreVersion: String?
 
+    /// The retained `NotificationCenter` observer that listens for `UIApplication.didBecomeActiveNotification` notifications.
     internal var didBecomeActiveObserver: NSObjectProtocol?
 
+    /// The completion handler used to return the results or errors returned by Siren.
     private var completionHandler: CompletionHandler?
+
+    /// The Swift model representation of API results from the iTunes Lookup API.
     private var lookupModel: LookupModel?
+
+    /// The instance of the `UIAlertController` used to present the update alert.
     private var alertController: UIAlertController?
+
     /// The last date that a version check was performed.
     private var lastVersionCheckPerformedOnDate: Date?
+
+    /// The App Store's unique identifier for an app.
     private var appID: Int?
 
     private lazy var updateType: RulesManager.UpdateType = .unknown
@@ -322,7 +331,7 @@ private extension Siren {
 
 // MARK: - Helpers
 
-extension Siren {
+private extension Siren {
     func addObservers() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter

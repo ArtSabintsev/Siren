@@ -37,15 +37,14 @@ public final class Siren: NSObject {
 
     private var completionHandler: CompletionHandler?
     private var lookupModel: LookupModel?
+    private var alertController: UIAlertController?
+    /// The last date that a version check was performed.
+    private var lastVersionCheckPerformedOnDate: Date?
+    private var appID: Int?
 
     private lazy var updateType: RulesManager.UpdateType = .unknown
     private lazy var alertViewIsVisible: Bool = false
 
-    private var alertController: UIAlertController?
-
-    /// The last date that a version check was performed.
-    private var lastVersionCheckPerformedOnDate: Date?
-    private var appID: Int?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
     private var updaterWindow: UIWindow {
@@ -58,17 +57,21 @@ public final class Siren: NSObject {
     private override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
     }
+}
 
-    public func start(completion handler: CompletionHandler?) {
+// MARK: - Public Functionality
+
+public extension Siren {
+    func start(completion handler: CompletionHandler?) {
         completionHandler = handler
         addObservers()
     }
 
     /// Launches the AppStore in two situations:
-    /// 
+    ///
     /// - User clicked the `Update` button in the UIAlertController modal.
     /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
-    public func launchAppStore() {
+    func launchAppStore() {
         guard let appID = appID,
             let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
                 return

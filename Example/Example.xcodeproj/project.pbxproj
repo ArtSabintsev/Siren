@@ -13,8 +13,7 @@
 		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
 		8E01817921B379AF006DED05 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817821B379AF006DED05 /* Results.swift */; };
-		8E01817E21B379DD006DED05 /* AlertConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817B21B379DD006DED05 /* AlertConfiguration.swift */; };
-		8E01817F21B379DD006DED05 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817C21B379DD006DED05 /* Settings.swift */; };
+		8E01817E21B379DD006DED05 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817B21B379DD006DED05 /* AlertManager.swift */; };
 		8E01818021B379DD006DED05 /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817D21B379DD006DED05 /* RulesManager.swift */; };
 		8E01818221B37B43006DED05 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01818121B37B43006DED05 /* AlertAction.swift */; };
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
@@ -34,6 +33,7 @@
 		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
 		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
 		8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF221B4DC0F009112A8 /* KnownError.swift */; };
+		8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF421B4E6B8009112A8 /* APIManager.swift */; };
 		8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +55,7 @@
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
 		8E01817821B379AF006DED05 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		8E01817B21B379DD006DED05 /* AlertConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConfiguration.swift; sourceTree = "<group>"; };
-		8E01817C21B379DD006DED05 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		8E01817B21B379DD006DED05 /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8E01817D21B379DD006DED05 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
 		8E01818121B37B43006DED05 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
 		8E171DCE215B26B4006FBBCC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		8EACA96D1F37F2D3003134CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE1FAF221B4DC0F009112A8 /* KnownError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
+		8EE1FAF421B4E6B8009112A8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 		8E01817A21B379DD006DED05 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				8E01817B21B379DD006DED05 /* AlertConfiguration.swift */,
-				8E01817C21B379DD006DED05 /* Settings.swift */,
+				8E01817B21B379DD006DED05 /* AlertManager.swift */,
+				8EE1FAF421B4E6B8009112A8 /* APIManager.swift */,
 				8E01817D21B379DD006DED05 /* RulesManager.swift */,
 			);
 			name = Managers;
@@ -430,9 +430,9 @@
 				8ED733FF215DBE4900447E3B /* Log.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
 				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,
-				8E01817F21B379DD006DED05 /* Settings.swift in Sources */,
+				8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */,
 				8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */,
-				8E01817E21B379DD006DED05 /* AlertConfiguration.swift in Sources */,
+				8E01817E21B379DD006DED05 /* AlertManager.swift in Sources */,
 				8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */,
 				8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */,
 				8E171DDF215B26B4006FBBCC /* DateExtension.swift in Sources */,

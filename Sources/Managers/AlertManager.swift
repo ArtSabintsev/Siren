@@ -1,5 +1,5 @@
 //
-//  AlertConfiguration.swift
+//  AlertManager.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 12/6/17.
@@ -15,7 +15,7 @@ import Foundation
 /// - Warning: Overriding any of these keys will result in the loss of the built-in internationalization that Siren provides.
 ///
 /// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
-public struct AlertConfiguration {
+public struct AlertManager {
     /// The default constants used for the alert messaging.
     public struct Constants {
         /// The text that conveys the message that there is an app update available
@@ -41,6 +41,14 @@ public struct AlertConfiguration {
     let updateMessage: NSAttributedString
     let updateTitle: NSAttributedString
 
+    /// The name of your app.
+    /// By default, it's set to the name of the app that's stored in your plist.
+    var appName: String = Bundle.bestMatchingAppName()
+
+    /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
+    /// See the Siren.LanguageType enum for more details.
+    let forceLanguageLocalization: Localization.Language?
+
     /// The public initializer
     ///
     /// - Parameters:
@@ -51,18 +59,26 @@ public struct AlertConfiguration {
     ///     - nextTimeButtonMessage: The `title` field of the Next Time Button `UIAlertAction`.
     ///     - skipVersionButtonMessage: The `title` field of the Skip Button `UIAlertAction`.
     public init(alertTintColor tintColor: UIColor? = nil,
+                appName: String? = nil,
                 updateTitle title: NSAttributedString  = Constants.alertTitle,
                 updateMessage message: NSAttributedString  = Constants.alertMessage,
                 updateButtonMessage: NSAttributedString  = Constants.updateButtonTitle,
                 nextTimeButtonMessage: NSAttributedString  = Constants.nextTimeButtonTitle,
-                skipVersionButtonMessage: NSAttributedString  = Constants.skipButtonTitle) {
+                skipVersionButtonMessage: NSAttributedString  = Constants.skipButtonTitle,
+                forceLanguageLocalization: Localization.Language? = nil) {
         self.tintColor = tintColor
         self.updateTitle = title
         self.nextTimeButtonMessage = nextTimeButtonMessage
         self.updateButtonMessage = updateButtonMessage
         self.updateMessage = message
         self.skipVersionButtonMessage = skipVersionButtonMessage
+
+        self.forceLanguageLocalization = forceLanguageLocalization
+
+        if let appName = appName {
+            self.appName = appName
+        }
     }
 
-    public static let `default` = AlertConfiguration()
+    public static let `default` = AlertManager()
 }

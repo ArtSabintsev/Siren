@@ -23,7 +23,7 @@ extension Siren {
         }
     }
 
-    func makeITunesURL(fromSettings settings: Settings) throws -> URL {
+    func makeITunesURL(fromAPIManager apiManager: APIManager) throws -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "itunes.apple.com"
@@ -31,7 +31,7 @@ extension Siren {
 
         var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
 
-        if let countryCode = settings.countryCode {
+        if let countryCode = apiManager.countryCode {
             let item = URLQueryItem(name: "country", value: countryCode)
             items.append(item)
         }

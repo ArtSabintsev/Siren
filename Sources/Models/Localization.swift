@@ -103,42 +103,42 @@ public struct Localization {
         case vietnamese = "vi"
     }
 
-    private let settings: Settings
+    private let alertManager: AlertManager
     private let version: String?
 
-    init(settings: Settings, forCurrentAppStoreVersion version: String?) {
-        self.settings = settings
+    init(alertManager: AlertManager, forCurrentAppStoreVersion version: String?) {
+        self.alertManager = alertManager
         self.version = version
     }
 
     public func alertMessage() -> String {
-        let message = Bundle.localizedString(forKey: AlertConfiguration.Constants.alertMessage.string,
-                                             andForceLanguageLocalization: settings.forceLanguageLocalization)
+        let message = Bundle.localizedString(forKey: AlertManager.Constants.alertMessage.string,
+                                             andForceLanguageLocalization: alertManager.forceLanguageLocalization)
 
         guard let version = version else {
-            return String(format: message, settings.appName, "Unknown")
+            return String(format: message, alertManager.appName, "Unknown")
         }
 
-        return String(format: message, settings.appName, version)
+        return String(format: message, alertManager.appName, version)
     }
 
     public func alertTitle() -> String {
-        return Bundle.localizedString(forKey: AlertConfiguration.Constants.alertTitle.string,
-                                      andForceLanguageLocalization: settings.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertManager.Constants.alertTitle.string,
+                                      andForceLanguageLocalization: alertManager.forceLanguageLocalization)
     }
 
     public func nextTimeButtonTitle() -> String {
-        return Bundle.localizedString(forKey: AlertConfiguration.Constants.nextTimeButtonTitle.string,
-                                      andForceLanguageLocalization: settings.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertManager.Constants.nextTimeButtonTitle.string,
+                                      andForceLanguageLocalization: alertManager.forceLanguageLocalization)
     }
 
     public func skipButtonTitle() -> String {
-        return Bundle.localizedString(forKey: AlertConfiguration.Constants.skipButtonTitle.string,
-                                      andForceLanguageLocalization: settings.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertManager.Constants.skipButtonTitle.string,
+                                      andForceLanguageLocalization: alertManager.forceLanguageLocalization)
     }
 
     public func updateButtonTitle() -> String {
-        return Bundle.localizedString(forKey: AlertConfiguration.Constants.updateButtonTitle.string,
-                                      andForceLanguageLocalization: settings.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertManager.Constants.updateButtonTitle.string,
+                                      andForceLanguageLocalization: alertManager.forceLanguageLocalization)
     }
 }

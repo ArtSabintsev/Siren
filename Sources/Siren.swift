@@ -17,11 +17,11 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
-    public lazy var settings: Settings = .default
+    public lazy var apiManager: APIManager = .default
 
     public lazy var rulesManager: RulesManager = .default
 
-    public lazy var alertConfiguration: AlertConfiguration = .default
+    public lazy var alertManager: AlertManager = .default
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
@@ -103,7 +103,7 @@ public final class Siren: NSObject {
 extension Siren {
     func performVersionCheckRequest() {
         do {
-            let url = try makeITunesURL(fromSettings: settings)
+            let url = try makeITunesURL(fromAPIManager: apiManager)
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
             URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
                 guard let self = self else { return }
@@ -224,7 +224,7 @@ private extension Siren {
     func showAlert(withRules rules: Rules) {
         UserDefaults.storedVersionCheckDate = Date()
 
-        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let alertTitle = localization.alertTitle()
         let alertMessage = localization.alertMessage()
 
@@ -232,7 +232,7 @@ private extension Siren {
                                            message: alertMessage,
                                            preferredStyle: .alert)
 
-        if let alertControllerTintColor = alertConfiguration.tintColor {
+        if let alertControllerTintColor = alertManager.tintColor {
             alertController?.view.tintColor = alertControllerTintColor
         }
 
@@ -261,7 +261,7 @@ private extension Siren {
     }
 
     func updateAlertAction() -> UIAlertAction {
-        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
@@ -281,7 +281,7 @@ private extension Siren {
     }
 
     func nextTimeAlertAction() -> UIAlertAction {
-        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
             guard let self = self else { return }
 
@@ -301,7 +301,7 @@ private extension Siren {
     }
 
     func skipAlertAction() -> UIAlertAction {
-        let localization = Localization(settings: settings, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 

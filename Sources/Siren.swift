@@ -17,11 +17,11 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
+    public lazy var alertManager: AlertManager = .default
+
     public lazy var apiManager: APIManager = .default
 
     public lazy var rulesManager: RulesManager = .default
-
-    public lazy var alertManager: AlertManager = .default
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
@@ -60,7 +60,6 @@ public final class Siren: NSObject {
     }
 
     public func start(completion handler: CompletionHandler?) {
-        updateType = .unknown
         completionHandler = handler
         addObservers()
     }
@@ -89,6 +88,8 @@ public final class Siren: NSObject {
 
 extension Siren {
     func performVersionCheckRequest() {
+        updateType = .unknown
+
         guard Bundle.bundleID() != nil else {
             completionHandler?(nil, .missingBundleID)
             return

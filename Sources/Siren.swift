@@ -11,35 +11,41 @@ import UIKit
 /// The Siren Class. A singleton that is initialized using the `shared` constant.
 public final class Siren: NSObject {
 
-    public typealias CompletionHandler = (Results?, CapturedError.Known?) -> Void
+    /// An `Either` type used to return results or errors obtained from checking a version with Siren.
+    public typealias CompletionHandler = (Results?, KnownError?) -> Void
 
-    public var settings: Settings = .default
+    /// The Siren singleton. The main point of entry to the Siren library.
+    public static let shared = Siren()
 
-    public var rulesManager: RulesManager = .default
+    public lazy var settings: Settings = .default
 
-    public var alertConfiguration: AlertConfiguration = .default
+    public lazy var rulesManager: RulesManager = .default
+
+    public lazy var alertConfiguration: AlertConfiguration = .default
 
     /// The debug flag, which is disabled by default.
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
     public lazy var debugEnabled: Bool = false
 
     /// Current installed version of your app.
-    lazy var currentInstalledVersion: String? = Bundle.version()
+    internal lazy var currentInstalledVersion: String? = Bundle.version()
 
     /// The current version of your app that is available for download on the App Store
-    var currentAppStoreVersion: String?
+    internal var currentAppStoreVersion: String?
+
+    internal var didBecomeActiveObserver: NSObjectProtocol?
 
     private var completionHandler: CompletionHandler?
     private var lookupModel: LookupModel?
-    private var updateType: RulesManager.UpdateType = .unknown
-    private var didBecomeActiveObserver: NSObjectProtocol?
+
+    private lazy var updateType: RulesManager.UpdateType = .unknown
+    private lazy var alertViewIsVisible: Bool = false
+
+    private var alertController: UIAlertController?
 
     /// The last date that a version check was performed.
     private var lastVersionCheckPerformedOnDate: Date?
-
     private var appID: Int?
-    private lazy var alertViewIsVisible: Bool = false
-    var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
     private var updaterWindow: UIWindow {
@@ -49,9 +55,7 @@ public final class Siren: NSObject {
         return window
     }
 
-    public static let shared = Siren()
-
-    override init() {
+    private override init() {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
     }
 
@@ -72,18 +76,6 @@ public final class Siren: NSObject {
 
         addObservers()
         performVersionCheckRequest()
-    }
-
-    func addObservers() {
-        guard didBecomeActiveObserver == nil else { return }
-        didBecomeActiveObserver = NotificationCenter
-            .default
-            .addObserver(forName: UIApplication.didBecomeActiveNotification,
-                         object: nil,
-                         queue: nil) { [weak self] _ in
-                            guard let self = self else { return }
-                            self.performVersionCheckRequest()
-        }
     }
 
     /// Launches the AppStore in two situations:
@@ -108,7 +100,7 @@ public final class Siren: NSObject {
 
 // MARK: - Networking
 
-private extension Siren {
+extension Siren {
     func performVersionCheckRequest() {
         do {
             let url = try makeITunesURL(fromSettings: settings)
@@ -122,7 +114,7 @@ private extension Siren {
         }
     }
 
-    func processVersionCheckResults(withData data: Data?, response: URLResponse?, error: Error?) {
+    private func processVersionCheckResults(withData data: Data?, response: URLResponse?, error: Error?) {
         if let error = error {
             completionHandler?(nil, .appStoreDataRetrievalFailure(underlyingError: error))
         } else {
@@ -141,7 +133,7 @@ private extension Siren {
 
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.processVersionCheck(with: lookupModel)
+                    self.analyze(model: lookupModel)
                 }
             } catch {
                 completionHandler?(nil, .appStoreJSONParsingFailure(underlyingError: error))
@@ -149,7 +141,7 @@ private extension Siren {
         }
     }
 
-    func processVersionCheck(with model: LookupModel) {
+    private func analyze(model: LookupModel) {
         // Check if the latest version is compatible with current device's version of iOS.
         guard isUpdateCompatibleWithDeviceOS(for: model) else {
             completionHandler?(nil, .appStoreOSVersionUnsupported)
@@ -161,7 +153,6 @@ private extension Siren {
             completionHandler?(nil, .appStoreAppIDFailure)
             return
         }
-
         self.appID = appID
 
         // Check and store the current App Store version.
@@ -169,7 +160,6 @@ private extension Siren {
             completionHandler?(nil, .appStoreVersionArrayFailure)
             return
         }
-
         self.currentAppStoreVersion = currentAppStoreVersion
 
         // Check if the App Store version is newer than the currently installed version.
@@ -184,11 +174,11 @@ private extension Siren {
             return
         }
 
-        // Check if applicaiton has been released for the
-        // amount of daysdefined by the app consuming Siren.
+        // Check if applicaiton has been released for the amount of days defined by the app consuming Siren.
         guard daysSinceRelease >= rulesManager.releasedForDays else {
-            let message = "Your app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(rulesManager.releasedForDays) days have passed."
-            return printMessage(message)
+            completionHandler?(nil, .releasedTooSoon(daysSinceRelease: daysSinceRelease,
+                                                     releasedForDays: rulesManager.releasedForDays))
+            return
         }
 
         determineIfAlertPresentationRulesAreSatisfied()

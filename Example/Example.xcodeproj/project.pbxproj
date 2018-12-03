@@ -31,9 +31,9 @@
 		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
 		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
-		8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCD215B26B4006FBBCC /* CapturedError.swift */; };
 		8ED733FF215DBE4900447E3B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DCE215B26B4006FBBCC /* Log.swift */; };
 		8ED73400215DBE4900447E3B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DEB215B28EC006FBBCC /* Helpers.swift */; };
+		8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF221B4DC0F009112A8 /* KnownError.swift */; };
 		8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,6 @@
 		8E01817C21B379DD006DED05 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8E01817D21B379DD006DED05 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
 		8E01818121B37B43006DED05 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
-		8E171DCD215B26B4006FBBCC /* CapturedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturedError.swift; sourceTree = "<group>"; };
 		8E171DCE215B26B4006FBBCC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8E171DD1215B26B4006FBBCC /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		8E171DD2215B26B4006FBBCC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		8EACA96C1F37F2D3003134CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EACA96D1F37F2D3003134CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EE1FAF221B4DC0F009112A8 /* KnownError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
 		8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 		8E171DCC215B26B4006FBBCC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8E171DCD215B26B4006FBBCC /* CapturedError.swift */,
 				8E171DEB215B28EC006FBBCC /* Helpers.swift */,
+				8EE1FAF221B4DC0F009112A8 /* KnownError.swift */,
 				8E171DCE215B26B4006FBBCC /* Log.swift */,
 				8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */,
 			);
@@ -434,7 +434,7 @@
 				8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */,
 				8E01817E21B379DD006DED05 /* AlertConfiguration.swift in Sources */,
 				8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */,
-				8ED733FE215DBE4900447E3B /* CapturedError.swift in Sources */,
+				8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */,
 				8E171DDF215B26B4006FBBCC /* DateExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,18 @@ import Foundation
 // MARK: - Miscellaneous Helpers
 
 extension Siren {
+    func addObservers() {
+        guard didBecomeActiveObserver == nil else { return }
+        didBecomeActiveObserver = NotificationCenter
+            .default
+            .addObserver(forName: UIApplication.didBecomeActiveNotification,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard let self = self else { return }
+                            self.performVersionCheckRequest()
+        }
+    }
+
     func makeITunesURL(fromSettings settings: Settings) throws -> URL {
         var components = URLComponents()
         components.scheme = "https"
@@ -27,7 +39,7 @@ extension Siren {
         components.queryItems = items
 
         guard let url = components.url, !url.absoluteString.isEmpty else {
-            throw CapturedError.Known.malformedURL
+            throw KnownError.malformedURL
         }
 
         return url
@@ -55,17 +67,5 @@ extension Siren {
         if debugEnabled {
             Log(message)
         }
-    }
-}
-
-// MARK: - Test Target Helpers
-
-extension Siren {
-    func testSetCurrentInstalledVersion(version: String) {
-        currentInstalledVersion = version
-    }
-
-    func testSetAppStoreVersion(version: String) {
-        currentAppStoreVersion = version
     }
 }

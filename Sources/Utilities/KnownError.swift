@@ -9,18 +9,6 @@
 import Foundation
 
 /// Enumerates all potentials errors that Siren can handle.
-///
-/// - appStoreAppIDFailure: Error retrieving trackId as the JSON does not contain a 'trackId' key.
-/// - appStoreDataRetrievalFailure: Error retrieving App Store data as an error was returned.
-/// - appStoreJSONParsingFailure: Error parsing App Store JSON data.
-/// - appStoreDataRetrievalEmptyResults: Error retrieving App Store data as JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error.
-/// - appStoreOSVersionNumberFailure: Error retrieving iOS version number as there was no data returned.
-/// - appStoreOSVersionUnsupported: The version of iOS on the device is lower than that of the one required by the app verison update.
-/// - appStoreVersionArrayFailure: Error retrieving App Store verson number as the JSON does not contain a 'version' key.
-/// - malformedURL: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
-/// - noUpdateAvailable: No new update available.
-/// - recentlyCheckedAlready: Not checking the version, because it was already checked recently.
-/// - releasedTooSoon: The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed.
 public enum KnownError: LocalizedError {
     /// Error retrieving trackId as the JSON does not contain a 'trackId' key.
     case appStoreAppIDFailure
@@ -32,42 +20,46 @@ public enum KnownError: LocalizedError {
     case appStoreDataRetrievalEmptyResults
     /// The version of iOS on the device is lower than that of the one required by the app verison update.
     case appStoreOSVersionUnsupported
-    /// Error retrieving App Store verson number as the JSON does not contain a 'version' key.
+    /// Error retrieving App Store verson number as the JSON does not contain a `version` key.
     case appStoreVersionArrayFailure
     /// The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
     case malformedURL
+    /// Please make sure that you have set a `Bundle Identifier` in your project.
+    case missingBundleID
     /// No new update available.
     case noUpdateAvailable
-    /// Not checking the version, because it was already checked recently.
-    case recentlyCheckedAlready
+    /// Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `RulesManager.`
+    case recentlyCheckedVersion
     /// The app has been released for X days, but Siren cannot prompt the user until Y (where Y > X) days have passed.
     case releasedTooSoon(daysSinceRelease: Int, releasedForDays: Int)
 
     /// The localized description for each error handled by Siren.
-    var localizedDescription: String {
+    public var localizedDescription: String {
         switch self {
         case .appStoreAppIDFailure:
-            return "Error retrieving trackId as the JSON does not contain a 'trackId' key."
+            return "[Siren Error]: Error retrieving trackId as the JSON does not contain a `trackId` key."
         case .appStoreDataRetrievalFailure(let error?):
-            return "Error retrieving App Store data as an error was returned\nAlso, the following system level error was returned: \(error)"
+            return "[Siren Error]: Error retrieving App Store data as an error was returned\nAlso, the following system level error was returned: \(error)"
         case .appStoreDataRetrievalFailure(.none):
-            return "Error retrieving App Store data as an error was returned."
+            return "[Siren Error]: Error retrieving App Store data as an error was returned."
         case .appStoreDataRetrievalEmptyResults:
-            return "Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error."
+            return "[Siren Error]: Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error."
         case .appStoreJSONParsingFailure(let error):
-            return "Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
+            return "[Siren Error]: Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
         case .appStoreOSVersionUnsupported:
-            return "The version of iOS on the device is lower than that of the one required by the app verison update."
+            return "[Siren Error]: The version of iOS on the device is lower than that of the one required by the app verison update."
         case .appStoreVersionArrayFailure:
-            return "Error retrieving App Store verson number as the JSON does not contain a 'version' key."
+            return "[Siren Error]: Error retrieving App Store verson number as the JSON does not contain a `version` key."
         case .malformedURL:
-            return "The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
+            return "[Siren Error]: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
+        case .missingBundleID:
+            return "[Siren Error]: Please make sure that you have set a `Bundle Identifier` in your project."
         case .noUpdateAvailable:
-            return "No new update available."
-        case .recentlyCheckedAlready:
-            return "Not checking the version, because it was already checked recently."
+            return "[Siren Error]: No new update available."
+        case .recentlyCheckedVersion:
+            return "[Siren Error]: Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `RulesManager.`"
         case .releasedTooSoon(let daysSinceRelease, let releasedForDays):
-            return "The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
+            return "[Siren Error]: The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
         }
     }
 }

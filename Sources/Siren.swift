@@ -59,23 +59,10 @@ public final class Siren: NSObject {
         lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
     }
 
-    /// Checks the currently installed version of your app against the App Store.
-    /// The default check is against the US App Store, but if your app is not listed in the US,
-    /// you should set the `countryCode` property before calling this method. Please refer to the countryCode property for more information.
-    ///
-    /// - Parameters:
-    ///   - checkType: The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.
-    public func wail(completion handler: CompletionHandler?) {
-        guard Bundle.bundleID() != nil else {
-            printMessage("Please make sure that you have set a `Bundle Identifier` in your project.")
-            return
-        }
-
+    public func start(completion handler: CompletionHandler?) {
         updateType = .unknown
         completionHandler = handler
-
         addObservers()
-        performVersionCheckRequest()
     }
 
     /// Launches the AppStore in two situations:
@@ -102,6 +89,11 @@ public final class Siren: NSObject {
 
 extension Siren {
     func performVersionCheckRequest() {
+        guard Bundle.bundleID() != nil else {
+            completionHandler?(nil, .missingBundleID)
+            return
+        }
+
         do {
             let url = try makeITunesURL(fromAPIManager: apiManager)
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
@@ -216,7 +208,7 @@ private extension Siren {
             if Date.days(since: lastVersionCheckPerformedOnDate) >= rules.frequency.rawValue {
                 showAlert(withRules: rules)
             } else {
-                completionHandler?(nil, .recentlyCheckedAlready)
+                completionHandler?(nil, .recentlyCheckedVersion)
             }
         }
     }

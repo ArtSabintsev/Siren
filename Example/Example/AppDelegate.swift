@@ -16,12 +16,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
-        let siren = Siren.shared
-        siren.wail { (results, error) in
+        Siren.shared.start { (results, error) in
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("LookupModel ", results.lookupModel ?? "LookupModel was empty.")
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)

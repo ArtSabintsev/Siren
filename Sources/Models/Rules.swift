@@ -53,7 +53,7 @@ public extension Rules {
     }
 
     /// Determines the frequency in which the the version check is performed and the user is prompted to update the app.
-    public enum VersionCheckFrequency: Int {
+    public enum VersionCheckFrequency: UInt {
         /// Version check performed every time the app is launched.
         case immediately = 0
         /// Version check performed once a day.

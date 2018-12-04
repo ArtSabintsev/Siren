@@ -24,7 +24,7 @@ public enum KnownError: LocalizedError {
     case appStoreVersionArrayFailure
     /// The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
     case currentVersionReleaseDate
-    /// The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
+    /// One of the iTunes URLs used in Siren is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
     case malformedURL
     /// Please make sure that you have set a `Bundle Identifier` in your project.
     case missingBundleID
@@ -34,36 +34,44 @@ public enum KnownError: LocalizedError {
     case recentlyCheckedVersion
     /// The app has been released for X days, but Siren cannot prompt the user until Y (where Y > X) days have passed.
     case releasedTooSoon(daysSinceRelease: Int, releasedForDays: Int)
+    /// The user has opted to skip updating their current version of the app to the current App Store version.
+    case skipVersionUpdate(installedVersion: String, appStoreVersion: String)
 
     /// The localized description for each error handled by Siren.
     public var localizedDescription: String {
         switch self {
         case .appStoreAppIDFailure:
-            return "[Siren Error]: Error retrieving trackId as the JSON does not contain a `trackId` key."
+            return "\(KnownError.sirenError) Error retrieving trackId as the JSON does not contain a `trackId` key."
         case .appStoreDataRetrievalFailure(let error?):
-            return "[Siren Error]: Error retrieving App Store data as an error was returned\nAlso, the following system level error was returned: \(error)"
+            return "\(KnownError.sirenError) Error retrieving App Store data as an error was returned\nAlso, the following system level error was returned: \(error)"
         case .appStoreDataRetrievalEmptyResults:
-            return "[Siren Error]: Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error."
+            return "\(KnownError.sirenError) Error retrieving App Store data as the JSON results were empty. Is your app available in the US? If not, change the `countryCode` variable to fix this error."
         case .appStoreDataRetrievalFailure(.none):
-            return "[Siren Error]: Error retrieving App Store data as an error was returned."
+            return "\(KnownError.sirenError) Error retrieving App Store data as an error was returned."
         case .appStoreJSONParsingFailure(let error):
-            return "[Siren Error]: Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
+            return "\(KnownError.sirenError) Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
         case .appStoreOSVersionUnsupported:
-            return "[Siren Error]: The version of iOS on the device is lower than that of the one required by the app verison update."
+            return "\(KnownError.sirenError) The version of iOS on the device is lower than that of the one required by the app verison update."
         case .appStoreVersionArrayFailure:
-            return "[Siren Error]: Error retrieving App Store verson number as the JSON does not contain a `version` key."
+            return "\(KnownError.sirenError) Error retrieving App Store verson number as the JSON does not contain a `version` key."
         case .currentVersionReleaseDate:
-            return "[Siren Error]: The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
+            return "\(KnownError.sirenError) The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
         case .malformedURL:
-            return "[Siren Error]: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
+            return "\(KnownError.sirenError) One of the iTunes URLs used in Siren is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
         case .missingBundleID:
-            return "[Siren Error]: Please make sure that you have set a `Bundle Identifier` in your project."
+            return "\(KnownError.sirenError) Please make sure that you have set a `Bundle Identifier` in your project."
         case .noUpdateAvailable:
-            return "[Siren Error]: No new update available."
+            return "\(KnownError.sirenError) No new update available."
         case .recentlyCheckedVersion:
-            return "[Siren Error]: Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `\(RulesManager.self)`"
+            return "\(KnownError.sirenError) Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `\(RulesManager.self)`"
         case .releasedTooSoon(let daysSinceRelease, let releasedForDays):
-            return "[Siren Error]: The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
+            return "\(KnownError.sirenError) The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
+        case .skipVersionUpdate(let installedVersion, let appStoreVersion):
+            return "\(KnownError.sirenError) The user has opted to skip updating their current version of the app (\(installedVersion)) to the current App Store version (\(appStoreVersion))."
         }
+    }
+
+    private static var sirenError: String {
+        return "[Siren Error]"
     }
 }

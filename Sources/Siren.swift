@@ -83,6 +83,7 @@ public extension Siren {
     func launchAppStore() {
         guard let appID = appID,
             let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
+                completionHandler?(nil, .malformedURL)
                 return
         }
 
@@ -203,8 +204,10 @@ private extension Siren {
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
         if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
+            let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion,
             currentAppStoreVersion != previouslySkippedVersion {
+            completionHandler?(nil, .skipVersionUpdate(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion))
                 return
         }
 

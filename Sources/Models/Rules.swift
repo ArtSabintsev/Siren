@@ -19,12 +19,16 @@ public struct Rules {
         self.alertType = alertType
     }
 
-    public static var `default`: Rules {
-        return Rules(checkFrequency: .daily, forAlertType: .skip)
+    public static var annoying: Rules {
+        return Rules(checkFrequency: .immediately, forAlertType: .option)
     }
 
     public static var critical: Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .force)
+    }
+
+    public static var `default`: Rules {
+        return Rules(checkFrequency: .daily, forAlertType: .skip)
     }
 
     public static var persistent: Rules {

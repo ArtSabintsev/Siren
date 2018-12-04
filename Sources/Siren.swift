@@ -52,6 +52,7 @@ public final class Siren: NSObject {
     private var appID: Int?
 
     private lazy var updateType: RulesManager.UpdateType = .unknown
+
     private lazy var alertViewIsVisible: Bool = false
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
@@ -175,7 +176,8 @@ extension Siren {
         // Check the release date of the current version.
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
             let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
-            return
+                completionHandler?(nil, .currentVersionReleaseDate)
+                return
         }
 
         // Check if applicaiton has been released for the amount of days defined by the app consuming Siren.

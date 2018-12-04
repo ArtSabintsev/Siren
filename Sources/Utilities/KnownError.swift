@@ -22,6 +22,8 @@ public enum KnownError: LocalizedError {
     case appStoreOSVersionUnsupported
     /// Error retrieving App Store verson number as the JSON does not contain a `version` key.
     case appStoreVersionArrayFailure
+    /// The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
+    case currentVersionReleaseDate
     /// The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
     case malformedURL
     /// Please make sure that you have set a `Bundle Identifier` in your project.
@@ -50,6 +52,8 @@ public enum KnownError: LocalizedError {
             return "[Siren Error]: The version of iOS on the device is lower than that of the one required by the app verison update."
         case .appStoreVersionArrayFailure:
             return "[Siren Error]: Error retrieving App Store verson number as the JSON does not contain a `version` key."
+        case .currentVersionReleaseDate:
+            return "[Siren Error]: The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
         case .malformedURL:
             return "[Siren Error]: The iTunes URL is malformed. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
         case .missingBundleID:

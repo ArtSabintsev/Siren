@@ -38,7 +38,8 @@ extension Bundle {
         return Bundle(path: path)?.path(forResource: name, ofType: Constants.projectExtension)
     }
 
-    final class func localizedString(forKey key: String, andForceLanguageLocalization language: Localization.Language?) -> String {
+    final class func localizedString(forKey key: String,
+                                     andForceLanguageLocalization language: Localization.Language?) -> String {
         guard var path = sirenBundlePath() else {
             return key
         }

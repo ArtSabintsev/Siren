@@ -57,7 +57,7 @@ public enum KnownError: LocalizedError {
         case .noUpdateAvailable:
             return "[Siren Error]: No new update available."
         case .recentlyCheckedVersion:
-            return "[Siren Error]: Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `RulesManager.`"
+            return "[Siren Error]: Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `\(RulesManager.self)`"
         case .releasedTooSoon(let daysSinceRelease, let releasedForDays):
             return "[Siren Error]: The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
         }

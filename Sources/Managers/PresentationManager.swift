@@ -1,5 +1,5 @@
 //
-//  AlertManager.swift
+//  PresentationManager.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 12/6/17.
@@ -15,7 +15,7 @@ import Foundation
 /// - Warning: Overriding any of these keys will result in the loss of the built-in internationalization that Siren provides.
 ///
 /// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
-public struct AlertManager {
+public struct PresentationManager {
     /// The default constants used for the alert messaging.
     public struct Constants {
         /// The text that conveys the message that there is an app update available
@@ -80,5 +80,5 @@ public struct AlertManager {
         }
     }
 
-    public static let `default` = AlertManager()
+    public static let `default` = PresentationManager()
 }

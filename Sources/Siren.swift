@@ -17,7 +17,7 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
-    public lazy var alertManager: AlertManager = .default
+    public lazy var presentationManager: PresentationManager = .default
 
     public lazy var apiManager: APIManager = .default
 
@@ -228,7 +228,7 @@ private extension Siren {
     func showAlert(withRules rules: Rules) {
         UserDefaults.storedVersionCheckDate = Date()
 
-        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let alertTitle = localization.alertTitle()
         let alertMessage = localization.alertMessage()
 
@@ -236,7 +236,7 @@ private extension Siren {
                                            message: alertMessage,
                                            preferredStyle: .alert)
 
-        if let alertControllerTintColor = alertManager.tintColor {
+        if let alertControllerTintColor = presentationManager.tintColor {
             alertController?.view.tintColor = alertControllerTintColor
         }
 
@@ -265,7 +265,7 @@ private extension Siren {
     }
 
     func updateAlertAction() -> UIAlertAction {
-        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 
@@ -285,7 +285,7 @@ private extension Siren {
     }
 
     func nextTimeAlertAction() -> UIAlertAction {
-        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
             guard let self = self else { return }
 
@@ -305,7 +305,7 @@ private extension Siren {
     }
 
     func skipAlertAction() -> UIAlertAction {
-        let localization = Localization(alertManager: alertManager, forCurrentAppStoreVersion: currentAppStoreVersion)
+        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { [weak self] _ in
             guard let self = self else { return }
 

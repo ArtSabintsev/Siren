@@ -20,11 +20,19 @@ public struct Rules {
     }
 
     public static var `default`: Rules {
-        return Rules(checkFrequency: .daily, forAlertType: .option)
+        return Rules(checkFrequency: .daily, forAlertType: .skip)
     }
 
     public static var critical: Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .force)
+    }
+
+    public static var persistent: Rules {
+        return Rules(checkFrequency: .daily, forAlertType: .option)
+    }
+
+    public static var relaxed: Rules {
+        return Rules(checkFrequency: .weekly, forAlertType: .skip)
     }
 }
 

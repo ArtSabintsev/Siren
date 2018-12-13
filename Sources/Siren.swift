@@ -71,7 +71,7 @@ public final class Siren: NSObject {
 // MARK: - Public Functionality
 
 public extension Siren {
-    func start(completion handler: CompletionHandler?) {
+    func wail(completion handler: CompletionHandler?) {
         completionHandler = handler
         addObservers()
     }

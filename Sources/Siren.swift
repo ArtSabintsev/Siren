@@ -17,6 +17,8 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
+    /// The manager that controls the update alert's localization and tint color.
+    /// Defaults to the user's device localization.
     public lazy var presentationManager: PresentationManager = .default
 
     public lazy var apiManager: APIManager = .default
@@ -27,7 +29,7 @@ public final class Siren: NSObject {
     /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
     public lazy var debugEnabled: Bool = false
 
-    /// Current installed version of your app.
+    /// The current installed version of your app.
     internal lazy var currentInstalledVersion: String? = Bundle.version()
 
     /// The current version of your app that is available for download on the App Store

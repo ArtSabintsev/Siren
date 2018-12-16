@@ -11,20 +11,49 @@ import Foundation
 // MARK: - Bundle Extension for Siren
 
 extension Bundle {
-    private struct Constants {
-        static let bundleExtension = "bundle"
-        static let displayName = "CFBundleDisplayName"
-        static let projectExtension = "lproj"
-        static let shortVersionString = "CFBundleShortVersionString"
-        static let table = "SirenLocalizable"
-    }
-
     final class func version() -> String? {
         return Bundle.main.object(forInfoDictionaryKey: Constants.shortVersionString) as? String
     }
 
     final class func bundleID() -> String? {
         return Bundle.main.bundleIdentifier
+    }
+
+    final class func localizedString(forKey key: String,
+                                     andForceLanguageLocalization forcedLanguage: Localization.Language?) -> String {
+        guard var path = sirenBundlePath() else {
+            return key
+        }
+
+        if let deviceLangauge = deviceLanguage(),
+            let devicePath = sirenForcedBundlePath(forceLanguageLocalization: deviceLangauge) {
+            path = devicePath
+        }
+
+        if let forcedLanguage = forcedLanguage,
+            let forcedPath = sirenForcedBundlePath(forceLanguageLocalization: forcedLanguage) {
+            path = forcedPath
+        }
+
+        return Bundle(path: path)?.localizedString(forKey: key, value: key, table: Constants.table) ?? key
+    }
+
+    final class func bestMatchingAppName() -> String {
+        let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: Constants.displayName) as? String
+        let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
+
+        return bundleDisplayName ?? bundleName ?? ""
+    }
+}
+
+private extension Bundle {
+    struct Constants {
+        static let bundleExtension = "bundle"
+        static let displayName = "CFBundleDisplayName"
+        static let englishLocalization = "en"
+        static let projectExtension = "lproj"
+        static let shortVersionString = "CFBundleShortVersionString"
+        static let table = "SirenLocalizable"
     }
 
     final class func sirenBundlePath() -> String? {
@@ -38,24 +67,14 @@ extension Bundle {
         return Bundle(path: path)?.path(forResource: name, ofType: Constants.projectExtension)
     }
 
-    final class func localizedString(forKey key: String,
-                                     andForceLanguageLocalization language: Localization.Language?) -> String {
-        guard var path = sirenBundlePath() else {
-            return key
+    final class func deviceLanguage() -> Localization.Language? {
+        guard let preferredLocalization = Bundle.main.preferredLocalizations.first,
+            preferredLocalization != Constants.englishLocalization,
+            let preferredLanguage = Localization.Language(rawValue: preferredLocalization) else {
+                return nil
         }
 
-        if let language = language,
-            let forcedPath = sirenForcedBundlePath(forceLanguageLocalization: language) {
-            path = forcedPath
-        }
-
-        return Bundle(path: path)?.localizedString(forKey: key, value: key, table: Constants.table) ?? key
+        return preferredLanguage
     }
 
-    final class func bestMatchingAppName() -> String {
-        let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: Constants.displayName) as? String
-        let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
-
-        return bundleDisplayName ?? bundleName ?? ""
-    }
 }

@@ -16,6 +16,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
+        let siren = Siren.shared
+        siren.rulesManager = RulesManager(globalRules: .annoying)
+        siren.presentationManager = PresentationManager(forceLanguageLocalization: .spanish)
+
         Siren.shared.wail { (results, error) in
             if let results = results {
                 print("AlertAction ", results.alertAction)

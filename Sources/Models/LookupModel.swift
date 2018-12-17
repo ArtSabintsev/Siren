@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// MARK: - Model representing a selection of results from the iTunes Lookup API
+/// Model representing a selection of results from the iTunes Lookup API.
 public struct LookupModel: Decodable {
     private enum CodingKeys: String, CodingKey {
         case results

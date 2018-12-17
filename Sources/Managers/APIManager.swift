@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// APIManager for Siren
 public struct APIManager {
     /// The region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.

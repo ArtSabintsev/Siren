@@ -8,9 +8,7 @@
 
 import Foundation
 
-// MARK: - Localization Helpers for Siren
-
-/// Localization information for Siren
+/// Localization information and strings for Siren.
 public struct Localization {
     /// Determines the available languages in which the update message and alert button titles should appear.
     ///

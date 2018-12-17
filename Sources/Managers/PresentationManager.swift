@@ -35,14 +35,13 @@ public struct PresentationManager {
     }
 
     let tintColor: UIColor?
+    let alertMessage: NSAttributedString
+    let alertTitle: NSAttributedString
     let nextTimeButtonMessage: NSAttributedString
     let skipVersionButtonMessage: NSAttributedString
     let updateButtonMessage: NSAttributedString
-    let updateMessage: NSAttributedString
-    let updateTitle: NSAttributedString
 
-    /// The name of your app.
-    /// By default, it's set to the name of the app that's stored in your plist.
+    /// The name of your app. Defaults to name of the app that's stored in `Info.plist`.
     var appName: String = Bundle.bestMatchingAppName()
 
     /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
@@ -53,26 +52,27 @@ public struct PresentationManager {
     ///
     /// - Parameters:
     ///     - tintColor: The alert's tintColor. Settings this to `nil` defaults to the system default color.
-    ///     - title: The title field of the `UIAlertController`.
-    ///     - message: The `message` field of the `UIAlertController`.
-    ///     - updateButtonMessage: The `title` field of the Update Button `UIAlertAction`.
-    ///     - nextTimeButtonMessage: The `title` field of the Next Time Button `UIAlertAction`.
-    ///     - skipVersionButtonMessage: The `title` field of the Skip Button `UIAlertAction`.
+    ///     - appName: The name of the app (overrides the default/bundled name).
+    ///     - alertTitle: The title field of the `UIAlertController`.
+    ///     - alertMessage: The `message` field of the `UIAlertController`.
+    ///     - nextTimeButtonTitle: The `title` field of the Next Time Button `UIAlertAction`.
+    ///     - skipButtonTitle: The `title` field of the Skip Button `UIAlertAction`.
+    ///     - updateButtonTitle: The `title` field of the Update Button `UIAlertAction`.
+    ///     - forceLanguageLocalization: The language the alert should to which the alert should be set. Defaults to the device's preferred locale.
     public init(alertTintColor tintColor: UIColor? = nil,
                 appName: String? = nil,
-                updateTitle title: NSAttributedString  = Constants.alertTitle,
-                updateMessage message: NSAttributedString  = Constants.alertMessage,
-                updateButtonMessage: NSAttributedString  = Constants.updateButtonTitle,
-                nextTimeButtonMessage: NSAttributedString  = Constants.nextTimeButtonTitle,
-                skipVersionButtonMessage: NSAttributedString  = Constants.skipButtonTitle,
+                alertTitle: NSAttributedString  = Constants.alertTitle,
+                alertMessage: NSAttributedString  = Constants.alertMessage,
+                updateButtonTitle: NSAttributedString  = Constants.updateButtonTitle,
+                nextTimeButtonTitle: NSAttributedString  = Constants.nextTimeButtonTitle,
+                skipButtonTitle: NSAttributedString  = Constants.skipButtonTitle,
                 forceLanguageLocalization: Localization.Language? = nil) {
         self.tintColor = tintColor
-        self.updateTitle = title
-        self.nextTimeButtonMessage = nextTimeButtonMessage
-        self.updateButtonMessage = updateButtonMessage
-        self.updateMessage = message
-        self.skipVersionButtonMessage = skipVersionButtonMessage
-
+        self.alertTitle = alertTitle
+        self.alertMessage = alertMessage
+        self.nextTimeButtonMessage = nextTimeButtonTitle
+        self.updateButtonMessage = updateButtonTitle
+        self.skipVersionButtonMessage = skipButtonTitle
         self.forceLanguageLocalization = forceLanguageLocalization
 
         if let appName = appName {
@@ -80,5 +80,11 @@ public struct PresentationManager {
         }
     }
 
+    /// The default `PresentationManager`
+    ///
+    /// By default:
+    /// - There is no tint color.
+    /// - The name of the app is equal to the name that appears in `Info.plist`.
+    /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
     public static let `default` = PresentationManager()
 }

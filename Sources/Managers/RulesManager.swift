@@ -9,8 +9,10 @@
 import Foundation
 
 public struct RulesManager {
-    /// When this is set, the alert will only show up if the current version has already been released for X days.
-    /// Defaults to 1 day (in the initializer) to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
+    /// The alert will only show up if the current version has already been released for X days.
+    ///
+    /// This value defaults to 1 day (in `RulesManager`'s initializer) to avoid an issue where
+    /// Apple updates the JSON faster than the app binary propogates to the App Store.
     let releasedForDays: Int
 
     var majorUpdateRules: Rules
@@ -41,7 +43,7 @@ public struct RulesManager {
 
     /// Returns the appropriate update rules based on the type of version that is returned from the API.
     ///
-    /// - Parameter type: The type of app update
+    /// - Parameter type: The type of app update.
     /// - Returns: The appropriate rule based on the type of app update that is returned by the API.
     func loadRulesForUpdateType(_ type: UpdateType) -> Rules {
         switch type {

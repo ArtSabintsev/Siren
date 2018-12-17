@@ -300,7 +300,7 @@ private extension Siren {
             self.alertViewIsVisible = false
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
 
-            let results = Results(alertAction: .cancel,
+            let results = Results(alertAction: .nextTime,
                                   localization: localization,
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)

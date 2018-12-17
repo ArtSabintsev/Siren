@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Date Extension for Siren
+// `Date` Extension for Siren
 extension Date {
     /// The amount of days passed from a specific source date.
     ///

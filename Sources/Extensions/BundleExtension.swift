@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Bundle Extension for Siren
+// `Bundle` Extension for Siren
 extension Bundle {
     /// Fetches the current verison of the app.
     ///

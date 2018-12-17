@@ -47,8 +47,8 @@ public final class Siren: NSObject {
     /// The instance of the `UIAlertController` used to present the update alert.
     private var alertController: UIAlertController?
 
-    /// The last date that a version check was performed.
-    private var lastVersionCheckPerformedOnDate: Date?
+    /// The last date that an alert was presented to the user.
+    private var alertPresentationDate: Date?
 
     /// The App Store's unique identifier for an app.
     private var appID: Int?
@@ -66,7 +66,7 @@ public final class Siren: NSObject {
     }
 
     private override init() {
-        lastVersionCheckPerformedOnDate = UserDefaults.storedVersionCheckDate
+        alertPresentationDate = UserDefaults.alertPresentationDate
     }
 }
 
@@ -219,12 +219,12 @@ private extension Siren {
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
             showAlert(withRules: rules)
         } else {
-            guard let lastVersionCheckPerformedOnDate = lastVersionCheckPerformedOnDate else {
+            guard let alertPresentationDate = alertPresentationDate else {
                 showAlert(withRules: rules)
                 return
             }
 
-            if Date.days(since: lastVersionCheckPerformedOnDate) >= rules.frequency.rawValue {
+            if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
                 showAlert(withRules: rules)
             } else {
                 completionHandler?(nil, .recentlyCheckedVersion)
@@ -233,7 +233,7 @@ private extension Siren {
     }
 
     func showAlert(withRules rules: Rules) {
-        UserDefaults.storedVersionCheckDate = Date()
+        UserDefaults.alertPresentationDate = Date()
 
         let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
         let alertTitle = localization.alertTitle()

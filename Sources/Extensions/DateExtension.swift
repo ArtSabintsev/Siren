@@ -9,14 +9,21 @@
 import Foundation
 
 // MARK: - Date Extension for Siren
-
 extension Date {
+    /// The amount of days passed from a specific source date.
+    ///
+    /// - Parameter date: The source date.
+    /// - Returns: The amount of days passed since the source date.
     static func days(since date: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: date, to: Date())
         return components.day ?? 0
     }
 
+    /// The amount of days passed from a specific source date string.
+    ///
+    /// - Parameter dateString: The source date string.
+    /// - Returns: The amount of days passed since the source date.
     static func days(since dateString: String) -> Int? {
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: "en_US_POSIX")

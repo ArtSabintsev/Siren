@@ -19,29 +19,37 @@ public struct Rules {
         self.alertType = alertType
     }
 
+    /// Performs a version check immediately, but allows the user to skip updating the app until the next time the app becomes active.
     public static var annoying: Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .option)
     }
 
+    /// Performs a version check immediately and forced the user to update the app.
     public static var critical: Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .force)
     }
 
+    /// Performs a version check once a day, but allows the user to skip updating the app until
+    /// the next time the app becomes active or skipping the update all together until another version is released.
+
+    /// This is the default setting.
     public static var `default`: Rules {
         return Rules(checkFrequency: .daily, forAlertType: .skip)
     }
 
+    /// Performs a version check daily, but allows the user to skip updating the app until the next time the app becomes active.
     public static var persistent: Rules {
         return Rules(checkFrequency: .daily, forAlertType: .option)
     }
 
+    /// Performs a version check weekly, but allows the user to skip updating the app until
+    /// the next time the app becomes active or skipping the update all together until another version is released.
     public static var relaxed: Rules {
         return Rules(checkFrequency: .weekly, forAlertType: .skip)
     }
 }
 
-// MARK: - Rules-related Constants
-
+// Rules-related Constants
 public extension Rules {
     /// Determines the type of alert to present after a successful version check has been performed.
     public enum AlertType {
@@ -51,8 +59,9 @@ public extension Rules {
         case option
         /// Presents the user with option to update the app now, at next launch, or to skip this version all together (3 button alert).
         case skip
-        /// Doesn't show the alert, but instead returns a localized message for use in a
-        /// custom UI within the `sirenDidDetectNewVersionWithoutAlert(...)` delegate method.
+        /// Doesn't present the alert.
+        ///
+        /// Use this option if you would like to present a custom alert to the end user.
         case none
     }
 
@@ -65,5 +74,4 @@ public extension Rules {
         /// Version check performed once a week.
         case weekly = 7
     }
-
 }

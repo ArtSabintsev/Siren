@@ -71,7 +71,7 @@ public struct Localization {
 
     public func alertMessage() -> String {
         let message = Bundle.localizedString(forKey: PresentationManager.Constants.alertMessage.string,
-                                             andForceLanguageLocalization: presentationManager.forceLanguageLocalization)
+                                             andForceLocalization: presentationManager.forceLanguageLocalization)
 
         guard let version = version else {
             return String(format: message, presentationManager.appName, "Unknown")
@@ -82,21 +82,21 @@ public struct Localization {
 
     public func alertTitle() -> String {
         return Bundle.localizedString(forKey: PresentationManager.Constants.alertTitle.string,
-                                      andForceLanguageLocalization: presentationManager.forceLanguageLocalization)
+                                      andForceLocalization: presentationManager.forceLanguageLocalization)
     }
 
     public func nextTimeButtonTitle() -> String {
         return Bundle.localizedString(forKey: PresentationManager.Constants.nextTimeButtonTitle.string,
-                                      andForceLanguageLocalization: presentationManager.forceLanguageLocalization)
+                                      andForceLocalization: presentationManager.forceLanguageLocalization)
     }
 
     public func skipButtonTitle() -> String {
         return Bundle.localizedString(forKey: PresentationManager.Constants.skipButtonTitle.string,
-                                      andForceLanguageLocalization: presentationManager.forceLanguageLocalization)
+                                      andForceLocalization: presentationManager.forceLanguageLocalization)
     }
 
     public func updateButtonTitle() -> String {
         return Bundle.localizedString(forKey: PresentationManager.Constants.updateButtonTitle.string,
-                                      andForceLanguageLocalization: presentationManager.forceLanguageLocalization)
+                                      andForceLocalization: presentationManager.forceLanguageLocalization)
     }
 }

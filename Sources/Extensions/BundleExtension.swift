@@ -9,18 +9,26 @@
 import Foundation
 
 // MARK: - Bundle Extension for Siren
-
 extension Bundle {
+    /// Fetches the current verison of the app.
+    ///
+    /// - Returns: The current version of the app.
     final class func version() -> String? {
         return Bundle.main.object(forInfoDictionaryKey: Constants.shortVersionString) as? String
     }
 
-    final class func bundleID() -> String? {
-        return Bundle.main.bundleIdentifier
-    }
-
-    final class func localizedString(forKey key: String,
-                                     andForceLanguageLocalization forcedLanguage: Localization.Language?) -> String {
+    /// Returns the localized string for a given default string.
+    ///
+    /// By default, the English language localization is used.
+    /// If the device's localization is set to another locale, that local's language is used if it's supported by Siren.
+    /// If `forcedLanguage` is set to `true`, the chosen language is shown for all devices, irrespective of their device's localization.
+    ///
+    ///
+    /// - Parameters:
+    ///   - key: The default string used to search the localization table for a specific translation.
+    ///   - forcedLanguage: Returns
+    /// - Returns: The localized string for a given key.
+    final class func localizedString(forKey key: String, andForceLocalization forcedLanguage: Localization.Language?) -> String {
         guard var path = sirenBundlePath() else {
             return key
         }
@@ -38,6 +46,13 @@ extension Bundle {
         return Bundle(path: path)?.localizedString(forKey: key, value: key, table: Constants.table) ?? key
     }
 
+    /// The appropriate name for the app to be displayed in the update alert.
+    ///
+    /// Siren checks `CFBundleDisplayName` first. It then falls back to
+    /// to `kCFBundleNameKey` and ultimately to an empty string
+    /// if the aforementioned values are nil.
+    ///
+    /// - Returns: The name of the app.
     final class func bestMatchingAppName() -> String {
         let bundleDisplayName = Bundle.main.object(forInfoDictionaryKey: Constants.displayName) as? String
         let bundleName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String
@@ -47,6 +62,7 @@ extension Bundle {
 }
 
 private extension Bundle {
+    /// Constants used in the `Bundle` extension.
     struct Constants {
         static let bundleExtension = "bundle"
         static let displayName = "CFBundleDisplayName"
@@ -56,10 +72,17 @@ private extension Bundle {
         static let table = "SirenLocalizable"
     }
 
+    /// The path to Siren's localization `Bundle`.
+    ///
+    /// - Returns: The bundle's path or `nil`.
     final class func sirenBundlePath() -> String? {
         return Bundle(for: Siren.self).path(forResource: "\(Siren.self)", ofType: Constants.bundleExtension)
     }
 
+    /// The path for a particular language localizationin Siren's localization `Bundle`.
+    ///
+    /// - Parameter forceLanguageLocalization: The language localization that should be searched for in Siren's localization `bundle`.
+    /// - Returns: The path to the forced language localization.
     final class func sirenForcedBundlePath(forceLanguageLocalization: Localization.Language) -> String? {
         guard let path = sirenBundlePath() else { return nil }
         let name = forceLanguageLocalization.rawValue
@@ -67,6 +90,9 @@ private extension Bundle {
         return Bundle(path: path)?.path(forResource: name, ofType: Constants.projectExtension)
     }
 
+    /// The user's preferred language based on their device's localization.
+    ///
+    /// - Returns: The user's preferred language.
     final class func deviceLanguage() -> Localization.Language? {
         guard let preferredLocalization = Bundle.main.preferredLocalizations.first,
             preferredLocalization != Constants.englishLocalization,
@@ -76,5 +102,4 @@ private extension Bundle {
 
         return preferredLanguage
     }
-
 }

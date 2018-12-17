@@ -105,7 +105,7 @@ extension Siren {
     func performVersionCheckRequest() {
         updateType = .unknown
 
-        guard Bundle.bundleID() != nil else {
+        guard Bundle.main.bundleIdentifier != nil else {
             completionHandler?(nil, .missingBundleID)
             return
         }
@@ -357,7 +357,7 @@ private extension Siren {
         components.host = "itunes.apple.com"
         components.path = "/lookup"
 
-        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.bundleID())]
+        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.main.bundleIdentifier)]
 
         if let countryCode = apiManager.countryCode {
             let item = URLQueryItem(name: "country", value: countryCode)

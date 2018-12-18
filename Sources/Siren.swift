@@ -18,11 +18,24 @@ public final class Siren: NSObject {
     public static let shared = Siren()
 
     /// The manager that controls the update alert's localization and tint color.
+    ///
     /// Defaults to the user's device localization.
     public lazy var presentationManager: PresentationManager = .default
 
+    /// The manager that controls the App Store API that is
+    /// used to fetch the latest version of the app.
+    ///
+    /// Defaults to the US App Store.
     public lazy var apiManager: APIManager = .default
 
+    /// The manager that controls the type of alert that should be displayed
+    /// and how often an alert should be displayed dpeneding on the type
+    /// of update that is available relative to the installed version of the app
+    /// (e.g., different rules for major, minor, patch and revision updated can be used).
+    ///
+    /// Default to performing a version check once a day, but allows the user
+    /// to skip updating the app until the next time the app becomes active or
+    /// skipping the update all together until another version is released.
     public lazy var rulesManager: RulesManager = .default
 
     /// The debug flag, which is disabled by default.
@@ -53,8 +66,14 @@ public final class Siren: NSObject {
     /// The App Store's unique identifier for an app.
     private var appID: Int?
 
+    /// The type of update that is available on the App Store.
+    ///
+    /// Defaults to `unknown` until a version check is successfully performed.
     private lazy var updateType: RulesManager.UpdateType = .unknown
 
+    /// Tracks the current presentation state of the update alert.
+    ///
+    /// `true` if the alert view is currently being presented to the user. Otherwise, `false`.
     private lazy var alertViewIsVisible: Bool = false
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
@@ -65,6 +84,7 @@ public final class Siren: NSObject {
         return window
     }
 
+    /// The initialization method.
     private override init() {
         alertPresentationDate = UserDefaults.alertPresentationDate
     }
@@ -73,6 +93,9 @@ public final class Siren: NSObject {
 // MARK: - Public Functionality
 
 public extension Siren {
+    /// <#Description#>
+    ///
+    /// - Parameter handler: <#handler description#>
     func wail(completion handler: CompletionHandler?) {
         completionHandler = handler
         addObservers()

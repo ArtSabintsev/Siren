@@ -31,7 +31,7 @@ public struct Rules {
 
     /// Performs a version check once a day, but allows the user to skip updating the app until
     /// the next time the app becomes active or skipping the update all together until another version is released.
-
+    ///
     /// This is the default setting.
     public static var `default`: Rules {
         return Rules(checkFrequency: .daily, forAlertType: .skip)

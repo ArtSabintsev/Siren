@@ -18,7 +18,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let siren = Siren.shared
         siren.rulesManager = RulesManager(globalRules: .annoying)
-        siren.presentationManager = PresentationManager(forceLanguageLocalization: .spanish)
+//        siren.presentationManager = PresentationManager(forceLanguageLocalization: .spanish)
 
         Siren.shared.wail { (results, error) in
             if let results = results {

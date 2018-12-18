@@ -10,9 +10,8 @@ import UIKit
 
 /// The Siren Class. A singleton that is initialized using the `shared` constant.
 public final class Siren: NSObject {
-
-    /// An `Either` type used to return results or errors obtained from checking a version with Siren.
-    public typealias CompletionHandler = (Results?, KnownError?) -> Void
+    /// Return results or errors obtained from performing a version check with Siren.
+    public typealias ResultsHandler = (Results?, KnownError?) -> Void
 
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
@@ -52,7 +51,7 @@ public final class Siren: NSObject {
     internal var didBecomeActiveObserver: NSObjectProtocol?
 
     /// The completion handler used to return the results or errors returned by Siren.
-    private var completionHandler: CompletionHandler?
+    private var resultsHandler: ResultsHandler?
 
     /// The Swift model representation of API results from the iTunes Lookup API.
     private var lookupModel: LookupModel?
@@ -93,11 +92,11 @@ public final class Siren: NSObject {
 // MARK: - Public Functionality
 
 public extension Siren {
-    /// <#Description#>
     ///
-    /// - Parameter handler: <#handler description#>
-    func wail(completion handler: CompletionHandler?) {
-        completionHandler = handler
+    ///
+    /// - Parameter handler:
+    func wail(completion handler: ResultsHandler?) {
+        resultsHandler = handler
         addObservers()
     }
 
@@ -108,7 +107,7 @@ public extension Siren {
     func launchAppStore() {
         guard let appID = appID,
             let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
-                completionHandler?(nil, .malformedURL)
+                resultsHandler?(nil, .malformedURL)
                 return
         }
 
@@ -125,90 +124,56 @@ public extension Siren {
 // MARK: - Networking
 
 extension Siren {
-    func performVersionCheckRequest() {
+    func performVersionCheck() {
         updateType = .unknown
-
-        guard Bundle.main.bundleIdentifier != nil else {
-            completionHandler?(nil, .missingBundleID)
-            return
-        }
-
-        do {
-            let url = try makeITunesURL(fromAPIManager: apiManager)
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
-                guard let self = self else { return }
-                self.processVersionCheckResults(withData: data, response: response, error: error)
-            }.resume()
-        } catch {
-            completionHandler?(nil, .malformedURL)
-        }
-    }
-
-    private func processVersionCheckResults(withData data: Data?, response: URLResponse?, error: Error?) {
-        if let error = error {
-            completionHandler?(nil, .appStoreDataRetrievalFailure(underlyingError: error))
-        } else {
-            guard let data = data else {
-               completionHandler?(nil, .appStoreDataRetrievalFailure(underlyingError: nil))
+        apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
+            guard let self = self else { return }
+            guard let lookupModel = lookupModel, error == nil else {
+                self.resultsHandler?(nil, error)
                 return
             }
-            do {
-                let lookupModel = try JSONDecoder().decode(LookupModel.self, from: data)
-                self.lookupModel = lookupModel
 
-                guard !lookupModel.results.isEmpty else {
-                    completionHandler?(nil, .appStoreDataRetrievalEmptyResults)
-                    return
-                }
-
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.analyze(model: lookupModel)
-                }
-            } catch {
-                completionHandler?(nil, .appStoreJSONParsingFailure(underlyingError: error))
-            }
+            self.analyze(model: lookupModel)
         }
     }
 
     private func analyze(model: LookupModel) {
         // Check if the latest version is compatible with current device's version of iOS.
         guard isUpdateCompatibleWithDeviceOS(for: model) else {
-            completionHandler?(nil, .appStoreOSVersionUnsupported)
+            resultsHandler?(nil, .appStoreOSVersionUnsupported)
             return
         }
 
         // Check and store the App ID .
         guard let appID = model.results.first?.appID else {
-            completionHandler?(nil, .appStoreAppIDFailure)
+            resultsHandler?(nil, .appStoreAppIDFailure)
             return
         }
         self.appID = appID
 
         // Check and store the current App Store version.
         guard let currentAppStoreVersion = model.results.first?.version else {
-            completionHandler?(nil, .appStoreVersionArrayFailure)
+            resultsHandler?(nil, .appStoreVersionArrayFailure)
             return
         }
         self.currentAppStoreVersion = currentAppStoreVersion
 
         // Check if the App Store version is newer than the currently installed version.
         guard VersionParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion) else {
-            completionHandler?(nil, .noUpdateAvailable)
+            resultsHandler?(nil, .noUpdateAvailable)
             return
         }
 
         // Check the release date of the current version.
         guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
             let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
-                completionHandler?(nil, .currentVersionReleaseDate)
+                resultsHandler?(nil, .currentVersionReleaseDate)
                 return
         }
 
         // Check if applicaiton has been released for the amount of days defined by the app consuming Siren.
         guard daysSinceRelease >= rulesManager.releasedForDays else {
-            completionHandler?(nil, .releasedTooSoon(daysSinceRelease: daysSinceRelease,
+            resultsHandler?(nil, .releasedTooSoon(daysSinceRelease: daysSinceRelease,
                                                      releasedForDays: rulesManager.releasedForDays))
             return
         }
@@ -232,7 +197,7 @@ private extension Siren {
             let currentInstalledVersion = currentInstalledVersion,
             let currentAppStoreVersion = currentAppStoreVersion,
             currentAppStoreVersion != previouslySkippedVersion {
-            completionHandler?(nil, .skipVersionUpdate(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion))
+            resultsHandler?(nil, .skipVersionUpdate(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion))
                 return
         }
 
@@ -250,7 +215,7 @@ private extension Siren {
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
                 showAlert(withRules: rules)
             } else {
-                completionHandler?(nil, .recentlyCheckedVersion)
+                resultsHandler?(nil, .recentlyCheckedVersion)
             }
         }
     }
@@ -285,7 +250,7 @@ private extension Siren {
                                   localization: localization,
                                   lookupModel: lookupModel,
                                   updateType: updateType)
-            completionHandler?(results, nil)
+            resultsHandler?(results, nil)
         }
 
         if rules.alertType != .none && !alertViewIsVisible {
@@ -307,7 +272,7 @@ private extension Siren {
                                   localization: localization,
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
-            self.completionHandler?(results, nil)
+            self.resultsHandler?(results, nil)
             return
         }
 
@@ -327,7 +292,7 @@ private extension Siren {
                                   localization: localization,
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
-            self.completionHandler?(results, nil)
+            self.resultsHandler?(results, nil)
             return
         }
 
@@ -351,7 +316,7 @@ private extension Siren {
                                   localization: localization,
                                   lookupModel: self.lookupModel,
                                   updateType: self.updateType)
-            self.completionHandler?(results, nil)
+            self.resultsHandler?(results, nil)
             return
         }
 
@@ -370,30 +335,8 @@ private extension Siren {
                          object: nil,
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
-                            self.performVersionCheckRequest()
+                            self.performVersionCheck()
         }
-    }
-
-    func makeITunesURL(fromAPIManager apiManager: APIManager) throws -> URL {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "itunes.apple.com"
-        components.path = "/lookup"
-
-        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.main.bundleIdentifier)]
-
-        if let countryCode = apiManager.countryCode {
-            let item = URLQueryItem(name: "country", value: countryCode)
-            items.append(item)
-        }
-
-        components.queryItems = items
-
-        guard let url = components.url, !url.absoluteString.isEmpty else {
-            throw KnownError.malformedURL
-        }
-
-        return url
     }
 
     func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {

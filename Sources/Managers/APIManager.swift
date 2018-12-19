@@ -50,7 +50,7 @@ extension APIManager {
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
-                }.resume()
+            }.resume()
         } catch {
             handler?(nil, .malformedURL)
         }

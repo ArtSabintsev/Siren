@@ -17,8 +17,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         let siren = Siren.shared
-        siren.rulesManager = RulesManager(globalRules: .annoying)
         siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
+        siren.rulesManager = RulesManager(globalRules: .annoying)
 
         Siren.shared.wail { (results, error) in
             if let results = results {

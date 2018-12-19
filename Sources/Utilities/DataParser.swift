@@ -1,5 +1,5 @@
 //
-//  VersionParser.swift
+//  DataParser.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 11/25/18.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Version parsing functions for Siren
-struct VersionParser {
+struct DataParser {
     /// Checks to see if the App Store version of the app is newer than the installed version.
     ///
     /// - Parameters:
@@ -20,6 +20,21 @@ struct VersionParser {
         guard let installedVersion = installedVersion,
             let appStoreVersion = appStoreVersion,
             (installedVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending) else {
+                return false
+        }
+
+        return true
+    }
+
+    static func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
+        guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
+            return false
+        }
+
+        let systemVersion = UIDevice.current.systemVersion
+
+        guard systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedDescending ||
+            systemVersion.compare(requiredOSVersion, options: .numeric) == .orderedSame else {
                 return false
         }
 

@@ -79,9 +79,9 @@ public struct PresentationManager {
 
 extension PresentationManager {
 
-    mutating func showAlert(withRules rules: Rules,
-                            forCurrentAppStoreVersion currentAppStoreVersion: String,
-                            completion handler: CompletionHandler?) {
+    mutating func presentAlert(withRules rules: Rules,
+                               forCurrentAppStoreVersion currentAppStoreVersion: String,
+                               completion handler: CompletionHandler?) {
         UserDefaults.alertPresentationDate = Date()
 
         let alertTitle = localization.alertTitle()

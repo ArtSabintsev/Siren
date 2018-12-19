@@ -33,7 +33,7 @@
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
 		8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF221B4DC0F009112A8 /* KnownError.swift */; };
 		8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF421B4E6B8009112A8 /* APIManager.swift */; };
-		8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */; };
+		8EEF4AB121AA6DDF00C83AAA /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 		8EE1FAF421B4E6B8009112A8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
-		8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionParser.swift; sourceTree = "<group>"; };
+		8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +135,8 @@
 		8E171DCC215B26B4006FBBCC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */,
 				8EE1FAF221B4DC0F009112A8 /* KnownError.swift */,
-				8EEF4AB021AA6DDF00C83AAA /* VersionParser.swift */,
 			);
 			name = Utilities;
 			path = ../../Sources/Utilities;
@@ -422,7 +422,7 @@
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */,
 				8E01817921B379AF006DED05 /* Results.swift in Sources */,
-				8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */,
+				8EEF4AB121AA6DDF00C83AAA /* DataParser.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
 				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,

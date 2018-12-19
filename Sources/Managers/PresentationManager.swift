@@ -49,7 +49,7 @@ public struct PresentationManager {
     ///     - nextTimeButtonTitle: The `title` field of the Next Time Button `UIAlertAction`.
     ///     - skipButtonTitle: The `title` field of the Skip Button `UIAlertAction`.
     ///     - updateButtonTitle: The `title` field of the Update Button `UIAlertAction`.
-    ///     - forceLanguageLocalization: The language the alert should to which the alert should be set. Defaults to the device's preferred locale.
+    ///     - forceLanguage: The language the alert should to which the alert should be set. If `nil`, fallse back to the device's preferred locale.
     public init(alertTintColor tintColor: UIColor? = nil,
                 appName: String? = nil,
                 alertTitle: NSAttributedString  = AlertConstants.alertTitle,
@@ -58,14 +58,13 @@ public struct PresentationManager {
                 nextTimeButtonTitle: NSAttributedString  = AlertConstants.nextTimeButtonTitle,
                 skipButtonTitle: NSAttributedString  = AlertConstants.skipButtonTitle,
                 forceLanguageLocalization forceLanguage: Localization.Language? = nil) {
-        self.tintColor = tintColor
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
+        self.localization = Localization(appName: appName, andForceLanguageLocalization: forceLanguage)
         self.nextTimeButtonMessage = nextTimeButtonTitle
         self.updateButtonMessage = updateButtonTitle
         self.skipVersionButtonMessage = skipButtonTitle
-        self.localization = Localization(appName: appName, andForceLanguageLocalization: forceLanguage)
-
+        self.tintColor = tintColor
     }
 
     /// The default `PresentationManager`
@@ -78,7 +77,6 @@ public struct PresentationManager {
 }
 
 extension PresentationManager {
-
     mutating func presentAlert(withRules rules: Rules,
                                forCurrentAppStoreVersion currentAppStoreVersion: String,
                                completion handler: CompletionHandler?) {
@@ -114,7 +112,7 @@ extension PresentationManager {
         }
     }
 
-    func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
+    private func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
             Siren.shared.launchAppStore()
@@ -126,7 +124,7 @@ extension PresentationManager {
         return action
     }
 
-    func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
+    private func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
@@ -138,7 +136,7 @@ extension PresentationManager {
         return action
     }
 
-    func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
+    private func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { _ in
             UserDefaults.storedSkippedVersion = currentAppStoreVersion
             UserDefaults.standard.synchronize()

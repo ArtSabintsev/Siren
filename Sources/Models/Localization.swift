@@ -66,9 +66,7 @@ public struct Localization {
     /// See the Siren.Localization.Language enum for more details.
     private let forceLanguage: Language?
 
-    init(appName: String?,
-         andForceLanguageLocalization forceLanguage: Language?) {
-
+    init(appName: String?, andForceLanguageLocalization forceLanguage: Language?) {
         if let appName = appName {
             self.appName = appName
         }

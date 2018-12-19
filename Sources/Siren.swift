@@ -16,16 +16,20 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
-    /// The manager that controls the update alert's string localization and tint color.
-    ///
-    /// Defaults the string's lange localization to the user's device localization.
-    public lazy var presentationManager: PresentationManager = .default
+    /// The debug flag, which is disabled by default.
+    /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
+    public lazy var debugEnabled: Bool = false
 
     /// The manager that controls the App Store API that is
     /// used to fetch the latest version of the app.
     ///
     /// Defaults to the US App Store.
     public lazy var apiManager: APIManager = .default
+
+    /// The manager that controls the update alert's string localization and tint color.
+    ///
+    /// Defaults the string's lange localization to the user's device localization.
+    public lazy var presentationManager: PresentationManager = .default
 
     /// The manager that controls the type of alert that should be displayed
     /// and how often an alert should be displayed dpeneding on the type
@@ -37,27 +41,23 @@ public final class Siren: NSObject {
     /// skipping the update all together until another version is released.
     public lazy var rulesManager: RulesManager = .default
 
-    /// The debug flag, which is disabled by default.
-    /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
-    public lazy var debugEnabled: Bool = false
+    /// The current version of your app that is available for download on the App Store
+    internal lazy var currentAppStoreVersion: String = ""
 
     /// The current installed version of your app.
     internal lazy var currentInstalledVersion: String? = Bundle.version()
 
-    /// The current version of your app that is available for download on the App Store
-    internal var currentAppStoreVersion: String = ""
-
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didBecomeActiveNotification` notifications.
     internal var didBecomeActiveObserver: NSObjectProtocol?
-
-    /// The completion handler used to return the results or errors returned by Siren.
-    private var resultsHandler: ResultsHandler?
 
     /// The last date that an alert was presented to the user.
     private var alertPresentationDate: Date?
 
     /// The App Store's unique identifier for an app.
     private var appID: Int?
+
+    /// The completion handler used to return the results or errors returned by Siren.
+    private var resultsHandler: ResultsHandler?
 
     /// The initialization method.
     private override init() {
@@ -175,49 +175,32 @@ private extension Siren {
         let updateType = DataParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
-        presentAlert(withRules: rules, model: model, andUpdateType: updateType)
-    }
-
-    func presentAlert(withRules rules: Rules, model: LookupModel, andUpdateType updateType: RulesManager.UpdateType) {
         if rules.frequency == .immediately {
-            presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
-                guard let self = self else { return }
-                self.handlePresentationInteractionResults(alertAction: alertAction,
-                                                          model: model,
-                                                          updateType: updateType,
-                                                          error: error)
-            }
+            presentAlert(withRules: rules, model: model, andUpdateType: updateType)
         } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
-            presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
-                guard let self = self else { return }
-                self.handlePresentationInteractionResults(alertAction: alertAction,
-                                                          model: model,
-                                                          updateType: updateType,
-                                                          error: error)
-            }
+            presentAlert(withRules: rules, model: model, andUpdateType: updateType)
         } else {
             guard let alertPresentationDate = alertPresentationDate else {
-                presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
-                    guard let self = self else { return }
-                    self.handlePresentationInteractionResults(alertAction: alertAction,
-                                                              model: model,
-                                                              updateType: updateType,
-                                                              error: error)
-                }
+                presentAlert(withRules: rules, model: model, andUpdateType: updateType)
                 return
             }
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
-                presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
-                    guard let self = self else { return }
-                    self.handlePresentationInteractionResults(alertAction: alertAction,
-                                                              model: model,
-                                                              updateType: updateType,
-                                                              error: error)
-                }
+                presentAlert(withRules: rules, model: model, andUpdateType: updateType)
             } else {
                 resultsHandler?(nil, .recentlyCheckedVersion)
             }
+        }
+    }
+
+    func presentAlert(withRules rules: Rules, model: LookupModel, andUpdateType updateType: RulesManager.UpdateType) {
+        presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+            guard let self = self else { return }
+            let results = Results(alertAction: alertAction ?? .unknown,
+                                  localization: self.presentationManager.localization,
+                                  lookupModel: model,
+                                  updateType: updateType)
+            self.resultsHandler?(results, error)
         }
     }
 }
@@ -235,16 +218,5 @@ private extension Siren {
                             guard let self = self else { return }
                             self.performVersionCheck()
         }
-    }
-
-    func handlePresentationInteractionResults(alertAction: AlertAction?,
-                                              model: LookupModel,
-                                              updateType: RulesManager.UpdateType,
-                                              error: KnownError?) {
-        let results = Results(alertAction: alertAction ?? .unknown,
-                              localization: self.presentationManager.localization,
-                              lookupModel: model,
-                              updateType: updateType)
-        resultsHandler?(results, error)
     }
 }

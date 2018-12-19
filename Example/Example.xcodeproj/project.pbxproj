@@ -24,6 +24,7 @@
 		8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DDA215B26B4006FBBCC /* SirenViewController.swift */; };
 		8E171DE6215B2701006FBBCC /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE5215B2701006FBBCC /* Localization.swift */; };
 		8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */; };
+		8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */; };
 		8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
 		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
 		8EACA9721F380294003134CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9691F37F2D3003134CA /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		8E171DE5215B2701006FBBCC /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConstants.swift; sourceTree = "<group>"; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EACA9681F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EACA96A1F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				8E01818121B37B43006DED05 /* AlertAction.swift */,
+				8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */,
 				8E171DE5215B2701006FBBCC /* Localization.swift */,
 				8E171DD7215B26B4006FBBCC /* LookupModel.swift */,
 				8E01817821B379AF006DED05 /* Results.swift */,
@@ -417,6 +420,7 @@
 				8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */,
 				8E171DE2215B26B4006FBBCC /* LookupModel.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
+				8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */,
 				8E01817921B379AF006DED05 /* Results.swift in Sources */,
 				8EEF4AB121AA6DDF00C83AAA /* VersionParser.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,

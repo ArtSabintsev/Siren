@@ -36,7 +36,6 @@ public struct APIManager {
     public init(countryCode: String? = nil) {
         self.countryCode = countryCode
     }
-
 }
 
 extension APIManager {

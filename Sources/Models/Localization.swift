@@ -59,42 +59,47 @@ public struct Localization {
         case vietnamese = "vi"
     }
 
-    private let presentationManager: PresentationManager
-    private let version: String?
+    private var appName: String = Bundle.bestMatchingAppName()
 
-    init(presentationManager: PresentationManager, forCurrentAppStoreVersion version: String?) {
-        self.presentationManager = presentationManager
-        self.version = version
+    /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
+    ///
+    /// See the Siren.Localization.Language enum for more details.
+    private let forceLanguage: Language?
+
+    init(appName: String?,
+         andForceLanguageLocalization forceLanguage: Language?) {
+
+        if let appName = appName {
+            self.appName = appName
+        }
+
+        self.forceLanguage = forceLanguage
     }
 
     public func alertMessage() -> String {
-        let message = Bundle.localizedString(forKey: PresentationManager.Constants.alertMessage.string,
-                                             andForceLocalization: presentationManager.forceLanguageLocalization)
+        let message = Bundle.localizedString(forKey: AlertConstants.alertMessage.string,
+                                             andForceLocalization: forceLanguage)
 
-        guard let version = version else {
-            return String(format: message, presentationManager.appName, "Unknown")
-        }
-
-        return String(format: message, presentationManager.appName, version)
+        return String(format: message, appName)
     }
 
     public func alertTitle() -> String {
-        return Bundle.localizedString(forKey: PresentationManager.Constants.alertTitle.string,
-                                      andForceLocalization: presentationManager.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertConstants.alertTitle.string,
+                                      andForceLocalization: forceLanguage)
     }
 
     public func nextTimeButtonTitle() -> String {
-        return Bundle.localizedString(forKey: PresentationManager.Constants.nextTimeButtonTitle.string,
-                                      andForceLocalization: presentationManager.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertConstants.nextTimeButtonTitle.string,
+                                      andForceLocalization: forceLanguage)
     }
 
     public func skipButtonTitle() -> String {
-        return Bundle.localizedString(forKey: PresentationManager.Constants.skipButtonTitle.string,
-                                      andForceLocalization: presentationManager.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertConstants.skipButtonTitle.string,
+                                      andForceLocalization: forceLanguage)
     }
 
     public func updateButtonTitle() -> String {
-        return Bundle.localizedString(forKey: PresentationManager.Constants.updateButtonTitle.string,
-                                      andForceLocalization: presentationManager.forceLanguageLocalization)
+        return Bundle.localizedString(forKey: AlertConstants.updateButtonTitle.string,
+                                      andForceLocalization: forceLanguage)
     }
 }

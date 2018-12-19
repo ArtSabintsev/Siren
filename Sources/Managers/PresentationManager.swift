@@ -16,37 +16,28 @@ import Foundation
 ///
 /// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
 public struct PresentationManager {
-    /// The default constants used for the alert messaging.
-    public struct Constants {
-        /// The text that conveys the message that there is an app update available
-        public static let alertMessage = NSAttributedString(string: "A new version of %@ is available. Please update to version %@ now.")
+    /// Return results or errors obtained from performing a version check with Siren.
+    typealias CompletionHandler = (AlertAction?, KnownError?) -> Void
 
-        /// The alert title which defaults to *Update Available*.
-        public static let alertTitle = NSAttributedString(string: "Update Available")
-
-        /// The button text that conveys the message that the user should be prompted to update next time the app launches.
-        public static let nextTimeButtonTitle = NSAttributedString(string: "Next time")
-
-        /// The text that conveys the message that the the user wants to skip this verison update.
-        public static let skipButtonTitle = NSAttributedString(string: "Skip this version")
-
-        /// The button text that conveys the message that the user would like to update the app right away.
-        public static let updateButtonTitle = NSAttributedString(string: "Update")
-    }
-
+    let localization: Localization
     let tintColor: UIColor?
+
     let alertMessage: NSAttributedString
     let alertTitle: NSAttributedString
     let nextTimeButtonMessage: NSAttributedString
     let skipVersionButtonMessage: NSAttributedString
     let updateButtonMessage: NSAttributedString
 
-    /// The name of your app. Defaults to name of the app that's stored in `Info.plist`.
-    var appName: String = Bundle.bestMatchingAppName()
+    /// The instance of the `UIAlertController` used to present the update alert.
+    private var alertController: UIAlertController?
 
-    /// Overrides the default localization of a user's device when presenting the update message and button titles in the alert.
-    /// See the Siren.LanguageType enum for more details.
-    let forceLanguageLocalization: Localization.Language?
+    /// The `UIWindow` instance that presents the `SirenViewController`.
+    private var updaterWindow: UIWindow {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = SirenViewController()
+        window.windowLevel = UIWindow.Level.alert + 1
+        return window
+    }
 
     /// The public initializer
     ///
@@ -61,23 +52,20 @@ public struct PresentationManager {
     ///     - forceLanguageLocalization: The language the alert should to which the alert should be set. Defaults to the device's preferred locale.
     public init(alertTintColor tintColor: UIColor? = nil,
                 appName: String? = nil,
-                alertTitle: NSAttributedString  = Constants.alertTitle,
-                alertMessage: NSAttributedString  = Constants.alertMessage,
-                updateButtonTitle: NSAttributedString  = Constants.updateButtonTitle,
-                nextTimeButtonTitle: NSAttributedString  = Constants.nextTimeButtonTitle,
-                skipButtonTitle: NSAttributedString  = Constants.skipButtonTitle,
-                forceLanguageLocalization: Localization.Language? = nil) {
+                alertTitle: NSAttributedString  = AlertConstants.alertTitle,
+                alertMessage: NSAttributedString  = AlertConstants.alertMessage,
+                updateButtonTitle: NSAttributedString  = AlertConstants.updateButtonTitle,
+                nextTimeButtonTitle: NSAttributedString  = AlertConstants.nextTimeButtonTitle,
+                skipButtonTitle: NSAttributedString  = AlertConstants.skipButtonTitle,
+                forceLanguageLocalization forceLanguage: Localization.Language? = nil) {
         self.tintColor = tintColor
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
         self.nextTimeButtonMessage = nextTimeButtonTitle
         self.updateButtonMessage = updateButtonTitle
         self.skipVersionButtonMessage = skipButtonTitle
-        self.forceLanguageLocalization = forceLanguageLocalization
+        self.localization = Localization(appName: appName, andForceLanguageLocalization: forceLanguage)
 
-        if let appName = appName {
-            self.appName = appName
-        }
     }
 
     /// The default `PresentationManager`
@@ -87,4 +75,81 @@ public struct PresentationManager {
     /// - The name of the app is equal to the name that appears in `Info.plist`.
     /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
     public static let `default` = PresentationManager()
+}
+
+extension PresentationManager {
+
+    mutating func showAlert(withRules rules: Rules,
+                            forCurrentAppStoreVersion currentAppStoreVersion: String,
+                            completion handler: CompletionHandler?) {
+        UserDefaults.alertPresentationDate = Date()
+
+        let alertTitle = localization.alertTitle()
+        let alertMessage = String(format: localization.alertMessage(), currentAppStoreVersion)
+
+        alertController = UIAlertController(title: alertTitle,
+                                            message: alertMessage,
+                                            preferredStyle: .alert)
+
+        if let tintColor = tintColor {
+            alertController?.view.tintColor = tintColor
+        }
+
+        switch rules.alertType {
+        case .force:
+            alertController?.addAction(updateAlertAction(completion: handler))
+        case .option:
+            alertController?.addAction(nextTimeAlertAction(completion: handler))
+            alertController?.addAction(updateAlertAction(completion: handler))
+        case .skip:
+            alertController?.addAction(nextTimeAlertAction(completion: handler))
+            alertController?.addAction(updateAlertAction(completion: handler))
+            alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
+        case .none:
+            handler?(.unknown, nil)
+        }
+
+        if rules.alertType != .none {
+            alertController?.show(window: updaterWindow)
+        }
+    }
+
+    func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
+        let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { _ in
+            self.alertController?.hide(window: self.updaterWindow)
+            Siren.shared.launchAppStore()
+
+            handler?(.appStore, nil)
+            return
+        }
+
+        return action
+    }
+
+    func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
+        let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { _ in
+            self.alertController?.hide(window: self.updaterWindow)
+            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
+
+            handler?(.nextTime, nil)
+            return
+        }
+
+        return action
+    }
+
+    func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
+        let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { _ in
+            UserDefaults.storedSkippedVersion = currentAppStoreVersion
+            UserDefaults.standard.synchronize()
+
+            self.alertController?.hide(window: self.updaterWindow)
+
+            handler?(.skip, nil)
+            return
+        }
+
+        return action
+    }
+
 }

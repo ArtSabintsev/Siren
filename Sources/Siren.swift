@@ -45,19 +45,13 @@ public final class Siren: NSObject {
     internal lazy var currentInstalledVersion: String? = Bundle.version()
 
     /// The current version of your app that is available for download on the App Store
-    internal var currentAppStoreVersion: String?
+    internal var currentAppStoreVersion: String = "0.0.0"
 
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didBecomeActiveNotification` notifications.
     internal var didBecomeActiveObserver: NSObjectProtocol?
 
     /// The completion handler used to return the results or errors returned by Siren.
     private var resultsHandler: ResultsHandler?
-
-    /// The Swift model representation of API results from the iTunes Lookup API.
-    private var lookupModel: LookupModel?
-
-    /// The instance of the `UIAlertController` used to present the update alert.
-    private var alertController: UIAlertController?
 
     /// The last date that an alert was presented to the user.
     private var alertPresentationDate: Date?
@@ -69,19 +63,6 @@ public final class Siren: NSObject {
     ///
     /// Defaults to `unknown` until a version check is successfully performed.
     private lazy var updateType: RulesManager.UpdateType = .unknown
-
-    /// Tracks the current presentation state of the update alert.
-    ///
-    /// `true` if the alert view is currently being presented to the user. Otherwise, `false`.
-    private lazy var alertViewIsVisible: Bool = false
-
-    /// The `UIWindow` instance that presents the `SirenViewController`.
-    private var updaterWindow: UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = SirenViewController()
-        window.windowLevel = UIWindow.Level.alert + 1
-        return window
-    }
 
     /// The initialization method.
     private override init() {
@@ -100,10 +81,10 @@ public extension Siren {
         addObservers()
     }
 
-    /// Launches the AppStore in two situations:
+    /// Launches the AppStore in two situations when the user clicked the `Update` button in the UIAlertController modal.
     ///
-    /// - User clicked the `Update` button in the UIAlertController modal.
-    /// - Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.
+    /// This function is marked `public` as a convenience for those developers who decide to build a custom alert modal
+    /// instead of using Siren's prebuilt update alert.
     func launchAppStore() {
         guard let appID = appID,
             let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
@@ -178,149 +159,89 @@ extension Siren {
             return
         }
 
-        determineIfAlertPresentationRulesAreSatisfied()
+        determineIfAlertPresentationRulesAreSatisfied(forLookupModel: model)
     }
 }
 
 // MARK: - Alert Presentation
 
 private extension Siren {
-    func determineIfAlertPresentationRulesAreSatisfied() {
-        // Determine the set of alert presentation rules based on the type of version update.
-        updateType = VersionParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
-        let rules = rulesManager.loadRulesForUpdateType(updateType)
-
+    func determineIfAlertPresentationRulesAreSatisfied(forLookupModel model: LookupModel) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
         if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
             let currentInstalledVersion = currentInstalledVersion,
-            let currentAppStoreVersion = currentAppStoreVersion,
+            currentAppStoreVersion != "0.0.0",
             currentAppStoreVersion != previouslySkippedVersion {
             resultsHandler?(nil, .skipVersionUpdate(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion))
                 return
         }
 
+        updateType = VersionParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
+        let rules = rulesManager.loadRulesForUpdateType(updateType)
+
         if rules.frequency == .immediately {
-            showAlert(withRules: rules)
+            presentationManager.showAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+                guard let self = self else { return }
+                if let error = error {
+                    self.resultsHandler?(nil, error)
+                } else {
+                    let results = Results(alertAction: alertAction ?? .unknown,
+                                          localization: self.presentationManager.localization,
+                                          lookupModel: model,
+                                          updateType: self.updateType)
+                    self.resultsHandler?(results, nil)
+                }
+            }
         } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
-            showAlert(withRules: rules)
+            presentationManager.showAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+                guard let self = self else { return }
+                if let error = error {
+                    self.resultsHandler?(nil, error)
+                } else {
+                    let results = Results(alertAction: alertAction ?? .unknown,
+                                          localization: self.presentationManager.localization,
+                                          lookupModel: model,
+                                          updateType: self.updateType)
+                    self.resultsHandler?(results, nil)
+                }
+            }
         } else {
             guard let alertPresentationDate = alertPresentationDate else {
-                showAlert(withRules: rules)
+                presentationManager.showAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.resultsHandler?(nil, error)
+                    } else {
+                        let results = Results(alertAction: alertAction ?? .unknown,
+                                              localization: self.presentationManager.localization,
+                                              lookupModel: model,
+                                              updateType: self.updateType)
+                        self.resultsHandler?(results, nil)
+                    }
+                }
                 return
             }
 
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
-                showAlert(withRules: rules)
+                presentationManager.showAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+                    guard let self = self else { return }
+                    if let error = error {
+                        self.resultsHandler?(nil, error)
+                    } else {
+                        let results = Results(alertAction: alertAction ?? .unknown,
+                                              localization: self.presentationManager.localization,
+                                              lookupModel: model,
+                                              updateType: self.updateType)
+                        self.resultsHandler?(results, nil)
+                    }
+                }
             } else {
                 resultsHandler?(nil, .recentlyCheckedVersion)
             }
         }
-    }
-
-    func showAlert(withRules rules: Rules) {
-        UserDefaults.alertPresentationDate = Date()
-
-        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
-        let alertTitle = localization.alertTitle()
-        let alertMessage = localization.alertMessage()
-
-       alertController = UIAlertController(title: alertTitle,
-                                           message: alertMessage,
-                                           preferredStyle: .alert)
-
-        if let alertControllerTintColor = presentationManager.tintColor {
-            alertController?.view.tintColor = alertControllerTintColor
-        }
-
-        switch rules.alertType {
-        case .force:
-            alertController?.addAction(updateAlertAction())
-        case .option:
-            alertController?.addAction(nextTimeAlertAction())
-            alertController?.addAction(updateAlertAction())
-        case .skip:
-            alertController?.addAction(nextTimeAlertAction())
-            alertController?.addAction(updateAlertAction())
-            alertController?.addAction(skipAlertAction())
-        case .none:
-            let results = Results(alertAction: .unknown,
-                                  localization: localization,
-                                  lookupModel: lookupModel,
-                                  updateType: updateType)
-            resultsHandler?(results, nil)
-        }
-
-        if rules.alertType != .none && !alertViewIsVisible {
-            alertController?.show(window: updaterWindow)
-            alertViewIsVisible = true
-        }
-    }
-
-    func updateAlertAction() -> UIAlertAction {
-        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
-        let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { [weak self] _ in
-            guard let self = self else { return }
-
-            self.alertController?.hide(window: self.updaterWindow)
-            self.launchAppStore()
-            self.alertViewIsVisible = false
-
-            let results = Results(alertAction: .appStore,
-                                  localization: localization,
-                                  lookupModel: self.lookupModel,
-                                  updateType: self.updateType)
-            self.resultsHandler?(results, nil)
-            return
-        }
-
-        return action
-    }
-
-    func nextTimeAlertAction() -> UIAlertAction {
-        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
-        let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { [weak self] _  in
-            guard let self = self else { return }
-
-            self.alertController?.hide(window: self.updaterWindow)
-            self.alertViewIsVisible = false
-            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
-
-            let results = Results(alertAction: .nextTime,
-                                  localization: localization,
-                                  lookupModel: self.lookupModel,
-                                  updateType: self.updateType)
-            self.resultsHandler?(results, nil)
-            return
-        }
-
-        return action
-    }
-
-    func skipAlertAction() -> UIAlertAction {
-        let localization = Localization(presentationManager: presentationManager, forCurrentAppStoreVersion: currentAppStoreVersion)
-        let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { [weak self] _ in
-            guard let self = self else { return }
-
-            if let currentAppStoreVersion = self.currentAppStoreVersion {
-                UserDefaults.storedSkippedVersion = currentAppStoreVersion
-                UserDefaults.standard.synchronize()
-            }
-
-            self.alertController?.hide(window: self.updaterWindow)
-            self.alertViewIsVisible = false
-
-            let results = Results(alertAction: .skip,
-                                  localization: localization,
-                                  lookupModel: self.lookupModel,
-                                  updateType: self.updateType)
-            self.resultsHandler?(results, nil)
-            return
-        }
-
-        return action
     }
 }
 

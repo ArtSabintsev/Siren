@@ -95,7 +95,7 @@ public extension Siren {
 }
 
 extension Siren {
-    private func performVersionCheck() {
+    func performVersionCheck() {
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
             guard let self = self else { return }
             guard let lookupModel = lookupModel, error == nil else {
@@ -107,7 +107,7 @@ extension Siren {
         }
     }
 
-    private func analyze(model: LookupModel) {
+    func analyze(model: LookupModel) {
         // Check if the latest version is compatible with current device's version of iOS.
         guard DataParser.isUpdateCompatibleWithDeviceOS(for: model) else {
             resultsHandler?(nil, .appStoreOSVersionUnsupported)
@@ -150,7 +150,7 @@ extension Siren {
         determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andLookupModel: model)
     }
 
-    private func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
+    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
@@ -183,10 +183,10 @@ extension Siren {
         }
     }
 
-    private func presentAlert(withRules rules: Rules,
-                              forCurrentAppStoreVersion currentAppStoreVersion: String,
-                              model: LookupModel,
-                              andUpdateType updateType: RulesManager.UpdateType) {
+    func presentAlert(withRules rules: Rules,
+                      forCurrentAppStoreVersion currentAppStoreVersion: String,
+                      model: LookupModel,
+                      andUpdateType updateType: RulesManager.UpdateType) {
         presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
             guard let self = self else { return }
             if let error = error {
@@ -201,7 +201,7 @@ extension Siren {
         }
     }
 
-    private func addObservers() {
+    func addObservers() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter
             .default

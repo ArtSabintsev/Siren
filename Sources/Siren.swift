@@ -179,6 +179,7 @@ extension Siren {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
                 return
             }
+
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {

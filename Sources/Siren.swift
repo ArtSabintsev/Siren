@@ -95,7 +95,7 @@ public extension Siren {
 }
 
 extension Siren {
-    func performVersionCheck() {
+    private func performVersionCheck() {
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
             guard let self = self else { return }
             guard let lookupModel = lookupModel, error == nil else {

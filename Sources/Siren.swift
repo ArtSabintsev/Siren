@@ -41,9 +41,6 @@ public final class Siren: NSObject {
     /// skipping the update all together until another version is released.
     public lazy var rulesManager: RulesManager = .default
 
-    /// The current version of your app that is available for download on the App Store
-    internal lazy var currentAppStoreVersion: String = ""
-
     /// The current installed version of your app.
     internal lazy var currentInstalledVersion: String? = Bundle.version()
 
@@ -131,7 +128,6 @@ extension Siren {
             resultsHandler?(nil, .appStoreVersionArrayFailure)
             return
         }
-        self.currentAppStoreVersion = currentAppStoreVersion
 
         // Check if the App Store version is newer than the currently installed version.
         guard DataParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion) else {
@@ -153,14 +149,14 @@ extension Siren {
             return
         }
 
-        determineIfAlertPresentationRulesAreSatisfied(forLookupModel: model)
+        determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andLookupModel: model)
     }
 }
 
 // MARK: - Alert Presentation
 
 private extension Siren {
-    func determineIfAlertPresentationRulesAreSatisfied(forLookupModel model: LookupModel) {
+    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
@@ -176,31 +172,38 @@ private extension Siren {
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
         if rules.frequency == .immediately {
-            presentAlert(withRules: rules, model: model, andUpdateType: updateType)
+            presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
         } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
-            presentAlert(withRules: rules, model: model, andUpdateType: updateType)
+            presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
         } else {
             guard let alertPresentationDate = alertPresentationDate else {
-                presentAlert(withRules: rules, model: model, andUpdateType: updateType)
+                presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
                 return
             }
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
-                presentAlert(withRules: rules, model: model, andUpdateType: updateType)
+                presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
                 resultsHandler?(nil, .recentlyCheckedVersion)
             }
         }
     }
 
-    func presentAlert(withRules rules: Rules, model: LookupModel, andUpdateType updateType: RulesManager.UpdateType) {
+    func presentAlert(withRules rules: Rules,
+                      forCurrentAppStoreVersion currentAppStoreVersion: String,
+                      model: LookupModel,
+                      andUpdateType updateType: RulesManager.UpdateType) {
         presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
             guard let self = self else { return }
-            let results = Results(alertAction: alertAction ?? .unknown,
-                                  localization: self.presentationManager.localization,
-                                  lookupModel: model,
-                                  updateType: updateType)
-            self.resultsHandler?(results, error)
+            if let error = error {
+                self.resultsHandler?(nil, error)
+            } else {
+                let results = Results(alertAction: alertAction ?? .unknown,
+                                      localization: self.presentationManager.localization,
+                                      lookupModel: model,
+                                      updateType: updateType)
+                self.resultsHandler?(results, nil)
+            }
         }
     }
 }

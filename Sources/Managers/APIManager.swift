@@ -32,7 +32,7 @@ public struct APIManager {
     ///
     /// [List of country codes](https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/AppStoreTerritories.html)
     ///
-    /// - Parameter countryCode: The country code for the App Store in which the app is availabe.
+    /// - Parameter countryCode: The country code for the App Store in which the app is availabe. Defaults to nil (e.g., the US App Store)
     public init(countryCode: String? = nil) {
         self.countryCode = countryCode
     }
@@ -105,5 +105,4 @@ extension APIManager {
 
         return url
     }
-
 }

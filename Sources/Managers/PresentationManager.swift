@@ -83,7 +83,7 @@ extension PresentationManager {
         UserDefaults.alertPresentationDate = Date()
 
         let alertTitle = localization.alertTitle()
-        let alertMessage = String(format: localization.alertMessage(), currentAppStoreVersion)
+        let alertMessage = localization.alertMessage(forCurrentAppStoreVersion: currentAppStoreVersion)
 
         alertController = UIAlertController(title: alertTitle,
                                             message: alertMessage,

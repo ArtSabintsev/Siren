@@ -74,11 +74,11 @@ public struct Localization {
         self.forceLanguage = forceLanguage
     }
 
-    public func alertMessage() -> String {
+    public func alertMessage(forCurrentAppStoreVersion currentAppStoreVersion: String) -> String {
         let message = Bundle.localizedString(forKey: AlertConstants.alertMessage.string,
                                              andForceLocalization: forceLanguage)
 
-        return String(format: message, appName)
+        return String(format: message, appName, currentAppStoreVersion)
     }
 
     public func alertTitle() -> String {

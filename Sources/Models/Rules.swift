@@ -24,7 +24,7 @@ public struct Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .option)
     }
 
-    /// Performs a version check immediately and forced the user to update the app.
+    /// Performs a version check immediately and forces the user to update the app.
     public static var critical: Rules {
         return Rules(checkFrequency: .immediately, forAlertType: .force)
     }

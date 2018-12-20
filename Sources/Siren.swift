@@ -94,8 +94,6 @@ public extension Siren {
     }
 }
 
-// MARK: - Networking
-
 extension Siren {
     func performVersionCheck() {
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
@@ -151,12 +149,8 @@ extension Siren {
 
         determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andLookupModel: model)
     }
-}
 
-// MARK: - Alert Presentation
-
-private extension Siren {
-    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
+    private func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
@@ -189,10 +183,10 @@ private extension Siren {
         }
     }
 
-    func presentAlert(withRules rules: Rules,
-                      forCurrentAppStoreVersion currentAppStoreVersion: String,
-                      model: LookupModel,
-                      andUpdateType updateType: RulesManager.UpdateType) {
+    private func presentAlert(withRules rules: Rules,
+                              forCurrentAppStoreVersion currentAppStoreVersion: String,
+                              model: LookupModel,
+                              andUpdateType updateType: RulesManager.UpdateType) {
         presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
             guard let self = self else { return }
             if let error = error {
@@ -206,12 +200,8 @@ private extension Siren {
             }
         }
     }
-}
 
-// MARK: - Helpers
-
-private extension Siren {
-    func addObservers() {
+    private func addObservers() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter
             .default

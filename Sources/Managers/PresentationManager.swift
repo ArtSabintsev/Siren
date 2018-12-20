@@ -149,5 +149,4 @@ extension PresentationManager {
 
         return action
     }
-
 }

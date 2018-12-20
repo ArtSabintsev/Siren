@@ -130,7 +130,8 @@ extension Siren {
         }
 
         // Check if the App Store version is newer than the currently installed version.
-        guard DataParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion) else {
+        guard DataParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion,
+                                                appStoreVersion: currentAppStoreVersion) else {
             resultsHandler?(nil, .noUpdateAvailable)
             return
         }
@@ -164,7 +165,8 @@ extension Siren {
                 return
         }
 
-        let updateType = DataParser.parse(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion)
+        let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,
+                                                   andAppStoreVersion: currentAppStoreVersion)
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
         if rules.frequency == .immediately {

@@ -165,7 +165,8 @@ private extension Siren {
     func performVersionCheck() {
         do {
             let url = try iTunesURLFromString()
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 30)
+            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+            URLCache.shared.removeCachedResponse(for: request)
             URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
                 self?.processResults(withData: data, response: response, error: error)
             }).resume()

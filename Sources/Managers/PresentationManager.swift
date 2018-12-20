@@ -19,6 +19,14 @@ public struct PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
     typealias CompletionHandler = (AlertAction?, KnownError?) -> Void
 
+    /// The default `PresentationManager`
+    ///
+    /// By default:
+    /// - There is no tint color.
+    /// - The name of the app is equal to the name that appears in `Info.plist`.
+    /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
+    public static let `default` = PresentationManager()
+
     let localization: Localization
     let tintColor: UIColor?
 
@@ -66,14 +74,6 @@ public struct PresentationManager {
         self.skipVersionButtonMessage = skipButtonTitle
         self.tintColor = tintColor
     }
-
-    /// The default `PresentationManager`
-    ///
-    /// By default:
-    /// - There is no tint color.
-    /// - The name of the app is equal to the name that appears in `Info.plist`.
-    /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
-    public static let `default` = PresentationManager()
 }
 
 extension PresentationManager {

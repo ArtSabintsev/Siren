@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The relevant metadata returned from Siren upon completing a successful (or unsuccessful version check.
+/// The relevant metadata returned from Siren upon completing a successful version check.
 public struct Results {
     /// The `UIAlertAction` the user chose upon being presented with the update alert.
     /// Defaults to `unknown` until an alert is actually presented.

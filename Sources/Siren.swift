@@ -94,6 +94,8 @@ public extension Siren {
     }
 }
 
+// MARK: - Private Functionality
+
 extension Siren {
     func performVersionCheck() {
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in

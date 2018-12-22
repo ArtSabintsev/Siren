@@ -25,4 +25,4 @@ Siren does not and will not support the macOS App Store.
 
 Siren does not support this functionality. There is no publicly accessible TestFlight API akin to that of the public App Store API that Siren can utilize to provide this functionality.
 
-Please delete this text before submitting a new issue.
+# Please delete this text before submitting a new issue.

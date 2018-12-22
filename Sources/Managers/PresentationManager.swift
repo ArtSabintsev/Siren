@@ -13,14 +13,6 @@ public struct PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
     typealias CompletionHandler = (AlertAction) -> Void
 
-    /// The default `PresentationManager`.
-    ///
-    /// By default:
-    /// - There is no tint color (defaults to Apple's system `blue` color.)
-    /// - The name of the app is equal to the name that appears in `Info.plist`.
-    /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
-    public static let `default` = PresentationManager()
-
     /// The localization data structure that will be used to construct localized strings for the update alert.
     let localization: Localization
 
@@ -63,7 +55,7 @@ public struct PresentationManager {
     ///     - nextTimeButtonTitle: The `title` field of the Next Time Button `UIAlertAction`.
     ///     - skipButtonTitle: The `title` field of the Skip Button `UIAlertAction`.
     ///     - updateButtonTitle: The `title` field of the Update Button `UIAlertAction`.
-    ///     - forceLanguage: The language the alert should to which the alert should be set. If `nil`, fallse back to the device's preferred locale.
+    ///     - forceLanguage: The language the alert to which the alert should be set. If `nil`, it falls back to the device's preferred locale.
     public init(alertTintColor tintColor: UIColor? = nil,
                 appName: String? = nil,
                 alertTitle: NSAttributedString  = AlertConstants.alertTitle,
@@ -80,6 +72,14 @@ public struct PresentationManager {
         self.skipVersionButtonMessage = skipButtonTitle
         self.tintColor = tintColor
     }
+
+    /// The default `PresentationManager`.
+    ///
+    /// By default:
+    /// - There is no tint color (defaults to Apple's system `blue` color.)
+    /// - The name of the app is equal to the name that appears in `Info.plist`.
+    /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
+    public static let `default` = PresentationManager()
 }
 
 extension PresentationManager {

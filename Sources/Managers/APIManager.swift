@@ -21,11 +21,6 @@ public struct APIManager {
     ///
     let countryCode: String?
 
-    /// The default `APIManager`.
-    ///
-    /// The version check is performed against the  US App Store.
-    public static let `default` = APIManager()
-
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
     /// If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.
@@ -36,6 +31,11 @@ public struct APIManager {
     public init(countryCode: String? = nil) {
         self.countryCode = countryCode
     }
+
+    /// The default `APIManager`.
+    ///
+    /// The version check is performed against the  US App Store.
+    public static let `default` = APIManager()
 }
 
 extension APIManager {

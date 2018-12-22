@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The default constants used for the alert messaging.
+/// The default constants used for the update alert's messaging.
 public struct AlertConstants {
     /// The text that conveys the message that there is an app update available
     public static let alertMessage = NSAttributedString(string: "A new version of %@ is available. Please update to version %@ now.")

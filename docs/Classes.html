@@ -14,7 +14,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Siren Docs</a> (100% documented)</p>
+        <p><a href="index.html">Siren Docs</a> (66% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -33,13 +33,42 @@
               <li class="nav-group-task">
                 <a href="Classes/Siren.html">Siren</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/SirenViewController.html">SirenViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Protocols.html">Protocols</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/SirenDelegate.html">SirenDelegate</a>
+                <a href="Enums/AlertAction.html">AlertAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/KnownError.html">KnownError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
               </li>
             </ul>
           </li>
@@ -47,28 +76,13 @@
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/AlertMessaging.html">AlertMessaging</a>
+                <a href="Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/AlertMessaging/Constants.html">– Constants</a>
+                <a href="Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/CapturedError.html">CapturedError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CapturedError/Known.html">– Known</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Constants.html">Constants</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Constants/AlertType.html">– AlertType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Constants/UpdateType.html">– UpdateType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Constants/VersionCheckFrequency.html">– VersionCheckFrequency</a>
+                <a href="Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Localization.html">Localization</a>
@@ -80,7 +94,31 @@
                 <a href="Structs/LookupModel.html">LookupModel</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/LookupModel/Results.html">– Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PresentationManager.html">PresentationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Results.html">Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Rules.html">Rules</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Rules/AlertType.html">– AlertType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Rules/UpdatePrompFrequency.html">– UpdatePrompFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RulesManager.html">RulesManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/RulesManager/UpdateType.html">– UpdateType</a>
               </li>
             </ul>
           </li>
@@ -95,13 +133,6 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Siren"></a>
-                <a name="//apple_ref/swift/Section/Siren" class="dashAnchor"></a>
-                <a href="#/Siren">
-                  <h3 class="section-name">Siren</h3>
-                </a>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -116,7 +147,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Siren Class. A singleton that is initialized using the <code>shared</code> constant.</p>
+                        <p>The Siren Class.</p>
 
                         <a href="Classes/Siren.html" class="slightly-smaller">See more</a>
                       </div>
@@ -133,10 +164,42 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Siren@objc(cs)SirenViewController"></a>
+                    <a name="//apple_ref/swift/Class/SirenViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Siren@objc(cs)SirenViewController">SirenViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Classes/SirenViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">SirenViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-11-18)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-21)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

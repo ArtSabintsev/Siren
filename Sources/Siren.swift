@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// The Siren Class. A singleton that is initialized using the `shared` constant.
+/// The Siren Class.
 public final class Siren: NSObject {
     /// Return results or errors obtained from performing a version check with Siren.
     public typealias ResultsHandler = (Results?, KnownError?) -> Void
@@ -97,6 +97,7 @@ public extension Siren {
 // MARK: - Private Functionality
 
 extension Siren {
+    /// Initiates the uni-directional version checking flow.
     func performVersionCheck() {
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
             guard let self = self else { return }
@@ -105,11 +106,16 @@ extension Siren {
                 return
             }
 
-            self.analyze(model: lookupModel)
+            self.validate(model: lookupModel)
         }
     }
 
-    func analyze(model: LookupModel) {
+    /// Validates the parsed and mapped iTunes Lookup Model
+    /// to guarantee all the relevant data was returned before
+    /// attempting to present an alert.
+    ///
+    /// - Parameter model: The iTunes Lookup Model.
+    func validate(model: LookupModel) {
         // Check if the latest version is compatible with current device's version of iOS.
         guard DataParser.isUpdateCompatibleWithDeviceOS(for: model) else {
             resultsHandler?(nil, .appStoreOSVersionUnsupported)
@@ -153,6 +159,12 @@ extension Siren {
         determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andLookupModel: model)
     }
 
+    /// Determines if the update alert can be presented based on the
+    /// rules set in the `RulesManager` and the the skip version settings.
+    ///
+    /// - Parameters:
+    ///   - currentAppStoreVersion: The curren version of the app in the App Store.
+    ///   - model: The iTunes Lookup Model.
     func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
@@ -179,7 +191,6 @@ extension Siren {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
                 return
             }
-
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
@@ -188,21 +199,25 @@ extension Siren {
         }
     }
 
+    /// Presents the update alert to the end user.
+    /// Upon tapping a value on the alert view, a completion handler will return all relevant metadata to the app.
+    ///
+    /// - Parameters:
+    ///   - rules: The rules for how to present the alert.
+    ///   - currentAppStoreVersion: The current version of the app in the App Store.
+    ///   - model: The iTunes Lookup Model.
+    ///   - updateType: The type of update that is available based on the version found in the App Store.
     func presentAlert(withRules rules: Rules,
                       forCurrentAppStoreVersion currentAppStoreVersion: String,
                       model: LookupModel,
                       andUpdateType updateType: RulesManager.UpdateType) {
-        presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] (alertAction, error) in
+        presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] alertAction in
             guard let self = self else { return }
-            if let error = error {
-                self.resultsHandler?(nil, error)
-            } else {
-                let results = Results(alertAction: alertAction ?? .unknown,
-                                      localization: self.presentationManager.localization,
-                                      lookupModel: model,
-                                      updateType: updateType)
-                self.resultsHandler?(results, nil)
-            }
+            let results = Results(alertAction: alertAction,
+                                  localization: self.presentationManager.localization,
+                                  lookupModel: model,
+                                  updateType: updateType)
+            self.resultsHandler?(results, nil)
         }
     }
 

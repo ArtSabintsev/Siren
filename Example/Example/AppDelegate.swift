@@ -24,7 +24,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel ?? "LookupModel was empty.")
+                print("LookupModel ", results.lookupModel)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)

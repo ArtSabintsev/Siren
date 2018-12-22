@@ -17,7 +17,7 @@ import Foundation
 /// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
 public struct PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
-    typealias CompletionHandler = (AlertAction?, KnownError?) -> Void
+    typealias CompletionHandler = (AlertAction) -> Void
 
     /// The default `PresentationManager`
     ///
@@ -104,7 +104,7 @@ extension PresentationManager {
             alertController?.addAction(updateAlertAction(completion: handler))
             alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
         case .none:
-            handler?(.unknown, nil)
+            handler?(.unknown)
         }
 
         if rules.alertType != .none {
@@ -117,7 +117,7 @@ extension PresentationManager {
             self.alertController?.hide(window: self.updaterWindow)
             Siren.shared.launchAppStore()
 
-            handler?(.appStore, nil)
+            handler?(.appStore)
             return
         }
 
@@ -129,7 +129,7 @@ extension PresentationManager {
             self.alertController?.hide(window: self.updaterWindow)
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
 
-            handler?(.nextTime, nil)
+            handler?(.nextTime)
             return
         }
 
@@ -143,7 +143,7 @@ extension PresentationManager {
 
             self.alertController?.hide(window: self.updaterWindow)
 
-            handler?(.skip, nil)
+            handler?(.skip)
             return
         }
 

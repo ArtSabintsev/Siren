@@ -18,7 +18,7 @@ public struct Results {
     public var localization: Localization
 
     /// The Swift-mapped API model, if a successful version check was performed.
-    public var lookupModel: LookupModel?
+    public var lookupModel: LookupModel
 
     /// The type of update that was returned for the API.
     public var updateType: RulesManager.UpdateType = .unknown

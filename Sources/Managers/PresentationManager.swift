@@ -8,18 +8,12 @@
 
 import Foundation
 
-// MARK: - Siren Alert Messaging Customization
-
-/// Allows the overriding of all the `UIAlertController` and `UIActionSheet` Strings to which Siren defaults.
-///
-/// - Warning: Overriding any of these keys will result in the loss of the built-in internationalization that Siren provides.
-///
-/// As `SirenAlertMessaging` is a Struct, one _or_ more keys can be modified. Overriding only one string will result in the other keys retaining their default (and internationalizable) values.
+/// PresentationManager for Siren
 public struct PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
     typealias CompletionHandler = (AlertAction) -> Void
 
-    /// The default `PresentationManager`
+    /// The default `PresentationManager`.
     ///
     /// By default:
     /// - There is no tint color.

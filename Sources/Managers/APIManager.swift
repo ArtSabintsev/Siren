@@ -48,8 +48,8 @@ extension APIManager {
         do {
             let url = try makeITunesURL()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            URLCache.shared.removeCachedResponse(for: request)
             URLSession.shared.dataTask(with: request) { (data, response, error) in
+                URLCache.shared.removeCachedResponse(for: request)
                 self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
             }.resume()
         } catch {

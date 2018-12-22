@@ -12,7 +12,7 @@ import Foundation
 extension Bundle {
     /// Fetches the current verison of the app.
     ///
-    /// - Returns: The current version of the app.
+    /// - Returns: The current installed version of the app.
     final class func version() -> String? {
         return Bundle.main.object(forInfoDictionaryKey: Constants.shortVersionString) as? String
     }

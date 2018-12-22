@@ -16,18 +16,30 @@ public struct PresentationManager {
     /// The default `PresentationManager`.
     ///
     /// By default:
-    /// - There is no tint color.
+    /// - There is no tint color (defaults to Apple's system `blue` color.)
     /// - The name of the app is equal to the name that appears in `Info.plist`.
     /// - The strings are all set to that of the user's device localization (if supported) or it falls back to English.
     public static let `default` = PresentationManager()
 
+    /// The localization data structure that will be used to construct localized strings for the update alert.
     let localization: Localization
+
+    /// The tint color of the `UIAlertController` buttons.
     let tintColor: UIColor?
 
+    /// The descriptive update message of the `UIAlertController`.
     let alertMessage: NSAttributedString
+
+    /// The main message of the `UIAlertController`.
     let alertTitle: NSAttributedString
+
+    /// The "Next time" button text of the `UIAlertController`.
     let nextTimeButtonMessage: NSAttributedString
+
+    /// The "Skip this version" button text of the `UIAlertController`.
     let skipVersionButtonMessage: NSAttributedString
+
+    /// The "Update now" button text of the `UIAlertController`.
     let updateButtonMessage: NSAttributedString
 
     /// The instance of the `UIAlertController` used to present the update alert.
@@ -41,7 +53,7 @@ public struct PresentationManager {
         return window
     }
 
-    /// The public initializer
+    /// `PresentationManager`'s public initializer.
     ///
     /// - Parameters:
     ///     - tintColor: The alert's tintColor. Settings this to `nil` defaults to the system default color.
@@ -71,6 +83,13 @@ public struct PresentationManager {
 }
 
 extension PresentationManager {
+
+    /// Constructs the localized update alert `UIAlertController` object.
+    ///
+    /// - Parameters:
+    ///   - rules: The rules that are used to define the type of alert that should be presented.
+    ///   - currentAppStoreVersion: The current version of the app in the App Store.
+    ///   - handler: The completion handler that returns the an `AlertAction` depending on the type of action the end-user took.
     mutating func presentAlert(withRules rules: Rules,
                                forCurrentAppStoreVersion currentAppStoreVersion: String,
                                completion handler: CompletionHandler?) {
@@ -101,11 +120,19 @@ extension PresentationManager {
             handler?(.unknown)
         }
 
-        if rules.alertType != .none {
+        // If the alertType is .none, an alert will not be presneted.
+        // If the `updaterWindow` is not hidden, than an alert is already presented.
+        // The latter prevents `UIAlertControllers` from appearing on top of each other.
+        if rules.alertType != .none && updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)
         }
     }
 
+    /// The `UIAlertAction` that is executed when the `Update now` option is selected.
+    ///
+    /// - Parameters:
+    ///   - handler: The completion handler that returns the `.update` option.
+    /// - Returns: The `Update now` alert action.
     private func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
@@ -118,6 +145,11 @@ extension PresentationManager {
         return action
     }
 
+    /// The `UIAlertAction` that is executed when the `Next time` option is selected.
+    ///
+    /// - Parameters:
+    ///   - handler: The completion handler that returns the `.nextTime` option.
+    /// - Returns: The `Next time` alert action.
     private func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
@@ -130,6 +162,12 @@ extension PresentationManager {
         return action
     }
 
+    /// The `UIAlertAction` that is executed when the `Skip this version` option is selected.
+    ///
+    /// - Parameters:
+    ///   - currentAppStoreVersion: The current version of the app in the App Store.
+    ///   - handler: The completion handler that returns the `.skip` option.
+    /// - Returns: The `Skip this version` alert action.
     private func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
         let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { _ in
             UserDefaults.storedSkippedVersion = currentAppStoreVersion

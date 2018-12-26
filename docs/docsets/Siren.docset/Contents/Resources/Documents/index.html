@@ -177,7 +177,7 @@
 <ul>
 <li>[x] CocoaPods, Carthage, and Swift Package Manager Support</li>
 <li>[x] Three Types of Alerts (see <a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a>)</li>
-<li>[x] Highly Customizable Presentation Rules</li>
+<li>[x] Highly Customizable Presentation Rules <a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a>)</li>
 <li>[x] Localized for 40+ Languages (see <a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a>)</li>
 <li>[x] Device Compatibility Check (see <a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a>)</li>
 </ul>
@@ -245,41 +245,11 @@
 </code></pre>
 <h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
-<p>Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. Most common examples can be found below.</p>
+<p>Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the <a href="https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift">Example Project&rsquo;s <strong>AppDelegate</strong> file</a>. Uncomment the example you&rsquo;d like to test.</p>
 
 <p><strong>WARNING</strong>: Siren code should ONLY be placed in <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application">UIApplication.didFinishLaunchingWithOptions</a> and only below the <code>window?.makeKeyAndVisible()</code> call. Siren initializes a listener on <a href="https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive">didBecomeActiveNotification</a> to perform version checks.</p>
-<h3 id='default-implementation' class='heading'>Default Implementation</h3>
-<pre class="highlight plaintext"><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
-    window?.makeKeyAndVisible()
 
-    Siren.shared.wail()
-
-    return true
-}
-</code></pre>
-<h3 id='default-implementation-with-completion-handler' class='heading'>Default Implementation with Completion Handler</h3>
-<pre class="highlight plaintext"><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
-    window?.makeKeyAndVisible()
-
-    Siren.shared.wail { (results, error) in
-    if let results = results {
-        print("AlertAction ", results.alertAction)
-        print("Localization ", results.localization)
-        print("LookupModel ", results.lookupModel)
-        print("UpdateType ", results.updateType)
-    } else if let error = error {
-        print(error.localizedDescription)
-    }
-}
-
-    return true
-}
-</code></pre>
-<h3 id='custom-alert-presentation-implementation-with-completion-handler' class='heading'>Custom Alert Presentation Implementation with Completion Handler</h3>
-
-<p>The <code><a href="Structs/PresentationManager.html">PresentationManager</a></code> is used to customize the UI of the <code>UIAlertController</code> used by Siren. It can customize the tint color, app name, language localization, and all the message strings. </p>
-
-<p><strong>WARNING:</strong> Customizing any of the message strings opts the user out of SIren&rsquo;s bundled language translations.</p>
+<p>All examples (with comments) </p>
 <h2 id='localization' class='heading'>Localization</h2>
 
 <p>Siren is localized for</p>

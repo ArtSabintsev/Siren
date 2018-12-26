@@ -20,19 +20,19 @@ public struct PresentationManager {
     let tintColor: UIColor?
 
     /// The descriptive update message of the `UIAlertController`.
-    let alertMessage: NSAttributedString
+    let alertMessage: String
 
     /// The main message of the `UIAlertController`.
-    let alertTitle: NSAttributedString
+    let alertTitle: String
 
     /// The "Next time" button text of the `UIAlertController`.
-    let nextTimeButtonTitle: NSAttributedString
+    let nextTimeButtonTitle: String
 
     /// The "Skip this version" button text of the `UIAlertController`.
-    let skipButtonTitle: NSAttributedString
+    let skipButtonTitle: String
 
-    /// The "Update now" button text of the `UIAlertController`.
-    let updateButtonTitle: NSAttributedString
+    /// The "Update" button text of the `UIAlertController`.
+    let updateButtonTitle: String
 
     /// The instance of the `UIAlertController` used to present the update alert.
     private var alertController: UIAlertController?
@@ -58,11 +58,11 @@ public struct PresentationManager {
     ///     - forceLanguage: The language the alert to which the alert should be set. If `nil`, it falls back to the device's preferred locale.
     public init(alertTintColor tintColor: UIColor? = nil,
                 appName: String? = nil,
-                alertTitle: NSAttributedString  = AlertConstants.alertTitle,
-                alertMessage: NSAttributedString  = AlertConstants.alertMessage,
-                updateButtonTitle: NSAttributedString  = AlertConstants.updateButtonTitle,
-                nextTimeButtonTitle: NSAttributedString  = AlertConstants.nextTimeButtonTitle,
-                skipButtonTitle: NSAttributedString  = AlertConstants.skipButtonTitle,
+                alertTitle: String  = AlertConstants.alertTitle,
+                alertMessage: String  = AlertConstants.alertMessage,
+                updateButtonTitle: String  = AlertConstants.updateButtonTitle,
+                nextTimeButtonTitle: String  = AlertConstants.nextTimeButtonTitle,
+                skipButtonTitle: String  = AlertConstants.skipButtonTitle,
                 forceLanguageLocalization forceLanguage: Localization.Language? = nil) {
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
@@ -97,18 +97,18 @@ extension PresentationManager {
 
         // Alert Title
         let alertTitle: String
-        if self.alertTitle.string == AlertConstants.alertTitle.string {
+        if self.alertTitle == AlertConstants.alertTitle {
             alertTitle = localization.alertTitle()
         } else {
-            alertTitle = self.alertTitle.string
+            alertTitle = self.alertTitle
         }
 
         // Alert Message
         let alertMessage: String
-        if self.alertMessage.string == AlertConstants.alertMessage.string {
+        if self.alertMessage == AlertConstants.alertMessage {
             alertMessage = localization.alertMessage(forCurrentAppStoreVersion: currentAppStoreVersion)
         } else {
-            alertMessage = self.alertMessage.string
+            alertMessage = self.alertMessage
         }
 
         alertController = UIAlertController(title: alertTitle,
@@ -123,11 +123,12 @@ extension PresentationManager {
         case .force:
             alertController?.addAction(updateAlertAction(completion: handler))
         case .option:
-            alertController?.addAction(nextTimeAlertAction(completion: handler))
+
             alertController?.addAction(updateAlertAction(completion: handler))
+            alertController?.addAction(nextTimeAlertAction(completion: handler))
         case .skip:
-            alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(updateAlertAction(completion: handler))
+            alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
         case .none:
             handler?(.unknown)
@@ -141,17 +142,17 @@ extension PresentationManager {
         }
     }
 
-    /// The `UIAlertAction` that is executed when the `Update now` option is selected.
+    /// The `UIAlertAction` that is executed when the `Update` option is selected.
     ///
     /// - Parameters:
     ///   - handler: The completion handler that returns the `.update` option.
-    /// - Returns: The `Update now` alert action.
+    /// - Returns: The `Update` alert action.
     private func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.updateButtonTitle.string == AlertConstants.updateButtonTitle.string {
+        if self.updateButtonTitle == AlertConstants.updateButtonTitle {
             title = localization.updateButtonTitle()
         } else {
-            title = self.updateButtonTitle.string
+            title = self.updateButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
@@ -172,10 +173,10 @@ extension PresentationManager {
     /// - Returns: The `Next time` alert action.
     private func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.nextTimeButtonTitle.string == AlertConstants.nextTimeButtonTitle.string {
+        if self.nextTimeButtonTitle == AlertConstants.nextTimeButtonTitle {
             title = localization.nextTimeButtonTitle()
         } else {
-            title = self.nextTimeButtonTitle.string
+            title = self.nextTimeButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
@@ -197,10 +198,10 @@ extension PresentationManager {
     /// - Returns: The `Skip this version` alert action.
     private func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.skipButtonTitle.string == AlertConstants.skipButtonTitle.string {
+        if self.skipButtonTitle == AlertConstants.skipButtonTitle {
             title = localization.skipButtonTitle()
         } else {
-            title = self.skipButtonTitle.string
+            title = self.skipButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in

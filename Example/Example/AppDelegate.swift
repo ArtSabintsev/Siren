@@ -16,23 +16,80 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
-        Siren.shared.wail()
-
-//        let siren = Siren.shared
-//        siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
-//        siren.rulesManager = RulesManager(globalRules: .annoying)
-//
-//        Siren.shared.wail { (results, error) in
-//            if let results = results {
-//                print("AlertAction ", results.alertAction)
-//                print("Localization ", results.localization)
-//                print("LookupModel ", results.lookupModel)
-//                print("UpdateType ", results.updateType)
-//            } else if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }
-
+//        defaultExample()
+        defaultExampleUsingCompletionHandler()
+//        minimalCustomizationPresentationExample()
+//        forceLocalizationCustomizationPresentationExample()
+//        customMessagingPresentationExample()
         return true
+    }
+}
+
+// Siren Examples
+
+private extension AppDelegate {
+
+    func defaultExample() {
+        Siren.shared.wail()
+    }
+
+    func defaultExampleUsingCompletionHandler() {
+        Siren.shared.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func minimalCustomizationPresentationExample() {
+        let siren = Siren.shared
+        siren.presentationManager = PresentationManager(alertTintColor: .purple,
+                                                        appName: "Siren Example App Override!")
+        siren.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func forceLocalizationCustomizationPresentationExample() {
+        let siren = Siren.shared
+        siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
+        siren.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func customMessagingPresentationExample() {
+        let siren = Siren.shared
+        siren.presentationManager = PresentationManager(alertTitle: "Update Now, OK?",
+                                                        nextTimeButtonTitle: "Next time, please!?")
+        siren.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
 }

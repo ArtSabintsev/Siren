@@ -38,7 +38,7 @@ If a new version is available, an alert can be presented to the user informing t
 ## Features
 - [x] CocoaPods, Carthage, and Swift Package Manager Support
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
-- [x] Highly Customizable Presentation Rules
+- [x] Highly Customizable Presentation Rules [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
 - [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
 
@@ -85,49 +85,12 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ## Implementation Examples
-Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. Most common examples can be found below.
+Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the [Example Project's **AppDelegate** file](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift). Uncomment the example you'd like to test.
+ 
 
 **WARNING**: Siren code should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only below the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
-### Default Implementation
-
-```Swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-	window?.makeKeyAndVisible()
-
-	Siren.shared.wail()
-
-    return true
-}
-```
-
-### Default Implementation with Completion Handler
-
-```Swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-	window?.makeKeyAndVisible()
-
-	Siren.shared.wail { (results, error) in
-	if let results = results {
-		print("AlertAction ", results.alertAction)
-		print("Localization ", results.localization)
-		print("LookupModel ", results.lookupModel)
-		print("UpdateType ", results.updateType)
-	} else if let error = error {
-		print(error.localizedDescription)
-	}
-}
-
-    return true
-}
-```
-
-### Custom Alert Presentation Implementation with Completion Handler
-
-The `PresentationManager` is used to customize the UI of the `UIAlertController` used by Siren. It can customize the tint color, app name, language localization, and all the message strings. 
-
-**WARNING:** Customizing any of the message strings opts the user out of SIren's bundled language translations.
-
+All examples (with comments) 
 ## Localization
 Siren is localized for
 - Arabic

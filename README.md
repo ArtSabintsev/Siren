@@ -119,56 +119,18 @@ Siren also has plenty of customization options. All examples can be found in the
 **WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only after the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
 ## Localization
-Siren is localized for
-- Arabic
-- Armenian
-- Basque
-- Chinese (Simplified and Traditional)
-- Croatian
-- Czech
-- Danish
-- Dutch
-- English
-- Estonian
-- Finnish
-- French
-- German
-- Greek
-- Hebrew
-- Hungarian
-- Indonesian
-- Italian
-- Japanese
-- Korean
-- Latvian
-- Lithuanian
-- Malay
-- Norwegian (Bokmål)
-- Persian (Afghanistan, Iran, Persian)
-- Polish
-- Portuguese (Brazil and Portugal)
-- Russian
-- Serbian (Cyrillic and Latin)
-- Slovenian
-- Spanish
-- Swedish
-- Thai
-- Turkish
-- Ukrainian
-- Urdu
-- Vietnamese
+Siren is localized for the following languages:
 
-You may want the update dialog to *always* appear in a certain language, ignoring iOS's device-specific setting
+Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese
 
-You can enable it like so:
+You may want the update dialog to *always* appear in a certain language, ignoring iOS's device-specific setting. You can enable it like so:
 
 ```swift
-// Assuming you have `let siren = Siren.shared somewhere in your code`
 // In this example, we force the `russian` language.
-siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
+Siren.shared.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
 ```
 ## Device Compatibility
-If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 10 installed on their device, but the app update requires iOS 11, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
+If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 11 installed on their device, but the app update requires iOS 12, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
 
 ## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.

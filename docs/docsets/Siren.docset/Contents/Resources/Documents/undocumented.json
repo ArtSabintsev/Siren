@@ -1,12 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Utilities/KnownError.swift",
-      "line": 74,
-      "symbol": "KnownError.sirenError",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/Arthur/Documents/oss/siren"
 }

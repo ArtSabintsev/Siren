@@ -26,13 +26,13 @@ public struct PresentationManager {
     let alertTitle: NSAttributedString
 
     /// The "Next time" button text of the `UIAlertController`.
-    let nextTimeButtonMessage: NSAttributedString
+    let nextTimeButtonTitle: NSAttributedString
 
     /// The "Skip this version" button text of the `UIAlertController`.
-    let skipVersionButtonMessage: NSAttributedString
+    let skipButtonTitle: NSAttributedString
 
     /// The "Update now" button text of the `UIAlertController`.
-    let updateButtonMessage: NSAttributedString
+    let updateButtonTitle: NSAttributedString
 
     /// The instance of the `UIAlertController` used to present the update alert.
     private var alertController: UIAlertController?
@@ -67,9 +67,9 @@ public struct PresentationManager {
         self.alertTitle = alertTitle
         self.alertMessage = alertMessage
         self.localization = Localization(appName: appName, andForceLanguageLocalization: forceLanguage)
-        self.nextTimeButtonMessage = nextTimeButtonTitle
-        self.updateButtonMessage = updateButtonTitle
-        self.skipVersionButtonMessage = skipButtonTitle
+        self.nextTimeButtonTitle = nextTimeButtonTitle
+        self.updateButtonTitle = updateButtonTitle
+        self.skipButtonTitle = skipButtonTitle
         self.tintColor = tintColor
     }
 
@@ -95,8 +95,21 @@ extension PresentationManager {
                                completion handler: CompletionHandler?) {
         UserDefaults.alertPresentationDate = Date()
 
-        let alertTitle = localization.alertTitle()
-        let alertMessage = localization.alertMessage(forCurrentAppStoreVersion: currentAppStoreVersion)
+        // Alert Title
+        let alertTitle: String
+        if self.alertTitle.string == AlertConstants.alertTitle.string {
+            alertTitle = localization.alertTitle()
+        } else {
+            alertTitle = self.alertTitle.string
+        }
+
+        // Alert Message
+        let alertMessage: String
+        if self.alertMessage.string == AlertConstants.alertMessage.string {
+            alertMessage = localization.alertMessage(forCurrentAppStoreVersion: currentAppStoreVersion)
+        } else {
+            alertMessage = self.alertMessage.string
+        }
 
         alertController = UIAlertController(title: alertTitle,
                                             message: alertMessage,
@@ -134,7 +147,14 @@ extension PresentationManager {
     ///   - handler: The completion handler that returns the `.update` option.
     /// - Returns: The `Update now` alert action.
     private func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
-        let action = UIAlertAction(title: localization.updateButtonTitle(), style: .default) { _ in
+        let title: String
+        if self.updateButtonTitle.string == AlertConstants.updateButtonTitle.string {
+            title = localization.updateButtonTitle()
+        } else {
+            title = self.updateButtonTitle.string
+        }
+
+        let action = UIAlertAction(title: title, style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
             Siren.shared.launchAppStore()
 
@@ -151,7 +171,14 @@ extension PresentationManager {
     ///   - handler: The completion handler that returns the `.nextTime` option.
     /// - Returns: The `Next time` alert action.
     private func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
-        let action = UIAlertAction(title: localization.nextTimeButtonTitle(), style: .default) { _ in
+        let title: String
+        if self.nextTimeButtonTitle.string == AlertConstants.nextTimeButtonTitle.string {
+            title = localization.nextTimeButtonTitle()
+        } else {
+            title = self.nextTimeButtonTitle.string
+        }
+
+        let action = UIAlertAction(title: title, style: .default) { _ in
             self.alertController?.hide(window: self.updaterWindow)
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
 
@@ -169,7 +196,14 @@ extension PresentationManager {
     ///   - handler: The completion handler that returns the `.skip` option.
     /// - Returns: The `Skip this version` alert action.
     private func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
-        let action = UIAlertAction(title: localization.skipButtonTitle(), style: .default) { _ in
+        let title: String
+        if self.skipButtonTitle.string == AlertConstants.skipButtonTitle.string {
+            title = localization.skipButtonTitle()
+        } else {
+            title = self.skipButtonTitle.string
+        }
+
+        let action = UIAlertAction(title: title, style: .default) { _ in
             UserDefaults.storedSkippedVersion = currentAppStoreVersion
             UserDefaults.standard.synchronize()
 

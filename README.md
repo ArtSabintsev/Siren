@@ -85,16 +85,15 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ## Implementation Examples
-Below is some commented sample code. Adapt this to meet your app's needs.
+Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. Most common examples can be found below.
 
+**WARNING**: Siren code should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only below the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
-### Default
+### Default Implementation
 
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 	window?.makeKeyAndVisible()
-
-	/* Siren code should go below window?.makeKeyAndVisible() */
 
 	Siren.shared.wail()
 
@@ -102,40 +101,32 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-And you're all set!
+### Default Implementation with Completion Handler
 
-### Prompting for Updates without Alerts
+```Swift
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+	window?.makeKeyAndVisible()
 
-Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:
-
-```swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	...
-	siren.delegate = self
-	siren.alertType = .none
-	...
-}
-
-extension AppDelegate: SirenDelegate {
-	// Returns a localized message to this delegate method upon performing a successful version check
-	func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
-	    print("\(message)")
+	Siren.shared.wail { (results, error) in
+	if let results = results {
+		print("AlertAction ", results.alertAction)
+		print("Localization ", results.localization)
+		print("LookupModel ", results.lookupModel)
+		print("UpdateType ", results.updateType)
+	} else if let error = error {
+		print(error.localizedDescription)
 	}
 }
+
+    return true
+}
 ```
 
-Siren will call the `sirenDidDetectNewVersionWithoutAlert(message: String)` delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using `message`.
+### Custom Alert Presentation Implementation with Completion Handler
 
-## Granular Version Update Management
-If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling the `checkVersion()` method:
+The `PresentationManager` is used to customize the UI of the `UIAlertController` used by Siren. It can customize the tint color, app name, language localization, and all the message strings. 
 
-```swift
-/* Siren defaults to Siren.AlertType.option for all updates */
-siren.shared.revisionUpdateAlertType = <#Siren.AlertType_Enum_Value#>
-siren.shared.patchUpdateAlertType = <#Siren.AlertType_Enum_Value#>
-siren.shared.minorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
-siren.shared.majorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
-```
+**WARNING:** Customizing any of the message strings opts the user out of SIren's bundled language translations.
 
 ## Localization
 Siren is localized for
@@ -177,12 +168,14 @@ Siren is localized for
 - Urdu
 - Vietnamese
 
-You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
+You may want the update dialog to *always* appear in a certain language, ignoring iOS's device-specific setting
 
 You can enable it like so:
 
 ```swift
-Siren.shared.forceLanguageLocalization = Siren.LanguageType.<#Siren.LanguageType_Enum_Value#>
+// Assuming you have `let siren = Siren.shared somewhere in your code`
+// In this example, we force the `russian` language.
+siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
 ```
 ## Device Compatibility
 If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 10 installed on their device, but the app update requires iOS 11, an alert will not be shown. This takes care of the *false positive* case regarding app updating.

@@ -245,48 +245,41 @@
 </code></pre>
 <h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
-<p>Below is some commented sample code. Adapt this to meet your app&rsquo;s needs.</p>
-<h3 id='default' class='heading'>Default</h3>
+<p>Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. Most common examples can be found below.</p>
+
+<p><strong>WARNING</strong>: Siren code should ONLY be placed in <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application">UIApplication.didFinishLaunchingWithOptions</a> and only below the <code>window?.makeKeyAndVisible()</code> call. Siren initializes a listener on <a href="https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive">didBecomeActiveNotification</a> to perform version checks.</p>
+<h3 id='default-implementation' class='heading'>Default Implementation</h3>
 <pre class="highlight plaintext"><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
     window?.makeKeyAndVisible()
-
-    /* Siren code should go below window?.makeKeyAndVisible() */
 
     Siren.shared.wail()
 
     return true
 }
 </code></pre>
+<h3 id='default-implementation-with-completion-handler' class='heading'>Default Implementation with Completion Handler</h3>
+<pre class="highlight plaintext"><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
+    window?.makeKeyAndVisible()
 
-<p>And you&rsquo;re all set!</p>
-<h3 id='prompting-for-updates-without-alerts' class='heading'>Prompting for Updates without Alerts</h3>
+    Siren.shared.wail { (results, error) in
+    if let results = results {
+        print("AlertAction ", results.alertAction)
+        print("Localization ", results.localization)
+        print("LookupModel ", results.lookupModel)
+        print("UpdateType ", results.updateType)
+    } else if let error = error {
+        print(error.localizedDescription)
+    }
+}
 
-<p>Some developers may want to display a less obtrusive custom interface, like a banner or small icon. To accomplish this, you can disable alert presentation by doing the following:</p>
-<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-    <span class="o">...</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
-    <span class="n">siren</span><span class="o">.</span><span class="n">alertType</span> <span class="o">=</span> <span class="o">.</span><span class="k">none</span>
-    <span class="o">...</span>
-<span class="p">}</span>
-
-<span class="kd">extension</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">SirenDelegate</span> <span class="p">{</span>
-    <span class="c1">// Returns a localized message to this delegate method upon performing a successful version check</span>
-    <span class="kd">func</span> <span class="nf">sirenDidDetectNewVersionWithoutAlert</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">updateType</span><span class="p">:</span> <span class="kt">UpdateType</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">message</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    return true
+}
 </code></pre>
+<h3 id='custom-alert-presentation-implementation-with-completion-handler' class='heading'>Custom Alert Presentation Implementation with Completion Handler</h3>
 
-<p>Siren will call the <code>sirenDidDetectNewVersionWithoutAlert(message: String)</code> delegate method, passing a localized, suggested update string suitable for display. Implement this method to display your own messaging, optionally using <code>message</code>.</p>
-<h2 id='granular-version-update-management' class='heading'>Granular Version Update Management</h2>
+<p>The <code><a href="Structs/PresentationManager.html">PresentationManager</a></code> is used to customize the UI of the <code>UIAlertController</code> used by Siren. It can customize the tint color, app name, language localization, and all the message strings. </p>
 
-<p>If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following <em>optional</em> lines to your setup <em>before</em> calling the <code>checkVersion()</code> method:</p>
-<pre class="highlight swift"><code><span class="cm">/* Siren defaults to Siren.AlertType.option for all updates */</span>
-<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">revisionUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">patchUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">minorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-<span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">majorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-</code></pre>
+<p><strong>WARNING:</strong> Customizing any of the message strings opts the user out of SIren&rsquo;s bundled language translations.</p>
 <h2 id='localization' class='heading'>Localization</h2>
 
 <p>Siren is localized for</p>
@@ -331,10 +324,12 @@
 <li>Vietnamese</li>
 </ul>
 
-<p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring iOS&rsquo;s language setting (e.g. apps released in a specific country).</p>
+<p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring iOS&rsquo;s device-specific setting</p>
 
 <p>You can enable it like so:</p>
-<pre class="highlight swift"><code><span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">forceLanguageLocalization</span> <span class="o">=</span> <span class="kt">Siren</span><span class="o">.</span><span class="kt">LanguageType</span><span class="o">.&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">LanguageType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
+<pre class="highlight swift"><code><span class="c1">// Assuming you have `let siren = Siren.shared somewhere in your code`</span>
+<span class="c1">// In this example, we force the `russian` language.</span>
+<span class="n">siren</span><span class="o">.</span><span class="n">presentationManager</span> <span class="o">=</span> <span class="kt">PresentationManager</span><span class="p">(</span><span class="nv">forceLanguageLocalization</span><span class="p">:</span> <span class="o">.</span><span class="n">russian</span><span class="p">)</span>
 </code></pre>
 <h2 id='device-compatibility' class='heading'>Device Compatibility</h2>
 
@@ -390,7 +385,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-25)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-26)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

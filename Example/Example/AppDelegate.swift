@@ -16,9 +16,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
-        Siren.shared.wail { (results, error) in
-            print(error?.localizedDescription)
-        }
+        Siren.shared.wail()
 
 //        let siren = Siren.shared
 //        siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)

@@ -205,5 +205,5 @@ A massive shout-out goes to @getaaron for his willingness in motivating me and h
 
 
 ## Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](https://twitter.com/getaaron)
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/)
 

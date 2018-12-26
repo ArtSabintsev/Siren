@@ -1,6 +1,334 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Managers/RulesManager.swift",
+      "line": 96,
+      "symbol": "RulesManager.default",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/AlertAction.swift",
+      "line": 18,
+      "symbol": "AlertAction.appStore",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/AlertAction.swift",
+      "line": 19,
+      "symbol": "AlertAction.nextTime",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/AlertAction.swift",
+      "line": 20,
+      "symbol": "AlertAction.skip",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/AlertAction.swift",
+      "line": 21,
+      "symbol": "AlertAction.unknown",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 18,
+      "symbol": "Localization.Language.arabic",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 19,
+      "symbol": "Localization.Language.armenian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 20,
+      "symbol": "Localization.Language.basque",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 21,
+      "symbol": "Localization.Language.chineseSimplified",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 22,
+      "symbol": "Localization.Language.chineseTraditional",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 23,
+      "symbol": "Localization.Language.croatian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 24,
+      "symbol": "Localization.Language.czech",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 25,
+      "symbol": "Localization.Language.danish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 26,
+      "symbol": "Localization.Language.dutch",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 27,
+      "symbol": "Localization.Language.english",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 28,
+      "symbol": "Localization.Language.estonian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 29,
+      "symbol": "Localization.Language.finnish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 30,
+      "symbol": "Localization.Language.french",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 31,
+      "symbol": "Localization.Language.german",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 32,
+      "symbol": "Localization.Language.greek",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 33,
+      "symbol": "Localization.Language.hebrew",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 34,
+      "symbol": "Localization.Language.hungarian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 35,
+      "symbol": "Localization.Language.indonesian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 36,
+      "symbol": "Localization.Language.italian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 37,
+      "symbol": "Localization.Language.japanese",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 38,
+      "symbol": "Localization.Language.korean",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 39,
+      "symbol": "Localization.Language.latvian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 40,
+      "symbol": "Localization.Language.lithuanian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 41,
+      "symbol": "Localization.Language.malay",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 42,
+      "symbol": "Localization.Language.norwegian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 43,
+      "symbol": "Localization.Language.persian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 44,
+      "symbol": "Localization.Language.persianAfghanistan",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 45,
+      "symbol": "Localization.Language.persianIran",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 46,
+      "symbol": "Localization.Language.polish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 47,
+      "symbol": "Localization.Language.portugueseBrazil",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 48,
+      "symbol": "Localization.Language.portuguesePortugal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 49,
+      "symbol": "Localization.Language.russian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 50,
+      "symbol": "Localization.Language.serbianCyrillic",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 51,
+      "symbol": "Localization.Language.serbianLatin",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 52,
+      "symbol": "Localization.Language.slovenian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 53,
+      "symbol": "Localization.Language.spanish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 54,
+      "symbol": "Localization.Language.swedish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 55,
+      "symbol": "Localization.Language.thai",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 56,
+      "symbol": "Localization.Language.turkish",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 57,
+      "symbol": "Localization.Language.urdu",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 58,
+      "symbol": "Localization.Language.ukrainian",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Localization.swift",
+      "line": 59,
+      "symbol": "Localization.Language.vietnamese",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
   ],
-  "source_directory": "/Users/rac197/Documents/OSS/Siren"
+  "source_directory": "/Users/Arthur/Documents/oss/siren"
 }

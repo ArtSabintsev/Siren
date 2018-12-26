@@ -65,21 +65,7 @@
     },
     {
       "file": "/Users/Arthur/Documents/oss/siren/Sources/Managers/RulesManager.swift",
-      "line": null,
-      "symbol": "RulesManager",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Managers/RulesManager.swift",
-      "line": 11,
-      "symbol": "RulesManager",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Managers/RulesManager.swift",
-      "line": 95,
+      "line": 96,
       "symbol": "RulesManager.default",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
@@ -460,27 +446,6 @@
       "line": 27,
       "symbol": "LookupModel.Results.CodingKeys.version",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Rules.swift",
-      "line": null,
-      "symbol": "Rules",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Rules.swift",
-      "line": 11,
-      "symbol": "Rules",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Arthur/Documents/oss/siren/Sources/Siren.swift",
-      "line": 224,
-      "symbol": "Siren.addObservers()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {

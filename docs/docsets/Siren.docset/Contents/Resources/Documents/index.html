@@ -13,7 +13,7 @@
     <a title="Siren  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Siren Docs</a> (66% documented)</p>
+        <p><a href="index.html">Siren Docs</a> (69% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -111,7 +111,7 @@
                 <a href="Structs/Rules/AlertType.html">– AlertType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Rules/UpdatePrompFrequency.html">– UpdatePrompFrequency</a>
+                <a href="Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/RulesManager.html">RulesManager</a>
@@ -164,28 +164,19 @@
 <li>Siren is built to work with the <a href="https://semver.org/"><strong>Semantic Versioning</strong></a> system.
 
 <ul>
-<li>Semantic Versioning is a three number versioning system (e.g., 1.0.0)</li>
+<li>Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)</li>
 <li>Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)</li>
 </ul></li>
 <li>Siren is actively maintained by <a href="https://github.com/ArtSabintsev"><strong>Arthur Sabintsev</strong></a> and <a href="https://twitter.com/getaaron"><strong>Aaron Brager</strong></a></li>
 </ul>
-<h3 id='readme-translations' class='heading'>README Translations</h3>
-
-<ul>
-<li><a href="README.zh_CN.md"><strong>简体中文</strong></a> (by <a href="https://www.jianshu.com/u/d8bbc4831623"><strong>Daniel Hu</strong></a>)</li>
-</ul>
 <h2 id='features' class='heading'>Features</h2>
 
 <ul>
-<li>[x] CocoaPods Support</li>
-<li>[x] Carthage Support</li>
-<li>[x] Swift Package Manager Support</li>
-<li>[x] Localized for 30+ languages (see <a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a>)</li>
-<li>[x] Pre-Update Device Compatibility Check (see <a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a>)</li>
-<li>[x] Three types of alerts (see <a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a>)</li>
-<li>[x] Optional delegate methods (see <a href="https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods">Delegates (Optional)</a>)</li>
-<li>[x] Unit Tests</li>
-<li>[x] Documentation can be found at <a href="http://sabintsev.com/Siren">http://sabintsev.com/Siren</a>.</li>
+<li>[x] CocoaPods, Carthage, and Swift Package Manager Support</li>
+<li>[x] Three Types of Alerts (see <a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a>)</li>
+<li>[x] Highly Customizable Presentation Rules</li>
+<li>[x] Localized for 40+ Languages (see <a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a>)</li>
+<li>[x] Device Compatibility Check (see <a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a>)</li>
 </ul>
 <h2 id='screenshots' class='heading'>Screenshots</h2>
 
@@ -249,59 +240,18 @@
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 <pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre>
-<h2 id='example-code' class='heading'>Example Code</h2>
+<h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
 <p>Below is some commented sample code. Adapt this to meet your app&rsquo;s needs.</p>
+<h3 id='default' class='heading'>Default</h3>
+<pre class="highlight plaintext"><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
+    window?.makeKeyAndVisible()
 
-<p>For a full list of optional settings/preferences, please refer to <a href="https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift">https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift</a> in the Sample Project.</p>
-<pre class="highlight plaintext"><code>func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
     /* Siren code should go below window?.makeKeyAndVisible() */
 
-    // Siren is a singleton
-    let siren = Siren.shared
-
-    // Optional: Defaults to .option
-    siren.alertType = &lt;#Siren.AlertType_Enum_Value#&gt;
-
-    // Optional: Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
-    siren.alertMessaging = SirenAlertMessaging(updateTitle: NSAttributedString(string: "New Fancy Title"),
-                                                updateMessage: NSAttributedString(string: "New message goes here!"),
-                                                updateButtonMessage: NSAttributedString(string: "Update Now, Plz!?"),
-                                                nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
-                                                skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
-
-
-    // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
-    // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
-    // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
-    siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
-
-    // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
-    // DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
-    siren.checkVersion(checkType: .immediately)
+    Siren.shared.wail()
 
     return true
-}
-
-func applicationDidBecomeActive(application: UIApplication) {
-    /*
-        Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
-        Useful if user returns to your app from the background after extended period of time.
-            Place in applicationDidBecomeActive(_:).
-     */
-
-    Siren.shared.checkVersion(checkType: .daily)
-}
-
-func applicationWillEnterForeground(application: UIApplication) {
-   /*
-      Useful if user returns to your app from the background after being sent to the
-      App Store, but doesn't update their app before coming back to your app.
-
-      ONLY USE WITH Siren.AlertType.immediately
-   */
-
-    Siren.shared.checkVersion(checkType: .immediately)
 }
 </code></pre>
 
@@ -333,44 +283,6 @@ func applicationWillEnterForeground(application: UIApplication) {
 <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">patchUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
 <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">minorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
 <span class="n">siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">majorUpdateAlertType</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType_Enum_Value</span><span class="err">#</span><span class="o">&gt;</span>
-</code></pre>
-<h2 id='optional-delegate-and-delegate-methods' class='heading'>Optional Delegate and Delegate Methods</h2>
-
-<p>Six delegate methods allow you to handle or track the user&rsquo;s behavior. Each method has a default, empty implementation, effectively making each of these methods optional.</p>
-<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SirenDelegate</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span> <span class="p">{</span>
-    <span class="c1">/// Siren performed version check and did not display alert.</span>
-    <span class="kd">func</span> <span class="nf">sirenDidDetectNewVersionWithoutAlert</span><span class="p">(</span><span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">updateType</span><span class="p">:</span> <span class="kt">UpdateType</span><span class="p">)</span>
-
-    <span class="c1">/// Siren failed to perform version check.</span>
-    <span class="c1">///</span>
-    <span class="c1">/// - Note:</span>
-    <span class="c1">///     Depending on the reason for failure,</span>
-    <span class="c1">///     a system-level error may be returned.</span>
-    <span class="kd">func</span> <span class="nf">sirenDidFailVersionCheck</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span>
-
-    <span class="c1">/// User presented with update dialog.</span>
-    <span class="kd">func</span> <span class="nf">sirenDidShowUpdateDialog</span><span class="p">(</span><span class="nv">alertType</span><span class="p">:</span> <span class="kt">Siren</span><span class="o">.</span><span class="kt">AlertType</span><span class="p">)</span>
-
-    <span class="c1">/// Siren performed a version check and latest version is installed.</span>
-    <span class="kd">func</span> <span class="nf">sirenLatestVersionInstalled</span><span class="p">()</span>
-
-    <span class="c1">/// Provides the decoded JSON information from a successful version check call.</span>
-    <span class="c1">///</span>
-    <span class="c1">/// - SeeAlso:</span>
-    <span class="c1">///     SirenLookupModel.swift</span>
-    <span class="c1">///</span>
-    <span class="c1">/// - Parameter lookupModel: The `Decodable` model representing the JSON results from the iTunes Lookup API.</span>
-    <span class="kd">func</span> <span class="nf">sirenNetworkCallDidReturnWithNewVersionInformation</span><span class="p">(</span><span class="nv">lookupModel</span><span class="p">:</span> <span class="kt">SirenLookupModel</span><span class="p">)</span>
-
-    <span class="c1">/// User did click on button that cancels update dialog.</span>
-    <span class="kd">func</span> <span class="nf">sirenUserDidCancel</span><span class="p">()</span>
-
-    <span class="c1">/// User did click on button that launched "App Store.app".</span>
-    <span class="kd">func</span> <span class="nf">sirenUserDidLaunchAppStore</span><span class="p">()</span>
-
-    <span class="c1">/// User did click on button that skips version update.</span>
-    <span class="kd">func</span> <span class="nf">sirenUserDidSkipVersion</span><span class="p">()</span>
-<span class="p">}</span>
 </code></pre>
 <h2 id='localization' class='heading'>Localization</h2>
 
@@ -475,7 +387,7 @@ func applicationWillEnterForeground(application: UIApplication) {
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-21)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

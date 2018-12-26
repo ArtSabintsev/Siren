@@ -30,8 +30,8 @@ public enum KnownError: LocalizedError {
     case missingBundleID
     /// No new update available.
     case noUpdateAvailable
-    /// Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `RulesManager.`
-    case recentlyCheckedVersion
+    /// Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting  the `UpdatePromptFrequency.immediately` rule in `RulesManager`
+    case recentlyPrompted
     /// The app has been released for X days, but Siren cannot prompt the user until Y (where Y > X) days have passed.
     case releasedTooSoon(daysSinceRelease: Int, releasedForDays: Int)
     /// The user has opted to skip updating their current version of the app to the current App Store version.
@@ -62,8 +62,8 @@ public enum KnownError: LocalizedError {
             return "\(KnownError.sirenError) Please make sure that you have set a `Bundle Identifier` in your project."
         case .noUpdateAvailable:
             return "\(KnownError.sirenError) No new update available."
-        case .recentlyCheckedVersion:
-            return "\(KnownError.sirenError) Siren will not perform a version check as it performed one too recently. If you would like to perform a version check every time Siren is called, please consider using the `VersionCheckFrequency.immediately` within the `\(RulesManager.self)`"
+        case .recentlyPrompted:
+            return "\(KnownError.sirenError) Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting  the `\(Rules.UpdatePromptFrequency.self).immediately` rule in `\(RulesManager.self)`"
         case .releasedTooSoon(let daysSinceRelease, let releasedForDays):
             return "\(KnownError.sirenError) The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
         case .skipVersionUpdate(let installedVersion, let appStoreVersion):

@@ -15,14 +15,14 @@ public struct Rules {
 
     /// The frequency in which a the user is prompted to update the app
     /// once a new version is available in the App Store and if they have not updated yet.
-    let frequency: UpdatePrompFrequency
+    let frequency: UpdatePromptFrequency
 
     /// Initializes the alert presentation rules.
     ///
     /// - Parameters:
     ///   - frequency: How often a user should be prompted to update the app once a new version is available in the App Store.
     ///   - alertType: The type of alert that should be presented.
-    public init(promptFrequency frequency: UpdatePrompFrequency,
+    public init(promptFrequency frequency: UpdatePromptFrequency,
                 forAlertType alertType: AlertType) {
         self.frequency = frequency
         self.alertType = alertType
@@ -75,7 +75,7 @@ public extension Rules {
 
     /// Determines the frequency in which the user is prompted to update the app
     /// once a new version is available in the App Store and if they have not updated yet.
-    public enum UpdatePrompFrequency: UInt {
+    public enum UpdatePromptFrequency: UInt {
         /// Version check performed every time the app is launched.
         case immediately = 0
         /// Version check performed once a day.

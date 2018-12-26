@@ -68,7 +68,7 @@ public extension Siren {
     ///
     ///
     /// - Parameter handler:
-    func wail(completion handler: ResultsHandler?) {
+    func wail(completion handler: ResultsHandler? = nil) {
         resultsHandler = handler
         addObservers()
     }
@@ -99,6 +99,7 @@ public extension Siren {
 extension Siren {
     /// Initiates the uni-directional version checking flow.
     func performVersionCheck() {
+        alertPresentationDate = UserDefaults.alertPresentationDate
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
             guard let self = self else { return }
             guard let lookupModel = lookupModel, error == nil else {
@@ -194,7 +195,7 @@ extension Siren {
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
-                resultsHandler?(nil, .recentlyCheckedVersion)
+                resultsHandler?(nil, .recentlyPrompted)
             }
         }
     }

@@ -31,23 +31,16 @@
 If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
 
 - Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
-	- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
+	- Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)
 	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
 - Siren is actively maintained by [**Arthur Sabintsev**](https://github.com/ArtSabintsev) and [**Aaron Brager**](https://twitter.com/getaaron)
 
-### README Translations
-- [**简体中文**](README.zh_CN.md) (by [**Daniel Hu**](https://www.jianshu.com/u/d8bbc4831623))
-
 ## Features
-- [x] CocoaPods Support
-- [x] Carthage Support
-- [x] Swift Package Manager Support
-- [x] Localized for 30+ languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
-- [x] Pre-Update Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
-- [x] Three types of alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
-- [x] Optional delegate methods (see [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods))
-- [x] Unit Tests
-- [x] Documentation can be found at http://sabintsev.com/Siren.
+- [x] CocoaPods, Carthage, and Swift Package Manager Support
+- [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
+- [x] Highly Customizable Presentation Rules
+- [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
+- [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
 
 ## Screenshots
 - The **left picture** forces the user to update the app.
@@ -91,61 +84,21 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 3)
 ```
 
-## Example Code
-
+## Implementation Examples
 Below is some commented sample code. Adapt this to meet your app's needs.
 
-For a full list of optional settings/preferences, please refer to https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift in the Sample Project.
+
+### Default
 
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+	window?.makeKeyAndVisible()
+
 	/* Siren code should go below window?.makeKeyAndVisible() */
 
-	// Siren is a singleton
-	let siren = Siren.shared
-
-	// Optional: Defaults to .option
-	siren.alertType = <#Siren.AlertType_Enum_Value#>
-
-	// Optional: Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
-	siren.alertMessaging = SirenAlertMessaging(updateTitle: NSAttributedString(string: "New Fancy Title"),
-												updateMessage: NSAttributedString(string: "New message goes here!"),
-												updateButtonMessage: NSAttributedString(string: "Update Now, Plz!?"),
-												nextTimeButtonMessage: NSAttributedString(string: "OK, next time it is!"),
-												skipVersionButtonMessage: NSAttributedString(string: "Please don't push skip, please don't!"))
-
-
-	// Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
-	// This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
-	// To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
-	siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
-
-	// Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
-	// DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
-	siren.checkVersion(checkType: .immediately)
+	Siren.shared.wail()
 
     return true
-}
-
-func applicationDidBecomeActive(application: UIApplication) {
-	/*
-	    Perform daily (.daily) or weekly (.weekly) checks for new version of your app.
-	    Useful if user returns to your app from the background after extended period of time.
-    	    Place in applicationDidBecomeActive(_:).
-	 */
-
-    Siren.shared.checkVersion(checkType: .daily)
-}
-
-func applicationWillEnterForeground(application: UIApplication) {
-   /*
-      Useful if user returns to your app from the background after being sent to the
-      App Store, but doesn't update their app before coming back to your app.
-
-      ONLY USE WITH Siren.AlertType.immediately
-   */
-
-    Siren.shared.checkVersion(checkType: .immediately)
 }
 ```
 
@@ -182,46 +135,6 @@ siren.shared.revisionUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 siren.shared.patchUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 siren.shared.minorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
 siren.shared.majorUpdateAlertType = <#Siren.AlertType_Enum_Value#>
-```
-
-## Optional Delegate and Delegate Methods
-Six delegate methods allow you to handle or track the user's behavior. Each method has a default, empty implementation, effectively making each of these methods optional.
-
-```	swift
-public protocol SirenDelegate: NSObjectProtocol {
-	/// Siren performed version check and did not display alert.
-	func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
-
-	/// Siren failed to perform version check.
-	///
-	/// - Note:
-	///     Depending on the reason for failure,
-	///     a system-level error may be returned.
-	func sirenDidFailVersionCheck(error: Error)
-
-	/// User presented with update dialog.
-	func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
-
-	/// Siren performed a version check and latest version is installed.
-	func sirenLatestVersionInstalled()
-
-	/// Provides the decoded JSON information from a successful version check call.
-	///
-	/// - SeeAlso:
-	///     SirenLookupModel.swift
-	///
-	/// - Parameter lookupModel: The `Decodable` model representing the JSON results from the iTunes Lookup API.
-	func sirenNetworkCallDidReturnWithNewVersionInformation(lookupModel: SirenLookupModel)
-
-	/// User did click on button that cancels update dialog.
-	func sirenUserDidCancel()
-
-	/// User did click on button that launched "App Store.app".
-	func sirenUserDidLaunchAppStore()
-
-	/// User did click on button that skips version update.
-	func sirenUserDidSkipVersion()
-}
 ```
 
 ## Localization

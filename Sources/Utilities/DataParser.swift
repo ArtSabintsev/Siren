@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Version parsing functions for Siren
+/// Version parsing functions for Siren.
 struct DataParser {
     /// Checks to see if the App Store version of the app is newer than the installed version.
     ///

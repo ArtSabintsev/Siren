@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Alert Presentation Rules for Siren.
 public struct Rules {
     /// The type of alert that should be presented.
     let alertType: AlertType

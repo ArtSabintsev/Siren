@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// RulesManager for Siren
 public struct RulesManager {
     /// The alert will only show up if the current version has already been released for X days.
     ///

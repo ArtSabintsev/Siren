@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// `UIAlertController` Extension for Siren
+// `UIAlertController` Extension for Siren.
 extension UIAlertController {
     /// Presents Siren's `UIAlertController` in a new `UIWindow`.
     ///

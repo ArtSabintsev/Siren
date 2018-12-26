@@ -221,6 +221,8 @@ extension Siren {
         }
     }
 
+    /// Add an observer that listens for app launching/relaunching
+    /// (e.g., calls to `UIApplication`'s `didBecomeActive` function).
     func addObservers() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter

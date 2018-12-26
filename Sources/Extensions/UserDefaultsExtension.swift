@@ -8,7 +8,7 @@
 
 import Foundation
 
-// `UserDefaults` Extension for Siren
+// `UserDefaults` Extension for Siren.
 extension UserDefaults {
     /// Siren-specific `UserDefaults` Keys
     private enum SirenKeys: String {

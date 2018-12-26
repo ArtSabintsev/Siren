@@ -118,7 +118,6 @@ Siren also has plenty of customization options. All examples can be found in the
 
 **WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only after the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
-All examples (with comments) 
 ## Localization
 Siren is localized for
 - Arabic

@@ -11,9 +11,7 @@
 - [Features](https://github.com/ArtSabintsev/Siren#features)
 - [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
 - [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
-- [Example Code](https://github.com/ArtSabintsev/Siren#example-code)
-- [Granular/Differentiated Version Management](https://github.com/ArtSabintsev/Siren#granular-version-update-management)
-- [Delegates (Optional)](https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods)
+- [Implementation Examples](https://github.com/ArtSabintsev/Siren#example-code)
 - [Localization](https://github.com/ArtSabintsev/Siren#localization)
 - [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
 - [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
@@ -36,11 +34,20 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is actively maintained by [**Arthur Sabintsev**](https://github.com/ArtSabintsev) and [**Aaron Brager**](https://twitter.com/getaaron)
 
 ## Features
+
+### Current Features
 - [x] CocoaPods, Carthage, and Swift Package Manager Support
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
 - [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
+- [x] 100% Documentation Coverage 
+
+### Future Features
+- [ ] Present prompt only on WiFi if app is over the OTA limit.
+- [ ] Support for Third-/Homegrown Update Servers (not including TestFlight).
+- [ ] More unit tests around managers.
+
 
 ## Screenshots
 - The **left picture** forces the user to update the app.
@@ -81,14 +88,35 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 3)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 4)
 ```
 
 ## Implementation Examples
-Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the Example Project's [**AppDelegate**](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift) file. Uncomment the example you'd like to test.
+Implementing Siren is as easy as adding twos line of code to your app. 
+
+```swift
+import Siren // Line 1
+import UIKit
+
+@UIApplicationMain
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        window?.makeKeyAndVisible()
+
+		Siren.shared.wail() // Line 2
+
+        return true
+    }
+}
+```
+
+Siren also has plenty of customization options. All examples can be found in the Example Project's [**AppDelegate**](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift) file. Uncomment the example you'd like to test.
  
 
-**WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only below the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
+**WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only after the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
 All examples (with comments) 
 ## Localization
@@ -174,5 +202,10 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
    - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
    - The Siren Swift library inspired the React Native library.
 
+## Shout-Out and Gratitude
+A massive shout-out goes to @getaaron for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. A second shoutout goes to all of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) and [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) to making Siren as powerful and bugfree as it currently is today.
+
+
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) & [Aaron Brager](https://twitter.com/getaaron)
+

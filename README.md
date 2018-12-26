@@ -19,6 +19,7 @@
 - [Phased Releases](https://github.com/ArtSabintsev/Siren#phased-releases)
 - [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
 - [Ports](https://github.com/ArtSabintsev/Siren#ports)
+- [Shout-Out and Gratitude](https://github.com/ArtSabintsev/Siren#shout-out-and-gratitude)
 - [Attribution](https://github.com/ArtSabintsev/Siren#created-and-maintained-by)
 
 ---
@@ -31,7 +32,6 @@ If a new version is available, an alert can be presented to the user informing t
 - Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
 	- Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)
 	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
-- Siren is actively maintained by [**Arthur Sabintsev**](https://github.com/ArtSabintsev) and [**Aaron Brager**](https://twitter.com/getaaron)
 
 ## Features
 
@@ -46,7 +46,7 @@ If a new version is available, an alert can be presented to the user informing t
 ### Future Features
 - [ ] Present prompt only on WiFi if app is over the OTA limit.
 - [ ] Support for Third-/Homegrown Update Servers (not including TestFlight).
-- [ ] More unit tests around managers.
+- [ ] Increase code coverage with more unit tests and UI tests.
 
 
 ## Screenshots
@@ -162,7 +162,11 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
    - The Siren Swift library inspired the React Native library.
 
 ## Shout-Out and Gratitude
-A massive shout-out goes to @getaaron for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. A second shoutout goes to all of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) and [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) to making Siren as powerful and bugfree as it currently is today.
+A massive shout-out goes to the following folks: 
+
+- @getaaron for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. 
+- All of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) for helping build the initial feature set for Siren
+- All of [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) for helping make Siren as powerful and bugfree as it currently is today.
 
 
 ## Created and maintained by

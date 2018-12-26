@@ -15,47 +15,89 @@ public struct Localization {
     /// By default, the operating system's default lanuage setting is used. However, you can force a specific language
     /// by setting the forceLanguageLocalization property before calling checkVersion()
     public enum Language: String {
+        /// Arabic Language Localization
         case arabic = "ar"
+        /// Armenian Language Localization
         case armenian = "hy"
+        /// Basque Language Localization
         case basque = "eu"
+        /// Simplified Chinese Language Localization
         case chineseSimplified = "zh-Hans"
+        /// Traditional Chinese Localization Localization
         case chineseTraditional = "zh-Hant"
+        /// Croatian Language Localization
         case croatian = "hr"
+        /// Czech Language Localization
         case czech = "cs"
+        /// Danish Language Localization
         case danish = "da"
+        /// Dutch Language Localization
         case dutch = "nl"
+        /// English Language Localization
         case english = "en"
+        /// Estonian Language Localization
         case estonian = "et"
+        /// Finnish Language Localization
         case finnish = "fi"
+        /// French Language Localization
         case french = "fr"
+        /// German Language Localization
         case german = "de"
+        /// Greek Language Localization
         case greek = "el"
+        /// Hebrew Language Localization
         case hebrew = "he"
+        /// Hungarian Language Localization
         case hungarian = "hu"
+        /// Indonesian Language Localization
         case indonesian = "id"
+        /// Italian Language Localization
         case italian = "it"
+        /// Japanese Language Localization
         case japanese = "ja"
+        /// Korean Language Localization
         case korean = "ko"
+        /// Latvian Language Localization
         case latvian = "lv"
+        /// Lithuanian Language Localization
         case lithuanian = "lt"
+        /// Malay Language Localization
         case malay = "ms"
+        /// Norwegian Language Localization
         case norwegian = "nb-NO"
+        /// Persian Language Localization
         case persian = "fa"
+        /// Persian (Afghanistan) Language Localization
         case persianAfghanistan = "fa-AF"
+        /// Persian (Iran) Language Localization
         case persianIran = "fa-IR"
+        /// Polish Language Localization
         case polish = "pl"
+        /// Brazilian Portuguese Language Localization
         case portugueseBrazil = "pt"
+        /// Portugal's Portuguese Language Localization
         case portuguesePortugal = "pt-PT"
+        /// Russian Language Localization
         case russian = "ru"
+        /// Serbian (Cyrillic) Language Localization
         case serbianCyrillic = "sr-Cyrl"
+        /// Serbian (Latin) Language Localization
         case serbianLatin = "sr-Latn"
+        /// Slovenian Language Localization
         case slovenian = "sl"
+        /// Spanish Language Localization
         case spanish = "es"
+        /// Swedish Language Localization
         case swedish = "sv"
+        /// Thai Language Localization
         case thai = "th"
+        /// Turkish Language Localization
         case turkish = "tr"
+        /// Urdu Language Localization
         case urdu = "ur"
+        /// Ukranian Language Localization
         case ukrainian = "uk"
+        /// Vietnamese Language Localization
         case vietnamese = "vi"
     }
 

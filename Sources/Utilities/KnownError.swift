@@ -71,6 +71,7 @@ public enum KnownError: LocalizedError {
         }
     }
 
+    /// An easily identifiable prefix for all errors thrown by Siren.
     private static var sirenError: String {
         return "[Siren Error]"
     }

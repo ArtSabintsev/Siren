@@ -14,7 +14,7 @@
     <a title="APIManager Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Siren Docs</a> (69% documented)</p>
+        <p><a href="../index.html">Siren Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -79,6 +79,9 @@
                 <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
@@ -140,6 +143,34 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV9Constants33_8071139324B24E2065F4037045A8D960LLV"></a>
+                    <a name="//apple_ref/swift/Struct/Constants" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV9Constants33_8071139324B24E2065F4037045A8D960LLV">Constants</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constants used in the <code><a href="../Structs/APIManager.html">APIManager</a></code>.</p>
+
+                        <a href="../Structs/APIManager/Constants.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">struct</span> <span class="kt">Constants</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -294,7 +325,7 @@ If the app is not available in the US App Store, set it to the identifier of at 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates and performs a URLRequest against the iTunes Lookup API.</p>
 
                       </div>
                       <div class="declaration">
@@ -304,6 +335,25 @@ If the app is not available in the US App Store, set it to the identifier of at 
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">performVersionCheckRequest</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/APIManager.html#/s:5Siren10APIManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler for the iTunes Lookup API request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -321,7 +371,7 @@ If the app is not available in the US App Store, set it to the identifier of at 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parses and maps the the results from the iTunes Lookup API request.</p>
 
                       </div>
                       <div class="declaration">
@@ -334,6 +384,61 @@ If the app is not available in the US App Store, set it to the identifier of at 
                                         <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/APIManager.html#/s:5Siren10APIManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON data returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>response</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The response metadata returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler to call once the results of the request has been processed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -351,7 +456,12 @@ If the app is not available in the US App Store, set it to the identifier of at 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates the URL that points to the iTunes Lookup API.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    An error if the URL cannot be created.
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -361,6 +471,10 @@ If the app is not available in the US App Store, set it to the identifier of at 
                           <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">makeITunesURL</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The iTunes Lookup API URL.</p>
                       </div>
                     </section>
                   </div>

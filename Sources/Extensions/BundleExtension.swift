@@ -10,6 +10,22 @@ import Foundation
 
 // `Bundle` Extension for Siren.
 extension Bundle {
+    /// Constants used in the `Bundle` extension.
+    struct Constants {
+        /// Constant for the `.bundle` file extension.
+        static let bundleExtension = "bundle"
+        /// Constant for `CFBundleDisplayName`.
+        static let displayName = "CFBundleDisplayName"
+        /// Constant for the default US English localization.
+        static let englishLocalization = "en"
+        /// Constant for the project file extension.
+        static let projectExtension = "lproj"
+        /// Constant for `CFBundleShortVersionString`.
+        static let shortVersionString = "CFBundleShortVersionString"
+        /// Constant for the localization table.
+        static let table = "SirenLocalizable"
+    }
+
     /// Fetches the current verison of the app.
     ///
     /// - Returns: The current installed version of the app.
@@ -62,16 +78,6 @@ extension Bundle {
 }
 
 private extension Bundle {
-    /// Constants used in the `Bundle` extension.
-    struct Constants {
-        static let bundleExtension = "bundle"
-        static let displayName = "CFBundleDisplayName"
-        static let englishLocalization = "en"
-        static let projectExtension = "lproj"
-        static let shortVersionString = "CFBundleShortVersionString"
-        static let table = "SirenLocalizable"
-    }
-
     /// The path to Siren's localization `Bundle`.
     ///
     /// - Returns: The bundle's path or `nil`.

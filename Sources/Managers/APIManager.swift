@@ -10,6 +10,14 @@ import Foundation
 
 /// APIManager for Siren
 public struct APIManager {
+    /// Constants used in the `APIManager`.
+    private struct Constants {
+        /// Constant for the `bundleId` parameter in the iTunes Lookup API request.
+        static let bundleID = "bundleId"
+        /// Constant for the `country` parameter in the iTunes Lookup API request.
+        static let country = "country"
+    }
+
     /// Return results or errors obtained from performing a version check with Siren.
     typealias CompletionHandler = (LookupModel?, KnownError?) -> Void
 
@@ -39,6 +47,9 @@ public struct APIManager {
 }
 
 extension APIManager {
+    /// Creates and performs a URLRequest against the iTunes Lookup API.
+    ///
+    /// - Parameter handler: The completion handler for the iTunes Lookup API request.
     func performVersionCheckRequest(completion handler: CompletionHandler?) {
         guard Bundle.main.bundleIdentifier != nil else {
             handler?(nil, .missingBundleID)
@@ -57,6 +68,13 @@ extension APIManager {
         }
     }
 
+    /// Parses and maps the the results from the iTunes Lookup API request.
+    ///
+    /// - Parameters:
+    ///   - data: The JSON data returned from the request.
+    ///   - response: The response metadata returned from the request.
+    ///   - error: The error returned from the request.
+    ///   - handler: The completion handler to call once the results of the request has been processed.
     private func processVersionCheckResults(withData data: Data?,
                                             response: URLResponse?,
                                             error: Error?,
@@ -85,16 +103,20 @@ extension APIManager {
         }
     }
 
+    /// Creates the URL that points to the iTunes Lookup API.
+    ///
+    /// - Returns: The iTunes Lookup API URL.
+    /// - Throws: An error if the URL cannot be created.
     private func makeITunesURL() throws -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "itunes.apple.com"
         components.path = "/lookup"
 
-        var items: [URLQueryItem] = [URLQueryItem(name: "bundleId", value: Bundle.main.bundleIdentifier)]
+        var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: Bundle.main.bundleIdentifier)]
 
         if let countryCode = countryCode {
-            let item = URLQueryItem(name: "country", value: countryCode)
+            let item = URLQueryItem(name: Constants.country, value: countryCode)
             items.append(item)
         }
 

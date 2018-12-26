@@ -25,7 +25,7 @@ public struct APIManager {
     /// By default, all version check requests are performed against the US App Store.
     /// If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.
     ///
-    /// [List of country codes](https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/AppStoreTerritories.html)
+    /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
     ///
     let countryCode: String?
 
@@ -33,7 +33,7 @@ public struct APIManager {
     /// By default, all version check requests are performed against the US App Store.
     /// If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.
     ///
-    /// [List of country codes](https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/AppStoreTerritories.html)
+    /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
     ///
     /// - Parameter countryCode: The country code for the App Store in which the app is availabe. Defaults to nil (e.g., the US App Store)
     public init(countryCode: String? = nil) {

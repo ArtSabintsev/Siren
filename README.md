@@ -85,10 +85,10 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ## Implementation Examples
-Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the [Example Project's **AppDelegate** file](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift). Uncomment the example you'd like to test.
+Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the Example Project's [**AppDelegate**](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift) file. Uncomment the example you'd like to test.
  
 
-**WARNING**: Siren code should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only below the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
+**WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only below the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
 All examples (with comments) 
 ## Localization

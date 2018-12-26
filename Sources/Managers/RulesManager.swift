@@ -43,10 +43,10 @@ public struct RulesManager {
     /// - Parameters:
     ///   - rules: The rules that should be set for all version updates.
     ///   - releasedForDays: The amount of time (in days) that the app should delay before presenting the user
-    public init(majorUpdateRules: Rules,
-                minorUpdateRules: Rules,
-                patchUpdateRules: Rules,
-                revisionUpdateRules: Rules,
+    public init(majorUpdateRules: Rules = .default,
+                minorUpdateRules: Rules = .default,
+                patchUpdateRules: Rules = .default,
+                revisionUpdateRules: Rules = .default,
                 showAlertAfterCurrentVersionHasBeenReleasedForDays releasedForDays: Int = 1) {
         self.majorUpdateRules = majorUpdateRules
         self.minorUpdateRules = minorUpdateRules
@@ -70,7 +70,7 @@ public struct RulesManager {
     /// - Parameters:
     ///   - rules: The rules that should be set for all version updates.
     ///   - releasedForDays: The amount of time (in days) that the app should delay before presenting the user
-    public init(globalRules rules: Rules,
+    public init(globalRules rules: Rules = .default,
                 showAlertAfterCurrentVersionHasBeenReleasedForDays releasedForDays: Int = 1) {
         self.init(majorUpdateRules: rules,
                   minorUpdateRules: rules,

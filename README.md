@@ -164,7 +164,7 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
 ## Shout-Out and Gratitude
 A massive shout-out goes to the following folks: 
 
-- @getaaron for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. 
+- [Aaron Brager](https://twitter.com/@getaaron) for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. 
 - All of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) for helping build the initial feature set for Siren
 - All of [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) for helping make Siren as powerful and bugfree as it currently is today.
 

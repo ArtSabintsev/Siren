@@ -27,7 +27,7 @@
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
 
-If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
+If a new version is available, a language localized alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app through alternative means, such as a custom user interface.
 
 Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
   - Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)

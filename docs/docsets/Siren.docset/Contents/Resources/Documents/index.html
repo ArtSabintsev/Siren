@@ -143,9 +143,7 @@
 <li><a href="https://github.com/ArtSabintsev/Siren#features">Features</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#installation-instructions">Installation Instructions</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#example-code">Example Code</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#granular-version-update-management">Granular/Differentiated Version Management</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#optional-delegate-and-delegate-methods">Delegates (Optional)</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#example-code">Implementation Examples</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#testing-siren">Testing Siren</a></li>
@@ -153,6 +151,7 @@
 <li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phased Releases</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#words-of-caution">Words of Caution</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#ports">Ports</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#shout-out-and-gratitude">Shout-Out and Gratitude</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#created-and-maintained-by">Attribution</a></li>
 </ul>
 
@@ -170,9 +169,9 @@
 <li>Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)</li>
 <li>Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)</li>
 </ul></li>
-<li>Siren is actively maintained by <a href="https://github.com/ArtSabintsev"><strong>Arthur Sabintsev</strong></a> and <a href="https://twitter.com/getaaron"><strong>Aaron Brager</strong></a></li>
 </ul>
 <h2 id='features' class='heading'>Features</h2>
+<h3 id='current-features' class='heading'>Current Features</h3>
 
 <ul>
 <li>[x] CocoaPods, Carthage, and Swift Package Manager Support</li>
@@ -180,6 +179,14 @@
 <li>[x] Highly Customizable Presentation Rules <a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a>)</li>
 <li>[x] Localized for 40+ Languages (see <a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a>)</li>
 <li>[x] Device Compatibility Check (see <a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a>)</li>
+<li>[x] 100% Documentation Coverage</li>
+</ul>
+<h3 id='future-features' class='heading'>Future Features</h3>
+
+<ul>
+<li>[ ] Present prompt only on WiFi if app is over the OTA limit.</li>
+<li>[ ] Support for Third-/Homegrown Update Servers (not including TestFlight).</li>
+<li>[ ] Increase code coverage with more unit tests and UI tests.</li>
 </ul>
 <h2 id='screenshots' class='heading'>Screenshots</h2>
 
@@ -187,7 +194,7 @@
 <li>The <strong>left picture</strong> forces the user to update the app.</li>
 <li>The <strong>center picture</strong> gives the user the option to update the app.</li>
 <li>The <strong>right picture</strong> gives the user the option to skip the current update.</li>
-<li>These options are controlled by the <code>Siren.AlertType</code> enum.</li>
+<li>These options are controlled by the <code><a href="Structs/Rules/AlertType.html">Rules.AlertType</a></code> enum.</li>
 </ul>
 
 <p><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480"></p>
@@ -241,76 +248,50 @@
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift2.3"</span> <span class="c1">// Swift 2.3</span>
 </code></pre>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
-<pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre>
 <h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
-<p>Implementing Siren is as easy as adding one line of code to your app. Siren also has plenty of customization options. All examples can be found in the Example Project&rsquo;s <a href="https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift"><strong>AppDelegate</strong></a> file. Uncomment the example you&rsquo;d like to test.</p>
+<p>Implementing Siren is as easy as adding two line of code to your app. </p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Siren</span> <span class="c1">// Line 1</span>
+<span class="kd">import</span> <span class="kt">UIKit</span>
 
-<p><strong>WARNING</strong>: Siren should ONLY be placed in <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application">UIApplication.didFinishLaunchingWithOptions</a> and only below the <code>window?.makeKeyAndVisible()</code> call. Siren initializes a listener on <a href="https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive">didBecomeActiveNotification</a> to perform version checks.</p>
+<span class="kd">@UIApplicationMain</span>
+<span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span>
 
-<p>All examples (with comments) </p>
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
+                     <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="n">window</span><span class="p">?</span><span class="o">.</span><span class="nf">makeKeyAndVisible</span><span class="p">()</span>
+
+        <span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">wail</span><span class="p">()</span> <span class="c1">// Line 2</span>
+
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Siren also has plenty of customization options. All examples can be found in the Example Project&rsquo;s <a href="https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift"><strong>AppDelegate</strong></a> file. Uncomment the example you&rsquo;d like to test.</p>
+
+<p><strong>WARNING</strong>: Siren should ONLY be placed in <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application">UIApplication.didFinishLaunchingWithOptions</a> and only after the <code>window?.makeKeyAndVisible()</code> call. Siren initializes a listener on <a href="https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive">didBecomeActiveNotification</a> to perform version checks.</p>
 <h2 id='localization' class='heading'>Localization</h2>
 
-<p>Siren is localized for</p>
+<p>Siren is localized for the following languages:</p>
 
-<ul>
-<li>Arabic</li>
-<li>Armenian</li>
-<li>Basque</li>
-<li>Chinese (Simplified and Traditional)</li>
-<li>Croatian</li>
-<li>Czech</li>
-<li>Danish</li>
-<li>Dutch</li>
-<li>English</li>
-<li>Estonian</li>
-<li>Finnish</li>
-<li>French</li>
-<li>German</li>
-<li>Greek</li>
-<li>Hebrew</li>
-<li>Hungarian</li>
-<li>Indonesian</li>
-<li>Italian</li>
-<li>Japanese</li>
-<li>Korean</li>
-<li>Latvian</li>
-<li>Lithuanian</li>
-<li>Malay</li>
-<li>Norwegian (Bokmål)</li>
-<li>Persian (Afghanistan, Iran, Persian)</li>
-<li>Polish</li>
-<li>Portuguese (Brazil and Portugal)</li>
-<li>Russian</li>
-<li>Serbian (Cyrillic and Latin)</li>
-<li>Slovenian</li>
-<li>Spanish</li>
-<li>Swedish</li>
-<li>Thai</li>
-<li>Turkish</li>
-<li>Ukrainian</li>
-<li>Urdu</li>
-<li>Vietnamese</li>
-</ul>
+<p>Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese</p>
 
-<p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring iOS&rsquo;s device-specific setting</p>
-
-<p>You can enable it like so:</p>
-<pre class="highlight swift"><code><span class="c1">// Assuming you have `let siren = Siren.shared somewhere in your code`</span>
-<span class="c1">// In this example, we force the `russian` language.</span>
-<span class="n">siren</span><span class="o">.</span><span class="n">presentationManager</span> <span class="o">=</span> <span class="kt">PresentationManager</span><span class="p">(</span><span class="nv">forceLanguageLocalization</span><span class="p">:</span> <span class="o">.</span><span class="n">russian</span><span class="p">)</span>
+<p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring the user&rsquo;s device-specific setting. You can enable it like so:</p>
+<pre class="highlight swift"><code><span class="c1">// In this example, we force the `russian` language.</span>
+<span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">presentationManager</span> <span class="o">=</span> <span class="kt">PresentationManager</span><span class="p">(</span><span class="nv">forceLanguageLocalization</span><span class="p">:</span> <span class="o">.</span><span class="n">russian</span><span class="p">)</span>
 </code></pre>
 <h2 id='device-compatibility' class='heading'>Device Compatibility</h2>
 
-<p>If an app update is available, Siren checks to make sure that the version of iOS on the user&rsquo;s device is compatible with the one that is required by the app update. For example, if a user has iOS 10 installed on their device, but the app update requires iOS 11, an alert will not be shown. This takes care of the <em>false positive</em> case regarding app updating.</p>
+<p>If an app update is available, Siren checks to make sure that the version of iOS on the user&rsquo;s device is compatible with the one that is required by the app update. For example, if a user has iOS 11 installed on their device, but the app update requires iOS 12, an alert will not be shown. This takes care of the <em>false positive</em> case regarding app updating.</p>
 <h2 id='testing-siren' class='heading'>Testing Siren</h2>
 
-<p>Temporarily change the version string in Xcode (within the <code>.xcodeproj</code>) to an older version than the one that&rsquo;s currently available in the App Store. Afterwards, build and run your app, and you should see the alert.</p>
+<p>Temporarily change the version string in Xcode (within the <code>.xcodeproj</code> file) to an older version than the one that&rsquo;s currently available in the App Store. Afterwards, build and run your app, and you should see the alert.</p>
 
 <p>If you currently don&rsquo;t have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the <a href="https://itunes.apple.com/app/id1234793120">App Store Connect</a> app&rsquo;s bundleID: <code>com.apple.AppStoreConnect</code>.</p>
-
-<p>For your convenience, you may turn on debugging statements by setting <code>self.debugEnabled = true</code> before calling the <code>checkVersion()</code> method.</p>
 <h2 id='app-store-submissions' class='heading'>App Store Submissions</h2>
 
 <p>The App Store reviewer will <strong>not</strong> see the alert. The version in the App Store will always be older than the version being reviewed.</p>
@@ -320,7 +301,7 @@
 
 <ul>
 <li>You can leave Siren configured as normal. Phased rollout will continue to auto-update apps. Since all users can still manually update your app directly from the App Store, Siren will ignore the phased rollout and will prompt users to update.</li>
-<li>You can set <code>showAlertAfterCurrentVersionHasBeenReleasedForDays</code> to <code>7</code>, and Siren will not prompt any users until the latest version is 7 days old, after phased rollout is complete.</li>
+<li>You can set <code>showAlertAfterCurrentVersionHasBeenReleasedForDays</code> to <code>7</code>, and Siren will not prompt any users until the latest version is 7 days old, after the phased rollout is complete.</li>
 <li>You can remotely disable Siren until the rollout is done using your own API / backend logic.</li>
 </ul>
 <h2 id='words-of-caution' class='heading'>Words of Caution</h2>
@@ -334,6 +315,7 @@
 <ul>
 <li><a href="https://github.com/ArtSabintsev/Harpy"><strong>Harpy</strong></a></li>
 <li>Siren was ported <em>from</em> Harpy, as Siren and Harpy are maintained by the same developer.</li>
+<li>As of December 2018, Harpy has been deprecated in favor of Siren.</li>
 </ul></li>
 <li><strong>Java (Android)</strong>
 
@@ -348,14 +330,23 @@
 <li>The Siren Swift library inspired the React Native library.</li>
 </ul></li>
 </ul>
+<h2 id='shout-out-and-gratitude' class='heading'>Shout-Out and Gratitude</h2>
+
+<p>A massive shout-out and thank you goes to the following folks: </p>
+
+<ul>
+<li><a href="https://twitter.com/@getaaron">Aaron Brager</a> for motivating me and assisting me in building the initial proof-of-concept of Siren (based on <a href="https:github.com/ArtSabintsev/Harpy">Harpy</a>) back in 2015. Without him, Siren may never have been built.</li>
+<li>All of <a href="https://github.com/ArtSabintsev/Harpy/graphs/contributors">Harpy&rsquo;s Consitrbutors</a> for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.</li>
+<li>All of <a href="https://github.com/ArtSabintsev/Siren/graphs/contributors">Siren&rsquo;s Contributors</a> for helping make Siren as powerful and bug-free as it currently is today.</li>
+</ul>
 <h2 id='created-and-maintained-by' class='heading'>Created and maintained by</h2>
 
-<p><a href="http://www.sabintsev.com/">Arthur Ariel Sabintsev</a> &amp; <a href="https://twitter.com/getaaron">Aaron Brager</a></p>
+<p><a href="http://www.sabintsev.com/">Arthur Ariel Sabintsev</a></p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-12-26)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2018-12-26)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

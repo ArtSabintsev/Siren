@@ -11,7 +11,7 @@
 - [Features](https://github.com/ArtSabintsev/Siren#features)
 - [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
 - [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
-- [Implementation Examples](https://github.com/ArtSabintsev/Siren#example-code)
+- [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples)
 - [Localization](https://github.com/ArtSabintsev/Siren#localization)
 - [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
 - [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)

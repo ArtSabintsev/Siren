@@ -53,7 +53,7 @@ If a new version is available, an alert can be presented to the user informing t
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
 - The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `Siren.AlertType` enum.
+- These options are controlled by the `Rules.AlertType` enum.
 
 <img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480">
 
@@ -92,7 +92,7 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ## Implementation Examples
-Implementing Siren is as easy as adding twos line of code to your app. 
+Implementing Siren is as easy as adding two line of code to your app. 
 
 ```swift
 import Siren // Line 1
@@ -123,17 +123,18 @@ Siren is localized for the following languages:
 
 Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese
 
-You may want the update dialog to *always* appear in a certain language, ignoring iOS's device-specific setting. You can enable it like so:
+You may want the update dialog to *always* appear in a certain language, ignoring the user's device-specific setting. You can enable it like so:
 
 ```swift
 // In this example, we force the `russian` language.
 Siren.shared.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
 ```
+
 ## Device Compatibility
 If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 11 installed on their device, but the app update requires iOS 12, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
 
 ## Testing Siren
-Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+Temporarily change the version string in Xcode (within the `.xcodeproj` file) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [App Store Connect](https://itunes.apple.com/app/id1234793120) app's bundleID: `com.apple.AppStoreConnect`.
 
@@ -144,7 +145,7 @@ The App Store reviewer will **not** see the alert. The version in the App Store 
 In 2017, Apple announced the [ability to rollout app updates gradually (a.k.a. Phased Releases)](https://itunespartner.apple.com/en/apps/faq/Managing%20Your%20Apps_Submission%20Process). Siren will continue to work as it has in the past, presenting an update modal to _all_ users. If you opt-in to a phased rollout for a specific version, you have a few choices:
 
 - You can leave Siren configured as normal. Phased rollout will continue to auto-update apps. Since all users can still manually update your app directly from the App Store, Siren will ignore the phased rollout and will prompt users to update.
-- You can set `showAlertAfterCurrentVersionHasBeenReleasedForDays` to `7`, and Siren will not prompt any users until the latest version is 7 days old, after phased rollout is complete.
+- You can set `showAlertAfterCurrentVersionHasBeenReleasedForDays` to `7`, and Siren will not prompt any users until the latest version is 7 days old, after the phased rollout is complete.
 - You can remotely disable Siren until the rollout is done using your own API / backend logic.
 
 ## Words of Caution
@@ -154,6 +155,7 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
 - **Objective-C (iOS)**
    - [**Harpy**](https://github.com/ArtSabintsev/Harpy)
    - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
+   - As of December 2018, Harpy has been deprecated in favor of Siren.
 - **Java (Android)**
    - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
    - The Siren Swift library inspired the Java library.
@@ -162,12 +164,11 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
    - The Siren Swift library inspired the React Native library.
 
 ## Shout-Out and Gratitude
-A massive shout-out goes to the following folks: 
+A massive shout-out and thank you goes to the following folks: 
 
-- [Aaron Brager](https://twitter.com/@getaaron) for his willingness in motivating me and helping me build the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)). Without him, Siren may never have been built or maintained. 
-- All of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) for helping build the initial feature set for Siren.
+- [Aaron Brager](https://twitter.com/@getaaron) for motivating me and assisting me in building the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)) back in 2015. Without him, Siren may never have been built. 
+- All of [Harpy's Consitrbutors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.
 - All of [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) for helping make Siren as powerful and bug-free as it currently is today.
-
 
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/)

@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.summary      = "Notify users that a new version of your iOS app is available, and prompt them with the App Store link."
   s.homepage     = "https://github.com/ArtSabintsev/Siren"
   s.license      = "MIT"
-  s.authors      = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com", "Aaron Brager" => "getaaron@gmail.com" }
+  s.authors      = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com" }
   s.description  = <<-DESC
                     Notify your users when a new version of your iOS app is available, and prompt them with the App Store link.
                    DESC

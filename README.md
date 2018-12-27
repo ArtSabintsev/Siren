@@ -29,9 +29,9 @@
 
 If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.
 
-- Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
-	- Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)
-	- Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
+Siren is built to work with the [**Semantic Versioning**](https://semver.org/) system.
+  - Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)
+  - Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)
 
 ## Features
 

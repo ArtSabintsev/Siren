@@ -92,7 +92,7 @@ github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
 ```
 
 ## Implementation Examples
-Implementing Siren is as easy as adding two line of code to your app. 
+Implementing Siren is as easy as adding two lines of code to your app: 
 
 ```swift
 import Siren // Line 1
@@ -102,8 +102,7 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
 		Siren.shared.wail() // Line 2

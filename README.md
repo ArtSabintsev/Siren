@@ -122,6 +122,8 @@ Siren is localized for the following languages:
 
 Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese
 
+If your user's device is set to one of the supported locales, an update message will appear in that language. If a locale is not supported, than the message will appear in English.
+
 You may want the update dialog to *always* appear in a certain language, ignoring the user's device-specific setting. You can enable it like so:
 
 ```swift

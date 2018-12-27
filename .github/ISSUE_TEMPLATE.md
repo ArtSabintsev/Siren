@@ -4,7 +4,7 @@
 - **What is your app's Bundle ID?**: 
 - **When was the latest version of your app published to the App Store?**: 
 - **Is your app published in the US App Store? If not, what App Store is it published in?**:
-- **Does Siren work if you plugin your app's BundleID (and CountryCode, if necessary) into the Example App?**:
+- **Does Siren work if you plugin your app's `BundleID` (and `countryCode`, if necessary) into the Example app?**:
 
 ---
 

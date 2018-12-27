@@ -34,13 +34,7 @@
                 <a href="../Classes/Siren.html">Siren</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Siren/AlertType.html">– AlertType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Siren/VersionCheckType.html">– VersionCheckType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Siren/LanguageType.html">– LanguageType</a>
+                <a href="../Classes/SirenViewController.html">SirenViewController</a>
               </li>
             </ul>
           </li>
@@ -48,15 +42,33 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/UpdateType.html">UpdateType</a>
+                <a href="../Enums/AlertAction.html">AlertAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/KnownError.html">KnownError</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/SirenDelegate.html">SirenDelegate</a>
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
               </li>
             </ul>
           </li>
@@ -64,22 +76,52 @@
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs/SirenAlertMessaging.html">SirenAlertMessaging</a>
+                <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SirenAlertMessaging/Constants.html">– Constants</a>
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SirenError.html">SirenError</a>
+                <a href="../Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SirenError/Known.html">– Known</a>
+                <a href="../Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SirenLookupModel.html">SirenLookupModel</a>
+                <a href="../Structs/Localization.html">Localization</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SirenLookupModel/Results.html">– Results</a>
+                <a href="../Structs/Localization/Language.html">– Language</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel.html">LookupModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/Results.html">– Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PresentationManager.html">PresentationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Results.html">Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules.html">Rules</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules/AlertType.html">– AlertType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RulesManager.html">RulesManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RulesManager/UpdateType.html">– UpdateType</a>
               </li>
             </ul>
           </li>
@@ -95,7 +137,7 @@
 
                 </div>
               </div>
-            <p>The Siren Class. A singleton that is initialized using the <code>shared</code> constant.</p>
+            <p>The Siren Class.</p>
 
           </section>
           <section class="section task-group-section">
@@ -104,9 +146,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC0A11ErrorDomainSSvp"></a>
-                    <a name="//apple_ref/swift/Property/SirenErrorDomain" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC0A11ErrorDomainSSvp">SirenErrorDomain</a>
+                    <a name="/s:5SirenAAC14ResultsHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/ResultsHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC14ResultsHandlera">ResultsHandler</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -114,14 +156,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The error domain for all errors created by Siren.</p>
+                        <p>Return results or errors obtained from performing a version check with Siren.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">SirenErrorDomain</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ResultsHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/Results.html">Results</a></span><span class="p">?,</span> <span class="kt"><a href="../Enums/KnownError.html">KnownError</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -131,9 +173,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC8delegateAA0A8Delegate_pSgXwvp"></a>
-                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC8delegateAA0A8Delegate_pSgXwvp">delegate</a>
+                    <a name="/s:5SirenAAC6sharedABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC6sharedABvpZ">shared</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -141,15 +183,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code><a href="../Protocols/SirenDelegate.html">SirenDelegate</a></code> variable, which should be set if you&rsquo;d like to be notified of any of specific user interactions or API success/failures.
-Also set this variable if you&rsquo;d like to use custom UI for presesnting the update notification.</p>
+                        <p>The Siren singleton. The main point of entry to the Siren library.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SirenDelegate.html">SirenDelegate</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">Siren</span></code></pre>
 
                         </div>
                       </div>
@@ -170,7 +211,7 @@ Also set this variable if you&rsquo;d like to use custom UI for presesnting the 
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The debug flag, which is disabled by default.
-When enabled, a stream of print() statements are logged to your console when a version check is performed.</p>
+When enabled, a stream of <code>print()</code> statements are logged to your console when a version check is performed.</p>
 
                       </div>
                       <div class="declaration">
@@ -187,9 +228,9 @@ When enabled, a stream of print() statements are logged to your console when a v
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9alertTypeAB05AlertC0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/alertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9alertTypeAB05AlertC0Ovp">alertType</a>
+                    <a name="/s:5SirenAAC10apiManagerAA10APIManagerVvp"></a>
+                    <a name="//apple_ref/swift/Property/apiManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC10apiManagerAA10APIManagerVvp">apiManager</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -197,15 +238,17 @@ When enabled, a stream of print() statements are logged to your console when a v
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert that should be shown.
-See the Siren.AlertType enum for full details.</p>
+                        <p>The manager that controls the App Store API that is
+used to fetch the latest version of the app.</p>
+
+<p>Defaults to the US App Store.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">alertType</span><span class="p">:</span> <span class="kt">Siren</span><span class="o">.</span><span class="kt"><a href="../Classes/Siren/AlertType.html">AlertType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">apiManager</span><span class="p">:</span> <span class="kt"><a href="../Structs/APIManager.html">APIManager</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -215,9 +258,9 @@ See the Siren.AlertType enum for full details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC20majorUpdateAlertTypeAB0dE0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/majorUpdateAlertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC20majorUpdateAlertTypeAB0dE0Ovp">majorUpdateAlertType</a>
+                    <a name="/s:5SirenAAC19presentationManagerAA012PresentationC0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/presentationManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC19presentationManagerAA012PresentationC0Vvp">presentationManager</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -225,16 +268,16 @@ See the Siren.AlertType enum for full details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert that should be shown for major version updates: A.b.c
-Defaults to Siren.AlertType.option.
-See the Siren.AlertType enum for full details.</p>
+                        <p>The manager that controls the update alert&rsquo;s string localization and tint color.</p>
+
+<p>Defaults the string&rsquo;s lange localization to the user&rsquo;s device localization.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">majorUpdateAlertType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren/AlertType.html">AlertType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">presentationManager</span><span class="p">:</span> <span class="kt"><a href="../Structs/PresentationManager.html">PresentationManager</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -244,9 +287,9 @@ See the Siren.AlertType enum for full details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC20minorUpdateAlertTypeAB0dE0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/minorUpdateAlertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC20minorUpdateAlertTypeAB0dE0Ovp">minorUpdateAlertType</a>
+                    <a name="/s:5SirenAAC12rulesManagerAA05RulesC0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/rulesManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC12rulesManagerAA05RulesC0Vvp">rulesManager</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -254,16 +297,21 @@ See the Siren.AlertType enum for full details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert that should be shown for minor version updates: a.B.c
-Defaults to Siren.AlertType.option.
-See the Siren.AlertType enum for full details.</p>
+                        <p>The manager that controls the type of alert that should be displayed
+and how often an alert should be displayed dpeneding on the type
+of update that is available relative to the installed version of the app
+(e.g., different rules for major, minor, patch and revision updated can be used).</p>
+
+<p>Defaults to performing a version check once a day with an alert that allows
+the user to skip updating the app until the next time the app becomes active or
+skipping the update all together until another version is released.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">minorUpdateAlertType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren/AlertType.html">AlertType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">rulesManager</span><span class="p">:</span> <span class="kt"><a href="../Structs/RulesManager.html">RulesManager</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -273,9 +321,9 @@ See the Siren.AlertType enum for full details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC20patchUpdateAlertTypeAB0dE0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/patchUpdateAlertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC20patchUpdateAlertTypeAB0dE0Ovp">patchUpdateAlertType</a>
+                    <a name="/s:5SirenAAC23currentInstalledVersionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/currentInstalledVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC23currentInstalledVersionSSSgvp">currentInstalledVersion</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -283,16 +331,14 @@ See the Siren.AlertType enum for full details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert that should be shown for minor patch updates: a.b.C
-Defaults to Siren.AlertType.option.
-See the Siren.AlertType enum for full details.</p>
+                        <p>The current installed version of your app.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">patchUpdateAlertType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren/AlertType.html">AlertType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">lazy</span> <span class="k">var</span> <span class="nv">currentInstalledVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -302,9 +348,9 @@ See the Siren.AlertType enum for full details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC23revisionUpdateAlertTypeAB0dE0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/revisionUpdateAlertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC23revisionUpdateAlertTypeAB0dE0Ovp">revisionUpdateAlertType</a>
+                    <a name="/s:5SirenAAC23didBecomeActiveObserverSo8NSObject_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/didBecomeActiveObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC23didBecomeActiveObserverSo8NSObject_pSgvp">didBecomeActiveObserver</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -312,16 +358,14 @@ See the Siren.AlertType enum for full details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert that should be shown for revision updates: a.b.c.D
-Defaults to Siren.AlertType.option.
-See the Siren.AlertType enum for full details.</p>
+                        <p>The retained <code>NotificationCenter</code> observer that listens for <code>UIApplication.didBecomeActiveNotification</code> notifications.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">revisionUpdateAlertType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren/AlertType.html">AlertType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">didBecomeActiveObserver</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -331,9 +375,9 @@ See the Siren.AlertType enum for full details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC7appNameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/appName" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC7appNameSSvp">appName</a>
+                    <a name="/s:5SirenAAC21alertPresentationDate33_7DFB1BC200A6C64FBED860A3A8153B65LL10Foundation0D0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/alertPresentationDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC21alertPresentationDate33_7DFB1BC200A6C64FBED860A3A8153B65LL10Foundation0D0VSgvp">alertPresentationDate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -341,15 +385,14 @@ See the Siren.AlertType enum for full details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The name of your app.
-By default, it&rsquo;s set to the name of the app that&rsquo;s stored in your plist.</p>
+                        <p>The last date that an alert was presented to the user.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">appName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">alertPresentationDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -359,9 +402,9 @@ By default, it&rsquo;s set to the name of the app that&rsquo;s stored in your pl
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC14alertMessagingAA0a5AlertC0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/alertMessaging" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC14alertMessagingAA0a5AlertC0Vvp">alertMessaging</a>
+                    <a name="/s:5SirenAAC5appID33_7DFB1BC200A6C64FBED860A3A8153B65LLSiSgvp"></a>
+                    <a name="//apple_ref/swift/Property/appID" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC5appID33_7DFB1BC200A6C64FBED860A3A8153B65LLSiSgvp">appID</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -369,15 +412,14 @@ By default, it&rsquo;s set to the name of the app that&rsquo;s stored in your pl
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Overrides all the Strings to which Siren defaults.
-Defaults to the values defined in <code><a href="../Structs/SirenAlertMessaging/Constants.html">SirenAlertMessaging.Constants</a></code></p>
+                        <p>The App Store&rsquo;s unique identifier for an app.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">alertMessaging</span><span class="p">:</span> <span class="kt"><a href="../Structs/SirenAlertMessaging.html">SirenAlertMessaging</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">appID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -387,9 +429,9 @@ Defaults to the values defined in <code><a href="../Structs/SirenAlertMessaging/
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC11countryCodeSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/countryCode" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC11countryCodeSSSgvp">countryCode</a>
+                    <a name="/s:5SirenAAC14resultsHandler33_7DFB1BC200A6C64FBED860A3A8153B65LLyAA7ResultsVSg_AA10KnownErrorOSgtcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/resultsHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC14resultsHandler33_7DFB1BC200A6C64FBED860A3A8153B65LLyAA7ResultsVSg_AA10KnownErrorOSgtcSgvp">resultsHandler</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -397,16 +439,14 @@ Defaults to the values defined in <code><a href="../Structs/SirenAlertMessaging/
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The region or country of an App Store in which your app is available.
-By default, all version checks are performed against the US App Store.
-If your app is not available in the US App Store, set it to the identifier of at least one App Store within which it is available.</p>
+                        <p>The completion handler used to return the results or errors returned by Siren.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">countryCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">resultsHandler</span><span class="p">:</span> <span class="kt">Siren</span><span class="o">.</span><span class="kt"><a href="../Classes/Siren.html#/s:5SirenAAC14ResultsHandlera">ResultsHandler</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -416,9 +456,9 @@ If your app is not available in the US App Store, set it to the identifier of at
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC25forceLanguageLocalizationAB0C4TypeOSgvp"></a>
-                    <a name="//apple_ref/swift/Property/forceLanguageLocalization" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC25forceLanguageLocalizationAB0C4TypeOSgvp">forceLanguageLocalization</a>
+                    <a name="/c:@M@Siren@objc(cs)Siren(im)init"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Siren@objc(cs)Siren(im)init">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -426,27 +466,37 @@ If your app is not available in the US App Store, set it to the identifier of at
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Overrides the default localization of a user&rsquo;s device when presenting the update message and button titles in the alert.
-See the Siren.LanguageType enum for more details.</p>
+                        <p>The initialization method.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">forceLanguageLocalization</span><span class="p">:</span> <span class="kt">Siren</span><span class="o">.</span><span class="kt"><a href="../Classes/Siren/LanguageType.html">LanguageType</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Functionality"></a>
+                <a name="//apple_ref/swift/Section/Public Functionality" class="dashAnchor"></a>
+                <a href="#/Public%20Functionality">
+                  <h3 class="section-name">Public Functionality</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC24alertControllerTintColorSo7UIColorCSgvp"></a>
-                    <a name="//apple_ref/swift/Property/alertControllerTintColor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC24alertControllerTintColorSo7UIColorCSgvp">alertControllerTintColor</a>
+                    <a name="/s:5SirenAAC4wail10completionyyAA7ResultsVSg_AA10KnownErrorOSgtcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/wail(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC4wail10completionyyAA7ResultsVSg_AA10KnownErrorOSgtcSg_tF">wail(completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -454,125 +504,13 @@ See the Siren.LanguageType enum for more details.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Overrides the tint color for UIAlertController.</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">alertControllerTintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5SirenAAC50showAlertAfterCurrentVersionHasBeenReleasedForDaysSivp"></a>
-                    <a name="//apple_ref/swift/Property/showAlertAfterCurrentVersionHasBeenReleasedForDays" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC50showAlertAfterCurrentVersionHasBeenReleasedForDaysSivp">showAlertAfterCurrentVersionHasBeenReleasedForDays</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>When this is set, the alert will only show up if the current version has already been released for X days.
-Defaults to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">showAlertAfterCurrentVersionHasBeenReleasedForDays</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5SirenAAC22currentAppStoreVersionSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/currentAppStoreVersion" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC22currentAppStoreVersionSSSgvp">currentAppStoreVersion</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The current version of your app that is available for download on the App Store</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">currentAppStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5SirenAAC6sharedABvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC6sharedABvpZ">shared</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The App&rsquo;s Singleton</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">Siren</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5SirenAAC12checkVersion0B4TypeyAB0c5CheckD0O_tF"></a>
-                    <a name="//apple_ref/swift/Method/checkVersion(checkType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12checkVersion0B4TypeyAB0c5CheckD0O_tF">checkVersion(checkType:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Checks the currently installed version of your app against the App Store.
-The default check is against the US App Store, but if your app is not listed in the US,
-you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCodeSSSgvp">countryCode</a></code> property before calling this method. Please refer to the countryCode property for more information.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">checkVersion</span><span class="p">(</span><span class="nv">checkType</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren/VersionCheckType.html">VersionCheckType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">wail</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren.html#/s:5SirenAAC14ResultsHandlera">ResultsHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -583,12 +521,12 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                             <tr>
                               <td>
                                 <code>
-                                <em>checkType</em>
+                                <em>handler</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The frequency in days in which you want a check to be performed. Please refer to the Siren.VersionCheckType enum for more details.</p>
+                                  <p></p>
                                 </div>
                               </td>
                             </tr>
@@ -611,19 +549,17 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Launches the AppStore in two situations:</p>
+                        <p>Launches the AppStore in two situations when the user clicked the <code>Update</code> button in the UIAlertController modal.</p>
 
-<ul>
-<li>User clicked the <code>Update</code> button in the UIAlertController modal.</li>
-<li>Developer built a custom alert modal and needs to be able to call this function when the user chooses to update the app in the aforementioned custom modal.</li>
-</ul>
+<p>This function is marked <code>public</code> as a convenience for those developers who decide to build a custom alert modal
+instead of using Siren&rsquo;s prebuilt update alert.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">launchAppStore</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">launchAppStore</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -634,19 +570,19 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Siren%20extension%20dealing%20with%20enumerated%20types%20and%20constants."></a>
-                <a name="//apple_ref/swift/Section/Siren extension dealing with enumerated types and constants." class="dashAnchor"></a>
-                <a href="#/Siren%20extension%20dealing%20with%20enumerated%20types%20and%20constants.">
-                  <h3 class="section-name">Siren extension dealing with enumerated types and constants.</h3>
+                <a name="/Private%20Functionality"></a>
+                <a name="//apple_ref/swift/Section/Private Functionality" class="dashAnchor"></a>
+                <a href="#/Private%20Functionality">
+                  <h3 class="section-name">Private Functionality</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC9AlertTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/AlertType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC9AlertTypeO">AlertType</a>
+                    <a name="/s:5SirenAAC19performVersionCheckyyF"></a>
+                    <a name="//apple_ref/swift/Method/performVersionCheck()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC19performVersionCheckyyF">performVersionCheck()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -654,15 +590,14 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the type of alert to present after a successful version check has been performed.</p>
+                        <p>Initiates the uni-directional version checking flow.</p>
 
-                        <a href="../Classes/Siren/AlertType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">AlertType</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">performVersionCheck</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -672,9 +607,9 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC16VersionCheckTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/VersionCheckType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC16VersionCheckTypeO">VersionCheckType</a>
+                    <a name="/s:5SirenAAC8validate5modelyAA11LookupModelV_tF"></a>
+                    <a name="//apple_ref/swift/Method/validate(model:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC8validate5modelyAA11LookupModelV_tF">validate(model:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -682,17 +617,37 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the frequency in which the the version check is performed and the user is prompted to update the app.</p>
+                        <p>Validates the parsed and mapped iTunes Lookup Model
+to guarantee all the relevant data was returned before
+attempting to present an alert.</p>
 
-                        <a href="../Classes/Siren/VersionCheckType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">VersionCheckType</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The iTunes Lookup Model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -700,9 +655,9 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC12LanguageTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/LanguageType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12LanguageTypeO">LanguageType</a>
+                    <a name="/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied25forCurrentAppStoreVersion14andLookupModelySS_AA0oP0VtF"></a>
+                    <a name="//apple_ref/swift/Method/determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion:andLookupModel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied25forCurrentAppStoreVersion14andLookupModelySS_AA0oP0VtF">determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion:andLookupModel:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -710,18 +665,160 @@ you should set the <code><a href="../Classes/Siren.html#/s:5SirenAAC11countryCod
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines the available languages in which the update message and alert button titles should appear.</p>
+                        <p>Determines if the update alert can be presented based on the
+rules set in the <code><a href="../Structs/RulesManager.html">RulesManager</a></code> and the the skip version settings.</p>
 
-<p>By default, the operating system&rsquo;s default lanuage setting is used. However, you can force a specific language
-by setting the forceLanguageLocalization property before calling checkVersion()</p>
-
-                        <a href="../Classes/Siren/LanguageType.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">LanguageType</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">determineIfAlertPresentationRulesAreSatisfied</span><span class="p">(</span><span class="n">forCurrentAppStoreVersion</span> <span class="nv">currentAppStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">andLookupModel</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>currentAppStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The curren version of the app in the App Store.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The iTunes Lookup Model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC12presentAlert9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0E0V_SSAA11LookupModelVAA0E7ManagerV0mN0OtF"></a>
+                    <a name="//apple_ref/swift/Method/presentAlert(withRules:forCurrentAppStoreVersion:model:andUpdateType:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC12presentAlert9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0E0V_SSAA11LookupModelVAA0E7ManagerV0mN0OtF">presentAlert(withRules:forCurrentAppStoreVersion:model:andUpdateType:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Presents the update alert to the end user.
+Upon tapping a value on the alert view, a completion handler will return all relevant metadata to the app.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">presentAlert</span><span class="p">(</span><span class="n">withRules</span> <span class="nv">rules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span><span class="p">,</span>
+                  <span class="n">forCurrentAppStoreVersion</span> <span class="nv">currentAppStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                  <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">,</span>
+                  <span class="n">andUpdateType</span> <span class="nv">updateType</span><span class="p">:</span> <span class="kt"><a href="../Structs/RulesManager.html">RulesManager</a></span><span class="o">.</span><span class="kt">UpdateType</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rules</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The rules for how to present the alert.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>currentAppStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current version of the app in the App Store.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The iTunes Lookup Model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of update that is available based on the version found in the App Store.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC12addObserversyyF"></a>
+                    <a name="//apple_ref/swift/Method/addObservers()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC12addObserversyyF">addObservers()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add an observer that listens for app launching/relaunching
+(e.g., calls to <code>UIApplication</code>&lsquo;s <code>didBecomeActive</code> function).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addObservers</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -733,7 +830,7 @@ by setting the forceLanguageLocalization property before calling checkVersion()<
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev and Aaron Brager</a>. All rights reserved. (Last updated: 2018-11-07)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2018-12-26)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

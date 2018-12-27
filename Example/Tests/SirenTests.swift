@@ -9,9 +9,9 @@
 import XCTest
 @testable import Siren
 
-class SirenTests: XCTestCase {
+final class SirenTests: XCTestCase {
 
-    let siren = Siren.shared
+    var siren: Siren = Siren.shared
 
 }
 
@@ -20,819 +20,776 @@ class SirenTests: XCTestCase {
 extension SirenTests {
 
     func testSingleDigitVersionUpdate() {
-        siren.testSetCurrentInstalledVersion(version: "1")
+        siren.currentInstalledVersion = "1"
 
-        siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2"))
 
-        siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0.0"))
 
-        siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "0"))
 
-        siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "0.0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "0.0.0.9"))
     }
 
     func testDoubleDigitVersionUpdate() {
-        siren.testSetCurrentInstalledVersion(version: "1.0")
+        siren.currentInstalledVersion = "1.0"
 
-        siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2"))
 
-        siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0.0"))
 
-        siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0"))
 
-        siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.0.9"))
     }
 
     func testTripleDigitVersionUpdate() {
-        siren.testSetCurrentInstalledVersion(version: "1.0.0")
+        siren.currentInstalledVersion = "1.0.0"
 
-        siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2"))
 
-        siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0.0"))
 
-        siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0"))
 
-        siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.0.9"))
     }
 
     func testQuadrupleDigitVersionUpdate() {
-        siren.testSetCurrentInstalledVersion(version: "1.0.0")
+        siren.currentInstalledVersion = "1.0.0"
 
-        siren.testSetAppStoreVersion(version: "2")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2"))
 
-        siren.testSetAppStoreVersion(version: "2.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0"))
 
-        siren.testSetAppStoreVersion(version: "2.0.0.0")
-        XCTAssertTrue(siren.isAppStoreVersionNewer())
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                        appStoreVersion: "2.0.0.0"))
 
-        siren.testSetAppStoreVersion(version: "0")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0"))
 
-        siren.testSetAppStoreVersion(version: "0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.9"))
 
-        siren.testSetAppStoreVersion(version: "0.0.0.9")
-        XCTAssertFalse(siren.isAppStoreVersionNewer())
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
+                                                         appStoreVersion: "0.0.0.9"))
     }
-
 }
-
 
 // MARK: - Localization
 
 extension SirenTests {
 
     func testArabicLocalization() {
-        let language: Siren.LanguageType = .arabic
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .arabic
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "التحديث متوفر")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "التحديث متوفر")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "المرة التالية")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "المرة التالية")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "تخطى عن هذه النسخة")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "تخطى عن هذه النسخة")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "تحديث")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "تحديث")
     }
 
     func testArmenianLocalization() {
-        let language: Siren.LanguageType = .armenian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .armenian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Թարմացումը հասանելի Է")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Թարմացումը հասանելի Է")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Հաջորդ անգամ")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Հաջորդ անգամ")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Բաց թողնել այս տարբերակը")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Բաց թողնել այս տարբերակը")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Թարմացնել")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Թարմացնել")
     }
 
     func testBasqueLocalization() {
-        let language: Siren.LanguageType = .basque
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .basque
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Eguneratzea erabilgarri")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Eguneratzea erabilgarri")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Hurrengo batean")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Hurrengo batean")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Bertsio honetatik jauzi egin")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Bertsio honetatik jauzi egin")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Eguneratu")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Eguneratu")
     }
 
     func testChineseSimplifiedLocalization() {
-        let language: Siren.LanguageType = .chineseSimplified
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .chineseSimplified
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "更新可用")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "更新可用")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "下一次")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "下一次")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "跳过此版本")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "跳过此版本")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "更新")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "更新")
     }
 
     func testChineseTraditionalLocalization() {
-        let language: Siren.LanguageType = .chineseTraditional
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .chineseTraditional
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "有更新可用")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "有更新可用")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "下次")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "下次")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "跳過此版本")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "跳過此版本")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "更新")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "更新")
     }
 
     func testCroatianLocalization() {
-        let language: Siren.LanguageType = .croatian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .croatian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Nova ažuriranje je stigla")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Nova ažuriranje je stigla")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Sljedeći put")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Sljedeći put")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Preskoči ovu verziju")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Preskoči ovu verziju")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Ažuriraj")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Ažuriraj")
     }
 
     func testCzechLocalization() {
-        let language: Siren.LanguageType = .czech
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .czech
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Aktualizace dostupná")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Aktualizace dostupná")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Příště")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Příště")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Přeskočit tuto verzi")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Přeskočit tuto verzi")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Aktualizovat")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Aktualizovat")
     }
 
     func testDanishLocalization() {
-        let language: Siren.LanguageType = .danish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .danish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Tilgængelig opdatering")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Tilgængelig opdatering")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Næste gang")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Næste gang")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Spring denne version over")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Spring denne version over")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Opdater")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Opdater")
     }
 
     func testDutchLocalization() {
-        let language: Siren.LanguageType = .dutch
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .dutch
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Update beschikbaar")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Update beschikbaar")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Volgende keer")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Volgende keer")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Sla deze versie over")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Sla deze versie over")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Updaten")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Updaten")
     }
 
     func testEstonianLocalization() {
-        let language: Siren.LanguageType = .estonian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .estonian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Uuendus saadaval")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Uuendus saadaval")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Järgmisel korral")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Järgmisel korral")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Jäta see version vahele")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Jäta see version vahele")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Uuenda")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Uuenda")
     }
 
     func testFinnishLocalization() {
-        let language: Siren.LanguageType = .finnish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .finnish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Päivitys saatavilla")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Päivitys saatavilla")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Ensi kerralla")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Ensi kerralla")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Jätä tämä versio väliin")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Jätä tämä versio väliin")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Päivitys")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Päivitys")
     }
 
     func testFrenchLocalization() {
-        let language: Siren.LanguageType = .french
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .french
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Mise à jour disponible")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Mise à jour disponible")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "La prochaine fois")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "La prochaine fois")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Sauter cette version")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Sauter cette version")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Mettre à jour")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Mettre à jour")
     }
 
     func testGermanLocalization() {
-        let language: Siren.LanguageType = .german
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .german
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Update erhältlich")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Update erhältlich")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Später")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Später")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Diese Version überspringen")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Diese Version überspringen")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Update")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Update")
     }
     
     func testGreekLocalization() {
-        let language: Siren.LanguageType = .greek
-        siren.forceLanguageLocalization = language
-        
+        let language: Localization.Language = .greek
+
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Διαθέσιμη Ενημέρωση")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Διαθέσιμη Ενημέρωση")
         
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Άλλη φορά")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Άλλη φορά")
         
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Αγνόησε αυτήν την έκδοση")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Αγνόησε αυτήν την έκδοση")
         
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Αναβάθμιση")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Αναβάθμιση")
     }
 
     func testHebrewLocalization() {
-        let language: Siren.LanguageType = .hebrew
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .hebrew
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "עדכון זמין")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "עדכון זמין")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "בפעם הבאה")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "בפעם הבאה")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "דלג על גרסה זו")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "דלג על גרסה זו")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "עדכן")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "עדכן")
     }
 
     func testHungarianLocalization() {
-        let language: Siren.LanguageType = .hungarian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .hungarian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Új frissítés érhető el")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Új frissítés érhető el")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Később")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Később")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Ennél a verziónál ne figyelmeztessen")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Ennél a verziónál ne figyelmeztessen")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Frissítés")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Frissítés")
     }
 
     func testIndonesianLocalization() {
-        let language: Siren.LanguageType = .indonesian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .indonesian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Pembaruan Tersedia")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Pembaruan Tersedia")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Lain kali")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Lain kali")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Lewati versi ini")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Lewati versi ini")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Perbarui")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Perbarui")
     }
 
     func testItalianLocalization() {
-        let language: Siren.LanguageType = .italian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .italian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Aggiornamento disponibile")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Aggiornamento disponibile")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "La prossima volta")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "La prossima volta")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Salta questa versione")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Salta questa versione")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Aggiorna")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Aggiorna")
     }
 
     func testJapaneseLocalization() {
-        let language: Siren.LanguageType = .japanese
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .japanese
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "アップデートのお知らせ")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "アップデートのお知らせ")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "次回")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "次回")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "このバージョンをスキップ")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "このバージョンをスキップ")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "アップデート")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "アップデート")
     }
 
     func testKoreanLocalization() {
-        let language: Siren.LanguageType = .korean
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .korean
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "업데이트 가능")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "업데이트 가능")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "다음에")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "다음에")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "이 버전 건너뜀")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "이 버전 건너뜀")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "업데이트")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "업데이트")
     }
 
     func testLatvianLocalization() {
-        let language: Siren.LanguageType = .latvian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .latvian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Atjauninājums pieejams")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Atjauninājums pieejams")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Nākamreiz")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Nākamreiz")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Izlaist šo versiju")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Izlaist šo versiju")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Atjaunināt")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Atjaunināt")
     }
 
     func testLithuanianLocalization() {
-        let language: Siren.LanguageType = .lithuanian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .lithuanian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Atnaujinimas")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Atnaujinimas")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Kitą kartą")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Kitą kartą")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Praleisti šią versiją")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Praleisti šią versiją")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Atnaujinti")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Atnaujinti")
     }
 
     func testMalayLocalization() {
-        let language: Siren.LanguageType = .malay
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .malay
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Versi Terkini")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Versi Terkini")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Lain kali")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Lain kali")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Langkau versi ini")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Langkau versi ini")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Muat turun")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Muat turun")
     }
 
     func testNorwegianLocalization() {
-        let language: Siren.LanguageType = .norwegian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .norwegian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Oppdatering tilgjengelig")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Oppdatering tilgjengelig")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Neste gang")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Neste gang")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Hopp over denne versjonen")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Hopp over denne versjonen")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Oppdater")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Oppdater")
     }
 
     func testPersianLocalization() {
-        let language: Siren.LanguageType = .persian
-        siren.forceLanguageLocalization = language
-        
+        let language: Localization.Language = .persian
+
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "بروزرسانی در دسترس")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "بروزرسانی در دسترس")
         
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "دفعه بعد")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "دفعه بعد")
         
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "رد این نسخه")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "رد این نسخه")
         
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "بروزرسانی")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "بروزرسانی")
     }
     
     func testPersianAfghanistanLocalization() {
-        let language: Siren.LanguageType = .persianAfghanistan
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .persianAfghanistan
         
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "بروزرسانی در دسترس")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "بروزرسانی در دسترس")
         
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "دگر بار")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "دگر بار")
         
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "رد این نسخه")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "رد این نسخه")
         
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "بروزرسانی")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "بروزرسانی")
     }
     
     func testPersianIranLocalization() {
-        let language: Siren.LanguageType = .persianIran
-        siren.forceLanguageLocalization = language
-        
+        let language: Localization.Language = .persianIran
+
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "بروزرسانی در دسترس")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "بروزرسانی در دسترس")
         
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "دفعه بعد")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "دفعه بعد")
         
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "رد این نسخه")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "رد این نسخه")
         
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "بروزرسانی")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "بروزرسانی")
     }
     
     func testPolishLocalization() {
-        let language: Siren.LanguageType = .polish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .polish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Aktualizacja dostępna")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Aktualizacja dostępna")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Następnym razem")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Następnym razem")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Pomiń wersję")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Pomiń wersję")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Zaktualizuj")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Zaktualizuj")
     }
 
     func testPortugueseBrazilLocalization() {
-        let language: Siren.LanguageType = .portugueseBrazil
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .portugueseBrazil
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Atualização disponível")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Atualização disponível")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Próxima vez")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Próxima vez")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Ignorar esta versão")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Ignorar esta versão")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Atualizar")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Atualizar")
     }
 
     func testPortuguesePortugalLocalization() {
-        let language: Siren.LanguageType = .portuguesePortugal
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .portuguesePortugal
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Nova actualização disponível")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Nova actualização disponível")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Próxima vez")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Próxima vez")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Ignorar esta versão")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Ignorar esta versão")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Actualizar")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Actualizar")
     }
 
     func testRussianLocalization() {
-        let language: Siren.LanguageType = .russian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .russian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Доступно обновление")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Доступно обновление")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "В следующий раз")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "В следующий раз")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Пропустить эту версию")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Пропустить эту версию")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Обновить")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Обновить")
     }
 
     func testSerbianCyrillicLocalization() {
-        let language: Siren.LanguageType = .serbianCyrillic
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .serbianCyrillic
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Ажурирање доступно")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Ажурирање доступно")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Следећи пут")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Следећи пут")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Прескочи ову верзију")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Прескочи ову верзију")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Ажурирај")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Ажурирај")
     }
 
     func testSerbianLatinLocalization() {
-        let language: Siren.LanguageType = .serbianLatin
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .serbianLatin
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Ažuriranje dostupno")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Ažuriranje dostupno")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Sledeći put")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Sledeći put")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Preskoči ovu verziju")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Preskoči ovu verziju")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Ažuriraj")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Ažuriraj")
     }
 
     func testSlovenianLocalization() {
-        let language: Siren.LanguageType = .slovenian
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .slovenian
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Posodobitev aplikacije")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Posodobitev aplikacije")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Naslednjič")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Naslednjič")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Ne želim")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Ne želim")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Namesti")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Namesti")
     }
 
     func testSpanishLocalization() {
-        let language: Siren.LanguageType = .spanish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .spanish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Actualización disponible")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Actualización disponible")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "La próxima vez")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "La próxima vez")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Saltar esta versión")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Saltar esta versión")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Actualizar")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Actualizar")
     }
 
     func testSwedishLocalization() {
-        let language: Siren.LanguageType = .swedish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .swedish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Tillgänglig uppdatering")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Tillgänglig uppdatering")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Nästa gång")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Nästa gång")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Hoppa över den här versionen")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Hoppa över den här versionen")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Uppdatera")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Uppdatera")
     }
 
     func testThaiLocalization() {
-        let language: Siren.LanguageType = .thai
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .thai
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "มีการอัพเดท")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "มีการอัพเดท")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "ไว้คราวหน้า")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "ไว้คราวหน้า")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "ข้ามเวอร์ชั่นนี้")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "ข้ามเวอร์ชั่นนี้")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "อัพเดท")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "อัพเดท")
     }
 
     func testTurkishLocalization() {
-        let language: Siren.LanguageType = .turkish
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .turkish
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Güncelleme Mevcut")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Güncelleme Mevcut")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Daha sonra")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Daha sonra")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Boşver")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Boşver")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Güncelle")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Güncelle")
     }
 
     func testUkrainianLocalization() {
-        let language: Siren.LanguageType = .ukrainian
-        siren.forceLanguageLocalization = language
-        
+        let language: Localization.Language = .ukrainian
+
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Доступне Оновлення")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Доступне Оновлення")
         
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Наступного разу")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Наступного разу")
         
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Пропустити версію")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Пропустити версію")
         
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Оновити")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Оновити")
     }
     
     func testUrduLocalization() {
-        let language: Siren.LanguageType = .urdu
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .urdu
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "نیا اپڈیٹ")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "نیا اپڈیٹ")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "اگلی مرتبہ")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "اگلی مرتبہ")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "اس ورزن کو چھوڑ دیں")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "اس ورزن کو چھوڑ دیں")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "اپڈیٹ کریں")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "اپڈیٹ کریں")
     }
     
     func testVietnameseLocalization() {
-        let language: Siren.LanguageType = .vietnamese
-        siren.forceLanguageLocalization = language
+        let language: Localization.Language = .vietnamese
 
         // Update Available
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update Available", forceLanguageLocalization: language), "Cập nhật mới")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Cập nhật mới")
 
         // Next time
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Next time", forceLanguageLocalization: language), "Lần tới")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Lần tới")
 
         // Skip this version
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Skip this version", forceLanguageLocalization: language), "Bỏ qua phiên bản này")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Skip this version", andForceLocalization: language), "Bỏ qua phiên bản này")
 
         // Update
-        XCTAssertEqual(Bundle().testLocalizedString(forKey: "Update", forceLanguageLocalization: language), "Cập nhật")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update", andForceLocalization: language), "Cập nhật")
     }
     
 }

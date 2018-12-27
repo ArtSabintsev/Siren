@@ -19,7 +19,7 @@
 - [Phased Releases](https://github.com/ArtSabintsev/Siren#phased-releases)
 - [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
 - [Ports](https://github.com/ArtSabintsev/Siren#ports)
-- [Shout-Out and Gratitude](https://github.com/ArtSabintsev/Siren#shout-out-and-gratitude)
+- [Special Thanks](https://github.com/ArtSabintsev/Siren#special-thanks)
 - [Attribution](https://github.com/ArtSabintsev/Siren#created-and-maintained-by)
 
 ---
@@ -163,7 +163,7 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
    - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
    - The Siren Swift library inspired the React Native library.
 
-## Shout-Out and Gratitude
+## Special Thanks
 A massive shout-out and thank you goes to the following folks: 
 
 - [Aaron Brager](https://twitter.com/@getaaron) for motivating me and assisting me in building the initial proof-of-concept of Siren (based on [Harpy](https:github.com/ArtSabintsev/Harpy)) back in 2015. Without him, Siren may never have been built. 

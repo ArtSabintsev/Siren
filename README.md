@@ -45,7 +45,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 ### Future Features
 - [ ] Present prompt only on WiFi if app is over the OTA limit.
-- [ ] Support for Third-/Homegrown Update Servers (not including TestFlight).
+- [ ] Support for Third-Party/Homegrown Update Servers (not including TestFlight).
 - [ ] Increase code coverage with more unit tests and UI tests.
 
 

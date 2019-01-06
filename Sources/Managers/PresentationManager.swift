@@ -35,7 +35,7 @@ public struct PresentationManager {
     let updateButtonTitle: String
 
     /// The instance of the `UIAlertController` used to present the update alert.
-    private var alertController: UIAlertController?
+    var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
     private var updaterWindow: UIWindow {
@@ -134,11 +134,12 @@ extension PresentationManager {
             handler?(.unknown)
         }
 
-        // If the alertType is .none, an alert will not be presneted.
+        // If the alertType is .none, an alert will not be presented.
         // If the `updaterWindow` is not hidden, than an alert is already presented.
         // The latter prevents `UIAlertControllers` from appearing on top of each other.
         if rules.alertType != .none && updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)
+
         }
     }
 
@@ -156,7 +157,7 @@ extension PresentationManager {
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
-            self.alertController?.hide(window: self.updaterWindow)
+            self.cleanUpAlertController()
             Siren.shared.launchAppStore()
 
             handler?(.appStore)
@@ -180,7 +181,7 @@ extension PresentationManager {
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
-            self.alertController?.hide(window: self.updaterWindow)
+            self.cleanUpAlertController()
             UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
 
             handler?(.nextTime)
@@ -208,12 +209,18 @@ extension PresentationManager {
             UserDefaults.storedSkippedVersion = currentAppStoreVersion
             UserDefaults.standard.synchronize()
 
-            self.alertController?.hide(window: self.updaterWindow)
+            self.cleanUpAlertController()
 
             handler?(.skip)
             return
         }
 
         return action
+    }
+
+    /// Removes the `alertController` from memory.
+    private func cleanUpAlertController() {
+        alertController?.hide(window: self.updaterWindow)
+        alertController?.dismiss(animated: false, completion: nil)
     }
 }

@@ -16,10 +16,6 @@ public final class Siren: NSObject {
     /// The Siren singleton. The main point of entry to the Siren library.
     public static let shared = Siren()
 
-    /// The debug flag, which is disabled by default.
-    /// When enabled, a stream of `print()` statements are logged to your console when a version check is performed.
-    public lazy var debugEnabled: Bool = false
-
     /// The manager that controls the App Store API that is
     /// used to fetch the latest version of the app.
     ///
@@ -47,6 +43,9 @@ public final class Siren: NSObject {
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didBecomeActiveNotification` notifications.
     var didBecomeActiveObserver: NSObjectProtocol?
 
+    /// The retained `NotificationCenter` observer that listens for `UIApplication.didEnterBackgroundNotification` notifications.
+    var didEnterBackgroundObserver: NSObjectProtocol?
+
     /// The last date that an alert was presented to the user.
     private var alertPresentationDate: Date?
 
@@ -62,12 +61,12 @@ public final class Siren: NSObject {
     }
 }
 
-// MARK: - Public Functionality
+// MARK: - Public API Interface
 
 public extension Siren {
+    /// This method executes the Siren version checking and alert presentation flow.
     ///
-    ///
-    /// - Parameter handler:
+    /// - Parameter handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.
     func wail(completion handler: ResultsHandler? = nil) {
         resultsHandler = handler
         addObservers()
@@ -94,10 +93,10 @@ public extension Siren {
     }
 }
 
-// MARK: - Private Functionality
+// MARK: - Version Check and Alert Presentation Flow
 
-extension Siren {
-    /// Initiates the uni-directional version checking flow.
+private extension Siren {
+    /// Initiates the unidirectional version checking flow.
     func performVersionCheck() {
         alertPresentationDate = UserDefaults.alertPresentationDate
         apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
@@ -221,10 +220,19 @@ extension Siren {
             self.resultsHandler?(results, nil)
         }
     }
+}
 
-    /// Add an observer that listens for app launching/relaunching
-    /// (e.g., calls to `UIApplication`'s `didBecomeActive` function).
+// MARK: - Observers
+
+private extension Siren {
+    /// Add app state observers
     func addObservers() {
+        addForegroundObserver()
+        addBackgroundObserver()
+    }
+
+    /// Adds an observer that listens for app launching/relaunching.
+    func addForegroundObserver() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter
             .default
@@ -233,6 +241,19 @@ extension Siren {
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
                             self.performVersionCheck()
+        }
+    }
+
+    /// Adds an observer that listens for when the app is sent to the background.
+    func addBackgroundObserver() {
+        guard didEnterBackgroundObserver == nil else { return }
+        didEnterBackgroundObserver = NotificationCenter
+            .default
+            .addObserver(forName: UIApplication.didEnterBackgroundNotification,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard let self = self else { return }
+                            self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
         }
     }
 }

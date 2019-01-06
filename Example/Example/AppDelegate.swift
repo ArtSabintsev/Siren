@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         /// - Warning:
-        /// Siren should ONLY be placed in UIApplication.didFinishLaunchingWithOptionsand only after the `window?.makeKeyAndVisible()` call.
+        /// Siren should ONLY be placed in UIApplication.didFinishLaunchingWithOptions and only after the `window?.makeKeyAndVisible()` call.
         /// Siren initializes a listener on `didBecomeActiveNotification` to perform version checks.
 
 //        defaultExample()
-        defaultExampleUsingCompletionHandler()
+//        defaultExampleUsingCompletionHandler()
 //        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
 //        customMessagingPresentationExample()
-//        annoyingRuleExample()
+        annoyingRuleExample()
 //        hyperCriticalRulesExample()
 //        updateSpecificRulesExample()
 //        customAlertRulesExample()

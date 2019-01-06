@@ -200,34 +200,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC12debugEnabledSbvp"></a>
-                    <a name="//apple_ref/swift/Property/debugEnabled" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12debugEnabledSbvp">debugEnabled</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The debug flag, which is disabled by default.
-When enabled, a stream of <code>print()</code> statements are logged to your console when a version check is performed.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">debugEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5SirenAAC10apiManagerAA10APIManagerVvp"></a>
                     <a name="//apple_ref/swift/Property/apiManager" class="dashAnchor"></a>
                     <a class="token" href="#/s:5SirenAAC10apiManagerAA10APIManagerVvp">apiManager</a>
@@ -375,6 +347,33 @@ skipping the update all together until another version is released.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5SirenAAC26didEnterBackgroundObserverSo8NSObject_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/didEnterBackgroundObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC26didEnterBackgroundObserverSo8NSObject_pSgvp">didEnterBackgroundObserver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The retained <code>NotificationCenter</code> observer that listens for <code>UIApplication.didEnterBackgroundNotification</code> notifications.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">didEnterBackgroundObserver</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5SirenAAC21alertPresentationDate33_7DFB1BC200A6C64FBED860A3A8153B65LL10Foundation0D0VSgvp"></a>
                     <a name="//apple_ref/swift/Property/alertPresentationDate" class="dashAnchor"></a>
                     <a class="token" href="#/s:5SirenAAC21alertPresentationDate33_7DFB1BC200A6C64FBED860A3A8153B65LL10Foundation0D0VSgvp">alertPresentationDate</a>
@@ -484,10 +483,10 @@ skipping the update all together until another version is released.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Public%20Functionality"></a>
-                <a name="//apple_ref/swift/Section/Public Functionality" class="dashAnchor"></a>
-                <a href="#/Public%20Functionality">
-                  <h3 class="section-name">Public Functionality</h3>
+                <a name="/Public%20API%20Interface"></a>
+                <a name="//apple_ref/swift/Section/Public API Interface" class="dashAnchor"></a>
+                <a href="#/Public%20API%20Interface">
+                  <h3 class="section-name">Public API Interface</h3>
                 </a>
               </div>
               <ul>
@@ -504,7 +503,8 @@ skipping the update all together until another version is released.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>This method executes the Siren version checking and alert presentation flow.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -526,7 +526,7 @@ skipping the update all together until another version is released.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p></p>
+                                  <p>Returns the metadata around a successful version check and interaction with the update modal or it returns nil.</p>
                                 </div>
                               </td>
                             </tr>
@@ -570,19 +570,19 @@ instead of using Siren&rsquo;s prebuilt update alert.</p>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Private%20Functionality"></a>
-                <a name="//apple_ref/swift/Section/Private Functionality" class="dashAnchor"></a>
-                <a href="#/Private%20Functionality">
-                  <h3 class="section-name">Private Functionality</h3>
+                <a name="/Version%20Check%20and%20Alert%20Presentation%20Flow"></a>
+                <a name="//apple_ref/swift/Section/Version Check and Alert Presentation Flow" class="dashAnchor"></a>
+                <a href="#/Version%20Check%20and%20Alert%20Presentation%20Flow">
+                  <h3 class="section-name">Version Check and Alert Presentation Flow</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC19performVersionCheckyyF"></a>
+                    <a name="/s:5SirenAAC19performVersionCheck33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
                     <a name="//apple_ref/swift/Method/performVersionCheck()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC19performVersionCheckyyF">performVersionCheck()</a>
+                    <a class="token" href="#/s:5SirenAAC19performVersionCheck33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">performVersionCheck()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -590,7 +590,7 @@ instead of using Siren&rsquo;s prebuilt update alert.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initiates the uni-directional version checking flow.</p>
+                        <p>Initiates the unidirectional version checking flow.</p>
 
                       </div>
                       <div class="declaration">
@@ -607,9 +607,9 @@ instead of using Siren&rsquo;s prebuilt update alert.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC8validate5modelyAA11LookupModelV_tF"></a>
+                    <a name="/s:5SirenAAC8validate33_7DFB1BC200A6C64FBED860A3A8153B65LL5modelyAA11LookupModelV_tF"></a>
                     <a name="//apple_ref/swift/Method/validate(model:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC8validate5modelyAA11LookupModelV_tF">validate(model:)</a>
+                    <a class="token" href="#/s:5SirenAAC8validate33_7DFB1BC200A6C64FBED860A3A8153B65LL5modelyAA11LookupModelV_tF">validate(model:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -655,9 +655,9 @@ attempting to present an alert.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied25forCurrentAppStoreVersion14andLookupModelySS_AA0oP0VtF"></a>
+                    <a name="/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied33_7DFB1BC200A6C64FBED860A3A8153B65LL25forCurrentAppStoreVersion14andLookupModelySS_AA0wX0VtF"></a>
                     <a name="//apple_ref/swift/Method/determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion:andLookupModel:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied25forCurrentAppStoreVersion14andLookupModelySS_AA0oP0VtF">determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion:andLookupModel:)</a>
+                    <a class="token" href="#/s:5SirenAAC45determineIfAlertPresentationRulesAreSatisfied33_7DFB1BC200A6C64FBED860A3A8153B65LL25forCurrentAppStoreVersion14andLookupModelySS_AA0wX0VtF">determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion:andLookupModel:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -714,9 +714,9 @@ rules set in the <code><a href="../Structs/RulesManager.html">RulesManager</a></
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC12presentAlert9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0E0V_SSAA11LookupModelVAA0E7ManagerV0mN0OtF"></a>
+                    <a name="/s:5SirenAAC12presentAlert33_7DFB1BC200A6C64FBED860A3A8153B65LL9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0M0V_SSAA11LookupModelVAA0M7ManagerV0uV0OtF"></a>
                     <a name="//apple_ref/swift/Method/presentAlert(withRules:forCurrentAppStoreVersion:model:andUpdateType:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12presentAlert9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0E0V_SSAA11LookupModelVAA0E7ManagerV0mN0OtF">presentAlert(withRules:forCurrentAppStoreVersion:model:andUpdateType:)</a>
+                    <a class="token" href="#/s:5SirenAAC12presentAlert33_7DFB1BC200A6C64FBED860A3A8153B65LL9withRules25forCurrentAppStoreVersion5model13andUpdateTypeyAA0M0V_SSAA11LookupModelVAA0M7ManagerV0uV0OtF">presentAlert(withRules:forCurrentAppStoreVersion:model:andUpdateType:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -797,12 +797,23 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Observers"></a>
+                <a name="//apple_ref/swift/Section/Observers" class="dashAnchor"></a>
+                <a href="#/Observers">
+                  <h3 class="section-name">Observers</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC12addObserversyyF"></a>
+                    <a name="/s:5SirenAAC12addObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
                     <a name="//apple_ref/swift/Method/addObservers()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12addObserversyyF">addObservers()</a>
+                    <a class="token" href="#/s:5SirenAAC12addObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addObservers()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -810,8 +821,7 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Add an observer that listens for app launching/relaunching
-(e.g., calls to <code>UIApplication</code>&lsquo;s <code>didBecomeActive</code> function).</p>
+                        <p>Add app state observers</p>
 
                       </div>
                       <div class="declaration">
@@ -825,12 +835,66 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC21addForegroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/addForegroundObserver()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC21addForegroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addForegroundObserver()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds an observer that listens for app launching/relaunching.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addForegroundObserver</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC21addBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/addBackgroundObserver()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC21addBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addBackgroundObserver()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds an observer that listens for when the app is sent to the background.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addBackgroundObserver</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2018-12-26)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

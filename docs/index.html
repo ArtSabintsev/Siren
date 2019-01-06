@@ -133,7 +133,7 @@
             <h1 id='siren' class='heading'>Siren 🚨</h1>
 <h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='heading'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
 
-<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
+<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
 <hr>
 <h2 id='table-of-contents' class='heading'>Table of Contents</h2>
@@ -143,7 +143,7 @@
 <li><a href="https://github.com/ArtSabintsev/Siren#features">Features</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#installation-instructions">Installation Instructions</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#example-code">Implementation Examples</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#testing-siren">Testing Siren</a></li>
@@ -151,7 +151,7 @@
 <li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phased Releases</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#words-of-caution">Words of Caution</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#ports">Ports</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#shout-out-and-gratitude">Shout-Out and Gratitude</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#special-thanks">Special Thanks</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#created-and-maintained-by">Attribution</a></li>
 </ul>
 
@@ -160,32 +160,30 @@
 
 <p><strong>Siren</strong> checks a user&rsquo;s currently installed version of your iOS app against the version that is currently available in the App Store.</p>
 
-<p>If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app programmatically, enabling you to inform the user through alternative means, such as a custom interface.</p>
+<p>If a new version is available, a language localized alert can be presented to the user informing them of the newer version, and giving them the option to update the application. Alternatively, Siren can notify your app through alternative means, such as a custom user interface.</p>
 
-<ul>
-<li>Siren is built to work with the <a href="https://semver.org/"><strong>Semantic Versioning</strong></a> system.
+<p>Siren is built to work with the <a href="https://semver.org/"><strong>Semantic Versioning</strong></a> system.</p>
 
 <ul>
 <li>Canonical Semantic Versioning uses a three number versioning system (e.g., 1.0.0)</li>
 <li>Siren also supports two-number versioning (e.g., 1.0) and four-number versioning (e.g., 1.0.0.0)</li>
-</ul></li>
 </ul>
 <h2 id='features' class='heading'>Features</h2>
 <h3 id='current-features' class='heading'>Current Features</h3>
 
 <ul>
-<li>[x] CocoaPods, Carthage, and Swift Package Manager Support</li>
+<li>[x] CocoaPods, Carthage, and Swift Package Manager Support (see <a href="https://github.com/ArtSabintsev/Siren#installation-instructions">Installation Instructions</a>)</li>
 <li>[x] Three Types of Alerts (see <a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a>)</li>
-<li>[x] Highly Customizable Presentation Rules <a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a>)</li>
+<li>[x] Highly Customizable Presentation Rules (see <a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a>)</li>
 <li>[x] Localized for 40+ Languages (see <a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a>)</li>
 <li>[x] Device Compatibility Check (see <a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a>)</li>
-<li>[x] 100% Documentation Coverage</li>
+<li>[x] 100% Documentation Coverage (see <a href="https://sabintsev.com/Siren">https://sabintsev.com/Siren</a>)</li>
 </ul>
 <h3 id='future-features' class='heading'>Future Features</h3>
 
 <ul>
 <li>[ ] Present prompt only on WiFi if app is over the OTA limit.</li>
-<li>[ ] Support for Third-/Homegrown Update Servers (not including TestFlight).</li>
+<li>[ ] Support for Third-Party/Homegrown Update Servers (not including TestFlight).</li>
 <li>[ ] Increase code coverage with more unit tests and UI tests.</li>
 </ul>
 <h2 id='screenshots' class='heading'>Screenshots</h2>
@@ -252,7 +250,7 @@
 </code></pre>
 <h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
-<p>Implementing Siren is as easy as adding two line of code to your app. </p>
+<p>Implementing Siren is as easy as adding two lines of code to your app: </p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Siren</span> <span class="c1">// Line 1</span>
 <span class="kd">import</span> <span class="kt">UIKit</span>
 
@@ -260,11 +258,10 @@
 <span class="kd">final</span> <span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span>
 
-    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span>
-                     <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
         <span class="n">window</span><span class="p">?</span><span class="o">.</span><span class="nf">makeKeyAndVisible</span><span class="p">()</span>
 
-        <span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">wail</span><span class="p">()</span> <span class="c1">// Line 2</span>
+    <span class="kt">Siren</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">wail</span><span class="p">()</span> <span class="c1">// Line 2</span>
 
         <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
@@ -279,6 +276,8 @@
 <p>Siren is localized for the following languages:</p>
 
 <p>Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese</p>
+
+<p>If your user&rsquo;s device is set to one of the supported locales, an update message will appear in that language. If a locale is not supported, than the message will appear in English.</p>
 
 <p>You may want the update dialog to <em>always</em> appear in a certain language, ignoring the user&rsquo;s device-specific setting. You can enable it like so:</p>
 <pre class="highlight swift"><code><span class="c1">// In this example, we force the `russian` language.</span>
@@ -330,13 +329,13 @@
 <li>The Siren Swift library inspired the React Native library.</li>
 </ul></li>
 </ul>
-<h2 id='shout-out-and-gratitude' class='heading'>Shout-Out and Gratitude</h2>
+<h2 id='special-thanks' class='heading'>Special Thanks</h2>
 
 <p>A massive shout-out and thank you goes to the following folks: </p>
 
 <ul>
 <li><a href="https://twitter.com/@getaaron">Aaron Brager</a> for motivating me and assisting me in building the initial proof-of-concept of Siren (based on <a href="https:github.com/ArtSabintsev/Harpy">Harpy</a>) back in 2015. Without him, Siren may never have been built.</li>
-<li>All of <a href="https://github.com/ArtSabintsev/Harpy/graphs/contributors">Harpy&rsquo;s Consitrbutors</a> for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.</li>
+<li>All of <a href="https://github.com/ArtSabintsev/Harpy/graphs/contributors">Harpy&rsquo;s Contributors</a> for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.</li>
 <li>All of <a href="https://github.com/ArtSabintsev/Siren/graphs/contributors">Siren&rsquo;s Contributors</a> for helping make Siren as powerful and bug-free as it currently is today.</li>
 </ul>
 <h2 id='created-and-maintained-by' class='heading'>Created and maintained by</h2>
@@ -346,7 +345,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2018-12-26)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

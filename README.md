@@ -52,9 +52,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 - [x] 100% Documentation Coverage (see https://sabintsev.com/Siren)
 
 ### Future Features
-- [ ] Present prompt only on WiFi if app is over the OTA limit.
-- [ ] Support for Third-Party/Homegrown Update Servers (not including TestFlight).
-- [ ] Increase code coverage with more unit tests and UI tests.
+A list of future development work can be found on [Siren's Kanban Board](https://github.com/ArtSabintsev/Siren/projects/1).
 
 ## Screenshots
 - The **left picture** forces the user to update the app.

@@ -7,24 +7,24 @@
 ---
 
 # Table of Contents
-- **Meta**
+- [**Meta**](https://github.com/ArtSabintsev/Siren#meta)
 	- [About](https://github.com/ArtSabintsev/Siren#about)
 	- [Features](https://github.com/ArtSabintsev/Siren#features)
 	- [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
  	- [Ports](https://github.com/ArtSabintsev/Siren#ports)
-- **Installation and Integration**
+- [**Installation and Integration**](https://github.com/ArtSabintsev/Siren#installation-and-integration)
 	- [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
 	- [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples)
-- **Device-Specific Checks**
+- [**Device-Specific Checks**](https://github.com/ArtSabintsev/Siren#device-specific-checks)
 	- [Localization](https://github.com/ArtSabintsev/Siren#localization)
 	- [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
-- **Testing**
+- [**Testing**](https://github.com/ArtSabintsev/Siren#testing)
 	- [Testing Siren Locally](https://github.com/ArtSabintsev/Siren#testing-siren-locally)
 	- [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
-- **App Submission**
-	- [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
+- [**App Submission**](https://github.com/ArtSabintsev/Siren#app-submission)
+	- [App Store Review](https://github.com/ArtSabintsev/Siren#app-store-review)
 	- [Phased Releases](https://github.com/ArtSabintsev/Siren#phased-releases)
-- **Attribution**
+- [**Attribution**](https://github.com/ArtSabintsev/Siren#attribution)
 	- [Special Thanks](https://github.com/ArtSabintsev/Siren#special-thanks)
 	- [Creator](https://github.com/ArtSabintsev/Siren#creator)
 
@@ -165,7 +165,7 @@ Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning
 
 # App Submission
 
-## App Store Submissions
+## App Store Review
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
 ## Phased Releases

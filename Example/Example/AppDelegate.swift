@@ -157,9 +157,9 @@ private extension AppDelegate {
     /// Major, Minor, Patch, and Revision specific rules implementations.
     func updateSpecificRulesExample() {
         let siren = Siren.shared
-        siren.rulesManager = RulesManager(majorUpdateRules: .annoying,
-                                          minorUpdateRules: .default,
-                                          patchUpdateRules: .critical,
+        siren.rulesManager = RulesManager(majorUpdateRules: .critical,
+                                          minorUpdateRules: .annoying,
+                                          patchUpdateRules: .default,
                                           revisionUpdateRules: Rules(promptFrequency: .weekly, forAlertType: .option))
 
         siren.wail { (results, error) in
@@ -223,9 +223,9 @@ private extension AppDelegate {
                                                         alertTitle: "Please, Update Now!",
                                                         skipButtonTitle: "Click here to skip!",
                                                         forceLanguageLocalization: .spanish)
-        siren.rulesManager = RulesManager(majorUpdateRules: .annoying,
-                                          minorUpdateRules: .default,
-                                          patchUpdateRules: .critical,
+        siren.rulesManager = RulesManager(majorUpdateRules: .critical,
+                                          minorUpdateRules: .annoying,
+                                          patchUpdateRules: .default,
                                           revisionUpdateRules: .relaxed)
 
         siren.wail { (results, error) in

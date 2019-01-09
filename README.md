@@ -15,11 +15,11 @@
 - **Installation and Integration**
 	- [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
 	- [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples)
-- **Built-In Features**
+- **Device-Specific Checks**
 	- [Localization](https://github.com/ArtSabintsev/Siren#localization)
 	- [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
 - **Testing**
-	- [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
+	- [Testing Siren Locally](https://github.com/ArtSabintsev/Siren#testing-siren-locally)
 	- [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
 - **App Submission**
 	- [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
@@ -136,7 +136,7 @@ Siren also has plenty of customization options. All examples can be found in the
  
 **WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only after the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
 
-# Built-In Features
+# Device-Specific Checks
 
 ## Localization
 Siren is localized for the following languages:
@@ -157,7 +157,7 @@ If an app update is available, Siren checks to make sure that the version of iOS
 
 # Testing
 
-## Testing Siren
+## Testing Siren Locally
 Temporarily change the version string in Xcode (within the `.xcodeproj` file) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [App Store Connect](https://itunes.apple.com/app/id1234793120) app's bundleID: `com.apple.AppStoreConnect`.

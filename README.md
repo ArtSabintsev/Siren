@@ -6,23 +6,31 @@
 
 ---
 
-## Table of Contents
-- [About](https://github.com/ArtSabintsev/Siren#about)
-- [Features](https://github.com/ArtSabintsev/Siren#features)
-- [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
-- [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
-- [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples)
-- [Localization](https://github.com/ArtSabintsev/Siren#localization)
-- [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
-- [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
-- [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
-- [Phased Releases](https://github.com/ArtSabintsev/Siren#phased-releases)
-- [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
-- [Ports](https://github.com/ArtSabintsev/Siren#ports)
-- [Special Thanks](https://github.com/ArtSabintsev/Siren#special-thanks)
-- [Attribution](https://github.com/ArtSabintsev/Siren#created-and-maintained-by)
+# Table of Contents
+- **Meta**
+	- [About](https://github.com/ArtSabintsev/Siren#about)
+	- [Features](https://github.com/ArtSabintsev/Siren#features)
+	- [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots)
+ 	- [Ports](https://github.com/ArtSabintsev/Siren#ports)
+- **Installation and Integration**
+	- [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions)
+	- [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples)
+- **Built-In Features**
+	- [Localization](https://github.com/ArtSabintsev/Siren#localization)
+	- [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility)
+- **Testing**
+	- [Testing Siren](https://github.com/ArtSabintsev/Siren#testing-siren)
+	- [Words of Caution](https://github.com/ArtSabintsev/Siren#words-of-caution)
+- **App Submission**
+	- [App Store Review & Submissions](https://github.com/ArtSabintsev/Siren#app-store-submissions)
+	- [Phased Releases](https://github.com/ArtSabintsev/Siren#phased-releases)
+- **Attribution**
+	- [Special Thanks](https://github.com/ArtSabintsev/Siren#special-thanks)
+	- [Creator](https://github.com/ArtSabintsev/Siren#creator)
 
 ---
+
+# Meta
 
 ## About
 **Siren** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store.
@@ -48,7 +56,6 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 - [ ] Support for Third-Party/Homegrown Update Servers (not including TestFlight).
 - [ ] Increase code coverage with more unit tests and UI tests.
 
-
 ## Screenshots
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
@@ -57,6 +64,19 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 <img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480">
 
+## Ports
+- **Objective-C (iOS)**
+   - [**Harpy**](https://github.com/ArtSabintsev/Harpy)
+   - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
+   - As of December 2018, Harpy has been deprecated in favor of Siren.
+- **Java (Android)**
+   - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
+   - The Siren Swift library inspired the Java library.
+- **React Native (iOS)**
+   - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
+   - The Siren Swift library inspired the React Native library.
+
+# Installation and Integration
 
 ## Installation Instructions
 
@@ -114,8 +134,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
 Siren also has plenty of customization options. All examples can be found in the Example Project's [**AppDelegate**](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift) file. Uncomment the example you'd like to test.
  
-
 **WARNING**: Siren should ONLY be placed in [UIApplication.didFinishLaunchingWithOptions](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) and only after the `window?.makeKeyAndVisible()` call. Siren initializes a listener on [didBecomeActiveNotification](https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive) to perform version checks.
+
+# Built-In Features
 
 ## Localization
 Siren is localized for the following languages:
@@ -134,10 +155,17 @@ Siren.shared.presentationManager = PresentationManager(forceLanguageLocalization
 ## Device Compatibility
 If an app update is available, Siren checks to make sure that the version of iOS on the user's device is compatible with the one that is required by the app update. For example, if a user has iOS 11 installed on their device, but the app update requires iOS 12, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
 
+# Testing
+
 ## Testing Siren
 Temporarily change the version string in Xcode (within the `.xcodeproj` file) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [App Store Connect](https://itunes.apple.com/app/id1234793120) app's bundleID: `com.apple.AppStoreConnect`.
+
+## Words of Caution
+Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.
+
+# App Submission
 
 ## App Store Submissions
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
@@ -149,21 +177,7 @@ In 2017, Apple announced the [ability to rollout app updates gradually (a.k.a. P
 - You can set `showAlertAfterCurrentVersionHasBeenReleasedForDays` to `7`, and Siren will not prompt any users until the latest version is 7 days old, after the phased rollout is complete.
 - You can remotely disable Siren until the rollout is done using your own API / backend logic.
 
-## Words of Caution
-Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.
-
-## Ports
-- **Objective-C (iOS)**
-   - [**Harpy**](https://github.com/ArtSabintsev/Harpy)
-   - Siren was ported _from_ Harpy, as Siren and Harpy are maintained by the same developer.
-   - As of December 2018, Harpy has been deprecated in favor of Siren.
-- **Java (Android)**
-   - [**Egghead Games' Siren library**](https://github.com/eggheadgames/Siren)
-   - The Siren Swift library inspired the Java library.
-- **React Native (iOS)**
-   - [**Gant Laborde's Siren library**](https://github.com/GantMan/react-native-siren)
-   - The Siren Swift library inspired the React Native library.
-
+# Attribution 
 ## Special Thanks
 A massive shout-out and thank you goes to the following folks: 
 
@@ -171,5 +185,5 @@ A massive shout-out and thank you goes to the following folks:
 - All of [Harpy's Contributors](https://github.com/ArtSabintsev/Harpy/graphs/contributors) for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.
 - All of [Siren's Contributors](https://github.com/ArtSabintsev/Siren/graphs/contributors) for helping make Siren as powerful and bug-free as it currently is today.
 
-## Created and maintained by
+## Creator
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/)

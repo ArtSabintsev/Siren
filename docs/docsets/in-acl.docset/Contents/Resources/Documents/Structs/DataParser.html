@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DataParser Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/DataParser" class="dashAnchor"></a>
+    <a title="DataParser Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Siren Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Siren Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        DataParser Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Siren.html">Siren</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SirenViewController.html">SirenViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/AlertAction.html">AlertAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/KnownError.html">KnownError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/APIManager.html">APIManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AlertConstants.html">AlertConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DataParser.html">DataParser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Localization.html">Localization</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Localization/Language.html">– Language</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel.html">LookupModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/Results.html">– Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PresentationManager.html">PresentationManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Results.html">Results</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules.html">Rules</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules/AlertType.html">– AlertType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RulesManager.html">RulesManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RulesManager/UpdateType.html">– UpdateType</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DataParser</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">DataParser</span></code></pre>
+
+                </div>
+              </div>
+            <p>Version parsing functions for Siren.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10DataParserV22isAppStoreVersionNewer09installedG003appfG0SbSSSg_AGtFZ"></a>
+                    <a name="//apple_ref/swift/Method/isAppStoreVersionNewer(installedVersion:appStoreVersion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10DataParserV22isAppStoreVersionNewer09installedG003appfG0SbSSSg_AGtFZ">isAppStoreVersionNewer(installedVersion:appStoreVersion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks to see if the App Store version of the app is newer than the installed version.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">isAppStoreVersionNewer</span><span class="p">(</span><span class="nv">installedVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">appStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>installedVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The installed version of the app.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>appStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The App Store version of the app.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the App Store version is newer. Otherwise, <code>false</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10DataParserV30isUpdateCompatibleWithDeviceOS3forSbAA11LookupModelV_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/isUpdateCompatibleWithDeviceOS(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10DataParserV30isUpdateCompatibleWithDeviceOS3forSbAA11LookupModelV_tFZ">isUpdateCompatibleWithDeviceOS(for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validates that the latest version in the App Store is compatible with the device&rsquo;s current version of iOS.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">isUpdateCompatibleWithDeviceOS</span><span class="p">(</span><span class="k">for</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>model</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The iTunes Lookup Model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>true</code> if the latest version is compatible with the device&rsquo;s current version of iOS. Otherwise, <code>false</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10DataParserV14parseForUpdate19forInstalledVersion011andAppStoreI0AA12RulesManagerV0F4TypeOSSSg_AKtFZ"></a>
+                    <a name="//apple_ref/swift/Method/parseForUpdate(forInstalledVersion:andAppStoreVersion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10DataParserV14parseForUpdate19forInstalledVersion011andAppStoreI0AA12RulesManagerV0F4TypeOSSSg_AKtFZ">parseForUpdate(forInstalledVersion:andAppStoreVersion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of update that is returned from the API in relation to the verison of the app that is installed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">parseForUpdate</span><span class="p">(</span><span class="n">forInstalledVersion</span> <span class="nv">installedVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span>
+                           <span class="n">andAppStoreVersion</span> <span class="nv">appStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/RulesManager.html">RulesManager</a></span><span class="o">.</span><span class="kt">UpdateType</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>installedVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The installed version of the app.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>appStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The App Store version of the app.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The type of update in relation to the verison of the app that is installed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10DataParserV5split33_35354280B893AD05C0C27D0AD925B30FLL7versionSaySiGSS_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/split(version:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10DataParserV5split33_35354280B893AD05C0C27D0AD925B30FLL7versionSaySiGSS_tFZ">split(version:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Splits a version-formatted <code>String into an</code>[Int]`.</p>
+
+<p>Converts <code>&quot;a.b.c.d&quot;</code> into <code>[a, b, c, d]</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">split</span><span class="p">(</span><span class="nv">version</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The version formatted <code>String</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of integers representing a version of the app.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

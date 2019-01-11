@@ -183,9 +183,6 @@ private extension Siren {
 
         if rules.frequency == .immediately {
             presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
-        } else if UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch {
-            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = false
-            presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
         } else {
             guard let alertPresentationDate = alertPresentationDate else {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)

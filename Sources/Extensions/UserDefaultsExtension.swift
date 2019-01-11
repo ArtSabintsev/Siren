@@ -23,15 +23,6 @@ extension UserDefaults {
         case StoredSkippedVersion
     }
 
-    /// Sets and Gets a `UserDefault` around performing a version check on a subsequent launch.
-    static var shouldPerformVersionCheckOnSubsequentLaunch: Bool {
-        get {
-            return standard.bool(forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
-        } set {
-            standard.set(newValue, forKey: SirenKeys.PerformVersionCheckOnSubsequentLaunch.rawValue)
-        }
-    }
-
     /// Sets and Gets a `UserDefault` around storing a version that the user wants to skip updating.
     static var storedSkippedVersion: String? {
         get {

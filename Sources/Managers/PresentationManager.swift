@@ -182,7 +182,6 @@ extension PresentationManager {
 
         let action = UIAlertAction(title: title, style: .default) { _ in
             self.cleanUpAlertController()
-            UserDefaults.shouldPerformVersionCheckOnSubsequentLaunch = true
 
             handler?(.nextTime)
             return

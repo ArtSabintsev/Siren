@@ -66,10 +66,24 @@ public final class Siren: NSObject {
 public extension Siren {
     /// This method executes the Siren version checking and alert presentation flow.
     ///
-    /// - Parameter handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.
-    func wail(completion handler: ResultsHandler? = nil) {
+    ///
+    /// - Parameters:
+    ///   - shouldPerformVersionCheckonOnStateChange: Defaults to `true`.
+    ///      If `true`, observers on `didBecomeActive` and `didEnterBackground` are used
+    ///      to trigger the version check and alert presentation.
+    ///      If `false`, existing observers are unregistered and the version check and alert presentation
+    ///      only occur only when calling this method.
+    ///   - handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.
+    func wail(shouldPerformVersionCheckonOnStateChange: Bool = true,
+              completion handler: ResultsHandler? = nil) {
         resultsHandler = handler
-        addObservers()
+
+        if shouldPerformVersionCheckonOnStateChange {
+            addObservers()
+        } else {
+            removeObservers()
+            performVersionCheck()
+        }
     }
 
     /// Launches the AppStore in two situations when the user clicked the `Update` button in the UIAlertController modal.
@@ -222,10 +236,16 @@ private extension Siren {
 // MARK: - Observers
 
 private extension Siren {
-    /// Add app state observers
+    /// Add app state observers.
     func addObservers() {
         addForegroundObserver()
         addBackgroundObserver()
+    }
+
+    /// Remove app state observers.
+    func removeObservers() {
+        NotificationCenter.default.removeObserver(didBecomeActiveObserver)
+        NotificationCenter.default.removeObserver(didEnterBackgroundObserver)
     }
 
     /// Adds an observer that listens for app launching/relaunching.

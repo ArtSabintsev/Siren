@@ -62,6 +62,12 @@ public final class Siren: NSObject {
     private override init() {
         alertPresentationDate = UserDefaults.alertPresentationDate
     }
+
+    deinit {
+        presentationManager.alertController?.dismiss(animated: true, completion: nil)
+        removeForegroundObserver()
+        removeBackgroundObservers()
+    }
 }
 
 // MARK: - Public API Interface

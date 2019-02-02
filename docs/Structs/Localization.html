@@ -14,12 +14,12 @@
     <a title="Localization Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">in-acl Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Siren Docs</a> (99% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">in-acl Reference</a>
+        <a href="../index.html">Siren Reference</a>
         <img id="carat" src="../img/carat.png" />
         Localization Structure Reference
       </p>
@@ -33,6 +33,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/Siren.html">Siren</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SirenViewController.html">SirenViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -44,6 +47,32 @@
               <li class="nav-group-task">
                 <a href="../Enums/KnownError.html">KnownError</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PerformCheck.html">PerformCheck</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -53,7 +82,13 @@
                 <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Localization.html">Localization</a>
@@ -63,6 +98,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel.html">LookupModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel/Results.html">– Results</a>
@@ -135,6 +173,120 @@ by setting the forceLanguageLocalization property before calling checkVersion()<
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Language</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren12LocalizationV7appName33_2FDBEF65899237DA36B11FA5846AD0EALLSSvp"></a>
+                    <a name="//apple_ref/swift/Property/appName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren12LocalizationV7appName33_2FDBEF65899237DA36B11FA5846AD0EALLSSvp">appName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name of the app as defined by the <code>Info.plist</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">appName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren12LocalizationV13forceLanguage33_2FDBEF65899237DA36B11FA5846AD0EALLAC0D0OSgvp"></a>
+                    <a name="//apple_ref/swift/Property/forceLanguage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren12LocalizationV13forceLanguage33_2FDBEF65899237DA36B11FA5846AD0EALLAC0D0OSgvp">forceLanguage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Overrides the default localization of a user&rsquo;s device when presenting the update message and button titles in the alert.</p>
+
+<p>See the Siren.Localization.Language enum for more details.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">let</span> <span class="nv">forceLanguage</span><span class="p">:</span> <span class="kt"><a href="../Structs/Localization/Language.html">Language</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren12LocalizationV7appName016andForceLanguageB0ACSSSg_AC0G0OSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(appName:andForceLanguageLocalization:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren12LocalizationV7appName016andForceLanguageB0ACSSSg_AC0G0OSgtcfc">init(appName:andForceLanguageLocalization:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">appName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="n">andForceLanguageLocalization</span> <span class="nv">forceLanguage</span><span class="p">:</span> <span class="kt"><a href="../Structs/Localization/Language.html">Language</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>appName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Overrides the default name of the app. This is optional and defaults to the app that is defined in the <code>Info.plist</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forceLanguage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The language the alert to which the alert should be set. If <code>nil</code>, it falls back to the device&rsquo;s preferred locale.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -299,7 +451,7 @@ by setting the forceLanguageLocalization property before calling checkVersion()<
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-10)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

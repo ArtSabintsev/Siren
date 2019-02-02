@@ -14,12 +14,12 @@
     <a title="APIManager Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">in-acl Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Siren Docs</a> (99% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">in-acl Reference</a>
+        <a href="../index.html">Siren Reference</a>
         <img id="carat" src="../img/carat.png" />
         APIManager Structure Reference
       </p>
@@ -33,6 +33,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/Siren.html">Siren</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SirenViewController.html">SirenViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -44,6 +47,32 @@
               <li class="nav-group-task">
                 <a href="../Enums/KnownError.html">KnownError</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PerformCheck.html">PerformCheck</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -53,7 +82,13 @@
                 <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Localization.html">Localization</a>
@@ -63,6 +98,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel.html">LookupModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel/Results.html">– Results</a>
@@ -108,6 +146,92 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV9Constants33_8071139324B24E2065F4037045A8D960LLV"></a>
+                    <a name="//apple_ref/swift/Struct/Constants" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV9Constants33_8071139324B24E2065F4037045A8D960LLV">Constants</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constants used in the <code><a href="../Structs/APIManager.html">APIManager</a></code>.</p>
+
+                        <a href="../Structs/APIManager/Constants.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">struct</span> <span class="kt">Constants</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV17CompletionHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/CompletionHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV17CompletionHandlera">CompletionHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return results or errors obtained from performing a version check with Siren.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">CompletionHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">?,</span> <span class="kt"><a href="../Enums/KnownError.html">KnownError</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV11countryCodeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/countryCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV11countryCodeSSSgvp">countryCode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The region or country of an App Store in which the app is available.
+By default, all version check requests are performed against the US App Store.
+If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.</p>
+
+<p><a href="https://help.apple.com/app-store-connect/#/dev997f9cf7c">List of country codes</a></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">countryCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -189,10 +313,181 @@ If the app is not available in the US App Store, set it to the identifier of at 
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV26performVersionCheckRequest10completionyyAA11LookupModelVSg_AA10KnownErrorOSgtcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/performVersionCheckRequest(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV26performVersionCheckRequest10completionyyAA11LookupModelVSg_AA10KnownErrorOSgtcSg_tF">performVersionCheckRequest(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates and performs a URLRequest against the iTunes Lookup API.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">performVersionCheckRequest</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/APIManager.html#/s:5Siren10APIManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler for the iTunes Lookup API request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgyAA11LookupModelVSg_AA05KnownS0OSgtcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/processVersionCheckResults(withData:response:error:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgyAA11LookupModelVSg_AA05KnownS0OSgtcSgtF">processVersionCheckResults(withData:response:error:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Parses and maps the the results from the iTunes Lookup API request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">processVersionCheckResults</span><span class="p">(</span><span class="n">withData</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?,</span>
+                                        <span class="nv">response</span><span class="p">:</span> <span class="kt">URLResponse</span><span class="p">?,</span>
+                                        <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?,</span>
+                                        <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/APIManager.html#/s:5Siren10APIManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The JSON data returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>response</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The response metadata returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error returned from the request.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler to call once the results of the request has been processed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren10APIManagerV13makeITunesURL33_8071139324B24E2065F4037045A8D960LL10Foundation0E0VyKF"></a>
+                    <a name="//apple_ref/swift/Method/makeITunesURL()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren10APIManagerV13makeITunesURL33_8071139324B24E2065F4037045A8D960LL10Foundation0E0VyKF">makeITunesURL()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates the URL that points to the iTunes Lookup API.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    An error if the URL cannot be created.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">makeITunesURL</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">URL</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The iTunes Lookup API URL.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-10)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

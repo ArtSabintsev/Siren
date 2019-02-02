@@ -14,7 +14,7 @@
     <a title="Siren Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Siren Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Siren Docs</a> (99% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -46,6 +46,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/KnownError.html">KnownError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PerformCheck.html">PerformCheck</a>
               </li>
             </ul>
           </li>
@@ -347,6 +350,33 @@ skipping the update all together until another version is released.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5SirenAAC24willResignActiveObserverSo8NSObject_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/willResignActiveObserver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC24willResignActiveObserverSo8NSObject_pSgvp">willResignActiveObserver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The retained <code>NotificationCenter</code> observer that listens for <code>UIApplication.willResignActiveNotification</code> notifications.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">willResignActiveObserver</span><span class="p">:</span> <span class="kt">NSObjectProtocol</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5SirenAAC26didEnterBackgroundObserverSo8NSObject_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/didEnterBackgroundObserver" class="dashAnchor"></a>
                     <a class="token" href="#/s:5SirenAAC26didEnterBackgroundObserverSo8NSObject_pSgvp">didEnterBackgroundObserver</a>
@@ -479,6 +509,33 @@ skipping the update all together until another version is released.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@Siren@objc(cs)Siren(im)dealloc"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@Siren@objc(cs)Siren(im)dealloc">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -493,9 +550,9 @@ skipping the update all together until another version is released.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC4wail10completionyyAA7ResultsVSg_AA10KnownErrorOSgtcSg_tF"></a>
-                    <a name="//apple_ref/swift/Method/wail(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC4wail10completionyyAA7ResultsVSg_AA10KnownErrorOSgtcSg_tF">wail(completion:)</a>
+                    <a name="/s:5SirenAAC4wail12performCheck10completionyAA07PerformD0O_yAA7ResultsVSg_AA10KnownErrorOSgtcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/wail(performCheck:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC4wail12performCheck10completionyAA07PerformD0O_yAA7ResultsVSg_AA10KnownErrorOSgtcSgtF">wail(performCheck:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -510,7 +567,8 @@ skipping the update all together until another version is released.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">wail</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren.html#/s:5SirenAAC14ResultsHandlera">ResultsHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">wail</span><span class="p">(</span><span class="nv">performCheck</span><span class="p">:</span> <span class="kt"><a href="../Enums/PerformCheck.html">PerformCheck</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">onForeground</span><span class="p">,</span>
+          <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Classes/Siren.html#/s:5SirenAAC14ResultsHandlera">ResultsHandler</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -518,6 +576,18 @@ skipping the update all together until another version is released.</p>
                         <h4>Parameters</h4>
                         <table class="graybox">
                           <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>performCheck</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Defines how the version check flow is entered. Defaults to <code>.onForeground</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
                             <tr>
                               <td>
                                 <code>
@@ -801,46 +871,19 @@ Upon tapping a value on the alert view, a completion handler will return all rel
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Observers"></a>
-                <a name="//apple_ref/swift/Section/Observers" class="dashAnchor"></a>
-                <a href="#/Observers">
-                  <h3 class="section-name">Observers</h3>
+                <a name="/Add%20Observers"></a>
+                <a name="//apple_ref/swift/Section/Add Observers" class="dashAnchor"></a>
+                <a href="#/Add%20Observers">
+                  <h3 class="section-name">Add Observers</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC12addObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
-                    <a name="//apple_ref/swift/Method/addObservers()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC12addObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addObservers()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Add app state observers</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addObservers</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5SirenAAC21addForegroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
-                    <a name="//apple_ref/swift/Method/addForegroundObserver()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC21addForegroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addForegroundObserver()</a>
+                    <a name="/s:5SirenAAC26addDidBecomeActiveObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/addDidBecomeActiveObserver()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC26addDidBecomeActiveObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addDidBecomeActiveObserver()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -855,7 +898,7 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addForegroundObserver</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addDidBecomeActiveObserver</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -865,9 +908,36 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5SirenAAC21addBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
-                    <a name="//apple_ref/swift/Method/addBackgroundObserver()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5SirenAAC21addBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addBackgroundObserver()</a>
+                    <a name="/s:5SirenAAC27addWillResignActiveObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/addWillResignActiveObserver()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC27addWillResignActiveObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addWillResignActiveObserver()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addWillResignActiveObserver</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC29addDidEnterBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/addDidEnterBackgroundObserver()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC29addDidEnterBackgroundObserver33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">addDidEnterBackgroundObserver()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -882,7 +952,72 @@ Upon tapping a value on the alert view, a completion handler will return all rel
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addBackgroundObserver</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">addDidEnterBackgroundObserver</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Remove%20Observers"></a>
+                <a name="//apple_ref/swift/Section/Remove Observers" class="dashAnchor"></a>
+                <a href="#/Remove%20Observers">
+                  <h3 class="section-name">Remove Observers</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC25removeForegroundObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeForegroundObservers()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC25removeForegroundObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">removeForegroundObservers()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the observer that listens for app launching/relaunching.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeForegroundObservers</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5SirenAAC25removeBackgroundObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeBackgroundObservers()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5SirenAAC25removeBackgroundObservers33_7DFB1BC200A6C64FBED860A3A8153B65LLyyF">removeBackgroundObservers()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove the observers that list to app resignation and app backgrounding.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeBackgroundObservers</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -894,7 +1029,7 @@ Upon tapping a value on the alert view, a completion handler will return all rel
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-05)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -13,7 +13,7 @@
     <a title="Siren  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Siren Docs</a> (100% documented)</p>
+        <p><a href="index.html">Siren Docs</a> (99% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -45,6 +45,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Enums/KnownError.html">KnownError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PerformCheck.html">PerformCheck</a>
               </li>
             </ul>
           </li>
@@ -136,26 +139,51 @@
 <p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
 <hr>
-<h2 id='table-of-contents' class='heading'>Table of Contents</h2>
+<h1 id='table-of-contents' class='heading'>Table of Contents</h1>
+
+<ul>
+<li><a href="https://github.com/ArtSabintsev/Siren#meta"><strong>Meta</strong></a>
 
 <ul>
 <li><a href="https://github.com/ArtSabintsev/Siren#about">About</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#features">Features</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#screenshots">Screenshots</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#ports">Ports</a></li>
+</ul></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#installation-and-integration"><strong>Installation and Integration</strong></a>
+
+<ul>
 <li><a href="https://github.com/ArtSabintsev/Siren#installation-instructions">Installation Instructions</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#implementation-examples">Implementation Examples</a></li>
+</ul></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#device-specific-checks"><strong>Device-Specific Checks</strong></a>
+
+<ul>
 <li><a href="https://github.com/ArtSabintsev/Siren#localization">Localization</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#device-compatibility">Device Compatibility</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#testing-siren">Testing Siren</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#app-store-submissions">App Store Review &amp; Submissions</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phased Releases</a></li>
+</ul></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#testing"><strong>Testing</strong></a>
+
+<ul>
+<li><a href="https://github.com/ArtSabintsev/Siren#testing-siren-locally">Testing Siren Locally</a></li>
 <li><a href="https://github.com/ArtSabintsev/Siren#words-of-caution">Words of Caution</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#ports">Ports</a></li>
+</ul></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#app-submission"><strong>App Submission</strong></a>
+
+<ul>
+<li><a href="https://github.com/ArtSabintsev/Siren#app-store-review">App Store Review</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#phased-releases">Phased Releases</a></li>
+</ul></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#attribution"><strong>Attribution</strong></a>
+
+<ul>
 <li><a href="https://github.com/ArtSabintsev/Siren#special-thanks">Special Thanks</a></li>
-<li><a href="https://github.com/ArtSabintsev/Siren#created-and-maintained-by">Attribution</a></li>
+<li><a href="https://github.com/ArtSabintsev/Siren#creator">Creator</a></li>
+</ul></li>
 </ul>
 
 <hr>
+<h1 id='meta' class='heading'>Meta</h1>
 <h2 id='about' class='heading'>About</h2>
 
 <p><strong>Siren</strong> checks a user&rsquo;s currently installed version of your iOS app against the version that is currently available in the App Store.</p>
@@ -181,11 +209,7 @@
 </ul>
 <h3 id='future-features' class='heading'>Future Features</h3>
 
-<ul>
-<li>[ ] Present prompt only on WiFi if app is over the OTA limit.</li>
-<li>[ ] Support for Third-Party/Homegrown Update Servers (not including TestFlight).</li>
-<li>[ ] Increase code coverage with more unit tests and UI tests.</li>
-</ul>
+<p>A list of future development work can be found on <a href="https://github.com/ArtSabintsev/Siren/projects/1">Siren&rsquo;s Kanban Board</a>.</p>
 <h2 id='screenshots' class='heading'>Screenshots</h2>
 
 <ul>
@@ -196,6 +220,30 @@
 </ul>
 
 <p><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480"></p>
+<h2 id='ports' class='heading'>Ports</h2>
+
+<ul>
+<li><strong>Objective-C (iOS)</strong>
+
+<ul>
+<li><a href="https://github.com/ArtSabintsev/Harpy"><strong>Harpy</strong></a></li>
+<li>Siren was ported <em>from</em> Harpy, as Siren and Harpy are maintained by the same developer.</li>
+<li>As of December 2018, Harpy has been deprecated in favor of Siren.</li>
+</ul></li>
+<li><strong>Java (Android)</strong>
+
+<ul>
+<li><a href="https://github.com/eggheadgames/Siren"><strong>Egghead Games&rsquo; Siren library</strong></a></li>
+<li>The Siren Swift library inspired the Java library.</li>
+</ul></li>
+<li><strong>React Native (iOS)</strong>
+
+<ul>
+<li><a href="https://github.com/GantMan/react-native-siren"><strong>Gant Laborde&rsquo;s Siren library</strong></a></li>
+<li>The Siren Swift library inspired the React Native library.</li>
+</ul></li>
+</ul>
+<h1 id='installation-and-integration' class='heading'>Installation and Integration</h1>
 <h2 id='installation-instructions' class='heading'>Installation Instructions</h2>
 
 <table><thead>
@@ -271,6 +319,7 @@
 <p>Siren also has plenty of customization options. All examples can be found in the Example Project&rsquo;s <a href="https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift"><strong>AppDelegate</strong></a> file. Uncomment the example you&rsquo;d like to test.</p>
 
 <p><strong>WARNING</strong>: Siren should ONLY be placed in <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application">UIApplication.didFinishLaunchingWithOptions</a> and only after the <code>window?.makeKeyAndVisible()</code> call. Siren initializes a listener on <a href="https://developer.apple.com/reference/foundation/nsnotification.name/1622953-uiapplicationdidbecomeactive">didBecomeActiveNotification</a> to perform version checks.</p>
+<h1 id='device-specific-checks' class='heading'>Device-Specific Checks</h1>
 <h2 id='localization' class='heading'>Localization</h2>
 
 <p>Siren is localized for the following languages:</p>
@@ -286,12 +335,17 @@
 <h2 id='device-compatibility' class='heading'>Device Compatibility</h2>
 
 <p>If an app update is available, Siren checks to make sure that the version of iOS on the user&rsquo;s device is compatible with the one that is required by the app update. For example, if a user has iOS 11 installed on their device, but the app update requires iOS 12, an alert will not be shown. This takes care of the <em>false positive</em> case regarding app updating.</p>
-<h2 id='testing-siren' class='heading'>Testing Siren</h2>
+<h1 id='testing' class='heading'>Testing</h1>
+<h2 id='testing-siren-locally' class='heading'>Testing Siren Locally</h2>
 
 <p>Temporarily change the version string in Xcode (within the <code>.xcodeproj</code> file) to an older version than the one that&rsquo;s currently available in the App Store. Afterwards, build and run your app, and you should see the alert.</p>
 
 <p>If you currently don&rsquo;t have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the <a href="https://itunes.apple.com/app/id1234793120">App Store Connect</a> app&rsquo;s bundleID: <code>com.apple.AppStoreConnect</code>.</p>
-<h2 id='app-store-submissions' class='heading'>App Store Submissions</h2>
+<h2 id='words-of-caution' class='heading'>Words of Caution</h2>
+
+<p>Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of <code>showAlertAfterCurrentVersionHasBeenReleasedForDays</code>.</p>
+<h1 id='app-submission' class='heading'>App Submission</h1>
+<h2 id='app-store-review' class='heading'>App Store Review</h2>
 
 <p>The App Store reviewer will <strong>not</strong> see the alert. The version in the App Store will always be older than the version being reviewed.</p>
 <h2 id='phased-releases' class='heading'>Phased Releases</h2>
@@ -303,32 +357,7 @@
 <li>You can set <code>showAlertAfterCurrentVersionHasBeenReleasedForDays</code> to <code>7</code>, and Siren will not prompt any users until the latest version is 7 days old, after the phased rollout is complete.</li>
 <li>You can remotely disable Siren until the rollout is done using your own API / backend logic.</li>
 </ul>
-<h2 id='words-of-caution' class='heading'>Words of Caution</h2>
-
-<p>Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of <code>showAlertAfterCurrentVersionHasBeenReleasedForDays</code>.</p>
-<h2 id='ports' class='heading'>Ports</h2>
-
-<ul>
-<li><strong>Objective-C (iOS)</strong>
-
-<ul>
-<li><a href="https://github.com/ArtSabintsev/Harpy"><strong>Harpy</strong></a></li>
-<li>Siren was ported <em>from</em> Harpy, as Siren and Harpy are maintained by the same developer.</li>
-<li>As of December 2018, Harpy has been deprecated in favor of Siren.</li>
-</ul></li>
-<li><strong>Java (Android)</strong>
-
-<ul>
-<li><a href="https://github.com/eggheadgames/Siren"><strong>Egghead Games&rsquo; Siren library</strong></a></li>
-<li>The Siren Swift library inspired the Java library.</li>
-</ul></li>
-<li><strong>React Native (iOS)</strong>
-
-<ul>
-<li><a href="https://github.com/GantMan/react-native-siren"><strong>Gant Laborde&rsquo;s Siren library</strong></a></li>
-<li>The Siren Swift library inspired the React Native library.</li>
-</ul></li>
-</ul>
+<h1 id='attribution' class='heading'>Attribution</h1>
 <h2 id='special-thanks' class='heading'>Special Thanks</h2>
 
 <p>A massive shout-out and thank you goes to the following folks: </p>
@@ -338,14 +367,14 @@
 <li>All of <a href="https://github.com/ArtSabintsev/Harpy/graphs/contributors">Harpy&rsquo;s Contributors</a> for helping building the feature set from 2012-2015 that was used as the basis for the first version of Siren.</li>
 <li>All of <a href="https://github.com/ArtSabintsev/Siren/graphs/contributors">Siren&rsquo;s Contributors</a> for helping make Siren as powerful and bug-free as it currently is today.</li>
 </ul>
-<h2 id='created-and-maintained-by' class='heading'>Created and maintained by</h2>
+<h2 id='creator' class='heading'>Creator</h2>
 
 <p><a href="http://www.sabintsev.com/">Arthur Ariel Sabintsev</a></p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-05)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -14,12 +14,12 @@
     <a title="PresentationManager Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">in-acl Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Siren Docs</a> (99% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">in-acl Reference</a>
+        <a href="../index.html">Siren Reference</a>
         <img id="carat" src="../img/carat.png" />
         PresentationManager Structure Reference
       </p>
@@ -33,6 +33,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/Siren.html">Siren</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SirenViewController.html">SirenViewController</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -44,6 +47,32 @@
               <li class="nav-group-task">
                 <a href="../Enums/KnownError.html">KnownError</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Enums/PerformCheck.html">PerformCheck</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -53,7 +82,13 @@
                 <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/APIManager/Constants.html">– Constants</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Localization.html">Localization</a>
@@ -63,6 +98,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel.html">LookupModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/LookupModel/Results.html">– Results</a>
@@ -111,6 +149,276 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Siren19PresentationManagerV17CompletionHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/CompletionHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV17CompletionHandlera">CompletionHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return results or errors obtained from performing a version check with Siren.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">CompletionHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Enums/AlertAction.html">AlertAction</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV12localizationAA12LocalizationVvp"></a>
+                    <a name="//apple_ref/swift/Property/localization" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV12localizationAA12LocalizationVvp">localization</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The localization data structure that will be used to construct localized strings for the update alert.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">localization</span><span class="p">:</span> <span class="kt"><a href="../Structs/Localization.html">Localization</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV9tintColorSo7UIColorCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/tintColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV9tintColorSo7UIColorCSgvp">tintColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The tint color of the <code>UIAlertController</code> buttons.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV12alertMessageSSvp"></a>
+                    <a name="//apple_ref/swift/Property/alertMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV12alertMessageSSvp">alertMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The descriptive update message of the <code>UIAlertController</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">alertMessage</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV10alertTitleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/alertTitle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV10alertTitleSSvp">alertTitle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The main message of the <code>UIAlertController</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">alertTitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV19nextTimeButtonTitleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/nextTimeButtonTitle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV19nextTimeButtonTitleSSvp">nextTimeButtonTitle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <q>Next time</q> button text of the <code>UIAlertController</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">nextTimeButtonTitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV15skipButtonTitleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/skipButtonTitle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV15skipButtonTitleSSvp">skipButtonTitle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <q>Skip this version</q> button text of the <code>UIAlertController</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">skipButtonTitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV17updateButtonTitleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/updateButtonTitle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV17updateButtonTitleSSvp">updateButtonTitle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <q>Update</q> button text of the <code>UIAlertController</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">updateButtonTitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV15alertControllerSo07UIAlertE0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/alertController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV15alertControllerSo07UIAlertE0CSgvp">alertController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The instance of the <code>UIAlertController</code> used to present the update alert.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">alertController</span><span class="p">:</span> <span class="kt">UIAlertController</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV13updaterWindow33_CEF2109017F934DAB33AED8753BA096CLLSo8UIWindowCvp"></a>
+                    <a name="//apple_ref/swift/Property/updaterWindow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV13updaterWindow33_CEF2109017F934DAB33AED8753BA096CLLSo8UIWindowCvp">updaterWindow</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>UIWindow</code> instance that presents the <code><a href="../Classes/SirenViewController.html">SirenViewController</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">updaterWindow</span><span class="p">:</span> <span class="kt">UIWindow</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Siren19PresentationManagerV14alertTintColor7appName0D5Title0D7Message012updateButtonI008nextTimelI004skiplI025forceLanguageLocalizationACSo7UIColorCSg_SSSgS5SAA0R0V0Q0OSgtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(alertTintColor:appName:alertTitle:alertMessage:updateButtonTitle:nextTimeButtonTitle:skipButtonTitle:forceLanguageLocalization:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Siren19PresentationManagerV14alertTintColor7appName0D5Title0D7Message012updateButtonI008nextTimelI004skiplI025forceLanguageLocalizationACSo7UIColorCSg_SSSgS5SAA0R0V0Q0OSgtcfc">init(alertTintColor:appName:alertTitle:alertMessage:updateButtonTitle:nextTimeButtonTitle:skipButtonTitle:forceLanguageLocalization:)</a>
@@ -130,11 +438,11 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">alertTintColor</span> <span class="nv">tintColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
             <span class="nv">appName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-            <span class="nv">alertTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n">alertTitle</span><span class="p">,</span>
-            <span class="nv">alertMessage</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n">alertMessage</span><span class="p">,</span>
-            <span class="nv">updateButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n">updateButtonTitle</span><span class="p">,</span>
-            <span class="nv">nextTimeButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n">nextTimeButtonTitle</span><span class="p">,</span>
-            <span class="nv">skipButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n">skipButtonTitle</span><span class="p">,</span>
+            <span class="nv">alertTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV10alertTitleSSvp">alertTitle</a></span><span class="p">,</span>
+            <span class="nv">alertMessage</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV12alertMessageSSvp">alertMessage</a></span><span class="p">,</span>
+            <span class="nv">updateButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV17updateButtonTitleSSvp">updateButtonTitle</a></span><span class="p">,</span>
+            <span class="nv">nextTimeButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV19nextTimeButtonTitleSSvp">nextTimeButtonTitle</a></span><span class="p">,</span>
+            <span class="nv">skipButtonTitle</span><span class="p">:</span> <span class="kt">String</span>  <span class="o">=</span> <span class="kt"><a href="../Structs/AlertConstants.html">AlertConstants</a></span><span class="o">.</span><span class="n"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV15skipButtonTitleSSvp">skipButtonTitle</a></span><span class="p">,</span>
             <span class="n">forceLanguageLocalization</span> <span class="nv">forceLanguage</span><span class="p">:</span> <span class="kt"><a href="../Structs/Localization.html">Localization</a></span><span class="o">.</span><span class="kt">Language</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
@@ -282,10 +590,275 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV12presentAlert9withRules25forCurrentAppStoreVersion10completionyAA0G0V_SSyAA0E6ActionOcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/presentAlert(withRules:forCurrentAppStoreVersion:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV12presentAlert9withRules25forCurrentAppStoreVersion10completionyAA0G0V_SSyAA0E6ActionOcSgtF">presentAlert(withRules:forCurrentAppStoreVersion:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Constructs the localized update alert <code>UIAlertController</code> object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">presentAlert</span><span class="p">(</span><span class="n">withRules</span> <span class="nv">rules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span><span class="p">,</span>
+                           <span class="n">forCurrentAppStoreVersion</span> <span class="nv">currentAppStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                           <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rules</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The rules that are used to define the type of alert that should be presented.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>currentAppStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current version of the app in the App Store.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that returns the an <code><a href="../Enums/AlertAction.html">AlertAction</a></code> depending on the type of action the end-user took.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV17updateAlertAction33_CEF2109017F934DAB33AED8753BA096CLL10completionSo07UIAlertF0CyAA0eF0OcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/updateAlertAction(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV17updateAlertAction33_CEF2109017F934DAB33AED8753BA096CLL10completionSo07UIAlertF0CyAA0eF0OcSg_tF">updateAlertAction(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>UIAlertAction</code> that is executed when the <code>Update</code> option is selected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">updateAlertAction</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">UIAlertAction</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that returns the <code>.update</code> option.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>Update</code> alert action.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV19nextTimeAlertAction33_CEF2109017F934DAB33AED8753BA096CLL10completionSo07UIAlertG0CyAA0fG0OcSg_tF"></a>
+                    <a name="//apple_ref/swift/Method/nextTimeAlertAction(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV19nextTimeAlertAction33_CEF2109017F934DAB33AED8753BA096CLL10completionSo07UIAlertG0CyAA0fG0OcSg_tF">nextTimeAlertAction(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>UIAlertAction</code> that is executed when the <code>Next time</code> option is selected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">nextTimeAlertAction</span><span class="p">(</span><span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">UIAlertAction</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that returns the <code>.nextTime</code> option.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>Next time</code> alert action.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV15skipAlertAction33_CEF2109017F934DAB33AED8753BA096CLL25forCurrentAppStoreVersion10completionSo07UIAlertF0CSS_yAA0eF0OcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/skipAlertAction(forCurrentAppStoreVersion:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV15skipAlertAction33_CEF2109017F934DAB33AED8753BA096CLL25forCurrentAppStoreVersion10completionSo07UIAlertF0CSS_yAA0eF0OcSgtF">skipAlertAction(forCurrentAppStoreVersion:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>UIAlertAction</code> that is executed when the <code>Skip this version</code> option is selected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">skipAlertAction</span><span class="p">(</span><span class="n">forCurrentAppStoreVersion</span> <span class="nv">currentAppStoreVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">completion</span> <span class="nv">handler</span><span class="p">:</span> <span class="kt"><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV17CompletionHandlera">CompletionHandler</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">UIAlertAction</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>currentAppStoreVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current version of the app in the App Store.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The completion handler that returns the <code>.skip</code> option.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The <code>Skip this version</code> alert action.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Siren19PresentationManagerV22cleanUpAlertController33_CEF2109017F934DAB33AED8753BA096CLLyyF"></a>
+                    <a name="//apple_ref/swift/Method/cleanUpAlertController()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren19PresentationManagerV22cleanUpAlertController33_CEF2109017F934DAB33AED8753BA096CLLyyF">cleanUpAlertController()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes the <code><a href="../Structs/PresentationManager.html#/s:5Siren19PresentationManagerV15alertControllerSo07UIAlertE0CSgvp">alertController</a></code> from memory.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">cleanUpAlertController</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-01-10)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

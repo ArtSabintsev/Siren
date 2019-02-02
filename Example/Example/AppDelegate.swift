@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        defaultExample()
         defaultExampleUsingCompletionHandler()
+//        manualExampleWithCompletionHandler()
 //        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
 //        customMessagingPresentationExample()
@@ -52,6 +53,21 @@ private extension AppDelegate {
     /// results of the completion handler are returned or an error is returned.
     func defaultExampleUsingCompletionHandler() {
         Siren.shared.wail { (results, error) in
+            if let results = results {
+                print("AlertAction ", results.alertAction)
+                print("Localization ", results.localization)
+                print("LookupModel ", results.lookupModel)
+                print("UpdateType ", results.updateType)
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    /// Rather than waiting for `didBecomeActive` state changes (e.g., app launching/relaunching),
+    /// Siren's version checking and alert presentation methods will be triggered each time this method is called.
+    func manualExampleWithCompletionHandler() {
+        Siren.shared.wail(performCheck: .onDemand) { (results, error) in
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)

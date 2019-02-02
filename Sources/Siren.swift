@@ -65,7 +65,7 @@ public final class Siren: NSObject {
 
     deinit {
         presentationManager.alertController?.dismiss(animated: true, completion: nil)
-        removeForegroundObserver()
+        removeForegroundObservers()
         removeBackgroundObservers()
     }
 }
@@ -85,10 +85,10 @@ public extension Siren {
 
         switch performCheck {
         case .onDemand:
-            removeForegroundObserver()
+            removeForegroundObservers()
             performVersionCheck()
         case .onForeground:
-            addForegroundObserver()
+            addDidBecomeActiveObserver()
         }
 
         // Add background app state change observers.
@@ -247,7 +247,7 @@ private extension Siren {
 
 private extension Siren {
     /// Adds an observer that listens for app launching/relaunching.
-    func addForegroundObserver() {
+    func addDidBecomeActiveObserver() {
         guard didBecomeActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter
             .default
@@ -289,7 +289,7 @@ private extension Siren {
 
 private extension Siren {
     /// Removes the observer that listens for app launching/relaunching.
-    func removeForegroundObserver() {
+    func removeForegroundObservers() {
         NotificationCenter.default.removeObserver(didBecomeActiveObserver as Any)
         didBecomeActiveObserver = nil
     }
@@ -297,8 +297,9 @@ private extension Siren {
     /// Remove the observers that list to app resignation and app backgrounding.
     func removeBackgroundObservers() {
         NotificationCenter.default.removeObserver(willResignActiveObserver as Any)
-        NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
         willResignActiveObserver = nil
+
+        NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
         didEnterBackgroundObserver = nil
     }
 }

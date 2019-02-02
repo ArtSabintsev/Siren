@@ -63,6 +63,7 @@ public final class Siren: NSObject {
         alertPresentationDate = UserDefaults.alertPresentationDate
     }
 
+    /// The deinitialization method that clears out all observers,
     deinit {
         presentationManager.alertController?.dismiss(animated: true, completion: nil)
         removeForegroundObservers()
@@ -258,6 +259,7 @@ private extension Siren {
         }
     }
 
+    /// Adds an observer that listens for when the user enters the app switcher.
     func addWillResignActiveObserver() {
         guard willResignActiveObserver == nil else { return }
         didBecomeActiveObserver = NotificationCenter

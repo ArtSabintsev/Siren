@@ -50,7 +50,7 @@ public final class Siren: NSObject {
     var didEnterBackgroundObserver: NSObjectProtocol?
 
     /// The last date that an alert was presented to the user.
-    private var alertPresentationDate: Date?
+    private var alertPresentationDate: Date? = UserDefaults.alertPresentationDate
 
     /// The App Store's unique identifier for an app.
     private var appID: Int?
@@ -71,22 +71,23 @@ public extension Siren {
     ///
     ///
     /// - Parameters:
-    ///   - shouldPerformVersionCheckonOnStateChange: Defaults to `true`.
-    ///      If `true`, observers on `didBecomeActive` and `didEnterBackground` are used
-    ///      to trigger the version check and alert presentation.
-    ///      If `false`, existing observers are unregistered and the version check and alert presentation
-    ///      only occur only when calling this method.
+    ///   - performCheck: Defines how the version check flow is entered. Defaults to `.onForeground`.
     ///   - handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.
-    func wail(shouldPerformVersionCheckonOnStateChange: Bool = true,
+    func wail(performCheck: PerformCheck = .onForeground,
               completion handler: ResultsHandler? = nil) {
         resultsHandler = handler
 
-        if shouldPerformVersionCheckonOnStateChange {
-            addObservers()
-        } else {
-            removeObservers()
+        switch performCheck {
+        case .onDemand:
+            removeForegroundObserver()
             performVersionCheck()
+        case .onForeground:
+            addForegroundObserver()
         }
+
+        // Add background app state change observers.
+        addWillResignActiveObserver()
+        addDidEnterBackgroundObserver()
     }
 
     /// Launches the AppStore in two situations when the user clicked the `Update` button in the UIAlertController modal.
@@ -236,23 +237,9 @@ private extension Siren {
     }
 }
 
-// MARK: - Observers
+// MARK: - Add Observers
 
 private extension Siren {
-    /// Add app state observers.
-    func addObservers() {
-        addForegroundObserver()
-        addWillResignActiveObserver()
-        addBackgroundObserver()
-    }
-
-    /// Remove app state observers.
-    func removeObservers() {
-        NotificationCenter.default.removeObserver(didBecomeActiveObserver as Any)
-        NotificationCenter.default.removeObserver(addWillResignActiveObserver as Any)
-        NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
-    }
-
     /// Adds an observer that listens for app launching/relaunching.
     func addForegroundObserver() {
         guard didBecomeActiveObserver == nil else { return }
@@ -279,7 +266,7 @@ private extension Siren {
     }
 
     /// Adds an observer that listens for when the app is sent to the background.
-    func addBackgroundObserver() {
+    func addDidEnterBackgroundObserver() {
         guard didEnterBackgroundObserver == nil else { return }
         didEnterBackgroundObserver = NotificationCenter
             .default
@@ -289,5 +276,23 @@ private extension Siren {
                             guard let self = self else { return }
                             self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: - Remove Observers
+
+private extension Siren {
+    /// Removes the observer that listens for app launching/relaunching.
+    func removeForegroundObserver() {
+        NotificationCenter.default.removeObserver(didBecomeActiveObserver as Any)
+        didBecomeActiveObserver = nil
+    }
+
+    /// Remove the observers that list to app resignation and app backgrounding.
+    func removeBackgroundObservers() {
+        NotificationCenter.default.removeObserver(willResignActiveObserver as Any)
+        NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
+        willResignActiveObserver = nil
+        didEnterBackgroundObserver = nil
     }
 }

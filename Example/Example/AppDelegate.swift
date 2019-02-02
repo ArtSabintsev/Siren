@@ -64,10 +64,10 @@ private extension AppDelegate {
         }
     }
 
-    /// Rather than waiting for `didBecomeActive` and `didEnterBackground` state changes,
-    /// Siren will be triggered each time this method is called.
+    /// Rather than waiting for `didBecomeActive` state changes (e.g., app launching/relaunching),
+    /// Siren's version checking and alert presentation methods will be triggered each time this method is called.
     func manualExampleWithCompletionHandler() {
-        Siren.shared.wail(shouldPerformVersionCheckonOnStateChange: false) { (results, error) in
+        Siren.shared.wail(performCheck: .onDemand) { (results, error) in
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)

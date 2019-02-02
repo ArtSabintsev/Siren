@@ -75,7 +75,6 @@ public final class Siren: NSObject {
 public extension Siren {
     /// This method executes the Siren version checking and alert presentation flow.
     ///
-    ///
     /// - Parameters:
     ///   - performCheck: Defines how the version check flow is entered. Defaults to `.onForeground`.
     ///   - handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.

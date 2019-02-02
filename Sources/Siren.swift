@@ -43,6 +43,9 @@ public final class Siren: NSObject {
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didBecomeActiveNotification` notifications.
     var didBecomeActiveObserver: NSObjectProtocol?
 
+    /// The retained `NotificationCenter` observer that listens for `UIApplication.willResignActiveNotification` notifications.
+    var willResignActiveObserver: NSObjectProtocol?
+
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didEnterBackgroundNotification` notifications.
     var didEnterBackgroundObserver: NSObjectProtocol?
 
@@ -239,13 +242,15 @@ private extension Siren {
     /// Add app state observers.
     func addObservers() {
         addForegroundObserver()
+        addWillResignActiveObserver()
         addBackgroundObserver()
     }
 
     /// Remove app state observers.
     func removeObservers() {
-        NotificationCenter.default.removeObserver(didBecomeActiveObserver)
-        NotificationCenter.default.removeObserver(didEnterBackgroundObserver)
+        NotificationCenter.default.removeObserver(didBecomeActiveObserver as Any)
+        NotificationCenter.default.removeObserver(addWillResignActiveObserver as Any)
+        NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
     }
 
     /// Adds an observer that listens for app launching/relaunching.
@@ -258,6 +263,18 @@ private extension Siren {
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
                             self.performVersionCheck()
+        }
+    }
+
+    func addWillResignActiveObserver() {
+        guard willResignActiveObserver == nil else { return }
+        didBecomeActiveObserver = NotificationCenter
+            .default
+            .addObserver(forName: UIApplication.willResignActiveNotification,
+                         object: nil,
+                         queue: nil) { [weak self] _ in
+                            guard let self = self else { return }
+                            self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
         }
     }
 

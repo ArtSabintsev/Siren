@@ -9,6 +9,7 @@
 import Foundation
 
 /// The type of check to perform when Siren's `wail` method is performed.
+///
 /// - Note: Alert presentation will still respct the settings that are set
 ///   for `UpdatePromptFrequency` and `showAlertAfterCurrentVersionHasBeenReleasedForDays`
 public enum PerformCheck {

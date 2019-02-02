@@ -30,7 +30,7 @@ public enum KnownError: LocalizedError {
     case missingBundleID
     /// No new update available.
     case noUpdateAvailable
-    /// Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting  the `UpdatePromptFrequency.immediately` rule in `RulesManager`
+    /// Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting the `UpdatePromptFrequency.immediately` rule in `RulesManager`
     case recentlyPrompted
     /// The app has been released for X days, but Siren cannot prompt the user until Y (where Y > X) days have passed.
     case releasedTooSoon(daysSinceRelease: Int, releasedForDays: Int)
@@ -63,7 +63,7 @@ public enum KnownError: LocalizedError {
         case .noUpdateAvailable:
             return "\(KnownError.sirenError) No new update available."
         case .recentlyPrompted:
-            return "\(KnownError.sirenError) Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting  the `\(Rules.UpdatePromptFrequency.self).immediately` rule in `\(RulesManager.self)`"
+            return "\(KnownError.sirenError) Siren will not present an update alert if it performed one too recently. If you would like to present an alert every time Siren is called, please consider setting the `\(Rules.UpdatePromptFrequency.self).immediately` rule in `\(RulesManager.self)`"
         case .releasedTooSoon(let daysSinceRelease, let releasedForDays):
             return "\(KnownError.sirenError) The app has been released for \(daysSinceRelease) days, but Siren cannot prompt the user until \(releasedForDays) days have passed."
         case .skipVersionUpdate(let installedVersion, let appStoreVersion):

@@ -135,7 +135,7 @@ extension PresentationManager {
         }
 
         // If the alertType is .none, an alert will not be presented.
-        // If the `updaterWindow` is not hidden, than an alert is already presented.
+        // If the `updaterWindow` is not hidden, then an alert is already presented.
         // The latter prevents `UIAlertControllers` from appearing on top of each other.
         if rules.alertType != .none && updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)

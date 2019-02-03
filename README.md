@@ -144,7 +144,7 @@ If your user's device is set to one of the supported locales, an update message 
 You may want the update dialog to *always* appear in a certain language, ignoring the user's device-specific setting. You can enable it like so:
 
 ```swift
-// In this example, we force the `russian` language.
+// In this example, we force the `Russian` language.
 Siren.shared.presentationManager = PresentationManager(forceLanguageLocalization: .russian)
 ```
 

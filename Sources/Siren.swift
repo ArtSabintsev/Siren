@@ -196,7 +196,7 @@ private extension Siren {
         if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
             let currentInstalledVersion = currentInstalledVersion,
             !currentAppStoreVersion.isEmpty,
-            currentAppStoreVersion != previouslySkippedVersion {
+            currentAppStoreVersion == previouslySkippedVersion {
             resultsHandler?(nil, .skipVersionUpdate(installedVersion: currentInstalledVersion, appStoreVersion: currentAppStoreVersion))
                 return
         }

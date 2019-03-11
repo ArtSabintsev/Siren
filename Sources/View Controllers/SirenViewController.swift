@@ -6,7 +6,6 @@
 //  Copyright © 2017 Sabintsev iOS Projects. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /// `UIViewController` Extension for Siren

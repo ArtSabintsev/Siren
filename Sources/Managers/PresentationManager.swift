@@ -6,7 +6,7 @@
 //  Copyright © 2017 Sabintsev iOS Projects. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// PresentationManager for Siren
 public struct PresentationManager {

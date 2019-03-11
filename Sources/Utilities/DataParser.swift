@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sabintsev iOS Projects. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /// Version parsing functions for Siren.
 struct DataParser {

@@ -27,6 +27,14 @@ public struct Model {
     /// The latest version of the app.
     public let version: String
 
+    /// The initializer for the `public` facing Model type.
+    ///
+    /// - Parameters:
+    ///   - appID: The app's App ID.
+    ///   - currentVersionReleaseDate: The release date for the latest verison of the app.
+    ///   - minimumOSVersion: The minimum verison of iOS that the current verison of the app requires.
+    ///   - releaseNotes: The releases notes from the latest version of the app.
+    ///   - version: The latest version of the app.
     init(appID: Int,
          currentVersionReleaseDate: String,
          minimumOSVersion: String,

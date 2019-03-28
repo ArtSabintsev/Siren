@@ -85,6 +85,15 @@
                 <a href="../Structs/APIManager/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/APIModel.html">APIModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/APIModel/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/APIModel/Results.html">– Results</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
@@ -97,19 +106,10 @@
                 <a href="../Structs/Localization/Language.html">– Language</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/LookupModel.html">LookupModel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/LookupModel/Results.html">– Results</a>
+                <a href="../Structs/Model.html">Model</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/PresentationManager.html">PresentationManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/Results.html">Results</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Rules.html">Rules</a>
@@ -125,6 +125,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/RulesManager/UpdateType.html">– UpdateType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UpdateResults.html">UpdateResults</a>
               </li>
             </ul>
           </li>
@@ -194,7 +197,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">CompletionHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt"><a href="../Structs/LookupModel.html">LookupModel</a></span><span class="p">?,</span> <span class="kt"><a href="../Enums/KnownError.html">KnownError</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">typealias</span> <span class="kt">CompletionHandler</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/APIModel.html">APIModel</a></span><span class="p">,</span> <span class="kt"><a href="../Enums/KnownError.html">KnownError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
 
                         </div>
                       </div>
@@ -318,9 +321,9 @@ If the app is not available in the US App Store, set it to the identifier of at 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10APIManagerV26performVersionCheckRequest10completionyyAA11LookupModelVSg_AA10KnownErrorOSgtcSg_tF"></a>
+                    <a name="/s:5Siren10APIManagerV26performVersionCheckRequest10completionyys6ResultOyAA8APIModelVAA10KnownErrorOGcSg_tF"></a>
                     <a name="//apple_ref/swift/Method/performVersionCheckRequest(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10APIManagerV26performVersionCheckRequest10completionyyAA11LookupModelVSg_AA10KnownErrorOSgtcSg_tF">performVersionCheckRequest(completion:)</a>
+                    <a class="token" href="#/s:5Siren10APIManagerV26performVersionCheckRequest10completionyys6ResultOyAA8APIModelVAA10KnownErrorOGcSg_tF">performVersionCheckRequest(completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -364,9 +367,9 @@ If the app is not available in the US App Store, set it to the identifier of at 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgyAA11LookupModelVSg_AA05KnownS0OSgtcSgtF"></a>
+                    <a name="/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgys6ResultOyAA8APIModelVAA05KnownS0OGcSgtF"></a>
                     <a name="//apple_ref/swift/Method/processVersionCheckResults(withData:response:error:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgyAA11LookupModelVSg_AA05KnownS0OSgtcSgtF">processVersionCheckResults(withData:response:error:completion:)</a>
+                    <a class="token" href="#/s:5Siren10APIManagerV26processVersionCheckResults33_8071139324B24E2065F4037045A8D960LL8withData8response5error10completiony10Foundation0M0VSg_So13NSURLResponseCSgs5Error_pSgys6ResultOyAA8APIModelVAA05KnownS0OGcSgtF">processVersionCheckResults(withData:response:error:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -487,7 +490,7 @@ If the app is not available in the US App Store, set it to the identifier of at 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-09)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-03-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

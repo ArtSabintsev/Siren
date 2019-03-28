@@ -85,6 +85,15 @@
                 <a href="Structs/APIManager/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/APIModel.html">APIModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/APIModel/CodingKeys.html">– CodingKeys</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/APIModel/Results.html">– Results</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
@@ -97,19 +106,10 @@
                 <a href="Structs/Localization/Language.html">– Language</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/LookupModel.html">LookupModel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/LookupModel/CodingKeys.html">– CodingKeys</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/LookupModel/Results.html">– Results</a>
+                <a href="Structs/Model.html">Model</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/PresentationManager.html">PresentationManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Results.html">Results</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Rules.html">Rules</a>
@@ -125,6 +125,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/RulesManager/UpdateType.html">– UpdateType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/UpdateResults.html">UpdateResults</a>
               </li>
             </ul>
           </li>
@@ -239,6 +242,38 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Siren8APIModelV"></a>
+                    <a name="//apple_ref/swift/Struct/APIModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren8APIModelV">APIModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Model representing a selection of results from the iTunes Lookup API.</p>
+
+                        <a href="Structs/APIModel.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">APIModel</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Siren14AlertConstantsV"></a>
                     <a name="//apple_ref/swift/Struct/AlertConstants" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Siren14AlertConstantsV">AlertConstants</a>
@@ -303,9 +338,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren11LookupModelV"></a>
-                    <a name="//apple_ref/swift/Struct/LookupModel" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren11LookupModelV">LookupModel</a>
+                    <a name="/s:5Siren5ModelV"></a>
+                    <a name="//apple_ref/swift/Struct/Model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren5ModelV">Model</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -313,47 +348,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Model representing a selection of results from the iTunes Lookup API.</p>
+                        <p>The validated and unwrapped <code><a href="Structs/APIModel.html">APIModel</a></code>.
+This model is presented to the end user in Siren&rsquo;s completion handler.</p>
 
-                        <a href="Structs/LookupModel.html" class="slightly-smaller">See more</a>
+                        <a href="Structs/Model.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">LookupModel</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren7ResultsV"></a>
-                    <a name="//apple_ref/swift/Struct/Results" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren7ResultsV">Results</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The relevant metadata returned from Siren upon completing a successful version check.</p>
-
-                        <a href="Structs/Results.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Results</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Model</span></code></pre>
 
                         </div>
                       </div>
@@ -399,6 +403,38 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Siren13UpdateResultsV"></a>
+                    <a name="//apple_ref/swift/Struct/UpdateResults" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Siren13UpdateResultsV">UpdateResults</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The relevant metadata returned from Siren upon completing a successful version check.</p>
+
+                        <a href="Structs/UpdateResults.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UpdateResults</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Siren10DataParserV"></a>
                     <a name="//apple_ref/swift/Struct/DataParser" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Siren10DataParserV">DataParser</a>
@@ -429,7 +465,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-02-09)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-03-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

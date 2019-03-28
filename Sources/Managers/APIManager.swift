@@ -19,7 +19,7 @@ public struct APIManager {
     }
 
     /// Return results or errors obtained from performing a version check with Siren.
-    typealias CompletionHandler = (LookupModel?, KnownError?) -> Void
+    typealias CompletionHandler = (Result<APIModel, KnownError>) -> Void
 
     /// The region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
@@ -52,7 +52,7 @@ extension APIManager {
     /// - Parameter handler: The completion handler for the iTunes Lookup API request.
     func performVersionCheckRequest(completion handler: CompletionHandler?) {
         guard Bundle.main.bundleIdentifier != nil else {
-            handler?(nil, .missingBundleID)
+            handler?(.failure(.missingBundleID))
             return
         }
 
@@ -64,7 +64,7 @@ extension APIManager {
                 self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
             }.resume()
         } catch {
-            handler?(nil, .malformedURL)
+            handler?(.failure(.malformedURL))
         }
     }
 
@@ -80,25 +80,25 @@ extension APIManager {
                                             error: Error?,
                                             completion handler: CompletionHandler?) {
         if let error = error {
-            handler?(nil, .appStoreDataRetrievalFailure(underlyingError: error))
+            handler?(.failure(.appStoreDataRetrievalFailure(underlyingError: error)))
         } else {
             guard let data = data else {
-                handler?(nil, .appStoreDataRetrievalFailure(underlyingError: nil))
+                handler?(.failure(.appStoreDataRetrievalFailure(underlyingError: nil)))
                 return
             }
             do {
-                let lookupModel = try JSONDecoder().decode(LookupModel.self, from: data)
+                let apiModel = try JSONDecoder().decode(APIModel.self, from: data)
 
-                guard !lookupModel.results.isEmpty else {
-                    handler?(nil, .appStoreDataRetrievalEmptyResults)
+                guard !apiModel.results.isEmpty else {
+                    handler?(.failure(.appStoreDataRetrievalEmptyResults))
                     return
                 }
 
                 DispatchQueue.main.async {
-                    handler?(lookupModel, nil)
+                    handler?(.success(apiModel))
                 }
             } catch {
-                handler?(nil, .appStoreJSONParsingFailure(underlyingError: error))
+                handler?(.failure(.appStoreJSONParsingFailure(underlyingError: error)))
             }
         }
     }

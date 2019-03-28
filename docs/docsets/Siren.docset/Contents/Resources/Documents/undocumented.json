@@ -1,6 +1,12 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Arthur/Documents/oss/siren/Sources/Models/Model.swift",
+      "line": 30,
+      "symbol": "Model.init(appID:currentVersionReleaseDate:minimumOSVersion:releaseNotes:version:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/Arthur/Documents/oss/siren"
 }

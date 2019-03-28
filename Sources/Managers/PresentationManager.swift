@@ -123,9 +123,8 @@ extension PresentationManager {
         case .force:
             alertController?.addAction(updateAlertAction(completion: handler))
         case .option:
-
-            alertController?.addAction(updateAlertAction(completion: handler))
             alertController?.addAction(nextTimeAlertAction(completion: handler))
+            alertController?.addAction(updateAlertAction(completion: handler))
         case .skip:
             alertController?.addAction(updateAlertAction(completion: handler))
             alertController?.addAction(nextTimeAlertAction(completion: handler))

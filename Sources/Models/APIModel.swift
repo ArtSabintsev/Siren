@@ -1,5 +1,5 @@
 //
-//  LookupModel.swift
+//  APIModel.swift
 //  Siren
 //
 //  Created by Arthur Sabintsev on 8/6/17.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Model representing a selection of results from the iTunes Lookup API.
-public struct LookupModel: Decodable {
+struct APIModel: Decodable {
     /// Codable Coding Keys for the Top-Level iTunes Lookup API JSON response.
     private enum CodingKeys: String, CodingKey {
         /// The results JSON key.
@@ -17,10 +17,10 @@ public struct LookupModel: Decodable {
     }
 
     /// The array of results objects from the iTunes Lookup API.
-    public let results: [Results]
+    let results: [Results]
 
     /// The Results object from the the iTunes Lookup API.
-    public struct Results: Decodable {
+    struct Results: Decodable {
         ///  Codable Coding Keys for the Results array in the iTunes Lookup API JSON response.
         private enum CodingKeys: String, CodingKey {
             /// The appID JSON key.
@@ -36,18 +36,18 @@ public struct LookupModel: Decodable {
         }
 
         /// The app's App ID.
-        public let appID: Int
+        let appID: Int
 
         /// The release date for the latest verison of the app.
-        public let currentVersionReleaseDate: String
+        let currentVersionReleaseDate: String
 
         /// The minimum verison of iOS that the current verison of the app requires.
-        public let minimumOSVersion: String
+        let minimumOSVersion: String
 
         /// The releases notes from the latest version of the app.
-        public let releaseNotes: String?
+        let releaseNotes: String?
 
         /// The latest version of the app.
-        public let version: String
+        let version: String
     }
 }

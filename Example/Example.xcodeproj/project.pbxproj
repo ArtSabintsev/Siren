@@ -12,7 +12,7 @@
 		55EC364B1E6BB98A00726F13 /* Siren.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EC36491E6BB98A00726F13 /* Siren.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
 		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
-		8E01817921B379AF006DED05 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817821B379AF006DED05 /* Results.swift */; };
+		8E01817921B379AF006DED05 /* UpdateResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817821B379AF006DED05 /* UpdateResults.swift */; };
 		8E01817E21B379DD006DED05 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817B21B379DD006DED05 /* PresentationManager.swift */; };
 		8E01818021B379DD006DED05 /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817D21B379DD006DED05 /* RulesManager.swift */; };
 		8E01818221B37B43006DED05 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01818121B37B43006DED05 /* AlertAction.swift */; };
@@ -55,7 +55,7 @@
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Siren/Info.plist; sourceTree = "<group>"; };
 		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
-		8E01817821B379AF006DED05 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		8E01817821B379AF006DED05 /* UpdateResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateResults.swift; sourceTree = "<group>"; };
 		8E01817B21B379DD006DED05 /* PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		8E01817D21B379DD006DED05 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
 		8E01818121B37B43006DED05 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
@@ -165,10 +165,10 @@
 				8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */,
 				8E171DD7215B26B4006FBBCC /* APIModel.swift */,
 				8E171DE5215B2701006FBBCC /* Localization.swift */,
-				8E065BA022054E5A00188D4E /* PerformCheck.swift */,
-				8E01817821B379AF006DED05 /* Results.swift */,
-				4D729C4521A213B4002F73AB /* Rules.swift */,
 				8EEC4A09224C58C000D2C797 /* Model.swift */,
+				8E065BA022054E5A00188D4E /* PerformCheck.swift */,
+				4D729C4521A213B4002F73AB /* Rules.swift */,
+				8E01817821B379AF006DED05 /* UpdateResults.swift */,
 			);
 			name = Models;
 			path = ../../Sources/Models;
@@ -427,7 +427,7 @@
 				8E171DE2215B26B4006FBBCC /* APIModel.swift in Sources */,
 				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
 				8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */,
-				8E01817921B379AF006DED05 /* Results.swift in Sources */,
+				8E01817921B379AF006DED05 /* UpdateResults.swift in Sources */,
 				8EEF4AB121AA6DDF00C83AAA /* DataParser.swift in Sources */,
 				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,
 				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,

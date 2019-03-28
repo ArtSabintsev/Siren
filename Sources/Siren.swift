@@ -117,14 +117,14 @@ private extension Siren {
     /// Initiates the unidirectional version checking flow.
     func performVersionCheck() {
         alertPresentationDate = UserDefaults.alertPresentationDate
-        apiManager.performVersionCheckRequest { [weak self] (lookupModel, error) in
+        apiManager.performVersionCheckRequest { [weak self] (apiModel, error) in
             guard let self = self else { return }
-            guard let lookupModel = lookupModel, error == nil else {
+            guard let apiModel = apiModel, error == nil else {
                 self.resultsHandler?(nil, error)
                 return
             }
 
-            self.validate(model: lookupModel)
+            self.validate(apiModel: apiModel)
         }
     }
 
@@ -132,23 +132,24 @@ private extension Siren {
     /// to guarantee all the relevant data was returned before
     /// attempting to present an alert.
     ///
-    /// - Parameter model: The iTunes Lookup Model.
-    func validate(model: LookupModel) {
+    /// - Parameter apiModel: The iTunes Lookup Model.
+    func validate(apiModel: APIModel) {
         // Check if the latest version is compatible with current device's version of iOS.
-        guard DataParser.isUpdateCompatibleWithDeviceOS(for: model) else {
+        guard DataParser.isUpdateCompatibleWithDeviceOS(for: apiModel) else {
             resultsHandler?(nil, .appStoreOSVersionUnsupported)
             return
         }
 
         // Check and store the App ID .
-        guard let appID = model.results.first?.appID else {
+        guard let results = apiModel.results.first,
+            let appID = apiModel.results.first?.appID else {
             resultsHandler?(nil, .appStoreAppIDFailure)
             return
         }
         self.appID = appID
 
         // Check and store the current App Store version.
-        guard let currentAppStoreVersion = model.results.first?.version else {
+        guard let currentAppStoreVersion = apiModel.results.first?.version else {
             resultsHandler?(nil, .appStoreVersionArrayFailure)
             return
         }
@@ -161,7 +162,7 @@ private extension Siren {
         }
 
         // Check the release date of the current version.
-        guard let currentVersionReleaseDate = model.results.first?.currentVersionReleaseDate,
+        guard let currentVersionReleaseDate = apiModel.results.first?.currentVersionReleaseDate,
             let daysSinceRelease = Date.days(since: currentVersionReleaseDate) else {
                 resultsHandler?(nil, .currentVersionReleaseDate)
                 return
@@ -174,7 +175,13 @@ private extension Siren {
             return
         }
 
-        determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andLookupModel: model)
+        let model = Model(appID: appID,
+                          currentVersionReleaseDate: currentVersionReleaseDate,
+                          minimumOSVersion: results.minimumOSVersion,
+                          releaseNotes: results.releaseNotes,
+                          version: results.version)
+
+        determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andModel: model)
     }
 
     /// Determines if the update alert can be presented based on the
@@ -183,7 +190,7 @@ private extension Siren {
     /// - Parameters:
     ///   - currentAppStoreVersion: The curren version of the app in the App Store.
     ///   - model: The iTunes Lookup Model.
-    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andLookupModel model: LookupModel) {
+    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andModel model: Model) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
@@ -224,13 +231,13 @@ private extension Siren {
     ///   - updateType: The type of update that is available based on the version found in the App Store.
     func presentAlert(withRules rules: Rules,
                       forCurrentAppStoreVersion currentAppStoreVersion: String,
-                      model: LookupModel,
+                      model: Model,
                       andUpdateType updateType: RulesManager.UpdateType) {
         presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] alertAction in
             guard let self = self else { return }
             let results = Results(alertAction: alertAction,
                                   localization: self.presentationManager.localization,
-                                  lookupModel: model,
+                                  model: model,
                                   updateType: updateType)
             self.resultsHandler?(results, nil)
         }

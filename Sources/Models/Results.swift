@@ -17,8 +17,8 @@ public struct Results {
     /// The Siren-supported locale that was used for the string in the update alert.
     public let localization: Localization
 
-    /// The Swift-mapped API model, if a successful version check was performed.
-    public let lookupModel: LookupModel
+    /// The Swift-mapped and unwrapped API model, if a successful version check was performed.
+    public let model: Model
 
     /// The type of update that was returned for the API.
     public var updateType: RulesManager.UpdateType = .unknown

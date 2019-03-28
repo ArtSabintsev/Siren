@@ -56,7 +56,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -71,7 +71,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -88,7 +88,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -104,7 +104,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -121,7 +121,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -138,7 +138,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -162,7 +162,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -182,7 +182,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -204,7 +204,7 @@ private extension AppDelegate {
                 print("USE THE VALUES FROM THE `RESULTS` DATA STRUCTURE TO BUILD YOUR UPDATE ALERT WITH LOCALIZED STRINGS.")
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -223,7 +223,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)
@@ -248,7 +248,7 @@ private extension AppDelegate {
             if let results = results {
                 print("AlertAction ", results.alertAction)
                 print("Localization ", results.localization)
-                print("LookupModel ", results.lookupModel)
+                print("model ", results.model)
                 print("UpdateType ", results.updateType)
             } else if let error = error {
                 print(error.localizedDescription)

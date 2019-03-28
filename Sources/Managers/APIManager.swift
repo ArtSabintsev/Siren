@@ -19,7 +19,7 @@ public struct APIManager {
     }
 
     /// Return results or errors obtained from performing a version check with Siren.
-    typealias CompletionHandler = (LookupModel?, KnownError?) -> Void
+    typealias CompletionHandler = (APIModel?, KnownError?) -> Void
 
     /// The region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
@@ -87,15 +87,15 @@ extension APIManager {
                 return
             }
             do {
-                let lookupModel = try JSONDecoder().decode(LookupModel.self, from: data)
+                let apiModel = try JSONDecoder().decode(APIModel.self, from: data)
 
-                guard !lookupModel.results.isEmpty else {
+                guard !apiModel.results.isEmpty else {
                     handler?(nil, .appStoreDataRetrievalEmptyResults)
                     return
                 }
 
                 DispatchQueue.main.async {
-                    handler?(lookupModel, nil)
+                    handler?(apiModel, nil)
                 }
             } catch {
                 handler?(nil, .appStoreJSONParsingFailure(underlyingError: error))

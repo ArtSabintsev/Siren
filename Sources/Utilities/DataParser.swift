@@ -30,7 +30,7 @@ struct DataParser {
     ///
     /// - Parameter model: The iTunes Lookup Model.
     /// - Returns: `true` if the latest version is compatible with the device's current version of iOS. Otherwise, `false`.
-    static func isUpdateCompatibleWithDeviceOS(for model: LookupModel) -> Bool {
+    static func isUpdateCompatibleWithDeviceOS(for model: APIModel) -> Bool {
         guard let requiredOSVersion = model.results.first?.minimumOSVersion else {
             return false
         }

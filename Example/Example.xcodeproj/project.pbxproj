@@ -7,35 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D729C4421A20EDC002F73AB /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
-		4D729C4621A213B4002F73AB /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D729C4521A213B4002F73AB /* Rules.swift */; };
-		55EC364B1E6BB98A00726F13 /* Siren.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EC36491E6BB98A00726F13 /* Siren.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55EC365E1E6BB99B00726F13 /* Siren.bundle */; };
-		55EC36611E6BB99B00726F13 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC365F1E6BB99B00726F13 /* Siren.swift */; };
-		8E01817921B379AF006DED05 /* UpdateResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817821B379AF006DED05 /* UpdateResults.swift */; };
-		8E01817E21B379DD006DED05 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817B21B379DD006DED05 /* PresentationManager.swift */; };
-		8E01818021B379DD006DED05 /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01817D21B379DD006DED05 /* RulesManager.swift */; };
-		8E01818221B37B43006DED05 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01818121B37B43006DED05 /* AlertAction.swift */; };
-		8E065BA122054E5A00188D4E /* PerformCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E065BA022054E5A00188D4E /* PerformCheck.swift */; };
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
-		8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD1215B26B4006FBBCC /* BundleExtension.swift */; };
-		8E171DDF215B26B4006FBBCC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD2215B26B4006FBBCC /* DateExtension.swift */; };
-		8E171DE2215B26B4006FBBCC /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD7215B26B4006FBBCC /* APIModel.swift */; };
-		8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */; };
-		8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DDA215B26B4006FBBCC /* SirenViewController.swift */; };
-		8E171DE6215B2701006FBBCC /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DE5215B2701006FBBCC /* Localization.swift */; };
-		8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */; };
-		8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */; };
-		8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55EC36471E6BB98A00726F13 /* Siren.framework */; };
 		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
 		8EACA9721F380294003134CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9691F37F2D3003134CA /* Main.storyboard */; };
 		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
 		8EACA9741F38029B003134CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA9661F37F2D3003134CA /* AppDelegate.swift */; };
 		8EACA9751F38029B003134CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EACA96D1F37F2D3003134CA /* ViewController.swift */; };
-		8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF221B4DC0F009112A8 /* KnownError.swift */; };
-		8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE1FAF421B4E6B8009112A8 /* APIManager.swift */; };
-		8EEC4A0A224C58C000D2C797 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEC4A09224C58C000D2C797 /* Model.swift */; };
-		8EEF4AB121AA6DDF00C83AAA /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */; };
+		8EF9F879224EACB200B20545 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F861224EACB100B20545 /* APIManager.swift */; };
+		8EF9F87A224EACB200B20545 /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F862224EACB100B20545 /* RulesManager.swift */; };
+		8EF9F87B224EACB200B20545 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F863224EACB100B20545 /* PresentationManager.swift */; };
+		8EF9F87C224EACB200B20545 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F865224EACB100B20545 /* AlertAction.swift */; };
+		8EF9F87D224EACB200B20545 /* AlertConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F866224EACB100B20545 /* AlertConstants.swift */; };
+		8EF9F87E224EACB200B20545 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F867224EACB100B20545 /* Localization.swift */; };
+		8EF9F87F224EACB200B20545 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F868224EACB100B20545 /* Model.swift */; };
+		8EF9F880224EACB200B20545 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F869224EACB100B20545 /* APIModel.swift */; };
+		8EF9F881224EACB200B20545 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F86A224EACB100B20545 /* Rules.swift */; };
+		8EF9F882224EACB200B20545 /* PerformCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F86B224EACB100B20545 /* PerformCheck.swift */; };
+		8EF9F883224EACB200B20545 /* UpdateResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F86C224EACB100B20545 /* UpdateResults.swift */; };
+		8EF9F884224EACB200B20545 /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F86D224EACB100B20545 /* Siren.swift */; };
+		8EF9F885224EACB200B20545 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F86F224EACB100B20545 /* UIAlertControllerExtension.swift */; };
+		8EF9F886224EACB200B20545 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F870224EACB100B20545 /* BundleExtension.swift */; };
+		8EF9F887224EACB200B20545 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F871224EACB100B20545 /* UserDefaultsExtension.swift */; };
+		8EF9F888224EACB200B20545 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F872224EACB100B20545 /* DateExtension.swift */; };
+		8EF9F889224EACB200B20545 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F874224EACB200B20545 /* DataParser.swift */; };
+		8EF9F88A224EACB200B20545 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F875224EACB200B20545 /* KnownError.swift */; };
+		8EF9F88B224EACB200B20545 /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EF9F876224EACB200B20545 /* Siren.bundle */; };
+		8EF9F88C224EACB200B20545 /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F878224EACB200B20545 /* SirenViewController.swift */; };
+		8EF9F88E224EB00100B20545 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; };
+		8EF9F88F224EB00100B20545 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,29 +45,32 @@
 			remoteGlobalIDString = 8EC391801A58B465001C121E;
 			remoteInfo = "Sample App";
 		};
+		8EF9F890224EB00100B20545 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EC391791A58B465001C121E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EF9F852224EACA500B20545;
+			remoteInfo = Siren;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8EF9F892224EB00200B20545 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8EF9F88F224EB00100B20545 /* Siren.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		4D729C4521A213B4002F73AB /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
-		55EC36471E6BB98A00726F13 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55EC36491E6BB98A00726F13 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Siren/Info.plist; sourceTree = "<group>"; };
-		55EC365E1E6BB99B00726F13 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
-		55EC365F1E6BB99B00726F13 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
-		8E01817821B379AF006DED05 /* UpdateResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateResults.swift; sourceTree = "<group>"; };
-		8E01817B21B379DD006DED05 /* PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
-		8E01817D21B379DD006DED05 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
-		8E01818121B37B43006DED05 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
-		8E065BA022054E5A00188D4E /* PerformCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformCheck.swift; sourceTree = "<group>"; };
-		8E171DD1215B26B4006FBBCC /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		8E171DD2215B26B4006FBBCC /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		8E171DD7215B26B4006FBBCC /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
-		8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
-		8E171DDA215B26B4006FBBCC /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
-		8E171DE5215B2701006FBBCC /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConstants.swift; sourceTree = "<group>"; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EACA9681F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EACA96A1F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,22 +78,34 @@
 		8EACA96C1F37F2D3003134CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EACA96D1F37F2D3003134CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EC391811A58B465001C121E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EE1FAF221B4DC0F009112A8 /* KnownError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
-		8EE1FAF421B4E6B8009112A8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8EE6C74B1E6A0AE100DBE454 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenTests.swift; sourceTree = "<group>"; };
-		8EEC4A09224C58C000D2C797 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		8EF9F853224EACA500B20545 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF9F856224EACA500B20545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EF9F861224EACB100B20545 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8EF9F862224EACB100B20545 /* RulesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
+		8EF9F863224EACB100B20545 /* PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
+		8EF9F865224EACB100B20545 /* AlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		8EF9F866224EACB100B20545 /* AlertConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConstants.swift; sourceTree = "<group>"; };
+		8EF9F867224EACB100B20545 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		8EF9F868224EACB100B20545 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8EF9F869224EACB100B20545 /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		8EF9F86A224EACB100B20545 /* Rules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		8EF9F86B224EACB100B20545 /* PerformCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformCheck.swift; sourceTree = "<group>"; };
+		8EF9F86C224EACB100B20545 /* UpdateResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateResults.swift; sourceTree = "<group>"; };
+		8EF9F86D224EACB100B20545 /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = ../../Sources/Siren.swift; sourceTree = "<group>"; };
+		8EF9F86F224EACB100B20545 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		8EF9F870224EACB100B20545 /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		8EF9F871224EACB100B20545 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		8EF9F872224EACB100B20545 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8EF9F874224EACB200B20545 /* DataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		8EF9F875224EACB200B20545 /* KnownError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
+		8EF9F876224EACB200B20545 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
+		8EF9F878224EACB200B20545 /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
+		8EF9F88D224EACBF00B20545 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		55EC36431E6BB98A00726F13 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E3A6C011D07CB6F00A8B7CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,86 +117,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E641D2520C8B44B00908555 /* Siren.framework in Frameworks */,
+				8EF9F88E224EB00100B20545 /* Siren.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EF9F850224EACA500B20545 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		55EC36481E6BB98A00726F13 /* Siren */ = {
-			isa = PBXGroup;
-			children = (
-				55EC36491E6BB98A00726F13 /* Siren.h */,
-				55EC365F1E6BB99B00726F13 /* Siren.swift */,
-				55EC365E1E6BB99B00726F13 /* Siren.bundle */,
-				8E171DD0215B26B4006FBBCC /* Extensions */,
-				8E01817A21B379DD006DED05 /* Managers */,
-				8E171DD5215B26B4006FBBCC /* Models */,
-				8E171DCC215B26B4006FBBCC /* Utilities */,
-				8E171DD9215B26B4006FBBCC /* View Controllers */,
-			);
-			path = Siren;
-			sourceTree = "<group>";
-		};
-		8E01817A21B379DD006DED05 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				8EE1FAF421B4E6B8009112A8 /* APIManager.swift */,
-				8E01817B21B379DD006DED05 /* PresentationManager.swift */,
-				8E01817D21B379DD006DED05 /* RulesManager.swift */,
-			);
-			name = Managers;
-			path = ../../Sources/Managers;
-			sourceTree = "<group>";
-		};
-		8E171DCC215B26B4006FBBCC /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				8EEF4AB021AA6DDF00C83AAA /* DataParser.swift */,
-				8EE1FAF221B4DC0F009112A8 /* KnownError.swift */,
-			);
-			name = Utilities;
-			path = ../../Sources/Utilities;
-			sourceTree = "<group>";
-		};
-		8E171DD0215B26B4006FBBCC /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8E171DD1215B26B4006FBBCC /* BundleExtension.swift */,
-				8E171DD2215B26B4006FBBCC /* DateExtension.swift */,
-				8E171DD8215B26B4006FBBCC /* UIAlertControllerExtension.swift */,
-				8E171DED215B2D09006FBBCC /* UserDefaultsExtension.swift */,
-			);
-			name = Extensions;
-			path = ../../Sources/Extensions;
-			sourceTree = "<group>";
-		};
-		8E171DD5215B26B4006FBBCC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8E01818121B37B43006DED05 /* AlertAction.swift */,
-				8E5061EA21C9CDF000A28DE0 /* AlertConstants.swift */,
-				8E171DD7215B26B4006FBBCC /* APIModel.swift */,
-				8E171DE5215B2701006FBBCC /* Localization.swift */,
-				8EEC4A09224C58C000D2C797 /* Model.swift */,
-				8E065BA022054E5A00188D4E /* PerformCheck.swift */,
-				4D729C4521A213B4002F73AB /* Rules.swift */,
-				8E01817821B379AF006DED05 /* UpdateResults.swift */,
-			);
-			name = Models;
-			path = ../../Sources/Models;
-			sourceTree = "<group>";
-		};
-		8E171DD9215B26B4006FBBCC /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				8E171DDA215B26B4006FBBCC /* SirenViewController.swift */,
-			);
-			name = "View Controllers";
-			path = "../../Sources/View Controllers";
-			sourceTree = "<group>";
-		};
 		8E641D2420C8B44B00908555 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,9 +163,9 @@
 		8EC391781A58B465001C121E = {
 			isa = PBXGroup;
 			children = (
-				55EC36481E6BB98A00726F13 /* Siren */,
 				8EACA9651F37F2D3003134CA /* Example */,
 				8EE6C74A1E6A0AE100DBE454 /* Tests */,
+				8EF9F854224EACA500B20545 /* Siren */,
 				8EC391821A58B465001C121E /* Products */,
 				8E641D2420C8B44B00908555 /* Frameworks */,
 			);
@@ -228,7 +176,7 @@
 			children = (
 				8EC391811A58B465001C121E /* Example.app */,
 				8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */,
-				55EC36471E6BB98A00726F13 /* Siren.framework */,
+				8EF9F853224EACA500B20545 /* Siren.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,38 +190,93 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		8EF9F854224EACA500B20545 /* Siren */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F86D224EACB100B20545 /* Siren.swift */,
+				8EF9F876224EACB200B20545 /* Siren.bundle */,
+				8EF9F86E224EACB100B20545 /* Extensions */,
+				8EF9F860224EACB100B20545 /* Managers */,
+				8EF9F864224EACB100B20545 /* Models */,
+				8EF9F873224EACB200B20545 /* Utilities */,
+				8EF9F877224EACB200B20545 /* View Controllers */,
+				8EF9F88D224EACBF00B20545 /* Siren.h */,
+				8EF9F856224EACA500B20545 /* Info.plist */,
+			);
+			path = Siren;
+			sourceTree = "<group>";
+		};
+		8EF9F860224EACB100B20545 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F861224EACB100B20545 /* APIManager.swift */,
+				8EF9F862224EACB100B20545 /* RulesManager.swift */,
+				8EF9F863224EACB100B20545 /* PresentationManager.swift */,
+			);
+			name = Managers;
+			path = ../../Sources/Managers;
+			sourceTree = "<group>";
+		};
+		8EF9F864224EACB100B20545 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F865224EACB100B20545 /* AlertAction.swift */,
+				8EF9F866224EACB100B20545 /* AlertConstants.swift */,
+				8EF9F867224EACB100B20545 /* Localization.swift */,
+				8EF9F868224EACB100B20545 /* Model.swift */,
+				8EF9F869224EACB100B20545 /* APIModel.swift */,
+				8EF9F86A224EACB100B20545 /* Rules.swift */,
+				8EF9F86B224EACB100B20545 /* PerformCheck.swift */,
+				8EF9F86C224EACB100B20545 /* UpdateResults.swift */,
+			);
+			name = Models;
+			path = ../../Sources/Models;
+			sourceTree = "<group>";
+		};
+		8EF9F86E224EACB100B20545 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F86F224EACB100B20545 /* UIAlertControllerExtension.swift */,
+				8EF9F870224EACB100B20545 /* BundleExtension.swift */,
+				8EF9F871224EACB100B20545 /* UserDefaultsExtension.swift */,
+				8EF9F872224EACB100B20545 /* DateExtension.swift */,
+			);
+			name = Extensions;
+			path = ../../Sources/Extensions;
+			sourceTree = "<group>";
+		};
+		8EF9F873224EACB200B20545 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F874224EACB200B20545 /* DataParser.swift */,
+				8EF9F875224EACB200B20545 /* KnownError.swift */,
+			);
+			name = Utilities;
+			path = ../../Sources/Utilities;
+			sourceTree = "<group>";
+		};
+		8EF9F877224EACB200B20545 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F878224EACB200B20545 /* SirenViewController.swift */,
+			);
+			name = "View Controllers";
+			path = "../../Sources/View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		55EC36441E6BB98A00726F13 /* Headers */ = {
+		8EF9F84E224EACA500B20545 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC364B1E6BB98A00726F13 /* Siren.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		55EC36461E6BB98A00726F13 /* Siren */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 55EC36521E6BB98A00726F13 /* Build configuration list for PBXNativeTarget "Siren" */;
-			buildPhases = (
-				55EC36421E6BB98A00726F13 /* Sources */,
-				55EC36431E6BB98A00726F13 /* Frameworks */,
-				55EC36441E6BB98A00726F13 /* Headers */,
-				55EC36451E6BB98A00726F13 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Siren;
-			productName = Siren;
-			productReference = 55EC36471E6BB98A00726F13 /* Siren.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		8E3A6C031D07CB6F00A8B7CF /* Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "Tests" */;
@@ -300,15 +303,35 @@
 				8EC3917E1A58B465001C121E /* Frameworks */,
 				8EE3A3F81E6A0E470010BDCE /* SwiftLint */,
 				8EC3917F1A58B465001C121E /* Resources */,
+				8EF9F892224EB00200B20545 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8EF9F891224EB00100B20545 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Siren;
 			productReference = 8EC391811A58B465001C121E /* Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8EF9F852224EACA500B20545 /* Siren */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EF9F85C224EACA500B20545 /* Build configuration list for PBXNativeTarget "Siren" */;
+			buildPhases = (
+				8EF9F84E224EACA500B20545 /* Headers */,
+				8EF9F84F224EACA500B20545 /* Sources */,
+				8EF9F850224EACA500B20545 /* Frameworks */,
+				8EF9F851224EACA500B20545 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Siren;
+			productName = Siren;
+			productReference = 8EF9F853224EACA500B20545 /* Siren.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -321,11 +344,6 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Sabintsev iOS Projects";
 				TargetAttributes = {
-					55EC36461E6BB98A00726F13 = {
-						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-					};
 					8E3A6C031D07CB6F00A8B7CF = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1020;
@@ -348,6 +366,12 @@
 							};
 						};
 					};
+					8EF9F852224EACA500B20545 = {
+						CreatedOnToolsVersion = 10.2;
+						DevelopmentTeam = HT94948NDD;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 8EC3917C1A58B465001C121E /* Build configuration list for PBXProject "Example" */;
@@ -365,25 +389,16 @@
 			targets = (
 				8EC391801A58B465001C121E /* Example */,
 				8E3A6C031D07CB6F00A8B7CF /* Tests */,
-				55EC36461E6BB98A00726F13 /* Siren */,
+				8EF9F852224EACA500B20545 /* Siren */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		55EC36451E6BB98A00726F13 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55EC36601E6BB99B00726F13 /* Siren.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E3A6C021D07CB6F00A8B7CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D729C4421A20EDC002F73AB /* Siren.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +409,14 @@
 				8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */,
 				8EACA9721F380294003134CA /* Main.storyboard in Resources */,
 				8EACA9731F380294003134CA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8EF9F851224EACA500B20545 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EF9F88B224EACB200B20545 /* Siren.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,32 +440,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		55EC36421E6BB98A00726F13 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8E01818021B379DD006DED05 /* RulesManager.swift in Sources */,
-				8E01818221B37B43006DED05 /* AlertAction.swift in Sources */,
-				8E171DEE215B2D09006FBBCC /* UserDefaultsExtension.swift in Sources */,
-				8E171DE2215B26B4006FBBCC /* APIModel.swift in Sources */,
-				55EC36611E6BB99B00726F13 /* Siren.swift in Sources */,
-				8E5061EB21C9CDF000A28DE0 /* AlertConstants.swift in Sources */,
-				8E01817921B379AF006DED05 /* UpdateResults.swift in Sources */,
-				8EEF4AB121AA6DDF00C83AAA /* DataParser.swift in Sources */,
-				4D729C4621A213B4002F73AB /* Rules.swift in Sources */,
-				8E171DE4215B26B4006FBBCC /* SirenViewController.swift in Sources */,
-				8E065BA122054E5A00188D4E /* PerformCheck.swift in Sources */,
-				8E171DE6215B2701006FBBCC /* Localization.swift in Sources */,
-				8EE1FAF521B4E6B8009112A8 /* APIManager.swift in Sources */,
-				8E171DDE215B26B4006FBBCC /* BundleExtension.swift in Sources */,
-				8E01817E21B379DD006DED05 /* PresentationManager.swift in Sources */,
-				8E171DE3215B26B4006FBBCC /* UIAlertControllerExtension.swift in Sources */,
-				8EEC4A0A224C58C000D2C797 /* Model.swift in Sources */,
-				8EE1FAF321B4DC0F009112A8 /* KnownError.swift in Sources */,
-				8E171DDF215B26B4006FBBCC /* DateExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8E3A6C001D07CB6F00A8B7CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,6 +457,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8EF9F84F224EACA500B20545 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EF9F882224EACB200B20545 /* PerformCheck.swift in Sources */,
+				8EF9F87F224EACB200B20545 /* Model.swift in Sources */,
+				8EF9F885224EACB200B20545 /* UIAlertControllerExtension.swift in Sources */,
+				8EF9F88C224EACB200B20545 /* SirenViewController.swift in Sources */,
+				8EF9F886224EACB200B20545 /* BundleExtension.swift in Sources */,
+				8EF9F87D224EACB200B20545 /* AlertConstants.swift in Sources */,
+				8EF9F881224EACB200B20545 /* Rules.swift in Sources */,
+				8EF9F889224EACB200B20545 /* DataParser.swift in Sources */,
+				8EF9F879224EACB200B20545 /* APIManager.swift in Sources */,
+				8EF9F87E224EACB200B20545 /* Localization.swift in Sources */,
+				8EF9F880224EACB200B20545 /* APIModel.swift in Sources */,
+				8EF9F888224EACB200B20545 /* DateExtension.swift in Sources */,
+				8EF9F884224EACB200B20545 /* Siren.swift in Sources */,
+				8EF9F887224EACB200B20545 /* UserDefaultsExtension.swift in Sources */,
+				8EF9F87B224EACB200B20545 /* PresentationManager.swift in Sources */,
+				8EF9F883224EACB200B20545 /* UpdateResults.swift in Sources */,
+				8EF9F87C224EACB200B20545 /* AlertAction.swift in Sources */,
+				8EF9F88A224EACB200B20545 /* KnownError.swift in Sources */,
+				8EF9F87A224EACB200B20545 /* RulesManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -467,6 +490,11 @@
 			isa = PBXTargetDependency;
 			target = 8EC391801A58B465001C121E /* Example */;
 			targetProxy = 8E3A6C091D07CB6F00A8B7CF /* PBXContainerItemProxy */;
+		};
+		8EF9F891224EB00100B20545 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8EF9F852224EACA500B20545 /* Siren */;
+			targetProxy = 8EF9F890224EB00100B20545 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -490,66 +518,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		55EC36501E6BB98A00726F13 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Siren/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		55EC36511E6BB98A00726F13 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Siren/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		8E3A6C0B1D07CB6F00A8B7CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -693,7 +661,9 @@
 		8EC391A11A58B466001C121E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = HT94948NDD;
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -707,7 +677,9 @@
 		8EC391A21A58B466001C121E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = HT94948NDD;
 				INFOPLIST_FILE = "$(SRCROOT)/Siren/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -719,18 +691,84 @@
 			};
 			name = Release;
 		};
+		8EF9F85D224EACA500B20545 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Siren/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Siren;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8EF9F85E224EACA500B20545 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Siren/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Siren;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55EC36521E6BB98A00726F13 /* Build configuration list for PBXNativeTarget "Siren" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				55EC36501E6BB98A00726F13 /* Debug */,
-				55EC36511E6BB98A00726F13 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8E3A6C0D1D07CB6F00A8B7CF /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -754,6 +792,15 @@
 			buildConfigurations = (
 				8EC391A11A58B466001C121E /* Debug */,
 				8EC391A21A58B466001C121E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8EF9F85C224EACA500B20545 /* Build configuration list for PBXNativeTarget "Siren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EF9F85D224EACA500B20545 /* Debug */,
+				8EF9F85E224EACA500B20545 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

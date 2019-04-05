@@ -106,8 +106,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (= 1.5.3)
-  fourflusher (= 2.0.1)
+  cocoapods
   jazzy!
   rubygems-bundler
 

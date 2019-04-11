@@ -28,6 +28,7 @@ extension Date {
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: "en_US_POSIX")
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateformatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         guard let releaseDate = dateformatter.date(from: dateString) else {
             return nil

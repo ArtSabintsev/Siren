@@ -24,16 +24,19 @@ extension Date {
     ///
     /// - Parameter dateString: The source date string.
     /// - Returns: The amount of days passed since the source date.
-    static func days(since dateString: String) -> Int? {
+    static func days(since dateString: String,
+                     locale: Locale = Locale(identifier: "en_US_POSIX"),
+                     dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss'Z'",
+                     timeZone: TimeZone? = TimeZone(secondsFromGMT: 0)) -> Int? {
         let dateformatter = DateFormatter()
-        dateformatter.locale = Locale(identifier: "en_US_POSIX")
-        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        dateformatter.timeZone = TimeZone(secondsFromGMT: 0)
-
+        dateformatter.locale = locale
+        dateformatter.dateFormat = dateFormat
+        dateformatter.timeZone = timeZone
+        
         guard let releaseDate = dateformatter.date(from: dateString) else {
             return nil
         }
-
+        
         return days(since: releaseDate)
     }
 }

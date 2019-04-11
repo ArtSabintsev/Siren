@@ -33,10 +33,10 @@ extension Date {
         dateformatter.dateFormat = dateFormat
         dateformatter.timeZone = timeZone
         
-        guard let releaseDate = dateformatter.date(from: dateString) else {
+        guard let date = dateformatter.date(from: dateString) else {
             return nil
         }
         
-        return days(since: releaseDate)
+        return days(since: date)
     }
 }

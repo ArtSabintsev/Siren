@@ -22,7 +22,11 @@ extension Date {
 
     /// The amount of days passed from a specific source date string.
     ///
-    /// - Parameter dateString: The source date string.
+    /// - Parameters:
+    ///   - dateString: The source date string.
+    ///   - locale: The locale to be used for the date represented in the date string. Defaults to "en_US_POSIX".
+    ///   - dateFormat: The date format matching the date string. Defaults to "yyyy-MM-dd'T'HH:mm:ss'Z'".
+    ///   - timeZone: The time zone matching the date string. Defaults to GMT.
     /// - Returns: The amount of days passed since the source date.
     static func days(since dateString: String,
                      locale: Locale = Locale(identifier: "en_US_POSIX"),

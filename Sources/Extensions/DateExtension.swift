@@ -24,18 +24,12 @@ extension Date {
     ///
     /// - Parameters:
     ///   - dateString: The source date string.
-    ///   - locale: The locale to be used for the date represented in the date string. Defaults to "en_US_POSIX".
-    ///   - dateFormat: The date format matching the date string. Defaults to "yyyy-MM-dd'T'HH:mm:ss'Z'".
-    ///   - timeZone: The time zone matching the date string. Defaults to GMT.
     /// - Returns: The amount of days passed since the source date.
-    static func days(since dateString: String,
-                     locale: Locale = Locale(identifier: "en_US_POSIX"),
-                     dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss'Z'",
-                     timeZone: TimeZone? = TimeZone(secondsFromGMT: 0)) -> Int? {
+    static func days(since dateString: String) -> Int? {
         let dateformatter = DateFormatter()
-        dateformatter.locale = locale
-        dateformatter.dateFormat = dateFormat
-        dateformatter.timeZone = timeZone
+        dateformatter.locale = Locale(identifier: "en_US_POSIX")
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateformatter.timeZone = TimeZone(secondsFromGMT: 0)
         
         guard let date = dateformatter.date(from: dateString) else {
             return nil

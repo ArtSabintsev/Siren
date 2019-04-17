@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   # Version
-  s.version       = "5.0.0"
+  s.version       = "5.0.1"
 
   # Meta
   s.name         = "Siren"

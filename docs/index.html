@@ -139,7 +139,7 @@
             <h1 id='siren' class='heading'>Siren 🚨</h1>
 <h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='heading'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
 
-<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
+<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://github.com/JamitLabs/Accio"><img src="https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat" alt="Accio supported"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
 <hr>
 <h1 id='table-of-contents' class='heading'>Table of Contents</h1>
@@ -292,21 +292,23 @@
 </tr>
 </tbody></table>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span> <span class="c1"># Swift 4.2</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span> <span class="c1"># Swift 5.0</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift4.2'</span> <span class="c1"># Swift 4.2</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift4.1'</span> <span class="c1"># Swift 4.1</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.2'</span> <span class="c1"># Swift 3.2</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.1'</span> <span class="c1"># Swift 3.1</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift2.3'</span> <span class="c1"># Swift 2.3</span>
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
-<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="c1">// Swift 4.2</span>
+<pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="c1">// Swift 5.0</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift4.2"</span> <span class="c1">// Swift 4.2</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift4.1"</span> <span class="c1">// Swift 4.1</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift3.2"</span> <span class="c1">// Swift 3.2</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift3.1"</span> <span class="c1">// Swift 3.1</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift2.3"</span> <span class="c1">// Swift 2.3</span>
 </code></pre>
 <h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
-<pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/ArtSabintsev/Siren.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre>
 <h2 id='implementation-examples' class='heading'>Implementation Examples</h2>
 
@@ -392,8 +394,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-03-27)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-04-16)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

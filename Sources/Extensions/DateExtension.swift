@@ -22,17 +22,19 @@ extension Date {
 
     /// The amount of days passed from a specific source date string.
     ///
-    /// - Parameter dateString: The source date string.
+    /// - Parameters:
+    ///   - dateString: The source date string.
     /// - Returns: The amount of days passed since the source date.
     static func days(since dateString: String) -> Int? {
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: "en_US_POSIX")
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-
-        guard let releaseDate = dateformatter.date(from: dateString) else {
+        dateformatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        guard let date = dateformatter.date(from: dateString) else {
             return nil
         }
-
-        return days(since: releaseDate)
+        
+        return days(since: date)
     }
 }

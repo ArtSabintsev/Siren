@@ -5,6 +5,7 @@ notifications:
 
 before_install:
   - brew update
+  - gem install bundler
 env:
   - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
 script:

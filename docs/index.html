@@ -4,142 +4,160 @@
     <title>Siren  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
+
     <a title="Siren  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">Siren Docs</a> (100% documented)</p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">Siren Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Siren  Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Siren Docs
+        </a>
+         (100% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Siren Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Siren  Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/Siren.html">Siren</a>
+                <a class="nav-group-task-link" href="Classes/Siren.html">Siren</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/SirenViewController.html">SirenViewController</a>
+                <a class="nav-group-task-link" href="Classes/SirenViewController.html">SirenViewController</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enumerations</a>
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Enums/AlertAction.html">AlertAction</a>
+                <a class="nav-group-task-link" href="Enums/AlertAction.html">AlertAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/KnownError.html">KnownError</a>
+                <a class="nav-group-task-link" href="Enums/KnownError.html">KnownError</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/PerformCheck.html">PerformCheck</a>
+                <a class="nav-group-task-link" href="Enums/PerformCheck.html">PerformCheck</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/Bundle.html">Bundle</a>
+                <a class="nav-group-task-link" href="Extensions/Bundle.html">Bundle</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Bundle/Constants.html">– Constants</a>
+                <a class="nav-group-task-link" href="Extensions/Bundle/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Date.html">Date</a>
+                <a class="nav-group-task-link" href="Extensions/Date.html">Date</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/UIAlertController.html">UIAlertController</a>
+                <a class="nav-group-task-link" href="Extensions/UIAlertController.html">UIAlertController</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/UserDefaults.html">UserDefaults</a>
+                <a class="nav-group-task-link" href="Extensions/UserDefaults.html">UserDefaults</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
+                <a class="nav-group-task-link" href="Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/APIManager.html">APIManager</a>
+                <a class="nav-group-task-link" href="Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/APIManager/Constants.html">– Constants</a>
+                <a class="nav-group-task-link" href="Structs/APIManager/Constants.html">– Constants</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/APIModel.html">APIModel</a>
+                <a class="nav-group-task-link" href="Structs/APIModel.html">APIModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/APIModel/CodingKeys.html">– CodingKeys</a>
+                <a class="nav-group-task-link" href="Structs/APIModel/CodingKeys.html">– CodingKeys</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/APIModel/Results.html">– Results</a>
+                <a class="nav-group-task-link" href="Structs/APIModel/Results.html">– Results</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/AlertConstants.html">AlertConstants</a>
+                <a class="nav-group-task-link" href="Structs/AlertConstants.html">AlertConstants</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/DataParser.html">DataParser</a>
+                <a class="nav-group-task-link" href="Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Localization.html">Localization</a>
+                <a class="nav-group-task-link" href="Structs/Localization.html">Localization</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Localization/Language.html">– Language</a>
+                <a class="nav-group-task-link" href="Structs/Localization/Language.html">– Language</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Model.html">Model</a>
+                <a class="nav-group-task-link" href="Structs/Model.html">Model</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/PresentationManager.html">PresentationManager</a>
+                <a class="nav-group-task-link" href="Structs/PresentationManager.html">PresentationManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Rules.html">Rules</a>
+                <a class="nav-group-task-link" href="Structs/Rules.html">Rules</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Rules/AlertType.html">– AlertType</a>
+                <a class="nav-group-task-link" href="Structs/Rules/AlertType.html">– AlertType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
+                <a class="nav-group-task-link" href="Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/RulesManager.html">RulesManager</a>
+                <a class="nav-group-task-link" href="Structs/RulesManager.html">RulesManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/RulesManager/UpdateType.html">– UpdateType</a>
+                <a class="nav-group-task-link" href="Structs/RulesManager/UpdateType.html">– UpdateType</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/UpdateResults.html">UpdateResults</a>
+                <a class="nav-group-task-link" href="Structs/UpdateResults.html">UpdateResults</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             
             <h1 id='siren' class='heading'>Siren 🚨</h1>
 <h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='heading'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
 
-<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-4.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://github.com/JamitLabs/Accio"><img src="https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat" alt="Accio supported"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
+<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-5.0%2C%204.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://github.com/JamitLabs/Accio"><img src="https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat" alt="Accio supported"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
 <hr>
 <h1 id='table-of-contents' class='heading'>Table of Contents</h1>
@@ -391,14 +409,16 @@
 
 <p><a href="http://www.sabintsev.com/">Arthur Ariel Sabintsev</a></p>
 
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-04-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
+
       </article>
     </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-04-24)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>

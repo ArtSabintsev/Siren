@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Siren initializes a listener on `didBecomeActiveNotification` to perform version checks.
 
 //        defaultExample()
-        defaultExampleUsingCompletionHandler()
+        defaultExampleWithVersion()
+//        defaultExampleUsingCompletionHandler()
 //        manualExampleWithCompletionHandler()
 //        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
@@ -47,6 +48,14 @@ private extension AppDelegate {
     func defaultExample() {
         Siren.shared.wail()
     }
+    
+    func defaultExampleWithVersion() {
+        Siren.shared.wail(newerVersion: "1.1")
+        Siren.shared.rulesManager = RulesManager(majorUpdateRules: .critical,
+                                          minorUpdateRules: .annoying,
+                                          patchUpdateRules: .default,
+                                          revisionUpdateRules: .relaxed)
+    }
 
     /// The simplest implementation of Siren.
     /// All default rules are implemented and the
@@ -57,7 +66,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -73,7 +82,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -91,7 +100,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -108,7 +117,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -126,7 +135,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -144,7 +153,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -169,7 +178,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -190,7 +199,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -212,7 +221,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -232,7 +241,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -258,7 +267,7 @@ private extension AppDelegate {
             case .success(let updateResults):
                 print("AlertAction ", updateResults.alertAction)
                 print("Localization ", updateResults.localization)
-                print("Model ", updateResults.model)
+                print("Model ", updateResults.model as Any)
                 print("UpdateType ", updateResults.updateType)
             case .failure(let error):
                 print(error.localizedDescription)

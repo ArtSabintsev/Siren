@@ -16,13 +16,14 @@ struct DataParser {
     ///   - installedVersion: The installed version of the app.
     ///   - appStoreVersion: The App Store version of the app.
     /// - Returns: `true` if the App Store version is newer. Otherwise, `false`.
-    static func isAppStoreVersionNewer(installedVersion: String?, appStoreVersion: String?) -> Bool {
+    
+    static func isComparedVersionNewer(installedVersion: String?, comparedVersion: String?) -> Bool {
         guard let installedVersion = installedVersion,
-            let appStoreVersion = appStoreVersion,
-            (installedVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending) else {
+            let comparedVersion = comparedVersion,
+            (installedVersion.compare(comparedVersion, options: .numeric) == .orderedAscending) else {
                 return false
         }
-
+        
         return true
     }
 
@@ -77,6 +78,18 @@ struct DataParser {
         } else {
             return .unknown
         }
+    }
+    
+    /// checks if version string is in format x.x.x.x
+    static func isVersionStringInAppropriateFormat(versionString: String) -> Bool {
+        for (index,element) in versionString.enumerated() {
+            if element.isNumber || (element == "." && index != versionString.count - 1 && index != 0) {
+                continue
+            } else {
+                return false
+            }
+        }
+        return true
     }
 
     /// Splits a version-formatted `String into an `[Int]`.

@@ -154,8 +154,8 @@ private extension Siren {
         }
 
         // Check if the App Store version is newer than the currently installed version.
-        guard DataParser.isAppStoreVersionNewer(installedVersion: currentInstalledVersion,
-                                                appStoreVersion: currentAppStoreVersion) else {
+        guard DataParser.isComparedVersionNewer(installedVersion: currentInstalledVersion,
+                                                comparedVersion: currentAppStoreVersion) else {
             resultsHandler?(.failure(.noUpdateAvailable))
             return
         }
@@ -180,7 +180,7 @@ private extension Siren {
                           releaseNotes: results.releaseNotes,
                           version: results.version)
 
-        determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion: currentAppStoreVersion, andModel: model)
+        determineIfAlertPresentationRulesAreSatisfied(forComparedVersion: currentAppStoreVersion, andModel: model)
     }
 
     /// Determines if the update alert can be presented based on the
@@ -189,32 +189,32 @@ private extension Siren {
     /// - Parameters:
     ///   - currentAppStoreVersion: The curren version of the app in the App Store.
     ///   - model: The iTunes Lookup Model.
-    func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andModel model: Model) {
+    func determineIfAlertPresentationRulesAreSatisfied(forComparedVersion comparedVersion: String, andModel model: Model?) {
         // Did the user:
         // - request to skip being prompted with version update alerts for a specific version
         // - and is the latest App Store update the same version that was requested?
         if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
             let currentInstalledVersion = currentInstalledVersion,
-            !currentAppStoreVersion.isEmpty,
-            currentAppStoreVersion == previouslySkippedVersion {
+            !comparedVersion.isEmpty,
+            comparedVersion == previouslySkippedVersion {
             resultsHandler?(.failure(.skipVersionUpdate(installedVersion: currentInstalledVersion,
-                                                        appStoreVersion: currentAppStoreVersion)))
+                                                        appStoreVersion: comparedVersion)))
                 return
         }
 
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,
-                                                   andAppStoreVersion: currentAppStoreVersion)
+                                                   andAppStoreVersion: comparedVersion)
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
         if rules.frequency == .immediately {
-            presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
+            presentAlert(withRules: rules, forCurrentAppStoreVersion: comparedVersion, model: model, andUpdateType: updateType)
         } else {
             guard let alertPresentationDate = alertPresentationDate else {
-                presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
+                presentAlert(withRules: rules, forCurrentAppStoreVersion: comparedVersion, model: model, andUpdateType: updateType)
                 return
             }
             if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
-                presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
+                presentAlert(withRules: rules, forCurrentAppStoreVersion: comparedVersion, model: model, andUpdateType: updateType)
             } else {
                 resultsHandler?(.failure(.recentlyPrompted))
             }
@@ -231,7 +231,7 @@ private extension Siren {
     ///   - updateType: The type of update that is available based on the version found in the App Store.
     func presentAlert(withRules rules: Rules,
                       forCurrentAppStoreVersion currentAppStoreVersion: String,
-                      model: Model,
+                      model: Model?,
                       andUpdateType updateType: RulesManager.UpdateType) {
         presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] alertAction in
             guard let self = self else { return }
@@ -303,5 +303,26 @@ private extension Siren {
 
         NotificationCenter.default.removeObserver(didEnterBackgroundObserver as Any)
         didEnterBackgroundObserver = nil
+    }
+}
+
+public extension Siren {
+    func wail(newerVersion: String, completion handler: ResultsHandler? = nil) {
+        resultsHandler = handler
+        removeForegroundObservers()
+        addBackgroundObservers()
+        
+        guard DataParser.isVersionStringInAppropriateFormat(versionString: newerVersion) else {
+            resultsHandler?(.failure(.badVersionFormat))
+            return
+        }
+        
+        guard DataParser.isComparedVersionNewer(installedVersion: currentInstalledVersion,
+                                                comparedVersion: newerVersion) else {
+                                                    resultsHandler?(.failure(.noUpdateAvailable))
+                                                    return
+        }
+        
+        determineIfAlertPresentationRulesAreSatisfied(forComparedVersion: newerVersion, andModel: nil)
     }
 }

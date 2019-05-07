@@ -18,7 +18,7 @@ public struct UpdateResults {
     public let localization: Localization
 
     /// The Swift-mapped and unwrapped API model, if a successful version check was performed.
-    public let model: Model
+    public let model: Model?
 
     /// The type of update that was returned for the API.
     public var updateType: RulesManager.UpdateType = .unknown

@@ -82,9 +82,24 @@ struct DataParser {
     
     /// checks if version string is in format x.x.x.x
     static func isVersionStringInAppropriateFormat(versionString: String) -> Bool {
-        for (index,element) in versionString.enumerated() {
-            if element.isNumber || (element == "." && index != versionString.count - 1 && index != 0) {
+        guard !versionString.isEmpty else {
+            return false
+        }
+        
+        var arr = versionString.map( {$0} )
+        for (index,element) in arr.enumerated() {
+            if element.isNumber {
+                if element == "0" && index < arr.count - 1 && arr[index + 1].isNumber {
+                    return false
+                }
                 continue
+            } else if element == "." {
+                if index == 0 || index == arr.count - 1 {
+                    return false
+                } else if index < arr.count - 1 && arr[index + 1].isNumber {
+                    continue
+                }
+                return false
             } else {
                 return false
             }

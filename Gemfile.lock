@@ -1,8 +1,8 @@
 GIT
   remote: https://www.github.com/realm/jazzy.git
-  revision: 04b0cd720f6c25c1582939020757b96331e9472f
+  revision: e8744dbdb78814b237e8d57a82d40953560e9143
   specs:
-    jazzy (0.9.5)
+    jazzy (0.9.6)
       cocoapods (~> 1.5.3)
       mustache (~> 1.1.0)
       open4
@@ -95,7 +95,7 @@ GEM
       thread_safe (~> 0.1)
     xcinvoke (0.3.0)
       liferaft (~> 0.0.6)
-    xcodeproj (1.8.2)
+    xcodeproj (1.9.0)
       CFPropertyList (>= 2.3.3, < 4.0)
       atomos (~> 0.1.3)
       claide (>= 1.0.2, < 2.0)

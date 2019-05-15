@@ -222,9 +222,9 @@
 			children = (
 				8EF9F865224EACB100B20545 /* AlertAction.swift */,
 				8EF9F866224EACB100B20545 /* AlertConstants.swift */,
+				8EF9F869224EACB100B20545 /* APIModel.swift */,
 				8EF9F867224EACB100B20545 /* Localization.swift */,
 				8EF9F868224EACB100B20545 /* Model.swift */,
-				8EF9F869224EACB100B20545 /* APIModel.swift */,
 				8EF9F86A224EACB100B20545 /* Rules.swift */,
 				8EF9F86B224EACB100B20545 /* PerformCheck.swift */,
 				8EF9F86C224EACB100B20545 /* UpdateResults.swift */,

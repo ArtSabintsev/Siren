@@ -204,6 +204,12 @@ private extension Siren {
 
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,
                                                    andAppStoreVersion: currentAppStoreVersion)
+
+        guard updateType != .unknown else {
+            resultsHandler?(.failure(.noUpdateAvailable))
+            return
+        }
+
         let rules = rulesManager.loadRulesForUpdateType(updateType)
 
         if rules.frequency == .immediately {

@@ -204,20 +204,26 @@ private extension Siren {
 
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,
                                                    andAppStoreVersion: currentAppStoreVersion)
-        let rules = rulesManager.loadRulesForUpdateType(updateType)
+        do {
+            let rules = try rulesManager.loadRulesForUpdateType(updateType)
 
-        if rules.frequency == .immediately {
-            presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
-        } else {
-            guard let alertPresentationDate = alertPresentationDate else {
-                presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
-                return
-            }
-            if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
+            if rules.frequency == .immediately {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
-                resultsHandler?(.failure(.recentlyPrompted))
+                guard let alertPresentationDate = alertPresentationDate else {
+                    presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
+                    return
+                }
+                if Date.days(since: alertPresentationDate) >= rules.frequency.rawValue {
+                    presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
+                } else {
+                    resultsHandler?(.failure(.recentlyPrompted))
+                }
             }
+        } catch let error as KnownError {
+            resultsHandler?(.failure(error))
+        } catch { // This path should never be entered, but this silences an error.
+            resultsHandler?(.failure(.noUpdateAvailable))
         }
     }
 

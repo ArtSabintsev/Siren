@@ -9,6 +9,7 @@
 import UIKit
 
 /// The Siren Class.
+@objcMembers
 public final class Siren: NSObject {
     /// Return results or errors obtained from performing a version check with Siren.
     public typealias ResultsHandler = (Result<UpdateResults, KnownError>) -> Void

@@ -29,9 +29,12 @@ extension Bundle {
     /// Fetches the current verison of the app.
     ///
     /// - Returns: The current installed version of the app.
-    final class func version() -> String? {
-        return Bundle.main.object(forInfoDictionaryKey: Constants.shortVersionString) as? String
-    }
+    final class func version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        let build = dictionary["CFBundleVersion"] as! String
+        return "\(version).\(build)"
+    } 
 
     /// Returns the localized string for a given default string.
     ///

@@ -33,9 +33,6 @@
               <li class="nav-group-task">
                 <a href="../Classes/Siren.html">Siren</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/SirenViewController.html">SirenViewController</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -53,51 +50,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Extensions/Bundle.html">Bundle</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Bundle/Constants.html">– Constants</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Date.html">Date</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UIAlertController.html">UIAlertController</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/UserDefaults/SirenKeys.html">– SirenKeys</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/APIManager.html">APIManager</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/APIManager/Constants.html">– Constants</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/APIModel.html">APIModel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/APIModel/CodingKeys.html">– CodingKeys</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/APIModel/Results.html">– Results</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/AlertConstants.html">AlertConstants</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/DataParser.html">DataParser</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Localization.html">Localization</a>
@@ -152,144 +111,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Siren12RulesManagerV15releasedForDaysSivp"></a>
-                    <a name="//apple_ref/swift/Property/releasedForDays" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV15releasedForDaysSivp">releasedForDays</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The alert will only show up if the current version has already been released for X days.</p>
-
-<p>This value defaults to 1 day (in <code>RulesManager</code>&lsquo;s initializer) to avoid an issue where
-Apple updates the JSON faster than the app binary propogates to the App Store.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">releasedForDays</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren12RulesManagerV011majorUpdateB0AA0B0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/majorUpdateRules" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV011majorUpdateB0AA0B0Vvp">majorUpdateRules</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code><a href="../Structs/Rules.html">Rules</a></code> that should be used when the App Store version of the app signifies that it is a <strong>major</strong> version update (A.b.c.d).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">majorUpdateRules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren12RulesManagerV011minorUpdateB0AA0B0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/minorUpdateRules" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV011minorUpdateB0AA0B0Vvp">minorUpdateRules</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code><a href="../Structs/Rules.html">Rules</a></code> that should be used when the App Store version of the app signifies that it is a <strong>minor</strong> version update (a.B.c.d).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">minorUpdateRules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren12RulesManagerV011patchUpdateB0AA0B0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/patchUpdateRules" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV011patchUpdateB0AA0B0Vvp">patchUpdateRules</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code><a href="../Structs/Rules.html">Rules</a></code> that should be used when the App Store version of the app signifies that it is a <strong>patch</strong> version update (a.b.C.d).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">patchUpdateRules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren12RulesManagerV014revisionUpdateB0AA0B0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/revisionUpdateRules" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV014revisionUpdateB0AA0B0Vvp">revisionUpdateRules</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The <code><a href="../Structs/Rules.html">Rules</a></code> that should be used when the App Store version of the app signifies that it is a <strong>revision</strong> version update (a.b.c.D).</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">revisionUpdateRules</span><span class="p">:</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5Siren12RulesManagerV011majorUpdateB005minoreB005patcheB008revisioneB050showAlertAfterCurrentVersionHasBeenReleasedForDaysAcA0B0V_A3JSitcfc"></a>
                     <a name="//apple_ref/swift/Method/init(majorUpdateRules:minorUpdateRules:patchUpdateRules:revisionUpdateRules:showAlertAfterCurrentVersionHasBeenReleasedForDays:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Siren12RulesManagerV011majorUpdateB005minoreB005patcheB008revisioneB050showAlertAfterCurrentVersionHasBeenReleasedForDaysAcA0B0V_A3JSitcfc">init(majorUpdateRules:minorUpdateRules:patchUpdateRules:revisionUpdateRules:showAlertAfterCurrentVersionHasBeenReleasedForDays:)</a>
@@ -303,12 +124,12 @@ Apple updates the JSON faster than the app binary propogates to the App Store.</
                         <p>Initializer that sets update-specific <code><a href="../Structs/Rules.html">Rules</a></code> for all updates (e.g., major, minor, patch, revision).
 This means that each of the four update types can have their own specific update rules.</p>
 
-<p>By default, the <code><a href="../Structs/RulesManager.html#/s:5Siren12RulesManagerV15releasedForDaysSivp">releasedForDays</a></code> parameter delays the update alert from being presented for <em>1 day</em>
+<p>By default, the <code>releasedForDays</code> parameter delays the update alert from being presented for <em>1 day</em>
 to avoid an issue where the <em>iTunes Lookup</em> API response is updated faster than the time it takes for the binary
 to become available on App Store CDNs across all regions. Usually it takes 6-24 hours, hence the <em>1 day</em> delay.</p>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
-    <p>Setting <code><a href="../Structs/RulesManager.html#/s:5Siren12RulesManagerV15releasedForDaysSivp">releasedForDays</a></code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn&rsquo;t available.
+    <p>Setting <code>releasedForDays</code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn&rsquo;t available.
 If this value is set to <em>0 days</em>, and an <code>AlertType</code> of type <code>.force</code> is set, it will cause your app to infinitely send the
 end-user to the App Store to download a version that&rsquo;s not there and lock them out of your application until the binary is
 is available to be downloaded.</p>
@@ -378,12 +199,12 @@ is available to be downloaded.</p>
                         <p>Initializer that sets the same update <code><a href="../Structs/Rules.html">Rules</a></code> for all types of updates (e.g., major, minor, patch, revision).
 This means that all four update types will use the same presentation rules.</p>
 
-<p>By default, the <code><a href="../Structs/RulesManager.html#/s:5Siren12RulesManagerV15releasedForDaysSivp">releasedForDays</a></code> parameter delays the update alert from being presented for <em>1 day</em>
+<p>By default, the <code>releasedForDays</code> parameter delays the update alert from being presented for <em>1 day</em>
 to avoid an issue where the <em>iTunes Lookup</em> API response is updated faster than the time it takes for the binary
 to become available on App Store CDNs across all regions. Usually it takes 6-24 hours, hence the <em>1 day</em> delay.</p>
 <div class="aside aside-warning">
     <p class="aside-title">Warning</p>
-    <p>Setting <code><a href="../Structs/RulesManager.html#/s:5Siren12RulesManagerV15releasedForDaysSivp">releasedForDays</a></code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn&rsquo;t available.
+    <p>Setting <code>releasedForDays</code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn&rsquo;t available.
 If this value is set to <em>0 days</em>, and an <code>AlertType</code> of type <code>.force</code> is set, it will cause your app to infinitely send the
 end-user to the App Store to download a version that&rsquo;s not there and lock them out of your application until the binary is
 is available to be downloaded.</p>
@@ -430,42 +251,6 @@ is available to be downloaded.</p>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Siren12RulesManagerV04loadB13ForUpdateTypeyAA0B0VAC0fG0OKF"></a>
-                    <a name="//apple_ref/swift/Method/loadRulesForUpdateType(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Siren12RulesManagerV04loadB13ForUpdateTypeyAA0B0VAC0fG0OKF">loadRulesForUpdateType(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns the appropriate update rules based on the type of version that is returned from the API.</p>
-<div class="aside aside-throws">
-    <p class="aside-title">Throws</p>
-    The <code>noUpdateAvailable</code> error since this is the only way a valie of <code>unknown</code> can occur.
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadRulesForUpdateType</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Structs/RulesManager/UpdateType.html">UpdateType</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/Rules.html">Rules</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The appropriate rule based on the type of app update that is returned by the API.</p>
                       </div>
                     </section>
                   </div>
@@ -552,7 +337,7 @@ the appropriate ruleset is used to present the update alert.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-05-14)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-07-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

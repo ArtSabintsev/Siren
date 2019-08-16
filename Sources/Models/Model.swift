@@ -15,10 +15,10 @@ public struct Model {
     /// The app's App ID.
     public let appID: Int
 
-    /// The release date for the latest verison of the app.
+    /// The release date for the latest version of the app.
     public let currentVersionReleaseDate: String
 
-    /// The minimum verison of iOS that the current verison of the app requires.
+    /// The minimum version of iOS that the current version of the app requires.
     public let minimumOSVersion: String
 
     /// The releases notes from the latest version of the app.
@@ -31,8 +31,8 @@ public struct Model {
     ///
     /// - Parameters:
     ///   - appID: The app's App ID.
-    ///   - currentVersionReleaseDate: The release date for the latest verison of the app.
-    ///   - minimumOSVersion: The minimum verison of iOS that the current verison of the app requires.
+    ///   - currentVersionReleaseDate: The release date for the latest version of the app.
+    ///   - minimumOSVersion: The minimum version of iOS that the current version of the app requires.
     ///   - releaseNotes: The releases notes from the latest version of the app.
     ///   - version: The latest version of the app.
     init(appID: Int,

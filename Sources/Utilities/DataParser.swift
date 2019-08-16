@@ -45,12 +45,12 @@ struct DataParser {
         return true
     }
 
-    /// The type of update that is returned from the API in relation to the verison of the app that is installed.
+    /// The type of update that is returned from the API in relation to the version of the app that is installed.
     ///
     /// - Parameters:
     ///   - installedVersion: The installed version of the app.
     ///   - appStoreVersion: The App Store version of the app.
-    /// - Returns: The type of update in relation to the verison of the app that is installed.
+    /// - Returns: The type of update in relation to the version of the app that is installed.
     static func parseForUpdate(forInstalledVersion installedVersion: String?,
                                andAppStoreVersion appStoreVersion: String?) -> RulesManager.UpdateType {
         guard let installedVersion = installedVersion,

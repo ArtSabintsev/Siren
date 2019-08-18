@@ -219,7 +219,10 @@ header {
   .item .token, .item .direct-link {
     padding-left: 3px;
     margin-left: 15px;
-    font-size: 11.9px; }
+    font-size: 11.9px;
+    transition: all 300ms; }
+  .item .token-open {
+    margin-left: 0px; }
   .item .discouraged {
     text-decoration: line-through; }
   .item .declaration-note {

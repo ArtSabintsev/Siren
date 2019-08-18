@@ -18,7 +18,7 @@ public enum KnownError: LocalizedError {
     case appStoreDataRetrievalFailure(underlyingError: Error?)
     /// Error parsing App Store JSON data.
     case appStoreJSONParsingFailure(underlyingError: Error)
-    /// The version of iOS on the device is lower than that of the one required by the app verison update.
+    /// The version of iOS on the device is lower than that of the one required by the app version update.
     case appStoreOSVersionUnsupported
     /// Error retrieving App Store verson number as the JSON does not contain a `version` key.
     case appStoreVersionArrayFailure
@@ -51,7 +51,7 @@ public enum KnownError: LocalizedError {
         case .appStoreJSONParsingFailure(let error):
             return "\(KnownError.sirenError) Error parsing App Store JSON data.\nAlso, the following system level error was returned: \(error)"
         case .appStoreOSVersionUnsupported:
-            return "\(KnownError.sirenError) The version of iOS on the device is lower than that of the one required by the app verison update."
+            return "\(KnownError.sirenError) The version of iOS on the device is lower than that of the one required by the app version update."
         case .appStoreVersionArrayFailure:
             return "\(KnownError.sirenError) Error retrieving App Store verson number as the JSON does not contain a `version` key."
         case .currentVersionReleaseDate:

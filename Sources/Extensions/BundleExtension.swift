@@ -26,7 +26,7 @@ extension Bundle {
         static let table = "SirenLocalizable"
     }
 
-    /// Fetches the current verison of the app.
+    /// Fetches the current version of the app.
     ///
     /// - Returns: The current installed version of the app.
     final class func version() -> String? {

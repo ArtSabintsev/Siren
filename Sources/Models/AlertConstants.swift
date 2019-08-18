@@ -19,7 +19,7 @@ public struct AlertConstants {
     /// The button text that conveys the message that the user should be prompted to update next time the app launches.
     public static let nextTimeButtonTitle = "Next time"
 
-    /// The text that conveys the message that the the user wants to skip this verison update.
+    /// The text that conveys the message that the the user wants to skip this version update.
     public static let skipButtonTitle = "Skip this version"
 
     /// The button text that conveys the message that the user would like to update the app right away.

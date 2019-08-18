@@ -38,10 +38,10 @@ struct APIModel: Decodable {
         /// The app's App ID.
         let appID: Int
 
-        /// The release date for the latest verison of the app.
+        /// The release date for the latest version of the app.
         let currentVersionReleaseDate: String
 
-        /// The minimum verison of iOS that the current verison of the app requires.
+        /// The minimum version of iOS that the current version of the app requires.
         let minimumOSVersion: String
 
         /// The releases notes from the latest version of the app.

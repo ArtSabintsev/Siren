@@ -77,6 +77,8 @@ public struct Localization {
         case portugueseBrazil = "pt"
         /// Portugal's Portuguese Language Localization
         case portuguesePortugal = "pt-PT"
+        /// Romanian Language Localization
+        case romanian = "ro"
         /// Russian Language Localization
         case russian = "ru"
         /// Serbian (Cyrillic) Language Localization

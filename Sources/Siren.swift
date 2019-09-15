@@ -49,15 +49,6 @@ public final class Siren: NSObject {
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didEnterBackgroundNotification` notifications.
     var applicationDidEnterBackgroundObserver: NSObjectProtocol?
 
-    /// The retained `NotificationCenter` observer that listens for `UIScene.didActivateNotification` notifications.
-    var sceneDidBecomeActiveObserver: NSObjectProtocol?
-
-    /// The retained `NotificationCenter` observer that listens for `UIScene.willResignActiveNotification` notifications.
-    var sceneWillResignActiveObserver: NSObjectProtocol?
-
-    /// The retained `NotificationCenter` observer that listens for `UIScene.didEnterBackgroundNotification` notifications.
-    var sceneDidEnterBackgroundObserver: NSObjectProtocol?
-
     /// The last date that an alert was presented to the user.
     private var alertPresentationDate: Date? = UserDefaults.alertPresentationDate
 
@@ -69,7 +60,7 @@ public final class Siren: NSObject {
 
     /// The deinitialization method that clears out all observers,
     deinit {
-        presentationManager.alertController?.dismiss(animated: true, completion: nil)
+        presentationManager.cleanUp()
         removeForegroundObservers()
         removeBackgroundObservers()
     }
@@ -264,17 +255,7 @@ private extension Siren {
 private extension Siren {
     /// Adds an observer that listens for app launching/relaunching.
     func addForegroundObservers() {
-        if #available(iOS 13.0, *), sceneDidBecomeActiveObserver == nil {
-            sceneDidBecomeActiveObserver = NotificationCenter
-                .default
-                .addObserver(forName: UIScene.didActivateNotification,
-                             object: nil,
-                             queue: nil) { [weak self] _ in
-                                guard let self = self else { return }
-                                self.performVersionCheck()
-            }
-        }
-
+        guard applicationDidBecomeActiveObserver == nil else { return }
         applicationDidBecomeActiveObserver = NotificationCenter
             .default
             .addObserver(forName: UIApplication.didBecomeActiveNotification,
@@ -289,46 +270,24 @@ private extension Siren {
     /// and when the app is sent to the background.
     func addBackgroundObservers() {
         if applicationWillResignActiveObserver == nil {
-            if #available(iOS 13.0, *), sceneWillResignActiveObserver == nil {
-                sceneWillResignActiveObserver = NotificationCenter
-                    .default
-                    .addObserver(forName: UIScene.willDeactivateNotification,
-                                 object: nil,
-                                 queue: nil) { [weak self] _ in
-                                    guard let self = self else { return }
-                                    self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
-                }
-            }
-
             applicationWillResignActiveObserver = NotificationCenter
                 .default
                 .addObserver(forName: UIApplication.willResignActiveNotification,
                              object: nil,
                              queue: nil) { [weak self] _ in
                                 guard let self = self else { return }
-                                self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
+                                self.presentationManager.cleanUp()
             }
         }
 
         if applicationDidEnterBackgroundObserver == nil {
-             if #available(iOS 13.0, *), sceneDidEnterBackgroundObserver == nil {
-                sceneDidEnterBackgroundObserver = NotificationCenter
-                    .default
-                    .addObserver(forName: UIScene.didEnterBackgroundNotification,
-                                 object: nil,
-                                 queue: nil) { [weak self] _ in
-                                    guard let self = self else { return }
-                                    self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
-                }
-             }
-
             applicationDidEnterBackgroundObserver = NotificationCenter
                 .default
                 .addObserver(forName: UIApplication.didEnterBackgroundNotification,
                              object: nil,
                              queue: nil) { [weak self] _ in
                                 guard let self = self else { return }
-                                self.presentationManager.alertController?.dismiss(animated: true, completion: nil)
+                                self.presentationManager.cleanUp()
             }
         }
     }
@@ -341,9 +300,6 @@ private extension Siren {
     func removeForegroundObservers() {
         NotificationCenter.default.removeObserver(applicationDidBecomeActiveObserver as Any)
         applicationDidBecomeActiveObserver = nil
-
-        NotificationCenter.default.removeObserver(sceneDidBecomeActiveObserver as Any)
-        sceneDidBecomeActiveObserver = nil
     }
 
     /// Remove the observers that list to app resignation and app backgrounding.
@@ -353,11 +309,5 @@ private extension Siren {
 
         NotificationCenter.default.removeObserver(applicationDidEnterBackgroundObserver as Any)
         applicationDidEnterBackgroundObserver = nil
-
-        NotificationCenter.default.removeObserver(sceneWillResignActiveObserver as Any)
-        sceneWillResignActiveObserver = nil
-
-        NotificationCenter.default.removeObserver(sceneDidEnterBackgroundObserver as Any)
-        sceneDidEnterBackgroundObserver = nil
     }
 }

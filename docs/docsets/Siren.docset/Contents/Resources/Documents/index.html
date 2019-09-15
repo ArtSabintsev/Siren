@@ -13,7 +13,7 @@
     <a title="Siren  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Siren Docs</a> (100% documented)</p>
+        <p><a href="index.html">Siren Docs</a> (0% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -26,69 +26,6 @@
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/Siren.html">Siren</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Enums.html">Enumerations</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Enums/AlertAction.html">AlertAction</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/KnownError.html">KnownError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/PerformCheck.html">PerformCheck</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/APIManager.html">APIManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AlertConstants.html">AlertConstants</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Localization.html">Localization</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Localization/Language.html">– Language</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Model.html">Model</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PresentationManager.html">PresentationManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Rules.html">Rules</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Rules/AlertType.html">– AlertType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Rules/UpdatePromptFrequency.html">– UpdatePromptFrequency</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RulesManager.html">RulesManager</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RulesManager/UpdateType.html">– UpdateType</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/UpdateResults.html">UpdateResults</a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -98,7 +35,7 @@
             <h1 id='siren' class='heading'>Siren 🚨</h1>
 <h3 id='notify-users-when-a-new-version-of-your-app-is-available-and-prompt-them-to-upgrade' class='heading'>Notify users when a new version of your app is available and prompt them to upgrade.</h3>
 
-<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-5.0%2C%204.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://github.com/JamitLabs/Accio"><img src="https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat" alt="Accio supported"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
+<p><a href="https://travis-ci.org/ArtSabintsev/Siren"><img src="https://travis-ci.org/ArtSabintsev/Siren.svg?branch=master" alt="Travis CI Status"></a> <img src="https://github.com/ArtSabintsev/Siren/blob/master/docs/badge.svg" alt="Documentation"> <img src="https://img.shields.io/badge/Swift-5.1%2C%205.0%2C%204.2%2C%204.1%2C%203.2%2C%203.1%202.3-orange.svg" alt="Swift Support"> <a href="https://cocoapods.org/pods/Siren"><img src="https://img.shields.io/cocoapods/v/Siren.svg" alt="CocoaPods"></a>  <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a> <a href="https://github.com/JamitLabs/Accio"><img src="https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat" alt="Accio supported"></a> <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg" alt="SwiftPM Compatible"></a></p>
 
 <hr>
 <h1 id='table-of-contents' class='heading'>Table of Contents</h1>
@@ -180,7 +117,7 @@
 <li>The <strong>left picture</strong> forces the user to update the app.</li>
 <li>The <strong>center picture</strong> gives the user the option to update the app.</li>
 <li>The <strong>right picture</strong> gives the user the option to skip the current update.</li>
-<li>These options are controlled by the <code><a href="Structs/Rules/AlertType.html">Rules.AlertType</a></code> enum.</li>
+<li>These options are controlled by the <code>Rules.AlertType</code> enum.</li>
 </ul>
 
 <p><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picForcedUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picOptionalUpdate.png?raw=true" height="480"><img src="https://github.com/ArtSabintsev/Siren/blob/master/Assets/picSkippedUpdate.png?raw=true" height="480"></p>
@@ -220,6 +157,11 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>5.1</td>
+<td>swift5.1</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
 <td>5.0</td>
 <td>master</td>
 <td><strong>Yes</strong></td>
@@ -251,7 +193,8 @@
 </tr>
 </tbody></table>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span> <span class="c1"># Swift 5.0</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Siren'</span> <span class="c1"># Swift 5.1</span>
+<span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift5.0'</span> <span class="c1"># Swift 5.0</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift4.2'</span> <span class="c1"># Swift 4.2</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift4.1'</span> <span class="c1"># Swift 4.1</span>
 <span class="n">pod</span> <span class="s1">'Siren'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/ArtSabintsev/Siren.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'swift3.2'</span> <span class="c1"># Swift 3.2</span>
@@ -260,6 +203,7 @@
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
 <pre class="highlight swift"><code><span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="c1">// Swift 5.0</span>
+<span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift5.0"</span> <span class="c1">// Swift 5.0</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift4.2"</span> <span class="c1">// Swift 4.2</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift4.1"</span> <span class="c1">// Swift 4.1</span>
 <span class="n">github</span> <span class="s">"ArtSabintsev/Siren"</span> <span class="s">"swift3.2"</span> <span class="c1">// Swift 3.2</span>
@@ -297,7 +241,7 @@
 
 <p>Siren is localized for the following languages:</p>
 
-<p>Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese</p>
+<p>Arabic, Armenian, Basque, Chinese (Simplified and Traditional), Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Norwegian (Bokmål), Persian (Afghanistan, Iran, Persian), Polish, Portuguese (Brazil and Portugal), Romanian, Russian, Serbian (Cyrillic and Latin), Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, Urdu, Vietnamese</p>
 
 <p>If your user&rsquo;s device is set to one of the supported locales, an update message will appear in that language. If a locale is not supported, than the message will appear in English.</p>
 
@@ -353,7 +297,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-08-17)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/ArtSabintsev/Siren" target="_blank" rel="external">Arthur Ariel Sabintsev</a>. All rights reserved. (Last updated: 2019-09-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

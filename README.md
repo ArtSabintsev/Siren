@@ -94,7 +94,8 @@ A list of future development work can be found on [Siren's Kanban Board](https:/
 
 ### CocoaPods
 ```ruby
-pod 'Siren' # Swift 5.0
+pod 'Siren' # Swift 5.1
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.0' # Swift 5.0
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.2' # Swift 4.2
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
@@ -105,6 +106,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 ### Carthage
 ```swift
 github "ArtSabintsev/Siren" // Swift 5.0
+github "ArtSabintsev/Siren" "swift5.0" // Swift 5.0
 github "ArtSabintsev/Siren" "swift4.2" // Swift 4.2
 github "ArtSabintsev/Siren" "swift4.1" // Swift 4.1
 github "ArtSabintsev/Siren" "swift3.2" // Swift 3.2

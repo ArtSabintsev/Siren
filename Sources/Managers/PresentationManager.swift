@@ -38,7 +38,7 @@ public struct PresentationManager {
     var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
-    private var updaterWindow: UIWindow {
+    private var updaterWindow: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.windowLevel = UIWindow.Level.alert + 1
 
@@ -47,7 +47,7 @@ public struct PresentationManager {
 
         window.rootViewController = viewController
         return window
-    }
+    }()
 
     /// `PresentationManager`'s public initializer.
     ///

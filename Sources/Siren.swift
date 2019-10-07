@@ -239,13 +239,28 @@ private extension Siren {
                       forCurrentAppStoreVersion currentAppStoreVersion: String,
                       model: Model,
                       andUpdateType updateType: RulesManager.UpdateType) {
-        presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] alertAction in
+        presentationManager.presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion) { [weak self] alertAction, currentAppStoreVersion in
             guard let self = self else { return }
+            self.processAlertAction(alertAction: alertAction, currentAppStoreVersion: currentAppStoreVersion)
+
             let results = UpdateResults(alertAction: alertAction,
                                   localization: self.presentationManager.localization,
                                   model: model,
                                   updateType: updateType)
             self.resultsHandler?(.success(results))
+        }
+    }
+
+    func processAlertAction(alertAction: AlertAction, currentAppStoreVersion: String?) {
+        switch alertAction {
+        case .appStore:
+            launchAppStore()
+        case .skip:
+            guard let currentAppStoreVersion = currentAppStoreVersion else { return }
+            UserDefaults.storedSkippedVersion = currentAppStoreVersion
+            UserDefaults.standard.synchronize()
+        default:
+            break
         }
     }
 }

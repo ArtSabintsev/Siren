@@ -11,7 +11,7 @@ import UIKit
 /// PresentationManager for Siren
 public struct PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
-    typealias CompletionHandler = (AlertAction) -> Void
+    typealias CompletionHandler = (AlertAction, String?) -> Void
 
     /// The localization data structure that will be used to construct localized strings for the update alert.
     let localization: Localization
@@ -136,14 +136,17 @@ extension PresentationManager {
             alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
         case .none:
-            handler?(.unknown)
+            handler?(.unknown, nil)
         }
 
         // If the alertType is .none, an alert will not be presented.
         // If the `updaterWindow` is not hidden, then an alert is already presented.
-        // The latter prevents `UIAlertControllers` from appearing on top of each other.
+        // The latter prevents `UIAlertController`'s from appearing on top of each other.
         if rules.alertType != .none, updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)
+        } else {
+            // This is a safety precaution to avoid multiple windows from presenting on top of each other.
+            cleanUp()
         }
     }
 
@@ -176,9 +179,7 @@ private extension PresentationManager {
 
         let action = UIAlertAction(title: title, style: .default) { _ in
             self.cleanUp()
-            Siren.shared.launchAppStore()
-
-            handler?(.appStore)
+            handler?(.appStore, nil)
             return
         }
 
@@ -200,8 +201,7 @@ private extension PresentationManager {
 
         let action = UIAlertAction(title: title, style: .default) { _ in
             self.cleanUp()
-
-            handler?(.nextTime)
+            handler?(.nextTime, nil)
             return
         }
 
@@ -223,12 +223,8 @@ private extension PresentationManager {
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
-            UserDefaults.storedSkippedVersion = currentAppStoreVersion
-            UserDefaults.standard.synchronize()
-
             self.cleanUp()
-
-            handler?(.skip)
+            handler?(.skip, currentAppStoreVersion)
             return
         }
 

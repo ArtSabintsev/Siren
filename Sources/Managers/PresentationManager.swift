@@ -154,9 +154,14 @@ extension PresentationManager {
     func cleanUp() {
         alertController?.hide(window: updaterWindow)
         alertController?.dismiss(animated: true, completion: nil)
-        self.updaterWindow.rootViewController = nil
-        self.updaterWindow.resignKey()
-        self.updaterWindow.removeFromSuperview()
+        updaterWindow.rootViewController = nil
+
+        if #available(iOS 13, *) {
+            updaterWindow.windowScene = nil
+        }
+
+        updaterWindow.resignKey()
+        updaterWindow.removeFromSuperview()
     }
 }
 

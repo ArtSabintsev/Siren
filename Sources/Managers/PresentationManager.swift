@@ -38,16 +38,7 @@ public struct PresentationManager {
     var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
-    private var updaterWindow: UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.windowLevel = UIWindow.Level.alert + 1
-
-        let viewController = SirenViewController()
-        viewController.retainedWindow = window
-
-        window.rootViewController = viewController
-        return window
-    }
+    private let updaterWindow = createWindow()
 
     /// `PresentationManager`'s public initializer.
     ///
@@ -154,9 +145,7 @@ extension PresentationManager {
     func cleanUp() {
         alertController?.hide(window: updaterWindow)
         alertController?.dismiss(animated: true, completion: nil)
-        self.updaterWindow.rootViewController = nil
-        self.updaterWindow.resignKey()
-        self.updaterWindow.removeFromSuperview()
+        updaterWindow.resignKey()
     }
 }
 
@@ -229,5 +218,20 @@ private extension PresentationManager {
         }
 
         return action
+    }
+}
+
+// MARK: - Helpers
+
+private extension PresentationManager {
+    static func createWindow() -> UIWindow {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.windowLevel = UIWindow.Level.alert + 1
+
+        let viewController = SirenViewController()
+        viewController.retainedWindow = window
+
+        window.rootViewController = viewController
+        return window
     }
 }

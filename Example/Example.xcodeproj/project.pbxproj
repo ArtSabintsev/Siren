@@ -210,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				8EF9F861224EACB100B20545 /* APIManager.swift */,
-				8EF9F862224EACB100B20545 /* RulesManager.swift */,
 				8EF9F863224EACB100B20545 /* PresentationManager.swift */,
+				8EF9F862224EACB100B20545 /* RulesManager.swift */,
 			);
 			name = Managers;
 			path = ../../Sources/Managers;
@@ -225,8 +225,8 @@
 				8EF9F869224EACB100B20545 /* APIModel.swift */,
 				8EF9F867224EACB100B20545 /* Localization.swift */,
 				8EF9F868224EACB100B20545 /* Model.swift */,
-				8EF9F86A224EACB100B20545 /* Rules.swift */,
 				8EF9F86B224EACB100B20545 /* PerformCheck.swift */,
+				8EF9F86A224EACB100B20545 /* Rules.swift */,
 				8EF9F86C224EACB100B20545 /* UpdateResults.swift */,
 			);
 			name = Models;
@@ -236,10 +236,10 @@
 		8EF9F86E224EACB100B20545 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8EF9F86F224EACB100B20545 /* UIAlertControllerExtension.swift */,
 				8EF9F870224EACB100B20545 /* BundleExtension.swift */,
-				8EF9F871224EACB100B20545 /* UserDefaultsExtension.swift */,
 				8EF9F872224EACB100B20545 /* DateExtension.swift */,
+				8EF9F86F224EACB100B20545 /* UIAlertControllerExtension.swift */,
+				8EF9F871224EACB100B20545 /* UserDefaultsExtension.swift */,
 			);
 			name = Extensions;
 			path = ../../Sources/Extensions;

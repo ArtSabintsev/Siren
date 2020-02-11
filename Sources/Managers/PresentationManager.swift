@@ -225,7 +225,15 @@ private extension PresentationManager {
 
 private extension PresentationManager {
     static func createWindow() -> UIWindow {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        var window = UIWindow()
+        if #available(iOS 13.0, *) {
+            guard let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return UIWindow() }
+            window = UIWindow(windowScene: windowScene)
+        } else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+        }
+
         window.windowLevel = UIWindow.Level.alert + 1
 
         let viewController = SirenViewController()

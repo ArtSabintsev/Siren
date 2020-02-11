@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E1635A91E6A0B9C0060CE27 /* SirenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE6C74C1E6A0AE100DBE454 /* SirenTests.swift */; };
+		8EA6AAB323F2424600283B43 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6AAB223F2424600283B43 /* Default-568h@2x.png */; };
 		8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9671F37F2D3003134CA /* LaunchScreen.xib */; };
 		8EACA9721F380294003134CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA9691F37F2D3003134CA /* Main.storyboard */; };
 		8EACA9731F380294003134CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EACA96B1F37F2D3003134CA /* Images.xcassets */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		55EC364A1E6BB98A00726F13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../Siren/Info.plist; sourceTree = "<group>"; };
 		8E3A6C041D07CB6F00A8B7CF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA6AAB223F2424600283B43 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8EACA9661F37F2D3003134CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EACA9681F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EACA96A1F37F2D3003134CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		8EC391781A58B465001C121E = {
 			isa = PBXGroup;
 			children = (
+				8EA6AAB223F2424600283B43 /* Default-568h@2x.png */,
 				8EACA9651F37F2D3003134CA /* Example */,
 				8EE6C74A1E6A0AE100DBE454 /* Tests */,
 				8EF9F854224EACA500B20545 /* Siren */,
@@ -407,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EACA9711F380294003134CA /* LaunchScreen.xib in Resources */,
+				8EA6AAB323F2424600283B43 /* Default-568h@2x.png in Resources */,
 				8EACA9721F380294003134CA /* Main.storyboard in Resources */,
 				8EACA9731F380294003134CA /* Images.xcassets in Resources */,
 			);
@@ -671,6 +675,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.AppStoreConnect;
 				PRODUCT_NAME = Example;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -688,6 +693,7 @@
 				PRODUCT_NAME = Example;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

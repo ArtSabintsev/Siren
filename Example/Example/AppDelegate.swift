@@ -13,11 +13,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        window?.makeKeyAndVisible()
-
+    func applicationDidBecomeActive(_ application: UIApplication) {
         /// - Warning:
-        /// Siren should ONLY be placed in UIApplication.didFinishLaunchingWithOptions and only after the `window?.makeKeyAndVisible()` call.
+        /// Siren should ONLY be placed in UIApplication.applicationDidBecomeActive.
         /// Siren initializes a listener on `didBecomeActiveNotification` to perform version checks.
 
 //        defaultExample()
@@ -32,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        customAlertRulesExample()
 //        appStoreCountryChangeExample()
 //        complexExample()
-
-        return true
     }
 }
 
@@ -84,6 +80,7 @@ private extension AppDelegate {
     /// Minor customization to Siren's update alert presentation.
     func minimalCustomizationPresentationExample() {
         let siren = Siren.shared
+        siren.rulesManager = RulesManager(globalRules: .annoying)
         siren.presentationManager = PresentationManager(alertTintColor: .purple,
                                                         appName: "Siren Example App Override!")
         siren.wail { results in

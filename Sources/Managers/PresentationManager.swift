@@ -9,7 +9,7 @@
 import UIKit
 
 /// PresentationManager for Siren
-public struct PresentationManager {
+public class PresentationManager {
     /// Return results or errors obtained from performing a version check with Siren.
     typealias CompletionHandler = (AlertAction, String?) -> Void
 
@@ -38,7 +38,7 @@ public struct PresentationManager {
     var alertController: UIAlertController?
 
     /// The `UIWindow` instance that presents the `SirenViewController`.
-    private let updaterWindow = createWindow()
+    private lazy var updaterWindow = createWindow()
 
     /// `PresentationManager`'s public initializer.
     ///
@@ -87,7 +87,7 @@ extension PresentationManager {
     ///   - rules: The rules that are used to define the type of alert that should be presented.
     ///   - currentAppStoreVersion: The current version of the app in the App Store.
     ///   - handler: The completion handler that returns the an `AlertAction` depending on the type of action the end-user took.
-    mutating func presentAlert(withRules rules: Rules,
+    func presentAlert(withRules rules: Rules,
                                forCurrentAppStoreVersion currentAppStoreVersion: String,
                                completion handler: CompletionHandler?) {
         UserDefaults.alertPresentationDate = Date()
@@ -224,7 +224,7 @@ private extension PresentationManager {
 // MARK: - Helpers
 
 private extension PresentationManager {
-    static func createWindow() -> UIWindow {
+    private func createWindow() -> UIWindow {
         var window = UIWindow()
         if #available(iOS 13.0, *) {
             guard let windowScene = UIApplication.shared.connectedScenes

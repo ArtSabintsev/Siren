@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        defaultExample()
 //        defaultExampleUsingCompletionHandler()
 //        manualExampleWithCompletionHandler()
-//        minimalCustomizationPresentationExample()
+        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
 //        customMessagingPresentationExample()
-        annoyingRuleExample()
+//        annoyingRuleExample()
 //        hyperCriticalRulesExample()
 //        updateSpecificRulesExample()
 //        customAlertRulesExample()
@@ -84,6 +84,7 @@ private extension AppDelegate {
     /// Minor customization to Siren's update alert presentation.
     func minimalCustomizationPresentationExample() {
         let siren = Siren.shared
+        siren.rulesManager = RulesManager(globalRules: .annoying)
         siren.presentationManager = PresentationManager(alertTintColor: .purple,
                                                         appName: "Siren Example App Override!")
         siren.wail { results in

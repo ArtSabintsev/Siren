@@ -107,7 +107,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 
 ### Carthage
 ```swift
-github "ArtSabintsev/Siren" // Swift 5.0
+github "ArtSabintsev/Siren" // Swift 5.1
 github "ArtSabintsev/Siren" "swift5.0" // Swift 5.0
 github "ArtSabintsev/Siren" "swift4.2" // Swift 4.2
 github "ArtSabintsev/Siren" "swift4.1" // Swift 4.1

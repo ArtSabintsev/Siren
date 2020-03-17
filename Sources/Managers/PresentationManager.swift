@@ -160,10 +160,10 @@ private extension PresentationManager {
     /// - Returns: The `Update` alert action.
     func updateAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.updateButtonTitle == AlertConstants.updateButtonTitle {
+        if updateButtonTitle == AlertConstants.updateButtonTitle {
             title = localization.updateButtonTitle()
         } else {
-            title = self.updateButtonTitle
+            title = updateButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
@@ -182,10 +182,10 @@ private extension PresentationManager {
     /// - Returns: The `Next time` alert action.
     func nextTimeAlertAction(completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.nextTimeButtonTitle == AlertConstants.nextTimeButtonTitle {
+        if nextTimeButtonTitle == AlertConstants.nextTimeButtonTitle {
             title = localization.nextTimeButtonTitle()
         } else {
-            title = self.nextTimeButtonTitle
+            title = nextTimeButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in
@@ -205,10 +205,10 @@ private extension PresentationManager {
     /// - Returns: The `Skip this version` alert action.
     func skipAlertAction(forCurrentAppStoreVersion currentAppStoreVersion: String, completion handler: CompletionHandler?) -> UIAlertAction {
         let title: String
-        if self.skipButtonTitle == AlertConstants.skipButtonTitle {
+        if skipButtonTitle == AlertConstants.skipButtonTitle {
             title = localization.skipButtonTitle()
         } else {
-            title = self.skipButtonTitle
+            title = skipButtonTitle
         }
 
         let action = UIAlertAction(title: title, style: .default) { _ in

@@ -88,8 +88,8 @@ extension PresentationManager {
     ///   - currentAppStoreVersion: The current version of the app in the App Store.
     ///   - handler: The completion handler that returns the an `AlertAction` depending on the type of action the end-user took.
     func presentAlert(withRules rules: Rules,
-                               forCurrentAppStoreVersion currentAppStoreVersion: String,
-                               completion handler: CompletionHandler?) {
+                      forCurrentAppStoreVersion currentAppStoreVersion: String,
+                      completion handler: CompletionHandler?) {
         UserDefaults.alertPresentationDate = Date()
 
         // Alert Title

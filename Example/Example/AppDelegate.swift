@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// Siren initializes a listener on `didBecomeActiveNotification` to perform version checks.
 
 //        defaultExample()
-//        defaultExampleUsingCompletionHandler()
+        defaultExampleUsingCompletionHandler()
 //        manualExampleWithCompletionHandler()
-        minimalCustomizationPresentationExample()
+//        minimalCustomizationPresentationExample()
 //        forceLocalizationCustomizationPresentationExample()
 //        customMessagingPresentationExample()
 //        annoyingRuleExample()
@@ -222,8 +222,8 @@ private extension AppDelegate {
     }
 
     /// An example on how to change the App Store region that your app in which your app is available.
-    // This should only be used if your app is not available in the US App Store.
-    // This example function illustrates how this can be done by checking against the Russian App Store.
+    /// This should only be used if your app is not available in the US App Store.
+    /// This example function illustrates how this can be done by checking against the Russian App Store.
     func appStoreCountryChangeExample() {
         let siren = Siren.shared
         siren.apiManager = APIManager(countryCode: "RU")

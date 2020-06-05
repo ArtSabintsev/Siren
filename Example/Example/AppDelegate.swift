@@ -100,7 +100,7 @@ private extension AppDelegate {
         }
     }
 
-    /// Forcing the language of the update alert to a specific localization (e.g., Russian is force in this function.
+    /// Forcing the language of the update alert to a specific localization (e.g., Russian is forced in this function)
     func forceLocalizationCustomizationPresentationExample() {
         let siren = Siren.shared
         siren.presentationManager = PresentationManager(forceLanguageLocalization: .russian)

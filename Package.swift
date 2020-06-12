@@ -2,8 +2,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "Siren",
+    name: "Siren",    
     products: [.library(name: "Siren", targets: ["Siren"])],
     targets: [.target(name: "Siren", path: "Sources")],
+    platforms: [.iOS(.v8)],  
     swiftLanguageVersions: [.v5]
 )

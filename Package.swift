@@ -5,5 +5,5 @@ let package = Package(
     name: "Siren",
     products: [.library(name: "Siren", targets: ["Siren"])],
     targets: [.target(name: "Siren", path: "Sources")],
-    swiftLanguageVersions: [.v5])
+    swiftLanguageVersions: [.v5]
 )

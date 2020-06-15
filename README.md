@@ -86,7 +86,7 @@ A list of future development work can be found on [Siren's Kanban Board](https:/
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 5.1-5.2 | master | **Yes**
+| 5.1+ | master | **Yes**
 | 5.0 | swift5.0 | No
 | 4.2 | swift4.2 | No
 | 4.1 | swift4.1 | No

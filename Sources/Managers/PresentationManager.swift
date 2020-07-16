@@ -227,8 +227,7 @@ private extension PresentationManager {
     private func createWindow() -> UIWindow {
         var window = UIWindow()
         if #available(iOS 13.0, *) {
-            guard let windowScene = UIApplication.shared.connectedScenes
-                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return UIWindow() }
+            guard let windowScene = getFirstForegroundScene() else { return UIWindow() }
             window = UIWindow(windowScene: windowScene)
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)
@@ -241,5 +240,15 @@ private extension PresentationManager {
 
         window.rootViewController = viewController
         return window
+    }
+
+    @available(iOS 13.0, *)
+    private func getFirstForegroundScene() -> UIWindowScene? {
+        let connectedScenes = UIApplication.shared.connectedScenes
+        if let windowActiveScene = connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            return windowActiveScene
+        } else {
+            return connectedScenes.first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene
+        }
     }
 }

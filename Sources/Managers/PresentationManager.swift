@@ -133,7 +133,7 @@ extension PresentationManager {
         // If the alertType is .none, an alert will not be presented.
         // If the `updaterWindow` is not hidden, then an alert is already presented.
         // The latter prevents `UIAlertController`'s from appearing on top of each other.
-        if rules.alertType != .none, updaterWindow.isHidden {
+        if rules.alertType != .none, let updaterWindow = updaterWindow, updaterWindow.isHidden {
             alertController?.show(window: updaterWindow)
         } else {
             // This is a safety precaution to avoid multiple windows from presenting on top of each other.
@@ -143,6 +143,7 @@ extension PresentationManager {
 
     /// Removes the `alertController` from memory.
     func cleanUp() {
+        guard let updaterWindow = updaterWindow else { return }
         alertController?.hide(window: updaterWindow)
         alertController?.dismiss(animated: true, completion: nil)
         updaterWindow.resignKey()
@@ -224,10 +225,10 @@ private extension PresentationManager {
 // MARK: - Helpers
 
 private extension PresentationManager {
-    private func createWindow() -> UIWindow {
+    private func createWindow() -> UIWindow? {
         var window = UIWindow()
         if #available(iOS 13.0, *) {
-            guard let windowScene = getFirstForegroundScene() else { return UIWindow() }
+            guard let windowScene = getFirstForegroundScene() else { return nil }
             window = UIWindow(windowScene: windowScene)
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)

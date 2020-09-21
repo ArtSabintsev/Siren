@@ -248,8 +248,10 @@ private extension PresentationManager {
         let connectedScenes = UIApplication.shared.connectedScenes
         if let windowActiveScene = connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
             return windowActiveScene
+        } else if let windowInactiveScene = connectedScenes.first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene {
+            return windowInactiveScene
         } else {
-            return connectedScenes.first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene
+            return nil
         }
     }
 }

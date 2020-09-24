@@ -122,6 +122,9 @@ extension PresentationManager {
         case .option:
             alertController?.addAction(nextTimeAlertAction(completion: handler))
             alertController?.addAction(updateAlertAction(completion: handler))
+        case .skipOption:
+            alertController?.addAction(skipAlertAction(forCurrentAppStoreVersion: currentAppStoreVersion, completion: handler))
+            alertController?.addAction(updateAlertAction(completion: handler))
         case .skip:
             alertController?.addAction(updateAlertAction(completion: handler))
             alertController?.addAction(nextTimeAlertAction(completion: handler))

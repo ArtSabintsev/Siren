@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   # Version
-  s.version       = "5.5.0"
+  s.version       = "5.5.1"
   s.swift_version = "5.3"
 
   # Meta
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
                    DESC
 
   # Compatibility & Sources
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "10.0"
   s.source       = { :git => "https://github.com/ArtSabintsev/Siren.git", :tag => s.version.to_s }
   s.source_files = 'Sources/**/*.swift'
   s.resources    = 'Sources/Siren.bundle'

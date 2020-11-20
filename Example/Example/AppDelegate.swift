@@ -267,9 +267,3 @@ private extension AppDelegate {
         }
     }
 }
-
-extension AppStoreCountry {
-  
-  static let russia: AppStoreCountry = "RU"
-  
-}

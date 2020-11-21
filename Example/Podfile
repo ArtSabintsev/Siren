@@ -1,0 +1,6 @@
+platform :ios, '11.0'
+inhibit_all_warnings!
+
+target 'Example' do
+  pod 'Siren', :path => '../'
+end

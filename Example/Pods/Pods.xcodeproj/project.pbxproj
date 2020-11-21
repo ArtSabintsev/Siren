@@ -1,0 +1,1127 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		185978D62924D1775472DB3DA719657F /* AlertConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522FB2DD5AA8A45A56F2AE489D98719C /* AlertConstants.swift */; };
+		1B5A6A7D74D86500C1F7499A8DE7332B /* RulesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7BDBA806A8E164389D471927B12E4 /* RulesManager.swift */; };
+		376DE70C5766A014D4814E911FE75A98 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA995DCA6EEF92ED2F85D4545B015C41 /* Localization.swift */; };
+		3790548B4ED3BA7050805A3673826E80 /* PerformCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3040FF1CE3A402C71893785FDA0CA04 /* PerformCheck.swift */; };
+		3E9B23721CF2D9E0956C4F8550A12914 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1781E0E6511C722836FE1400DA610C6 /* PresentationManager.swift */; };
+		4057D30B0F539EE14206C2D84138D642 /* KnownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2A4759BD67246279C944F0A064DBF3 /* KnownError.swift */; };
+		46377D98EB15E60B58CBD0945DA65B74 /* DataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800A0CF48B6E8BCBB75878439196B48 /* DataParser.swift */; };
+		4764CC2CEDBD21A5E612C7DC75C53AA0 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A114E57E6C410AC0CF1F08695ADAC1 /* AlertAction.swift */; };
+		490F448F9F73449882A934FB2D629B04 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A912BD0C7AFA4B5E0756DA4D49936 /* APIModel.swift */; };
+		54105A1B73A8EFD5217B19CB5D296F9F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF4C9350E24965BC0FBBCA923D22B14 /* APIManager.swift */; };
+		5D82FF44D80E4B766899ACBBDF614E45 /* AppStoreCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ADD89D2BF3E1E639B3B533A70C112E /* AppStoreCountry.swift */; };
+		6185D67BCCB04E09848F6D19A3EC8AEE /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA79294EB786F0B3C42CF73822A4F51A /* UIAlertControllerExtension.swift */; };
+		72F05485DDBA9325B9B5C4B453B4B24D /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8D2190D165A86988AB26F8845EFF98 /* Pods-Example-dummy.m */; };
+		8B8DED1C488ED0157E4B931E03162B21 /* Siren-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EA53161543FEAA2E217FF9C43EEBA8E /* Siren-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9946190138F72E35594243600AC4FA0D /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB6C1A5A4B5EEA3798A36397ADCC00 /* UserDefaultsExtension.swift */; };
+		A8840F164C2A2D4F078A8FFE08D34D76 /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE793F13EDA9290F260361780BA316F9 /* SirenViewController.swift */; };
+		B57BACEB8A6C8827B4B5316CBB1C6629 /* Pods-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E502162F64028620AB3116216016E650 /* Pods-Example-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B75ADACF1B5FFA63F59D6DE9391A0F0E /* UpdateResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0446E9CC36CC74266330FB519C64D92 /* UpdateResults.swift */; };
+		CC05CA74BEA9CE8C284B8B1A08FBA42F /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598DDA1DEFD6A46DA69C65B5B76C879 /* BundleExtension.swift */; };
+		E18E48DB2C3513F5C6A5504878CECFDC /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC567453B0395D31C3D32A5748E3E89 /* Siren.swift */; };
+		E2A752A8D1E2E1F29D2CEBC7AA58CA53 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8FA6549F980EB76E00080FB6CACA2 /* Rules.swift */; };
+		F1902E6B100CAE1D52ABB2272CB62C73 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C10ABEEECAE4CFABA6EF9EE4ABA660D /* DateExtension.swift */; };
+		FB58120AF3B295082FEF245227AA0B69 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3503EA0A83EFE3A140AC43D977C9DD95 /* Model.swift */; };
+		FCE68557AAE9104535FCF88E38295D87 /* Siren-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A522AB49D374744A7B7DCB65E03018 /* Siren-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64FCC2F55C2CD481AA02CDE1087726CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0E2640B83527AE54205D7FDE9C5D930;
+			remoteInfo = Siren;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01697ECB94C2C1521165043EAD8E8940 /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Language.html; path = docs/Structs/Localization/Language.html; sourceTree = "<group>"; };
+		02938A396F924233A6CB6B446CF5A28D /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = badge.svg; path = docs/docsets/Siren.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
+		04A0CB7C8434484B31A370BE41D4B05A /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = index.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/index.html"; sourceTree = "<group>"; };
+		055C7A79676DE562CB840D0065F298E6 /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenDelegate.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Protocols/SirenDelegate.html"; sourceTree = "<group>"; };
+		05D8E4BAB82140DCEA07412773BC5524 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
+		07905FA47EA96C5CC3248FF4BF615785 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "docs/docsets/in-acl.docset/Contents/Info.plist"; sourceTree = "<group>"; };
+		0850CD1669E9F441EBF9A9744306B4E9 /* UpdateResults.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateResults.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/UpdateResults.html; sourceTree = "<group>"; };
+		0907EEF8825F177C0C377285054E5E22 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Protocols.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Protocols.html"; sourceTree = "<group>"; };
+		09A522AB49D374744A7B7DCB65E03018 /* Siren-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Siren-dummy.m"; sourceTree = "<group>"; };
+		09EDE8ED94E588A93FE9F133FE46505B /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertMessaging.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertMessaging.html"; sourceTree = "<group>"; };
+		0BF4C9350E24965BC0FBBCA923D22B14 /* APIManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0D1EEDF0B94673B7C4DCC1538A86505F /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdatePrompFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/UpdatePrompFrequency.html; sourceTree = "<group>"; };
+		0E54CAE10A0DCCCBD346D4EEE7413BC0 /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdatePrompFrequency.html; path = docs/Structs/Rules/UpdatePrompFrequency.html; sourceTree = "<group>"; };
+		0F743CAD2E4BCAF155615E28A3991639 /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenDelegate.html; path = docs/Protocols/SirenDelegate.html; sourceTree = "<group>"; };
+		0F8E9EA8C21BE795073FDBE29D520685 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertMessaging/Constants.html"; sourceTree = "<group>"; };
+		0FE7BDBA806A8E164389D471927B12E4 /* RulesManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
+		101D889E18367E2DC5F0E98C4EAD7886 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/CodingKeys.html; sourceTree = "<group>"; };
+		116D8300632F3EA8D8E14A4EFEC5A0E6 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UIAlertController.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UIAlertController.html"; sourceTree = "<group>"; };
+		12EE5B07149F2C1CE7F28AE2597499C4 /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertMessaging.html; path = docs/Structs/AlertMessaging.html; sourceTree = "<group>"; };
+		1369DAA64EAB44B70BBE577C5F59CFEE /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Known.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenError/Known.html"; sourceTree = "<group>"; };
+		1383A8F3E3CAFC262A6CD71D97697C4E /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenLookupModel.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenLookupModel.html"; sourceTree = "<group>"; };
+		15AC9CACF1719DB92FFB539DAFCB8B84 /* Siren.tgz */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = Siren.tgz; path = docs/docsets/Siren.tgz; sourceTree = "<group>"; };
+		15D68CED15A2552080E08AB61662904C /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Enums.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums.html"; sourceTree = "<group>"; };
+		17A68DD36103C1D610DDA153131EF24D /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = CapturedError.html; path = docs/Structs/CapturedError.html; sourceTree = "<group>"; };
+		17E70395B3CDD0B7EDA622612E2C3144 /* libSiren.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSiren.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		18DF94C5B054EAF6B738DBE793702EE0 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/carat.png"; sourceTree = "<group>"; };
+		19A4C54D8D0D975C7FC5A3F97AB21BB1 /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = KnownError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/KnownError.html; sourceTree = "<group>"; };
+		19EFB9ADF9609310940FC90A63B584D8 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/css/jazzy.css"; sourceTree = "<group>"; };
+		1C389AB6F064A837E321D5B18FC5734B /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenLookupModel/Results.html; sourceTree = "<group>"; };
+		1D4F72D305FCEC9EB9DB71C54478AB07 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Protocols.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Protocols.html; sourceTree = "<group>"; };
+		1EA53161543FEAA2E217FF9C43EEBA8E /* Siren-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-umbrella.h"; sourceTree = "<group>"; };
+		1F3A056E8DBEB076BEE55E2941E3E81C /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenError.html; sourceTree = "<group>"; };
+		1F667CC0E19EAF34E5A4119E2121F585 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20E888DDC39A6E3F340A7C49BD6DFB17 /* lunr.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = lunr.min.js; path = docs/js/lunr.min.js; sourceTree = "<group>"; };
+		21E8A56C255C12B416F6253A48CE20F1 /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdatePromptFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/UpdatePromptFrequency.html; sourceTree = "<group>"; };
+		25D5F16267CAD659BCCE627F785408E8 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Constants.html; path = docs/Structs/APIManager/Constants.html; sourceTree = "<group>"; };
+		260E42BD73FD80984FC19B9E257CBE83 /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenError.html"; sourceTree = "<group>"; };
+		2627ED2E85CAB2276F3F5CDE604FFEC4 /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenLookupModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenLookupModel.html; sourceTree = "<group>"; };
+		2660B824029811C954C204010E0D7747 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = highlight.css; path = docs/docsets/Siren.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
+		266C7F9C01727FD273A524234736A664 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Bundle/Constants.html"; sourceTree = "<group>"; };
+		281946EC38E35A8BFF61E45E45AB6C71 /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenLookupModel.html; path = docs/Structs/SirenLookupModel.html; sourceTree = "<group>"; };
+		29E04E723F4E011522BE98B27CCBBECF /* UpdateResults.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdateResults.html; path = docs/Structs/UpdateResults.html; sourceTree = "<group>"; };
+		2A9C2A8BA75EF7717A1534DB68985DC2 /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = PresentationManager.html; path = docs/Structs/PresentationManager.html; sourceTree = "<group>"; };
+		2AB821462938E56824A0CA499BEEA840 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants.html; sourceTree = "<group>"; };
+		2BD513F56C3ABA2165B0EA4ED2692B80 /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = KnownError.html; path = docs/Enums/KnownError.html; sourceTree = "<group>"; };
+		2BDC07FE210B54FD4EB1066B5E2B526B /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Known.html; path = docs/Structs/CapturedError/Known.html; sourceTree = "<group>"; };
+		2E98297E4DC676B6C69E7AE75C173144 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
+		31157C98E290B2944012121F2672DBD8 /* spinner.gif */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.gif; name = spinner.gif; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/spinner.gif; sourceTree = "<group>"; };
+		3248B4A0D26EE1698682D9D1D37CD831 /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Localization.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Localization.html"; sourceTree = "<group>"; };
+		342C911EB5D7DAC65F47FE48F38677EC /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = undocumented.json; path = docs/docsets/Siren.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
+		34B0691AC7E1D2C4DF04DFAFAE323AE2 /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Localization.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Localization.html; sourceTree = "<group>"; };
+		3503EA0A83EFE3A140AC43D977C9DD95 /* Model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		361E954168B7AC8A6BF67ABAB8B93873 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Results.html; path = docs/Structs/APIModel/Results.html; sourceTree = "<group>"; };
+		363E49F502F1F2BC0B4381B96C1F1F17 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/AlertType.html"; sourceTree = "<group>"; };
+		3C304A748324100D1132224E84C90DD6 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/CodingKeys.html; sourceTree = "<group>"; };
+		3C9958169EE2E21B38D68DB8A6F15483 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
+		3CEE39454709B1E2C528C7EBD2415628 /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertConstants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertConstants.html; sourceTree = "<group>"; };
+		3D3E7E2136A39757E3076BA3EFCCE321 /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdatePromptFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/UpdatePromptFrequency.html"; sourceTree = "<group>"; };
+		3D59112833D805F75703C07F5862339B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3D7A165D61D6D35FB79DF906D9193FF2 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/APIManager/Constants.html"; sourceTree = "<group>"; };
+		3E7A912BD0C7AFA4B5E0756DA4D49936 /* APIModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		41D5B667A7AE7B867D3A60AEBD678100 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdateType.html; path = docs/Enums/UpdateType.html; sourceTree = "<group>"; };
+		4252F5B612F767BFAF54103001C5B591 /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertConstants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertConstants.html"; sourceTree = "<group>"; };
+		42ADD89D2BF3E1E639B3B533A70C112E /* AppStoreCountry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppStoreCountry.swift; sourceTree = "<group>"; };
+		43002C3DF0CE5E0CBE83736D95E7CE69 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Results.html; path = docs/Structs/SirenLookupModel/Results.html; sourceTree = "<group>"; };
+		435D64329CC50D23DB68230BCEA9F18F /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Enums.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
+		44D0C5506184BC16968DF72AC2484C53 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
+		44F7517EDC58422568499352D45283EE /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = VersionCheckFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/VersionCheckFrequency.html; sourceTree = "<group>"; };
+		451940E4B41F3501FD5D28D18694836C /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UserDefaults.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UserDefaults.html; sourceTree = "<group>"; };
+		4598DDA1DEFD6A46DA69C65B5B76C879 /* BundleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		45A83D12F7D7BA3E485D48588241591A /* APIModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = APIModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel.html; sourceTree = "<group>"; };
+		480B52829F499DEEB56218142CBDC917 /* in-acl.tgz */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = "in-acl.tgz"; path = "docs/docsets/in-acl.tgz"; sourceTree = "<group>"; };
+		48DF8FC16D6E085DBA7E7726D9CCB791 /* Siren.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = Sources/Siren.bundle; sourceTree = "<group>"; };
+		48FAB9105E463B82A77A3DB613B93C73 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/AlertType.html"; sourceTree = "<group>"; };
+		4E8219EC202443A0F42C29E74AC3ABCB /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = APIManager.html; path = docs/Structs/APIManager.html; sourceTree = "<group>"; };
+		4F2232A98DF3277117E58D1565F67803 /* Model.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Model.html; path = docs/Structs/Model.html; sourceTree = "<group>"; };
+		50B1718F1F52E6090050E6649BDF2F9C /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Extensions.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions.html"; sourceTree = "<group>"; };
+		518E8A9F0791936CED53C43B06E0BB1A /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Results.html; sourceTree = "<group>"; };
+		522FB2DD5AA8A45A56F2AE489D98719C /* AlertConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertConstants.swift; sourceTree = "<group>"; };
+		526FA8F6956D397E5EEFE6E535E57C79 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = search.json; path = docs/docsets/Siren.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
+		527DA12C932FE10C2A658ED1922CECD3 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/gh.png"; sourceTree = "<group>"; };
+		544EBE57256AA64B5604B3B92BBEE2FA /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenAlertMessaging.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging.html; sourceTree = "<group>"; };
+		54B7639F9FE87F4D25FE53794530DC50 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = search.json; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/search.json"; sourceTree = "<group>"; };
+		55CA0CEDC4E50312BFDF98B02BE6193F /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = RulesManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/RulesManager.html; sourceTree = "<group>"; };
+		58591FAC72A0810C03D271FCBAA57555 /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = LanguageType.html; path = docs/Classes/Siren/LanguageType.html; sourceTree = "<group>"; };
+		590469AB73A82C38D319EA9DEAD16CE8 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Bundle/Constants.html; sourceTree = "<group>"; };
+		5931DB775F060B138573E4C83BB48A60 /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = LanguageType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/LanguageType.html"; sourceTree = "<group>"; };
+		5BFA9B48D82C6091EA7F34B6D1F5EF2A /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Bundle.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Bundle.html; sourceTree = "<group>"; };
+		5C0791BE1E3B93BA5A745A60F3E6A549 /* Siren.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Siren.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5CC567453B0395D31C3D32A5748E3E89 /* Siren.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = Sources/Siren.swift; sourceTree = "<group>"; };
+		5CDA08FAF09F7E28A7751106D7B3E6FC /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging/Constants.html"; sourceTree = "<group>"; };
+		5D6A6276A9528E6A20A05590586AE2E0 /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertMessaging.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertMessaging.html; sourceTree = "<group>"; };
+		5DB7BC40495302E53B5D6D898BF439E7 /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdatePrompFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/UpdatePrompFrequency.html"; sourceTree = "<group>"; };
+		5F8FC4601A8F4187875930FC3F959FD6 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/RulesManager/UpdateType.html; sourceTree = "<group>"; };
+		609B2E31FD5B8D75651DFEC75AC964D9 /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertAction.html; path = docs/Enums/AlertAction.html; sourceTree = "<group>"; };
+		61AA8BA9234C20D56874317494C243FA /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = CodingKeys.html; path = docs/Structs/APIModel/Results/CodingKeys.html; sourceTree = "<group>"; };
+		632DD5B43B0016228AB5F317B5836553 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
+		6469C697D941266532272350C594DFE8 /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenAlertMessaging.html; path = docs/Structs/SirenAlertMessaging.html; sourceTree = "<group>"; };
+		657DB2D8BAB010A9DD7BE89BB287DF92 /* jazzy.search.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.search.js; path = docs/js/jazzy.search.js; sourceTree = "<group>"; };
+		68A114E57E6C410AC0CF1F08695ADAC1 /* AlertAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		6AB74B8AF1F0FE7B5EA97CE830433EE0 /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Siren.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren.html"; sourceTree = "<group>"; };
+		6B449C9A41B1C3884D9C4C9716FD1584 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = CodingKeys.html; path = docs/Structs/APIModel/CodingKeys.html; sourceTree = "<group>"; };
+		6B711C9D5B93DCBBFA35C03F61A88117 /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UserDefaults/SirenKeys.html"; sourceTree = "<group>"; };
+		6BB3E5A58B7398E3E431A13C77E40FBA /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/UpdateType.html; sourceTree = "<group>"; };
+		6C2A4759BD67246279C944F0A064DBF3 /* KnownError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
+		6CE87CD65B1A1F4F06845EC26EEF3EC6 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
+		6DCFE5DA094F3BF443F9307852018E9E /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = VersionCheckFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/VersionCheckFrequency.html"; sourceTree = "<group>"; };
+		70EC0FE47D48F74E4562C1F15E976E9B /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenError.html; path = docs/Structs/SirenError.html; sourceTree = "<group>"; };
+		7356FBE794B1FB1731DCEB5EBC8FBD4A /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Siren.html; path = docs/Classes/Siren.html; sourceTree = "<group>"; };
+		76DDECC4304A816D5C18B4AD88DF1537 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdateType.html; path = docs/Structs/Constants/UpdateType.html; sourceTree = "<group>"; };
+		7783397E550F890F31557F4185E41747 /* APIModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = APIModel.html; path = docs/Structs/APIModel.html; sourceTree = "<group>"; };
+		778A3352A9D328865248FA9BF1064BF5 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/Results.html"; sourceTree = "<group>"; };
+		781125072CC9FDEA881C6E4EE4354F5B /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = DataParser.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/DataParser.html; sourceTree = "<group>"; };
+		790A823567B0AD8D55541FD3D9DE87B6 /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = PresentationManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/PresentationManager.html; sourceTree = "<group>"; };
+		794E46F60364508AB6B5F19AA9FEF041 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/Siren.docset/Contents/Info.plist; sourceTree = "<group>"; };
+		7959C7E3DC118E77B60ECD047EC5060C /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenDelegate.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Protocols/SirenDelegate.html; sourceTree = "<group>"; };
+		7B6C72B0A906DE34B1DB1D960E76F2B4 /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Structs.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs.html"; sourceTree = "<group>"; };
+		7C10ABEEECAE4CFABA6EF9EE4ABA660D /* DateExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		7C20B7A5391653B040E6F9029C9EA751 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertType.html; path = docs/Classes/Siren/AlertType.html; sourceTree = "<group>"; };
+		7D854C6C833A9DF06B630A94C92A425D /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/js/jquery.min.js"; sourceTree = "<group>"; };
+		7EF97B346BF396D116CA35E5706E4CDC /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/Results.html; sourceTree = "<group>"; };
+		810F21679F1B5512AE27D748D574FD1C /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Extensions.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions.html; sourceTree = "<group>"; };
+		81850C78315C3D94B70A521EE1E9C39F /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
+		81AB6C1A5A4B5EEA3798A36397ADCC00 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		81B16357238049EFD17E6C50ECDC275D /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenViewController.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/SirenViewController.html; sourceTree = "<group>"; };
+		8268CFB729E777386CC9D5E20949E43C /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CapturedError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/CapturedError.html; sourceTree = "<group>"; };
+		827D5AE8D564688B6AD02D15BFA3E8C7 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/AlertType.html; sourceTree = "<group>"; };
+		8390C1797A666D89BE05AA8852B57C3F /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
+		86CADC1690879958B19F7610ADA4F78C /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/Results/CodingKeys.html; sourceTree = "<group>"; };
+		872C173276BB90435C7E67EEDE621D06 /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Rules.html; path = docs/Structs/Rules.html; sourceTree = "<group>"; };
+		872E9FFB294382B8094D0E9383AC72DE /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
+		878793BBC56FD33384C4958529463731 /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = APIManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIManager.html; sourceTree = "<group>"; };
+		879CFDE1B1432FEBB1B25CB9595E9B93 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UIAlertController.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UIAlertController.html; sourceTree = "<group>"; };
+		87A71A31C0079B8847B083806B2E00D7 /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Siren.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren.html; sourceTree = "<group>"; };
+		88E2F77DC662B1616B3E1A74A7DE3982 /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = RulesManager.html; path = docs/Structs/RulesManager.html; sourceTree = "<group>"; };
+		894343649F179082E49CDEDAEA6D92C1 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/AlertType.html"; sourceTree = "<group>"; };
+		8955B6E583D7D44562E5C9CCC64A485B /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenLookupModel/Results.html"; sourceTree = "<group>"; };
+		8A9A7128E6263B2182E8BE188938FB1A /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
+		8ABC8DD8D4FBE61E583058D25EC5E2C4 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.js; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/js/jazzy.js"; sourceTree = "<group>"; };
+		8B881AB849C8CE3E02CFC6AE37F3E397 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdateType.html; path = docs/Structs/RulesManager/UpdateType.html; sourceTree = "<group>"; };
+		8DD52A418C5DC4BFDCFDE14376B6390D /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		8E3451E6F481D3A92D950285A5AFC6BB /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8FA63EDAD597879151FE41231D8BD7D0 /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenKeys.html; path = docs/Extensions/UserDefaults/SirenKeys.html; sourceTree = "<group>"; };
+		9083C1CE4A98C378F23234D11C995FC2 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Constants.html; path = docs/Structs/Constants.html; sourceTree = "<group>"; };
+		90FDB7B6361334619602E245395ED07D /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging/Constants.html; sourceTree = "<group>"; };
+		918721B8D0883F5D53941B962B29E5FB /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Date.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Date.html"; sourceTree = "<group>"; };
+		920B4BECCC90661E72BF9947B1E95487 /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = SirenViewController.html; path = docs/Classes/SirenViewController.html; sourceTree = "<group>"; };
+		93D61490BAC04B0F9F92A0F4490CD425 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
+		9720AE58EADF3733DBDC7426541CFBA6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		9A93A902CA180B5B74C14043A24A6325 /* Siren.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Siren.modulemap; sourceTree = "<group>"; };
+		9B1B3F63C00340CEA05EFC22CF15C14A /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = CodingKeys.html; path = docs/Structs/LookupModel/CodingKeys.html; sourceTree = "<group>"; };
+		9B620B285DE0CAD55570BDA72479CFA0 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/UpdateType.html"; sourceTree = "<group>"; };
+		9C0C06CB1A97BB5102544AD6F4B62D35 /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = APIManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/APIManager.html"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F0424771BB1CAC898CC2EBD1F42756F /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = DataParser.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/DataParser.html"; sourceTree = "<group>"; };
+		9F87E4CF777ADE54A33F3CBA416228FB /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UserDefaults/SirenKeys.html; sourceTree = "<group>"; };
+		A0446E9CC36CC74266330FB519C64D92 /* UpdateResults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UpdateResults.swift; sourceTree = "<group>"; };
+		A15ABBA9C85ED8BF6EE6CEF7117EF4AF /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertType.html; path = docs/Structs/Constants/AlertType.html; sourceTree = "<group>"; };
+		A17761FCBF0C42D2747F176250E12C3F /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		A1781E0E6511C722836FE1400DA610C6 /* PresentationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
+		A1F6407CB88F98215553506EFF5FB624 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = docSet.dsidx; path = "docs/docsets/in-acl.docset/Contents/Resources/docSet.dsidx"; sourceTree = "<group>"; };
+		A28902723A9427020BAA7BD7A2336CF3 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/Results/CodingKeys.html; sourceTree = "<group>"; };
+		A473E57C85BE922C46701FD1B5BD842B /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = VersionCheckType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/VersionCheckType.html"; sourceTree = "<group>"; };
+		A4C427287D883034E3FBB3F372CEF58F /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Date.html; path = docs/Extensions/Date.html; sourceTree = "<group>"; };
+		A6AD1DFCA24B088DF085EA12D6BEFDF2 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Constants.html; path = docs/Structs/AlertMessaging/Constants.html; sourceTree = "<group>"; };
+		A7163A461642441F84E16CE96AD6213B /* typeahead.jquery.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = typeahead.jquery.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/typeahead.jquery.js; sourceTree = "<group>"; };
+		A9B58A77088899B1B9E894C569F5E428 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertType.html; path = docs/Structs/Rules/AlertType.html; sourceTree = "<group>"; };
+		A9D9BD4297595EE74CC440614036A9F0 /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = VersionCheckType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/VersionCheckType.html; sourceTree = "<group>"; };
+		AB821A46164D2B443C4491C5E18EC65A /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = docs/docsets/Siren.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
+		AC2577FC6FCF98118B0308CFD09984E7 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = docSet.dsidx; path = docs/docsets/Siren.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
+		AD7750F934A7683FFDDCAB0EBE28A463 /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = DataParser.html; path = docs/Structs/DataParser.html; sourceTree = "<group>"; };
+		AD80C10F3DA539BBF388A094FD244B2E /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = CodingKeys.html; path = docs/Structs/LookupModel/Results/CodingKeys.html; sourceTree = "<group>"; };
+		AE3803A4A0157456BDAB9013BF420C4B /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Bundle.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Bundle.html"; sourceTree = "<group>"; };
+		AE49B66BD730DC118CF9418BEE77F7EB /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
+		AF1EE28ABF57180A6C09CE294ADF6A61 /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = LanguageType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/LanguageType.html; sourceTree = "<group>"; };
+		B0D07E7054A46EB4D34EAE3B571A563F /* lunr.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = lunr.min.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/lunr.min.js; sourceTree = "<group>"; };
+		B22B8AE07B8E32866748D7835DA35FD2 /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = RulesManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/RulesManager.html"; sourceTree = "<group>"; };
+		B32D40C67D2351795458BA5D06B6C693 /* jazzy.search.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jazzy.search.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jazzy.search.js; sourceTree = "<group>"; };
+		B43A3BE4101DF57717C80A9D1605EBF8 /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = PresentationManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/PresentationManager.html"; sourceTree = "<group>"; };
+		B48494F5A4EAFEEE107E2542D1294A5F /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Results.html; path = docs/Structs/LookupModel/Results.html; sourceTree = "<group>"; };
+		B4B4AEA404B8E6172D946B13E917F85F /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertAction.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/AlertAction.html"; sourceTree = "<group>"; };
+		B5FAC784EAAE09F43EF27EEC6ECA076C /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Classes.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
+		B71A485E9E514DAEA6F3D72FD6D99CF9 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/UpdateType.html; sourceTree = "<group>"; };
+		B8964BDAF68056E7E0270CAB7B15EA07 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/Results/CodingKeys.html"; sourceTree = "<group>"; };
+		B8B730B670F26E14AE4AD13EA66C7755 /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CapturedError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/CapturedError.html"; sourceTree = "<group>"; };
+		B8DA9E194102B7036F5BC10653E280EA /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = badge.svg; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/badge.svg"; sourceTree = "<group>"; };
+		B8DF6CC7536AC103A4E8E782DF35834C /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Bundle.html; path = docs/Extensions/Bundle.html; sourceTree = "<group>"; };
+		BA79294EB786F0B3C42CF73822A4F51A /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		BB2B746E488458D8A20C6D92F1EAE3E2 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/Results.html; sourceTree = "<group>"; };
+		BC144A92509EC7A45AFE16153A804C48 /* PerformCheck.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = PerformCheck.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/PerformCheck.html; sourceTree = "<group>"; };
+		BD7866B2B30C313056837B983F1071EB /* Pods-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-resources.sh"; sourceTree = "<group>"; };
+		BEB78B30A04D7BE02BED51F35EBBD56A /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
+		BFB3C967C7E709EB17820D6347756AC1 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Known.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenError/Known.html; sourceTree = "<group>"; };
+		C036C355BDC5E502C5DADDCB14702CC6 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Results.html"; sourceTree = "<group>"; };
+		C0AFCA1D771046B5BF6BD212D6303F7B /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Constants.html; path = docs/Structs/SirenAlertMessaging/Constants.html; sourceTree = "<group>"; };
+		C31479F8F071BE5DC3AA5E27899298FE /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/RulesManager/UpdateType.html"; sourceTree = "<group>"; };
+		C3ABE50F2BEA5C41B92CAB7B83D2BC1D /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertMessaging/Constants.html; sourceTree = "<group>"; };
+		C76196EE37A1C9B892E73EA13AC98BC3 /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = KnownError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/KnownError.html"; sourceTree = "<group>"; };
+		C861A1D22D5988F62A384ED535A590C2 /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = LookupModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel.html; sourceTree = "<group>"; };
+		C8A400F322E5215B788C91893213686B /* Siren.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Siren.xcconfig; sourceTree = "<group>"; };
+		CAFE1F32D82EBDD598B9A4EB1CED4876 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
+		CBA42EABBADE929BC03000801A17118A /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Localization.html; path = docs/Structs/Localization.html; sourceTree = "<group>"; };
+		CC463D1DB2935D02571892541ECAA1DB /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = VersionCheckType.html; path = docs/Classes/Siren/VersionCheckType.html; sourceTree = "<group>"; };
+		CCB5CDB2AC43244B0513722A43C13AF7 /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Date.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Date.html; sourceTree = "<group>"; };
+		CCF6E22CEB406805EC684E9F7CF81695 /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = LookupModel.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel.html"; sourceTree = "<group>"; };
+		CD1268D0DE8B2CC500CD936D8EA6E495 /* Model.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Model.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Model.html; sourceTree = "<group>"; };
+		CD900404648F12EADF4069E3F1156DB0 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIManager/Constants.html; sourceTree = "<group>"; };
+		CF060F63256C39C6528A45516EA5DADB /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Rules.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules.html"; sourceTree = "<group>"; };
+		CF95C6BEC1657B406D60B4D21C7F3F98 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Protocols.html; path = docs/Protocols.html; sourceTree = "<group>"; };
+		CFA111F116543A9D02210FBE0A12A59A /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Results.html; path = docs/Structs/Results.html; sourceTree = "<group>"; };
+		D20A7C09E856C4A747027C6EAA427732 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = undocumented.json; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/undocumented.json"; sourceTree = "<group>"; };
+		D20C94FD8369402C23B41FAB19E2C307 /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = AlertConstants.html; path = docs/Structs/AlertConstants.html; sourceTree = "<group>"; };
+		D2F9802FAC874DC0D3BF898A6AE4943F /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Known.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/CapturedError/Known.html"; sourceTree = "<group>"; };
+		D45A8AE6042D164771624CFF759E43F2 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
+		D5FD57EFC7678CFD08B73571F7F69AFC /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = VersionCheckFrequency.html; path = docs/Structs/Constants/VersionCheckFrequency.html; sourceTree = "<group>"; };
+		D63FD85C208CB452D6002D57A90A3834 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = index.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
+		D6B107AC1BBEB1213D8CA0C1EFD55450 /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Rules.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules.html; sourceTree = "<group>"; };
+		D88F891C388BC1383087CE1D95FF27ED /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/AlertType.html; sourceTree = "<group>"; };
+		D964826E12B2E632040002C869D0F388 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/UpdateType.html"; sourceTree = "<group>"; };
+		D9B2669942353926DDB4DAE557B03C3D /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/dash.png"; sourceTree = "<group>"; };
+		DAD8FC1C05C3A265F0125B44562436CC /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB6E03258F36AE47B8DC2353234FF7F1 /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenViewController.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/SirenViewController.html"; sourceTree = "<group>"; };
+		DBE60B701244CFEB95AA944C067C8316 /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = UserDefaults.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UserDefaults.html"; sourceTree = "<group>"; };
+		DE793F13EDA9290F260361780BA316F9 /* SirenViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
+		DF2F08DA8B7E74F466B8B23742C8E044 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
+		E18D2B6CD2E2A114FBDFFC3E1A0A7825 /* Siren-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-prefix.pch"; sourceTree = "<group>"; };
+		E24E339A8550DD0710BB5FD964BF0161 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/AlertType.html; sourceTree = "<group>"; };
+		E25A82A8620829FF583F6DAB30CB8A1F /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = LookupModel.html; path = docs/Structs/LookupModel.html; sourceTree = "<group>"; };
+		E2EDDB9D184F8DFBDBB253B8C06E19BA /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = CodingKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/CodingKeys.html"; sourceTree = "<group>"; };
+		E32F969D9459D428E037409767F4CE8E /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Known.html; path = docs/Structs/SirenError/Known.html; sourceTree = "<group>"; };
+		E41A104AEE54731D2E572C32FE65AD18 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Known.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/CapturedError/Known.html; sourceTree = "<group>"; };
+		E439D213269A6CE6F2A661E6CFABFC1B /* PerformCheck.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = PerformCheck.html; path = docs/Enums/PerformCheck.html; sourceTree = "<group>"; };
+		E502162F64028620AB3116216016E650 /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
+		E5340AE3ACDEF639822557A11D58B1B9 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
+		E54B143DD33188FAD549FC551E450535 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
+		E591382BF249D3B2AD97DA29EE92CE7A /* typeahead.jquery.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = typeahead.jquery.js; path = docs/js/typeahead.jquery.js; sourceTree = "<group>"; };
+		E5CC685E9FB271F53AFC30932A8D4E21 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Constants.html; path = docs/Extensions/Bundle/Constants.html; sourceTree = "<group>"; };
+		E800A0CF48B6E8BCBB75878439196B48 /* DataParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
+		E94DDA01E629E3B9BF933F011B400B39 /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = SirenAlertMessaging.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging.html"; sourceTree = "<group>"; };
+		EB5F1FA33579074F45C39E2197F9AF64 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
+		EB888E5BED307EC25FA3E1FDC4551DC7 /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = AlertAction.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/AlertAction.html; sourceTree = "<group>"; };
+		EE8D2190D165A86988AB26F8845EFF98 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
+		EEF1674E67BEC60EFBA5C84141867E61 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Classes.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes.html"; sourceTree = "<group>"; };
+		EFF8FA6549F980EB76E00080FB6CACA2 /* Rules.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
+		EFFBDCAEC517793290E5F3EFB7385232 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = highlight.css; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/css/highlight.css"; sourceTree = "<group>"; };
+		F1A280248E139C3BD2D3EE37D967F10B /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UpdatePromptFrequency.html; path = docs/Structs/Rules/UpdatePromptFrequency.html; sourceTree = "<group>"; };
+		F3040FF1CE3A402C71893785FDA0CA04 /* PerformCheck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PerformCheck.swift; sourceTree = "<group>"; };
+		F331599D0B578E0FBCB77E06E54627F2 /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Language.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Localization/Language.html; sourceTree = "<group>"; };
+		F36715AC153BDB1C267646C3AFE4032D /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants.html"; sourceTree = "<group>"; };
+		F4BCF5FFDDFAD2AD5CD3339290CE66F2 /* spinner.gif */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.gif; name = spinner.gif; path = docs/img/spinner.gif; sourceTree = "<group>"; };
+		F4BE1A8856CE90D3AFCFE69B88D905A4 /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Language.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Localization/Language.html"; sourceTree = "<group>"; };
+		F533FA60CB743D3C3526F2BC96EBFF42 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UIAlertController.html; path = docs/Extensions/UIAlertController.html; sourceTree = "<group>"; };
+		F826597169E2155C73602D5C26A2A00A /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = Extensions.html; path = docs/Extensions.html; sourceTree = "<group>"; };
+		F89E1F31DBBF6142EE6AFA4A7A4683FA /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = Structs.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
+		F8B6BE4B9407E8BD8A444C214CF884D3 /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FA995DCA6EEF92ED2F85D4545B015C41 /* Localization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		FE1F4152197D3A23407363EE5B0D5732 /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = UserDefaults.html; path = docs/Extensions/UserDefaults.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A018B48BC1A61DDC3385EECE4DAA6833 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E94E7703C02D4216BF4F6437DF786812 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		023E9B2FECC34A073FD41C015F4CD7D2 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B4B4AEA404B8E6172D946B13E917F85F /* AlertAction.html */,
+				EB888E5BED307EC25FA3E1FDC4551DC7 /* AlertAction.html */,
+				609B2E31FD5B8D75651DFEC75AC964D9 /* AlertAction.html */,
+				D20C94FD8369402C23B41FAB19E2C307 /* AlertConstants.html */,
+				3CEE39454709B1E2C528C7EBD2415628 /* AlertConstants.html */,
+				4252F5B612F767BFAF54103001C5B591 /* AlertConstants.html */,
+				5D6A6276A9528E6A20A05590586AE2E0 /* AlertMessaging.html */,
+				09EDE8ED94E588A93FE9F133FE46505B /* AlertMessaging.html */,
+				12EE5B07149F2C1CE7F28AE2597499C4 /* AlertMessaging.html */,
+				48FAB9105E463B82A77A3DB613B93C73 /* AlertType.html */,
+				7C20B7A5391653B040E6F9029C9EA751 /* AlertType.html */,
+				A15ABBA9C85ED8BF6EE6CEF7117EF4AF /* AlertType.html */,
+				E24E339A8550DD0710BB5FD964BF0161 /* AlertType.html */,
+				A9B58A77088899B1B9E894C569F5E428 /* AlertType.html */,
+				D88F891C388BC1383087CE1D95FF27ED /* AlertType.html */,
+				894343649F179082E49CDEDAEA6D92C1 /* AlertType.html */,
+				827D5AE8D564688B6AD02D15BFA3E8C7 /* AlertType.html */,
+				363E49F502F1F2BC0B4381B96C1F1F17 /* AlertType.html */,
+				4E8219EC202443A0F42C29E74AC3ABCB /* APIManager.html */,
+				9C0C06CB1A97BB5102544AD6F4B62D35 /* APIManager.html */,
+				878793BBC56FD33384C4958529463731 /* APIManager.html */,
+				45A83D12F7D7BA3E485D48588241591A /* APIModel.html */,
+				7783397E550F890F31557F4185E41747 /* APIModel.html */,
+				02938A396F924233A6CB6B446CF5A28D /* badge.svg */,
+				CAFE1F32D82EBDD598B9A4EB1CED4876 /* badge.svg */,
+				B8DA9E194102B7036F5BC10653E280EA /* badge.svg */,
+				AE3803A4A0157456BDAB9013BF420C4B /* Bundle.html */,
+				5BFA9B48D82C6091EA7F34B6D1F5EF2A /* Bundle.html */,
+				B8DF6CC7536AC103A4E8E782DF35834C /* Bundle.html */,
+				8268CFB729E777386CC9D5E20949E43C /* CapturedError.html */,
+				B8B730B670F26E14AE4AD13EA66C7755 /* CapturedError.html */,
+				17A68DD36103C1D610DDA153131EF24D /* CapturedError.html */,
+				DF2F08DA8B7E74F466B8B23742C8E044 /* carat.png */,
+				18DF94C5B054EAF6B738DBE793702EE0 /* carat.png */,
+				05D8E4BAB82140DCEA07412773BC5524 /* carat.png */,
+				632DD5B43B0016228AB5F317B5836553 /* Classes.html */,
+				B5FAC784EAAE09F43EF27EEC6ECA076C /* Classes.html */,
+				EEF1674E67BEC60EFBA5C84141867E61 /* Classes.html */,
+				61AA8BA9234C20D56874317494C243FA /* CodingKeys.html */,
+				E2EDDB9D184F8DFBDBB253B8C06E19BA /* CodingKeys.html */,
+				B8964BDAF68056E7E0270CAB7B15EA07 /* CodingKeys.html */,
+				9B1B3F63C00340CEA05EFC22CF15C14A /* CodingKeys.html */,
+				AD80C10F3DA539BBF388A094FD244B2E /* CodingKeys.html */,
+				86CADC1690879958B19F7610ADA4F78C /* CodingKeys.html */,
+				3C304A748324100D1132224E84C90DD6 /* CodingKeys.html */,
+				6B449C9A41B1C3884D9C4C9716FD1584 /* CodingKeys.html */,
+				101D889E18367E2DC5F0E98C4EAD7886 /* CodingKeys.html */,
+				A28902723A9427020BAA7BD7A2336CF3 /* CodingKeys.html */,
+				CD900404648F12EADF4069E3F1156DB0 /* Constants.html */,
+				E5CC685E9FB271F53AFC30932A8D4E21 /* Constants.html */,
+				25D5F16267CAD659BCCE627F785408E8 /* Constants.html */,
+				A6AD1DFCA24B088DF085EA12D6BEFDF2 /* Constants.html */,
+				9083C1CE4A98C378F23234D11C995FC2 /* Constants.html */,
+				C0AFCA1D771046B5BF6BD212D6303F7B /* Constants.html */,
+				5CDA08FAF09F7E28A7751106D7B3E6FC /* Constants.html */,
+				590469AB73A82C38D319EA9DEAD16CE8 /* Constants.html */,
+				266C7F9C01727FD273A524234736A664 /* Constants.html */,
+				C3ABE50F2BEA5C41B92CAB7B83D2BC1D /* Constants.html */,
+				F36715AC153BDB1C267646C3AFE4032D /* Constants.html */,
+				2AB821462938E56824A0CA499BEEA840 /* Constants.html */,
+				0F8E9EA8C21BE795073FDBE29D520685 /* Constants.html */,
+				90FDB7B6361334619602E245395ED07D /* Constants.html */,
+				3D7A165D61D6D35FB79DF906D9193FF2 /* Constants.html */,
+				E5340AE3ACDEF639822557A11D58B1B9 /* dash.png */,
+				D9B2669942353926DDB4DAE557B03C3D /* dash.png */,
+				AE49B66BD730DC118CF9418BEE77F7EB /* dash.png */,
+				781125072CC9FDEA881C6E4EE4354F5B /* DataParser.html */,
+				AD7750F934A7683FFDDCAB0EBE28A463 /* DataParser.html */,
+				9F0424771BB1CAC898CC2EBD1F42756F /* DataParser.html */,
+				918721B8D0883F5D53941B962B29E5FB /* Date.html */,
+				CCB5CDB2AC43244B0513722A43C13AF7 /* Date.html */,
+				A4C427287D883034E3FBB3F372CEF58F /* Date.html */,
+				A1F6407CB88F98215553506EFF5FB624 /* docSet.dsidx */,
+				AC2577FC6FCF98118B0308CFD09984E7 /* docSet.dsidx */,
+				15D68CED15A2552080E08AB61662904C /* Enums.html */,
+				435D64329CC50D23DB68230BCEA9F18F /* Enums.html */,
+				EB5F1FA33579074F45C39E2197F9AF64 /* Enums.html */,
+				F826597169E2155C73602D5C26A2A00A /* Extensions.html */,
+				810F21679F1B5512AE27D748D574FD1C /* Extensions.html */,
+				50B1718F1F52E6090050E6649BDF2F9C /* Extensions.html */,
+				93D61490BAC04B0F9F92A0F4490CD425 /* gh.png */,
+				527DA12C932FE10C2A658ED1922CECD3 /* gh.png */,
+				6CE87CD65B1A1F4F06845EC26EEF3EC6 /* gh.png */,
+				EFFBDCAEC517793290E5F3EFB7385232 /* highlight.css */,
+				2660B824029811C954C204010E0D7747 /* highlight.css */,
+				D45A8AE6042D164771624CFF759E43F2 /* highlight.css */,
+				480B52829F499DEEB56218142CBDC917 /* in-acl.tgz */,
+				8A9A7128E6263B2182E8BE188938FB1A /* index.html */,
+				04A0CB7C8434484B31A370BE41D4B05A /* index.html */,
+				D63FD85C208CB452D6002D57A90A3834 /* index.html */,
+				794E46F60364508AB6B5F19AA9FEF041 /* Info.plist */,
+				07905FA47EA96C5CC3248FF4BF615785 /* Info.plist */,
+				19EFB9ADF9609310940FC90A63B584D8 /* jazzy.css */,
+				AB821A46164D2B443C4491C5E18EC65A /* jazzy.css */,
+				8DD52A418C5DC4BFDCFDE14376B6390D /* jazzy.css */,
+				872E9FFB294382B8094D0E9383AC72DE /* jazzy.js */,
+				8ABC8DD8D4FBE61E583058D25EC5E2C4 /* jazzy.js */,
+				3C9958169EE2E21B38D68DB8A6F15483 /* jazzy.js */,
+				657DB2D8BAB010A9DD7BE89BB287DF92 /* jazzy.search.js */,
+				B32D40C67D2351795458BA5D06B6C693 /* jazzy.search.js */,
+				81850C78315C3D94B70A521EE1E9C39F /* jquery.min.js */,
+				7D854C6C833A9DF06B630A94C92A425D /* jquery.min.js */,
+				E54B143DD33188FAD549FC551E450535 /* jquery.min.js */,
+				2BDC07FE210B54FD4EB1066B5E2B526B /* Known.html */,
+				E41A104AEE54731D2E572C32FE65AD18 /* Known.html */,
+				D2F9802FAC874DC0D3BF898A6AE4943F /* Known.html */,
+				BFB3C967C7E709EB17820D6347756AC1 /* Known.html */,
+				E32F969D9459D428E037409767F4CE8E /* Known.html */,
+				1369DAA64EAB44B70BBE577C5F59CFEE /* Known.html */,
+				2BD513F56C3ABA2165B0EA4ED2692B80 /* KnownError.html */,
+				19A4C54D8D0D975C7FC5A3F97AB21BB1 /* KnownError.html */,
+				C76196EE37A1C9B892E73EA13AC98BC3 /* KnownError.html */,
+				01697ECB94C2C1521165043EAD8E8940 /* Language.html */,
+				F331599D0B578E0FBCB77E06E54627F2 /* Language.html */,
+				F4BE1A8856CE90D3AFCFE69B88D905A4 /* Language.html */,
+				AF1EE28ABF57180A6C09CE294ADF6A61 /* LanguageType.html */,
+				58591FAC72A0810C03D271FCBAA57555 /* LanguageType.html */,
+				5931DB775F060B138573E4C83BB48A60 /* LanguageType.html */,
+				9720AE58EADF3733DBDC7426541CFBA6 /* LICENSE */,
+				3248B4A0D26EE1698682D9D1D37CD831 /* Localization.html */,
+				CBA42EABBADE929BC03000801A17118A /* Localization.html */,
+				34B0691AC7E1D2C4DF04DFAFAE323AE2 /* Localization.html */,
+				C861A1D22D5988F62A384ED535A590C2 /* LookupModel.html */,
+				CCF6E22CEB406805EC684E9F7CF81695 /* LookupModel.html */,
+				E25A82A8620829FF583F6DAB30CB8A1F /* LookupModel.html */,
+				B0D07E7054A46EB4D34EAE3B571A563F /* lunr.min.js */,
+				20E888DDC39A6E3F340A7C49BD6DFB17 /* lunr.min.js */,
+				CD1268D0DE8B2CC500CD936D8EA6E495 /* Model.html */,
+				4F2232A98DF3277117E58D1565F67803 /* Model.html */,
+				BC144A92509EC7A45AFE16153A804C48 /* PerformCheck.html */,
+				E439D213269A6CE6F2A661E6CFABFC1B /* PerformCheck.html */,
+				790A823567B0AD8D55541FD3D9DE87B6 /* PresentationManager.html */,
+				2A9C2A8BA75EF7717A1534DB68985DC2 /* PresentationManager.html */,
+				B43A3BE4101DF57717C80A9D1605EBF8 /* PresentationManager.html */,
+				0907EEF8825F177C0C377285054E5E22 /* Protocols.html */,
+				1D4F72D305FCEC9EB9DB71C54478AB07 /* Protocols.html */,
+				CF95C6BEC1657B406D60B4D21C7F3F98 /* Protocols.html */,
+				3D59112833D805F75703C07F5862339B /* README.md */,
+				8955B6E583D7D44562E5C9CCC64A485B /* Results.html */,
+				361E954168B7AC8A6BF67ABAB8B93873 /* Results.html */,
+				B48494F5A4EAFEEE107E2542D1294A5F /* Results.html */,
+				CFA111F116543A9D02210FBE0A12A59A /* Results.html */,
+				43002C3DF0CE5E0CBE83736D95E7CE69 /* Results.html */,
+				BB2B746E488458D8A20C6D92F1EAE3E2 /* Results.html */,
+				7EF97B346BF396D116CA35E5706E4CDC /* Results.html */,
+				518E8A9F0791936CED53C43B06E0BB1A /* Results.html */,
+				1C389AB6F064A837E321D5B18FC5734B /* Results.html */,
+				778A3352A9D328865248FA9BF1064BF5 /* Results.html */,
+				C036C355BDC5E502C5DADDCB14702CC6 /* Results.html */,
+				CF060F63256C39C6528A45516EA5DADB /* Rules.html */,
+				872C173276BB90435C7E67EEDE621D06 /* Rules.html */,
+				D6B107AC1BBEB1213D8CA0C1EFD55450 /* Rules.html */,
+				55CA0CEDC4E50312BFDF98B02BE6193F /* RulesManager.html */,
+				88E2F77DC662B1616B3E1A74A7DE3982 /* RulesManager.html */,
+				B22B8AE07B8E32866748D7835DA35FD2 /* RulesManager.html */,
+				54B7639F9FE87F4D25FE53794530DC50 /* search.json */,
+				526FA8F6956D397E5EEFE6E535E57C79 /* search.json */,
+				BEB78B30A04D7BE02BED51F35EBBD56A /* search.json */,
+				7356FBE794B1FB1731DCEB5EBC8FBD4A /* Siren.html */,
+				87A71A31C0079B8847B083806B2E00D7 /* Siren.html */,
+				6AB74B8AF1F0FE7B5EA97CE830433EE0 /* Siren.html */,
+				5C0791BE1E3B93BA5A745A60F3E6A549 /* Siren.podspec */,
+				15AC9CACF1719DB92FFB539DAFCB8B84 /* Siren.tgz */,
+				6469C697D941266532272350C594DFE8 /* SirenAlertMessaging.html */,
+				544EBE57256AA64B5604B3B92BBEE2FA /* SirenAlertMessaging.html */,
+				E94DDA01E629E3B9BF933F011B400B39 /* SirenAlertMessaging.html */,
+				7959C7E3DC118E77B60ECD047EC5060C /* SirenDelegate.html */,
+				0F743CAD2E4BCAF155615E28A3991639 /* SirenDelegate.html */,
+				055C7A79676DE562CB840D0065F298E6 /* SirenDelegate.html */,
+				70EC0FE47D48F74E4562C1F15E976E9B /* SirenError.html */,
+				1F3A056E8DBEB076BEE55E2941E3E81C /* SirenError.html */,
+				260E42BD73FD80984FC19B9E257CBE83 /* SirenError.html */,
+				8FA63EDAD597879151FE41231D8BD7D0 /* SirenKeys.html */,
+				9F87E4CF777ADE54A33F3CBA416228FB /* SirenKeys.html */,
+				6B711C9D5B93DCBBFA35C03F61A88117 /* SirenKeys.html */,
+				2627ED2E85CAB2276F3F5CDE604FFEC4 /* SirenLookupModel.html */,
+				1383A8F3E3CAFC262A6CD71D97697C4E /* SirenLookupModel.html */,
+				281946EC38E35A8BFF61E45E45AB6C71 /* SirenLookupModel.html */,
+				920B4BECCC90661E72BF9947B1E95487 /* SirenViewController.html */,
+				81B16357238049EFD17E6C50ECDC275D /* SirenViewController.html */,
+				DB6E03258F36AE47B8DC2353234FF7F1 /* SirenViewController.html */,
+				F4BCF5FFDDFAD2AD5CD3339290CE66F2 /* spinner.gif */,
+				31157C98E290B2944012121F2672DBD8 /* spinner.gif */,
+				7B6C72B0A906DE34B1DB1D960E76F2B4 /* Structs.html */,
+				44D0C5506184BC16968DF72AC2484C53 /* Structs.html */,
+				F89E1F31DBBF6142EE6AFA4A7A4683FA /* Structs.html */,
+				E591382BF249D3B2AD97DA29EE92CE7A /* typeahead.jquery.js */,
+				A7163A461642441F84E16CE96AD6213B /* typeahead.jquery.js */,
+				116D8300632F3EA8D8E14A4EFEC5A0E6 /* UIAlertController.html */,
+				879CFDE1B1432FEBB1B25CB9595E9B93 /* UIAlertController.html */,
+				F533FA60CB743D3C3526F2BC96EBFF42 /* UIAlertController.html */,
+				2E98297E4DC676B6C69E7AE75C173144 /* undocumented.json */,
+				D20A7C09E856C4A747027C6EAA427732 /* undocumented.json */,
+				342C911EB5D7DAC65F47FE48F38677EC /* undocumented.json */,
+				0E54CAE10A0DCCCBD346D4EEE7413BC0 /* UpdatePrompFrequency.html */,
+				0D1EEDF0B94673B7C4DCC1538A86505F /* UpdatePrompFrequency.html */,
+				5DB7BC40495302E53B5D6D898BF439E7 /* UpdatePrompFrequency.html */,
+				F1A280248E139C3BD2D3EE37D967F10B /* UpdatePromptFrequency.html */,
+				3D3E7E2136A39757E3076BA3EFCCE321 /* UpdatePromptFrequency.html */,
+				21E8A56C255C12B416F6253A48CE20F1 /* UpdatePromptFrequency.html */,
+				0850CD1669E9F441EBF9A9744306B4E9 /* UpdateResults.html */,
+				29E04E723F4E011522BE98B27CCBBECF /* UpdateResults.html */,
+				5F8FC4601A8F4187875930FC3F959FD6 /* UpdateType.html */,
+				8B881AB849C8CE3E02CFC6AE37F3E397 /* UpdateType.html */,
+				9B620B285DE0CAD55570BDA72479CFA0 /* UpdateType.html */,
+				76DDECC4304A816D5C18B4AD88DF1537 /* UpdateType.html */,
+				B71A485E9E514DAEA6F3D72FD6D99CF9 /* UpdateType.html */,
+				41D5B667A7AE7B867D3A60AEBD678100 /* UpdateType.html */,
+				6BB3E5A58B7398E3E431A13C77E40FBA /* UpdateType.html */,
+				C31479F8F071BE5DC3AA5E27899298FE /* UpdateType.html */,
+				D964826E12B2E632040002C869D0F388 /* UpdateType.html */,
+				FE1F4152197D3A23407363EE5B0D5732 /* UserDefaults.html */,
+				451940E4B41F3501FD5D28D18694836C /* UserDefaults.html */,
+				DBE60B701244CFEB95AA944C067C8316 /* UserDefaults.html */,
+				6DCFE5DA094F3BF443F9307852018E9E /* VersionCheckFrequency.html */,
+				44F7517EDC58422568499352D45283EE /* VersionCheckFrequency.html */,
+				D5FD57EFC7678CFD08B73571F7F69AFC /* VersionCheckFrequency.html */,
+				A9D9BD4297595EE74CC440614036A9F0 /* VersionCheckType.html */,
+				CC463D1DB2935D02571892541ECAA1DB /* VersionCheckType.html */,
+				A473E57C85BE922C46701FD1B5BD842B /* VersionCheckType.html */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		1ADA3866F5411A0C3AC6ED0B5A5604B0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE793F13EDA9290F260361780BA316F9 /* SirenViewController.swift */,
+			);
+			name = "View Controllers";
+			path = "Sources/View Controllers";
+			sourceTree = "<group>";
+		};
+		20F967FCAC30AB7D0B4663DE156578CA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0BF4C9350E24965BC0FBBCA923D22B14 /* APIManager.swift */,
+				A1781E0E6511C722836FE1400DA610C6 /* PresentationManager.swift */,
+				0FE7BDBA806A8E164389D471927B12E4 /* RulesManager.swift */,
+			);
+			name = Managers;
+			path = Sources/Managers;
+			sourceTree = "<group>";
+		};
+		3ECCA3CE42744054552ABF0381DBBCF2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E800A0CF48B6E8BCBB75878439196B48 /* DataParser.swift */,
+				6C2A4759BD67246279C944F0A064DBF3 /* KnownError.swift */,
+			);
+			name = Utilities;
+			path = Sources/Utilities;
+			sourceTree = "<group>";
+		};
+		6175F76A709D89A745234C5440684C67 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE24CC1D7D5952870F7CDB30F496FA13 /* Pods-Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6CC6E3CECBC756D54EC48B94192F78D8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A93A902CA180B5B74C14043A24A6325 /* Siren.modulemap */,
+				C8A400F322E5215B788C91893213686B /* Siren.xcconfig */,
+				09A522AB49D374744A7B7DCB65E03018 /* Siren-dummy.m */,
+				E18D2B6CD2E2A114FBDFFC3E1A0A7825 /* Siren-prefix.pch */,
+				1EA53161543FEAA2E217FF9C43EEBA8E /* Siren-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Siren";
+			sourceTree = "<group>";
+		};
+		7643E334EBFD7DAE4EFD0FCB382DC911 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F667CC0E19EAF34E5A4119E2121F585 /* libPods-Example.a */,
+				17E70395B3CDD0B7EDA622612E2C3144 /* libSiren.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C017B1C2680686194ACF84FAF1A6168 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4598DDA1DEFD6A46DA69C65B5B76C879 /* BundleExtension.swift */,
+				7C10ABEEECAE4CFABA6EF9EE4ABA660D /* DateExtension.swift */,
+				BA79294EB786F0B3C42CF73822A4F51A /* UIAlertControllerExtension.swift */,
+				81AB6C1A5A4B5EEA3798A36397ADCC00 /* UserDefaultsExtension.swift */,
+			);
+			name = Extensions;
+			path = Sources/Extensions;
+			sourceTree = "<group>";
+		};
+		871D11D417EF0CDF8C049724B1F2B2AD /* Siren */ = {
+			isa = PBXGroup;
+			children = (
+				5CC567453B0395D31C3D32A5748E3E89 /* Siren.swift */,
+				7C017B1C2680686194ACF84FAF1A6168 /* Extensions */,
+				20F967FCAC30AB7D0B4663DE156578CA /* Managers */,
+				C484A6CBC0D71D92A6E2A3EB40D0DCAD /* Models */,
+				023E9B2FECC34A073FD41C015F4CD7D2 /* Pod */,
+				CE467F8F3A344B5DCF2BE33D0C8CCAA8 /* Resources */,
+				6CC6E3CECBC756D54EC48B94192F78D8 /* Support Files */,
+				3ECCA3CE42744054552ABF0381DBBCF2 /* Utilities */,
+				1ADA3866F5411A0C3AC6ED0B5A5604B0 /* View Controllers */,
+			);
+			name = Siren;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		BE24CC1D7D5952870F7CDB30F496FA13 /* Pods-Example */ = {
+			isa = PBXGroup;
+			children = (
+				8390C1797A666D89BE05AA8852B57C3F /* Pods-Example.modulemap */,
+				F8B6BE4B9407E8BD8A444C214CF884D3 /* Pods-Example-acknowledgements.markdown */,
+				DAD8FC1C05C3A265F0125B44562436CC /* Pods-Example-acknowledgements.plist */,
+				EE8D2190D165A86988AB26F8845EFF98 /* Pods-Example-dummy.m */,
+				BD7866B2B30C313056837B983F1071EB /* Pods-Example-resources.sh */,
+				E502162F64028620AB3116216016E650 /* Pods-Example-umbrella.h */,
+				8E3451E6F481D3A92D950285A5AFC6BB /* Pods-Example.debug.xcconfig */,
+				A17761FCBF0C42D2747F176250E12C3F /* Pods-Example.release.xcconfig */,
+			);
+			name = "Pods-Example";
+			path = "Target Support Files/Pods-Example";
+			sourceTree = "<group>";
+		};
+		C484A6CBC0D71D92A6E2A3EB40D0DCAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68A114E57E6C410AC0CF1F08695ADAC1 /* AlertAction.swift */,
+				522FB2DD5AA8A45A56F2AE489D98719C /* AlertConstants.swift */,
+				3E7A912BD0C7AFA4B5E0756DA4D49936 /* APIModel.swift */,
+				42ADD89D2BF3E1E639B3B533A70C112E /* AppStoreCountry.swift */,
+				FA995DCA6EEF92ED2F85D4545B015C41 /* Localization.swift */,
+				3503EA0A83EFE3A140AC43D977C9DD95 /* Model.swift */,
+				F3040FF1CE3A402C71893785FDA0CA04 /* PerformCheck.swift */,
+				EFF8FA6549F980EB76E00080FB6CACA2 /* Rules.swift */,
+				A0446E9CC36CC74266330FB519C64D92 /* UpdateResults.swift */,
+			);
+			name = Models;
+			path = Sources/Models;
+			sourceTree = "<group>";
+		};
+		CA5CC6205CFA8B5868F65C2CE32900E5 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				871D11D417EF0CDF8C049724B1F2B2AD /* Siren */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		CE467F8F3A344B5DCF2BE33D0C8CCAA8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				48DF8FC16D6E085DBA7E7726D9CCB791 /* Siren.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				CA5CC6205CFA8B5868F65C2CE32900E5 /* Development Pods */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				7643E334EBFD7DAE4EFD0FCB382DC911 /* Products */,
+				6175F76A709D89A745234C5440684C67 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		071D35083E8228C5CC94C7B6A75D4108 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B57BACEB8A6C8827B4B5316CBB1C6629 /* Pods-Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85FA4821DDA9AB312946F813C6B502EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B8DED1C488ED0157E4B931E03162B21 /* Siren-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0AEE99A309977BD12A049FF48AF9BA4B /* Pods-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 647E7860A65E1A9EC89D1000E2EDD3FB /* Build configuration list for PBXNativeTarget "Pods-Example" */;
+			buildPhases = (
+				071D35083E8228C5CC94C7B6A75D4108 /* Headers */,
+				EEA50B05E1513FE32E9E0B14C2B63F86 /* Sources */,
+				E94E7703C02D4216BF4F6437DF786812 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1E8C6DF527D3B406795426A4A108AE2 /* PBXTargetDependency */,
+			);
+			name = "Pods-Example";
+			productName = "Pods-Example";
+			productReference = 1F667CC0E19EAF34E5A4119E2121F585 /* libPods-Example.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A0E2640B83527AE54205D7FDE9C5D930 /* Siren */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3EEB147608F09D75CF3D6C903F71A33 /* Build configuration list for PBXNativeTarget "Siren" */;
+			buildPhases = (
+				85FA4821DDA9AB312946F813C6B502EE /* Headers */,
+				B5ED3377923B4760D0C1EF0596B8A4BE /* Sources */,
+				A018B48BC1A61DDC3385EECE4DAA6833 /* Frameworks */,
+				B21A57C15F9BD883AC7390F7A034D061 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Siren;
+			productName = Siren;
+			productReference = 17E70395B3CDD0B7EDA622612E2C3144 /* libSiren.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1220;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 7643E334EBFD7DAE4EFD0FCB382DC911 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0AEE99A309977BD12A049FF48AF9BA4B /* Pods-Example */,
+				A0E2640B83527AE54205D7FDE9C5D930 /* Siren */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B21A57C15F9BD883AC7390F7A034D061 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/Siren/Siren.modulemap",
+				"${PODS_ROOT}/Headers/Public/Siren/Siren-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/Siren-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/Siren/Siren.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/Siren/Siren-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5ED3377923B4760D0C1EF0596B8A4BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4764CC2CEDBD21A5E612C7DC75C53AA0 /* AlertAction.swift in Sources */,
+				185978D62924D1775472DB3DA719657F /* AlertConstants.swift in Sources */,
+				54105A1B73A8EFD5217B19CB5D296F9F /* APIManager.swift in Sources */,
+				490F448F9F73449882A934FB2D629B04 /* APIModel.swift in Sources */,
+				5D82FF44D80E4B766899ACBBDF614E45 /* AppStoreCountry.swift in Sources */,
+				CC05CA74BEA9CE8C284B8B1A08FBA42F /* BundleExtension.swift in Sources */,
+				46377D98EB15E60B58CBD0945DA65B74 /* DataParser.swift in Sources */,
+				F1902E6B100CAE1D52ABB2272CB62C73 /* DateExtension.swift in Sources */,
+				4057D30B0F539EE14206C2D84138D642 /* KnownError.swift in Sources */,
+				376DE70C5766A014D4814E911FE75A98 /* Localization.swift in Sources */,
+				FB58120AF3B295082FEF245227AA0B69 /* Model.swift in Sources */,
+				3790548B4ED3BA7050805A3673826E80 /* PerformCheck.swift in Sources */,
+				3E9B23721CF2D9E0956C4F8550A12914 /* PresentationManager.swift in Sources */,
+				E2A752A8D1E2E1F29D2CEBC7AA58CA53 /* Rules.swift in Sources */,
+				1B5A6A7D74D86500C1F7499A8DE7332B /* RulesManager.swift in Sources */,
+				FCE68557AAE9104535FCF88E38295D87 /* Siren-dummy.m in Sources */,
+				E18E48DB2C3513F5C6A5504878CECFDC /* Siren.swift in Sources */,
+				A8840F164C2A2D4F078A8FFE08D34D76 /* SirenViewController.swift in Sources */,
+				6185D67BCCB04E09848F6D19A3EC8AEE /* UIAlertControllerExtension.swift in Sources */,
+				B75ADACF1B5FFA63F59D6DE9391A0F0E /* UpdateResults.swift in Sources */,
+				9946190138F72E35594243600AC4FA0D /* UserDefaultsExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEA50B05E1513FE32E9E0B14C2B63F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72F05485DDBA9325B9B5C4B453B4B24D /* Pods-Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C1E8C6DF527D3B406795426A4A108AE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Siren;
+			target = A0E2640B83527AE54205D7FDE9C5D930 /* Siren */;
+			targetProxy = 64FCC2F55C2CD481AA02CDE1087726CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		257497152829C177993B5EC99C1D227A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		5ECD12ADF9D732A781B93403AC46D048 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A17761FCBF0C42D2747F176250E12C3F /* Pods-Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		807B4EDDC3077B5A4CF29BF69D1E4419 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8A400F322E5215B788C91893213686B /* Siren.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Siren/Siren-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MODULEMAP_FILE = Headers/Public/Siren/Siren.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Siren;
+				PRODUCT_NAME = Siren;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A63B8CA6BA5AFD9D922A67191440DDDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8A400F322E5215B788C91893213686B /* Siren.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Siren/Siren-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MODULEMAP_FILE = Headers/Public/Siren/Siren.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Siren;
+				PRODUCT_NAME = Siren;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CBDC4C2A3CE853EB92F7FFE33CC4D977 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E3451E6F481D3A92D950285A5AFC6BB /* Pods-Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
+				257497152829C177993B5EC99C1D227A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		647E7860A65E1A9EC89D1000E2EDD3FB /* Build configuration list for PBXNativeTarget "Pods-Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBDC4C2A3CE853EB92F7FFE33CC4D977 /* Debug */,
+				5ECD12ADF9D732A781B93403AC46D048 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3EEB147608F09D75CF3D6C903F71A33 /* Build configuration list for PBXNativeTarget "Siren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				807B4EDDC3077B5A4CF29BF69D1E4419 /* Debug */,
+				A63B8CA6BA5AFD9D922A67191440DDDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

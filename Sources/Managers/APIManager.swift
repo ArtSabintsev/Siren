@@ -31,14 +31,6 @@ public struct APIManager {
       self.country = country
     }
 
-    /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
-    /// If nil, version check requests are performed against the US App Store.
-    ///
-    /// - Parameter countryCode: The raw country code for the App Store in which the app is available.
-    public init(countryCode: String?) {
-      self.init(country: .init(code: countryCode))
-    }
-
     /// The default `APIManager`.
     ///
     /// The version check is performed against the  US App Store.
@@ -46,6 +38,14 @@ public struct APIManager {
 }
 
 extension APIManager {
+    /// Convenience initializer that initializes `APIManager` to the region or country of an App Store in which the app is available.
+    /// If nil, version check requests are performed against the US App Store.
+    ///
+    /// - Parameter countryCode: The raw country code for the App Store in which the app is available.
+    public init(countryCode: String?) {
+      self.init(country: .init(code: countryCode))
+    }
+
     /// Creates and performs a URLRequest against the iTunes Lookup API.
     ///
     /// - Parameter handler: The completion handler for the iTunes Lookup API request.

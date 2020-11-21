@@ -105,17 +105,6 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' # Swift 2.3
 ```
 
-### Carthage
-```swift
-github "ArtSabintsev/Siren" // Swift 5.1+
-github "ArtSabintsev/Siren" "swift5.0" // Swift 5.0
-github "ArtSabintsev/Siren" "swift4.2" // Swift 4.2
-github "ArtSabintsev/Siren" "swift4.1" // Swift 4.1
-github "ArtSabintsev/Siren" "swift3.2" // Swift 3.2
-github "ArtSabintsev/Siren" "swift3.1" // Swift 3.1
-github "ArtSabintsev/Siren" "swift2.3" // Swift 2.3
-```
-
 ### Swift Package Manager
 ```swift
 .Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 5)
@@ -192,7 +181,7 @@ If an app update is available, Siren checks to make sure that the version of iOS
 ## Testing Siren Locally
 Temporarily change the version string in Xcode (within the `.xcodeproj` file) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
-If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use the [App Store Connect](https://itunes.apple.com/app/id1234793120) app's bundleID: `com.apple.AppStoreConnect`.
+If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this library, we use Facebook's Bundle ID: `com.facebook.Facebook`.
 
 ## Words of Caution
 Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 1 day (24 hours) after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.

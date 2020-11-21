@@ -15,6 +15,16 @@ final class SirenTests: XCTestCase {
 
 }
 
+// MARK: - API
+
+extension SirenTests {
+  
+  func testAPIDefaultsToUnitedStatesAppStore() {
+    XCTAssertEqual(siren.apiManager.country, AppStoreCountry.unitedStates)
+  }
+  
+}
+
 // MARK: - Updates
 
 extension SirenTests {

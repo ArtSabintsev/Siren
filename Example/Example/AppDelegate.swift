@@ -226,7 +226,7 @@ private extension AppDelegate {
     /// This example function illustrates how this can be done by checking against the Russian App Store.
     func appStoreCountryChangeExample() {
         let siren = Siren.shared
-        siren.apiManager = APIManager(countryCode: "RU")
+        siren.apiManager = APIManager(country: .russia)
 
         siren.wail { results in
             switch results {

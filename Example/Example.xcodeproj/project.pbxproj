@@ -36,6 +36,7 @@
 		8EF9F88C224EACB200B20545 /* SirenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF9F878224EACB200B20545 /* SirenViewController.swift */; };
 		8EF9F88E224EB00100B20545 /* Siren.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; };
 		8EF9F88F224EB00100B20545 /* Siren.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF9F853224EACA500B20545 /* Siren.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DCE260A7255A192A0035FAA0 /* AppStoreCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE260A6255A192A0035FAA0 /* AppStoreCountry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		8EF9F876224EACB200B20545 /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = ../../Sources/Siren.bundle; sourceTree = "<group>"; };
 		8EF9F878224EACB200B20545 /* SirenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		8EF9F88D224EACBF00B20545 /* Siren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Siren.h; sourceTree = "<group>"; };
+		DCE260A6255A192A0035FAA0 /* AppStoreCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreCountry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				8EF9F865224EACB100B20545 /* AlertAction.swift */,
 				8EF9F866224EACB100B20545 /* AlertConstants.swift */,
 				8EF9F869224EACB100B20545 /* APIModel.swift */,
+				DCE260A6255A192A0035FAA0 /* AppStoreCountry.swift */,
 				8EF9F867224EACB100B20545 /* Localization.swift */,
 				8EF9F868224EACB100B20545 /* Model.swift */,
 				8EF9F86B224EACB100B20545 /* PerformCheck.swift */,
@@ -468,6 +471,7 @@
 				8EF9F882224EACB200B20545 /* PerformCheck.swift in Sources */,
 				8EF9F87F224EACB200B20545 /* Model.swift in Sources */,
 				8EF9F885224EACB200B20545 /* UIAlertControllerExtension.swift in Sources */,
+				DCE260A7255A192A0035FAA0 /* AppStoreCountry.swift in Sources */,
 				8EF9F88C224EACB200B20545 /* SirenViewController.swift in Sources */,
 				8EF9F886224EACB200B20545 /* BundleExtension.swift in Sources */,
 				8EF9F87D224EACB200B20545 /* AlertConstants.swift in Sources */,

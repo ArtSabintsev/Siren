@@ -22,22 +22,21 @@ public struct APIManager {
     typealias CompletionHandler = (Result<APIModel, KnownError>) -> Void
 
     /// The region or country of an App Store in which the app is available.
-    /// By default, all version check requests are performed against the US App Store.
-    /// If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.
-    ///
-    /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
-    ///
-    let countryCode: String?
+    let country: AppStoreCountry
 
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
-    /// If the app is not available in the US App Store, set it to the identifier of at least one App Store region within which it is available.
+    /// - Parameter country: The country for the App Store in which the app is available.
+    public init(country: AppStoreCountry = .unitedStates) {
+      self.country = country
+    }
+
+    /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
+    /// If nil, version check requests are performed against the US App Store.
     ///
-    /// [List of country codes](https://help.apple.com/app-store-connect/#/dev997f9cf7c)
-    ///
-    /// - Parameter countryCode: The country code for the App Store in which the app is availabe. Defaults to nil (e.g., the US App Store)
-    public init(countryCode: String? = nil) {
-        self.countryCode = countryCode
+    /// - Parameter countryCode: The raw country code for the App Store in which the app is available.
+    public init(countryCode: String?) {
+      self.init(country: .init(code: countryCode))
     }
 
     /// The default `APIManager`.
@@ -115,7 +114,7 @@ extension APIManager {
 
         var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: Bundle.main.bundleIdentifier)]
 
-        if let countryCode = countryCode {
+        if let countryCode = country.code {
             let item = URLQueryItem(name: Constants.country, value: countryCode)
             items.append(item)
         }

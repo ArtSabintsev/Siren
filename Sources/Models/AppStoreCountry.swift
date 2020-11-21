@@ -16,19 +16,6 @@ public struct AppStoreCountry {
     public let code: String?
 }
 
-extension AppStoreCountry: Equatable { }
-public func == (lhs: AppStoreCountry, rhs: AppStoreCountry) -> Bool {
-    return lhs.code?.uppercased() == rhs.code?.uppercased()
-}
-
-extension AppStoreCountry: ExpressibleByStringLiteral {
-
-    public init(stringLiteral value: StringLiteralType) {
-      self.init(code: value)
-    }
-
-}
-
 extension AppStoreCountry {
   public static let afghanistan: AppStoreCountry = "AFG"
   public static let unitedArabEmirates: AppStoreCountry = "AE"
@@ -203,4 +190,22 @@ extension AppStoreCountry {
   public static let southAfrica: AppStoreCountry = "ZA"
   public static let zambia: AppStoreCountry = "ZMB"
   public static let zimbabwe: AppStoreCountry = "ZW"
+}
+
+extension AppStoreCountry: Equatable { }
+/// Adds ability to equate instances of `AppStoreCountry` to each other.
+/// - Parameters:
+///   - lhs: First instance of`AppStoreCountry`
+///   - rhs: Second instance of`AppStoreCountry`
+/// - Returns: `true` if instances are equal. Otherwise, `false`.
+public func == (lhs: AppStoreCountry, rhs: AppStoreCountry) -> Bool {
+    return lhs.code?.uppercased() == rhs.code?.uppercased()
+}
+
+extension AppStoreCountry: ExpressibleByStringLiteral {
+    /// Allows for `AppStoreCountry` to be initialized by a string literal.
+    /// - Parameter value: An instance of `AppStoreCountry` that can be represented as a `String`.
+    public init(stringLiteral value: StringLiteralType) {
+      self.init(code: value)
+    }
 }

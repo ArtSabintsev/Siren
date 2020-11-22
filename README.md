@@ -44,12 +44,11 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 ## Features
 
 ### Current Features
-- [x] CocoaPods, Carthage, and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
+- [x] CocoaPods and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules (see [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
 - [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
-- [x] 100% Documentation Coverage (see https://sabintsev.com/Siren)
 
 ### Future Features
 A list of future development work can be found on [Siren's Kanban Board](https://github.com/ArtSabintsev/Siren/projects/1).

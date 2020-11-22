@@ -50,9 +50,6 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
 - [x] Device Compatibility Check (see [Device Compatibility](https://github.com/ArtSabintsev/Siren#device-compatibility))
 
-### Future Features
-A list of future development work can be found on [Siren's Kanban Board](https://github.com/ArtSabintsev/Siren/projects/1).
-
 ---
 
 ## Screenshots

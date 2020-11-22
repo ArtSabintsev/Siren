@@ -57,275 +57,55 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008E3273167E0AFBA29DF24D10D2DB7F /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenAlertMessaging.html; path = docs/Structs/SirenAlertMessaging.html; sourceTree = "<group>"; };
-		016753A4AF220FDE6A9B876503F3FAB9 /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenKeys.html; path = docs/Extensions/UserDefaults/SirenKeys.html; sourceTree = "<group>"; };
-		01C8ADDE661CC1C10A885A97E42B2931 /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CapturedError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/CapturedError.html"; sourceTree = "<group>"; };
-		023DCE36D0350716B541922FF71A1020 /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Localization.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Localization.html; sourceTree = "<group>"; };
-		0270F5233E48B3A87FA9FE276700646A /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/RulesManager/UpdateType.html"; sourceTree = "<group>"; };
-		0273E29CCAE8466CF10274711F850D8E /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs.html"; sourceTree = "<group>"; };
-		027AD28E389582D7D079CEFEC06EAE86 /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = RulesManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/RulesManager.html; sourceTree = "<group>"; };
 		04AC9CD2492BEBDE2CE3FCA2F1116B9F /* SirenViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SirenViewController.swift; sourceTree = "<group>"; };
 		07692E025EFBB5F5C9DD63817289A7F2 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		0779A02EB13DDD0F2E0F4FE73F78E715 /* AppStoreCountry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppStoreCountry.swift; sourceTree = "<group>"; };
-		0947B88A6AA4D3DDF68F9A2E36195FCA /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/VersionCheckFrequency.html"; sourceTree = "<group>"; };
-		09F1D4B2B90D8367648FA47BB6D815ED /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenLookupModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenLookupModel.html; sourceTree = "<group>"; };
-		0A37FB00B5A3DC77B675232DC4A6996F /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/Structs/AlertMessaging/Constants.html; sourceTree = "<group>"; };
-		0AB4C17589472F345DBFAF768D15182A /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Language.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Localization/Language.html; sourceTree = "<group>"; };
-		0DD3DF2D4EFA5C7348CB84A563173EAB /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UserDefaults/SirenKeys.html; sourceTree = "<group>"; };
-		0E43146FEEC1DBEBC564A5A4558E1C90 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/Structs/Rules/AlertType.html; sourceTree = "<group>"; };
-		0F95AEDB155E7E881FD74A598917231D /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/VersionCheckType.html"; sourceTree = "<group>"; };
 		12CE99F679637B1BA7DF1CF0A94981C6 /* Rules.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
-		13CC77C60208BD166595EE2449B1A244 /* UpdateResults.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateResults.html; path = docs/Structs/UpdateResults.html; sourceTree = "<group>"; };
 		1445E1F7DC68D34533C71DDB622DCAD4 /* Model.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		1453E4D5292F9077F878F48D9431A9FE /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckType.html; path = docs/Classes/Siren/VersionCheckType.html; sourceTree = "<group>"; };
-		1574EB36312816EFB3293DE5A8EB4198 /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertConstants.html; path = docs/Structs/AlertConstants.html; sourceTree = "<group>"; };
-		15B279DAD6DB657537B837F431E4C592 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIAlertController.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UIAlertController.html"; sourceTree = "<group>"; };
-		17E70395B3CDD0B7EDA622612E2C3144 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Siren.framework; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19036709856D637BCB77F71A92923BF1 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/CodingKeys.html"; sourceTree = "<group>"; };
-		19A1DD1F16EF58819AC8B90584F93419 /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertAction.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/AlertAction.html"; sourceTree = "<group>"; };
-		1B9C3A34B39AAE890134250D9285D6DC /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePrompFrequency.html; path = docs/Structs/Rules/UpdatePrompFrequency.html; sourceTree = "<group>"; };
+		17E70395B3CDD0B7EDA622612E2C3144 /* Siren.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Siren.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA24BC1E607E24F1C9AED046EE27110 /* Pods-Example-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1D67B605B07B5A6171149C3C5C5320F5 /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/Extensions.html; sourceTree = "<group>"; };
-		1EA2D1D10B9BC31B547AE1FEE276232F /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenViewController.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/SirenViewController.html; sourceTree = "<group>"; };
-		1F667CC0E19EAF34E5A4119E2121F585 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example.framework; path = "Pods-Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21F3507CE3811AFEFBD55EFB641F1411 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
-		22086EE67F703DCB8853CFFC145CF209 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/dash.png"; sourceTree = "<group>"; };
-		239F53DCF2EACAE4632B39081A212600 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/Structs/LookupModel/CodingKeys.html; sourceTree = "<group>"; };
-		25F3235448932DF7D7EF5E57557125B3 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
-		26CAEBE711560B868C9835B17E3CE907 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/Structs/APIModel/Results.html; sourceTree = "<group>"; };
+		1F667CC0E19EAF34E5A4119E2121F585 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27809964D647C11D4B07299C7B264724 /* Pods-Example-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C0257A9A3D8C5B62771A4DDEB17A0ED /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		2C1491139955EE2BEBABBAEF64DF4F98 /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertMessaging.html; path = docs/Structs/AlertMessaging.html; sourceTree = "<group>"; };
-		2CAD048D0E2AD72A444ADA9032F65CB2 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/AlertType.html"; sourceTree = "<group>"; };
-		2CBFD91A204F3A26936285E007960E49 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
-		2E586A78600B78E94E43D0635D68D14D /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Bundle.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Bundle.html"; sourceTree = "<group>"; };
-		2F82CBAB16637DDDC2599CFA0531C2A9 /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertAction.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/AlertAction.html; sourceTree = "<group>"; };
 		2F92A716E93EDF48D0C9EF3C5062B558 /* Pods-Example-Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-Tests-umbrella.h"; sourceTree = "<group>"; };
-		3053A89F59922A4EDA1017C20DF66B99 /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePrompFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/UpdatePrompFrequency.html; sourceTree = "<group>"; };
-		3138BA92E45275753852F341C9B074E0 /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DataParser.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/DataParser.html; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		325C8A2C8ABBBB3CD7AFA622656AB569 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/UpdateType.html; sourceTree = "<group>"; };
 		32CCD0FA1018A4400F08975ABFFA810F /* Siren-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Siren-Info.plist"; sourceTree = "<group>"; };
-		33F913E2A2D784F3F60B9A46AE0EDFA1 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/AlertType.html; sourceTree = "<group>"; };
-		3761E9FA8D68732D6CE97088FFAE41A2 /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = APIManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIManager.html; sourceTree = "<group>"; };
-		376B67306B5BAF81C2EC6EDB11BA97D1 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIAlertController.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UIAlertController.html; sourceTree = "<group>"; };
-		3809EADE8C5BFFE565E94204E4DFD842 /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertMessaging.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertMessaging.html; sourceTree = "<group>"; };
-		385DE57382179FE9C329FC96A2F9CCB6 /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenViewController.html; path = docs/Classes/SirenViewController.html; sourceTree = "<group>"; };
 		39CFCAA6122D9973CEDDC45FE79A87F0 /* Siren.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Siren.modulemap; sourceTree = "<group>"; };
-		3C0FE574D5715646F82A2B009EBEB01D /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertMessaging/Constants.html; sourceTree = "<group>"; };
-		3DF87B270DE659AE2A7B8672AAC39D61 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants.html; sourceTree = "<group>"; };
-		3E797E3E80D8291493905C4192B93132 /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = KnownError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/KnownError.html; sourceTree = "<group>"; };
-		3FCC6607BBA79215D3E1A78636E3F803 /* UpdateResults.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateResults.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/UpdateResults.html; sourceTree = "<group>"; };
-		3FD2B9F640D095A029168417DBEB8C57 /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = APIManager.html; path = docs/Structs/APIManager.html; sourceTree = "<group>"; };
 		3FE256068833F5457822B5283DB5E7E9 /* AlertConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertConstants.swift; sourceTree = "<group>"; };
-		42BA478DAE1EE6F9B745AF7B4722B5BF /* Siren.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = Siren.tgz; path = docs/docsets/Siren.tgz; sourceTree = "<group>"; };
-		42F750D98831A8040FD71F4F85727160 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/Results.html; sourceTree = "<group>"; };
-		4445E6350C7A86CA240CFE6FCDB3B912 /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Bundle.html; path = docs/Extensions/Bundle.html; sourceTree = "<group>"; };
-		447CA1F2443B94C6C8E5B210256D6493 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/Structs/APIModel/Results/CodingKeys.html; sourceTree = "<group>"; };
-		44B0C0EE23AE7B6E7EE5791CCD3B3BFC /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/css/jazzy.css"; sourceTree = "<group>"; };
-		453A087418B933CC61EF688D37315F6F /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
 		45462EA14591896955C5CDE94A619A44 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
-		45EBC270981BFCEC45E6C8CC88F832FF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/Siren.docset/Contents/Info.plist; sourceTree = "<group>"; };
 		4610452B0A0215B177CA1FDD9129356A /* APIModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
-		467B27AD2230DAD83747E344963B5C4C /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/Results.html; sourceTree = "<group>"; };
-		46D75BB728C044B7B5334B5E70DEDFE5 /* APIManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = APIManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/APIManager.html"; sourceTree = "<group>"; };
-		487F87F74EFC9921B70EB047792541E5 /* VersionCheckType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/VersionCheckType.html; sourceTree = "<group>"; };
-		48A19F0700B04EF324E2C3B5F7C1000A /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/Siren.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
-		4C0ECE1163DE7BF9BA496B4435956D6D /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = KnownError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/KnownError.html"; sourceTree = "<group>"; };
-		4CE19FBB94BEEA91CA6C9B4CAEAE58AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "docs/docsets/in-acl.docset/Contents/Info.plist"; sourceTree = "<group>"; };
-		4D075BCF825A30DDCBA0E16ABB68AB33 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/gh.png"; sourceTree = "<group>"; };
-		4D6C86FC80EC641EFFDDC87845F4F626 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
-		4D8DBDBF2F9D704E0A24A4C8A02263E9 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
-		4F53AA78629F1C6B5358DF326A562322 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/Protocols.html; sourceTree = "<group>"; };
-		4FE643E3BB8B4B0F0C3FE79AF033D074 /* PerformCheck.html */ = {isa = PBXFileReference; includeInIndex = 1; name = PerformCheck.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/PerformCheck.html; sourceTree = "<group>"; };
-		50820205E702760A6BD28376F5124119 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/Structs/Constants/AlertType.html; sourceTree = "<group>"; };
-		50A4080CAB3267BB802F8F53A87D6EB5 /* typeahead.jquery.js */ = {isa = PBXFileReference; includeInIndex = 1; name = typeahead.jquery.js; path = docs/js/typeahead.jquery.js; sourceTree = "<group>"; };
-		51B7A76A1EF1FEC5B2DD80A2783BB642 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/Structs/Constants.html; sourceTree = "<group>"; };
-		5268E1746BDEB21D391C1430F7878405 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/Results/CodingKeys.html; sourceTree = "<group>"; };
 		5281882E9C6A7A11616D41DF41B0CC7A /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		528E8B94BF8C87BF651346B71C0C13CD /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Bundle/Constants.html; sourceTree = "<group>"; };
-		52A0C89DF23BB55858785F996074837C /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Language.html; path = docs/Structs/Localization/Language.html; sourceTree = "<group>"; };
-		53DB0DD72ABF51091EA7AA76A5637533 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
-		554F416F78860BAE4495CEF2992A5229 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Bundle/Constants.html"; sourceTree = "<group>"; };
-		556FC9DAFC9F0D374CDBA39E06CA0931 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/AlertType.html; sourceTree = "<group>"; };
-		5855ED40E018443C60187C213D00DA9E /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = RulesManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/RulesManager.html"; sourceTree = "<group>"; };
-		593DD34FF63615A531B3F2379ED941BC /* spinner.gif */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.gif; name = spinner.gif; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/spinner.gif; sourceTree = "<group>"; };
-		5991FB4434F1D39002106FE0B1BE31C8 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/index.html"; sourceTree = "<group>"; };
-		5C2A9DF2148B07524050CE4D29A77D67 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
-		5D4D206F96911B0C54A2AE69D241B5C4 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/Siren.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
-		5E7918318BC86D7618420AABF5184F02 /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenLookupModel.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenLookupModel.html"; sourceTree = "<group>"; };
-		5F84569E5D82B77AC16C6DABBF34364D /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/Classes/Siren/AlertType.html; sourceTree = "<group>"; };
-		60B95EFB6784DAE977A1CEA820DACAF2 /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LookupModel.html; path = docs/Structs/LookupModel.html; sourceTree = "<group>"; };
-		636C6E3B9C1844704A966F172CC7A559 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/CodingKeys.html; sourceTree = "<group>"; };
 		6503DDCB4488C8D16BA39AB9F392A782 /* Siren.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Siren.bundle; path = Sources/Siren.bundle; sourceTree = "<group>"; };
-		65A1F57938C4F3AB8671CE68B96ECF37 /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Rules.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules.html; sourceTree = "<group>"; };
-		6629F48E48DBBA8F09B40CB8FA185C70 /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LanguageType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/LanguageType.html"; sourceTree = "<group>"; };
-		66C22A7A19B1123E8A47E7B42E179A7B /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
-		66E79190FF49BBBB6CC30DEC06808AF9 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/Structs/SirenLookupModel/Results.html; sourceTree = "<group>"; };
-		6836A96C506710C97AFC3E2AC237266C /* AlertAction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertAction.html; path = docs/Enums/AlertAction.html; sourceTree = "<group>"; };
 		688C1754B2F8DFC0710F4772C4A75C32 /* Pods-Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-Info.plist"; sourceTree = "<group>"; };
-		68FBE56D6F04AAA0FEEDE2116EA6148C /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
-		6B94CD5D1AD4324C3BCCE17351E04D87 /* Model.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Model.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Model.html; sourceTree = "<group>"; };
-		6BABB623456FFD2BDB7878BD0C1315CB /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions.html"; sourceTree = "<group>"; };
-		6D64B938F84E89FFFC1F8E0DC3999C75 /* jazzy.search.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.search.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jazzy.search.js; sourceTree = "<group>"; };
-		6D6E8DC0387D5803D1881D4DE14EC530 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/Results.html"; sourceTree = "<group>"; };
 		6D859521A91F233E653F06300C561D0A /* Pods-Example-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6DF06C012493FB6BED719F0A8E59D2B4 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren/AlertType.html"; sourceTree = "<group>"; };
-		6FD7A7D3EF2C8907762E3DE7592FFF2E /* lunr.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = lunr.min.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/lunr.min.js; sourceTree = "<group>"; };
 		6FE61F66C83C50497BB430E4C3C49CD6 /* Pods-Example-Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-Tests-Info.plist"; sourceTree = "<group>"; };
-		70D0DEE880179A1EBD26A22CF27364E0 /* jazzy.search.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.search.js; path = docs/js/jazzy.search.js; sourceTree = "<group>"; };
-		730CCF89EABA232DE50ACF49EDEF09C1 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/docsets/Siren.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
-		733F0EAF063FEDA717E8C8D1ECF8894D /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
 		73688774DB4F4E61558BEF8FBFA67C44 /* Siren-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-prefix.pch"; sourceTree = "<group>"; };
-		73BC57089ECAA1A11E351C72ACBD2814 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
-		74BDCE0A23835F340F6732660C03EB00 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenLookupModel/Results.html; sourceTree = "<group>"; };
-		74D8E1E0B497FA1959E1AA1297FD330F /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
-		7610B4C74D70BBF175FF833277387594 /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CapturedError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/CapturedError.html; sourceTree = "<group>"; };
-		7838A88F096E9461F6F270A3616907B5 /* Language.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Language.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Localization/Language.html"; sourceTree = "<group>"; };
-		7839DD2E23F4E37F004B17663086DF94 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
-		78C40DAAEC483E766D4479B117756DF9 /* UpdatePrompFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePrompFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/UpdatePrompFrequency.html"; sourceTree = "<group>"; };
 		799AABCC997E084392CC15684384D7CB /* UpdateResults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UpdateResults.swift; sourceTree = "<group>"; };
-		7B0D5A7312C74668F9AF6AEBE022B8DF /* SirenLookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenLookupModel.html; path = docs/Structs/SirenLookupModel.html; sourceTree = "<group>"; };
-		7C5F5645A664F44366826E1E2C7BB08E /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenDelegate.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Protocols/SirenDelegate.html"; sourceTree = "<group>"; };
-		7DF33EB9B45DEA2BC89476C963FCF1D6 /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePromptFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Rules/UpdatePromptFrequency.html; sourceTree = "<group>"; };
-		7E3A2D3CD61D7BE8C8EC99965993755A /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LanguageType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/LanguageType.html; sourceTree = "<group>"; };
-		7F8744C96738B19E55A4F59F7FC15165 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/RulesManager/UpdateType.html; sourceTree = "<group>"; };
-		7FDB1D1CDEAADC308BF2236E77AF4C9D /* SirenKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UserDefaults/SirenKeys.html"; sourceTree = "<group>"; };
-		80B21A1CD7DD3E13969AF1DE629091BE /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/Structs/Results.html; sourceTree = "<group>"; };
-		8142F0F6388B9DDE857A239B8E3ED0F8 /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserDefaults.html; path = docs/Extensions/UserDefaults.html; sourceTree = "<group>"; };
-		8179673D13173DBE390AC210DB94C02B /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
-		821CFAD8D78D48A3835FDBA6030508BB /* Model.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Model.html; path = docs/Structs/Model.html; sourceTree = "<group>"; };
-		82AC28C7C01E5ABB1D9C857BC6573552 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
-		837F77EA2491994A6267CA4366367333 /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Localization.html; path = docs/Structs/Localization.html; sourceTree = "<group>"; };
 		850060B744F1FDFB6ADCAFD76D4D34EB /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
-		853A1E5E5EC9A4BBCC241DBC6A940180 /* PerformCheck.html */ = {isa = PBXFileReference; includeInIndex = 1; name = PerformCheck.html; path = docs/Enums/PerformCheck.html; sourceTree = "<group>"; };
-		870ADA6A7C736AB97ECAA969F53985FB /* KnownError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = KnownError.html; path = docs/Enums/KnownError.html; sourceTree = "<group>"; };
-		87949AD4DA38F013516A41A9C5A066FC /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = "docs/docsets/in-acl.docset/Contents/Resources/docSet.dsidx"; sourceTree = "<group>"; };
-		87E4ED676E96C24F15592828071FC60B /* AlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertMessaging.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertMessaging.html"; sourceTree = "<group>"; };
-		88D0E28D96A599A72EE2548750E936AD /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Date.html; sourceTree = "<group>"; };
-		89968D611EF006F3A3DF2C1A6BDDC0AB /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Protocols.html; sourceTree = "<group>"; };
-		8A83D10F7DD765BA1A2B3386DA34B631 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
-		8B3779628156ED9E1AE673CCD2B08BD6 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/CapturedError/Known.html; sourceTree = "<group>"; };
-		8D61648F71FC1950837C6FC92CF81F25 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/Siren.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
-		8E689BDACD8827E951FE3DEC3BC20B18 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		8EC50EFA23ECCDF0441E7B90467239CD /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants/UpdateType.html"; sourceTree = "<group>"; };
 		8F47617CE49303C806A82E2FB9B0E863 /* Siren-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Siren-umbrella.h"; sourceTree = "<group>"; };
-		9008658C809F679F8807EED64DE4EFBE /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/Structs/RulesManager/UpdateType.html; sourceTree = "<group>"; };
 		90BF25316BE6972758B31C52602CE12C /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
-		910C83530C733A6B6B640F567E479AED /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DataParser.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/DataParser.html"; sourceTree = "<group>"; };
-		915E0558004BF5CB6A02CCBBD2D94031 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel/CodingKeys.html; sourceTree = "<group>"; };
 		927165A654A3BA4A83D5124A91C7A68F /* KnownError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KnownError.swift; sourceTree = "<group>"; };
-		931C7E86200556BA91773F69553BE2F0 /* Siren.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Siren.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		936882D4975C95244F7C3A7E4D495C42 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/js/jazzy.js"; sourceTree = "<group>"; };
-		946C7A7826181126EC21686D7CF2B750 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenError/Known.html; sourceTree = "<group>"; };
-		94D5E92DE8697F122691F4F3C54F130D /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/undocumented.json"; sourceTree = "<group>"; };
-		94E721A4B3C6CF71A0BB27AE728051A7 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/APIManager/Constants.html"; sourceTree = "<group>"; };
-		950E2D379FDFCF558347E281A26F8DC2 /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Rules.html; path = docs/Structs/Rules.html; sourceTree = "<group>"; };
-		95D4E36A482A38C3E7AFA3A8AB50F343 /* Rules.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Rules.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules.html"; sourceTree = "<group>"; };
-		96E7B1E0C36ABAF3B831350108B32EE2 /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Siren.html; path = docs/Classes/Siren.html; sourceTree = "<group>"; };
-		986B636B846C2BC96D4FEB21C39874E5 /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenAlertMessaging.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging.html; sourceTree = "<group>"; };
 		9A2BB114FC52C64771E81719BAA33ED7 /* PerformCheck.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PerformCheck.swift; sourceTree = "<group>"; };
-		9AD1CEDFFDDD56C0E735083C6D3080A6 /* UIAlertController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIAlertController.html; path = docs/Extensions/UIAlertController.html; sourceTree = "<group>"; };
-		9C4D18ACF8CE8F263BED4804605483DA /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/Extensions/Date.html; sourceTree = "<group>"; };
-		9C84C589D2AB007A61C43ABC88C23C91 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E11D77C063A1B51A86A8D7FFE515DE1 /* DataParser.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DataParser.html; path = docs/Structs/DataParser.html; sourceTree = "<group>"; };
-		9E97188F513332B46577DFADC7539A29 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/Extensions/Bundle/Constants.html; sourceTree = "<group>"; };
-		9EC893F9674474653BFA2D904B8D7EA9 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIManager/Constants.html; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FAC482105FAB3C0D49CAF0EF0388E03 /* Siren-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Siren-dummy.m"; sourceTree = "<group>"; };
 		A01CE05636BB10AB017FB20219E86E98 /* AlertAction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
-		A1ECAEB76A193158D5149C60B43ACF23 /* RulesManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = RulesManager.html; path = docs/Structs/RulesManager.html; sourceTree = "<group>"; };
-		A2D0683AE81ADEBACB623B46B5E9C0BD /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = PresentationManager.html; path = docs/Structs/PresentationManager.html; sourceTree = "<group>"; };
-		A2D5633C9DFACF001D250AC90A2EAD23 /* Pods_Example_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example_Tests.framework; path = "Pods-Example-Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3153FFA7BD23AD2E93534B08E646480 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/Structs/LookupModel/Results/CodingKeys.html; sourceTree = "<group>"; };
-		A367A38ACAA41683EA28D939075DB933 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenError/Known.html"; sourceTree = "<group>"; };
-		A6DC6B7CFBD7369AA774115A8134516A /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren/AlertType.html; sourceTree = "<group>"; };
-		A6E2DA714CE483A19F4E60B6AC461F3E /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = docs/Structs/CapturedError/Known.html; sourceTree = "<group>"; };
-		A774AED247F918D3F53F0AF4A81C3C84 /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenDelegate.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Protocols/SirenDelegate.html; sourceTree = "<group>"; };
+		A2D5633C9DFACF001D250AC90A2EAD23 /* Pods_Example_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB37C628ACFCAD98A383C821813EFBBF /* Pods-Example-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-Tests-frameworks.sh"; sourceTree = "<group>"; };
-		AC51B52B45BDEEE308C2A78DCF9208BF /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/img/carat.png"; sourceTree = "<group>"; };
-		AC7B6D930F6137EAB8BE775A6756B6D9 /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertConstants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/AlertConstants.html; sourceTree = "<group>"; };
-		AE1F179C3F9DC1CD5F8FB0A70D5AA339 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/Siren.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
 		AEAE97BBEB3D5E4F45CEC2708FAFB72C /* Pods-Example-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-Tests-dummy.m"; sourceTree = "<group>"; };
 		AEB39A55C28B48D98B02090079C5C084 /* Pods-Example-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		AF921A148A9AA5E9888195D4730ADAEF /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/Structs.html; sourceTree = "<group>"; };
-		B0DA815A8FF8D2FC9B05EB7FDA98206B /* APIModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = APIModel.html; path = docs/Structs/APIModel.html; sourceTree = "<group>"; };
-		B1C37949E19CE06CECEFB9717369CE50 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums.html"; sourceTree = "<group>"; };
-		B24FACF6BAA5FB56F1DD08C9FCDC130F /* spinner.gif */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.gif; name = spinner.gif; path = docs/img/spinner.gif; sourceTree = "<group>"; };
-		B28A9BCE0EFB74432644C851DCA5218D /* AlertConstants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertConstants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertConstants.html"; sourceTree = "<group>"; };
-		B30E996CA11BA9D9B0CE03ED51179515 /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserDefaults.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/UserDefaults.html; sourceTree = "<group>"; };
-		B3E8E5AFBD7B123269DDFF76CAD13F16 /* lunr.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = lunr.min.js; path = docs/js/lunr.min.js; sourceTree = "<group>"; };
-		B490CCDCDCF642146BBE1308436D0F60 /* in-acl.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = "in-acl.tgz"; path = "docs/docsets/in-acl.tgz"; sourceTree = "<group>"; };
-		B9B5534A4D5C56509C752BDCD8937C6E /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = PresentationManager.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/PresentationManager.html"; sourceTree = "<group>"; };
-		BB96A21855935284FC6EF4959C34BFF5 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/Enums/UpdateType.html; sourceTree = "<group>"; };
-		BC40E0B3A06232B48D2F989AFC3DCFFA /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/js/jquery.min.js"; sourceTree = "<group>"; };
-		BC7E9BE91583F73C968888B3D9FCBA4E /* SirenViewController.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenViewController.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/SirenViewController.html"; sourceTree = "<group>"; };
-		BE79136D02F0DA68391042655A3B1CD2 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Protocols.html"; sourceTree = "<group>"; };
-		BF4F6456ABBAD1612F91CC817A481213 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/AlertMessaging/Constants.html"; sourceTree = "<group>"; };
-		C076D0B9E3D8FB349D79F177CF58B53D /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenError.html; path = docs/Structs/SirenError.html; sourceTree = "<group>"; };
-		C0EC80CABC68339ECFE6761F7A87F278 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		C27D901D1106BC73BA80385181261F0D /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckFrequency.html; path = docs/Structs/Constants/VersionCheckFrequency.html; sourceTree = "<group>"; };
-		C3051BA7E985687FA4A86A2FDF24EEEB /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Siren.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Classes/Siren.html; sourceTree = "<group>"; };
-		C3E5456746B60388DA25FD64E7A318EE /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/docsets/Siren.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
-		C59AE5C3DBE72CAF44B27A3933270744 /* LanguageType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LanguageType.html; path = docs/Classes/Siren/LanguageType.html; sourceTree = "<group>"; };
 		C5CFD0F7196CE1DB01FAB20D44271274 /* APIManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		C63308AF2B31B14D75B16BA656A9C9C3 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Enums/UpdateType.html"; sourceTree = "<group>"; };
-		C6559A30FDCC781514BCCD68B834F754 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/Structs/APIManager/Constants.html; sourceTree = "<group>"; };
-		C682A47D57C1F7FD21628B76D5AD6360 /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePromptFrequency.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/UpdatePromptFrequency.html"; sourceTree = "<group>"; };
-		C6A035CCC15DB4D6B999F444A0FCD88C /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/Structs/SirenAlertMessaging/Constants.html; sourceTree = "<group>"; };
-		C881DEA0D3B3107540E5344A39B43973 /* AlertType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = AlertType.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Rules/AlertType.html"; sourceTree = "<group>"; };
-		CA757872AE424C05F9E3F68914027673 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes.html"; sourceTree = "<group>"; };
-		CB714DC05B62D4B45E4F00986311DB9F /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/Structs/APIModel/CodingKeys.html; sourceTree = "<group>"; };
-		CB7F6929C75C44069CF0AF0FE3ABACF6 /* UserDefaults.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UserDefaults.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/UserDefaults.html"; sourceTree = "<group>"; };
-		CBEBB0BA41CA6E7C684067E9290E45BB /* Siren.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Siren.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Classes/Siren.html"; sourceTree = "<group>"; };
-		CD97D99C4F64F204B23C104CA28BEA04 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
-		CE328D5401C77CC00E5F8339BF470821 /* SirenDelegate.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenDelegate.html; path = docs/Protocols/SirenDelegate.html; sourceTree = "<group>"; };
-		D02651AB378B5903433F2D0D88A23F14 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Results.html"; sourceTree = "<group>"; };
-		D04AFF8BB38225B38CCA5D6C60084C86 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel/Results/CodingKeys.html; sourceTree = "<group>"; };
-		D0C656845309C9ADA182BC58A4D6576A /* SirenAlertMessaging.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenAlertMessaging.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging.html"; sourceTree = "<group>"; };
-		D1E598DE5C829EA00029BFE53C2396F0 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/badge.svg"; sourceTree = "<group>"; };
-		D5EC24C24D31E6E11B1009E6F12753C5 /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LookupModel.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel.html"; sourceTree = "<group>"; };
-		D616EA3A387043208F2BC762E20D3B41 /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/CapturedError/Known.html"; sourceTree = "<group>"; };
-		D63F7214AD4EDB636470355DB1F00DCC /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenError.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenError.html; sourceTree = "<group>"; };
-		D6D7E52E86C1BBA45F18A514AD2B2257 /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions.html; sourceTree = "<group>"; };
 		D76D4A5872F817751A008261AE484EA8 /* Siren.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Siren.xcconfig; sourceTree = "<group>"; };
 		D991827462FB11E20C03858A8A0EF766 /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
-		D9D1FD998855C675BB139F9E71D3B069 /* typeahead.jquery.js */ = {isa = PBXFileReference; includeInIndex = 1; name = typeahead.jquery.js; path = docs/docsets/Siren.docset/Contents/Resources/Documents/js/typeahead.jquery.js; sourceTree = "<group>"; };
 		DA16F5573D4D57B9BA87887290C8871C /* BundleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		DA72360E4F537055C70F74F58ACA4730 /* RulesManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RulesManager.swift; sourceTree = "<group>"; };
-		DBCAB77D1D3F040C23F4F370BEC086B8 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging/Constants.html; sourceTree = "<group>"; };
-		DCBFCE5C5B60E8BC979C288116D2ECC0 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/Structs/LookupModel/Results.html; sourceTree = "<group>"; };
-		DCF4171C6A0B44DD8CDA23D7F0376DA2 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/css/highlight.css"; sourceTree = "<group>"; };
 		DDB351CF336FC775897FB3DEFC1AECE1 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
-		DF336A06458F28A816159A1275F8935B /* Known.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Known.html; path = docs/Structs/SirenError/Known.html; sourceTree = "<group>"; };
-		DF4D251C1F6F7B9D32A343C5D2AB7C6F /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenAlertMessaging/Constants.html"; sourceTree = "<group>"; };
-		E006549DC9E9B55245E5B34A6DE949A5 /* Localization.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Localization.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Localization.html"; sourceTree = "<group>"; };
-		E0BC905525720F42F5698140F9D71BA4 /* UpdatePromptFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdatePromptFrequency.html; path = docs/Structs/Rules/UpdatePromptFrequency.html; sourceTree = "<group>"; };
-		E2EF1086AC46C09C94B933C0F33EDFCD /* LookupModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = LookupModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/LookupModel.html; sourceTree = "<group>"; };
-		E5F89837548EB687899DA12983CAF908 /* VersionCheckFrequency.html */ = {isa = PBXFileReference; includeInIndex = 1; name = VersionCheckFrequency.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Constants/VersionCheckFrequency.html; sourceTree = "<group>"; };
-		E62E2F4BAA2D89741C72F6F4068307C0 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/Structs/Constants/UpdateType.html; sourceTree = "<group>"; };
-		E70862D9EA324D86AD0F5C3D32614382 /* UpdateType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UpdateType.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Enums/UpdateType.html; sourceTree = "<group>"; };
 		E8A6C25468AA317A27F6CEDD4A33C262 /* Localization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		E9360156D7E39AA0E6843DCD095D39D1 /* PresentationManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = PresentationManager.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/PresentationManager.html; sourceTree = "<group>"; };
-		E999B320452012D43172453EEC96A5D7 /* Bundle.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Bundle.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Extensions/Bundle.html; sourceTree = "<group>"; };
 		EA9B68CBB59A9EC4CD7CAFBC279AC36D /* DateExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		EB430952F6CD32C0AF4FF672ECE42214 /* CodingKeys.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CodingKeys.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/LookupModel/Results/CodingKeys.html"; sourceTree = "<group>"; };
-		ECEED91E4029D21D30FB6AA8D495BEB8 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
 		EE6FB567FE6DE4B59351393B8DCDDBB2 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
-		EEE00F30C4321500D2718937D5FBA0F0 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/Results.html; sourceTree = "<group>"; };
 		EEF458E38855C5A2A0F70C968763EEAD /* Pods-Example-Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Example-Tests.modulemap"; sourceTree = "<group>"; };
-		F12ECC77B374B8CFF60291F4033AE033 /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Extensions/Date.html"; sourceTree = "<group>"; };
-		F413E45BA803B29344FF970F6CE60648 /* SirenError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = SirenError.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenError.html"; sourceTree = "<group>"; };
 		F4BED33BCB3DE3A6AFECD02F4F7A2CE2 /* PresentationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
-		F61C7F0D3E9951BC7797C875B3C577A1 /* Constants.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Constants.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/Constants.html"; sourceTree = "<group>"; };
-		F62651372C7FA215FBE33F451A0B7384 /* APIModel.html */ = {isa = PBXFileReference; includeInIndex = 1; name = APIModel.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs/APIModel.html; sourceTree = "<group>"; };
-		F82FF92EE3FA3A0756B53C105EDBB441 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/Siren.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
 		F8E33AAC362E1FFCCA93DAA88D6824E2 /* DataParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DataParser.swift; sourceTree = "<group>"; };
-		F8F02E644805E7D1D97B006CC08C5DA5 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/search.json"; sourceTree = "<group>"; };
 		F924C881D2735430B1A17EDFF024E317 /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		FBFCF7267D178C99D23182A69271112E /* CapturedError.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CapturedError.html; path = docs/Structs/CapturedError.html; sourceTree = "<group>"; };
-		FC434E296E85E4D11C0EF97F982FE75D /* Structs.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Structs.html; path = docs/docsets/Siren.docset/Contents/Resources/Documents/Structs.html; sourceTree = "<group>"; };
-		FE61306922A5720482E7B83A5203D619 /* Results.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Results.html; path = "docs/docsets/in-acl.docset/Contents/Resources/Documents/Structs/SirenLookupModel/Results.html"; sourceTree = "<group>"; };
 		FEBEBD8D638A0853FF2C8AC5D5FCFCEA /* Siren.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Siren.swift; path = Sources/Siren.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -386,7 +166,6 @@
 				CBAE8644A1836758B7251BC5033009EE /* Extensions */,
 				E3208CAFB7DF1A4F26866CD8B36493BB /* Managers */,
 				BFE5212CFDC06DFA539E3058F71C1E83 /* Models */,
-				BFA3D85EED6CDA9242C8A370792BC488 /* Pod */,
 				1786B84A1271841D4CAC229C1E135F44 /* Resources */,
 				4AF74F3AFD1A338383F85A2617B7ECBD /* Support Files */,
 				D4AA9DDA03FA3BC38C64041B5E7E90BF /* Utilities */,
@@ -439,233 +218,6 @@
 				17E70395B3CDD0B7EDA622612E2C3144 /* Siren.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BFA3D85EED6CDA9242C8A370792BC488 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				19A1DD1F16EF58819AC8B90584F93419 /* AlertAction.html */,
-				2F82CBAB16637DDDC2599CFA0531C2A9 /* AlertAction.html */,
-				6836A96C506710C97AFC3E2AC237266C /* AlertAction.html */,
-				1574EB36312816EFB3293DE5A8EB4198 /* AlertConstants.html */,
-				AC7B6D930F6137EAB8BE775A6756B6D9 /* AlertConstants.html */,
-				B28A9BCE0EFB74432644C851DCA5218D /* AlertConstants.html */,
-				3809EADE8C5BFFE565E94204E4DFD842 /* AlertMessaging.html */,
-				87E4ED676E96C24F15592828071FC60B /* AlertMessaging.html */,
-				2C1491139955EE2BEBABBAEF64DF4F98 /* AlertMessaging.html */,
-				C881DEA0D3B3107540E5344A39B43973 /* AlertType.html */,
-				5F84569E5D82B77AC16C6DABBF34364D /* AlertType.html */,
-				50820205E702760A6BD28376F5124119 /* AlertType.html */,
-				556FC9DAFC9F0D374CDBA39E06CA0931 /* AlertType.html */,
-				0E43146FEEC1DBEBC564A5A4558E1C90 /* AlertType.html */,
-				33F913E2A2D784F3F60B9A46AE0EDFA1 /* AlertType.html */,
-				6DF06C012493FB6BED719F0A8E59D2B4 /* AlertType.html */,
-				A6DC6B7CFBD7369AA774115A8134516A /* AlertType.html */,
-				2CAD048D0E2AD72A444ADA9032F65CB2 /* AlertType.html */,
-				3FD2B9F640D095A029168417DBEB8C57 /* APIManager.html */,
-				46D75BB728C044B7B5334B5E70DEDFE5 /* APIManager.html */,
-				3761E9FA8D68732D6CE97088FFAE41A2 /* APIManager.html */,
-				F62651372C7FA215FBE33F451A0B7384 /* APIModel.html */,
-				B0DA815A8FF8D2FC9B05EB7FDA98206B /* APIModel.html */,
-				730CCF89EABA232DE50ACF49EDEF09C1 /* badge.svg */,
-				53DB0DD72ABF51091EA7AA76A5637533 /* badge.svg */,
-				D1E598DE5C829EA00029BFE53C2396F0 /* badge.svg */,
-				2E586A78600B78E94E43D0635D68D14D /* Bundle.html */,
-				E999B320452012D43172453EEC96A5D7 /* Bundle.html */,
-				4445E6350C7A86CA240CFE6FCDB3B912 /* Bundle.html */,
-				7610B4C74D70BBF175FF833277387594 /* CapturedError.html */,
-				01C8ADDE661CC1C10A885A97E42B2931 /* CapturedError.html */,
-				FBFCF7267D178C99D23182A69271112E /* CapturedError.html */,
-				82AC28C7C01E5ABB1D9C857BC6573552 /* carat.png */,
-				AC51B52B45BDEEE308C2A78DCF9208BF /* carat.png */,
-				5C2A9DF2148B07524050CE4D29A77D67 /* carat.png */,
-				74D8E1E0B497FA1959E1AA1297FD330F /* Classes.html */,
-				25F3235448932DF7D7EF5E57557125B3 /* Classes.html */,
-				CA757872AE424C05F9E3F68914027673 /* Classes.html */,
-				447CA1F2443B94C6C8E5B210256D6493 /* CodingKeys.html */,
-				19036709856D637BCB77F71A92923BF1 /* CodingKeys.html */,
-				EB430952F6CD32C0AF4FF672ECE42214 /* CodingKeys.html */,
-				239F53DCF2EACAE4632B39081A212600 /* CodingKeys.html */,
-				A3153FFA7BD23AD2E93534B08E646480 /* CodingKeys.html */,
-				D04AFF8BB38225B38CCA5D6C60084C86 /* CodingKeys.html */,
-				636C6E3B9C1844704A966F172CC7A559 /* CodingKeys.html */,
-				CB714DC05B62D4B45E4F00986311DB9F /* CodingKeys.html */,
-				915E0558004BF5CB6A02CCBBD2D94031 /* CodingKeys.html */,
-				5268E1746BDEB21D391C1430F7878405 /* CodingKeys.html */,
-				9EC893F9674474653BFA2D904B8D7EA9 /* Constants.html */,
-				9E97188F513332B46577DFADC7539A29 /* Constants.html */,
-				C6559A30FDCC781514BCCD68B834F754 /* Constants.html */,
-				0A37FB00B5A3DC77B675232DC4A6996F /* Constants.html */,
-				51B7A76A1EF1FEC5B2DD80A2783BB642 /* Constants.html */,
-				C6A035CCC15DB4D6B999F444A0FCD88C /* Constants.html */,
-				DF4D251C1F6F7B9D32A343C5D2AB7C6F /* Constants.html */,
-				528E8B94BF8C87BF651346B71C0C13CD /* Constants.html */,
-				554F416F78860BAE4495CEF2992A5229 /* Constants.html */,
-				3C0FE574D5715646F82A2B009EBEB01D /* Constants.html */,
-				F61C7F0D3E9951BC7797C875B3C577A1 /* Constants.html */,
-				3DF87B270DE659AE2A7B8672AAC39D61 /* Constants.html */,
-				BF4F6456ABBAD1612F91CC817A481213 /* Constants.html */,
-				DBCAB77D1D3F040C23F4F370BEC086B8 /* Constants.html */,
-				94E721A4B3C6CF71A0BB27AE728051A7 /* Constants.html */,
-				8A83D10F7DD765BA1A2B3386DA34B631 /* dash.png */,
-				22086EE67F703DCB8853CFFC145CF209 /* dash.png */,
-				AE1F179C3F9DC1CD5F8FB0A70D5AA339 /* dash.png */,
-				3138BA92E45275753852F341C9B074E0 /* DataParser.html */,
-				9E11D77C063A1B51A86A8D7FFE515DE1 /* DataParser.html */,
-				910C83530C733A6B6B640F567E479AED /* DataParser.html */,
-				F12ECC77B374B8CFF60291F4033AE033 /* Date.html */,
-				88D0E28D96A599A72EE2548750E936AD /* Date.html */,
-				9C4D18ACF8CE8F263BED4804605483DA /* Date.html */,
-				87949AD4DA38F013516A41A9C5A066FC /* docSet.dsidx */,
-				5D4D206F96911B0C54A2AE69D241B5C4 /* docSet.dsidx */,
-				B1C37949E19CE06CECEFB9717369CE50 /* Enums.html */,
-				4D6C86FC80EC641EFFDDC87845F4F626 /* Enums.html */,
-				9C84C589D2AB007A61C43ABC88C23C91 /* Enums.html */,
-				1D67B605B07B5A6171149C3C5C5320F5 /* Extensions.html */,
-				D6D7E52E86C1BBA45F18A514AD2B2257 /* Extensions.html */,
-				6BABB623456FFD2BDB7878BD0C1315CB /* Extensions.html */,
-				8179673D13173DBE390AC210DB94C02B /* gh.png */,
-				4D075BCF825A30DDCBA0E16ABB68AB33 /* gh.png */,
-				7839DD2E23F4E37F004B17663086DF94 /* gh.png */,
-				DCF4171C6A0B44DD8CDA23D7F0376DA2 /* highlight.css */,
-				8D61648F71FC1950837C6FC92CF81F25 /* highlight.css */,
-				733F0EAF063FEDA717E8C8D1ECF8894D /* highlight.css */,
-				B490CCDCDCF642146BBE1308436D0F60 /* in-acl.tgz */,
-				2CBFD91A204F3A26936285E007960E49 /* index.html */,
-				5991FB4434F1D39002106FE0B1BE31C8 /* index.html */,
-				68FBE56D6F04AAA0FEEDE2116EA6148C /* index.html */,
-				45EBC270981BFCEC45E6C8CC88F832FF /* Info.plist */,
-				4CE19FBB94BEEA91CA6C9B4CAEAE58AA /* Info.plist */,
-				44B0C0EE23AE7B6E7EE5791CCD3B3BFC /* jazzy.css */,
-				F82FF92EE3FA3A0756B53C105EDBB441 /* jazzy.css */,
-				CD97D99C4F64F204B23C104CA28BEA04 /* jazzy.css */,
-				73BC57089ECAA1A11E351C72ACBD2814 /* jazzy.js */,
-				936882D4975C95244F7C3A7E4D495C42 /* jazzy.js */,
-				4D8DBDBF2F9D704E0A24A4C8A02263E9 /* jazzy.js */,
-				70D0DEE880179A1EBD26A22CF27364E0 /* jazzy.search.js */,
-				6D64B938F84E89FFFC1F8E0DC3999C75 /* jazzy.search.js */,
-				21F3507CE3811AFEFBD55EFB641F1411 /* jquery.min.js */,
-				BC40E0B3A06232B48D2F989AFC3DCFFA /* jquery.min.js */,
-				453A087418B933CC61EF688D37315F6F /* jquery.min.js */,
-				A6E2DA714CE483A19F4E60B6AC461F3E /* Known.html */,
-				8B3779628156ED9E1AE673CCD2B08BD6 /* Known.html */,
-				D616EA3A387043208F2BC762E20D3B41 /* Known.html */,
-				946C7A7826181126EC21686D7CF2B750 /* Known.html */,
-				DF336A06458F28A816159A1275F8935B /* Known.html */,
-				A367A38ACAA41683EA28D939075DB933 /* Known.html */,
-				870ADA6A7C736AB97ECAA969F53985FB /* KnownError.html */,
-				3E797E3E80D8291493905C4192B93132 /* KnownError.html */,
-				4C0ECE1163DE7BF9BA496B4435956D6D /* KnownError.html */,
-				52A0C89DF23BB55858785F996074837C /* Language.html */,
-				0AB4C17589472F345DBFAF768D15182A /* Language.html */,
-				7838A88F096E9461F6F270A3616907B5 /* Language.html */,
-				7E3A2D3CD61D7BE8C8EC99965993755A /* LanguageType.html */,
-				C59AE5C3DBE72CAF44B27A3933270744 /* LanguageType.html */,
-				6629F48E48DBBA8F09B40CB8FA185C70 /* LanguageType.html */,
-				C0EC80CABC68339ECFE6761F7A87F278 /* LICENSE */,
-				E006549DC9E9B55245E5B34A6DE949A5 /* Localization.html */,
-				837F77EA2491994A6267CA4366367333 /* Localization.html */,
-				023DCE36D0350716B541922FF71A1020 /* Localization.html */,
-				E2EF1086AC46C09C94B933C0F33EDFCD /* LookupModel.html */,
-				D5EC24C24D31E6E11B1009E6F12753C5 /* LookupModel.html */,
-				60B95EFB6784DAE977A1CEA820DACAF2 /* LookupModel.html */,
-				6FD7A7D3EF2C8907762E3DE7592FFF2E /* lunr.min.js */,
-				B3E8E5AFBD7B123269DDFF76CAD13F16 /* lunr.min.js */,
-				6B94CD5D1AD4324C3BCCE17351E04D87 /* Model.html */,
-				821CFAD8D78D48A3835FDBA6030508BB /* Model.html */,
-				4FE643E3BB8B4B0F0C3FE79AF033D074 /* PerformCheck.html */,
-				853A1E5E5EC9A4BBCC241DBC6A940180 /* PerformCheck.html */,
-				E9360156D7E39AA0E6843DCD095D39D1 /* PresentationManager.html */,
-				A2D0683AE81ADEBACB623B46B5E9C0BD /* PresentationManager.html */,
-				B9B5534A4D5C56509C752BDCD8937C6E /* PresentationManager.html */,
-				BE79136D02F0DA68391042655A3B1CD2 /* Protocols.html */,
-				89968D611EF006F3A3DF2C1A6BDDC0AB /* Protocols.html */,
-				4F53AA78629F1C6B5358DF326A562322 /* Protocols.html */,
-				8E689BDACD8827E951FE3DEC3BC20B18 /* README.md */,
-				FE61306922A5720482E7B83A5203D619 /* Results.html */,
-				26CAEBE711560B868C9835B17E3CE907 /* Results.html */,
-				DCBFCE5C5B60E8BC979C288116D2ECC0 /* Results.html */,
-				80B21A1CD7DD3E13969AF1DE629091BE /* Results.html */,
-				66E79190FF49BBBB6CC30DEC06808AF9 /* Results.html */,
-				42F750D98831A8040FD71F4F85727160 /* Results.html */,
-				467B27AD2230DAD83747E344963B5C4C /* Results.html */,
-				EEE00F30C4321500D2718937D5FBA0F0 /* Results.html */,
-				74BDCE0A23835F340F6732660C03EB00 /* Results.html */,
-				6D6E8DC0387D5803D1881D4DE14EC530 /* Results.html */,
-				D02651AB378B5903433F2D0D88A23F14 /* Results.html */,
-				95D4E36A482A38C3E7AFA3A8AB50F343 /* Rules.html */,
-				950E2D379FDFCF558347E281A26F8DC2 /* Rules.html */,
-				65A1F57938C4F3AB8671CE68B96ECF37 /* Rules.html */,
-				027AD28E389582D7D079CEFEC06EAE86 /* RulesManager.html */,
-				A1ECAEB76A193158D5149C60B43ACF23 /* RulesManager.html */,
-				5855ED40E018443C60187C213D00DA9E /* RulesManager.html */,
-				F8F02E644805E7D1D97B006CC08C5DA5 /* search.json */,
-				48A19F0700B04EF324E2C3B5F7C1000A /* search.json */,
-				ECEED91E4029D21D30FB6AA8D495BEB8 /* search.json */,
-				96E7B1E0C36ABAF3B831350108B32EE2 /* Siren.html */,
-				C3051BA7E985687FA4A86A2FDF24EEEB /* Siren.html */,
-				CBEBB0BA41CA6E7C684067E9290E45BB /* Siren.html */,
-				931C7E86200556BA91773F69553BE2F0 /* Siren.podspec */,
-				42BA478DAE1EE6F9B745AF7B4722B5BF /* Siren.tgz */,
-				008E3273167E0AFBA29DF24D10D2DB7F /* SirenAlertMessaging.html */,
-				986B636B846C2BC96D4FEB21C39874E5 /* SirenAlertMessaging.html */,
-				D0C656845309C9ADA182BC58A4D6576A /* SirenAlertMessaging.html */,
-				A774AED247F918D3F53F0AF4A81C3C84 /* SirenDelegate.html */,
-				CE328D5401C77CC00E5F8339BF470821 /* SirenDelegate.html */,
-				7C5F5645A664F44366826E1E2C7BB08E /* SirenDelegate.html */,
-				C076D0B9E3D8FB349D79F177CF58B53D /* SirenError.html */,
-				D63F7214AD4EDB636470355DB1F00DCC /* SirenError.html */,
-				F413E45BA803B29344FF970F6CE60648 /* SirenError.html */,
-				016753A4AF220FDE6A9B876503F3FAB9 /* SirenKeys.html */,
-				0DD3DF2D4EFA5C7348CB84A563173EAB /* SirenKeys.html */,
-				7FDB1D1CDEAADC308BF2236E77AF4C9D /* SirenKeys.html */,
-				09F1D4B2B90D8367648FA47BB6D815ED /* SirenLookupModel.html */,
-				5E7918318BC86D7618420AABF5184F02 /* SirenLookupModel.html */,
-				7B0D5A7312C74668F9AF6AEBE022B8DF /* SirenLookupModel.html */,
-				385DE57382179FE9C329FC96A2F9CCB6 /* SirenViewController.html */,
-				1EA2D1D10B9BC31B547AE1FEE276232F /* SirenViewController.html */,
-				BC7E9BE91583F73C968888B3D9FCBA4E /* SirenViewController.html */,
-				B24FACF6BAA5FB56F1DD08C9FCDC130F /* spinner.gif */,
-				593DD34FF63615A531B3F2379ED941BC /* spinner.gif */,
-				0273E29CCAE8466CF10274711F850D8E /* Structs.html */,
-				AF921A148A9AA5E9888195D4730ADAEF /* Structs.html */,
-				FC434E296E85E4D11C0EF97F982FE75D /* Structs.html */,
-				50A4080CAB3267BB802F8F53A87D6EB5 /* typeahead.jquery.js */,
-				D9D1FD998855C675BB139F9E71D3B069 /* typeahead.jquery.js */,
-				15B279DAD6DB657537B837F431E4C592 /* UIAlertController.html */,
-				376B67306B5BAF81C2EC6EDB11BA97D1 /* UIAlertController.html */,
-				9AD1CEDFFDDD56C0E735083C6D3080A6 /* UIAlertController.html */,
-				66C22A7A19B1123E8A47E7B42E179A7B /* undocumented.json */,
-				94D5E92DE8697F122691F4F3C54F130D /* undocumented.json */,
-				C3E5456746B60388DA25FD64E7A318EE /* undocumented.json */,
-				1B9C3A34B39AAE890134250D9285D6DC /* UpdatePrompFrequency.html */,
-				3053A89F59922A4EDA1017C20DF66B99 /* UpdatePrompFrequency.html */,
-				78C40DAAEC483E766D4479B117756DF9 /* UpdatePrompFrequency.html */,
-				E0BC905525720F42F5698140F9D71BA4 /* UpdatePromptFrequency.html */,
-				C682A47D57C1F7FD21628B76D5AD6360 /* UpdatePromptFrequency.html */,
-				7DF33EB9B45DEA2BC89476C963FCF1D6 /* UpdatePromptFrequency.html */,
-				3FCC6607BBA79215D3E1A78636E3F803 /* UpdateResults.html */,
-				13CC77C60208BD166595EE2449B1A244 /* UpdateResults.html */,
-				7F8744C96738B19E55A4F59F7FC15165 /* UpdateType.html */,
-				9008658C809F679F8807EED64DE4EFBE /* UpdateType.html */,
-				8EC50EFA23ECCDF0441E7B90467239CD /* UpdateType.html */,
-				E62E2F4BAA2D89741C72F6F4068307C0 /* UpdateType.html */,
-				325C8A2C8ABBBB3CD7AFA622656AB569 /* UpdateType.html */,
-				BB96A21855935284FC6EF4959C34BFF5 /* UpdateType.html */,
-				E70862D9EA324D86AD0F5C3D32614382 /* UpdateType.html */,
-				0270F5233E48B3A87FA9FE276700646A /* UpdateType.html */,
-				C63308AF2B31B14D75B16BA656A9C9C3 /* UpdateType.html */,
-				8142F0F6388B9DDE857A239B8E3ED0F8 /* UserDefaults.html */,
-				B30E996CA11BA9D9B0CE03ED51179515 /* UserDefaults.html */,
-				CB7F6929C75C44069CF0AF0FE3ABACF6 /* UserDefaults.html */,
-				0947B88A6AA4D3DDF68F9A2E36195FCA /* VersionCheckFrequency.html */,
-				E5F89837548EB687899DA12983CAF908 /* VersionCheckFrequency.html */,
-				C27D901D1106BC73BA80385181261F0D /* VersionCheckFrequency.html */,
-				487F87F74EFC9921B70EB047792541E5 /* VersionCheckType.html */,
-				1453E4D5292F9077F878F48D9431A9FE /* VersionCheckType.html */,
-				0F95AEDB155E7E881FD74A598917231D /* VersionCheckType.html */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		BFE5212CFDC06DFA539E3058F71C1E83 /* Models */ = {
@@ -1095,8 +647,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8EF9F852224EACA500B20545"
+               BlueprintIdentifier = "A0E2640B83527AE54205D7FDE9C5D930"
                BuildableName = "Siren.framework"
                BlueprintName = "Siren"
-               ReferencedContainer = "container:Example.xcodeproj">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,15 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8EF9F852224EACA500B20545"
-            BuildableName = "Siren.framework"
-            BlueprintName = "Siren"
-            ReferencedContainer = "container:Example.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -59,10 +50,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8EF9F852224EACA500B20545"
+            BlueprintIdentifier = "A0E2640B83527AE54205D7FDE9C5D930"
             BuildableName = "Siren.framework"
             BlueprintName = "Siren"
-            ReferencedContainer = "container:Example.xcodeproj">
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

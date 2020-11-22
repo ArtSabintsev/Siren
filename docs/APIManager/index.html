@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren - APIManager</title>
+    <link rel="stylesheet" type="text/css" href="/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/">
+            <strong>
+                Siren
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#apimanager.init(country:)">init(country:​)</a></li><li class="initializer"><a href="#apimanager.init(countrycode:)">init(country​Code:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#apimanager.`default`">`default`</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">APIManager</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">APIManager</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>APIManager for Siren</p>
+
+</div>
+
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="apimanager.init(country:)">
+    <h3>
+        <code>init(country:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">country</span>: <a href="/AppStoreCountry"><span class="type">AppStoreCountry</span></a> = .<span class="variable">unitedStates</span>)</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Initializes <code>APIManager</code> to the region or country of an App Store in which the app is available.
+By default, all version check requests are performed against the US App Store.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>country</th>
+    <td><code class="type">App​Store​Country</code></td>
+    <td><p>The country for the App Store in which the app is available.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="initializer" id="apimanager.init(countrycode:)">
+    <h3>
+        <code>init(country​Code:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">countryCode</span>: <span class="type">String</span>?)</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Convenience initializer that initializes <code>APIManager</code> to the region or country of an App Store in which the app is available.
+If nil, version check requests are performed against the US App Store.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>country​Code</th>
+    <td><code class="type">String?</code></td>
+    <td><p>The raw country code for the App Store in which the app is available.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="apimanager.`default`">
+    <h3>
+        <code>`default`</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">`default`</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>The default <code>APIManager</code>.</p>
+
+</div>
+<div class="discussion">
+    <p>The version check is performed against the  US App Store.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-11-21T22:07:01-0500">November 21, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+</p>
+    </footer>
+</body>
+</html>

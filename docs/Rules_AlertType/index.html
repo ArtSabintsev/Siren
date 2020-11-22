@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren - Rules.AlertType</title>
+    <link rel="stylesheet" type="text/css" href="/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/">
+            <strong>
+                Siren
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Member Of</a></li></ul></li><li><a href="#enumeration cases">Enumeration Cases</a><ul><li class="case"><a href="#rules.alerttype.force">force</a></li><li class="case"><a href="#rules.alerttype.option">option</a></li><li class="case"><a href="#rules.alerttype.skip">skip</a></li><li class="case"><a href="#rules.alerttype.none">none</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Enumeration</small>
+    <code class="name">Rules.​Alert​Type</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">enum</span> <span class="type">AlertType</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Determines the type of alert to present after a successful version check has been performed.</p>
+
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Member Of</h3>
+<dl>
+    <dt class="structure"><code><a href="/Rules">Rules</a></code></dt>
+<dd><p>Alert Presentation Rules for Siren.</p>
+</dd>
+</dl>
+</section>
+    <section id="enumeration cases">
+        <h2>Enumeration Cases</h2>
+
+        <div role="article" class="case" id="rules.alerttype.force">
+    <h3>
+        <code>force</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">force</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Forces the user to update your app (1 button alert).</p>
+
+</div>
+</div>
+<div role="article" class="case" id="rules.alerttype.option">
+    <h3>
+        <code>option</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">option</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Presents the user with option to update app now or at next launch (2 button alert).</p>
+
+</div>
+</div>
+<div role="article" class="case" id="rules.alerttype.skip">
+    <h3>
+        <code>skip</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">skip</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Presents the user with option to update the app now, at next launch, or to skip this version all together (3 button alert).</p>
+
+</div>
+</div>
+<div role="article" class="case" id="rules.alerttype.none">
+    <h3>
+        <code>none</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="variable">none</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Doesn't present the alert.
+Use this option if you would like to present a custom alert to the end-user.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-11-21T22:07:01-0500">November 21, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+</p>
+    </footer>
+</body>
+</html>

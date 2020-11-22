@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren - Rules</title>
+    <link rel="stylesheet" type="text/css" href="/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/">
+            <strong>
+                Siren
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#rules.init(promptfrequency:foralerttype:)">init(prompt​Frequency:​for​Alert​Type:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#rules.annoying">annoying</a></li><li class="variable"><a href="#rules.critical">critical</a></li><li class="variable"><a href="#rules.`default`">`default`</a></li><li class="variable"><a href="#rules.hinting">hinting</a></li><li class="variable"><a href="#rules.persistent">persistent</a></li><li class="variable"><a href="#rules.relaxed">relaxed</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Rules</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Rules</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Alert Presentation Rules for Siren.</p>
+
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Nested Types</h3>
+<dl>
+    <dt class="enumeration"><code><a href="/Rules_AlertType">Rules.AlertType</a></code></dt>
+<dd><p>Determines the type of alert to present after a successful version check has been performed.</p>
+</dd>
+<dt class="enumeration"><code><a href="/Rules_UpdatePromptFrequency">Rules.UpdatePromptFrequency</a></code></dt>
+<dd><p>Determines the frequency in which the user is prompted to update the app
+once a new version is available in the App Store and if they have not updated yet.</p>
+</dd>
+</dl>
+</section>
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="rules.init(promptfrequency:foralerttype:)">
+    <h3>
+        <code>init(prompt​Frequency:​for​Alert​Type:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">promptFrequency</span> <span class="variable">frequency</span>: <span class="type">UpdatePromptFrequency</span>, <span class="variable">forAlertType</span> <span class="variable">alertType</span>: <span class="type">AlertType</span>)</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Initializes the alert presentation rules.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>frequency</th>
+    <td><code class="type">Update​Prompt​Frequency</code></td>
+    <td><p>How often a user should be prompted to update the app once a new version is available in the App Store.</p>
+</td>
+</tr>
+<tr>
+    <th>alert​Type</th>
+    <td><code class="type">Alert​Type</code></td>
+    <td><p>The type of alert that should be presented.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="rules.annoying">
+    <h3>
+        <code>annoying</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">annoying</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check immediately, but allows the user to skip updating the app until the next time the app becomes active.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="rules.critical">
+    <h3>
+        <code>critical</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">critical</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check immediately and forces the user to update the app.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="rules.`default`">
+    <h3>
+        <code>`default`</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">`default`</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check once a day, but allows the user to skip updating the app until
+the next time the app becomes active or skipping the update all together until another version is released.</p>
+
+</div>
+<div class="discussion">
+    <p>This is the default setting.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="rules.hinting">
+    <h3>
+        <code>hinting</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">hinting</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check weekly, but allows the user to skip updating the app until the next time the app becomes active.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="rules.persistent">
+    <h3>
+        <code>persistent</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">persistent</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check daily, but allows the user to skip updating the app until the next time the app becomes active.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="rules.relaxed">
+    <h3>
+        <code>relaxed</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">relaxed</span>: <a href="/Rules"><span class="type">Rules</span></a></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Performs a version check weekly, but allows the user to skip updating the app until
+the next time the app becomes active or skipping the update all together until another version is released.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-11-21T22:07:01-0500">November 21, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+</p>
+    </footer>
+</body>
+</html>

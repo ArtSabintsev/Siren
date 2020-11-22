@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siren - RulesManager</title>
+    <link rel="stylesheet" type="text/css" href="/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/">
+            <strong>
+                Siren
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#rulesmanager.init(majorupdaterules:minorupdaterules:patchupdaterules:revisionupdaterules:showalertaftercurrentversionhasbeenreleasedfordays:)">init(major​Update​Rules:​minor​Update​Rules:​patch​Update​Rules:​revision​Update​Rules:​show​Alert​After​Current​Version​Has​Been​Released​For​Days:​)</a></li><li class="initializer"><a href="#rulesmanager.init(globalrules:showalertaftercurrentversionhasbeenreleasedfordays:)">init(global​Rules:​show​Alert​After​Current​Version​Has​Been​Released​For​Days:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#rulesmanager.`default`">`default`</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Rules​Manager</code>
+</h1>
+
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">RulesManager</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>RulesManager for Siren</p>
+
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        
+        <h3>Nested Types</h3>
+<dl>
+    <dt class="enumeration"><code><a href="/RulesManager_UpdateType">RulesManager.UpdateType</a></code></dt>
+<dd><p>Informs Siren of the type of update that is available so that
+the appropriate ruleset is used to present the update alert.</p>
+</dd>
+</dl>
+</section>
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="rulesmanager.init(majorupdaterules:minorupdaterules:patchupdaterules:revisionupdaterules:showalertaftercurrentversionhasbeenreleasedfordays:)">
+    <h3>
+        <code>init(major​Update​Rules:​minor​Update​Rules:​patch​Update​Rules:​revision​Update​Rules:​show​Alert​After​Current​Version​Has​Been​Released​For​Days:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">majorUpdateRules</span>: <a href="/Rules"><span class="type">Rules</span></a> = .<span class="variable">default</span>, <span class="variable">minorUpdateRules</span>: <a href="/Rules"><span class="type">Rules</span></a> = .<span class="variable">default</span>, <span class="variable">patchUpdateRules</span>: <a href="/Rules"><span class="type">Rules</span></a> = .<span class="variable">default</span>, <span class="variable">revisionUpdateRules</span>: <a href="/Rules"><span class="type">Rules</span></a> = .<span class="variable">default</span>, <span class="variable">showAlertAfterCurrentVersionHasBeenReleasedForDays</span> <span class="variable">releasedForDays</span>: <span class="type">Int</span> = <span class="number literal">1</span>)</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Initializer that sets update-specific <code>Rules</code> for all updates (e.g., major, minor, patch, revision).
+This means that each of the four update types can have their own specific update rules.</p>
+
+</div>
+<div class="discussion">
+    <p>By default, the <code>releasedForDays</code> parameter delays the update alert from being presented for <em>1 day</em>
+to avoid an issue where the <em>iTunes Lookup</em> API response is updated faster than the time it takes for the binary
+to become available on App Store CDNs across all regions. Usually it takes 6-24 hours, hence the <em>1 day</em> delay.</p>
+
+<aside class="warning">
+    <p>Setting <code>releasedForDays</code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn't available. If this value is set to <em>0 days</em>, and an <code>AlertType</code> of type <code>.force</code> is set, it will cause your app to infinitely send the end-user to the App Store to download a version that's not there and lock them out of your application until the binary is is available to be downloaded.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>rules</th>
+    <td></td>
+    <td><p>The rules that should be set for all version updates.</p>
+</td>
+</tr>
+<tr>
+    <th>released​For​Days</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The amount of time (in days) that the app should delay before presenting the user</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="initializer" id="rulesmanager.init(globalrules:showalertaftercurrentversionhasbeenreleasedfordays:)">
+    <h3>
+        <code>init(global​Rules:​show​Alert​After​Current​Version​Has​Been​Released​For​Days:​)</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">globalRules</span> <span class="variable">rules</span>: <a href="/Rules"><span class="type">Rules</span></a> = .<span class="variable">default</span>, <span class="variable">showAlertAfterCurrentVersionHasBeenReleasedForDays</span> <span class="variable">releasedForDays</span>: <span class="type">Int</span> = <span class="number literal">1</span>)</code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>Initializer that sets the same update <code>Rules</code> for all types of updates (e.g., major, minor, patch, revision).
+This means that all four update types will use the same presentation rules.</p>
+
+</div>
+<div class="discussion">
+    <p>By default, the <code>releasedForDays</code> parameter delays the update alert from being presented for <em>1 day</em>
+to avoid an issue where the <em>iTunes Lookup</em> API response is updated faster than the time it takes for the binary
+to become available on App Store CDNs across all regions. Usually it takes 6-24 hours, hence the <em>1 day</em> delay.</p>
+
+<aside class="warning">
+    <p>Setting <code>releasedForDays</code> to <em>0 days</em> causes the alert to appear right away, even if the binary isn't available. If this value is set to <em>0 days</em>, and an <code>AlertType</code> of type <code>.force</code> is set, it will cause your app to infinitely send the end-user to the App Store to download a version that's not there and lock them out of your application until the binary is is available to be downloaded.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>rules</th>
+    <td><code class="type">Rules</code></td>
+    <td><p>The rules that should be set for all version updates.</p>
+</td>
+</tr>
+<tr>
+    <th>released​For​Days</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The amount of time (in days) that the app should delay before presenting the user</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="rulesmanager.`default`">
+    <h3>
+        <code>`default`</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">`default`</span></code></pre></body></html>
+<div class="summary" role="doc-abstract">
+    <p>The default <code>RulesManager</code>.</p>
+
+</div>
+<div class="discussion">
+    <p>By default, the <code>Rules.default</code> rule is used for all update typs.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2020-11-21T22:07:01-0500">November 21, 2020</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.5</span>.
+</p>
+    </footer>
+</body>
+</html>

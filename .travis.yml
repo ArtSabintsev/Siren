@@ -6,6 +6,9 @@ notifications:
 before_install:
   - brew update
   - gem install bundler
+  - bundle
+  - cd Example/
+  - pod install
 env:
   - LC_CTYPE=en_US.UTF-8 LANG=en_US.UTF-8
 script:

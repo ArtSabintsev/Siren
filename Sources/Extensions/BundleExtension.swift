@@ -82,6 +82,11 @@ private extension Bundle {
     ///
     /// - Returns: The bundle's path or `nil`.
     final class func sirenBundlePath() -> String? {
+        #if SWIFT_PACKAGE
+        let resourceBundle = Bundle.module
+        return resourceBundle.path(forResource: "\(Siren.self)", ofType: Constants.bundleExtension)
+        #endif
+        
         return Bundle(for: Siren.self).path(forResource: "\(Siren.self)", ofType: Constants.bundleExtension)
     }
 

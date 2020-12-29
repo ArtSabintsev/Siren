@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Sabintsev iOS Projects. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 /// The Siren Class.
@@ -55,6 +56,8 @@ public final class Siren: NSObject {
     /// The App Store's unique identifier for an app.
     private var appID: Int?
 
+    private var cancellableObjects: Set<AnyCancellable> = []
+
     /// The completion handler used to return the results or errors returned by Siren.
     private var resultsHandler: ResultsHandler?
 
@@ -63,6 +66,8 @@ public final class Siren: NSObject {
         presentationManager.cleanUp()
         removeForegroundObservers()
         removeBackgroundObservers()
+        cancellableObjects.forEach { $0.cancel() }
+        cancellableObjects.removeAll()
     }
 }
 
@@ -114,17 +119,24 @@ public extension Siren {
 // MARK: - Version Check and Alert Presentation Flow
 
 private extension Siren {
-    /// Initiates the unidirectional version checking flow.
     func performVersionCheck() {
         alertPresentationDate = UserDefaults.alertPresentationDate
-        apiManager.performVersionCheckRequest { result in
-            switch result {
-            case .success(let apiModel):
-                self.validate(apiModel: apiModel)
-            case .failure(let error):
-                self.resultsHandler?(.failure(error))
-            }
-        }
+
+        let publisher = apiManager.performVersionCheckRequest()
+        let subscriber = publisher.sink(receiveCompletion: { completion in
+            print("Completion: \(completion)")
+        }, receiveValue: { model in
+            print("Model: \(model)")
+        }).store(in: &cancellableObjects)
+
+//        apiManager.performVersionCheckRequest { result in
+//            switch result {
+//            case .success(let apiModel):
+//                self.validate(apiModel: apiModel)
+//            case .failure(let error):
+//                self.resultsHandler?(.failure(error))
+//            }
+//        }
     }
 
     /// Validates the parsed and mapped iTunes Lookup Model

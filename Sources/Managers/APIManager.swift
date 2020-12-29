@@ -6,6 +6,7 @@
 //  Copyright © 2018 Sabintsev iOS Projects. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 /// APIManager for Siren
@@ -46,25 +47,37 @@ extension APIManager {
       self.init(country: .init(code: countryCode))
     }
 
-    /// Creates and performs a URLRequest against the iTunes Lookup API.
-    ///
-    /// - Parameter handler: The completion handler for the iTunes Lookup API request.
-    func performVersionCheckRequest(completion handler: CompletionHandler?) {
-        guard Bundle.main.bundleIdentifier != nil else {
-            handler?(.failure(.missingBundleID))
-            return
-        }
+//    /// Creates and performs a URLRequest against the iTunes Lookup API.
+//    ///
+//    /// - Parameter handler: The completion handler for the iTunes Lookup API request.
+//    func performVersionCheckRequest(completion handler: CompletionHandler?) {
+//        guard Bundle.main.bundleIdentifier != nil else {
+//            handler?(.failure(.missingBundleID))
+//            return
+//        }
+//
+//        do {
+//            let url = try makeITunesURL()
+//            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+//            URLSession.shared.dataTask(with: request) { (data, response, error) in
+//                URLCache.shared.removeCachedResponse(for: request)
+//                self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
+//            }.resume()
+//        } catch {
+//            handler?(.failure(.malformedURL))
+//        }
+//    }
 
-        do {
-            let url = try makeITunesURL()
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                URLCache.shared.removeCachedResponse(for: request)
-                self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
-            }.resume()
-        } catch {
-            handler?(.failure(.malformedURL))
-        }
+    func performVersionCheckRequest() -> AnyPublisher<APIModel, Error> {
+        // swiftlint:disable force_try
+         return URLSession.shared.dataTaskPublisher(for: try! makeITunesURL())
+            .mapError { error in
+                KnownError.appStoreDataRetrievalFailure(underlyingError: error)
+            }
+            .map { $0.data }
+            .decode(type: APIModel.self, decoder: JSONDecoder())
+            .share()
+            .eraseToAnyPublisher()
     }
 
     /// Parses and maps the the results from the iTunes Lookup API request.

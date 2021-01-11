@@ -114,6 +114,11 @@ extension APIManager {
 
         var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: Bundle.main.bundleIdentifier)]
 
+        #if os(tvOS)
+        let tvOSQueryItem = URLQueryItem(name: "entity", value: "tvSoftware")
+        items.append(tvOSQueryItem)
+        #endif
+        
         if let countryCode = country.code {
             let item = URLQueryItem(name: Constants.country, value: countryCode)
             items.append(item)

@@ -122,7 +122,7 @@ extension APIManager {
         let tvOSQueryItem = URLQueryItem(name: Constants.entity, value: Constants.tvSoftware)
         items.append(tvOSQueryItem)
         #endif
-        
+
         if let countryCode = country.code {
             let item = URLQueryItem(name: Constants.country, value: countryCode)
             items.append(item)

@@ -226,20 +226,15 @@ private extension PresentationManager {
 
 private extension PresentationManager {
     private func createWindow() -> UIWindow? {
-        var window = UIWindow()
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            guard let windowScene = getFirstForegroundScene() else { return nil }
-            window = UIWindow(windowScene: windowScene)
-        } else {
-            window = UIWindow(frame: UIScreen.main.bounds)
-        }
+        guard let windowScene = getFirstForegroundScene() else { return nil }
 
+        let window = UIWindow(windowScene: windowScene)
         window.windowLevel = UIWindow.Level.alert + 1
 
         let viewController = SirenViewController()
         viewController.retainedWindow = window
-
         window.rootViewController = viewController
+
         return window
     }
 

@@ -16,6 +16,10 @@ public struct APIManager {
         static let bundleID = "bundleId"
         /// Constant for the `country` parameter in the iTunes Lookup API request.
         static let country = "country"
+        /// Constant for the `entity` parameter in the iTunes Lookup API reqeust.
+        static let entity = "entity"
+        /// Constant for the `entity` parameter value when performing a tvOS iTunes Lookup API reqeust.
+        static let tvSoftware = "tvSoftware"
     }
 
     /// Return results or errors obtained from performing a version check with Siren.
@@ -114,6 +118,11 @@ extension APIManager {
 
         var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: Bundle.main.bundleIdentifier)]
 
+        #if os(tvOS)
+        let tvOSQueryItem = URLQueryItem(name: Constants.entity, value: Constants.tvSoftware)
+        items.append(tvOSQueryItem)
+        #endif
+        
         if let countryCode = country.code {
             let item = URLQueryItem(name: Constants.country, value: countryCode)
             items.append(item)

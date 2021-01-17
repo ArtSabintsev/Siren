@@ -44,6 +44,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 ## Features
 
 ### Current Features
+- [x] Compatible with iOS 13+ and tvOS 13+
 - [x] CocoaPods and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules (see [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))

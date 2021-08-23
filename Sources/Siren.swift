@@ -118,7 +118,7 @@ private extension Siren {
         }
     }
     
-    /// Initiatives the async/await request
+    /// Initiatives the version check request.
     func performVersionCheck() async {
         do {
             let apiModel = await try apiManager.performVersionCheckRequest()

@@ -81,7 +81,7 @@ public extension Siren {
         switch performCheck {
         case .onDemand:
             removeForegroundObservers()
-            performVersionCheck()
+            startVersionCheckFlow()
         case .onForeground:
             addForegroundObservers()
         }
@@ -110,16 +110,25 @@ public extension Siren {
 // MARK: - Version Check and Alert Presentation Flow
 
 private extension Siren {
-    /// Initiates the unidirectional version checking flow.
-    func performVersionCheck() {
+    /// Initiates the version checking flow.
+    func startVersionCheckFlow() {
         alertPresentationDate = UserDefaults.alertPresentationDate
-        apiManager.performVersionCheckRequest { result in
-            switch result {
-            case .success(let apiModel):
+        Task {
+            await performVersionCheck()
+        }
+    }
+    
+    /// Initiatives the version check request.
+    func performVersionCheck() async {
+        do {
+            let apiModel = await try apiManager.performVersionCheckRequest()
+            DispatchQueue.main.async {
                 self.validate(apiModel: apiModel)
-            case .failure(let error):
-                self.resultsHandler?(.failure(error))
             }
+        } catch (let error as KnownError) {
+            self.resultsHandler?(.failure(error))
+        } catch {
+            // Do nothing. Silences exhaustive error.
         }
     }
 
@@ -273,7 +282,7 @@ private extension Siren {
                          object: nil,
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
-                            self.performVersionCheck()
+                            self.startVersionCheckFlow()
         }
     }
 

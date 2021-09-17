@@ -52,22 +52,20 @@ extension APIManager {
 
     /// Creates and performs a URLRequest against the iTunes Lookup API.
     ///
-    /// - Parameter handler: The completion handler for the iTunes Lookup API request.
-    func performVersionCheckRequest(completion handler: CompletionHandler?) {
+    /// - returns APIModel: The decoded JSON as an instance of APIModel.
+    func performVersionCheckRequest() async throws -> APIModel {
         guard Bundle.main.bundleIdentifier != nil else {
-            handler?(.failure(.missingBundleID))
-            return
+            throw KnownError.missingBundleID
         }
 
+        var apiModel: APIModel
         do {
             let url = try makeITunesURL()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
-                URLCache.shared.removeCachedResponse(for: request)
-                self.processVersionCheckResults(withData: data, response: response, error: error, completion: handler)
-            }.resume()
+            let (data, response) = await try URLSession.shared.data(for: request)
+            return try processVersionCheckResults(withData: data, response: response)
         } catch {
-            handler?(.failure(.malformedURL))
+            throw error
         }
     }
 
@@ -76,33 +74,20 @@ extension APIManager {
     /// - Parameters:
     ///   - data: The JSON data returned from the request.
     ///   - response: The response metadata returned from the request.
-    ///   - error: The error returned from the request.
-    ///   - handler: The completion handler to call once the results of the request has been processed.
-    private func processVersionCheckResults(withData data: Data?,
-                                            response: URLResponse?,
-                                            error: Error?,
-                                            completion handler: CompletionHandler?) {
-        if let error = error {
-            handler?(.failure(.appStoreDataRetrievalFailure(underlyingError: error)))
-        } else {
-            guard let data = data else {
-                handler?(.failure(.appStoreDataRetrievalFailure(underlyingError: nil)))
-                return
-            }
-            do {
-                let apiModel = try JSONDecoder().decode(APIModel.self, from: data)
+    private func processVersionCheckResults(withData data: Data?, response: URLResponse?) throws -> APIModel {
+        guard let data = data else {
+            throw KnownError.appStoreDataRetrievalFailure(underlyingError: nil)
+        }
+        do {
+            let apiModel = try JSONDecoder().decode(APIModel.self, from: data)
 
-                guard !apiModel.results.isEmpty else {
-                    handler?(.failure(.appStoreDataRetrievalEmptyResults))
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    handler?(.success(apiModel))
-                }
-            } catch {
-                handler?(.failure(.appStoreJSONParsingFailure(underlyingError: error)))
+            guard !apiModel.results.isEmpty else {
+                throw KnownError.appStoreDataRetrievalEmptyResults
             }
+
+            return apiModel
+        } catch {
+            throw KnownError.appStoreJSONParsingFailure(underlyingError: error)
         }
     }
 

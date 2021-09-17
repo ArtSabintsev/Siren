@@ -58,11 +58,10 @@ extension APIManager {
             throw KnownError.missingBundleID
         }
 
-        var apiModel: APIModel
         do {
             let url = try makeITunesURL()
             let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            let (data, response) = await try URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
             return try processVersionCheckResults(withData: data, response: response)
         } catch {
             throw error

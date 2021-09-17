@@ -44,7 +44,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 ## Features
 
 ### Current Features
-- [x] Compatible with iOS 13+ and tvOS 13+
+- [x] Compatible with iOS 15+ and tvOS 15+
 - [x] CocoaPods and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules (see [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
@@ -81,7 +81,8 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 5.1+ | master | **Yes**
+| 5.5+ | master | **Yes**
+| 5.1-5.4 | swift5.4 | No
 | 5.0 | swift5.0 | No
 | 4.2 | swift4.2 | No
 | 4.1 | swift4.1 | No
@@ -91,7 +92,8 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 ### CocoaPods
 ```ruby
-pod 'Siren' # Swift 5.1+
+pod 'Siren' # Swift 5.5+
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.4' # Swift 5.1-5.4
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.0' # Swift 5.0
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.2' # Swift 4.2
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1

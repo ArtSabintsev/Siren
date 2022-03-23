@@ -16,6 +16,8 @@ public struct APIManager {
         static let bundleID = "bundleId"
         /// Constant for the `country` parameter in the iTunes Lookup API request.
         static let country = "country"
+        /// Constant for the `lang` parameter in the iTunes Lookup API request.
+        static let language = "lang"
         /// Constant for the `entity` parameter in the iTunes Lookup API reqeust.
         static let entity = "entity"
         /// Constant for the `entity` parameter value when performing a tvOS iTunes Lookup API reqeust.
@@ -27,12 +29,16 @@ public struct APIManager {
 
     /// The region or country of an App Store in which the app is available.
     let country: AppStoreCountry
+    
+    /// The language for the localization of App Store responses.
+    let language: String?
 
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store.
     /// - Parameter country: The country for the App Store in which the app is available.
-    public init(country: AppStoreCountry = .unitedStates) {
+    public init(country: AppStoreCountry = .unitedStates, language: String? = nil) {
       self.country = country
+      self.language = language
     }
 
     /// The default `APIManager`.
@@ -109,6 +115,11 @@ extension APIManager {
 
         if let countryCode = country.code {
             let item = URLQueryItem(name: Constants.country, value: countryCode)
+            items.append(item)
+        }
+        
+        if let language = language {
+            let item = URLQueryItem(name: Constants.language, value: language)
             items.append(item)
         }
 

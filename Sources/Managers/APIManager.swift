@@ -34,8 +34,10 @@ public struct APIManager {
     let language: String?
 
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
-    /// By default, all version check requests are performed against the US App Store.
-    /// - Parameter country: The country for the App Store in which the app is available.
+    /// By default, all version check requests are performed against the US App Store and the language of the copy/text is returned in English.
+    /// - Parameters:
+    ///  - country: The country for the App Store in which the app is available.
+    ///  - language: The locale to use for the App Store notes. The default result the API returns is equivalent to passing "en_us", so passing `nil` is equivalent to passing "en_us".
     public init(country: AppStoreCountry = .unitedStates, language: String? = nil) {
       self.country = country
       self.language = language

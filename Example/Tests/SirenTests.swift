@@ -230,7 +230,7 @@ extension SirenTests {
         let language: Localization.Language = .croatian
 
         // Update Available
-        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Nova ažuriranje je stigla")
+        XCTAssertEqual(Bundle.localizedString(forKey: "Update Available", andForceLocalization: language), "Novo ažuriranje je dostupno")
 
         // Next time
         XCTAssertEqual(Bundle.localizedString(forKey: "Next time", andForceLocalization: language), "Sljedeći put")

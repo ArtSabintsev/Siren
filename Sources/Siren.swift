@@ -58,7 +58,7 @@ public final class Siren: NSObject {
     /// The completion handler used to return the results or errors returned by Siren.
     private var resultsHandler: ResultsHandler?
     
-    /// Prevent can't appear update dialog when user swipe down the notification center screen to the bottom of screen when call Siren.shared.wail as .onForeground
+    /// Prevent can't appear update dialog when user swipe down the notification center screen to the bottom of screen when called Siren.shared.wail as .onForeground
     private var appDidBecomeActiveWorkItem: DispatchWorkItem?
 
     /// The deinitialization method that clears out all observers,

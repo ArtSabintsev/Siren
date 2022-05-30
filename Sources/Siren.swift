@@ -57,6 +57,9 @@ public final class Siren: NSObject {
 
     /// The completion handler used to return the results or errors returned by Siren.
     private var resultsHandler: ResultsHandler?
+    
+    /// Prevent can't appear update dialog when user swipe down the notification center screen to the bottom of screen when call Siren.shared.wail as .onForeground
+    private var appDidBecomeActiveWorkItem: DispatchWorkItem?
 
     /// The deinitialization method that clears out all observers,
     deinit {
@@ -282,7 +285,10 @@ private extension Siren {
                          object: nil,
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
-                            self.startVersionCheckFlow()
+                            self.appDidBecomeActiveWorkItem = DispatchWorkItem {
+                                self.performVersionCheck()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02, execute: self.appDidBecomeActiveWorkItem!)
         }
     }
 
@@ -296,6 +302,8 @@ private extension Siren {
                              object: nil,
                              queue: nil) { [weak self] _ in
                                 guard let self = self else { return }
+                                self.appDidBecomeActiveWorkItem?.cancel()
+                                self.appDidBecomeActiveWorkItem = nil
                                 self.presentationManager.cleanUp()
             }
         }

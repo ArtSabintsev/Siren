@@ -60,6 +60,9 @@ public final class Siren: NSObject {
     
     /// Prevent can't appear update dialog when user swipe down the notification center screen to the bottom of screen when call Siren.shared.wail as .onForeground
     private var appDidBecomeActiveWorkItem: DispatchWorkItem?
+    
+    /// The time to consider what is it called by notification center screen to bottom
+    private let delayTimeToConsiderCalledByNotificationCenterScreen = 0.02
 
     /// The deinitialization method that clears out all observers,
     deinit {
@@ -288,7 +291,9 @@ private extension Siren {
                             self.appDidBecomeActiveWorkItem = DispatchWorkItem {
                                 self.performVersionCheck()
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.02, execute: self.appDidBecomeActiveWorkItem!)
+                            if let appDidBecomeActiveWorkItem = self.appDidBecomeActiveWorkItem {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + self.delayTimeToConsiderCalledByNotificationCenterScreen, execute: appDidBecomeActiveWorkItem)
+                            }
         }
     }
 

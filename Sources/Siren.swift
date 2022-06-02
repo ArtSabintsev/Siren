@@ -295,7 +295,9 @@ private extension Siren {
                          queue: nil) { [weak self] _ in
                             guard let self = self else { return }
                             self.appDidBecomeActiveWorkItem = DispatchWorkItem {
-                                await self.performVersionCheck()
+                                Task {
+                                    await self.performVersionCheck()
+                                }
                             }
                             if let appDidBecomeActiveWorkItem = self.appDidBecomeActiveWorkItem {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + self.delayTimeToConsiderCalledByNotificationCenterScreen, execute: appDidBecomeActiveWorkItem)

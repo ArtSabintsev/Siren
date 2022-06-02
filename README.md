@@ -104,7 +104,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 5)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 6)
 ```
 
 ## Implementation Examples

@@ -52,24 +52,22 @@ public final class Siren: NSObject {
     /// The last date that an alert was presented to the user.
     private var alertPresentationDate: Date? = UserDefaults.alertPresentationDate
 
-    /**
-     Prevents the update dialog from not displaying when the user swipes down
-     on a notification center notification to the bottom of screen when calling
-     the Siren.shared.wail notificaiton using the `.onForeground` performCheck option.
-    **/
+    /// Prevents the update dialog from not displaying when the user swipes down
+    /// on a notification center notification to the bottom of screen when calling
+    /// the Siren.shared.wail notificaiton using the `.onForeground` performCheck option.
      private var appDidBecomeActiveWorkItem: DispatchWorkItem?
     
+    /// The minimal amount of time needed before calling the update notification
+    /// after entering the app from a notificaiton.
+    /// Refer to comment in `appDidBecomeActiveWorkItem` for more information.
+    private let appDidBecomeActiveWorkItemTimeDelay = 0.02
     
     /// The App Store's unique identifier for an app.
     private var appID: Int?
-
+    
     /// The completion handler used to return the results or errors returned by Siren.
     private var resultsHandler: ResultsHandler?
     
-
-    /// The time to consider what is it called by notification center screen to bottom
-    private let delayTimeToConsiderCalledByNotificationCenterScreen = 0.02
-
     /// The deinitialization method that clears out all observers,
     deinit {
         presentationManager.cleanUp()
@@ -300,7 +298,7 @@ private extension Siren {
                                 }
                             }
                             if let appDidBecomeActiveWorkItem = self.appDidBecomeActiveWorkItem {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + self.delayTimeToConsiderCalledByNotificationCenterScreen, execute: appDidBecomeActiveWorkItem)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + self.appDidBecomeActiveWorkItemTimeDelay, execute: appDidBecomeActiveWorkItem)
                             }
         }
     }

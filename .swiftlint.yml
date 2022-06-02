@@ -2,14 +2,12 @@ reporter: "xcode"
 
 included:
   - ../Sources/
+  - Example/Tests/
 
 disabled_rules:
   - cyclomatic_complexity
   - identifier_name
+  - file_length
   - line_length
   - nesting
   - unused_optional_binding
-
-# Specialized Rules
-file_length:
-  - 500

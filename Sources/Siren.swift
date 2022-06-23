@@ -131,7 +131,7 @@ private extension Siren {
     /// Initiatives the version check request.
     func performVersionCheck() async {
         do {
-            let apiModel = await try apiManager.performVersionCheckRequest()
+            let apiModel = try await apiManager.performVersionCheckRequest()
             DispatchQueue.main.async {
                 self.validate(apiModel: apiModel)
             }

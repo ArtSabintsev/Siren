@@ -205,22 +205,24 @@ private extension Siren {
     ///   - currentAppStoreVersion: The curren version of the app in the App Store.
     ///   - model: The iTunes Lookup Model.
     func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andModel model: Model) {
-        // Did the user:
-        // - request to skip being prompted with version update alerts for a specific version
-        // - and is the latest App Store update the same version that was requested?
-        if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
-            let currentInstalledVersion = currentInstalledVersion,
-            !currentAppStoreVersion.isEmpty,
-            currentAppStoreVersion == previouslySkippedVersion {
-            resultsHandler?(.failure(.skipVersionUpdate(installedVersion: currentInstalledVersion,
-                                                        appStoreVersion: currentAppStoreVersion)))
-                return
-        }
-
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,
                                                    andAppStoreVersion: currentAppStoreVersion)
         do {
             let rules = try rulesManager.loadRulesForUpdateType(updateType)
+
+            // Did the user:
+            // - request to skip being prompted with version update alerts for a specific version
+            // - and is the latest App Store update the same version that was requested
+            // - and app is not forcing updates?
+            if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
+               let currentInstalledVersion = currentInstalledVersion,
+               !currentAppStoreVersion.isEmpty,
+               currentAppStoreVersion == previouslySkippedVersion,
+               rules.alertType != .force {
+                resultsHandler?(.failure(.skipVersionUpdate(installedVersion: currentInstalledVersion,
+                                                            appStoreVersion: currentAppStoreVersion)))
+                    return
+            }
 
             if rules.frequency == .immediately {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)

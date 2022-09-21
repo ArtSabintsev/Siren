@@ -32,15 +32,20 @@ public struct APIManager {
     
     /// The language for the localization of App Store responses.
     let language: String?
+    
+    /// The bundleID for the App Store retrieved. Defaults to "Bundle.main.bundleIdentifier".
+    let bundleID: String?
 
     /// Initializes `APIManager` to the region or country of an App Store in which the app is available.
     /// By default, all version check requests are performed against the US App Store and the language of the copy/text is returned in English.
     /// - Parameters:
     ///  - country: The country for the App Store in which the app is available.
     ///  - language: The locale to use for the App Store notes. The default result the API returns is equivalent to passing "en_us", so passing `nil` is equivalent to passing "en_us".
-    public init(country: AppStoreCountry = .unitedStates, language: String? = nil) {
+    ///  - bundleID: The bundleID for the App Store retrieved. Defaults to `Bundle.main.bundleIdentifier`. Passing `nil` will case a `missingBundleID` error.
+    public init(country: AppStoreCountry = .unitedStates, language: String? = nil, bundleID: String? = Bundle.main.bundleIdentifier) {
       self.country = country
       self.language = language
+      self.bundleID = bundleID
     }
 
     /// The default `APIManager`.
@@ -62,7 +67,7 @@ extension APIManager {
     ///
     /// - returns APIModel: The decoded JSON as an instance of APIModel.
     func performVersionCheckRequest() async throws -> APIModel {
-        guard Bundle.main.bundleIdentifier != nil else {
+        guard bundleID != nil else {
             throw KnownError.missingBundleID
         }
 
@@ -108,7 +113,7 @@ extension APIManager {
         components.host = "itunes.apple.com"
         components.path = "/lookup"
 
-        var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: Bundle.main.bundleIdentifier)]
+        var items: [URLQueryItem] = [URLQueryItem(name: Constants.bundleID, value: bundleID)]
 
         #if os(tvOS)
         let tvOSQueryItem = URLQueryItem(name: Constants.entity, value: Constants.tvSoftware)

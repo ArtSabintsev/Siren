@@ -22,6 +22,8 @@ public struct APIManager {
         static let entity = "entity"
         /// Constant for the `entity` parameter value when performing a tvOS iTunes Lookup API reqeust.
         static let tvSoftware = "tvSoftware"
+        /// Constant for the `t` parameter in the iTunes Lookup API request.
+        static let timestamp = "t"
     }
 
     /// Return results or errors obtained from performing a version check with Siren.
@@ -129,6 +131,8 @@ extension APIManager {
             let item = URLQueryItem(name: Constants.language, value: language)
             items.append(item)
         }
+
+        items.append(URLQueryItem(name: Constants.timestamp, value: String(Int64(NSDate().timeIntervalSince1970 * 1000))))
 
         components.queryItems = items
 

@@ -160,7 +160,7 @@ private extension Siren {
         } catch (let error as KnownError) {
             self.resultsHandler?(.failure(error))
         } catch {
-            // Do nothing. Silences exhaustive error.
+            self.resultsHandler?(.failure(.appStoreDataRetrievalFailure(underlyingError: error)))
         }
     }
 

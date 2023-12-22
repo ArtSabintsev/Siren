@@ -100,6 +100,19 @@ public extension Siren {
         addBackgroundObservers()
     }
 
+    /// This method executes the Siren version checking and alert presentation flow.
+    ///
+    /// - Parameters:
+    ///   - performCheck: Defines how the version check flow is entered. Defaults to `.onForeground`.
+    /// - Returns: the metadata around a successful version check and interaction with the update modal.
+    func wail(performCheck: PerformCheck = .onForeground) async throws -> UpdateResults {
+        try await withCheckedThrowingContinuation { continuation in
+            wail { result in
+                continuation.resume(with: result)
+            }
+        }
+    }
+
     /// Launches the AppStore in two situations when the user clicked the `Update` button in the UIAlertController modal.
     ///
     /// This function is marked `public` as a convenience for those developers who decide to build a custom alert modal

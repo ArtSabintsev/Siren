@@ -107,7 +107,7 @@ public extension Siren {
     /// - Returns: the metadata around a successful version check and interaction with the update modal.
     func wail(performCheck: PerformCheck = .onForeground) async throws -> UpdateResults {
         try await withCheckedThrowingContinuation { continuation in
-            wail { result in
+            wail(performCheck: performCheck) { result in
                 continuation.resume(with: result)
             }
         }

@@ -27,7 +27,8 @@ public struct Rules {
     ///   - alertType: The type of alert that should be presented.
     ///   - ignoreVersionSkipping: Whether an alert should be shown despite of the fact that the current version has been skipped.
     public init(promptFrequency frequency: UpdatePromptFrequency,
-                forAlertType alertType: AlertType) {
+                forAlertType alertType: AlertType,
+                shouldIgnoreVersionSkipping: Bool? = nil) {
         self.frequency = frequency
         self.alertType = alertType
 

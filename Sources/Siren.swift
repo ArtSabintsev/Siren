@@ -115,15 +115,6 @@ public extension Siren {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
-    /// Marks the version as skipped to avoid showing and update alert for this version from now.
-    ///
-    /// This function is marked `public` as a convenience for those developers who decide to build a custom alert modal
-    /// instead of using Siren's prebuilt update alert.
-    func skipVersion(_ version: String) {
-        UserDefaults.storedSkippedVersion = version
-        UserDefaults.standard.synchronize()
-    }
 }
 
 // MARK: - Version Check and Alert Presentation Flow
@@ -283,7 +274,8 @@ private extension Siren {
             launchAppStore()
         case .skip:
             guard let currentAppStoreVersion = currentAppStoreVersion else { return }
-            skipVersion(currentAppStoreVersion)
+            UserDefaults.storedSkippedVersion = currentAppStoreVersion
+            UserDefaults.standard.synchronize()
         default:
             break
         }

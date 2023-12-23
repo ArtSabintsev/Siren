@@ -17,15 +17,30 @@ public struct Rules {
     /// once a new version is available in the App Store and if they have not updated yet.
     let frequency: UpdatePromptFrequency
 
+    /// Whether an alert should be shown despite of the fact that the current version has been skipped.
+    let shouldIgnoreVersionSkipping: Bool
+
     /// Initializes the alert presentation rules.
     ///
     /// - Parameters:
     ///   - frequency: How often a user should be prompted to update the app once a new version is available in the App Store.
     ///   - alertType: The type of alert that should be presented.
+    ///   - ignoreVersionSkipping: Whether an alert should be shown despite of the fact that the current version has been skipped.
     public init(promptFrequency frequency: UpdatePromptFrequency,
                 forAlertType alertType: AlertType) {
         self.frequency = frequency
         self.alertType = alertType
+
+        if let ignoreVersionSkipping {
+            shouldIgnoreVersionSkipping = ignoreVersionSkipping
+        } else {
+          switch alertType {
+          case .force:
+              shouldIgnoreVersionSkipping = true
+          default:
+              shouldIgnoreVersionSkipping = false
+          }
+        }
     }
 
     /// Performs a version check immediately, but allows the user to skip updating the app until the next time the app becomes active.

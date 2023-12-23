@@ -100,15 +100,24 @@ public extension Siren {
         addBackgroundObservers()
     }
 
-    /// This method executes the Siren version checking and alert presentation flow.
+    /// This method executes the Siren version checking and alert presentation flow only once.
     ///
-    /// - Parameters:
-    ///   - performCheck: Defines how the version check flow is entered. Defaults to `.onForeground`.
     /// - Returns: the metadata around a successful version check and interaction with the update modal.
-    func wail(performCheck: PerformCheck = .onForeground) async throws -> UpdateResults {
+    func wailOnce() async throws -> UpdateResults {
         try await withCheckedThrowingContinuation { continuation in
-            wail(performCheck: performCheck) { result in
+            wail(performCheck: .onDemand) { result in
                 continuation.resume(with: result)
+            }
+        }
+    }
+  
+    /// This method executes the Siren version checking and alert presentation flow when app goes to foreground.
+    ///
+    /// - Returns: the metadata around a successful version check and interaction with the update modal.
+    func wailWhenOnForeground() throws -> AsyncStream<Result<UpdateResults, KnownError>> {
+        AsyncStream { continuation in
+            wail(performCheck: .onForeground) { result in
+                continuation.yield(result)
             }
         }
     }

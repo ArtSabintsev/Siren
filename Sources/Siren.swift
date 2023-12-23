@@ -222,12 +222,12 @@ private extension Siren {
             // Did the user:
             // - request to skip being prompted with version update alerts for a specific version
             // - and is the latest App Store update the same version that was requested
-            // - and app is not forcing updates?
-            if let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
+            // - and version skipping shouldn't be ignored
+            if !rules.shouldIgnoreVersionSkipping,
+               let previouslySkippedVersion = UserDefaults.storedSkippedVersion,
                let currentInstalledVersion = currentInstalledVersion,
                !currentAppStoreVersion.isEmpty,
-               currentAppStoreVersion == previouslySkippedVersion,
-               rules.alertType != .force {
+               currentAppStoreVersion == previouslySkippedVersion {
                 resultsHandler?(.failure(.skipVersionUpdate(installedVersion: currentInstalledVersion,
                                                             appStoreVersion: currentAppStoreVersion)))
                     return

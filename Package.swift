@@ -15,7 +15,7 @@ let package = Package(
         .target(
             name: "Siren",
             path: "Sources",
-            resources: [.copy("Siren.bundle")]
+            resources: [.copy("Resources/Siren.bundle")]
         )
     ],
     swiftLanguageVersions: [.v5]

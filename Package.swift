@@ -15,7 +15,10 @@ let package = Package(
         .target(
             name: "Siren",
             path: "Sources",
-            resources: [.copy("Resources/Siren.bundle")]
+            resources: [
+                .copy("Resources/Siren.bundle"),
+                .process("Resources/PrivacyInfo.xcprivacy")
+            ]
         )
     ],
     swiftLanguageVersions: [.v5]

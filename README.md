@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Swift Support](https://img.shields.io/badge/Swift-5.9-orange.svg) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![CI](https://github.com/ArtSabintsev/Siren/actions/workflows/ci.yml/badge.svg)](https://github.com/ArtSabintsev/Siren/actions/workflows/ci.yml) ![Swift Support](https://img.shields.io/badge/Swift-5.9-orange.svg) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
 ---
 

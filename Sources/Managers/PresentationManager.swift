@@ -258,7 +258,6 @@ private extension PresentationManager {
         return window
     }
 
-    @available(iOS 13.0, tvOS 13.0, *)
     private func getFirstForegroundScene() -> UIWindowScene? {
         let connectedScenes = UIApplication.shared.connectedScenes
         if let windowActiveScene = connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {

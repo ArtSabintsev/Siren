@@ -71,14 +71,10 @@ extension APIManager {
             throw KnownError.missingBundleID
         }
 
-        do {
-            let url = try makeITunesURL()
-            let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
-            let (data, response) = try await URLSession.shared.data(for: request)
-            return try processVersionCheckResults(withData: data, response: response)
-        } catch {
-            throw error
-        }
+        let url = try makeITunesURL()
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+        let (data, response) = try await URLSession.shared.data(for: request)
+        return try processVersionCheckResults(withData: data, response: response)
     }
 
     /// Parses and maps the the results from the iTunes Lookup API request.
@@ -90,17 +86,18 @@ extension APIManager {
         guard let data = data else {
             throw KnownError.appStoreDataRetrievalFailure(underlyingError: nil)
         }
+        let apiModel: APIModel
         do {
-            let apiModel = try JSONDecoder().decode(APIModel.self, from: data)
-
-            guard !apiModel.results.isEmpty else {
-                throw KnownError.appStoreDataRetrievalEmptyResults
-            }
-
-            return apiModel
+            apiModel = try JSONDecoder().decode(APIModel.self, from: data)
         } catch {
             throw KnownError.appStoreJSONParsingFailure(underlyingError: error)
         }
+
+        guard !apiModel.results.isEmpty else {
+            throw KnownError.appStoreDataRetrievalEmptyResults
+        }
+
+        return apiModel
     }
 
     /// Creates the URL that points to the iTunes Lookup API.

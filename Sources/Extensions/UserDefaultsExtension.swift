@@ -12,10 +12,6 @@ import Foundation
 extension UserDefaults {
     /// Siren-specific `UserDefaults` Keys
     private enum SirenKeys: String {
-        /// Key that notifies Siren to perform a version check and present
-        /// the Siren alert the next time the user launches the app.
-        case PerformVersionCheckOnSubsequentLaunch
-
         /// Key that stores the timestamp of the last version check.
         case StoredVersionCheckDate
 

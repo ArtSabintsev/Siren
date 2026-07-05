@@ -38,7 +38,10 @@ public enum KnownError: LocalizedError {
     case skipVersionUpdate(installedVersion: String, appStoreVersion: String)
 
     /// The localized description for each error handled by Siren.
-    public var localizedDescription: String {
+    ///
+    /// Implemented as `LocalizedError.errorDescription` so that the message
+    /// survives type erasure to `Error` (e.g., `error.localizedDescription`).
+    public var errorDescription: String? {
         switch self {
         case .appStoreAppIDFailure:
             return "\(KnownError.sirenError) Error retrieving trackId as the JSON does not contain a `trackId` key."

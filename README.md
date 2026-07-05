@@ -2,7 +2,7 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Swift Support](https://img.shields.io/badge/Swift-5.5-orange.svg) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/) [![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio) 
+![Swift Support](https://img.shields.io/badge/Swift-5.9-orange.svg) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
 ---
 
@@ -51,7 +51,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 ### Current Features
 - [x] Compatible with iOS 17+ and tvOS 17+
-- [x] CocoaPods and Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
+- [x] Swift Package Manager Support (see [Installation Instructions](https://github.com/ArtSabintsev/Siren#installation-instructions))
 - [x] Three Types of Alerts (see [Screenshots](https://github.com/ArtSabintsev/Siren#screenshots))
 - [x] Highly Customizable Presentation Rules (see [Implementation Examples](https://github.com/ArtSabintsev/Siren#implementation-examples))
 - [x] Localized for 40+ Languages (see [Localization](https://github.com/ArtSabintsev/Siren#localization))
@@ -95,20 +95,6 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 | 3.2 | swift3.2 | No
 | 3.1 | swift3.1 | No
 | 2.3 | swift2.3 | No  
-
-### CocoaPods
-> **Note:** The CocoaPods trunk becomes permanently read-only on December 2, 2026. Swift Package Manager is the recommended installation method going forward.
-
-```ruby
-pod 'Siren' # Swift 5.9+
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.4' # Swift 5.1-5.4
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.0' # Swift 5.0
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.2' # Swift 4.2
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.1' # Swift 4.1
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2' # Swift 3.2
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1' # Swift 3.1
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' # Swift 2.3
-```
 
 ### Swift Package Manager
 ```swift

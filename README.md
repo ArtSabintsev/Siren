@@ -87,7 +87,7 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 
 | Swift Version |  Branch Name  | Will Continue to Receive Updates?
 | ------------- | ------------- |  -------------
-| 5.5+ | master | **Yes**
+| 5.9+ | master | **Yes**
 | 5.1-5.4 | swift5.4 | No
 | 5.0 | swift5.0 | No
 | 4.2 | swift4.2 | No
@@ -97,8 +97,10 @@ Siren is built to work with the [**Semantic Versioning**](https://semver.org/) s
 | 2.3 | swift2.3 | No  
 
 ### CocoaPods
+> **Note:** The CocoaPods trunk becomes permanently read-only on December 2, 2026. Swift Package Manager is the recommended installation method going forward.
+
 ```ruby
-pod 'Siren' # Swift 5.5+
+pod 'Siren' # Swift 5.9+
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.4' # Swift 5.1-5.4
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift5.0' # Swift 5.0
 pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4.2' # Swift 4.2
@@ -110,7 +112,7 @@ pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'sw
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 6)
+.package(url: "https://github.com/ArtSabintsev/Siren.git", from: "7.0.0")
 ```
 
 ## Implementation Examples

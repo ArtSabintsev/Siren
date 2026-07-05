@@ -49,9 +49,6 @@ public final class Siren: NSObject {
     /// The retained `NotificationCenter` observer that listens for `UIApplication.didEnterBackgroundNotification` notifications.
     var applicationDidEnterBackgroundObserver: NSObjectProtocol?
 
-    /// The last date that an alert was presented to the user.
-    private var alertPresentationDate: Date? = UserDefaults.alertPresentationDate
-
     /// Prevents the update dialog from not displaying when the user swipes down
     /// on a notification center notification to the bottom of screen when calling
     /// the Siren.shared.wail notificaiton using the `.onForeground` performCheck option.
@@ -122,12 +119,11 @@ public extension Siren {
 private extension Siren {
     /// Initiates the version checking flow.
     func startVersionCheckFlow() {
-        alertPresentationDate = UserDefaults.alertPresentationDate
         Task {
             await performVersionCheck()
         }
     }
-    
+
     /// Initiatives the version check request.
     func performVersionCheck() async {
         do {
@@ -135,10 +131,11 @@ private extension Siren {
             DispatchQueue.main.async {
                 self.validate(apiModel: apiModel)
             }
-        } catch (let error as KnownError) {
-            self.resultsHandler?(.failure(error))
         } catch {
-            // Do nothing. Silences exhaustive error.
+            let knownError = error as? KnownError ?? .appStoreDataRetrievalFailure(underlyingError: error)
+            DispatchQueue.main.async {
+                self.resultsHandler?(.failure(knownError))
+            }
         }
     }
 
@@ -227,7 +224,7 @@ private extension Siren {
             if rules.frequency == .immediately {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
-                guard let alertPresentationDate = alertPresentationDate else {
+                guard let alertPresentationDate = UserDefaults.alertPresentationDate else {
                     presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
                     return
                 }
@@ -275,7 +272,6 @@ private extension Siren {
         case .skip:
             guard let currentAppStoreVersion = currentAppStoreVersion else { return }
             UserDefaults.storedSkippedVersion = currentAppStoreVersion
-            UserDefaults.standard.synchronize()
         default:
             break
         }

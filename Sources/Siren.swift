@@ -179,7 +179,7 @@ private extension Siren {
                 return
         }
 
-        // Check if applicaiton has been released for the amount of days defined by the app consuming Siren.
+        // Check if application has been released for the amount of days defined by the app consuming Siren.
         guard daysSinceRelease >= rulesManager.releasedForDays else {
             resultsHandler?(.failure(.releasedTooSoon(daysSinceRelease: daysSinceRelease,
                                                       releasedForDays: rulesManager.releasedForDays)))

@@ -12,7 +12,7 @@ import Foundation
 public struct Localization {
     /// Determines the available languages in which the update message and alert button titles should appear.
     ///
-    /// By default, the operating system's default lanuage setting is used. However, you can force a specific language
+    /// By default, the operating system's default language setting is used. However, you can force a specific language
     /// by setting the forceLanguageLocalization property before calling checkVersion()
     public enum Language: String {
         /// Arabic Language Localization

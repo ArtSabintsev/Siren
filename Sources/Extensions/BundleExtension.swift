@@ -49,8 +49,8 @@ extension Bundle {
             return key
         }
 
-        if let deviceLangauge = deviceLanguage(),
-            let devicePath = sirenForcedBundlePath(forceLanguageLocalization: deviceLangauge) {
+        if let deviceLanguage = deviceLanguage(),
+            let devicePath = sirenForcedBundlePath(forceLanguageLocalization: deviceLanguage) {
             path = devicePath
         }
 

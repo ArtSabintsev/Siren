@@ -97,7 +97,7 @@ public struct Localization {
         case turkish = "tr"
         /// Urdu Language Localization
         case urdu = "ur"
-        /// Ukranian Language Localization
+        /// Ukrainian Language Localization
         case ukrainian = "uk"
         /// Vietnamese Language Localization
         case vietnamese = "vi"

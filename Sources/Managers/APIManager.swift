@@ -18,9 +18,9 @@ public struct APIManager {
         static let country = "country"
         /// Constant for the `lang` parameter in the iTunes Lookup API request.
         static let language = "lang"
-        /// Constant for the `entity` parameter in the iTunes Lookup API reqeust.
+        /// Constant for the `entity` parameter in the iTunes Lookup API request.
         static let entity = "entity"
-        /// Constant for the `entity` parameter value when performing a tvOS iTunes Lookup API reqeust.
+        /// Constant for the `entity` parameter value when performing a tvOS iTunes Lookup API request.
         static let tvSoftware = "tvSoftware"
     }
 

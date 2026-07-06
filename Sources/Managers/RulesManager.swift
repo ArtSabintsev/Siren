@@ -96,7 +96,7 @@ public struct RulesManager {
 
     /// The default `RulesManager`.
     ///
-    /// By default, the `Rules.default` rule is used for all update typs.
+    /// By default, the `Rules.default` rule is used for all update types.
     public static let `default` = RulesManager(globalRules: .default)
 }
 

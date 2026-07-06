@@ -51,11 +51,11 @@ public final class Siren: NSObject {
 
     /// Prevents the update dialog from not displaying when the user swipes down
     /// on a notification center notification to the bottom of screen when calling
-    /// the Siren.shared.wail notificaiton using the `.onForeground` performCheck option.
+    /// the Siren.shared.wail notification using the `.onForeground` performCheck option.
      private var appDidBecomeActiveWorkItem: DispatchWorkItem?
     
     /// The minimal amount of time needed before calling the update notification
-    /// after entering the app from a notificaiton.
+    /// after entering the app from a notification.
     /// Refer to comment in `appDidBecomeActiveWorkItem` for more information.
     private let appDidBecomeActiveWorkItemTimeDelay = 0.02
     

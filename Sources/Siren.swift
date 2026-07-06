@@ -199,7 +199,7 @@ private extension Siren {
     /// rules set in the `RulesManager` and the the skip version settings.
     ///
     /// - Parameters:
-    ///   - currentAppStoreVersion: The curren version of the app in the App Store.
+    ///   - currentAppStoreVersion: The current version of the app in the App Store.
     ///   - model: The iTunes Lookup Model.
     func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andModel model: Model) {
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,

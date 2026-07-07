@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
 
-	Siren.shared.wail() // Line 2
+	    Siren.shared.wail() // Line 2
 
         return true
     }
@@ -135,7 +135,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         window?.makeKeyAndVisible()
 
-	Siren.shared.wail() // Line 2
+	    Siren.shared.wail() // Line 2
 
         return true
     }

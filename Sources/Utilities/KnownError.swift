@@ -20,7 +20,7 @@ public enum KnownError: LocalizedError {
     case appStoreJSONParsingFailure(underlyingError: Error)
     /// The version of iOS on the device is lower than that of the one required by the app version update.
     case appStoreOSVersionUnsupported
-    /// Error retrieving App Store verson number as the JSON does not contain a `version` key.
+    /// Error retrieving App Store version number as the JSON does not contain a `version` key.
     case appStoreVersionArrayFailure
     /// The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible.
     case currentVersionReleaseDate
@@ -56,7 +56,7 @@ public enum KnownError: LocalizedError {
         case .appStoreOSVersionUnsupported:
             return "\(KnownError.sirenError) The version of iOS on the device is lower than that of the one required by the app version update."
         case .appStoreVersionArrayFailure:
-            return "\(KnownError.sirenError) Error retrieving App Store verson number as the JSON does not contain a `version` key."
+            return "\(KnownError.sirenError) Error retrieving App Store version number as the JSON does not contain a `version` key."
         case .currentVersionReleaseDate:
             return "\(KnownError.sirenError) The `currentVersionReleaseDate` key is missing in the JSON payload. Please leave an issue on https://github.com/ArtSabintsev/Siren with as many details as possible."
         case .malformedURL:

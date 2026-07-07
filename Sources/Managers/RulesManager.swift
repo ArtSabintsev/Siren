@@ -13,7 +13,7 @@ public struct RulesManager {
     /// The alert will only show up if the current version has already been released for X days.
     ///
     /// This value defaults to 1 day (in `RulesManager`'s initializer) to avoid an issue where
-    /// Apple updates the JSON faster than the app binary propogates to the App Store.
+    /// Apple updates the JSON faster than the app binary propagates to the App Store.
     let releasedForDays: Int
 
     /// The `Rules` that should be used when the App Store version of the app signifies that it is a **major** version update (A.b.c.d).
@@ -96,7 +96,7 @@ public struct RulesManager {
 
     /// The default `RulesManager`.
     ///
-    /// By default, the `Rules.default` rule is used for all update typs.
+    /// By default, the `Rules.default` rule is used for all update types.
     public static let `default` = RulesManager(globalRules: .default)
 }
 

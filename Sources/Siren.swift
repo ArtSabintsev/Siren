@@ -51,11 +51,11 @@ public final class Siren: NSObject {
 
     /// Prevents the update dialog from not displaying when the user swipes down
     /// on a notification center notification to the bottom of screen when calling
-    /// the Siren.shared.wail notificaiton using the `.onForeground` performCheck option.
+    /// the Siren.shared.wail notification using the `.onForeground` performCheck option.
      private var appDidBecomeActiveWorkItem: DispatchWorkItem?
     
     /// The minimal amount of time needed before calling the update notification
-    /// after entering the app from a notificaiton.
+    /// after entering the app from a notification.
     /// Refer to comment in `appDidBecomeActiveWorkItem` for more information.
     private let appDidBecomeActiveWorkItemTimeDelay = 0.02
     
@@ -179,7 +179,7 @@ private extension Siren {
                 return
         }
 
-        // Check if applicaiton has been released for the amount of days defined by the app consuming Siren.
+        // Check if application has been released for the amount of days defined by the app consuming Siren.
         guard daysSinceRelease >= rulesManager.releasedForDays else {
             resultsHandler?(.failure(.releasedTooSoon(daysSinceRelease: daysSinceRelease,
                                                       releasedForDays: rulesManager.releasedForDays)))
@@ -199,7 +199,7 @@ private extension Siren {
     /// rules set in the `RulesManager` and the the skip version settings.
     ///
     /// - Parameters:
-    ///   - currentAppStoreVersion: The curren version of the app in the App Store.
+    ///   - currentAppStoreVersion: The current version of the app in the App Store.
     ///   - model: The iTunes Lookup Model.
     func determineIfAlertPresentationRulesAreSatisfied(forCurrentAppStoreVersion currentAppStoreVersion: String, andModel model: Model) {
         let updateType = DataParser.parseForUpdate(forInstalledVersion: currentInstalledVersion,

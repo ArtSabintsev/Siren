@@ -77,15 +77,22 @@ extension APIManager {
         return try processVersionCheckResults(withData: data, response: response)
     }
 
-    /// Parses and maps the the results from the iTunes Lookup API request.
+    /// Parses and maps the results from the iTunes Lookup API request.
     ///
     /// - Parameters:
     ///   - data: The JSON data returned from the request.
     ///   - response: The response metadata returned from the request.
-    private func processVersionCheckResults(withData data: Data?, response: URLResponse?) throws -> APIModel {
-        guard let data = data else {
-            throw KnownError.appStoreDataRetrievalFailure(underlyingError: nil)
+    private func processVersionCheckResults(withData data: Data, response: URLResponse) throws -> APIModel {
+        if let httpResponse = response as? HTTPURLResponse,
+           !(200...299).contains(httpResponse.statusCode) {
+            let statusError = NSError(
+                domain: "Siren",
+                code: httpResponse.statusCode,
+                userInfo: [NSLocalizedDescriptionKey: "iTunes Lookup API returned HTTP \(httpResponse.statusCode)."]
+            )
+            throw KnownError.appStoreDataRetrievalFailure(underlyingError: statusError)
         }
+
         let apiModel: APIModel
         do {
             apiModel = try JSONDecoder().decode(APIModel.self, from: data)

@@ -82,7 +82,7 @@ public struct RulesManager {
     /// Returns the appropriate update rules based on the type of version that is returned from the API.
     ///
     /// - Parameters: type: The type of app update.
-    /// - Throws: The `noUpdateAvailable` error since this is the only way a valie of `unknown` can occur.
+    /// - Throws: The `noUpdateAvailable` error since this is the only way a value of `unknown` can occur.
     /// - Returns: The appropriate rule based on the type of app update that is returned by the API.
     func loadRulesForUpdateType(_ type: UpdateType) throws -> Rules {
         switch type {

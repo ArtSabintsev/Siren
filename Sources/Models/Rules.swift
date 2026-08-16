@@ -66,7 +66,7 @@ public struct Rules {
 // Rules-related Constants
 public extension Rules {
     /// Determines the type of alert to present after a successful version check has been performed.
-    enum AlertType {
+    enum AlertType: Equatable {
         /// Forces the user to update your app (1 button alert).
         case force
         /// Presents the user with option to update app now or at next launch (2 button alert).

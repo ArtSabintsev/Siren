@@ -112,7 +112,7 @@ extension SirenTests {
     }
 
     func testQuadrupleDigitVersionUpdate() {
-        siren.currentInstalledVersion = "1.0.0"
+        siren.currentInstalledVersion = "1.0.0.0"
 
         XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
                                                         appStoreVersion: "2"))
@@ -124,7 +124,7 @@ extension SirenTests {
                                                         appStoreVersion: "2.0.0"))
 
         XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
-                                                        appStoreVersion: "2.0.0.0"))
+                                                        appStoreVersion: "1.0.0.1"))
 
         XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
                                                          appStoreVersion: "0"))
@@ -137,6 +137,30 @@ extension SirenTests {
 
         XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: siren.currentInstalledVersion,
                                                          appStoreVersion: "0.0.0.9"))
+    }
+
+    func testUnequalLengthVersionsAreEqualWhenMissingComponentsAreZero() {
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: "1.0",
+                                                         appStoreVersion: "1.0.0"))
+        XCTAssertFalse(DataParser.isAppStoreVersionNewer(installedVersion: "1.0.0",
+                                                         appStoreVersion: "1.0"))
+        XCTAssertTrue(DataParser.isAppStoreVersionNewer(installedVersion: "2",
+                                                        appStoreVersion: "2.0.1"))
+    }
+
+    func testParseForUpdateClassifiesMajorMinorPatchRevision() {
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "1.0.0.0",
+                                                 andAppStoreVersion: "2.0.0.0"), .major)
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "1.0.0.0",
+                                                 andAppStoreVersion: "1.1.0.0"), .minor)
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "1.0.0.0",
+                                                 andAppStoreVersion: "1.0.1.0"), .patch)
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "1.0.0.0",
+                                                 andAppStoreVersion: "1.0.0.1"), .revision)
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "2",
+                                                 andAppStoreVersion: "2.0.1"), .patch)
+        XCTAssertEqual(DataParser.parseForUpdate(forInstalledVersion: "1.0.0",
+                                                 andAppStoreVersion: "1.0"), .unknown)
     }
 }
 

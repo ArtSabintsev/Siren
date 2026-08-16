@@ -30,3 +30,31 @@ jobs:
           CODE_SIGNING_ALLOWED=NO
         env:
           NSUnbufferedIO: YES
+
+  test:
+    name: Test (iOS Simulator)
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test
+        run: |
+          DESTINATION=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          data = json.load(sys.stdin)
+          for runtime, devices in data.get("devices", {}).items():
+              if "iOS" not in runtime:
+                  continue
+              for device in devices:
+                  if device.get("isAvailable") and "iPhone" in device.get("name", ""):
+                      print("platform=iOS Simulator,id=" + device["udid"])
+                      sys.exit(0)
+          sys.exit("no available iPhone simulator")
+          ')
+          xcodebuild test \
+            -scheme Siren \
+            -destination "$DESTINATION" \
+            CODE_SIGNING_ALLOWED=NO
+        env:
+          NSUnbufferedIO: YES

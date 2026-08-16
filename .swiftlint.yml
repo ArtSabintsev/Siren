@@ -1,8 +1,9 @@
 reporter: "xcode"
 
 included:
-  - ../Sources/
-  - Example/Tests/
+  - Sources
+  - Example/Tests
+  - Tests
 
 disabled_rules:
   - cyclomatic_complexity

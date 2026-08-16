@@ -24,11 +24,11 @@ public final class Siren: NSObject {
 
     /// The manager that controls the update alert's string localization and tint color.
     ///
-    /// Defaults the string's lange localization to the user's device localization.
+    /// Defaults the string's language localization to the user's device localization.
     public lazy var presentationManager: PresentationManager = .default
 
     /// The manager that controls the type of alert that should be displayed
-    /// and how often an alert should be displayed dpeneding on the type
+    /// and how often an alert should be displayed depending on the type
     /// of update that is available relative to the installed version of the app
     /// (e.g., different rules for major, minor, patch and revision updated can be used).
     ///
@@ -78,11 +78,24 @@ public final class Siren: NSObject {
 public extension Siren {
     /// This method executes the Siren version checking and alert presentation flow.
     ///
+    /// Must be called on the main thread. Calls from a background queue are
+    /// bounced to the main queue. In `.onForeground` mode a check also runs
+    /// immediately if the app is already active, so late `wail()` calls
+    /// (post-onboarding, feature flags, SwiftUI) are not deferred until the
+    /// next background/foreground cycle.
+    ///
     /// - Parameters:
     ///   - performCheck: Defines how the version check flow is entered. Defaults to `.onForeground`.
     ///   - handler: Returns the metadata around a successful version check and interaction with the update modal or it returns nil.
     func wail(performCheck: PerformCheck = .onForeground,
               completion handler: ResultsHandler? = nil) {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async { [weak self] in
+                self?.wail(performCheck: performCheck, completion: handler)
+            }
+            return
+        }
+
         resultsHandler = handler
 
         switch performCheck {
@@ -91,6 +104,13 @@ public extension Siren {
             startVersionCheckFlow()
         case .onForeground:
             addForegroundObservers()
+            // `didBecomeActive` will not fire again if `wail()` is called after
+            // the app is already active (lazy setup, post-onboarding, SwiftUI).
+            // On a cold launch from `didFinishLaunching` the state is still
+            // `.inactive` and the observer handles the first check.
+            if UIApplication.shared.applicationState == .active {
+                startVersionCheckFlow()
+            }
         }
 
         // Add background app state change observers.
@@ -103,14 +123,21 @@ public extension Siren {
     /// instead of using Siren's prebuilt update alert.
     func launchAppStore() {
         guard let appID = appID,
-            let url = URL(string: "https://itunes.apple.com/app/id\(appID)") else {
+            let url = URL(string: "https://apps.apple.com/app/id\(appID)") else {
                 resultsHandler?(.failure(.malformedURL))
                 return
         }
 
+        // tvOS cannot open HTTPS App Store product URLs (no browser, no
+        // matching product deep-link). Leave the caller to present their own
+        // instructions; re-presentation of a `.force` alert still applies.
+        #if os(tvOS)
+        return
+        #else
         DispatchQueue.main.async {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+        #endif
     }
 }
 
@@ -124,7 +151,7 @@ private extension Siren {
         }
     }
 
-    /// Initiatives the version check request.
+    /// Initiates the version check request.
     func performVersionCheck() async {
         do {
             let apiModel = try await apiManager.performVersionCheckRequest()
@@ -196,7 +223,7 @@ private extension Siren {
     }
 
     /// Determines if the update alert can be presented based on the
-    /// rules set in the `RulesManager` and the the skip version settings.
+    /// rules set in the `RulesManager` and the skip version settings.
     ///
     /// - Parameters:
     ///   - currentAppStoreVersion: The current version of the app in the App Store.
@@ -221,7 +248,12 @@ private extension Siren {
                     return
             }
 
-            if rules.frequency == .immediately {
+            // `.force` must re-present even inside the frequency window.
+            // Otherwise Control Center / a phone call / `didEnterBackground`
+            // (all of which tear the alert down) plus a recorded presentation
+            // date permanently defeats a "mandatory" update until the window
+            // expires — and forever in `.onDemand` mode.
+            if rules.frequency == .immediately || rules.alertType == .force {
                 presentAlert(withRules: rules, forCurrentAppStoreVersion: currentAppStoreVersion, model: model, andUpdateType: updateType)
             } else {
                 guard let alertPresentationDate = UserDefaults.alertPresentationDate else {
@@ -313,7 +345,13 @@ private extension Siren {
                                 guard let self = self else { return }
                                 self.appDidBecomeActiveWorkItem?.cancel()
                                 self.appDidBecomeActiveWorkItem = nil
-                                self.presentationManager.cleanUp()
+                                // Keep a force-update alert on screen across
+                                // Control Center / Notification Center / incoming
+                                // calls. A full background still tears it down
+                                // via `didEnterBackground` (see below).
+                                if !self.presentationManager.isPresentingForceAlert {
+                                    self.presentationManager.cleanUp()
+                                }
             }
         }
 
@@ -335,16 +373,22 @@ private extension Siren {
 private extension Siren {
     /// Removes the observer that listens for app launching/relaunching.
     func removeForegroundObservers() {
-        NotificationCenter.default.removeObserver(applicationDidBecomeActiveObserver as Any)
+        if let observer = applicationDidBecomeActiveObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
         applicationDidBecomeActiveObserver = nil
     }
 
-    /// Remove the observers that list to app resignation and app backgrounding.
+    /// Remove the observers that listen to app resignation and app backgrounding.
     func removeBackgroundObservers() {
-        NotificationCenter.default.removeObserver(applicationWillResignActiveObserver as Any)
+        if let observer = applicationWillResignActiveObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
         applicationWillResignActiveObserver = nil
 
-        NotificationCenter.default.removeObserver(applicationDidEnterBackgroundObserver as Any)
+        if let observer = applicationDidEnterBackgroundObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
         applicationDidEnterBackgroundObserver = nil
     }
 }

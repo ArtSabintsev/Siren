@@ -43,6 +43,15 @@ public class PresentationManager {
     /// to find a foreground scene does not permanently prevent alerts from showing.
     private var updaterWindow: UIWindow?
 
+    /// The alert type of the currently presented (or just-presented) update alert.
+    /// Used to keep a `.force` alert on screen across resign-active events.
+    private var currentAlertType: Rules.AlertType?
+
+    /// Whether a force-update alert is currently on screen.
+    var isPresentingForceAlert: Bool {
+        currentAlertType == .force && updaterWindow != nil && updaterWindow?.isHidden == false
+    }
+
     /// `PresentationManager`'s public initializer.
     ///
     /// - Parameters:
@@ -128,6 +137,7 @@ extension PresentationManager {
         // attached to the currently foregrounded scene.
         guard let window = updaterWindow ?? createWindow() else { return }
         updaterWindow = window
+        currentAlertType = rules.alertType
 
         let alertController = UIAlertController(title: alertTitle,
                                                 message: alertMessage,
@@ -159,14 +169,23 @@ extension PresentationManager {
     }
 
     /// Dismisses the update alert and releases the `alertController` and `updaterWindow`.
+    ///
+    /// The window and its root `SirenViewController` retain each other while presented
+    /// (`retainedWindow` ↔ `rootViewController`). That cycle is broken here so the
+    /// pair can deallocate; leaving it intact leaks one hidden `UIWindow` per presentation.
     func cleanUp() {
         if let updaterWindow = updaterWindow {
             alertController?.hide(window: updaterWindow)
             updaterWindow.resignKey()
+            if let viewController = updaterWindow.rootViewController as? SirenViewController {
+                viewController.retainedWindow = nil
+            }
+            updaterWindow.rootViewController = nil
         }
         alertController?.dismiss(animated: true, completion: nil)
         alertController = nil
         updaterWindow = nil
+        currentAlertType = nil
     }
 }
 
@@ -259,10 +278,14 @@ private extension PresentationManager {
     }
 
     private func getFirstForegroundScene() -> UIWindowScene? {
-        let connectedScenes = UIApplication.shared.connectedScenes
-        if let windowActiveScene = connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+        // Filter to window scenes first. `connectedScenes` is an unordered Set that
+        // can include CarPlay / external scenes; matching by activation state and
+        // *then* casting drops a valid `UIWindowScene` when a non-window scene
+        // happens to come first.
+        let windowScenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        if let windowActiveScene = windowScenes.first(where: { $0.activationState == .foregroundActive }) {
             return windowActiveScene
-        } else if let windowInactiveScene = connectedScenes.first(where: { $0.activationState == .foregroundInactive }) as? UIWindowScene {
+        } else if let windowInactiveScene = windowScenes.first(where: { $0.activationState == .foregroundInactive }) {
             return windowInactiveScene
         } else {
             return nil

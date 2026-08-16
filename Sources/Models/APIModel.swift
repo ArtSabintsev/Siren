@@ -19,7 +19,7 @@ struct APIModel: Decodable {
     /// The array of results objects from the iTunes Lookup API.
     let results: [Results]
 
-    /// The Results object from the the iTunes Lookup API.
+    /// The Results object from the iTunes Lookup API.
     struct Results: Decodable {
         ///  Codable Coding Keys for the Results array in the iTunes Lookup API JSON response.
         private enum CodingKeys: String, CodingKey {

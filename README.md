@@ -142,7 +142,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 Siren also has plenty of customization options. All examples can be found in the Example Project's [**AppDelegate**](https://github.com/ArtSabintsev/Siren/blob/master/Example/Example/AppDelegate.swift) file. Uncomment the example you'd like to test.
 
-The Example Xcode project still vendors a CocoaPods workspace from before Siren became SPM-only. New integrations should use Swift Package Manager (above). Opening `Example/Example.xcworkspace` may still build from the checked-in `Pods/` directory, but `pod install` will fail because there is no longer a root podspec.
+Open `Example/Example.xcodeproj` (or `Example/Example.xcworkspace`). The sample app links the local Siren Swift package — no CocoaPods, no `pod install`.
 
 ---
 

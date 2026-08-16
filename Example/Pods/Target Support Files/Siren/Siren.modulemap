@@ -1,6 +1,0 @@
-framework module Siren {
-  umbrella header "Siren-umbrella.h"
-
-  export *
-  module * { export * }
-}
